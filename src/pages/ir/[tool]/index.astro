@@ -45,6 +45,8 @@ const targetUrl = (linkzipCache as Record<string, string>)[officialUrl] ?? offic
     <a 
       href={targetUrl} 
       id="redirect-link"
+      target="_blank"
+      rel="noopener noreferrer"
       class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-extrabold rounded-xl bg-brand-primary text-white hover:bg-brand-primary-hover shadow-lg shadow-brand-primary/25 active:scale-[0.98] transition-all"
     >
       Continuar a {new URL(officialUrl).hostname}
