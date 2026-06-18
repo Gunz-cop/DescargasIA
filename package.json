@@ -8,7 +8,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "shorten": "node scripts/shorten-official-links.mjs",
+    "build": "npm run shorten && astro build",
+    "build:no-shorten": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
