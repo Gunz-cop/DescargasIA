@@ -1,0 +1,256 @@
+---
+// src/pages/[slug].astro
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Badge from '../components/Badge.astro';
+
+export async function getStaticPaths() {
+  const tools = await getCollection('tools');
+  return tools.map(tool => ({
+    params: { slug: tool.data.slug },
+    props: { tool }
+  }));
+}
+
+const { tool } = Astro.props;
+
+// Normalización de precios para badges
+const pricingLabels = {
+  free: { label: 'Gratis', variant: 'success' as const },
+  freemium: { label: 'Freemium', variant: 'primary' as const },
+  paid: { label: 'De Pago', variant: 'danger' as const },
+  enterprise: { label: 'Enterprise', variant: 'neutral' as const },
+  unknown: { label: 'Precios...', variant: 'neutral' as const }
+};
+const pricing = pricingLabels[tool.data.pricingModel] || pricingLabels.unknown;
+
+// Normalización de soporte de español
+const spanishSupportLabels = {
+  yes: { label: 'Soporte en Español', variant: 'success' as const },
+  partial: { label: 'Soporte Parcial', variant: 'warning' as const },
+  no: { label: 'Solo Inglés', variant: 'danger' as const },
+  unknown: { label: 'Idioma...', variant: 'neutral' as const }
+};
+const spanish = spanishSupportLabels[tool.data.spanishSupport] || spanishSupportLabels.unknown;
+
+// Normalización de niveles de confianza
+const trustLabels = {
+  official: { label: '✓ Canal Oficial de Descarga', variant: 'success' as const },
+  verified: { label: '✓ Enlace Verificado', variant: 'secondary' as const },
+  'pending-review': { label: 'Bajo Revisión', variant: 'warning' as const }
+};
+const trust = trustLabels[tool.data.trustLevel] || { label: 'Pendiente', variant: 'neutral' as const };
+
+// Formatear la fecha
+const formatReviewDate = (dateStr: string) => {
+  try {
+    return new Date(dateStr).toLocaleDateString('es-ES', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  } catch {
+    return dateStr;
+  }
+};
+
+// Generar JSON-LD dinámico para SoftwareApplication
+const schemaApp = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": tool.data.name,
+  "description": tool.data.shortDescription,
+  "applicationCategory": "BusinessApplication", // Categoría genérica
+  "operatingSystem": Object.keys(tool.data.platforms).filter(p => tool.data.platforms[p as keyof typeof tool.data.platforms]).join(', '),
+  "offers": {
+    "@type": "Offer",
+    "price": tool.data.pricingModel === 'free' ? '0' : undefined,
+    "priceCurrency": tool.data.pricingModel === 'free' ? 'USD' : undefined
+  }
+};
+
+const schemaBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": Astro.url.origin
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": tool.data.name,
+      "item": Astro.url.href
+    }
+  ]
+};
+
+const jsonLd = [schemaApp, schemaBreadcrumb];
+---
+
+<BaseLayout 
+  title={`Dónde descargar ${tool.data.name} oficial y seguro | DescargasIA`} 
+  description={`Encuentra los enlaces de descarga oficial de ${tool.data.name} para Windows, Mac, Android y iPhone. Evita versiones falsas y descarga seguro.`}
+  jsonLd={jsonLd}
+>
+  <!-- Cabecera de Ficha -->
+  <header class="mb-10 pb-6 border-b border-brand-card-border/60">
+    <nav class="flex items-center gap-2 text-xs text-brand-text-muted mb-4 font-semibold" aria-label="Ruta de navegación">
+      <a href="/" class="hover:text-brand-text transition-colors">Inicio</a>
+      <span class="text-brand-card-border" aria-hidden="true">/</span>
+      <span class="text-brand-text">{tool.data.name}</span>
+    </nav>
+
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="flex flex-col gap-2">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-brand-text font-['Outfit'] tracking-tight">
+          Descargar {tool.data.name} Oficial
+        </h1>
+        <p class="text-sm text-brand-text-muted max-w-2xl leading-relaxed">
+          {tool.data.shortDescription}
+        </p>
+      </div>
+
+      <!-- Badges de Estado -->
+      <div class="flex flex-wrap gap-2 md:self-end">
+        <Badge variant={trust.variant}>{trust.label}</Badge>
+        <Badge variant={pricing.variant}>{pricing.label}</Badge>
+        <Badge variant={spanish.variant}>{spanish.label}</Badge>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenido en Columnas -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <!-- Columna Principal: Enlaces de Descarga y Seguridad (2/3 de pantalla en desktop) -->
+    <div class="lg:col-span-2 flex flex-col gap-8">
+      
+      <!-- Listado de Enlaces Oficiales (Formato Tabla/Lista Premium) -->
+      <section aria-labelledby="descargas-title">
+        <h2 id="descargas-title" class="text-xl font-bold text-brand-text mb-4 font-['Outfit']">
+          Enlaces de Descarga e Instalación Oficiales
+        </h2>
+
+        <div class="flex flex-col gap-3">
+          {Object.entries(tool.data.platforms).map(([platform, details]) => {
+            if (!details) return null;
+            
+            const icons = {
+              web: '🌐',
+              windows: '🖥️',
+              mac: '🍎',
+              linux: '🐧',
+              android: '🤖',
+              ios: '📱'
+            };
+            const platformNames = {
+              web: 'Versión Web',
+              windows: 'Windows',
+              mac: 'macOS',
+              linux: 'Linux',
+              android: 'Android',
+              ios: 'iOS (iPhone/iPad)'
+            };
+
+            const platKey = platform as keyof typeof icons;
+            const icon = icons[platKey] || '💻';
+            const name = platformNames[platKey] || platform;
+
+            return (
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border border-brand-card-border bg-brand-card-bg/20 hover:border-brand-primary/30 transition-all">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl" aria-hidden="true">{icon}</span>
+                  <div class="flex flex-col">
+                    <span class="text-sm font-bold text-brand-text capitalize">{name}</span>
+                    <span class="text-[10px] text-brand-text-muted font-medium">{details.label}</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 justify-between sm:justify-end">
+                  {details.isOfficial && (
+                    <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-brand-success-bg text-brand-success border border-brand-success-border">
+                      Canal Oficial
+                    </span>
+                  )}
+                  <a 
+                    href={`/ir/${tool.data.slug}/${platform}`}
+                    class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-brand-primary text-white text-xs font-black hover:bg-brand-primary-hover hover:scale-[1.02] active:scale-[0.98] transition-all"
+                  >
+                    {details.type === 'web-app' ? 'Abrir Aplicación' : 'Ir a Descarga'}
+                  </a>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      <!-- Notas de Seguridad / Advertencias -->
+      {tool.data.safetyNotes && tool.data.safetyNotes.length > 0 && (
+        <section class="p-5 rounded-2xl border border-brand-danger-border bg-brand-danger-bg/20" aria-labelledby="seguridad-title">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-lg" aria-hidden="true">⚠️</span>
+            <h2 id="seguridad-title" class="text-sm font-black uppercase tracking-wider text-brand-danger-text font-['Outfit']">
+              Consejos de Seguridad y Confianza
+            </h2>
+          </div>
+          <ul class="list-disc pl-5 flex flex-col gap-2 text-xs text-brand-text-muted font-medium leading-relaxed">
+            {tool.data.safetyNotes.map(note => (
+              <li>{note}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <!-- Notas editoriales y fuentes verificadas -->
+      <section class="p-4 rounded-xl bg-brand-card-bg/10 border border-brand-card-border text-xs text-brand-text-muted font-semibold flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <span>Última revisión editorial: <strong class="text-brand-text">{formatReviewDate(tool.data.lastReviewed)}</strong></span>
+        {tool.data.officialSources && tool.data.officialSources.length > 0 && (
+          <div class="flex items-center gap-1">
+            <span>Fuente consultada:</span>
+            <a href={tool.data.officialSources[0]} target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:underline">
+              {new URL(tool.data.officialSources[0]).hostname}
+            </a>
+          </div>
+        )}
+      </section>
+    </div>
+
+    <!-- Columna Lateral: Descripción Larga y Alternativas (1/3 de pantalla en desktop) -->
+    <div class="flex flex-col gap-8">
+      
+      <!-- Ficha de la Herramienta -->
+      <section class="p-6 rounded-2xl border border-brand-card-border bg-brand-card-bg/20 flex flex-col gap-4" aria-labelledby="detalles-title">
+        <h2 id="detalles-title" class="text-lg font-bold text-brand-text font-['Outfit']">
+          Sobre {tool.data.name}
+        </h2>
+        <div class="text-xs text-brand-text-muted leading-relaxed font-medium flex flex-col gap-3">
+          <p>{tool.data.longDescription}</p>
+        </div>
+      </section>
+
+      <!-- Alternativas Recomendadas -->
+      {tool.data.alternatives && tool.data.alternatives.length > 0 && (
+        <section class="p-6 rounded-2xl border border-brand-card-border bg-brand-card-bg/20 flex flex-col gap-4" aria-labelledby="alternativas-title">
+          <h2 id="alternativas-title" class="text-lg font-bold text-brand-text font-['Outfit']">
+            Alternativas Recomendadas
+          </h2>
+          <div class="flex flex-col gap-2">
+            {tool.data.alternatives.map(altSlug => (
+              <a 
+                href={`/${altSlug}`}
+                class="flex items-center justify-between p-3 rounded-xl border border-brand-card-border bg-brand-bg/40 text-xs font-bold text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all"
+              >
+                <span class="capitalize">{altSlug.replace('-', ' ')}</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  </div>
+</BaseLayout>

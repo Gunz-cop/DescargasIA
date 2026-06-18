@@ -1,0 +1,22 @@
+---
+// src/components/Badge.astro
+interface Props {
+  variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'neutral';
+  class?: string;
+}
+
+const { variant = 'neutral', class: className = '' } = Astro.props;
+
+const styles = {
+  primary: 'bg-brand-primary/10 text-brand-primary border-brand-primary/20',
+  secondary: 'bg-brand-secondary/10 text-brand-secondary border-brand-secondary/20',
+  success: 'bg-brand-success-bg text-brand-success border-brand-success-border',
+  warning: 'bg-brand-warning-bg text-brand-warning-text border-brand-warning-border',
+  danger: 'bg-brand-danger-bg text-brand-danger-text border-brand-danger-border',
+  neutral: 'bg-brand-card-bg/80 text-brand-text-muted border-brand-card-border'
+};
+---
+
+<span class={`inline-flex items-center px-2 py-0.5 text-[10px] font-extrabold rounded-full border ${styles[variant]} ${className}`}>
+  <slot />
+</span>

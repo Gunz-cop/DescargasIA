@@ -1,0 +1,51 @@
+{
+  "name": "Ollama",
+  "slug": "ollama",
+  "shortDescription": "Herramienta de consola para ejecutar y gestionar modelos de lenguaje grandes de forma local y privada en tu ordenador.",
+  "longDescription": "Ollama es una herramienta ligera y open-source para ejecutar modelos de inteligencia artificial (como Llama 3, Mistral o Phi 3) directamente en tu ordenador. Funciona mediante línea de comandos o levantando un servidor local API compatible, garantizando privacidad total y funcionamiento offline.",
+  "officialWebsite": "https://ollama.com",
+  "categories": ["modelos-locales"],
+  "platforms": {
+    "web": {
+      "url": "https://ollama.com",
+      "type": "official-site",
+      "label": "Ver sitio oficial",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://ollama.com/download/OllamaSetup.exe",
+      "type": "official-installer",
+      "label": "Descargar instalador EXE para Windows",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://ollama.com/download/Ollama-darwin.zip",
+      "type": "official-installer",
+      "label": "Descargar zip oficial para macOS",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "linux": {
+      "url": "https://ollama.com/download/linux",
+      "type": "documentation",
+      "label": "Ver comando de instalación para Linux",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "spanishSupport": "no",
+  "tags": ["ollama", "local", "offline", "open-source", "modelos-locales"],
+  "alternatives": ["lm-studio"],
+  "safetyNotes": [
+    "Ollama no requiere registrarse para descargar o usar. No uses ejecutables no oficiales procedentes de repositorios no listados en su web oficial."
+  ],
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://ollama.com"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "LM Studio",
+  "slug": "lm-studio",
+  "shortDescription": "Una interfaz gráfica intuitiva y completa para descubrir, descargar y chatear con modelos LLM locales de forma offline.",
+  "longDescription": "LM Studio es una aplicación de escritorio diseñada para facilitar la ejecución de modelos de IA locales con una interfaz similar a la de ChatGPT. Permite descargar modelos directamente desde Hugging Face, configurar los parámetros de carga en GPU/CPU y levantar un servidor API local compatible con OpenAI de forma extremadamente sencilla.",
+  "officialWebsite": "https://lmstudio.ai",
+  "categories": ["modelos-locales"],
+  "platforms": {
+    "web": {
+      "url": "https://lmstudio.ai",
+      "type": "official-site",
+      "label": "Ver sitio oficial",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://lmstudio.ai",
+      "type": "official-site",
+      "label": "Ver enlace de descarga para Windows en su web",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://lmstudio.ai",
+      "type": "official-site",
+      "label": "Ver enlace de descarga para macOS en su web",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "linux": {
+      "url": "https://lmstudio.ai",
+      "type": "official-site",
+      "label": "Ver enlace de descarga AppImage para Linux en su web",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "spanishSupport": "no",
+  "tags": ["lm-studio", "local", "offline", "interfaz", "modelos-locales"],
+  "alternatives": ["ollama"],
+  "safetyNotes": [
+    "LM Studio es 100% gratuito para uso personal. No requiere registrarse. Su web oficial es lmstudio.ai."
+  ],
+  "trustLevel": "verified",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://lmstudio.ai"
+  ]
+}

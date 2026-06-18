@@ -1,0 +1,92 @@
+---
+// src/pages/categoria/[slug].astro
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ToolCard from '../../components/ToolCard.astro';
+
+export async function getStaticPaths() {
+  const categories = await getCollection('categories');
+  return categories.map(cat => ({
+    params: { slug: cat.data.slug },
+    props: { cat }
+  }));
+}
+
+const { cat } = Astro.props;
+
+// Obtener todas las herramientas asociadas a esta categoría
+const allTools = await getCollection('tools');
+const tools = allTools.filter(t => t.data.categories.includes(cat.data.slug));
+
+// Ordenar herramientas por confianza
+const sortedTools = [...tools].sort((a, b) => {
+  const priorities = { official: 3, verified: 2, 'pending-review': 1 };
+  const valA = priorities[a.data.trustLevel] || 0;
+  const valB = priorities[b.data.trustLevel] || 0;
+  return valB - valA;
+});
+
+const pageTitle = `Descargas de herramientas en ${cat.data.name} | DescargasIA`;
+const pageDesc = `${cat.data.description} Enlaces de descarga oficiales y verificados de forma segura en DescargasIA.`;
+
+const schemaBreadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": Astro.url.origin
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": cat.data.name,
+      "item": Astro.url.href
+    }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaBreadcrumb}>
+  <!-- Cabecera de Categoría -->
+  <header class="mb-10 pb-6 border-b border-brand-card-border/60">
+    <nav class="flex items-center gap-2 text-xs text-brand-text-muted mb-4 font-semibold" aria-label="Ruta de navegación">
+      <a href="/" class="hover:text-brand-text transition-colors">Inicio</a>
+      <span class="text-brand-card-border" aria-hidden="true">/</span>
+      <span class="text-brand-text-muted">Categoría</span>
+      <span class="text-brand-card-border" aria-hidden="true">/</span>
+      <span class="text-brand-text">{cat.data.name}</span>
+    </nav>
+
+    <div class="flex items-center gap-3 mb-2">
+      {cat.data.icon && <span class="text-3xl" aria-hidden="true">{cat.data.icon}</span>}
+      <h1 class="text-3xl sm:text-4xl font-black text-brand-text font-['Outfit'] tracking-tight">
+        {cat.data.name}
+      </h1>
+    </div>
+    
+    <p class="text-sm text-brand-text-muted max-w-2xl leading-relaxed">
+      {cat.data.description}
+    </p>
+  </header>
+
+  <!-- Listado de Herramientas -->
+  {sortedTools.length > 0 ? (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sortedTools.map(tool => (
+        <ToolCard tool={tool.data} />
+      ))}
+    </div>
+  ) : (
+    <div class="text-center py-16 bg-brand-card-bg/10 border border-dashed border-brand-card-border rounded-2xl p-8">
+      <div class="text-4xl mb-4" aria-hidden="true">⚙️</div>
+      <h3 class="text-lg font-bold text-brand-text mb-2">Próximamente más herramientas</h3>
+      <p class="text-sm text-brand-text-muted max-w-md mx-auto mb-6">Estamos verificando y redactando fichas seguras de descarga para esta categoría.</p>
+      <a href="/" class="px-5 py-2.5 text-xs font-bold rounded-xl bg-brand-primary/10 text-brand-primary border border-brand-primary/20 hover:bg-brand-primary/20 transition-all inline-block">
+        Volver al Directorio
+      </a>
+    </div>
+  )}
+</BaseLayout>

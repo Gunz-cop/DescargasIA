@@ -1,0 +1,44 @@
+{
+  "name": "Gemini",
+  "slug": "gemini",
+  "shortDescription": "El modelo de inteligencia artificial multimodal desarrollado por Google para web y móviles.",
+  "longDescription": "Gemini es la inteligencia artificial desarrollada por Google, integrada de forma nativa en su ecosistema. Permite resolver tareas lógicas, analizar imágenes, programar y conectarse con herramientas como Google Docs, Gmail y YouTube. Dispone de versión web y aplicación móvil oficial.",
+  "officialWebsite": "https://gemini.google.com",
+  "categories": ["asistentes-ia"],
+  "platforms": {
+    "web": {
+      "url": "https://gemini.google.com",
+      "type": "web-app",
+      "label": "Usar versión web oficial",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.google.android.apps.bard",
+      "type": "app-store",
+      "label": "Ver app oficial en Google Play",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/google-gemini/id6477488358",
+      "type": "app-store",
+      "label": "Ver app oficial en App Store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "spanishSupport": "yes",
+  "tags": ["google", "multimodal", "chatbot", "productividad"],
+  "alternatives": ["chatgpt", "claude", "perplexity"],
+  "safetyNotes": [
+    "Google no distribuye aplicaciones de escritorio nativas para Windows o Mac. Toda versión de escritorio que veas en la web es no oficial y potencialmente peligrosa."
+  ],
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://deepmind.google/technologies/gemini/"
+  ]
+}

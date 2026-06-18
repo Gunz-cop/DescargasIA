@@ -1,0 +1,58 @@
+{
+  "name": "Claude",
+  "slug": "claude",
+  "shortDescription": "La inteligencia artificial conversacional de Anthropic enfocada en redacción avanzada, código y razonamiento lógico.",
+  "longDescription": "Claude es una IA conversacional desarrollada por Anthropic. Es reconocida internacionalmente por sus capacidades excepcionales en comprensión lectora, redacción de textos creativos y técnicos, y análisis avanzado de código de programación. Cuenta con versión web y aplicaciones de escritorio oficiales.",
+  "officialWebsite": "https://claude.ai",
+  "categories": ["asistentes-ia"],
+  "platforms": {
+    "web": {
+      "url": "https://claude.ai",
+      "type": "web-app",
+      "label": "Usar versión web oficial",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://claude.ai/download",
+      "type": "official-installer",
+      "label": "Descargar app oficial para Windows",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://claude.ai/download",
+      "type": "official-installer",
+      "label": "Descargar app oficial para macOS",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/claude-by-anthropic/id6476686121",
+      "type": "app-store",
+      "label": "Ver app oficial en App Store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.anthropic.claude",
+      "type": "app-store",
+      "label": "Ver app oficial en Google Play",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "spanishSupport": "yes",
+  "tags": ["anthropic", "chatbot", "claude-3-5", "redaccion"],
+  "alternatives": ["chatgpt", "gemini", "perplexity"],
+  "safetyNotes": [
+    "Anthropic solo distribuye ejecutables oficiales de escritorio a través de claude.ai/download. No instales archivos procedentes de repositorios alternativos."
+  ],
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://anthropic.com/claude"
+  ]
+}

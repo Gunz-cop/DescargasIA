@@ -1,0 +1,51 @@
+{
+  "name": "Cursor",
+  "slug": "cursor",
+  "shortDescription": "El editor de código integrado con inteligencia artificial basado en VS Code para programación asistida de alta velocidad.",
+  "longDescription": "Cursor es un entorno de desarrollo integrado (IDE) nacido como fork de VS Code. Está diseñado específicamente para programar con asistencia fluida de modelos de lenguaje como GPT-4, Claude y modelos propios. Ofrece autocompletado avanzado, chat integrado y refactorización inteligente directa en el espacio de trabajo.",
+  "officialWebsite": "https://cursor.com",
+  "categories": ["programacion"],
+  "platforms": {
+    "web": {
+      "url": "https://cursor.com",
+      "type": "official-site",
+      "label": "Ver sitio oficial",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://downloader.cursor.sh/windows/nsis/x64",
+      "type": "official-installer",
+      "label": "Descargar instalador oficial para Windows",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://downloader.cursor.sh/mac/dmg/x64",
+      "type": "official-installer",
+      "label": "Descargar instalador oficial para macOS",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "linux": {
+      "url": "https://downloader.cursor.sh/linux/appImage/x64",
+      "type": "official-installer",
+      "label": "Descargar AppImage oficial para Linux",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "spanishSupport": "partial",
+  "tags": ["cursor", "ide", "vscode", "programacion", "autocompletado"],
+  "alternatives": ["github-copilot"],
+  "safetyNotes": [
+    "Descarga Cursor únicamente desde cursor.com o su subdominio de descarga seguro downloader.cursor.sh."
+  ],
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://cursor.com"
+  ]
+}

@@ -1,0 +1,173 @@
+---
+// src/layouts/BaseLayout.astro
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalUrl?: string;
+  ogType?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, any> | Record<string, any>[];
+}
+
+const {
+  title,
+  description,
+  canonicalUrl = Astro.url.href,
+  ogType = 'website',
+  ogImage = 'https://descargasia.com/default-share.jpg', // Cambiar al dominio final
+  jsonLd,
+} = Astro.props;
+
+// Convert jsonLd to string if provided
+const jsonLdString = jsonLd
+  ? JSON.stringify(jsonLd)
+  : null;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Básico -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Open Graph (Facebook / WhatsApp / etc.) -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="DescargasIA" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Datos Estructurados Schema.org -->
+    {jsonLdString && (
+      <script type="application/ld+json" set:html={jsonLdString} />
+    )}
+  </head>
+  <body class="min-h-screen flex flex-col justify-between">
+    <!-- Fondo mesh decorativo premium -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-20">
+      <!-- Glow orbe 1 (Violeta) -->
+      <div class="absolute -top-[20%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-brand-primary/10 blur-[120px] animate-orb-1"></div>
+      <!-- Glow orbe 2 (Cyan) -->
+      <div class="absolute -bottom-[20%] -right-[10%] w-[50vw] h-[50vw] rounded-full bg-brand-secondary/5 blur-[100px] animate-orb-2"></div>
+      
+      <!-- Mesh grid de fondo -->
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(139,92,246,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(139,92,246,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+    </div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-40 border-b border-brand-card-border/80 bg-brand-bg/85 backdrop-blur-md transition-all">
+      <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2 group">
+          <span class="text-2xl" aria-hidden="true">⚡</span>
+          <span class="text-xl font-black tracking-tight bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent group-hover:brightness-110 transition-all">
+            DescargasIA
+          </span>
+        </a>
+
+        <nav class="hidden sm:flex items-center gap-6 text-sm font-semibold text-brand-text-muted">
+          <a href="/categoria/asistentes-ia" class="hover:text-brand-text transition-colors">Asistentes</a>
+          <a href="/categoria/programacion" class="hover:text-brand-text transition-colors">Programación</a>
+          <a href="/categoria/modelos-locales" class="hover:text-brand-text transition-colors">Modelos Locales</a>
+          <a href="/guias" class="hover:text-brand-text transition-colors">Guías</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <!-- Toggle de modo claro/oscuro simple -->
+          <button 
+            type="button" 
+            id="theme-toggle" 
+            class="p-2 rounded-xl border border-brand-card-border bg-brand-card-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all active:scale-95"
+            aria-label="Alternar tema claro/oscuro"
+          >
+            <span id="theme-toggle-icon">🌙</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow max-w-6xl w-full mx-auto px-4 py-8 relative">
+      <slot />
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-brand-card-border/80 bg-brand-card-bg/10 backdrop-blur-sm mt-12 py-10 transition-colors">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex flex-col gap-2 text-center md:text-left">
+          <span class="text-base font-black tracking-tight bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
+            DescargasIA
+          </span>
+          <p class="text-xs text-brand-text-muted max-w-md leading-relaxed">
+            Directorio independiente de herramientas de inteligencia artificial. Enlazamos exclusivamente a los canales oficiales y oficiales de descarga para garantizar tu seguridad.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-brand-text-muted">
+          <a href="/guias" class="hover:text-brand-text transition-colors">Guías SEO</a>
+          <a href="/aviso-legal" class="hover:text-brand-text transition-colors">Aviso Legal</a>
+          <a href="/privacidad" class="hover:text-brand-text transition-colors">Privacidad</a>
+        </div>
+      </div>
+      <div class="max-w-6xl mx-auto px-4 border-t border-brand-card-border/40 mt-8 pt-6 text-center text-[10px] text-brand-text-muted/60">
+        © {new Date().getFullYear()} DescargasIA. Todos los derechos reservados. Todos los nombres de marcas y logos de IA son propiedad de sus respectivos dueños.
+      </div>
+    </footer>
+
+    <!-- Theme Script -->
+    <script is:inline>
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-toggle-icon');
+      
+      const getTheme = () => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        return 'dark'; // Default to dark theme
+      };
+
+      const setTheme = (theme) => {
+        if (theme === 'light') {
+          document.documentElement.classList.add('light');
+          if (themeIcon) themeIcon.textContent = '☀️';
+        } else {
+          document.documentElement.classList.remove('light');
+          if (themeIcon) themeIcon.textContent = '🌙';
+        }
+        localStorage.setItem('theme', theme);
+      };
+
+      // Initial apply
+      setTheme(getTheme());
+
+      // Toggle click handler
+      if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          const isLight = document.documentElement.classList.contains('light');
+          setTheme(isLight ? 'dark' : 'light');
+        });
+      }
+    </script>
+  </body>
+</html>

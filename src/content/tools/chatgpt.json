@@ -1,0 +1,59 @@
+{
+  "name": "ChatGPT",
+  "slug": "chatgpt",
+  "shortDescription": "El asistente conversacional oficial de OpenAI disponible en versión web y aplicaciones nativas.",
+  "longDescription": "ChatGPT es el modelo de lenguaje e inteligencia artificial desarrollado por OpenAI. Permite entablar conversaciones naturales, programar, resolver dudas complejas y redactar textos. Este directorio te redirige exclusivamente a los canales de descarga y accesos web seguros provistos directamente por la marca.",
+  "officialWebsite": "https://chatgpt.com",
+  "categories": ["asistentes-ia"],
+  "platforms": {
+    "web": {
+      "url": "https://chatgpt.com",
+      "type": "web-app",
+      "label": "Usar versión web oficial",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://openai.com/chatgpt/desktop",
+      "type": "official-installer",
+      "label": "Descargar app oficial para Windows",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://openai.com/chatgpt/desktop",
+      "type": "official-installer",
+      "label": "Descargar app oficial para macOS",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.openai.chatgpt",
+      "type": "app-store",
+      "label": "Ver app oficial en Google Play",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/chatgpt/id6448311069",
+      "type": "app-store",
+      "label": "Ver app oficial en App Store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "spanishSupport": "yes",
+  "tags": ["openai", "chatbot", "gpt-4o", "gpt-4", "productividad"],
+  "alternatives": ["gemini", "claude", "perplexity"],
+  "safetyNotes": [
+    "No instales archivos APK ni ejecutables EXE de ChatGPT provistos por páginas de descarga de terceros.",
+    "OpenAI distribuye de forma directa y gratuita todas sus aplicaciones."
+  ],
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://openai.com/chatgpt"
+  ]
+}

@@ -1,0 +1,109 @@
+---
+// src/components/ToolCard.astro
+import Badge from './Badge.astro';
+
+interface Props {
+  tool: {
+    name: string;
+    slug: string;
+    shortDescription: string;
+    categories: string[];
+    pricingModel: 'free' | 'freemium' | 'paid' | 'enterprise' | 'unknown';
+    spanishSupport: 'yes' | 'partial' | 'no' | 'unknown';
+    trustLevel: 'official' | 'verified' | 'pending-review';
+    platforms: {
+      web?: any;
+      windows?: any;
+      mac?: any;
+      linux?: any;
+      android?: any;
+      ios?: any;
+    };
+  };
+}
+
+const { tool } = Astro.props;
+
+// Normalización de precios para badges
+const pricingLabels = {
+  free: { label: 'Gratis', variant: 'success' as const },
+  freemium: { label: 'Freemium', variant: 'primary' as const },
+  paid: { label: 'De Pago', variant: 'danger' as const },
+  enterprise: { label: 'Enterprise', variant: 'neutral' as const },
+  unknown: { label: 'Precios...', variant: 'neutral' as const }
+};
+
+const pricing = pricingLabels[tool.pricingModel] || pricingLabels.unknown;
+
+// Normalización de niveles de confianza
+const trustLabels = {
+  official: { label: '✓ Canal Oficial', variant: 'success' as const },
+  verified: { label: '✓ Enlace Verificado', variant: 'secondary' as const },
+  'pending-review': { label: 'Bajo Revisión', variant: 'warning' as const }
+};
+
+const trust = trustLabels[tool.trustLevel] || { label: 'Pendiente', variant: 'neutral' as const };
+---
+
+<article 
+  class="relative flex flex-col justify-between bg-brand-card-bg/40 backdrop-blur-md border border-brand-card-border rounded-2xl p-6 pl-8 hover:border-brand-primary/45 hover:shadow-2xl hover:shadow-brand-primary/5 hover:scale-[1.015] -translate-y-0.5 hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
+  data-name={tool.name.toLowerCase()}
+  data-slug={tool.slug}
+  data-categories={tool.categories.join(',')}
+  data-pricing={tool.pricingModel}
+  data-platforms={Object.keys(tool.platforms).filter(p => tool.platforms[p]).join(',')}
+>
+  <!-- Barra lateral decorativa gradient (estilo Vet24) -->
+  <div class={`absolute left-0 top-0 bottom-0 w-2 transition-all duration-300 ${tool.trustLevel === 'official' ? 'bg-gradient-to-b from-brand-primary to-brand-primary/60 shadow-[0_0_12px_rgba(139,92,246,0.3)]' : 'bg-brand-secondary/60'}`}></div>
+
+  <div>
+    <!-- Cabecera de la Tarjeta (Badges y Sistemas Operativos) -->
+    <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
+      <div class="flex flex-col gap-1.5">
+        <Badge variant={trust.variant}>{trust.label}</Badge>
+        <Badge variant={pricing.variant}>{pricing.label}</Badge>
+      </div>
+
+      <!-- Dispositivos Soportados -->
+      <div class="flex flex-wrap items-center gap-1 max-w-[60%] justify-end text-[10px] font-bold text-brand-text-muted">
+        {tool.platforms.web && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="Versión Web">🌐 Web</span>}
+        {tool.platforms.windows && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="Windows">🖥️ Win</span>}
+        {tool.platforms.mac && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="macOS">🍎 Mac</span>}
+        {tool.platforms.linux && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="Linux">🐧 Linux</span>}
+        {tool.platforms.android && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="Android">🤖 And</span>}
+        {tool.platforms.ios && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="iOS (iPhone/iPad)">📱 iOS</span>}
+      </div>
+    </div>
+
+    <!-- Título y descripción -->
+    <h3 class="text-xl font-black text-brand-text group-hover:text-brand-primary transition-colors mb-2 font-['Outfit',sans-serif]">
+      <a href={`/${tool.slug}`}>
+        {tool.name}
+      </a>
+    </h3>
+
+    <p class="text-xs text-brand-text-muted/90 font-medium leading-relaxed line-clamp-3 mb-6">
+      {tool.shortDescription}
+    </p>
+  </div>
+
+  <!-- Botones de Acción -->
+  <div class="mt-auto pt-4 border-t border-brand-card-border/60 flex items-center justify-between gap-3">
+    <a 
+      href={`/${tool.slug}`} 
+      class="flex items-center gap-1 text-xs text-brand-text-muted hover:text-brand-primary font-extrabold transition-colors group/link"
+    >
+      Ver Ficha
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+      </svg>
+    </a>
+
+    <a 
+      href={`/ir/${tool.slug}`} 
+      class="flex items-center justify-center gap-1 px-4 py-2 text-xs font-black rounded-xl bg-brand-primary text-white hover:bg-brand-primary-hover shadow-md shadow-brand-primary/10 hover:shadow-brand-primary/25 hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 cursor-pointer"
+    >
+      <span>Ir al sitio oficial</span>
+    </a>
+  </div>
+</article>
