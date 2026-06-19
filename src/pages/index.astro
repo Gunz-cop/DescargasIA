@@ -65,6 +65,24 @@ const categoryStats = categories.map((cat) => {
   };
 });
 
+const pendingCategoryStats = categoryStats.filter((cat) => cat.count === 0);
+
+const getOfficialDomain = (url: string) => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return null;
+  }
+};
+
+const verifiedDomainsCount = new Set(
+  tools.map((tool) => getOfficialDomain(tool.data.officialWebsite)).filter(Boolean)
+).size;
+
+const platformLinksCount = tools.reduce((total, tool) => {
+  return total + Object.values(tool.data.platforms).filter(Boolean).length;
+}, 0);
+
 // Schema para el listado de herramientas
 const schemaItemList = {
   "@context": "https://schema.org",
@@ -83,93 +101,47 @@ const schemaItemList = {
 
 <BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaItemList}>
   <!-- Hero Section -->
-  <section class="relative py-10 sm:py-14" aria-labelledby="hero-title">
-    <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-      <div>
-        <span class="mb-5 inline-flex items-center gap-2 rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-[11px] font-black uppercase text-brand-primary">
-          Índice editorial de seguridad
-        </span>
+  <section class="relative py-6 sm:py-10" aria-labelledby="hero-title">
+    <div class="max-w-4xl">
+      <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-[11px] font-black uppercase text-brand-primary">
+        Descargas oficiales de IA
+      </span>
 
-        <h1 id="hero-title" class="mb-5 max-w-4xl text-4xl font-black leading-[1.02] tracking-tight text-brand-text sm:text-6xl md:text-7xl font-['Outfit',sans-serif]">
-          Antes de descargar IA, confirma el origen.
-        </h1>
+      <h1 id="hero-title" class="mb-3 max-w-3xl text-3xl font-black leading-[1.04] tracking-tight text-brand-text sm:text-5xl md:text-6xl font-['Outfit',sans-serif]">
+        Encuentra la descarga oficial de herramientas de IA.
+      </h1>
 
-        <p class="max-w-2xl text-base leading-relaxed text-brand-text-muted sm:text-lg">
-          DescargasIA conecta búsquedas de descarga con dominios oficiales, tiendas legítimas y páginas reales del desarrollador. Sin mirrors, sin APKs de terceros y sin instaladores alojados aquí.
-        </p>
+      <p class="max-w-2xl text-sm leading-relaxed text-brand-text-muted sm:text-lg">
+        Busca ChatGPT, Gemini, Claude, Cursor, Ollama y más. Te mostramos la ficha, el dominio oficial y las advertencias antes de salir. No alojamos instaladores, APKs ni mirrors.
+      </p>
+
+      <div class="mt-5">
+        <SearchBar />
       </div>
 
-      <aside class="rounded-xl border border-brand-card-border bg-brand-card-bg p-4" aria-label="Protocolo editorial">
-        <p class="mb-3 text-[11px] font-black uppercase text-brand-primary">Protocolo editorial</p>
-        <div class="grid gap-2">
-          <div class="flex items-start gap-3 rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
-            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-success" aria-hidden="true"></span>
-            <div>
-              <p class="text-sm font-bold text-brand-text">Mostramos el dominio</p>
-              <p class="text-xs leading-relaxed text-brand-text-muted">El usuario ve la fuente antes de salir del índice.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-3 rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
-            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-warning-text" aria-hidden="true"></span>
-            <div>
-              <p class="text-sm font-bold text-brand-text">Marcamos advertencias</p>
-              <p class="text-xs leading-relaxed text-brand-text-muted">Señalamos riesgos editoriales sin prometer auditorías técnicas.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-3 rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
-            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-secondary" aria-hidden="true"></span>
-            <div>
-              <p class="text-sm font-bold text-brand-text">Filtramos por uso real</p>
-              <p class="text-xs leading-relaxed text-brand-text-muted">Categoría y plataforma quedan visibles para decidir rápido.</p>
-            </div>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <section class="mb-8" aria-label="Principios de confianza">
-    <div class="grid gap-2 rounded-xl border border-brand-card-border bg-brand-card-bg p-3 sm:grid-cols-4">
-      <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 px-3 py-3">
-        <p class="text-xs font-bold text-brand-text">Sin mirrors</p>
-        <p class="text-[11px] leading-relaxed text-brand-text-muted">Evitamos copias y páginas intermediarias.</p>
-      </div>
-      <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 px-3 py-3">
-        <p class="text-xs font-bold text-brand-text">Sin APKs de terceros</p>
-        <p class="text-[11px] leading-relaxed text-brand-text-muted">Priorizamos tiendas y dominios oficiales.</p>
-      </div>
-      <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 px-3 py-3">
-        <p class="text-xs font-bold text-brand-text">Sin instaladores alojados</p>
-        <p class="text-[11px] leading-relaxed text-brand-text-muted">No redistribuimos ejecutables.</p>
-      </div>
-      <div class="rounded-lg border border-brand-success-border bg-brand-success-bg px-3 py-3">
-        <p class="text-xs font-bold text-brand-success">Revisión visible</p>
-        <p class="text-[11px] leading-relaxed text-brand-text-muted">Cada ficha expone fecha y fuente principal.</p>
+      <div class="flex flex-wrap gap-x-3 gap-y-1 text-[11px] font-bold uppercase text-brand-text-muted" aria-label="Señales de confianza del índice">
+        <span>{sortedTools.length} fichas</span>
+        <span aria-hidden="true">/</span>
+        <span>{verifiedDomainsCount} dominios oficiales</span>
+        <span aria-hidden="true">/</span>
+        <span>{platformLinksCount} enlaces por plataforma</span>
+        <span aria-hidden="true">/</span>
+        <span>0 archivos alojados</span>
       </div>
     </div>
   </section>
 
   <!-- Buscador y Filtros -->
   <section id="directorio" class="scroll-mt-20">
-    <SearchBar />
-
-    <div class="mb-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-5" aria-label="Categorías editoriales">
-      {categoryStats.map((cat) => (
-        <a href={`/categoria/${cat.slug}`} class={`group relative overflow-hidden rounded-xl border p-4 transition-colors hover:border-brand-primary/40 ${cat.surface}`}>
-          <span class={`absolute inset-x-0 top-0 h-1 ${cat.accent}`} aria-hidden="true"></span>
-          <span class="font-mono text-[10px] font-bold uppercase text-brand-text-muted">{cat.countLabel}</span>
-          <p class="mt-2 text-sm font-black text-brand-text group-hover:text-brand-primary">{cat.name}</p>
-          <p class="mt-1 text-[11px] leading-relaxed text-brand-text-muted">{cat.description}</p>
-        </a>
-      ))}
-    </div>
-
-    <div class="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+    <div class="mb-4 flex flex-col gap-1 border-t border-brand-card-border pt-5 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <p class="text-[11px] font-black uppercase text-brand-primary">Fuentes indexadas</p>
-        <h2 class="text-2xl font-black tracking-tight text-brand-text font-['Outfit',sans-serif]">Herramientas verificadas</h2>
+        <h2 class="text-2xl font-black tracking-tight text-brand-text font-['Outfit',sans-serif]">Elige una herramienta</h2>
       </div>
-      <p class="text-xs text-brand-text-muted">{sortedTools.length} fichas editoriales disponibles</p>
+      <p class="text-xs leading-relaxed text-brand-text-muted">
+        {sortedTools.length} fichas editoriales disponibles
+        {pendingCategoryStats.length > 0 && ` · En revisión: ${pendingCategoryStats.map((cat) => cat.name).join(', ')}`}
+      </p>
     </div>
 
     <!-- Grid de Herramientas -->
