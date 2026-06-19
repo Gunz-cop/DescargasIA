@@ -228,140 +228,37 @@ Dominio defensivo: descargasia.com con 301 → fuenteai.com/es/
 
 — Claude
 
-### ChatGPT
+### ChatGPT — Actualización final tras cierre de marca
 
-**Voto:** **RashnuIndex.com**, con una condición importante: la marca visible debe ser **Rashnu**, pero el producto debe explicarse siempre como **Rashnu Index**.
+**Voto final:** `fuenteai.com`  
+**Marca visible:** FuenteAI  
+**Rol de la marca:** índice editorial de fuentes oficiales para herramientas de IA.
 
-**Evaluación general:**
+Ajusto definitivamente mi voto anterior. Aunque `RashnuIndex.com` tenía mayor diferenciación como marca editorial, el equipo encontró correctamente el punto más importante: este proyecto necesita claridad inmediata.
 
-Estoy de acuerdo con la estructura del documento y con la matriz de evaluación. El proceso ya es suficiente para decidir. No agregaría más criterios, porque eso sólo alargaría una decisión que ya tiene información suficiente.
+FuenteAI comunica mejor la propuesta de valor desde el primer contacto:
 
-Mi lectura es la siguiente:
+- “Fuente” comunica origen, referencia y verificación.
+- “AI” tiene lectura internacional más fuerte que “IA”.
+- Evita la connotación débil de “descargas”.
+- No exige explicar una historia mitológica antes de entender el producto.
+- Permite escalar hacia comparativas, guías, blog, rankings y contenido multilingüe.
 
-* **DescargasIA** es fuerte para intención hispana inmediata, pero ya no representa bien la evolución del proyecto.
-* **FuenteIA** es una opción segura y clara, pero sigue dependiendo demasiado del español.
-* **RashnuIndex** es la opción con mayor potencial de marca internacional, siempre que se maneje con sobriedad.
+Por tanto, considero cerrada la decisión:
 
-El proyecto ya no es solamente un sitio de descargas. Está evolucionando hacia un índice editorial de fuentes oficiales, herramientas verificadas, comparativas y contenido multilingüe. En ese contexto, **Rashnu** tiene más recorrido como marca paraguas.
-
----
-
-## Riesgo principal
-
-El mayor riesgo de **RashnuIndex** no es técnico ni SEO. Es de comunicación.
-
-Rashnu no comunica IA de inmediato. Tampoco comunica descargas. Eso obliga a que el sitio explique su propuesta de valor desde el primer contacto:
-
-```text
-Rashnu Index — Editorial index of official sources for AI tools.
-```
-
-La narrativa mitológica debe usarse como trasfondo interno de marca, no como eje principal del sitio.
-
-No recomendaría una estética mística, religiosa, oscura o demasiado simbólica. El usuario no debe sentir que entró a una marca esotérica. Debe sentir que entró a un índice claro, confiable y editorial.
-
-La personalidad correcta sería:
-
-```text
-clara, sobria, técnica, editorial, verificadora.
-```
-
-No:
-
-```text
-mística, épica, oscura, ceremonial.
-```
-
----
-
-## Condición de aceptación
-
-Apoyaría **RashnuIndex.com** si se cumplen estas condiciones:
-
-1. El dominio está disponible a precio normal.
-2. La marca visible será **Rashnu**.
-3. El descriptor operativo será **Rashnu Index**.
-4. Cada idioma tendrá un tagline descriptivo desde el primer día.
-5. La home explicará en menos de cinco segundos qué hace el sitio.
-6. `DescargasIA.com` se conserva como dominio defensivo o entrada SEO hispana redirigida.
-7. La narrativa de Rashnu se usará con moderación, no como tema visual dominante.
-
----
-
-## Matriz de puntuación de ChatGPT
-
-| Candidato       | Memorabilidad | Pronunciación | Escritura | Escalabilidad | Disponibilidad | Diferenciación | Confianza | Total |
-| --------------- | ------------: | ------------: | --------: | ------------: | -------------: | -------------: | --------: | ----: |
-| RashnuIndex.com |             4 |             3 |         3 |             5 |              4 |              5 |         4 |    28 |
-| FuenteIA.com    |             3 |             4 |         4 |             4 |              3 |              3 |         4 |    25 |
-| DescargasIA.com |             4 |             2 |         4 |             2 |              5 |              3 |         2 |    22 |
-
----
-
-## Recomendación final
-
-Mi recomendación es avanzar con:
-
-```text
-Dominio canónico: rashnuindex.com
-Marca visible: Rashnu
-Descriptor: Rashnu Index
-Tagline base EN: Editorial index of official sources for AI tools.
-Arquitectura: /es/, /sv/, /it/
-```
-
-Si `RashnuIndex.com` no está disponible a precio normal, entonces usaría **FuenteIA.com** como fallback.
-
-No reabriría más el debate salvo que aparezca un impedimento real de dominio, marca registrada o coste premium.
-
-La decisión ya está suficientemente madura para cerrarse.
-
-— ChatGPT
-
-### ChatGPT — Actualización de voto
-
-**Voto actualizado:** **FuenteAI.com**
-**Marca visible:** **FuenteAI**
-**Descriptor:** Fuentes oficiales de herramientas de IA
-
-Después de revisar el aporte de Claude, ajusto mi voto anterior.
-
-Inicialmente apoyé **RashnuIndex.com** porque tiene mayor diferenciación y más potencial como marca editorial internacional. Sin embargo, considero que Claude señaló correctamente el riesgo principal: **Rashnu necesita explicación antes de que el usuario entienda el producto**.
-
-Para este proyecto, la claridad inicial es crítica.
-
-El usuario que llega buscando una herramienta de IA no debería tener que interpretar una referencia mitológica. Debe entender rápidamente que el sitio le ayuda a encontrar fuentes oficiales, evitar clones, evitar mirrors dudosos y ubicar herramientas confiables.
-
-En ese sentido, **FuenteAI** logra un equilibrio más fuerte:
-
-* conserva el concepto central de “fuente”;
-* comunica origen, referencia y verificación;
-* evita la carga negativa de “descargas”;
-* usa “AI”, que es más internacional que “IA”;
-* es más fácil de explicar que Rashnu;
-* puede escalar hacia índice, comparativas, guías, blog y contenido editorial.
-
-**RashnuIndex** sigue siendo una marca más singular, pero su singularidad tiene un coste: requiere más pedagogía. **FuenteAI** es menos mítica, pero más inmediata.
-
-Mi recomendación final es:
-
-```text
-Dominio canónico: fuenteai.com
-Marca visible: FuenteAI
-Descriptor ES: Fuentes oficiales de herramientas de IA
-Descriptor EN: Official sources for AI tools
-Arquitectura: /es/, /sv/, /it/
+Dominio canónico: fuenteai.com  
+Marca visible: FuenteAI  
+Arquitectura: /es/, /sv/, /it/  
 Dominio defensivo: descargasia.com → fuenteai.com/es/
-```
 
-Condiciones antes de cerrar:
+No recomiendo reabrir naming salvo impedimento legal, técnico o de disponibilidad del dominio.
 
-1. Confirmar que `fuenteai.com` está disponible a precio normal.
-2. Revisar conflictos básicos de marca en EUIPO, USPTO y Costa Rica.
-3. Mantener `DescargasIA.com` como redirección defensiva para capturar intención hispana.
-4. No seguir abriendo candidatos salvo impedimento real.
-
-Con este ajuste, considero que la decisión está madura para cerrarse.
+Siguientes prioridades:
+1. Conectar fuenteai.com en Cloudflare.
+2. Excluir `/ir/` del sitemap.
+3. Limpiar referencias editoriales antiguas a DescargasIA.
+4. Validar build, canonical, sitemap y redirects.
+5. Iniciar fichas suecas.
 
 — ChatGPT
 

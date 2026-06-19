@@ -13,7 +13,7 @@
   "safetyNotes": [
     "Los modelos de Gemma se descargan principalmente mediante gestores locales como Ollama o desde repositorios seguros y oficiales de Google en GitHub y Hugging Face. Evita descargar archivos .exe o instaladores de páginas no oficiales."
   ],
-  "editorialSummary": "Gemma es la respuesta de Google para la comunidad de código abierto, permitiendo ejecutar su tecnología de IA localmente. En DescargasIA enlazamos a la documentación oficial y repositorios de confianza para que lo configures con seguridad.",
+  "editorialSummary": "Gemma es la respuesta de Google para la comunidad de código abierto, permitiendo ejecutar su tecnología de IA localmente. En FuenteAI enlazamos a la documentación oficial y repositorios de confianza para que lo configures con seguridad.",
   "editorialSections": [
     {
       "heading": "El problema de los chatbots en la nube y por qué elegir Gemma",

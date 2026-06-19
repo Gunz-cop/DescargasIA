@@ -30,8 +30,8 @@
   ],
   "faq": [
     {
-      "question": "¿Es seguro acceder a Claude desde DescargasIA?",
-      "answer": "DescargasIA no aloja archivos de Claude. Esta ficha enlaza únicamente a claude.ai, claude.ai/download y las tiendas oficiales de apps, que son los canales verificados por Anthropic para acceder al servicio."
+      "question": "¿Es seguro acceder a Claude desde FuenteAI?",
+      "answer": "FuenteAI no aloja archivos de Claude. Esta ficha enlaza únicamente a claude.ai, claude.ai/download y las tiendas oficiales de apps, que son los canales verificados por Anthropic para acceder al servicio."
     },
     {
       "question": "¿Claude tiene aplicación oficial para Windows y Mac?",

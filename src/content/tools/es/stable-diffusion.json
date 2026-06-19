@@ -39,7 +39,7 @@
     },
     {
       "question": "¿Es seguro descargar Stable Diffusion desde cualquier web?",
-      "answer": "No. Evita instaladores de terceros y mirrors. DescargasIA enlaza a repositorios y fuentes reconocidas para reducir el riesgo de paquetes modificados."
+      "answer": "No. Evita instaladores de terceros y mirrors. FuenteAI enlaza a repositorios y fuentes reconocidas para reducir el riesgo de paquetes modificados."
     },
     {
       "question": "¿Stable Diffusion funciona sin internet?",
