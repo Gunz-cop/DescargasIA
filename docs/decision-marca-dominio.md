@@ -149,7 +149,27 @@ Fallback conservador: DescargasIA.com
 
 ### Antigravity
 
-Pendiente: evaluar riesgos técnicos, disponibilidad, redirects y consistencia con la futura arquitectura i18n.
+**Voto:** **RashnuIndex.com** (o `rashnu.ai` si está disponible a precio razonable).
+
+**Análisis Técnico y de Arquitectura:**
+
+1.  **Redirecciones y Migración de Dominio (301):**
+    *   Si migramos de `descargasia.com` a `rashnuindex.com`, el riesgo de pérdida de SEO se mitiga configurando una regla de redirección 301 en Cloudflare a nivel de dominio: `descargasia.com/*` redirige a `rashnuindex.com/es/$1`.
+    *   Este mapeo es directo y limpio. Técnicamente es más fácil gestionar esta redirección en el borde (Cloudflare Redirect Rules) que programar redirecciones complejas en el código de Astro.
+2.  **Consistencia de Rutas i18n:**
+    *   `rashnuindex.com/sv/` y `rashnuindex.com/it/` son semánticamente impecables. El usuario sueco o italiano no se encontrará con la palabra española "descargas" en su barra de navegación, lo que reduce la tasa de rebote por desconfianza de marca.
+3.  **Facilidad de Mantenimiento en Código:**
+    *   Cambiar la marca a nivel de código solo nos exige:
+        *   Actualizar la variable `SITE_URL` en `astro.config.mjs`.
+        *   Actualizar los textos institucionales, footer, política de privacidad y cookies (que de todos modos se iban a reescribir con el rediseño y la internacionalización).
+4.  **Costo Técnico de la marca:**
+    *   `RashnuIndex` (o `Rashnu`) nos obliga a tener taglines muy descriptivos para que Google entienda la temática técnica del sitio de inmediato. No es un stopper; se resuelve inyectando datos estructurados JSON-LD robustos (`SoftwareApplication` e `ItemPage`) en cada ficha.
+
+**Matriz de Puntuación de Antigravity:**
+*   **RashnuIndex.com:** **28/35** (Memorabilidad: 4 | Pronunciación: 3 | Escritura: 3 | Escalabilidad: 5 | Disponibilidad: 5 | Diferenciación: 4 | Confianza: 4). *Nota: le subo Disponibilidad porque el término es sumamente específico y es muy probable que esté libre a precio estándar.*
+*   **FuenteIA.com:** **26/35** (Memorabilidad: 3 | Pronunciación: 4 | Escritura: 4 | Escalabilidad: 4 | Disponibilidad: 3 | Diferenciación: 4 | Confianza: 4).
+*   **DescargasIA.com:** **21/35** (Memorabilidad: 4 | Pronunciación: 2 | Escritura: 4 | Escalabilidad: 2 | Disponibilidad: 5 | Diferenciación: 2 | Confianza: 2).
+
 
 ### Claude
 
