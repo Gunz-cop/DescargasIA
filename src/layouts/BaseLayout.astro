@@ -21,9 +21,6 @@ const {
 } = Astro.props;
 
 // Convert jsonLd to string if provided
-const jsonLdString = jsonLd
-  ? JSON.stringify(jsonLd)
-  : null;
 ---
 
 <!DOCTYPE html>
@@ -60,9 +57,9 @@ const jsonLdString = jsonLd
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <!-- Datos Estructurados Schema.org -->
-    {jsonLdString && (
-      <script type="application/ld+json" set:html={jsonLdString} />
-    )}
+    {jsonLd && (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map(schema => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
   </head>
   <body class="min-h-screen flex flex-col justify-between">
     <!-- Fondo editorial sobrio -->
