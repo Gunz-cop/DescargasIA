@@ -71,7 +71,26 @@ Contenido breve, escaneable y util.
 
 Debe responder preguntas reales, no repetir copy de marketing.
 
-### 5. Seguridad Antes De Descargar
+### 5. Guia Editorial Larga
+
+Cada herramienta prioritaria debe tener contenido unico en `editorialSections`.
+
+Objetivo:
+
+- Reducir riesgo de pagina delgada o hecha solo para redirigir.
+- Responder busquedas long-tail reales.
+- Mostrar experiencia editorial y criterio de comparacion.
+- Mantener el CTA arriba para quien solo quiere salir al canal oficial.
+
+Reglas:
+
+- No rellenar con texto generico.
+- No repetir la misma estructura literal en todas las fichas.
+- Incluir contexto de uso, riesgos comunes, plataformas, limites y alternativas.
+- Mantener headings H2/H3 claros.
+- Usar experiencia real cuando exista, sin fingir pruebas que no se hicieron.
+
+### 6. Seguridad Antes De Descargar
 
 Mantener visible el enfoque del proyecto.
 
@@ -81,7 +100,7 @@ Mantener visible el enfoque del proyecto.
 - Dominio oficial.
 - Advertencias especificas desde `safetyNotes`.
 
-### 6. Requisitos Y Compatibilidad
+### 7. Requisitos Y Compatibilidad
 
 Mostrar tabla o grid simple:
 
@@ -91,7 +110,7 @@ Mostrar tabla o grid simple:
 - Soporte en espanol.
 - Tipo de distribucion por plataforma.
 
-### 7. Alternativas
+### 8. Alternativas
 
 Mostrar alternativas relacionadas con contexto, no solo enlaces.
 
@@ -101,7 +120,7 @@ Cada alternativa deberia responder:
 - En que se diferencia.
 - Para quien podria ser mejor.
 
-### 8. FAQ
+### 9. FAQ
 
 Agregar preguntas frecuentes orientadas a busquedas long-tail.
 
@@ -113,7 +132,7 @@ Ejemplos:
 - Necesito cuenta para usar [herramienta]?
 - DescargasIA aloja el instalador?
 
-### 9. Fuentes Oficiales
+### 10. Fuentes Oficiales
 
 Listar las fuentes usadas para revision editorial.
 
@@ -134,6 +153,7 @@ Buenas senales:
 - FAQ real.
 - Fuentes oficiales visibles.
 - Schema `SoftwareApplication`, `BreadcrumbList` y, si hay FAQ visible, `FAQPage`.
+- Imagen editorial o captura aprobada con `alt` descriptivo.
 
 Evitar:
 
@@ -151,9 +171,12 @@ El schema actual ya tiene base suficiente. Para enriquecer futuras fichas, consi
 - `requirements`: requisitos por plataforma o generales.
 - `faq`: preguntas y respuestas visibles.
 - `editorialSummary`: resumen propio separado de `longDescription`.
+- `editorialSections`: secciones largas unicas para SEO, Adsense y E-E-A-T.
+- `initials`: iniciales editoriales para identificador visual propio.
+- `screenshotUrl`: captura oficial aprobada, opcional.
 - `logoPolicy`: `monogram`, `brand-inspired`, `official-asset-approved`.
 
-No agregar estos campos hasta que el contenido pueda mantenerse con calidad.
+No agregar capturas o logos oficiales sin revisar condiciones de uso de marca. Si no hay permiso claro, usar identificadores editoriales propios.
 
 ## Checklist Para Nuevas Fichas
 
@@ -164,4 +187,5 @@ No agregar estos campos hasta que el contenido pueda mantenerse con calidad.
 5. Hay contenido editorial suficiente para evitar una pagina delgada.
 6. Hay alternativas utiles.
 7. La pagina funciona bien en mobile.
-8. `npm run build` pasa antes de publicar.
+8. `editorialSections` son especificas de la herramienta y no texto duplicado.
+9. `npm run build` pasa antes de publicar.

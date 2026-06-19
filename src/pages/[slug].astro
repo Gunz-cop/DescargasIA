@@ -108,6 +108,26 @@ const alternatives = tool.data.alternatives
   .map((slug: string) => toolsBySlug.get(slug))
   .filter(Boolean);
 
+const visualAccents: Record<string, { bg: string; fg: string; border: string }> = {
+  chatgpt: { bg: '#064e3b', fg: '#d1fae5', border: '#10b981' },
+  claude: { bg: '#431407', fg: '#ffedd5', border: '#fb923c' },
+  gemini: { bg: '#172554', fg: '#dbeafe', border: '#38bdf8' },
+  cursor: { bg: '#082f49', fg: '#e0f2fe', border: '#38bdf8' },
+  ollama: { bg: '#1c1917', fg: '#f5f5f4', border: '#d6d3d1' },
+  'lm-studio': { bg: '#2e1065', fg: '#ede9fe', border: '#8b5cf6' }
+};
+const visualAccent = visualAccents[tool.data.slug] ?? { bg: '#022c22', fg: '#ecfdf5', border: '#10b981' };
+const toolInitials = tool.data.initials ?? tool.data.name
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((part: string) => part[0])
+  .join('')
+  .toUpperCase();
+const generatedVisualSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Identificador editorial de ${tool.data.name}"><rect width="960" height="540" rx="40" fill="${visualAccent.bg}"/><rect x="28" y="28" width="904" height="484" rx="30" fill="none" stroke="${visualAccent.border}" stroke-width="3" opacity=".55"/><circle cx="480" cy="250" r="112" fill="${visualAccent.border}" opacity=".12"/><text x="480" y="282" text-anchor="middle" font-family="Arial, sans-serif" font-size="96" font-weight="800" fill="${visualAccent.fg}">${toolInitials}</text><text x="480" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="${visualAccent.fg}" opacity=".82">${tool.data.name} oficial</text></svg>`;
+const generatedVisualUrl = `data:image/svg+xml,${encodeURIComponent(generatedVisualSvg)}`;
+const toolImage = tool.data.screenshotUrl ?? generatedVisualUrl;
+
 const schemaApp = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -116,6 +136,8 @@ const schemaApp = {
   "applicationCategory": "ProductivityApplication",
   "operatingSystem": platforms.map((platform) => platform.name).join(', '),
   "url": Astro.url.href,
+  "dateModified": tool.data.lastReviewed,
+  "image": toolImage,
   "sameAs": tool.data.officialSources,
   "offers": {
     "@type": "Offer",
@@ -203,22 +225,30 @@ const jsonLd = schemaFaq ? [schemaApp, schemaBreadcrumb, schemaFaq] : [schemaApp
         </div>
       </div>
 
-      <aside class="rounded-xl border border-brand-success-border bg-brand-success-bg p-4" aria-label="Resumen de confianza">
-        <p class="text-[11px] font-black uppercase text-brand-success">Origen verificado</p>
-        <p class="mt-2 font-mono text-lg font-black text-brand-text">{officialDomain}</p>
-        <dl class="mt-4 grid grid-cols-2 gap-3 text-xs">
-          <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
-            <dt class="font-bold uppercase text-brand-text-muted">Plataformas</dt>
-            <dd class="mt-1 font-black text-brand-text">{platforms.length}</dd>
-          </div>
-          <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
-            <dt class="font-bold uppercase text-brand-text-muted">Cuenta</dt>
-            <dd class="mt-1 font-black text-brand-text">{tool.data.requiresAccount === true ? 'Sí' : tool.data.requiresAccount === false ? 'No' : 'Por confirmar'}</dd>
-          </div>
-        </dl>
-        <p class="mt-4 text-xs leading-relaxed text-brand-text-muted">
-          Última revisión editorial: <strong class="text-brand-text">{formatReviewDate(tool.data.lastReviewed)}</strong>.
-        </p>
+      <aside class="overflow-hidden rounded-xl border border-brand-success-border bg-brand-success-bg" aria-label="Resumen de confianza">
+        <img
+          src={toolImage}
+          alt={tool.data.screenshotUrl ? `Captura de pantalla oficial de ${tool.data.name}` : `Identificador visual editorial de ${tool.data.name}`}
+          class="aspect-video w-full border-b border-brand-success-border object-cover"
+          loading="eager"
+        />
+        <div class="p-4">
+          <p class="text-[11px] font-black uppercase text-brand-success">Origen verificado</p>
+          <p class="mt-2 font-mono text-lg font-black text-brand-text">{officialDomain}</p>
+          <dl class="mt-4 grid grid-cols-2 gap-3 text-xs">
+            <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
+              <dt class="font-bold uppercase text-brand-text-muted">Plataformas</dt>
+              <dd class="mt-1 font-black text-brand-text">{platforms.length}</dd>
+            </div>
+            <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
+              <dt class="font-bold uppercase text-brand-text-muted">Cuenta</dt>
+              <dd class="mt-1 font-black text-brand-text">{tool.data.requiresAccount === true ? 'Sí' : tool.data.requiresAccount === false ? 'No' : 'Por confirmar'}</dd>
+            </div>
+          </dl>
+          <p class="mt-4 text-xs leading-relaxed text-brand-text-muted">
+            Última revisión editorial: <strong class="text-brand-text">{formatReviewDate(tool.data.lastReviewed)}</strong>.
+          </p>
+        </div>
       </aside>
     </div>
   </header>
@@ -286,6 +316,29 @@ const jsonLd = schemaFaq ? [schemaApp, schemaBreadcrumb, schemaFaq] : [schemaApp
         </h2>
         <p class="mt-4 text-sm leading-7 text-brand-text-muted">{editorialSummary}</p>
       </section>
+
+      {tool.data.editorialSections.length > 0 && (
+        <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5 sm:p-6" aria-labelledby="guia-title">
+          <p class="text-[11px] font-black uppercase text-brand-primary">Guía editorial</p>
+          <h2 id="guia-title" class="mt-1 text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
+            Guía completa para usar {tool.data.name} sin caer en descargas falsas
+          </h2>
+          <div class="mt-5 space-y-6">
+            {tool.data.editorialSections.map((section: { heading: string; body: string }) => (
+              <section class="border-t border-brand-card-border pt-5" aria-labelledby={`${tool.data.slug}-${section.heading.toLowerCase().replaceAll(' ', '-')}`}>
+                <h3 id={`${tool.data.slug}-${section.heading.toLowerCase().replaceAll(' ', '-')}`} class="text-lg font-black tracking-tight text-brand-text font-['Outfit']">
+                  {section.heading}
+                </h3>
+                <div class="mt-3 space-y-3 text-sm leading-7 text-brand-text-muted">
+                  {section.body.split('\n\n').map((paragraph: string) => (
+                    <p>{paragraph}</p>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </section>
+      )}
 
       {tool.data.safetyNotes.length > 0 && (
         <section class="rounded-2xl border border-brand-warning-border bg-brand-warning-bg p-5" aria-labelledby="seguridad-title">

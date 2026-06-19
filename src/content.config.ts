@@ -23,6 +23,11 @@ const faqItem = z.object({
   answer: z.string()
 });
 
+const editorialSection = z.object({
+  heading: z.string(),
+  body: z.string()
+});
+
 const tools = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/content/tools' }),
   schema: z.object({
@@ -53,6 +58,9 @@ const tools = defineCollection({
     limitations: z.array(z.string()).default([]),
     faq: z.array(faqItem).default([]),
     editorialSummary: z.string().optional(),
+    editorialSections: z.array(editorialSection).default([]),
+    screenshotUrl: z.string().url().nullable().optional(),
+    initials: z.string().optional(),
     
     // Nivel de confianza editorial general
     trustLevel: z.enum(['official', 'verified', 'pending-review']),
