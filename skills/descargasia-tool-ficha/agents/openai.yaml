@@ -1,0 +1,4 @@
+interface:
+  display_name: "DescargasIA Tool Ficha"
+  short_description: "Crea fichas editoriales verificadas"
+  default_prompt: "Use $descargasia-tool-ficha to create verified editorial fichas for new AI tools in DescargasIA."

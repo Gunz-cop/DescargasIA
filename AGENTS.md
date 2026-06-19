@@ -4,6 +4,8 @@ Antes de modificar UX, contenido o estructura editorial, lee estas guias:
 
 - `docs/ux-home-cards.md`: reglas para las tarjetas de herramientas en la home.
 - `docs/ux-tool-pages.md`: estructura recomendada para fichas individuales de herramientas.
+- `docs/tool-ficha-authoring.md`: como usar la skill `descargasia-tool-ficha` para crear fichas nuevas.
+- `skills/descargasia-tool-ficha/`: copia versionada de la skill local para revisar y ajustar el flujo de creacion de fichas.
 
 Principios del proyecto:
 
