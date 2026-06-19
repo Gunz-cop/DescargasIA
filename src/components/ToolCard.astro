@@ -199,13 +199,18 @@ const platformSummary = availablePlatforms.length === 1
     )}
   </div>
 
-  <div class="hidden flex-col gap-2 sm:flex">
-    <h3 class="text-xl font-black leading-tight tracking-tight text-brand-text transition-colors group-hover:text-brand-primary">
-      <a href={`/${tool.slug}`}>{tool.name}</a>
-    </h3>
-    <p class="text-sm leading-relaxed text-brand-text-muted line-clamp-3">
-      {tool.shortDescription}
-    </p>
+  <div class="hidden gap-3 sm:flex">
+    <div class={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border text-base font-black ${category.tone}`} aria-hidden="true">
+      {initials}
+    </div>
+    <div class="min-w-0 flex-1">
+      <h3 class="text-xl font-black leading-tight tracking-tight text-brand-text transition-colors group-hover:text-brand-primary">
+        <a href={`/${tool.slug}`}>{tool.name}</a>
+      </h3>
+      <p class="mt-2 text-sm leading-relaxed text-brand-text-muted line-clamp-3">
+        {tool.shortDescription}
+      </p>
+    </div>
   </div>
 
   <div class="hidden rounded-md border border-brand-success-border bg-brand-success-bg px-3 py-2 sm:block">
