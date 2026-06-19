@@ -1,0 +1,218 @@
+---
+// src/pages/r/index.astro
+import '../../styles/global.css';
+import { getCollection } from 'astro:content';
+import linkzipCache from '../../linkzip-cache.json';
+
+const baseTools = await getCollection('toolsBase');
+
+const toolsDb = baseTools.reduce((acc, tool) => {
+  const getUrl = (origUrl: string) => (linkzipCache as Record<string, string>)[origUrl] ?? origUrl;
+  
+  acc[tool.id] = {
+    name: tool.data.name,
+    officialWebsite: getUrl(tool.data.officialWebsite),
+    platforms: Object.entries(tool.data.platforms).reduce((plats, [key, val]) => {
+      if (val) {
+        plats[key] = {
+          url: getUrl(val.url),
+          isOfficial: val.isOfficial
+        };
+      }
+      return plats;
+    }, {} as Record<string, { url: string; isOfficial: boolean }>)
+  };
+  return acc;
+}, {} as Record<string, any>);
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirección segura | FuenteAI</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen flex flex-col items-center justify-center p-4 bg-brand-bg relative">
+    <!-- Grid Background -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-20">
+      <div class="absolute inset-0 bg-[radial-gradient(rgba(16,185,129,0.055)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
+    </div>
+
+    <!-- Spinner (Always visible while loading) -->
+    <div id="redirect-spinner" class="relative w-16 h-16 mb-6">
+      <div class="absolute inset-0 rounded-full border-4 border-brand-primary/25"></div>
+      <div class="absolute inset-0 rounded-full border-4 border-t-brand-primary animate-spin"></div>
+    </div>
+
+    <!-- Safe Redirection UI -->
+    <div id="redirect-content" class="hidden max-w-md w-full text-center flex flex-col items-center gap-6">
+      <div class="flex flex-col gap-2">
+        <h1 id="redirect-heading" class="text-xl font-black text-brand-text font-['Outfit']">Redirección segura</h1>
+        <p id="redirect-connecting" class="text-xs text-brand-text-muted leading-relaxed">
+          Te estamos conectando de forma transparente...
+        </p>
+        <p id="redirect-destination" class="text-xs font-semibold text-brand-primary">
+          Destino: 
+        </p>
+        <p id="redirect-fallback" class="text-[10px] text-brand-text-muted/60 mt-2">
+          Si la redirección no se completa automáticamente en unos segundos, haz clic en el botón inferior.
+        </p>
+      </div>
+
+      <a 
+        href=""
+        id="redirect-btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-extrabold rounded-xl bg-brand-primary text-white hover:bg-brand-primary-hover shadow-lg shadow-brand-primary/25 active:scale-[0.98] transition-all"
+      >
+        Continuar
+      </a>
+    </div>
+
+    <!-- Error UI (Hidden by default) -->
+    <div id="error-box" class="hidden max-w-md w-full text-center flex flex-col items-center gap-6 bg-brand-card-bg/40 border border-brand-card-border p-6 rounded-2xl">
+      <div class="text-4xl">⚠️</div>
+      <div class="flex flex-col gap-2">
+        <h1 id="error-title" class="text-xl font-black text-brand-text font-['Outfit']">Enlace no verificado</h1>
+        <p id="error-desc" class="text-xs text-brand-text-muted leading-relaxed">
+          El enlace solicitado no pertenece a un canal oficial registrado en nuestro directorio de confianza.
+        </p>
+      </div>
+      <a 
+        href="/es" 
+        id="error-btn"
+        class="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-extrabold rounded-xl bg-brand-card-bg text-brand-text hover:bg-brand-card-border border border-brand-card-border active:scale-[0.98] transition-all"
+      >
+        Volver al Directorio
+      </a>
+    </div>
+
+    <!-- Client Script -->
+    <script is:inline define:vars={{ toolsDb }}>
+      document.addEventListener('DOMContentLoaded', () => {
+        const params = new URLSearchParams(window.location.search);
+        const toolId = params.get('t');
+        const platformId = params.get('p');
+        const lang = params.get('l') || 'es';
+
+        const translations = {
+          es: {
+            title: "Redirigiendo a la web oficial de {name} | FuenteAI",
+            heading: "Redirección segura en curso",
+            connecting: "Te estamos conectando de forma transparente con la web oficial de ",
+            destination: "Destino verificado:",
+            fallback: "Si la redirección no se completa automáticamente en unos segundos, haz clic en el botón inferior.",
+            btn: "Continuar a",
+            errorTitle: "Enlace no verificado",
+            errorDesc: "La combinación de herramienta y plataforma solicitada no existe o no es un canal oficial verificado.",
+            errorBtn: "Volver al Directorio"
+          },
+          sv: {
+            title: "Omdirigerar till officiella webbplatsen för {name} | FuenteAI",
+            heading: "Säker omdirigering pågår",
+            connecting: "Vi ansluter dig nu till den officiella webbplatsen för ",
+            destination: "Verifierad destination:",
+            fallback: "Klicka på knappen nedan om du inte omdirigeras automatiskt inom några sekunder.",
+            btn: "Fortsätt till",
+            errorTitle: "Länk ej verifierad",
+            errorDesc: "Den begärda kombinationen av verktyg och plattform finns inte eller är inte en verifierad officiell kanal.",
+            errorBtn: "Tillbaka till hem"
+          },
+          it: {
+            title: "Reindirizzamento al sito ufficiale di {name} | FuenteAI",
+            heading: "Reindirizzamento sicuro in corso",
+            connecting: "Ti stiamo connettendo in modo trasparente con il sito ufficiale di ",
+            destination: "Destinazione verificata:",
+            fallback: "Se il reindirizzamento non avviene automaticamente entro pochi secondi, fai clic sul pulsante in basso.",
+            btn: "Continua su",
+            errorTitle: "Link non verificato",
+            errorDesc: "La combinazione di strumento e piattaforma richiesta non esiste o non è un canale ufficiale verificato.",
+            errorBtn: "Torna alla home"
+          }
+        };
+
+        const t = translations[lang] || translations.es;
+
+        // Elements
+        const spinner = document.getElementById('redirect-spinner');
+        const content = document.getElementById('redirect-content');
+        const errorBox = document.getElementById('error-box');
+
+        const heading = document.getElementById('redirect-heading');
+        const connecting = document.getElementById('redirect-connecting');
+        const destination = document.getElementById('redirect-destination');
+        const fallback = document.getElementById('redirect-fallback');
+        const btn = document.getElementById('redirect-btn');
+
+        const errTitle = document.getElementById('error-title');
+        const errDesc = document.getElementById('error-desc');
+        const errBtn = document.getElementById('error-btn');
+
+        // Validation
+        const tool = toolsDb[toolId];
+        let targetUrl = '';
+        let name = '';
+
+        if (tool) {
+          name = tool.name;
+          if (platformId) {
+            const plat = tool.platforms[platformId];
+            if (plat && plat.isOfficial) {
+              targetUrl = plat.url;
+            }
+          } else {
+            // Fallback to officialWebsite
+            targetUrl = tool.officialWebsite;
+          }
+        }
+
+        if (targetUrl) {
+          // Update HTML texts
+          document.title = t.title.replace('{name}', name);
+          heading.textContent = t.heading;
+          connecting.innerHTML = `${t.connecting}<strong class="text-brand-text font-bold">${name}</strong>.`;
+          
+          let hostname = '';
+          try {
+            hostname = new URL(targetUrl).hostname.replace(/^www\./, '');
+          } catch {
+            hostname = targetUrl;
+          }
+          
+          destination.textContent = `${t.destination} ${hostname}`;
+          fallback.textContent = t.fallback;
+          btn.textContent = `${t.btn} ${hostname}`;
+          btn.href = targetUrl;
+
+          // Show redirect view, hide error view
+          content.classList.remove('hidden');
+          errorBox.classList.add('hidden');
+
+          // Auto redirect
+          setTimeout(() => {
+            window.location.replace(targetUrl);
+          }, 600);
+        } else {
+          // Validation failed
+          document.title = t.errorTitle + ' | FuenteAI';
+          errTitle.textContent = t.errorTitle;
+          errDesc.textContent = t.errorDesc;
+          errBtn.textContent = t.errorBtn;
+          errBtn.href = `/${lang}`;
+
+          // Hide redirect view, show error view
+          spinner.classList.add('hidden');
+          content.classList.add('hidden');
+          errorBox.classList.remove('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>

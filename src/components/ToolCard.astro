@@ -288,7 +288,7 @@ const platformSummary = availablePlatforms.length === 1
 
     <div class="grid grid-cols-[1fr_auto] gap-2 pt-1">
       <a
-        href={`/${lang}/ir/${tool.slug}`}
+        href={`/r/?t=${tool.slug}&l=${lang}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Ir al canal oficial de ${tool.name}`}
@@ -377,7 +377,7 @@ const platformSummary = availablePlatforms.length === 1
         {t('card.cta')}
       </a>
       <a
-        href={`/${lang}/ir/${tool.slug}`}
+        href={`/r/?t=${tool.slug}&l=${lang}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Ir al canal oficial de ${tool.name}`}

@@ -135,8 +135,8 @@ const platforms = Object.entries(tool.platforms)
 
 const primaryPlatform = platforms.find((item) => item.id === 'web') ?? platforms[0];
 const primaryCta = primaryPlatform
-  ? `/${lang}/ir/${tool.slug}/${primaryPlatform.id}`
-  : `/${lang}/ir/${tool.slug}`;
+  ? `/r/?t=${tool.slug}&p=${primaryPlatform.id}&l=${lang}`
+  : `/r/?t=${tool.slug}&l=${lang}`;
 
 let officialDomain = 'fuente oficial';
 try {
@@ -386,7 +386,7 @@ const docDesc = lang === 'sv'
                   </div>
                 </div>
                 <a
-                  href={`/${lang}/ir/${tool.slug}/${id}`}
+                  href={`/r/?t=${tool.slug}&p=${id}&l=${lang}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-lg bg-brand-primary px-4 py-2 text-xs font-black text-white transition-colors hover:bg-brand-primary-hover"
