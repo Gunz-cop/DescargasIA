@@ -101,37 +101,26 @@ const schemaItemList = {
 
 <BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaItemList}>
   <!-- Hero Section -->
-  <section class="relative py-6 sm:py-10" aria-labelledby="hero-title">
-    <div class="max-w-4xl">
-      <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-[11px] font-black uppercase text-brand-primary">
-        Descargas oficiales de IA
+  <section class="relative overflow-hidden py-7 text-center sm:py-12" aria-labelledby="hero-title">
+    <div class="pointer-events-none absolute inset-x-0 top-0 mx-auto h-px max-w-2xl bg-gradient-to-r from-transparent via-brand-primary/70 to-transparent" aria-hidden="true"></div>
+    <div class="mx-auto max-w-4xl">
+      <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-[11px] font-black uppercase text-brand-primary">
+        Índice oficial. Cero mirrors.
       </span>
 
-      <h1 id="hero-title" class="mb-3 max-w-3xl text-3xl font-black leading-[1.04] tracking-tight text-brand-text sm:text-5xl md:text-6xl font-['Outfit',sans-serif]">
-        Encuentra la descarga oficial de herramientas de IA.
+      <h1 id="hero-title" class="mx-auto mb-4 max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-brand-text sm:text-6xl md:text-7xl font-['Outfit',sans-serif]">
+        Descarga IA sin caer en clones.
       </h1>
 
-      <p class="max-w-2xl text-sm leading-relaxed text-brand-text-muted sm:text-lg">
-        Busca ChatGPT, Gemini, Claude, Cursor, Ollama y más. Te mostramos la ficha, el dominio oficial y las advertencias antes de salir. No alojamos instaladores, APKs ni mirrors.
+      <p class="mx-auto max-w-2xl text-base leading-relaxed text-brand-text-muted sm:text-lg">
+        Un buscador editorial en español para llegar a la fuente real de ChatGPT, Gemini, Claude, Cursor, Ollama y otras herramientas de IA.
       </p>
 
-      <div class="mt-6 grid gap-3 sm:flex sm:max-w-xl" aria-label="Acciones principales">
-        <a href="#directorio" class="inline-flex min-h-12 items-center justify-center rounded-lg border border-brand-primary bg-brand-primary px-5 py-3 text-sm font-black text-white shadow-lg shadow-emerald-950/20 transition-colors hover:bg-brand-primary-hover active:scale-[0.99]">
-          Ver descargas oficiales
-          <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
-          </svg>
-        </a>
-        <button id="focus-search-cta" type="button" class="inline-flex min-h-12 items-center justify-center rounded-lg border border-brand-card-border bg-brand-card-bg px-5 py-3 text-sm font-bold text-brand-text transition-colors hover:border-brand-primary/40 active:scale-[0.99] cursor-pointer">
-          Buscar herramienta
-        </button>
+      <div class="mx-auto mt-7 max-w-2xl">
+        <SearchBar variant="hero" />
       </div>
 
-      <div class="mt-5">
-        <SearchBar />
-      </div>
-
-      <div class="flex flex-wrap gap-x-3 gap-y-1 text-[11px] font-bold uppercase text-brand-text-muted" aria-label="Señales de confianza del índice">
+      <div class="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[11px] font-bold uppercase text-brand-text-muted" aria-label="Señales de confianza del índice">
         <span>{sortedTools.length} fichas</span>
         <span aria-hidden="true">/</span>
         <span>{verifiedDomainsCount} dominios oficiales</span>
@@ -155,6 +144,7 @@ const schemaItemList = {
         {pendingCategoryStats.length > 0 && ` · En revisión: ${pendingCategoryStats.map((cat) => cat.name).join(', ')}`}
       </p>
     </div>
+    <SearchBar variant="filters" />
 
     <!-- Grid de Herramientas -->
     <div
@@ -192,7 +182,6 @@ const schemaItemList = {
       const toolsGrid = document.getElementById('tools-grid');
       const emptyState = document.getElementById('empty-state');
       const resetBtn = document.getElementById('reset-all-filters-btn');
-      const focusSearchCta = document.getElementById('focus-search-cta');
       
       const categoryButtons = document.querySelectorAll('#category-filters-container button');
       const platformButtons = document.querySelectorAll('#platform-filters-container button');
@@ -267,10 +256,6 @@ const schemaItemList = {
         applyFilters();
       });
 
-      focusSearchCta?.addEventListener('click', () => {
-        searchInput?.focus();
-      });
-      
       // Evento de Categoría
       categoryButtons.forEach(btn => {
         btn.addEventListener('click', () => {
