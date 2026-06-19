@@ -140,11 +140,35 @@ Aquí mis puntos clave para el debate:
 >
 > **Consenso Técnico para Ejecución:**
 > Si el Propietario aprueba el plan, la ruta de trabajo inicial será:
+>
 > * **Paso A:** Crear `public/_redirects` con el mapeo 301.
 > * **Paso B:** Crear `src/content/tools-base/` y migrar las fichas de `src/content/tools/` a la nueva estructura dividida (base + localized).
 > * **Paso C:** Configurar `astro.config.mjs` con i18n nativo, inyección de hreflang y sitemap dinámico que ignore las rutas `/ir/`."
 
+> **Actualización 3 (Análisis de Marca: RashnuIndex y Naming):** 2026-06-19
+>
+> "¡Me encanta el trasfondo mitológico de **Rashnu** (la entidad persa de la justicia, la verdad y el pesaje imparcial)! Encaja a la perfección con nuestra propuesta de valor: un panel editorial que juzga, audita y pesa las herramientas de IA para separar el grano de la paja (los instaladores oficiales vs. clones maliciosos).
+>
+> Aquí mi análisis técnico y de arquitectura de marca para **RashnuIndex.com**:
+>
+> **Pros:**
+> 1. **Coherencia Conceptual Máxima:** Pocas cosas gritan más 'verificación e índice' que un dios de la justicia y la balanza. Le da una personalidad intelectual muy fuerte y alejada del spam.
+> 2. **Neutralidad Total de Idioma:** Funciona igual de bien para `/es/`, `/sv/` y `/it/`. Nadie se sentirá excluido por el idioma de la marca principal.
+> 3. **Estructura 'Index':** La palabra 'Index' da una sensación inmediata de base de datos técnica, directorio y archivo estructurado, lo cual encaja con nuestra base unificada `tools-base`.
+>
+> **Contras:**
+> 1. **Pérdida de Keyword en Dominio (SEO inicial):** No incluye la palabra 'IA' o 'AI'. Para SEO inicial, tener la palabra clave en el dominio (`fuenteia.com`) ayuda ligeramente a Google a contextualizar de golpe. Con `RashnuIndex`, dependemos 100% de la autoridad del contenido y la optimización on-page (que será excelente de todos modos).
+> 2. **Complejidad de deletreo:** Para audiencias hispanohablantes o incluso italianas, la combinación 'shn' no es natural al escribir. Puede haber errores de escritura (ej. 'Rasnu', 'Rashnuindex', etc.).
+>
+> **Sugerencias y Variantes si Rashnu es la ganadora:**
+> * **`rashnu.ai` o `rashnuindex.ai`:** Si están libres a buen precio, la extensión `.ai` compensa la falta de la palabra 'IA' en el nombre y posiciona la marca instantáneamente en el sector tecnológico.
+> * **`rashnudb.com` (Rashnu Database):** Corto y con enfoque muy técnico.
+> * **`rashnuhub.com` / `rashnulabs.com`:** Alternativas si queremos darle un tono de laboratorio de pruebas y seguridad.
+>
+> **Mi veredicto técnico:** Si el Propietario ama la marca, **RashnuIndex.com** es sumamente elegante y escalable para albergar múltiples idiomas sin fricción."
+
 ---
+
 
 ### 2. Opinión de Codex (Estratega de Contenidos y Marketing)
 >
@@ -232,6 +256,7 @@ Mi recomendación: decisión de marca en 48 horas o se bloquea el avance. Si `fu
 **El riesgo mayor que nadie mencionó: la migración de URLs actuales.**
 
 Con `prefixDefaultLocale: true`, todas las URLs actuales cambian:
+
 * `/chatgpt` → `/es/chatgpt`  
 * `/ir/chatgpt/web` → `/es/ir/chatgpt/web` (o queda fuera del i18n)
 * `/categoria/asistentes-ia` → `/es/categoria/asistentes-ia`
@@ -368,4 +393,6 @@ La consistencia será una ventaja competitiva mucho mayor que seguir refinando l
 
 ### 5. Decisiones y Ajustes del Propietario (USER)
 
-*(Aquí se anotarán las conclusiones finales que serán el estándar para tirar código)*
+Estoy pensndo en darle algo de personalidad al sitio. He encontrado junto con Geminin la palabra Rashnu. Aun no sé como conjugarla porque Rshnu.com y está ocupado. He estado buscando en internet y  posiblemente me incline por RashnuIndex.com.
+
+Los leo, quiero pros y contras y si tienen una mejor idea para el dominio, acepto sugerencias.
