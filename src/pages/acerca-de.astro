@@ -1,0 +1,71 @@
+---
+// src/pages/acerca-de.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Acerca de DescargasIA | DescargasIA";
+const pageDesc = "Conoce la misión de DescargasIA: un índice editorial y técnico de seguridad para encontrar los enlaces y canales oficiales de herramientas de IA.";
+---
+
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <article class="max-w-3xl mx-auto py-12" aria-labelledby="page-title">
+    <!-- Header -->
+    <header class="mb-10 border-b border-brand-card-border pb-8">
+      <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-[11px] font-black uppercase text-brand-primary font-mono">
+        Misión Editorial
+      </span>
+      <h1 id="page-title" class="text-3xl sm:text-4xl font-black tracking-tight text-brand-text font-['Outfit',sans-serif] mb-4">
+        Acerca de DescargasIA
+      </h1>
+      <p class="text-sm text-brand-text-muted leading-relaxed">
+        DescargasIA es un índice técnico e independiente creado para guiar a los usuarios de habla hispana en la descarga e instalación segura de herramientas de Inteligencia Artificial.
+      </p>
+    </header>
+
+    <!-- Content -->
+    <div class="space-y-8 text-sm sm:text-base leading-relaxed text-brand-text-muted">
+      <!-- Sección 1 -->
+      <section class="space-y-3" aria-labelledby="sec-why">
+        <h2 id="sec-why" class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> El Problema: El Peligro de los Resultados de Búsqueda
+        </h2>
+        <p>
+          Con la explosión del uso de herramientas de IA (como ChatGPT, Midjourney, Cursor u Ollama), los motores de búsqueda se han llenado de anuncios fraudulentos y sitios maliciosos clonados. Estos sitios falsos engañan a los usuarios ofreciendo instaladores infectados con malware, ladrones de credenciales (infostealers) o APKs modificadas que ponen en peligro la seguridad de sus dispositivos.
+        </p>
+      </section>
+
+      <!-- Sección 2 -->
+      <section class="space-y-3" aria-labelledby="sec-our-solution">
+        <h2 id="sec-our-solution" class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> Nuestra Solución: Curación y Enlaces Oficiales
+        </h2>
+        <p>
+          En <span class="font-bold text-brand-text">DescargasIA</span> nos dedicamos a rastrear, verificar y recopilar los canales de descarga y uso de software legítimo y seguro.
+        </p>
+        <p>
+          Nuestras directrices editoriales son muy estrictas:
+        </p>
+        <ul class="list-disc pl-5 space-y-2 text-xs text-brand-text-muted">
+          <li>
+            <strong class="text-brand-text">Verificación del Desarrollador:</strong> Confirmamos el dominio de origen del creador de la herramienta antes de agregarla al índice.
+          </li>
+          <li>
+            <strong class="text-brand-text">Redirecciones Transparentes:</strong> Todos nuestros enlaces de redirección conducen directamente al sitio web del desarrollador oficial o a las tiendas de aplicaciones legítimas (Google Play Store, Apple App Store).
+          </li>
+          <li>
+            <strong class="text-brand-text">Sin Almacenamiento:</strong> No redistribuimos, no empaquetamos, ni guardamos ejecutables ni archivos APK en nuestros servidores, eliminando cualquier posibilidad de manipulación del software.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Sección 3 -->
+      <section class="space-y-3" aria-labelledby="sec-how-we-work">
+        <h2 id="sec-how-we-work" class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [03]</span> Modelo de Sostenibilidad
+        </h2>
+        <p>
+          Operamos como un directorio libre de publicidad intrusiva y sin fines de lucro. Nuestra meta es construir un recurso limpio, rápido y confiable para la comunidad de desarrollo y usuarios finales en su transición al uso diario de Inteligencia Artificial.
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

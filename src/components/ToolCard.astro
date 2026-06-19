@@ -48,6 +48,41 @@ const trustLabels = {
 
 const trust = trustLabels[tool.trustLevel] || { label: 'Pendiente', variant: 'neutral' as const };
 
+const categoryStyles: Record<string, { label: string; tone: string; bar: string }> = {
+  'asistentes-ia': {
+    label: 'Asistente',
+    tone: 'border-emerald-400/35 bg-emerald-500/10 text-brand-text',
+    bar: 'bg-emerald-400'
+  },
+  programacion: {
+    label: 'Programación',
+    tone: 'border-sky-400/35 bg-sky-500/10 text-brand-text',
+    bar: 'bg-sky-400'
+  },
+  'modelos-locales': {
+    label: 'Modelo local',
+    tone: 'border-amber-400/35 bg-amber-500/10 text-brand-text',
+    bar: 'bg-amber-400'
+  },
+  'generacion-imagenes': {
+    label: 'Imagen',
+    tone: 'border-fuchsia-400/35 bg-fuchsia-500/10 text-brand-text',
+    bar: 'bg-fuchsia-400'
+  },
+  'video-ia': {
+    label: 'Video',
+    tone: 'border-cyan-400/35 bg-cyan-500/10 text-brand-text',
+    bar: 'bg-cyan-400'
+  }
+};
+
+const primaryCategory = tool.categories[0] ?? 'asistentes-ia';
+const category = categoryStyles[primaryCategory] ?? {
+  label: 'Herramienta',
+  tone: 'border-brand-card-border bg-brand-bg/40 text-brand-text-muted',
+  bar: 'bg-brand-primary'
+};
+
 let officialDomain = 'fuente oficial';
 try {
   officialDomain = new URL(tool.officialWebsite).hostname.replace(/^www\./, '');
@@ -75,15 +110,20 @@ const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
 ---
 
 <article
-  class="flex h-full flex-col gap-4 rounded-lg border border-brand-card-border bg-brand-card-bg p-5 transition-all duration-200 hover:border-brand-primary/35 hover:shadow-lg hover:shadow-brand-primary/5 group"
+  class="relative flex h-full flex-col gap-4 overflow-hidden rounded-lg border border-brand-card-border bg-brand-card-bg p-5 transition-all duration-200 hover:border-brand-primary/35 hover:shadow-lg hover:shadow-brand-primary/5 group"
   data-name={tool.name.toLowerCase()}
   data-slug={tool.slug}
   data-categories={tool.categories.join(',')}
   data-pricing={tool.pricingModel}
   data-platforms={Object.keys(tool.platforms).filter(p => tool.platforms[p as PlatformKey]).join(',')}
 >
+  <div class={`absolute inset-x-0 top-0 h-1 ${category.bar}`} aria-hidden="true"></div>
+
   <div class="flex items-start justify-between gap-3">
     <div class="flex flex-wrap gap-1.5">
+      <span class={`inline-flex items-center rounded border px-2 py-0.5 text-[10px] font-extrabold font-mono ${category.tone}`}>
+        {category.label}
+      </span>
       <Badge variant={trust.variant}>{trust.label}</Badge>
       <Badge variant={pricing.variant}>{pricing.label}</Badge>
     </div>
@@ -96,7 +136,7 @@ const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
   </div>
 
   <div class="flex flex-col gap-2">
-    <h3 class="text-lg font-black leading-tight tracking-tight text-brand-text transition-colors group-hover:text-brand-primary">
+    <h3 class="text-xl font-black leading-tight tracking-tight text-brand-text transition-colors group-hover:text-brand-primary">
       <a href={`/${tool.slug}`}>{tool.name}</a>
     </h3>
     <p class="text-sm leading-relaxed text-brand-text-muted line-clamp-3">
@@ -110,7 +150,7 @@ const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
         <path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
       </svg>
       <div class="min-w-0">
-        <p class="text-[10px] font-bold uppercase text-brand-text-muted">Fuente principal</p>
+        <p class="text-[10px] font-bold uppercase text-brand-text-muted">Dominio oficial visible</p>
         <p class="truncate font-mono text-xs font-bold text-brand-success">{officialDomain}</p>
       </div>
     </div>

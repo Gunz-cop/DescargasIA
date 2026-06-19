@@ -1,0 +1,86 @@
+---
+// src/pages/cookies.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pageTitle = "Política de Cookies | DescargasIA";
+const pageDesc = "Información sobre el uso de cookies, almacenamiento local y tecnologías similares en DescargasIA.";
+---
+
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <article class="max-w-3xl mx-auto py-12" aria-labelledby="page-title">
+    <!-- Header -->
+    <header class="mb-10 border-b border-brand-card-border pb-8">
+      <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-[11px] font-black uppercase text-brand-primary font-mono">
+        Revisado: Junio 2026
+      </span>
+      <h1 id="page-title" class="text-3xl sm:text-4xl font-black tracking-tight text-brand-text font-['Outfit',sans-serif] mb-4">
+        Política de Cookies y Almacenamiento Local
+      </h1>
+      <p class="text-sm text-brand-text-muted leading-relaxed">
+        En cumplimiento con la normativa de transparencia y privacidad, informamos sobre el uso de cookies y almacenamiento de datos técnicos en el navegador de los usuarios de <span class="font-bold text-brand-text">DescargasIA</span>.
+      </p>
+    </header>
+
+    <!-- Content -->
+    <div class="space-y-8 text-sm sm:text-base leading-relaxed text-brand-text-muted">
+      <!-- Sección 1 -->
+      <section class="space-y-3" aria-labelledby="sec-what-cookies">
+        <h2 id="sec-what-cookies" class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> ¿Qué son las cookies y el almacenamiento local?
+        </h2>
+        <p>
+          Las cookies son pequeños archivos de texto que los sitios web almacenan en su navegador para recordar información sobre su visita. El almacenamiento local (<code class="font-mono bg-brand-card-bg px-1 rounded border border-brand-card-border">localStorage</code>) es una tecnología similar que permite a los sitios web guardar datos directamente en su dispositivo de manera persistente y segura, sin sobrecargar la red.
+        </p>
+      </section>
+
+      <!-- Sección 2 -->
+      <section class="space-y-3" aria-labelledby="sec-our-use">
+        <h2 id="sec-our-use" class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> Tecnologías que utilizamos
+        </h2>
+        <p>
+          En <span class="font-bold text-brand-text">DescargasIA</span> implementamos un enfoque de mínima intrusión. <span class="font-bold text-brand-text">No utilizamos cookies publicitarias, ni cookies de rastreo entre sitios para crear perfiles de marketing</span>.
+        </p>
+        <p>
+          La única tecnología de persistencia activa es de tipo técnica:
+        </p>
+        <div class="border border-brand-card-border bg-brand-card-bg rounded-lg p-4 space-y-3">
+          <div class="flex justify-between items-start border-b border-brand-card-border pb-2">
+            <span class="font-mono text-xs font-bold text-brand-text">Parámetro / Clave</span>
+            <span class="font-mono text-xs font-bold text-brand-primary">Tipo / Propósito</span>
+          </div>
+          <div class="flex justify-between items-start text-xs">
+            <span class="font-mono bg-brand-bg px-1.5 py-0.5 rounded text-brand-text">theme</span>
+            <span class="text-brand-text-muted">Local Storage / Guarda la preferencia de tema visual (claro u oscuro).</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección 3 -->
+      <section class="space-y-3" aria-labelledby="sec-third-party">
+        <h2 id="sec-third-party" class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [03]</span> Servicios de analíticas de terceros
+        </h2>
+        <p>
+          Para conocer el volumen de visitas y mejorar la experiencia de navegación, podríamos integrar herramientas de medición estadística que utilicen cookies anónimas. Estas cookies se limitan a medir datos de tráfico agregado (como país de origen, tipo de navegador y páginas más visitadas) sin almacenar datos que identifiquen personalmente al usuario.
+        </p>
+      </section>
+
+      <!-- Sección 4 -->
+      <section class="space-y-3" aria-labelledby="sec-manage">
+        <h2 id="sec-manage" class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [04]</span> ¿Cómo gestionar o borrar estos datos?
+        </h2>
+        <p>
+          Usted puede restringir, bloquear o borrar las cookies y los datos almacenados localmente por cualquier sitio web configurando las opciones de su navegador:
+        </p>
+        <ul class="list-disc pl-5 space-y-1 text-xs text-brand-text-muted">
+          <li><strong>Google Chrome:</strong> Configuración &gt; Privacidad y seguridad &gt; Cookies y otros datos de sitios.</li>
+          <li><strong>Mozilla Firefox:</strong> Opciones &gt; Privacidad &gt; Cookies y datos del sitio.</li>
+          <li><strong>Safari:</strong> Preferencias &gt; Privacidad.</li>
+          <li><strong>Microsoft Edge:</strong> Configuración &gt; Cookies y permisos del sitio.</li>
+        </ul>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

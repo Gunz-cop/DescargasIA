@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar.astro';
 import ToolCard from '../components/ToolCard.astro';
 
 const tools = await getCollection('tools');
+const categories = await getCollection('categories');
 
 // Sort tools by trustLevel (official first, then verified, then pending)
 const sortedTools = [...tools].sort((a, b) => {
@@ -17,6 +18,52 @@ const sortedTools = [...tools].sort((a, b) => {
 
 const pageTitle = "Descarga IA desde canales oficiales | DescargasIA";
 const pageDesc = "Índice editorial en español para encontrar canales oficiales de ChatGPT, Gemini, Claude, Ollama, Cursor y más. Sin mirrors, APKs modificados ni instaladores falsos.";
+
+const categoryStyles: Record<string, { label: string; accent: string; surface: string; description: string }> = {
+  'asistentes-ia': {
+    label: 'Asistentes',
+    accent: 'bg-emerald-400',
+    surface: 'border-emerald-400/30 bg-emerald-500/10',
+    description: 'Chatbots y asistentes web o nativos'
+  },
+  programacion: {
+    label: 'Programación',
+    accent: 'bg-sky-400',
+    surface: 'border-sky-400/30 bg-sky-500/10',
+    description: 'IDEs, copilotos y herramientas dev'
+  },
+  'modelos-locales': {
+    label: 'Modelos locales',
+    accent: 'bg-amber-400',
+    surface: 'border-amber-400/30 bg-amber-500/10',
+    description: 'Ejecución local y gestores de modelos'
+  },
+  'generacion-imagenes': {
+    label: 'Imagen',
+    accent: 'bg-fuchsia-400',
+    surface: 'border-fuchsia-400/30 bg-fuchsia-500/10',
+    description: 'Generación y edición visual con IA'
+  },
+  'video-ia': {
+    label: 'Video',
+    accent: 'bg-cyan-400',
+    surface: 'border-cyan-400/30 bg-cyan-500/10',
+    description: 'Creación y edición de video con IA'
+  }
+};
+
+const categoryStats = categories.map((cat) => {
+  const count = tools.filter((tool) => tool.data.categories.includes(cat.data.slug)).length;
+  return {
+    slug: cat.data.slug,
+    name: categoryStyles[cat.data.slug]?.label ?? cat.data.name,
+    count,
+    countLabel: count === 1 ? '1 ficha' : `${count} fichas`,
+    description: categoryStyles[cat.data.slug]?.description ?? cat.data.description,
+    accent: categoryStyles[cat.data.slug]?.accent ?? 'bg-brand-primary',
+    surface: categoryStyles[cat.data.slug]?.surface ?? 'border-brand-card-border bg-brand-card-bg'
+  };
+});
 
 // Schema para el listado de herramientas
 const schemaItemList = {
@@ -36,37 +83,68 @@ const schemaItemList = {
 
 <BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaItemList}>
   <!-- Hero Section -->
-  <section class="py-14 sm:py-16 relative" aria-labelledby="hero-title">
-    <div class="max-w-4xl">
-      <span class="mb-5 inline-flex items-center gap-2 rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-[11px] font-black uppercase text-brand-primary">
-        Índice editorial de seguridad
-      </span>
+  <section class="relative py-10 sm:py-14" aria-labelledby="hero-title">
+    <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+      <div>
+        <span class="mb-5 inline-flex items-center gap-2 rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-[11px] font-black uppercase text-brand-primary">
+          Índice editorial de seguridad
+        </span>
 
-      <h1 id="hero-title" class="mb-5 max-w-3xl text-4xl font-black leading-[1.08] tracking-tight text-brand-text sm:text-5xl md:text-6xl font-['Outfit',sans-serif]">
-        Descarga IA desde el canal oficial.
-      </h1>
+        <h1 id="hero-title" class="mb-5 max-w-4xl text-4xl font-black leading-[1.02] tracking-tight text-brand-text sm:text-6xl md:text-7xl font-['Outfit',sans-serif]">
+          Antes de descargar IA, confirma el origen.
+        </h1>
 
-      <p class="mb-7 max-w-2xl text-base leading-relaxed text-brand-text-muted sm:text-lg">
-        DescargasIA conecta tu búsqueda de ChatGPT, Gemini, Claude, Ollama, Cursor y otras herramientas con la fuente legítima del desarrollador. No alojamos archivos ni recomendamos mirrors.
-      </p>
+        <p class="max-w-2xl text-base leading-relaxed text-brand-text-muted sm:text-lg">
+          DescargasIA conecta búsquedas de descarga con dominios oficiales, tiendas legítimas y páginas reales del desarrollador. Sin mirrors, sin APKs de terceros y sin instaladores alojados aquí.
+        </p>
+      </div>
 
-      <div class="grid gap-2 rounded-lg border border-brand-card-border bg-brand-card-bg p-3 sm:grid-cols-4">
-        <div class="rounded-md border border-brand-card-border bg-brand-bg/35 px-3 py-2">
-          <p class="text-[11px] font-bold text-brand-text">Sin mirrors</p>
-          <p class="text-[10px] leading-relaxed text-brand-text-muted">Evitamos copias y páginas intermediarias.</p>
+      <aside class="rounded-xl border border-brand-card-border bg-brand-card-bg p-4" aria-label="Protocolo editorial">
+        <p class="mb-3 text-[11px] font-black uppercase text-brand-primary">Protocolo editorial</p>
+        <div class="grid gap-2">
+          <div class="flex items-start gap-3 rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-success" aria-hidden="true"></span>
+            <div>
+              <p class="text-sm font-bold text-brand-text">Mostramos el dominio</p>
+              <p class="text-xs leading-relaxed text-brand-text-muted">El usuario ve la fuente antes de salir del índice.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-warning-text" aria-hidden="true"></span>
+            <div>
+              <p class="text-sm font-bold text-brand-text">Marcamos advertencias</p>
+              <p class="text-xs leading-relaxed text-brand-text-muted">Señalamos riesgos editoriales sin prometer auditorías técnicas.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3 rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
+            <span class="mt-1 h-2 w-2 shrink-0 rounded-full bg-brand-secondary" aria-hidden="true"></span>
+            <div>
+              <p class="text-sm font-bold text-brand-text">Filtramos por uso real</p>
+              <p class="text-xs leading-relaxed text-brand-text-muted">Categoría y plataforma quedan visibles para decidir rápido.</p>
+            </div>
+          </div>
         </div>
-        <div class="rounded-md border border-brand-card-border bg-brand-bg/35 px-3 py-2">
-          <p class="text-[11px] font-bold text-brand-text">Sin APKs de terceros</p>
-          <p class="text-[10px] leading-relaxed text-brand-text-muted">Priorizamos tiendas y dominios oficiales.</p>
-        </div>
-        <div class="rounded-md border border-brand-card-border bg-brand-bg/35 px-3 py-2">
-          <p class="text-[11px] font-bold text-brand-text">Sin instaladores alojados</p>
-          <p class="text-[10px] leading-relaxed text-brand-text-muted">No redistribuimos ejecutables.</p>
-        </div>
-        <div class="rounded-md border border-brand-success-border bg-brand-success-bg px-3 py-2">
-          <p class="text-[11px] font-bold text-brand-success">Fuente visible</p>
-          <p class="text-[10px] leading-relaxed text-brand-text-muted">Mostramos el dominio antes de salir.</p>
-        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="mb-8" aria-label="Principios de confianza">
+    <div class="grid gap-2 rounded-xl border border-brand-card-border bg-brand-card-bg p-3 sm:grid-cols-4">
+      <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 px-3 py-3">
+        <p class="text-xs font-bold text-brand-text">Sin mirrors</p>
+        <p class="text-[11px] leading-relaxed text-brand-text-muted">Evitamos copias y páginas intermediarias.</p>
+      </div>
+      <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 px-3 py-3">
+        <p class="text-xs font-bold text-brand-text">Sin APKs de terceros</p>
+        <p class="text-[11px] leading-relaxed text-brand-text-muted">Priorizamos tiendas y dominios oficiales.</p>
+      </div>
+      <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 px-3 py-3">
+        <p class="text-xs font-bold text-brand-text">Sin instaladores alojados</p>
+        <p class="text-[11px] leading-relaxed text-brand-text-muted">No redistribuimos ejecutables.</p>
+      </div>
+      <div class="rounded-lg border border-brand-success-border bg-brand-success-bg px-3 py-3">
+        <p class="text-xs font-bold text-brand-success">Revisión visible</p>
+        <p class="text-[11px] leading-relaxed text-brand-text-muted">Cada ficha expone fecha y fuente principal.</p>
       </div>
     </div>
   </section>
@@ -74,6 +152,25 @@ const schemaItemList = {
   <!-- Buscador y Filtros -->
   <section id="directorio" class="scroll-mt-20">
     <SearchBar />
+
+    <div class="mb-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-5" aria-label="Categorías editoriales">
+      {categoryStats.map((cat) => (
+        <a href={`/categoria/${cat.slug}`} class={`group relative overflow-hidden rounded-xl border p-4 transition-colors hover:border-brand-primary/40 ${cat.surface}`}>
+          <span class={`absolute inset-x-0 top-0 h-1 ${cat.accent}`} aria-hidden="true"></span>
+          <span class="font-mono text-[10px] font-bold uppercase text-brand-text-muted">{cat.countLabel}</span>
+          <p class="mt-2 text-sm font-black text-brand-text group-hover:text-brand-primary">{cat.name}</p>
+          <p class="mt-1 text-[11px] leading-relaxed text-brand-text-muted">{cat.description}</p>
+        </a>
+      ))}
+    </div>
+
+    <div class="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="text-[11px] font-black uppercase text-brand-primary">Fuentes indexadas</p>
+        <h2 class="text-2xl font-black tracking-tight text-brand-text font-['Outfit',sans-serif]">Herramientas verificadas</h2>
+      </div>
+      <p class="text-xs text-brand-text-muted">{sortedTools.length} fichas editoriales disponibles</p>
+    </div>
 
     <!-- Grid de Herramientas -->
     <div
