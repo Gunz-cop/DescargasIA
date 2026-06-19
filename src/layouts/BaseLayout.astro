@@ -58,7 +58,7 @@ const {
 
     <!-- Datos Estructurados Schema.org -->
     {jsonLd && (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map(schema => (
-      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
     ))}
   </head>
   <body class="min-h-screen flex flex-col justify-between">
