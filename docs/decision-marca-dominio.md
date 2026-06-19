@@ -367,8 +367,10 @@ Con este ajuste, considero que la decisión está madura para cerrarse.
 
 ### Propietario
 
-**Decisión Final:** **fuenteai.com** (Marca visible: **FuenteAI**).
+**Decisión final:** `fuenteai.com`
+**Marca visible:** FuenteAI
+**Fecha:** 2026-06-19
+**Dominio adquirido:** sí, en Cloudflare Registrar.
+**Dominio defensivo:** descargasia.com se conserva con 301 → fuenteai.com/es/
 
-*   **Razón:** Se opta por el enfoque pragmático propuesto por Claude. La marca "AI" tiene un alcance global incuestionable, se asocia inmediatamente con el sector, y simplifica la comprensión y el posicionamiento SEO en todos los idiomas (ES, SV, IT) sin fricciones conceptuales.
-*   **Acción Inmediata:** Actualizar el nombre del proyecto en `wrangler.jsonc` a `fuenteai` para emparejarlo con el servicio activo en Cloudflare, y cambiar `SITE_URL` en `astro.config.mjs` a `https://fuenteai.com`.
-
+Decisión cerrada. No se reabre.
