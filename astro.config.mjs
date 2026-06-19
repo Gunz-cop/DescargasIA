@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { getSitemapDates } from './scripts/get-sitemap-dates.mjs';
 
-const SITE_URL = 'https://fuenteia.com';
+const SITE_URL = 'https://fuenteai.com';
 const sitemapDates = getSitemapDates(SITE_URL);
 
 export default defineConfig({
