@@ -22,8 +22,8 @@ export default defineConfig({
     }
   },
   integrations: [
-
     sitemap({
+      filter: (page) => !page.includes('/ir/') && !/\/sv(\/|$)/.test(page) && !/\/it(\/|$)/.test(page),
       serialize(item) {
         const cleanUrl = item.url.replace(/\/$/, ''); // Remover slash final para la coincidencia de clave
         if (sitemapDates[cleanUrl]) {
@@ -33,6 +33,7 @@ export default defineConfig({
       }
     })
   ],
+
   vite: {
     plugins: [tailwindcss()]
   }
