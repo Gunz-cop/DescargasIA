@@ -115,6 +115,18 @@ const schemaItemList = {
         Busca ChatGPT, Gemini, Claude, Cursor, Ollama y más. Te mostramos la ficha, el dominio oficial y las advertencias antes de salir. No alojamos instaladores, APKs ni mirrors.
       </p>
 
+      <div class="mt-6 grid gap-3 sm:flex sm:max-w-xl" aria-label="Acciones principales">
+        <a href="#directorio" class="inline-flex min-h-12 items-center justify-center rounded-lg border border-brand-primary bg-brand-primary px-5 py-3 text-sm font-black text-white shadow-lg shadow-emerald-950/20 transition-colors hover:bg-brand-primary-hover active:scale-[0.99]">
+          Ver descargas oficiales
+          <svg xmlns="http://www.w3.org/2000/svg" class="ml-2 h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6" />
+          </svg>
+        </a>
+        <button id="focus-search-cta" type="button" class="inline-flex min-h-12 items-center justify-center rounded-lg border border-brand-card-border bg-brand-card-bg px-5 py-3 text-sm font-bold text-brand-text transition-colors hover:border-brand-primary/40 active:scale-[0.99] cursor-pointer">
+          Buscar herramienta
+        </button>
+      </div>
+
       <div class="mt-5">
         <SearchBar />
       </div>
@@ -180,6 +192,7 @@ const schemaItemList = {
       const toolsGrid = document.getElementById('tools-grid');
       const emptyState = document.getElementById('empty-state');
       const resetBtn = document.getElementById('reset-all-filters-btn');
+      const focusSearchCta = document.getElementById('focus-search-cta');
       
       const categoryButtons = document.querySelectorAll('#category-filters-container button');
       const platformButtons = document.querySelectorAll('#platform-filters-container button');
@@ -252,6 +265,10 @@ const schemaItemList = {
         searchQuery = '';
         clearBtn.classList.add('hidden');
         applyFilters();
+      });
+
+      focusSearchCta?.addEventListener('click', () => {
+        searchInput?.focus();
       });
       
       // Evento de Categoría
