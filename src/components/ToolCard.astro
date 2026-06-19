@@ -1,13 +1,13 @@
 ---
 // src/components/ToolCard.astro
 import Badge from './Badge.astro';
+import { useTranslations } from '../i18n/ui';
 
 type PlatformKey = 'web' | 'windows' | 'mac' | 'linux' | 'android' | 'ios';
 
 interface PlatformDetails {
   url: string;
   type: string;
-  label: string;
   isOfficial: boolean;
   lastChecked?: string;
 }
@@ -20,7 +20,9 @@ interface Props {
     officialWebsite: string;
     categories: string[];
     pricingModel: 'free' | 'freemium' | 'paid' | 'enterprise' | 'unknown';
-    spanishSupport: 'yes' | 'partial' | 'no' | 'unknown';
+    spanishSupport?: 'yes' | 'partial' | 'no' | 'unknown';
+    swedishSupport?: 'yes' | 'partial' | 'no' | 'unknown';
+    italianSupport?: 'yes' | 'partial' | 'no' | 'unknown';
     trustLevel: 'official' | 'verified' | 'pending-review';
     safetyNotes?: string[];
     lastReviewed?: string;
@@ -29,48 +31,50 @@ interface Props {
 }
 
 const { tool } = Astro.props;
+const lang = (Astro.currentLocale || 'es') as 'es' | 'sv' | 'it';
+const t = useTranslations(lang);
 
 const pricingLabels = {
-  free: { label: 'Gratis', variant: 'success' as const },
-  freemium: { label: 'Freemium', variant: 'primary' as const },
-  paid: { label: 'De pago', variant: 'danger' as const },
-  enterprise: { label: 'Enterprise', variant: 'neutral' as const },
-  unknown: { label: 'Precio no confirmado', variant: 'neutral' as const }
+  free: { label: t('info.pricing.free'), variant: 'success' as const },
+  freemium: { label: t('info.pricing.freemium'), variant: 'primary' as const },
+  paid: { label: t('info.pricing.paid'), variant: 'danger' as const },
+  enterprise: { label: t('info.pricing.enterprise'), variant: 'neutral' as const },
+  unknown: { label: t('info.pricing.unknown'), variant: 'neutral' as const }
 };
 
 const pricing = pricingLabels[tool.pricingModel] || pricingLabels.unknown;
 
 const trustLabels = {
-  official: { label: 'Canal oficial', variant: 'success' as const },
-  verified: { label: 'Enlace verificado', variant: 'secondary' as const },
-  'pending-review': { label: 'Bajo revisión', variant: 'warning' as const }
+  official: { label: t('info.trust.official'), variant: 'success' as const },
+  verified: { label: t('info.trust.verified'), variant: 'secondary' as const },
+  'pending-review': { label: t('info.trust.pending-review'), variant: 'warning' as const }
 };
 
-const trust = trustLabels[tool.trustLevel] || { label: 'Pendiente', variant: 'neutral' as const };
+const trust = trustLabels[tool.trustLevel] || { label: t('info.trust.pending-review'), variant: 'neutral' as const };
 
 const categoryStyles: Record<string, { label: string; tone: string; bar: string }> = {
   'asistentes-ia': {
-    label: 'Asistente',
+    label: lang === 'sv' ? 'Assistent' : lang === 'it' ? 'Assistente' : 'Asistente',
     tone: 'border-emerald-400/35 bg-emerald-500/10 text-brand-text',
     bar: 'bg-emerald-400'
   },
   programacion: {
-    label: 'Programación',
+    label: lang === 'sv' ? 'Programmering' : lang === 'it' ? 'Programmazione' : 'Programación',
     tone: 'border-sky-400/35 bg-sky-500/10 text-brand-text',
     bar: 'bg-sky-400'
   },
   'modelos-locales': {
-    label: 'Modelo local',
+    label: lang === 'sv' ? 'Lokal modell' : lang === 'it' ? 'Modello locale' : 'Modelo local',
     tone: 'border-amber-400/35 bg-amber-500/10 text-brand-text',
     bar: 'bg-amber-400'
   },
   'generacion-imagenes': {
-    label: 'Imagen',
+    label: lang === 'sv' ? 'Bild' : lang === 'it' ? 'Immagine' : 'Imagen',
     tone: 'border-fuchsia-400/35 bg-fuchsia-500/10 text-brand-text',
     bar: 'bg-fuchsia-400'
   },
   'video-ia': {
-    label: 'Video',
+    label: lang === 'sv' ? 'Video' : lang === 'it' ? 'Video' : 'Video',
     tone: 'border-cyan-400/35 bg-cyan-500/10 text-brand-text',
     bar: 'bg-cyan-400'
   }
@@ -78,7 +82,7 @@ const categoryStyles: Record<string, { label: string; tone: string; bar: string 
 
 const primaryCategory = tool.categories[0] ?? 'asistentes-ia';
 const category = categoryStyles[primaryCategory] ?? {
-  label: 'Herramienta',
+  label: lang === 'sv' ? 'Verktyg' : lang === 'it' ? 'Strumento' : 'Herramienta',
   tone: 'border-brand-card-border bg-brand-bg/40 text-brand-text-muted',
   bar: 'bg-brand-primary'
 };
@@ -215,13 +219,13 @@ try {
 }
 
 const reviewDate = tool.lastReviewed
-  ? new Date(tool.lastReviewed).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' })
+  ? new Date(tool.lastReviewed).toLocaleDateString(lang === 'es' ? 'es-ES' : lang === 'sv' ? 'sv-SE' : 'it-IT', { month: 'short', year: 'numeric' })
   : null;
 
 const primarySafetyNote = tool.safetyNotes?.[0] ?? null;
 
 const platformLabels: Record<PlatformKey, string> = {
-  web: 'Web',
+  web: t('platform.web'),
   windows: 'Windows',
   mac: 'macOS',
   linux: 'Linux',
@@ -232,7 +236,7 @@ const platformLabels: Record<PlatformKey, string> = {
 const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
   .filter((platform) => Boolean(tool.platforms[platform]));
 
-const initials = tool.name
+const initials = tool.initials ?? tool.name
   .split(/\s+/)
   .filter(Boolean)
   .slice(0, 2)
@@ -242,7 +246,7 @@ const initials = tool.name
 
 const platformSummary = availablePlatforms.length === 1
   ? platformLabels[availablePlatforms[0]]
-  : `${availablePlatforms.length} plataformas`;
+  : `${availablePlatforms.length} ${lang === 'sv' ? 'plattformar' : lang === 'it' ? 'piattaforme' : 'plataformas'}`;
 ---
 
 <article
@@ -261,7 +265,7 @@ const platformSummary = availablePlatforms.length === 1
         {initials}
       </div>
       <div class="min-w-0 flex-1">
-        <a href={`/${tool.slug}`} class="block truncate text-2xl font-black leading-tight tracking-tight text-brand-text">
+        <a href={`/${lang}/${tool.slug}`} class="block truncate text-2xl font-black leading-tight tracking-tight text-brand-text">
           {tool.name}
         </a>
         <p class="mt-1 truncate font-mono text-xs font-bold text-brand-success">{officialDomain}</p>
@@ -284,25 +288,25 @@ const platformSummary = availablePlatforms.length === 1
 
     <div class="grid grid-cols-[1fr_auto] gap-2 pt-1">
       <a
-        href={`/ir/${tool.slug}`}
+        href={`/${lang}/ir/${tool.slug}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Ir al canal oficial de ${tool.name}`}
         class="inline-flex min-h-12 items-center justify-center rounded-md border border-brand-primary bg-brand-primary px-3 py-2 text-sm font-black text-white transition-colors hover:bg-brand-primary-hover"
       >
-        Descarga oficial
+        {lang === 'sv' ? 'Ladda ner' : lang === 'it' ? 'Scarica' : 'Descarga oficial'}
       </a>
       <a
-        href={`/${tool.slug}`}
+        href={`/${lang}/${tool.slug}`}
         aria-label={`Ver ficha editorial de ${tool.name}`}
         class="inline-flex min-h-12 items-center justify-center rounded-md border border-brand-card-border px-4 py-2 text-sm font-bold text-brand-text transition-colors hover:border-brand-primary/35 hover:text-brand-primary"
       >
-        Ficha
+        {lang === 'sv' ? 'Fakta' : lang === 'it' ? 'Scheda' : 'Ficha'}
       </a>
     </div>
 
     <div class="flex items-center justify-between gap-3 border-t border-brand-card-border pt-3 text-[10px] font-bold uppercase text-brand-text-muted">
-      <span>Dominio visible</span>
+      <span>{lang === 'sv' ? 'Domän' : lang === 'it' ? 'Dominio' : 'Dominio visible'}</span>
       {reviewDate && <span>rev. {reviewDate}</span>}
     </div>
   </div>
@@ -313,7 +317,7 @@ const platformSummary = availablePlatforms.length === 1
     </div>
     <div class="min-w-0 flex-1">
       <h3 class={`text-xl font-black leading-tight tracking-tight text-brand-text transition-colors ${visual.accent}`}>
-        <a href={`/${tool.slug}`}>{tool.name}</a>
+        <a href={`/${lang}/${tool.slug}`}>{tool.name}</a>
       </h3>
       <div class="mt-2 flex flex-wrap gap-1.5">
         <span class={`inline-flex items-center rounded border px-2 py-0.5 text-[10px] font-extrabold font-mono ${category.tone}`}>
@@ -339,7 +343,7 @@ const platformSummary = availablePlatforms.length === 1
         <path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
       </svg>
       <div class="min-w-0">
-        <p class="text-[10px] font-bold uppercase text-brand-text-muted">Dominio oficial visible</p>
+        <p class="text-[10px] font-bold uppercase text-brand-text-muted">{lang === 'sv' ? 'Officiell domän' : lang === 'it' ? 'Dominio ufficiale' : 'Dominio oficial visible'}</p>
         <p class="truncate font-mono text-xs font-bold text-brand-success">{officialDomain}</p>
       </div>
     </div>
@@ -367,19 +371,19 @@ const platformSummary = availablePlatforms.length === 1
   <div class="mt-auto hidden border-t border-brand-card-border pt-4 sm:block">
     <div class="grid grid-cols-1 gap-2 sm:grid-cols-[1fr_auto]">
       <a
-        href={`/${tool.slug}`}
+        href={`/${lang}/${tool.slug}`}
         class="inline-flex min-h-11 items-center justify-center rounded-md border border-brand-card-border px-3 py-2 text-xs font-bold text-brand-text-muted transition-colors hover:border-brand-primary/35 hover:text-brand-primary"
       >
-        Ver ficha
+        {t('card.cta')}
       </a>
       <a
-        href={`/ir/${tool.slug}`}
+        href={`/${lang}/ir/${tool.slug}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Ir al canal oficial de ${tool.name}`}
         class="inline-flex min-h-11 items-center justify-center rounded-md border border-brand-primary/30 bg-brand-primary px-3 py-2 text-xs font-black text-white transition-colors hover:bg-brand-primary-hover"
       >
-        Ir al canal oficial
+        {lang === 'sv' ? 'Nedladdning' : lang === 'it' ? 'Download' : 'Ir al canal oficial'}
       </a>
     </div>
   </div>

@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Asistente de programación de GitHub para VS Code, Visual Studio, JetBrains y otros entornos compatibles.",
+  "longDescription": "GitHub Copilot es un asistente de programación con IA que se instala principalmente como extensión o integración dentro del editor, no como un editor independiente.",
+  "bestFor": [
+    "Autocompletar código dentro del editor",
+    "Usar chat de programación en VS Code, Visual Studio o JetBrains",
+    "Desarrolladores que ya trabajan con GitHub",
+    "Explicar, refactorizar y generar pruebas desde el entorno de desarrollo"
+  ],
+  "limitations": [
+    "No es un editor propio como Cursor; se instala como extensión o integración.",
+    "Requiere cuenta de GitHub y disponibilidad según plan.",
+    "La experiencia cambia según editor, extensión y configuración de la organización."
+  ],
+  "safetyNotes": [
+    "No descargues supuestos instaladores universales de Copilot desde sitios externos.",
+    "Instala Copilot desde el marketplace del editor o la documentación oficial de GitHub.",
+    "Revisa las políticas de tu organización antes de habilitar Copilot en código privado."
+  ],
+  "editorialSummary": "GitHub Copilot no se descarga como una aplicación independiente para programar. La ruta correcta es instalarlo en un editor compatible desde la documentación oficial, marketplace del editor o integración de GitHub.",
+  "editorialSections": [
+    {
+      "heading": "GitHub Copilot no es otro Cursor",
+      "body": "Una búsqueda común es \"descargar GitHub Copilot para PC\". El problema es que Copilot no funciona como Cursor, que sí es un editor completo. Copilot se integra dentro de editores existentes como Visual Studio Code, Visual Studio o IDEs de JetBrains. Por eso el usuario no debe buscar un instalador genérico de Copilot, sino la extensión o integración oficial para su entorno.\n\nEsta distinción evita muchos errores. Un supuesto instalador de Copilot fuera de GitHub, Microsoft, VS Code Marketplace o JetBrains puede ser innecesario o riesgoso. La instalación real pasa por el editor y por la autenticación con GitHub."
+    },
+    {
+      "heading": "Dónde se instala realmente",
+      "body": "En VS Code, Copilot se instala como extensión y se autoriza con una cuenta de GitHub. En Visual Studio y JetBrains existen rutas específicas documentadas por GitHub o por el marketplace correspondiente. En organizaciones, el administrador puede controlar políticas, disponibilidad, telemetría y acceso.\n\nPor eso esta ficha apunta a la documentación oficial de instalación. No intenta ofrecer un archivo universal porque ese archivo no representa cómo se usa Copilot en la práctica."
+    },
+    {
+      "heading": "Cuándo elegir Copilot o Cursor",
+      "body": "GitHub Copilot tiene sentido si ya estás cómodo con tu editor y quieres sumar autocompletado, chat y ayuda contextual sin cambiar de entorno. Cursor puede ser mejor si quieres un editor construido alrededor de IA desde el inicio. ChatGPT o Claude pueden apoyar diseño, explicación y revisión fuera del IDE.\n\nPara desarrolladores, la elección depende del flujo: si tu equipo usa GitHub y editores estándar, Copilot encaja naturalmente. Si quieres una experiencia más integrada y agresiva de IA en el editor, compara con Cursor."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿GitHub Copilot tiene instalador para Windows?",
+      "answer": "No como app independiente. Se instala como extensión o integración dentro de editores compatibles."
+    },
+    {
+      "question": "¿GitHub Copilot funciona en VS Code?",
+      "answer": "Sí. GitHub documenta la instalación de Copilot en Visual Studio Code y otros entornos compatibles."
+    },
+    {
+      "question": "¿Necesito cuenta de GitHub para usar Copilot?",
+      "answer": "Sí. Copilot requiere iniciar sesión con una cuenta de GitHub y tener acceso según el plan disponible."
+    },
+    {
+      "question": "¿GitHub Copilot es lo mismo que Cursor?",
+      "answer": "No. Cursor es un editor basado en VS Code; GitHub Copilot es un asistente que se integra en editores compatibles."
+    }
+  ],
+  "spanishSupport": "partial"
+}

@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Herramienta de Luma AI para generar videos e imágenes desde prompts, disponible en web e iOS.",
+  "longDescription": "Luma Dream Machine es la experiencia creativa de Luma AI para generar video e imagen con modelos generativos desde la web y dispositivos compatibles.",
+  "bestFor": [
+    "Generar clips de video desde ideas visuales",
+    "Probar modelos creativos de Luma AI",
+    "Crear conceptos rápidos para redes, storyboards o campañas",
+    "Usuarios que prefieren web o iOS antes que instalar software de escritorio"
+  ],
+  "limitations": [
+    "No hay instalador oficial de escritorio tradicional.",
+    "La disponibilidad móvil puede variar por sistema; iOS tiene app oficial.",
+    "Los límites de generación dependen de cuenta, créditos y plan."
+  ],
+  "safetyNotes": [
+    "No descargues instaladores de Luma Dream Machine desde portales no oficiales.",
+    "Comprueba que la app iOS sea la publicada por Luma AI.",
+    "Evita subir material sensible a clones con nombres similares."
+  ],
+  "editorialSummary": "Luma Dream Machine es una herramienta de generación visual centrada en video e imagen. Para evitar clones, esta ficha apunta a la web oficial de Dream Machine y a la app iOS publicada en App Store.",
+  "editorialSections": [
+    {
+      "heading": "Dream Machine como plataforma creativa",
+      "body": "Luma Dream Machine se hizo popular por convertir prompts e ideas visuales en clips generativos. Atrae a creadores que quieren probar escenas, movimientos, estilos y conceptos sin montar un flujo de producción tradicional.\n\nComo muchas herramientas de video IA, no se comporta como un programa descargable clásico. El procesamiento ocurre en la nube y el acceso se realiza desde la web oficial o desde la app iOS. Por eso los supuestos instaladores para PC deben mirarse con cuidado."
+    },
+    {
+      "heading": "Web e iOS como rutas principales",
+      "body": "La web de Dream Machine es el punto de entrada más universal. Para usuarios de iPhone o iPad, la App Store ofrece la app oficial. Si estás en Windows, macOS o Android, conviene revisar primero la web oficial antes de buscar paquetes externos.\n\nEsta ficha evita enlazar a apps con nombres parecidos que no pertenecen a Luma. En búsquedas móviles es común encontrar resultados con marcas similares o genéricas, así que el dominio y el editor de la tienda importan."
+    },
+    {
+      "heading": "Cuándo compararla con Runway",
+      "body": "Runway y Luma Dream Machine compiten en el espacio de video generativo, pero cada una puede destacar según modelo, interfaz, calidad, velocidad y tipo de control. Para un creador, lo más sensato es probar ambas desde sus canales oficiales y comparar resultados con el mismo prompt o idea.\n\nSi necesitas diseño gráfico rápido, Canva puede ser más simple. Si buscas imagen estática estilizada, Midjourney o Stable Diffusion pueden ser más adecuados. Luma tiene sentido cuando la salida esperada es movimiento, escena o video corto."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Luma Dream Machine tiene app para Windows?",
+      "answer": "No se distribuye como instalador oficial clásico para Windows. La ruta principal es la web oficial."
+    },
+    {
+      "question": "¿Luma Dream Machine tiene app para iPhone?",
+      "answer": "Sí. Existe app oficial en App Store."
+    },
+    {
+      "question": "¿Luma Dream Machine es gratis?",
+      "answer": "Puede ofrecer acceso gratuito limitado y planes de pago. Los créditos o límites pueden cambiar."
+    },
+    {
+      "question": "¿Es lo mismo Luma AI que Dream Machine?",
+      "answer": "Dream Machine es una experiencia de Luma AI orientada a generación creativa de video e imagen."
+    }
+  ],
+  "spanishSupport": "partial"
+}

@@ -1,0 +1,50 @@
+{
+  "shortDescription": "El editor de código integrado con inteligencia artificial basado en VS Code para programación asistida de alta velocidad.",
+  "longDescription": "Cursor es un entorno de desarrollo integrado (IDE) nacido como fork de VS Code. Está diseñado específicamente para programar con asistencia fluida de modelos de lenguaje como GPT-4, Claude y modelos propios. Ofrece autocompletado avanzado, chat integrado y refactorización inteligente directa en el espacio de trabajo.",
+  "bestFor": [],
+  "limitations": [],
+  "safetyNotes": [
+    "Descarga Cursor únicamente desde cursor.com o su subdominio de descarga seguro downloader.cursor.sh."
+  ],
+  "editorialSections": [
+    {
+      "heading": "Por qué los programadores buscan descargar Cursor",
+      "body": "Cursor no es una herramienta de IA general: es un editor de código construido sobre la misma base que VS Code, con inteligencia artificial integrada directamente en el flujo de programación. Las búsquedas de \"descargar Cursor editor\", \"Cursor AI para Windows\" o \"Cursor vs GitHub Copilot\" vienen principalmente de desarrolladores que ya conocen VS Code y quieren explorar qué cambia cuando la IA está dentro del editor en lugar de ser un plugin externo.\n\nLa diferencia con otras herramientas de IA que aparecen en este directorio es significativa: Cursor no es un asistente de conversación general. Está diseñado específicamente para escribir, revisar, refactorizar y entender código. Si llegaste aquí buscando una IA para redactar textos o responder preguntas generales, probablemente lo que buscás es ChatGPT, Claude o Gemini. Si llegaste buscando una herramienta para programar con asistencia de IA integrada en el editor, estás en el lugar correcto."
+    },
+    {
+      "heading": "Cómo descargar Cursor desde el canal oficial",
+      "body": "Cursor se distribuye exclusivamente desde cursor.com y el subdominio de descarga downloader.cursor.sh. El instalador está disponible para Windows, macOS y Linux, y el proceso es similar al de instalar VS Code: descargás el instalador desde la web oficial, lo ejecutás y el editor queda listo con tu entorno habitual. Si tenés extensiones de VS Code, muchas son compatibles directamente con Cursor.\n\nEl riesgo específico en este caso no son tanto los APKs falsos sino los repositorios de terceros que redistribuyen versiones modificadas del instalador. Cursor tiene acceso a tu código y a tu entorno de desarrollo, por lo que instalar una versión no oficial implica un riesgo de seguridad más serio que con otras herramientas. El único origen confiable es cursor.com, y eso es lo que esta ficha enlaza."
+    },
+    {
+      "heading": "Qué cambia cuando la IA está dentro del editor",
+      "body": "La diferencia más práctica entre usar Cursor y usar un asistente de IA por separado es el contexto. Cursor tiene acceso directo a tu codebase: puede leer los archivos del proyecto, entender la estructura, seguir las importaciones y hacer sugerencias que tienen en cuenta cómo está construido lo que ya existe. Eso elimina el ciclo de copiar código al chat, pegar la respuesta, ajustar y repetir.\n\nLas funciones principales incluyen autocompletado de múltiples líneas, generación de código a partir de descripciones en lenguaje natural, edición con instrucciones directas dentro del editor y un modo de chat donde podés preguntar sobre el código sin salir del entorno. Para equipos que trabajan en proyectos medianos o grandes, la capacidad de dar contexto de múltiples archivos en una sola consulta es especialmente valiosa."
+    },
+    {
+      "heading": "Lo que Cursor no reemplaza",
+      "body": "Cursor es poderoso dentro de su dominio, pero tiene límites claros. No es un asistente de uso general: no está diseñado para escribir correos, resumir documentos o responder preguntas de conocimiento general. Para eso seguís necesitando Claude, ChatGPT o Gemini. Tampoco reemplaza el razonamiento del programador: puede sugerir implementaciones incorrectas con confianza aparente, especialmente en lógica de negocio compleja o en código donde el contexto semántico importa más que el sintáctico.\n\nTambién implica costos. Cursor tiene un plan gratuito con límites de uso para las funciones de IA, y un plan Pro que habilita más consultas y acceso a modelos más potentes. El editor en sí es funcional sin suscripción, pero las funciones de IA avanzada requieren la versión paga para uso intensivo. Es un punto a considerar antes de migrar completamente desde VS Code."
+    },
+    {
+      "heading": "Cuándo elegir Cursor sobre otras opciones",
+      "body": "Si tu trabajo principal es escribir código y querés que la IA esté integrada en ese proceso sin salir del editor, Cursor es actualmente una de las opciones más maduras disponibles. La comparación más directa es con GitHub Copilot como plugin de VS Code: Cursor va más allá al ofrecer edición con instrucciones y chat con contexto de múltiples archivos, algo que Copilot no hace de la misma manera.\n\nSi en cambio programás ocasionalmente y tu flujo de trabajo mezcla código con redacción, análisis y otras tareas, puede ser más práctico usar un asistente general como Claude o ChatGPT con capacidades de código, sin necesidad de cambiar de editor. La decisión depende de cuánto del día pasás dentro de un editor de código y cuánta fricción estás dispuesto a reducir a cambio de adoptar una nueva herramienta."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Cursor es gratuito?",
+      "answer": "Cursor tiene un plan gratuito que incluye funciones básicas de IA con límites de uso mensual. El plan Pro habilita más consultas, modelos más avanzados y funciones adicionales. El editor en sí funciona sin suscripción."
+    },
+    {
+      "question": "¿Cursor es compatible con mis extensiones de VS Code?",
+      "answer": "La mayoría de extensiones de VS Code son compatibles con Cursor, ya que está construido sobre la misma base. Podés importar tu configuración de VS Code durante la instalación."
+    },
+    {
+      "question": "¿Dónde descargo Cursor de forma segura?",
+      "answer": "El único canal oficial es cursor.com y el subdominio downloader.cursor.sh. No descargues instaladores de repositorios de terceros ni sitios de descarga no oficiales, ya que Cursor tiene acceso a tu entorno de desarrollo."
+    },
+    {
+      "question": "¿Cursor funciona en Linux?",
+      "answer": "Sí. Cursor tiene instaladores oficiales para Windows, macOS y Linux. Todos disponibles desde cursor.com."
+    }
+  ],
+  "spanishSupport": "partial"
+}

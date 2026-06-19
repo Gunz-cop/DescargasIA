@@ -1,0 +1,54 @@
+{
+  "name": "Jan AI",
+  "officialWebsite": "https://jan.ai",
+  "categories": [
+    "modelos-locales"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://jan.ai",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://jan.ai",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://jan.ai",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "linux": {
+      "url": "https://jan.ai",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "tags": [
+    "jan",
+    "local",
+    "offline",
+    "open-source",
+    "modelos-locales",
+    "interfaz"
+  ],
+  "alternatives": [
+    "lm-studio",
+    "ollama"
+  ],
+  "initials": "JN",
+  "trustLevel": "verified",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://jan.ai",
+    "https://github.com/janhq/jan"
+  ]
+}

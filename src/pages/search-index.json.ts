@@ -1,15 +1,15 @@
-import { getCollection } from 'astro:content';
+import { getTranslatedTools } from '../utils/tools';
 
 export async function GET() {
-  const tools = await getCollection('tools');
+  const tools = await getTranslatedTools('es');
   const data = tools.map(t => ({
-    name: t.data.name,
-    slug: t.data.slug,
-    shortDescription: t.data.shortDescription,
-    categories: t.data.categories,
-    tags: t.data.tags,
-    pricingModel: t.data.pricingModel,
-    platforms: Object.keys(t.data.platforms).filter(p => t.data.platforms[p as keyof typeof t.data.platforms])
+    name: t.name,
+    slug: t.slug,
+    shortDescription: t.shortDescription,
+    categories: t.categories,
+    tags: t.tags,
+    pricingModel: t.pricingModel,
+    platforms: Object.keys(t.platforms)
   }));
 
   return new Response(JSON.stringify(data), {

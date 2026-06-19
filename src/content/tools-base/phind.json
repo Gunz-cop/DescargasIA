@@ -1,0 +1,35 @@
+{
+  "name": "Phind",
+  "officialWebsite": "https://www.phind.com",
+  "categories": [
+    "programacion"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://www.phind.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": false,
+  "tags": [
+    "phind",
+    "programacion",
+    "buscador-ia",
+    "desarrollo",
+    "codigo"
+  ],
+  "alternatives": [
+    "cursor",
+    "chatgpt",
+    "claude"
+  ],
+  "initials": "PH",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://www.phind.com"
+  ]
+}

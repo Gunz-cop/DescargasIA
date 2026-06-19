@@ -1,0 +1,51 @@
+{
+  "name": "ElevenLabs",
+  "officialWebsite": "https://elevenlabs.io",
+  "categories": [
+    "video-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://elevenlabs.io/text-to-speech",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=io.elevenlabs.coreapp",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/elevenlabs-ai-voice-generator/id6743162587",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "elevenlabs",
+    "voz",
+    "text-to-speech",
+    "audio",
+    "doblaje"
+  ],
+  "alternatives": [
+    "runway",
+    "luma-dream-machine",
+    "canva"
+  ],
+  "screenshotUrl": null,
+  "initials": "EL",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://elevenlabs.io/text-to-speech",
+    "https://elevenlabs.io/docs/overview/capabilities/text-to-speech",
+    "https://play.google.com/store/apps/details?id=io.elevenlabs.coreapp",
+    "https://apps.apple.com/us/app/elevenlabs-ai-voice-generator/id6743162587"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "Midjourney",
+  "officialWebsite": "https://www.midjourney.com",
+  "categories": [
+    "generacion-imagenes"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://www.midjourney.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "paid",
+  "requiresAccount": true,
+  "tags": [
+    "midjourney",
+    "imagenes",
+    "discord",
+    "generacion-visual"
+  ],
+  "alternatives": [
+    "stable-diffusion",
+    "canva",
+    "runway",
+    "luma-dream-machine"
+  ],
+  "screenshotUrl": null,
+  "initials": "MJ",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://www.midjourney.com",
+    "https://docs.midjourney.com/hc/en-us/articles/33329300781837-Web-vs-Discord",
+    "https://docs.midjourney.com/hc/en-us/articles/32631709682573-Discord-Quick-Start"
+  ]
+}

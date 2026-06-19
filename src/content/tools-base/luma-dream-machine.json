@@ -1,0 +1,46 @@
+{
+  "name": "Luma Dream Machine",
+  "officialWebsite": "https://dream-machine.lumalabs.ai",
+  "categories": [
+    "video-ia",
+    "generacion-imagenes"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://dream-machine.lumalabs.ai",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/luma-dream-machine/id6478852867",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "luma",
+    "dream-machine",
+    "video",
+    "ray",
+    "generacion"
+  ],
+  "alternatives": [
+    "runway",
+    "canva",
+    "midjourney"
+  ],
+  "screenshotUrl": null,
+  "initials": "LD",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://dream-machine.lumalabs.ai",
+    "https://lumalabs.ai",
+    "https://apps.apple.com/us/app/luma-dream-machine/id6478852867",
+    "https://lumalabs.ai/learning-hub/ios-quick-start"
+  ]
+}

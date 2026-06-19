@@ -1,0 +1,73 @@
+---
+// src/pages/[lang]/cookies.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { languages } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang }
+  }));
+}
+
+const { lang } = Astro.params as { lang: 'es' | 'sv' | 'it' };
+
+const titles = {
+  es: 'Política de Cookies | FuenteAI',
+  sv: 'Cookiepolicy | FuenteAI',
+  it: 'Informativa sui Cookie | FuenteAI'
+};
+
+const descs = {
+  es: 'Información sobre el uso mínimo de cookies técnicas en FuenteAI.',
+  sv: 'Information om användningen av cookies på FuenteAI.',
+  it: 'Informazioni sull\'uso minimo di cookie tecnici su FuenteAI.'
+};
+---
+
+<BaseLayout title={titles[lang]} description={descs[lang]} lang={lang}>
+  <article class="max-w-3xl mx-auto py-12" aria-labelledby="page-title">
+    <header class="mb-10 border-b border-brand-card-border pb-8">
+      <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-card-border bg-brand-card-bg px-3 py-1 text-[11px] font-black uppercase text-brand-text-muted font-mono">
+        {lang === 'sv' ? 'Reviderad: Juni 2026' : lang === 'it' ? 'Revisionato: Giugno 2026' : 'Revisado: Junio 2026'}
+      </span>
+      <h1 id="page-title" class="text-3xl sm:text-4xl font-black tracking-tight text-brand-text font-['Outfit',sans-serif] mb-4">
+        {lang === 'sv' ? 'Cookiepolicy' : lang === 'it' ? 'Informativa sui Cookie' : 'Política de Cookies'}
+      </h1>
+      <p class="text-sm text-brand-text-muted leading-relaxed">
+        {lang === 'sv'
+          ? 'Vi värnar om transparens. Här förklaras hur vi använder cookies på FuenteAI.'
+          : lang === 'it'
+            ? 'Trasparenza prima di tutto. Di seguito spieghiamo l\'uso dei cookie su FuenteAI.'
+            : 'Información clara y transparente sobre el uso de cookies y almacenamiento de preferencias en FuenteAI.'}
+      </p>
+    </header>
+
+    <div class="space-y-8 text-sm sm:text-base leading-relaxed text-brand-text-muted">
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> {lang === 'sv' ? 'Vad är cookies?' : lang === 'it' ? 'Cosa sono i cookie?' : '¿Qué son las cookies?'}
+        </h2>
+        <p>
+          {lang === 'sv'
+            ? 'Cookies är små textfiler som sparas i din webbläsare för att komma ihåg dina val, t.ex. vilket tema (mörkt/ljust) du valt.'
+            : lang === 'it'
+              ? 'I cookie sono piccoli file di testo salvati nel tuo browser per ricordare le tue preferenze, come ad esempio la scelta del tema visivo.'
+              : 'Las cookies son pequeños archivos de texto que se almacenan en tu navegador para guardar preferencias del usuario, como el tema visual (oscuro o claro).'}
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> {lang === 'sv' ? 'Tekniska cookies' : lang === 'it' ? 'Cookie Tecnici' : 'Cookies Técnicas Obligatorias'}
+        </h2>
+        <p>
+          {lang === 'sv'
+            ? 'FuenteAI använder endast nödvändiga tekniska cookies för sajtens funktioner. Vi spårar dig inte och delar ingen data med tredjepartsannonsörer.'
+            : lang === 'it'
+              ? 'FuenteAI utilizza esclusivamente cookie tecnici essenziali. Non tracciamo gli utenti per scopi pubblicitari o marketing di terze parti.'
+              : 'FuenteAI utiliza exclusivamente cookies técnicas necesarias para el funcionamiento del sitio. No realizamos rastreo invasivo de comportamiento para publicidad de terceros.'}
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

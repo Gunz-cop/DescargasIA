@@ -1,0 +1,46 @@
+{
+  "shortDescription": "El traductor automático con inteligencia artificial más preciso y natural para textos y documentos profesionales.",
+  "longDescription": "DeepL es un servicio de traducción automática basado en redes neuronales de aprendizaje profundo. Destaca por ofrecer traducciones significativamente más naturales, fluidas y precisas que los competidores tradicionales, conservando el tono y el contexto del texto original. Cuenta con versiones web, aplicaciones de escritorio nativas, extensiones y aplicaciones móviles oficiales.",
+  "bestFor": [
+    "Traducir documentos completos (.pdf, .docx, .pptx) manteniendo la maquetación y tipografías originales.",
+    "Traductores, redactores y profesionales que requieren un vocabulario técnico preciso y un tono formal.",
+    "Escribir correos y mensajes rápidos en otros idiomas integrando atajos de teclado en el escritorio."
+  ],
+  "limitations": [
+    "La versión gratuita limita el tamaño y cantidad de documentos traducidos al mes.",
+    "El glosario personalizado está limitado a un número reducido de términos en la versión sin costo."
+  ],
+  "safetyNotes": [
+    "Descarga las aplicaciones oficiales de DeepL exclusivamente desde deepl.com. Ten cuidado con páginas piratas que ofrecen versiones 'Pro desbloqueadas' que contienen virus."
+  ],
+  "editorialSummary": "DeepL es la herramienta de referencia para traducciones de alta precisión, especialmente valorada por su capacidad para entender contextos complejos y modismos. En DescargasIA recopilamos únicamente los instaladores oficiales de DeepL y accesos a sus tiendas para evitar malware.",
+  "editorialSections": [
+    {
+      "heading": "El problema de los traductores tradicionales frente al motor de DeepL",
+      "body": "La mayoría de la gente está acostumbrada a Google Translate, pero suele encontrarse con traducciones literales, robóticas o que pierden por completo el doble sentido de una frase técnica. Esto ocurre porque los sistemas tradicionales traducen palabra por palabra o frase por frase de manera aislada.\n\nDeepL soluciona este problema utilizando superordenadores y redes neuronales convolucionales entrenadas con millones de textos profesionales ya traducidos. Esto le permite entender la intención del autor, el tono (formal o informal) y el contexto completo del párrafo, logrando una traducción que se lee como si hubiera sido escrita directamente por un nativo."
+    },
+    {
+      "heading": "Por qué usar DeepL y no ChatGPT para traducir",
+      "body": "Aunque ChatGPT es un asistente conversacional excelente y puede traducir textos si se lo pides, tiene dos grandes desventajas: tiende a parafrasear demasiado (cambiando palabras clave que en contratos o manuales técnicos son inalterables) y es ineficiente procesando formatos de archivos complejos.\n\nDeepL está diseñado específicamente para la tarea de traducción: respeta de manera exacta la terminología original y te permite subir un archivo PDF, Word o PowerPoint completo y descargarlo traducido al instante, conservando todas las imágenes, tablas, fuentes y la maquetación intacta, ahorrando horas de rediseño manual."
+    },
+    {
+      "heading": "La ventaja de instalar su aplicación oficial de escritorio",
+      "body": "Usar DeepL desde el navegador es cómodo, pero instalar su app nativa para Windows o macOS agiliza enormemente el trabajo. La app se integra en el sistema operativo y te permite traducir cualquier texto que tengas seleccionado en pantalla (en Word, Outlook, PDFs o webs) simplemente pulsando un atajo de teclado rápido (Ctrl+C+C en Windows o Cmd+C+C en Mac), mostrando la traducción en una pequeña ventana flotante sin tener que cambiar de pestaña."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿DeepL es completamente gratuito?",
+      "answer": "Sí, la versión gratuita permite traducir textos de hasta 1,500 caracteres y tres documentos completos al mes con límites de tamaño. Para empresas y traductores profesionales existen planes de pago sin límites y con máxima seguridad de datos."
+    },
+    {
+      "question": "¿Qué tan seguro es subir mis documentos a DeepL?",
+      "answer": "En la versión gratuita, los textos se procesan para entrenar el modelo. Si manejas información corporativa confidencial o datos personales sensibles, se recomienda usar los planes de pago DeepL Pro, los cuales garantizan por contrato que los textos se eliminan inmediatamente tras la traducción y nunca se almacenan."
+    },
+    {
+      "question": "¿Dónde se descargan las aplicaciones oficiales?",
+      "answer": "Las apps de escritorio oficiales están en deepl.com/windows-app y deepl.com/macos-app. Las de móviles están en Google Play y App Store. Evita instaladores descargados de páginas de descargas de software no oficiales."
+    }
+  ],
+  "spanishSupport": "yes"
+}

@@ -1,0 +1,57 @@
+{
+  "name": "AnythingLLM",
+  "officialWebsite": "https://anythingllm.com",
+  "categories": [
+    "modelos-locales"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://anythingllm.com/desktop",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "windows": {
+      "url": "https://anythingllm.com/desktop",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "mac": {
+      "url": "https://anythingllm.com/desktop",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "linux": {
+      "url": "https://docs.anythingllm.com/installation-desktop/linux",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": false,
+  "tags": [
+    "anythingllm",
+    "rag",
+    "documentos",
+    "local",
+    "llm"
+  ],
+  "alternatives": [
+    "jan",
+    "lm-studio",
+    "ollama"
+  ],
+  "screenshotUrl": null,
+  "initials": "AL",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://anythingllm.com",
+    "https://anythingllm.com/desktop",
+    "https://github.com/Mintplex-Labs/anything-llm",
+    "https://docs.anythingllm.com/installation-desktop/linux"
+  ]
+}

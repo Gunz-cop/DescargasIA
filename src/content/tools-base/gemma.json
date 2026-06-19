@@ -1,0 +1,53 @@
+{
+  "name": "Gemma",
+  "officialWebsite": "https://ai.google.dev/gemma",
+  "categories": [
+    "modelos-locales"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://ai.google.dev/gemma",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://github.com/google/gemma.cpp",
+      "type": "github-repo",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://github.com/google/gemma.cpp",
+      "type": "github-repo",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "linux": {
+      "url": "https://github.com/google/gemma.cpp",
+      "type": "github-repo",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "tags": [
+    "gemma",
+    "google",
+    "local",
+    "offline",
+    "open-weights",
+    "modelos-locales"
+  ],
+  "alternatives": [
+    "ollama",
+    "lm-studio"
+  ],
+  "initials": "GE",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://ai.google.dev/gemma"
+  ]
+}

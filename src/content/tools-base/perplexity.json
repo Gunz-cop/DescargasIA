@@ -1,0 +1,58 @@
+{
+  "name": "Perplexity AI",
+  "officialWebsite": "https://www.perplexity.ai",
+  "categories": [
+    "asistentes-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://www.perplexity.ai",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "windows": {
+      "url": "https://apps.microsoft.com/detail/xp8jnqfbqh6pvf",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=ai.perplexity.app.android",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/perplexity-ai-search-chat/id1668000334",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": "unknown",
+  "tags": [
+    "perplexity",
+    "buscador",
+    "respuestas",
+    "fuentes",
+    "investigacion"
+  ],
+  "alternatives": [
+    "chatgpt",
+    "gemini",
+    "claude",
+    "microsoft-copilot"
+  ],
+  "screenshotUrl": null,
+  "initials": "PX",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://www.perplexity.ai",
+    "https://apps.microsoft.com/detail/xp8jnqfbqh6pvf",
+    "https://play.google.com/store/apps/details?id=ai.perplexity.app.android",
+    "https://apps.apple.com/us/app/perplexity-ai-search-chat/id1668000334"
+  ]
+}

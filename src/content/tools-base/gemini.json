@@ -1,0 +1,46 @@
+{
+  "name": "Gemini",
+  "officialWebsite": "https://gemini.google.com",
+  "categories": [
+    "asistentes-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://gemini.google.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.google.android.apps.bard",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/google-gemini/id6477488358",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "google",
+    "multimodal",
+    "chatbot",
+    "productividad"
+  ],
+  "alternatives": [
+    "chatgpt",
+    "claude",
+    "perplexity"
+  ],
+  "initials": "GM",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://deepmind.google/technologies/gemini/"
+  ]
+}

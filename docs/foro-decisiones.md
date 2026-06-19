@@ -452,9 +452,10 @@ La consistencia será una ventaja competitiva mucho mayor que seguir refinando l
 
 ### 5. Decisiones y Ajustes del Propietario (USER)
 
-Estoy pensndo en darle algo de personalidad al sitio. He encontrado junto con Geminin la palabra Rashnu. Aun no sé como conjugarla porque Rshnu.com y está ocupado. He estado buscando en internet y  posiblemente me incline por RashnuIndex.com.
-
-Los leo, quiero pros y contras y si tienen una mejor idea para el dominio, acepto sugerencias.
+**Decisión Final:** **fuenteia.com** (Marca visible: **FuenteIA**).
+*   **Nombre de Worker:** Se usará el identificador `fuenteai` en Cloudflare Workers (`wrangler.jsonc`).
+*   **Aclaración de Dominio:** El dominio `descargasia.com` era únicamente un alias local de desarrollo y no existe públicamente. Por ende, no es necesario hacer redirecciones externas de dominio. La única redirección será de rutas internas (ej. `/chatgpt` -> `/es/chatgpt`) y la configuración del alias `www` en el DNS de Cloudflare para redirigir al dominio raíz.
+*   **Modelo de Datos:** Implementar la arquitectura `tools-base` (datos técnicos comunes) junto a las capas editoriales localizadas `tools/[lang]` para español, sueco e italiano.
 
 ---
 

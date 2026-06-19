@@ -1,0 +1,46 @@
+{
+  "shortDescription": "Generador de canciones, letras e instrumentación completa de alta calidad mediante inteligencia artificial.",
+  "longDescription": "Suno AI es una plataforma de inteligencia artificial generativa diseñada para la creación de música, canciones completas (incluyendo melodía, instrumentación y voces humanas realistas) a partir de descripciones de texto. Permite componer canciones en múltiples géneros e idiomas de forma rápida y directa desde la web oficial.",
+  "bestFor": [
+    "Creadores de contenido y editores que necesitan música de fondo original libre de regalías (copyright).",
+    "Componer canciones personalizadas y divertidas con letras y ritmos específicos para eventos o regalos.",
+    "Producir maquetas musicales rápidas en géneros como pop, rock, rap o música electrónica."
+  ],
+  "limitations": [
+    "La versión gratuita no permite monetizar comercialmente las canciones generadas.",
+    "El plan gratuito limita la generación diaria a un número fijo de créditos no acumulables."
+  ],
+  "safetyNotes": [
+    "Suno AI funciona de manera oficial y exclusiva de forma web mediante suno.com. No existen aplicaciones nativas de escritorio. Ten cuidado con las apps no oficiales de las tiendas móviles."
+  ],
+  "editorialSummary": "Suno AI destaca por su asombrosa capacidad de generar canciones con voz y música completas en segundos. En DescargasIA te facilitamos el acceso web directo y seguro para evitar aplicaciones móviles o instaladores de PC fraudulentos.",
+  "editorialSections": [
+    {
+      "heading": "El problema de los derechos de autor (copyright) y cómo lo resuelve Suno AI",
+      "body": "Los creadores de video en plataformas como YouTube, TikTok o Twitch se enfrentan continuamente a multas, reclamaciones o desmonetizaciones por utilizar música protegida por derechos de autor. Incluso la música de stock gratuita suele tener licencias complejas que cambian con el tiempo.\n\nSuno AI resuelve esto permitiendo generar pistas musicales completamente originales en cuestión de segundos. Al suscribirse a sus planes de pago (Pro o Premier), el usuario obtiene los derechos de explotación comercial plenos de la música generada, lo que significa que puede subir sus videos y monetizarlos sin el temor de recibir notificaciones de derechos de autor."
+    },
+    {
+      "heading": "Cómo funciona el generador: modo estándar frente a modo personalizado",
+      "body": "Suno AI ofrece dos formas de uso:\n\n1. **Modo estándar:** Simplemente describes de qué quieres que hable la canción y el género musical (ej. *'una canción melancólica sobre un astronauta perdido en el espacio al estilo folk'*), y la IA escribirá la letra y compondrá la canción sola.\n2. **Modo personalizado (Custom):** Te permite pegar tu propia letra (o una generada por ChatGPT), elegir la estructura de estrofas y coros, definir las etiquetas de estilo exactas y elegir si deseas que la canción sea puramente instrumental o contenga voces."
+    },
+    {
+      "heading": "Alerta sobre aplicaciones y falsos programas de PC",
+      "body": "Suno se ejecuta directamente en la infraestructura en la nube de la plataforma para procesar el audio y la instrumentación pesada. No requiere instalar ningún programa.\n\nDebido al éxito de Suno, existen aplicaciones en la Play Store y webs piratas que ofrecen descargas de 'Suno AI Pro' o 'Suno Desktop'. Muchas de estas aplicaciones contienen adware molesto o virus diseñados para secuestrar tus credenciales y suscripciones de redes sociales. La única vía segura es usar suno.com desde tu navegador."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Suno AI es gratuito?",
+      "answer": "Sí, Suno ofrece un plan básico gratuito que otorga 50 créditos diarios (suficientes para generar 10 canciones al día). Las canciones generadas bajo el plan gratuito no se pueden monetizar comercialmente y pertenecen a Suno."
+    },
+    {
+      "question": "¿Se pueden descargar las canciones en formato de audio o video?",
+      "answer": "Sí. Suno permite exportar tus creaciones en formato de audio MP3 de alta calidad o como un archivo de video MP4 que muestra la carátula generada y la letra de la canción sincronizada en pantalla."
+    },
+    {
+      "question": "¿Suno compone canciones en español?",
+      "answer": "Sí, perfectamente. Puedes indicarle el estilo de música en español y la IA escribirá las letras y cantará con una entonación y pronunciación nativas en español, respetando los matices líricos."
+    }
+  ],
+  "spanishSupport": "yes"
+}

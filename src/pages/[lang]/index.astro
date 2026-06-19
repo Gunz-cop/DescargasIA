@@ -1,0 +1,347 @@
+---
+// src/pages/[lang]/index.astro
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SearchBar from '../../components/SearchBar.astro';
+import ToolCard from '../../components/ToolCard.astro';
+import { getTranslatedTools } from '../../utils/tools';
+import { useTranslations, languages } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang }
+  }));
+}
+
+const { lang } = Astro.params as { lang: 'es' | 'sv' | 'it' };
+const t = useTranslations(lang);
+
+const tools = await getTranslatedTools(lang);
+const categories = await getCollection('categories');
+
+// Sort tools by trustLevel (official first, then verified, then pending)
+const sortedTools = [...tools].sort((a, b) => {
+  const priorities = { official: 3, verified: 2, 'pending-review': 1 };
+  const valA = priorities[a.trustLevel] || 0;
+  const valB = priorities[b.trustLevel] || 0;
+  return valB - valA;
+});
+
+const pageTitle = lang === 'sv' 
+  ? "Ladda ner AI-verktyg från officiella källor | FuenteAI"
+  : lang === 'it'
+    ? "Scarica strumenti IA da fonti ufficiali | FuenteAI"
+    : "Descarga IA desde canales oficiales | FuenteAI";
+
+const pageDesc = lang === 'sv'
+  ? "Officiellt källindex för AI-verktyg som ChatGPT, Gemini, Claude, Ollama och Cursor. Inga spegelsajter, inga modifierade filer."
+  : lang === 'it'
+    ? "Indice editoriale delle fonti ufficiali per strumenti IA come ChatGPT, Gemini, Claude, Ollama e Cursor. Senza specchi né installer modificati."
+    : "Índice de fuentes oficiales para herramientas de IA como ChatGPT, Gemini, Claude, Ollama y Cursor. Sin mirrors ni instaladores modificados.";
+
+const categoryStyles: Record<string, { label: string; accent: string; surface: string; description: string }> = {
+  'asistentes-ia': {
+    label: lang === 'sv' ? 'Assistenter' : lang === 'it' ? 'Assistenti' : 'Asistentes',
+    accent: 'bg-emerald-400',
+    surface: 'border-emerald-400/30 bg-emerald-500/10',
+    description: lang === 'sv' ? 'Chatbottar och digitala assistenter' : lang === 'it' ? 'Chatbot e assistenti digitali' : 'Chatbots y asistentes web o nativos'
+  },
+  programacion: {
+    label: lang === 'sv' ? 'Programmering' : lang === 'it' ? 'Programmazione' : 'Programación',
+    accent: 'bg-sky-400',
+    surface: 'border-sky-400/30 bg-sky-500/10',
+    description: lang === 'sv' ? 'IDE, copiloter och dev-verktyg' : lang === 'it' ? 'IDE, copilot e strumenti dev' : 'IDEs, copilotos y herramientas dev'
+  },
+  'modelos-locales': {
+    label: lang === 'sv' ? 'Lokala modeller' : lang === 'it' ? 'Modelli locali' : 'Modelos locales',
+    accent: 'bg-amber-400',
+    surface: 'border-amber-400/30 bg-amber-500/10',
+    description: lang === 'sv' ? 'Lokal körning av LLM-modeller' : lang === 'it' ? 'Esecuzione locale e gestori modelli' : 'Ejecución local y gestores de modelos'
+  },
+  'generacion-imagenes': {
+    label: lang === 'sv' ? 'Bild' : lang === 'it' ? 'Immagine' : 'Imagen',
+    accent: 'bg-fuchsia-400',
+    surface: 'border-fuchsia-400/30 bg-fuchsia-500/10',
+    description: lang === 'sv' ? 'Bildgenerering med AI' : lang === 'it' ? 'Generazione e modifica di immagini con IA' : 'Generación y edición visual con IA'
+  },
+  'video-ia': {
+    label: lang === 'sv' ? 'Video' : lang === 'it' ? 'Video' : 'Video',
+    accent: 'bg-cyan-400',
+    surface: 'border-cyan-400/30 bg-cyan-500/10',
+    description: lang === 'sv' ? 'Skapa och redigera video med AI' : lang === 'it' ? 'Creazione e modifica di video con IA' : 'Creación y edición de video con IA'
+  }
+};
+
+const categoryStats = categories.map((cat) => {
+  const count = tools.filter((tool) => tool.categories.includes(cat.data.slug)).length;
+  return {
+    slug: cat.data.slug,
+    name: categoryStyles[cat.data.slug]?.label ?? cat.data.name,
+    count,
+    countLabel: count === 1 
+      ? (lang === 'sv' ? '1 verktyg' : lang === 'it' ? '1 scheda' : '1 ficha') 
+      : (lang === 'sv' ? `${count} verktyg` : lang === 'it' ? `${count} schede` : `${count} fichas`),
+    description: categoryStyles[cat.data.slug]?.description ?? cat.data.description,
+    accent: categoryStyles[cat.data.slug]?.accent ?? 'bg-brand-primary',
+    surface: categoryStyles[cat.data.slug]?.surface ?? 'border-brand-card-border bg-brand-card-bg'
+  };
+});
+
+const getOfficialDomain = (url: string) => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '');
+  } catch {
+    return null;
+  }
+};
+
+const verifiedDomainsCount = new Set(
+  tools.map((tool) => getOfficialDomain(tool.officialWebsite)).filter(Boolean)
+).size;
+
+const platformLinksCount = tools.reduce((total, tool) => {
+  return total + Object.values(tool.platforms).filter(Boolean).length;
+}, 0);
+
+// Schema para el listado de herramientas
+const schemaItemList = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": t('hero.title'),
+  "description": t('hero.subtitle'),
+  "numberOfItems": sortedTools.length,
+  "itemListElement": sortedTools.map((t, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "url": `${Astro.url.origin}/${lang}/${t.slug}`,
+    "name": t.name
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaItemList} lang={lang}>
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden py-7 text-center sm:py-12" aria-labelledby="hero-title">
+    <div class="pointer-events-none absolute inset-x-0 top-0 mx-auto h-px max-w-2xl bg-gradient-to-r from-transparent via-brand-primary/70 to-transparent" aria-hidden="true"></div>
+    <div class="mx-auto max-w-4xl">
+      <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-[11px] font-black uppercase text-brand-primary">
+        {lang === 'sv' ? 'Officiellt Index · Noll spegelsajter' : lang === 'it' ? 'Indice Ufficiale · Zero mirror' : 'Índice oficial. Cero mirrors.'}
+      </span>
+
+      <h1 id="hero-title" class="mx-auto mb-4 max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-brand-text sm:text-6xl md:text-7xl font-['Outfit',sans-serif]">
+        {t('hero.title')}
+      </h1>
+
+      <p class="mx-auto max-w-2xl text-base leading-relaxed text-brand-text-muted sm:text-lg">
+        {t('hero.subtitle')}
+      </p>
+
+      <div class="mx-auto mt-7 max-w-2xl">
+        <SearchBar variant="hero" />
+      </div>
+
+      <div class="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[11px] font-bold uppercase text-brand-text-muted" aria-label="Señales de confianza del índice">
+        <span>{sortedTools.length} {lang === 'sv' ? 'verktyg' : lang === 'it' ? 'schede' : 'fichas'}</span>
+        <span aria-hidden="true">/</span>
+        <span>{verifiedDomainsCount} {t('stats.verified').toLowerCase()}</span>
+        <span aria-hidden="true">/</span>
+        <span>{platformLinksCount} {t('stats.links').toLowerCase()}</span>
+        <span aria-hidden="true">/</span>
+        <span>0 {lang === 'sv' ? 'filer sparade' : lang === 'it' ? 'file ospitati' : 'archivos alojados'}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Buscador y Filtros -->
+  <section id="directorio" class="scroll-mt-20">
+    <div class="mb-4 flex flex-col gap-1 border-t border-brand-card-border pt-5 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class="text-[11px] font-black uppercase text-brand-primary">{lang === 'sv' ? 'Verifierade källor' : lang === 'it' ? 'Fonti verificate' : 'Fuentes indexadas'}</p>
+        <h2 class="text-2xl font-black tracking-tight text-brand-text font-['Outfit',sans-serif]">{lang === 'sv' ? 'Välj ett verktyg' : lang === 'it' ? 'Scegli uno strumento' : 'Elige una herramienta'}</h2>
+      </div>
+      <p class="text-xs leading-relaxed text-brand-text-muted">
+        {sortedTools.length} {lang === 'sv' ? 'granskade verktyg tillgängliga' : lang === 'it' ? 'schede editoriali disponibili' : 'fichas editoriales disponibles'}
+      </p>
+    </div>
+    <SearchBar variant="filters" />
+
+    <!-- Grid de Herramientas -->
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 transition-all duration-300"
+      id="tools-grid"
+    >
+      {sortedTools.map(tool => (
+        <ToolCard tool={tool} />
+      ))}
+    </div>
+
+    <!-- Mensaje de Búsqueda sin Resultados -->
+    <div id="empty-state" class="hidden w-full text-center py-16 bg-brand-card-bg border border-dashed border-brand-card-border rounded-lg p-8 mt-6">
+      <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-brand-card-border bg-brand-bg/35 text-brand-primary" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" />
+        </svg>
+      </div>
+      <h3 class="text-lg font-bold text-brand-text mb-2">{t('search.no-results')}</h3>
+      <p class="text-sm text-brand-text-muted max-w-md mx-auto mb-6">
+        {lang === 'sv' ? 'Testa att söka med ett annat namn eller rensa filtreringen.' : lang === 'it' ? 'Prova con un altro nome o reimposta i filtri.' : 'Prueba con otro nombre o restablece categoría y plataforma.'}
+      </p>
+      <button
+        id="reset-all-filters-btn"
+        class="min-h-11 px-5 py-2.5 text-xs font-bold rounded-md bg-brand-primary text-white border border-brand-primary hover:bg-brand-primary-hover transition-colors cursor-pointer"
+      >
+        {lang === 'sv' ? 'Återställ filter' : lang === 'it' ? 'Reimposta filtri' : 'Restablecer filtros'}
+      </button>
+    </div>
+  </section>
+
+  <!-- Script de Filtro Client-Side (Vanilla JS) -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('search-input');
+      const clearBtn = document.getElementById('btn-clear-search');
+      const toolsGrid = document.getElementById('tools-grid');
+      const emptyState = document.getElementById('empty-state');
+      const resetBtn = document.getElementById('reset-all-filters-btn');
+      
+      const categoryButtons = document.querySelectorAll('#category-filters-container button');
+      const platformButtons = document.querySelectorAll('#platform-filters-container button');
+      const cards = document.querySelectorAll('#tools-grid article');
+      
+      let searchQuery = '';
+      let activeCategory = 'todos';
+      let activePlatform = 'todos';
+      
+      // Aplicar filtros completos
+      const applyFilters = () => {
+        let visibleCount = 0;
+        
+        cards.forEach(card => {
+          const name = card.getAttribute('data-name') || '';
+          const slug = card.getAttribute('data-slug') || '';
+          const cardCategories = (card.getAttribute('data-categories') || '').split(',');
+          const cardPlatforms = (card.getAttribute('data-platforms') || '').split(',');
+          
+          let matchesSearch = true;
+          let matchesCategory = true;
+          let matchesPlatform = true;
+          
+          // Filtro de búsqueda
+          if (searchQuery) {
+            const normalizedQuery = searchQuery.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            const normalizedName = name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+            matchesSearch = normalizedName.includes(normalizedQuery) || slug.includes(normalizedQuery);
+          }
+          
+          // Filtro de categoría
+          if (activeCategory !== 'todos') {
+            matchesCategory = cardCategories.includes(activeCategory);
+          }
+          
+          // Filtro de plataforma
+          if (activePlatform !== 'todos') {
+            matchesPlatform = cardPlatforms.includes(activePlatform);
+          }
+          
+          if (matchesSearch && matchesCategory && matchesPlatform) {
+            card.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+        
+        // Estado vacío
+        if (visibleCount === 0) {
+          toolsGrid.classList.add('hidden');
+          emptyState.classList.remove('hidden');
+        } else {
+          toolsGrid.classList.remove('hidden');
+          emptyState.classList.add('hidden');
+        }
+      };
+      
+      // Evento de búsqueda
+      searchInput?.addEventListener('input', () => {
+        searchQuery = searchInput.value.trim().toLowerCase();
+        if (clearBtn) {
+          clearBtn.classList.toggle('hidden', !searchQuery);
+        }
+        applyFilters();
+      });
+      
+      clearBtn?.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        searchQuery = '';
+        clearBtn.classList.add('hidden');
+        applyFilters();
+      });
+
+      // Evento de Categoría
+      categoryButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          categoryButtons.forEach(b => {
+            b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
+            b.classList.add('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
+          });
+          btn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
+          btn.classList.remove('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
+          
+          activeCategory = btn.getAttribute('data-filter-category') || 'todos';
+          applyFilters();
+        });
+      });
+      
+      // Evento de Plataforma
+      platformButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          platformButtons.forEach(b => {
+            b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
+            b.classList.add('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
+          });
+          btn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
+          btn.classList.remove('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
+          
+          activePlatform = btn.getAttribute('data-filter-platform') || 'todos';
+          applyFilters();
+        });
+      });
+      
+      // Reset completo
+      const resetAll = () => {
+        searchQuery = '';
+        activeCategory = 'todos';
+        activePlatform = 'todos';
+        
+        if (searchInput) searchInput.value = '';
+        if (clearBtn) clearBtn.classList.add('hidden');
+        
+        // Reset botones categorías
+        categoryButtons.forEach(b => {
+          const isAll = b.getAttribute('data-filter-category') === 'todos';
+          b.classList.toggle('bg-brand-primary', isAll);
+          b.classList.toggle('text-white', isAll);
+          b.classList.toggle('border-transparent', isAll);
+          b.classList.toggle('bg-brand-bg/40', !isAll);
+          b.classList.toggle('text-brand-text-muted', !isAll);
+          b.classList.toggle('border-brand-card-border', !isAll);
+        });
+        
+        // Reset botones plataformas
+        platformButtons.forEach(b => {
+          const isAll = b.getAttribute('data-filter-platform') === 'todos';
+          b.classList.toggle('bg-brand-primary', isAll);
+          b.classList.toggle('text-white', isAll);
+          b.classList.toggle('border-transparent', isAll);
+          b.classList.toggle('bg-brand-bg/40', !isAll);
+          b.classList.toggle('text-brand-text-muted', !isAll);
+          b.classList.toggle('border-brand-card-border', !isAll);
+        });
+        
+        applyFilters();
+      };
+      
+      resetBtn?.addEventListener('click', resetAll);
+    });
+  </script>
+</BaseLayout>

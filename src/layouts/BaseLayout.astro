@@ -1,6 +1,7 @@
 ---
 // src/layouts/BaseLayout.astro
 import '../styles/global.css';
+import { useTranslations, languages } from '../i18n/ui';
 
 interface Props {
   title: string;
@@ -9,6 +10,8 @@ interface Props {
   ogType?: string;
   ogImage?: string;
   jsonLd?: Record<string, any> | Record<string, any>[];
+  lang?: 'es' | 'sv' | 'it';
+  alternates?: Array<{ lang: string; url: string }>;
 }
 
 const {
@@ -16,15 +19,43 @@ const {
   description,
   canonicalUrl = Astro.url.href,
   ogType = 'website',
-  ogImage = 'https://descargasia.com/default-share.jpg', // Cambiar al dominio final
+  ogImage = 'https://fuenteia.com/default-share.jpg',
   jsonLd,
+  lang = 'es',
+  alternates = []
 } = Astro.props;
 
-// Convert jsonLd to string if provided
+const t = useTranslations(lang);
+
+const navNames = {
+  es: {
+    asistentes: 'Asistentes',
+    programacion: 'Programación',
+    modelos: 'Modelos Locales',
+    imagen: 'Imagen',
+    video: 'Video'
+  },
+  sv: {
+    asistentes: 'Assistenter',
+    programacion: 'Programmering',
+    modelos: 'Lokala Modeller',
+    imagen: 'Bild',
+    video: 'Video'
+  },
+  it: {
+    asistentes: 'Assistenti',
+    programacion: 'Programmazione',
+    modelos: 'Modelli Locali',
+    imagen: 'Immagini',
+    video: 'Video'
+  }
+};
+
+const nav = navNames[lang];
 ---
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -33,6 +64,12 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
+    
+    <!-- Alternates Hreflang para Multilenguaje -->
+    {alternates.map(({ lang: altLang, url }) => (
+      <link rel="alternate" hreflang={altLang === 'es' ? 'es-ES' : altLang === 'sv' ? 'sv-SE' : 'it-IT'} href={url} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`${Astro.url.origin}/es`} />
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -43,7 +80,7 @@ const {
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:site_name" content="DescargasIA" />
+    <meta property="og:site_name" content="FuenteAI" />
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -71,22 +108,37 @@ const {
     <!-- HEADER / NAVIGATION -->
     <header class="sticky top-0 z-40 border-b border-brand-card-border bg-brand-bg/92 backdrop-blur-md transition-all">
       <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2 group" aria-label="Ir al inicio de DescargasIA">
+        <a href={`/${lang}`} class="flex items-center gap-2 group" aria-label={`Ir al inicio de FuenteAI - ${lang}`}>
           <span class="font-mono text-sm font-bold text-brand-primary border border-brand-primary/30 bg-brand-primary/10 rounded px-2 py-1 group-hover:bg-brand-primary/15 transition-colors" aria-hidden="true">&gt;_</span>
           <span class="text-lg font-black tracking-tight text-brand-text group-hover:text-brand-primary transition-colors">
-            DescargasIA
+            FuenteAI
           </span>
         </a>
 
-        <nav class="hidden md:flex items-center gap-4 text-xs font-semibold text-brand-text-muted lg:gap-6 lg:text-sm" aria-label="Navegacion principal">
-          <a href="/categoria/asistentes-ia" class="hover:text-brand-text transition-colors">Asistentes</a>
-          <a href="/categoria/programacion" class="hover:text-brand-text transition-colors">Programación</a>
-          <a href="/categoria/modelos-locales" class="hover:text-brand-text transition-colors">Modelos Locales</a>
-          <a href="/categoria/generacion-imagenes" class="hover:text-brand-text transition-colors">Imagen</a>
-          <a href="/categoria/video-ia" class="hover:text-brand-text transition-colors">Video</a>
+        <nav class="hidden md:flex items-center gap-4 text-xs font-semibold text-brand-text-muted lg:gap-6 lg:text-sm" aria-label="Navegación principal">
+          <a href={`/${lang}/categoria/asistentes-ia`} class="hover:text-brand-text transition-colors">{nav.asistentes}</a>
+          <a href={`/${lang}/categoria/programacion`} class="hover:text-brand-text transition-colors">{nav.programacion}</a>
+          <a href={`/${lang}/categoria/modelos-locales`} class="hover:text-brand-text transition-colors">{nav.modelos}</a>
+          <a href={`/${lang}/categoria/generacion-imagenes`} class="hover:text-brand-text transition-colors">{nav.imagen}</a>
+          <a href={`/${lang}/categoria/video-ia`} class="hover:text-brand-text transition-colors">{nav.video}</a>
         </nav>
 
         <div class="flex items-center gap-3">
+          <!-- Selector de Idioma -->
+          <div class="relative inline-block text-left">
+            <select
+              id="lang-selector"
+              class="min-h-11 px-2.5 rounded-lg border border-brand-card-border bg-brand-card-bg text-[11px] font-bold text-brand-text-muted hover:text-brand-text hover:border-brand-primary/35 transition-all focus:outline-none cursor-pointer"
+              aria-label="Cambiar idioma / Byt språk / Cambia lingua"
+            >
+              {Object.entries(languages).map(([key, name]) => (
+                <option value={key} selected={key === lang}>
+                  {name}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <!-- Toggle de modo claro/oscuro simple -->
           <button 
             type="button" 
@@ -94,7 +146,7 @@ const {
             class="min-h-11 px-3 rounded-lg border border-brand-card-border bg-brand-card-bg text-[11px] font-bold text-brand-text-muted hover:text-brand-text hover:border-brand-primary/35 transition-all active:scale-[0.98] cursor-pointer"
             aria-label="Alternar tema claro/oscuro"
           >
-            <span id="theme-toggle-icon">Oscuro</span>
+            <span id="theme-toggle-icon">{lang === 'sv' ? 'Mörkt' : lang === 'it' ? 'Scuro' : 'Oscuro'}</span>
           </button>
         </div>
       </div>
@@ -110,53 +162,70 @@ const {
       <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex flex-col gap-2 text-center md:text-left">
           <span class="text-base font-black tracking-tight text-brand-text">
-            DescargasIA
+            FuenteAI
           </span>
           <p class="text-xs text-brand-text-muted max-w-md leading-relaxed">
-            Índice editorial independiente para encontrar canales oficiales de herramientas de inteligencia artificial. No alojamos instaladores, APKs ni mirrors; verificamos fuentes y enlazamos al origen legítimo.
+            {t('footer.disclaimer')}
           </p>
         </div>
 
         <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-brand-text-muted">
-          <a href="/categoria/asistentes-ia" class="hover:text-brand-text transition-colors">Asistentes</a>
-          <a href="/categoria/programacion" class="hover:text-brand-text transition-colors">Programación</a>
-          <a href="/categoria/modelos-locales" class="hover:text-brand-text transition-colors">Modelos locales</a>
-          <a href="/aviso-legal" class="hover:text-brand-text transition-colors">Aviso Legal</a>
-          <a href="/privacidad" class="hover:text-brand-text transition-colors">Privacidad</a>
+          <a href={`/${lang}/categoria/asistentes-ia`} class="hover:text-brand-text transition-colors">{nav.asistentes}</a>
+          <a href={`/${lang}/categoria/programacion`} class="hover:text-brand-text transition-colors">{nav.programacion}</a>
+          <a href={`/${lang}/categoria/modelos-locales`} class="hover:text-brand-text transition-colors">{nav.modelos}</a>
+          <a href={`/${lang}/aviso-legal`} class="hover:text-brand-text transition-colors">{t('footer.legal')}</a>
+          <a href={`/${lang}/privacidad`} class="hover:text-brand-text transition-colors">{t('footer.privacy')}</a>
         </div>
       </div>
       <div class="max-w-7xl mx-auto px-4 border-t border-brand-card-border/40 mt-8 pt-6 text-center text-[10px] text-brand-text-muted/60">
-        © {new Date().getFullYear()} DescargasIA. Todos los derechos reservados. Todos los nombres de marcas y logos de IA son propiedad de sus respectivos dueños.
+        © {new Date().getFullYear()} FuenteAI. {lang === 'sv' ? 'Alla rättigheter förbehållna.' : lang === 'it' ? 'Tutti i diritti riservati.' : 'Todos los derechos reservados.'} {lang === 'sv' ? 'Alla varumärken och logotyper är tillhörande sina respektive ägare.' : lang === 'it' ? 'Tutti i marchi e i loghi IA appartengono ai rispettivi proprietari.' : 'Todos los nombres de marcas y logos de IA son propiedad de sus respectivos dueños.'}
       </div>
     </footer>
 
-    <!-- Theme Script -->
+    <!-- Theme & Language Switch Scripts -->
     <script is:inline>
+      // Selector de idioma client-side
+      const langSelector = document.getElementById('lang-selector');
+      if (langSelector) {
+        langSelector.addEventListener('change', (e) => {
+          const newLang = e.target.value;
+          // Reemplazar la primera parte de la ruta del path (/es/ -> /sv/)
+          const pathSegments = window.location.pathname.split('/').filter(Boolean);
+          if (pathSegments.length > 0 && ['es', 'sv', 'it'].includes(pathSegments[0])) {
+            pathSegments[0] = newLang;
+            window.location.pathname = '/' + pathSegments.join('/');
+          } else {
+            window.location.pathname = '/' + newLang;
+          }
+        });
+      }
+
+      // Controlador del tema
       const themeToggle = document.getElementById('theme-toggle');
       const themeIcon = document.getElementById('theme-toggle-icon');
+      const isSwedish = document.documentElement.lang === 'sv';
+      const isItalian = document.documentElement.lang === 'it';
       
       const getTheme = () => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
           return localStorage.getItem('theme');
         }
-        return 'dark'; // Default to dark theme
+        return 'dark';
       };
 
       const setTheme = (theme) => {
         if (theme === 'light') {
           document.documentElement.classList.add('light');
-          if (themeIcon) themeIcon.textContent = 'Claro';
+          if (themeIcon) themeIcon.textContent = isSwedish ? 'Ljust' : isItalian ? 'Chiaro' : 'Claro';
         } else {
           document.documentElement.classList.remove('light');
-          if (themeIcon) themeIcon.textContent = 'Oscuro';
+          if (themeIcon) themeIcon.textContent = isSwedish ? 'Mörkt' : isItalian ? 'Scuro' : 'Oscuro';
         }
         localStorage.setItem('theme', theme);
       };
 
-      // Initial apply
       setTheme(getTheme());
 
-      // Toggle click handler
       if (themeToggle) {
         themeToggle.addEventListener('click', () => {
           const isLight = document.documentElement.classList.contains('light');

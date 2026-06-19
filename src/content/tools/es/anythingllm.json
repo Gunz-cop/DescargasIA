@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Aplicación de escritorio y self-hosted para chatear con documentos, modelos locales y flujos RAG.",
+  "longDescription": "AnythingLLM es una aplicación de IA para escritorio y despliegues self-hosted. Permite conectar modelos, documentos, agentes y bases de conocimiento con enfoque local o privado.",
+  "bestFor": [
+    "Crear bases de conocimiento con documentos propios",
+    "Usar modelos locales o proveedores externos en una misma interfaz",
+    "Probar flujos RAG sin montar una aplicación desde cero",
+    "Usuarios que quieren una app de escritorio privada y flexible"
+  ],
+  "limitations": [
+    "Las funciones avanzadas pueden requerir configuración técnica.",
+    "El rendimiento depende del modelo y del equipo o servidor usado.",
+    "Algunas integraciones externas pueden requerir claves API."
+  ],
+  "safetyNotes": [
+    "Evita mirrors de AnythingLLM si vas a trabajar con documentos privados.",
+    "Descarga desde anythingllm.com o fuentes oficiales del proyecto.",
+    "Revisa qué proveedores externos y claves API conectas dentro de la aplicación."
+  ],
+  "editorialSummary": "AnythingLLM es una opción fuerte para quienes quieren chatear con documentos y construir flujos RAG sin depender únicamente de una nube cerrada. Esta ficha prioriza la descarga de escritorio y documentación oficial.",
+  "editorialSections": [
+    {
+      "heading": "Qué diferencia a AnythingLLM",
+      "body": "AnythingLLM no es solo un chat local. Su atractivo está en combinar documentos, bases de conocimiento, modelos y agentes dentro de una interfaz orientada a trabajo real. Para usuarios que han probado ChatGPT pero quieren consultar carpetas, PDFs o información interna, AnythingLLM ofrece un puente entre el uso personal y un flujo más privado.\n\nEsa promesa también atrae mirrors y paquetes reempaquetados. Como maneja documentos y puede conectarse a modelos o claves API, descargarlo desde una fuente dudosa es especialmente mala idea. La ruta segura es su web oficial, documentación o repositorio."
+    },
+    {
+      "heading": "Desktop, self-hosted y modelos",
+      "body": "AnythingLLM puede usarse como aplicación de escritorio y también en escenarios self-hosted. En escritorio, el foco está en empezar rápido sin montar infraestructura. En entornos más técnicos, puede conectarse con modelos locales, proveedores cloud y flujos de recuperación de información.\n\nEsto lo diferencia de LM Studio, que se centra más en descubrir y ejecutar modelos locales, y de Ollama, que funciona como motor por comandos y API. AnythingLLM está más cerca de una aplicación de conocimiento: el usuario quiere preguntarle a sus documentos y organizar información."
+    },
+    {
+      "heading": "Cuándo elegirlo",
+      "body": "Tiene sentido si tu prioridad es trabajar con documentos, crear espacios de conocimiento o probar RAG sin programar todo desde cero. Para simplemente conversar con un modelo local, Jan AI o LM Studio pueden ser más directos. Para automatizar desde terminal o integrarlo con herramientas de desarrollo, Ollama puede resultar más flexible.\n\nLa decisión depende de tu flujo: documentos y conocimiento organizado apuntan a AnythingLLM; exploración de modelos apunta a LM Studio o Jan; infraestructura ligera apunta a Ollama."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿AnythingLLM tiene app de escritorio?",
+      "answer": "Sí. AnythingLLM ofrece descarga de escritorio para sistemas compatibles desde su sitio oficial."
+    },
+    {
+      "question": "¿AnythingLLM funciona sin cuenta?",
+      "answer": "AnythingLLM Desktop puede usarse localmente sin una cuenta SaaS obligatoria, aunque ciertas integraciones pueden requerir claves o servicios externos."
+    },
+    {
+      "question": "¿AnythingLLM sirve para RAG?",
+      "answer": "Sí. Es una de sus funciones principales: conectar documentos y fuentes de conocimiento para consultarlas con modelos de IA."
+    },
+    {
+      "question": "¿Es seguro descargar AnythingLLM desde SourceForge u otros mirrors?",
+      "answer": "Para reducir riesgo, DescargasIA recomienda usar la web oficial, documentación oficial o repositorio del proyecto."
+    }
+  ],
+  "spanishSupport": "partial"
+}

@@ -1,0 +1,34 @@
+{
+  "name": "Suno AI",
+  "officialWebsite": "https://suno.com",
+  "categories": [
+    "musica-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://suno.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "suno",
+    "musica-ia",
+    "canciones-ia",
+    "audio-generativo",
+    "creadores"
+  ],
+  "alternatives": [
+    "chatgpt",
+    "gemini"
+  ],
+  "initials": "SN",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://suno.com"
+  ]
+}

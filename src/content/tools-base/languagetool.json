@@ -1,0 +1,52 @@
+{
+  "name": "LanguageTool",
+  "officialWebsite": "https://languagetool.org/es",
+  "categories": [
+    "traduccion-redaccion-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://languagetool.org/es",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://languagetool.org/es/insights/windows",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://apps.apple.com/es/app/languagetool-para-safari/id1534275765",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/es/app/languagetool-grammar-checker/id1625345759",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": false,
+  "tags": [
+    "languagetool",
+    "corrector",
+    "redaccion",
+    "gramatica",
+    "open-source"
+  ],
+  "alternatives": [
+    "chatgpt",
+    "deepl"
+  ],
+  "initials": "LT",
+  "trustLevel": "verified",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://languagetool.org"
+  ]
+}

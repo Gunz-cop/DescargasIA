@@ -1,0 +1,51 @@
+{
+  "name": "Canva IA",
+  "officialWebsite": "https://www.canva.com/canva-ai/",
+  "categories": [
+    "generacion-imagenes"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://www.canva.com/canva-ai/",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.canva.editor",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/canva-design-photo-video/id897446215",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "canva",
+    "diseño",
+    "magic-studio",
+    "imagenes",
+    "plantillas"
+  ],
+  "alternatives": [
+    "midjourney",
+    "stable-diffusion",
+    "runway"
+  ],
+  "screenshotUrl": null,
+  "initials": "CV",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://www.canva.com/canva-ai/",
+    "https://www.canva.com/magic-design/",
+    "https://play.google.com/store/apps/details?id=com.canva.editor",
+    "https://apps.apple.com/us/app/canva-design-photo-video/id897446215"
+  ]
+}

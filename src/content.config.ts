@@ -13,7 +13,7 @@ const platformDetails = z.object({
     'github-repo',
     'package-manager'
   ]),
-  label: z.string(),
+  label: z.string().optional(),
   isOfficial: z.boolean(),
   lastChecked: z.string().optional()
 });
@@ -28,17 +28,14 @@ const editorialSection = z.object({
   body: z.string()
 });
 
-const tools = defineCollection({
-  loader: glob({ pattern: '*.json', base: './src/content/tools' }),
+const toolsBase = defineCollection({
+  loader: glob({ pattern: '*.json', base: './src/content/tools-base' }),
   schema: z.object({
     name: z.string(),
-    slug: z.string(),
-    shortDescription: z.string().max(180),
-    longDescription: z.string(),
     officialWebsite: z.string().url(),
     categories: z.array(z.string()),
     
-    // Esquema de plataformas granular
+    // Esquema de plataformas sin etiquetas traducidas (se generan dinámicamente)
     platforms: z.object({
       web: platformDetails.optional(),
       windows: platformDetails.optional(),
@@ -50,15 +47,8 @@ const tools = defineCollection({
     
     pricingModel: z.enum(['free', 'freemium', 'paid', 'enterprise', 'unknown']),
     requiresAccount: z.union([z.boolean(), z.literal('unknown')]),
-    spanishSupport: z.enum(['yes', 'partial', 'no', 'unknown']),
     tags: z.array(z.string()).default([]),
     alternatives: z.array(z.string()).default([]),
-    safetyNotes: z.array(z.string()).default([]),
-    bestFor: z.array(z.string()).default([]),
-    limitations: z.array(z.string()).default([]),
-    faq: z.array(faqItem).default([]),
-    editorialSummary: z.string().optional(),
-    editorialSections: z.array(editorialSection).default([]),
     screenshotUrl: z.string().url().nullable().optional(),
     initials: z.string().optional(),
     
@@ -68,6 +58,24 @@ const tools = defineCollection({
     officialSources: z.array(z.string().url()).default([]),
   })
 });
+
+const tools = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/tools' }),
+  schema: z.object({
+    shortDescription: z.string().max(180),
+    longDescription: z.string(),
+    bestFor: z.array(z.string()).default([]),
+    limitations: z.array(z.string()).default([]),
+    safetyNotes: z.array(z.string()).default([]),
+    editorialSummary: z.string().optional(),
+    editorialSections: z.array(editorialSection).default([]),
+    faq: z.array(faqItem).default([]),
+    spanishSupport: z.enum(['yes', 'partial', 'no', 'unknown']).optional(),
+    swedishSupport: z.enum(['yes', 'partial', 'no', 'unknown']).optional(),
+    italianSupport: z.enum(['yes', 'partial', 'no', 'unknown']).optional(),
+  })
+});
+
 
 const categories = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/content/categories' }),
@@ -94,6 +102,7 @@ const guides = defineCollection({
 });
 
 export const collections = {
+  toolsBase,
   tools,
   categories,
   guides

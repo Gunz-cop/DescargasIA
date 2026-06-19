@@ -1,0 +1,58 @@
+{
+  "name": "DeepL",
+  "officialWebsite": "https://www.deepl.com",
+  "categories": [
+    "traduccion-redaccion-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://www.deepl.com/translator",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://www.deepl.com/windows-app",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://www.deepl.com/macos-app",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/deepl-translate/id1550536061",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.deepl.mobiletranslator",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": false,
+  "tags": [
+    "deepl",
+    "traduccion",
+    "idiomas",
+    "redaccion",
+    "productividad"
+  ],
+  "alternatives": [
+    "chatgpt",
+    "gemini"
+  ],
+  "initials": "DL",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://www.deepl.com"
+  ]
+}

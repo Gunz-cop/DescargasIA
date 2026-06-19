@@ -1,0 +1,52 @@
+{
+  "name": "Runway",
+  "officialWebsite": "https://runwayml.com",
+  "categories": [
+    "video-ia",
+    "generacion-imagenes"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://runwayml.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.runwayml.prod",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/runwayml/id1665024375",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "runway",
+    "video",
+    "gen-3",
+    "gen-4",
+    "creadores"
+  ],
+  "alternatives": [
+    "luma-dream-machine",
+    "elevenlabs",
+    "canva"
+  ],
+  "screenshotUrl": null,
+  "initials": "RW",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://runwayml.com",
+    "https://app.runwayml.com",
+    "https://play.google.com/store/apps/details?id=com.runwayml.prod",
+    "https://apps.apple.com/us/app/runwayml/id1665024375"
+  ]
+}

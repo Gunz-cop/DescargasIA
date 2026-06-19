@@ -1,0 +1,50 @@
+{
+  "shortDescription": "La inteligencia artificial conversacional de Anthropic enfocada en redacción avanzada, código y razonamiento lógico.",
+  "longDescription": "Claude es una IA conversacional desarrollada por Anthropic. Es reconocida internacionalmente por sus capacidades excepcionales en comprensión lectora, redacción de textos creativos y técnicos, y análisis avanzado de código de programación. Cuenta con versión web y aplicaciones de escritorio oficiales.",
+  "bestFor": [],
+  "limitations": [],
+  "safetyNotes": [
+    "Anthropic solo distribuye ejecutables oficiales de escritorio a través de claude.ai/download. No instales archivos procedentes de repositorios alternativos."
+  ],
+  "editorialSections": [
+    {
+      "heading": "Por qué tanta gente busca descargar Claude",
+      "body": "Claude es la inteligencia artificial conversacional desarrollada por Anthropic, y su presencia en búsquedas como \"descargar Claude para Windows\", \"Claude app Android\" o \"Claude gratis en español\" ha crecido de forma sostenida desde su lanzamiento público. A diferencia de muchas herramientas de IA que llegaron al mercado con mucho ruido, Claude ganó reconocimiento principalmente entre usuarios que trabajan con textos extensos, análisis complejos y tareas de razonamiento donde la precisión importa más que la velocidad.\n\nEsa reputación también genera confusión. Muchas personas llegan buscando un instalador que en realidad no existe como archivo independiente: Claude funciona principalmente desde el navegador o a través de apps nativas publicadas directamente por Anthropic. Esta ficha existe precisamente para evitar que alguien descargue un ejecutable de un sitio de terceros creyendo que es la versión oficial, cuando en realidad estaría instalando software desconocido."
+    },
+    {
+      "heading": "Cómo acceder a Claude de forma segura",
+      "body": "El acceso más directo es a través de claude.ai desde cualquier navegador moderno. No requiere instalar nada y la cuenta gratuita permite usar el modelo base sin límites de tiempo aunque sí con límites de mensajes. Para escritorio, Anthropic distribuye aplicaciones nativas para Windows y macOS desde claude.ai/download, que es el único dominio oficial donde debés buscar los instaladores.\n\nPara móvil, la situación varía según el sistema: en iPhone e iPad la app oficial está en App Store; en Android la disponibilidad ha sido más limitada y ha cambiado según la región y el momento. Si al momento de leer esto no encontrás la app de Claude en Google Play, la alternativa correcta es usar claude.ai desde el navegador móvil, no descargar un APK de un sitio externo. Anthropic no distribuye APKs fuera de las tiendas oficiales."
+    },
+    {
+      "heading": "Para qué destaca Claude en el trabajo real",
+      "body": "Claude se distingue especialmente en tareas que requieren manejar textos largos con coherencia: resumir documentos extensos, revisar contratos, analizar reportes o escribir contenido estructurado de muchas páginas sin perder el hilo. Su ventana de contexto amplia le permite recordar y relacionar información de documentos completos dentro de una misma conversación, algo que marca diferencia cuando el trabajo real involucra materiales de varias páginas.\n\nEn programación, Claude tiene buena capacidad para explicar código, revisar lógica y generar implementaciones desde descripciones en lenguaje natural. No está integrado directamente en un editor como Cursor, pero su API es la base de varios entornos de desarrollo. Para quienes trabajan con redacción, análisis o documentación técnica, Claude suele resultar más cómodo que otras alternativas en términos de tono, precisión y capacidad de seguir instrucciones complejas con consistencia."
+    },
+    {
+      "heading": "Lo que diferencia a Claude de otros asistentes de IA",
+      "body": "Anthropic diseñó Claude con un enfoque particular en seguridad y alineación: el modelo está entrenado para ser útil, pero también para reconocer y señalar sus propios límites. Eso se traduce en respuestas que tienden a ser más cuidadosas en temas sensibles, más transparentes sobre incertidumbre y menos propensas a inventar información con confianza falsa. Para algunas tareas eso puede sentirse como una limitación; para otras, es exactamente lo que se necesita.\n\nOtra diferencia práctica es su manejo del contexto de conversación. Claude tiende a mantener el hilo de una discusión con más coherencia en intercambios largos, lo que lo hace especialmente útil para sesiones de trabajo extendidas donde el contexto acumulado importa. También acepta documentos adjuntos como PDFs e imágenes, lo que amplía su utilidad para quienes necesitan analizar materiales en lugar de solo generar texto nuevo."
+    },
+    {
+      "heading": "Cuándo tiene sentido mirar otras opciones",
+      "body": "Claude es una herramienta fuerte para redacción, análisis y razonamiento, pero hay contextos donde otras opciones pueden encajar mejor. Si tu flujo de trabajo está centrado en programación dentro de un IDE, Cursor ofrece una integración más directa con el entorno de desarrollo. Si necesitás acceso a información en tiempo real o búsqueda web como parte de la respuesta, Gemini o Perplexity pueden ser más convenientes. Si preferís trabajar con modelos completamente locales y sin enviar datos a servidores externos, Ollama o LM Studio son el camino.\n\nLa elección entre Claude y ChatGPT suele depender del tipo de tarea y del estilo de interacción que cada persona prefiere. No hay una respuesta universal. Lo que sí es universal es la recomendación de acceder siempre desde los canales oficiales que se muestran en esta ficha, independientemente de cuál herramienta elijas."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Es seguro acceder a Claude desde DescargasIA?",
+      "answer": "DescargasIA no aloja archivos de Claude. Esta ficha enlaza únicamente a claude.ai, claude.ai/download y las tiendas oficiales de apps, que son los canales verificados por Anthropic para acceder al servicio."
+    },
+    {
+      "question": "¿Claude tiene aplicación oficial para Windows y Mac?",
+      "answer": "Sí. Anthropic distribuye aplicaciones de escritorio para Windows y macOS desde claude.ai/download. Esa es la única fuente oficial para los instaladores de escritorio."
+    },
+    {
+      "question": "¿Existe una app de Claude para Android?",
+      "answer": "La disponibilidad de la app de Claude para Android ha variado según región y fecha. Si no está disponible en Google Play en tu región, la alternativa segura es usar claude.ai desde el navegador móvil. No descargues APKs de fuentes externas."
+    },
+    {
+      "question": "¿Claude es gratuito?",
+      "answer": "Claude tiene un plan gratuito accesible desde claude.ai con límites de uso. Existe también un plan Pro con más capacidad y acceso a modelos más avanzados. No existen versiones desbloqueadas gratuitas fuera del plan oficial."
+    }
+  ],
+  "spanishSupport": "yes"
+}

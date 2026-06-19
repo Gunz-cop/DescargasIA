@@ -1,0 +1,73 @@
+---
+// src/pages/[lang]/privacidad.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { languages } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang }
+  }));
+}
+
+const { lang } = Astro.params as { lang: 'es' | 'sv' | 'it' };
+
+const titles = {
+  es: 'Política de Privacidad | FuenteAI',
+  sv: 'Integritetspolicy | FuenteAI',
+  it: 'Informativa sulla Privacy | FuenteAI'
+};
+
+const descs = {
+  es: 'Detalles sobre cómo protegemos tu privacidad y la ausencia de cookies de rastreo invasivas en FuenteAI.',
+  sv: 'Information om hur vi skyddar din integritet och hanterar användardata på FuenteAI.',
+  it: 'Informazioni su come gestiamo e proteggiamo la privacy dei nostri utenti su FuenteAI.'
+};
+---
+
+<BaseLayout title={titles[lang]} description={descs[lang]} lang={lang}>
+  <article class="max-w-3xl mx-auto py-12" aria-labelledby="page-title">
+    <header class="mb-10 border-b border-brand-card-border pb-8">
+      <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-success-border bg-brand-success-bg px-3 py-1 text-[11px] font-black uppercase text-brand-success font-mono">
+        {lang === 'sv' ? 'Reviderad: Juni 2026' : lang === 'it' ? 'Revisionato: Giugno 2026' : 'Revisado: Junio 2026'}
+      </span>
+      <h1 id="page-title" class="text-3xl sm:text-4xl font-black tracking-tight text-brand-text font-['Outfit',sans-serif] mb-4">
+        {lang === 'sv' ? 'Integritetspolicy' : lang === 'it' ? 'Informativa sulla Privacy' : 'Política de Privacidad'}
+      </h1>
+      <p class="text-sm text-brand-text-muted leading-relaxed">
+        {lang === 'sv'
+          ? 'Vi bryr oss om din integritet. Den här policyn förklarar hur vi hanterar dina uppgifter på FuenteAI.'
+          : lang === 'it'
+            ? 'La tua privacy è fondamentale. Di seguito spieghiamo come gestiamo le tue informazioni su FuenteAI.'
+            : 'Tu privacidad es fundamental. En este documento detallamos cómo tratamos y protegemos tus datos al navegar por FuenteAI.'}
+      </p>
+    </header>
+
+    <div class="space-y-8 text-sm sm:text-base leading-relaxed text-brand-text-muted">
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> {lang === 'sv' ? 'Insamling av uppgifter' : lang === 'it' ? 'Raccolta dei Dati' : 'Recopilación de Datos'}
+        </h2>
+        <p>
+          {lang === 'sv'
+            ? 'FuenteAI samlar inte in några personliga identifierbara uppgifter från sina besökare. Du kan bläddra i hela vår katalog anonymt.'
+            : lang === 'it'
+              ? 'FuenteAI non raccoglie dati personali identificabili. Puoi esplorare liberamente il nostro catalogo in modo anonimo.'
+              : 'FuenteAI no recopila datos personales de identificación de sus visitantes. La navegación por nuestro catálogo es 100% anónima.'}
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> {lang === 'sv' ? 'Externa länkar' : lang === 'it' ? 'Collegamenti Esterni' : 'Enlaces de Terceros'}
+        </h2>
+        <p>
+          {lang === 'sv'
+            ? 'Vår portal innehåller länkar till externa webbplatser (t.ex. Google Play, App Store och officiella webbplatser för AI-verktyg). När du lämnar vår sajt gäller den externa sajtens integritetspolicy.'
+            : lang === 'it'
+              ? 'Questo portale contiene link a siti esterni. Una volta lasciato FuenteAI, si applicano le politiche sulla privacy dei relativi siti esterni.'
+              : 'Nuestro portal incluye enlaces a sitios web de terceros. Una vez que abandonas FuenteAI para ir a la descarga oficial, tu navegación queda sujeta a la política de privacidad de ese sitio externo.'}
+        </p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

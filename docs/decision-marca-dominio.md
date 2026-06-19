@@ -169,21 +169,22 @@ Fallback conservador: DescargasIA.com
 
 **Análisis Técnico y de Arquitectura:**
 
-1.  **Redirecciones y Migración de Dominio (301):**
-    *   Si migramos de `descargasia.com` a `fuenteai.com` (o `rashnuindex.com`), el riesgo de pérdida de SEO se mitiga configurando una regla de redirección 301 en Cloudflare a nivel de dominio: `descargasia.com/*` redirige a `fuenteai.com/es/$1`.
-    *   Este mapeo es directo y limpio. Técnicamente es más fácil gestionar esta redirección en el borde (Cloudflare Redirect Rules) que programar redirecciones complejas en el código de Astro.
-2.  **Consistencia de Rutas i18n:**
-    *   Tanto `fuenteai.com/sv/` como `rashnuindex.com/sv/` son semánticamente impecables. El uso de "AI" (de reconocimiento universal) en `fuenteai.com` es superior a "IA" para los mercados de Suecia e Italia, eliminando cualquier fricción lingüística en la barra de navegación.
-3.  **Fricción Cognitiva y SEO:**
-    *   Alineado con el argumento de Claude: `fuenteai.com` tiene la ventaja de que el dominio autodescribe la temática de inmediato. No requiere explicaciones para que el usuario o el motor de búsqueda identifiquen la relevancia temática de la página.
-4.  **Facilidad de Mantenimiento en Código:**
-    *   Cambiar la marca a nivel de código solo nos exige actualizar `SITE_URL` en `astro.config.mjs` y adaptar los textos legales e institucionales.
+1. **Redirecciones y Migración de Dominio (301):**
+    * Si migramos de `descargasia.com` a `fuenteai.com` (o `rashnuindex.com`), el riesgo de pérdida de SEO se mitiga configurando una regla de redirección 301 en Cloudflare a nivel de dominio: `descargasia.com/*` redirige a `fuenteai.com/es/$1`.
+    * Este mapeo es directo y limpio. Técnicamente es más fácil gestionar esta redirección en el borde (Cloudflare Redirect Rules) que programar redirecciones complejas en el código de Astro.
+2. **Consistencia de Rutas i18n:**
+    * Tanto `fuenteai.com/sv/` como `rashnuindex.com/sv/` son semánticamente impecables. El uso de "AI" (de reconocimiento universal) en `fuenteai.com` es superior a "IA" para los mercados de Suecia e Italia, eliminando cualquier fricción lingüística en la barra de navegación.
+3. **Fricción Cognitiva y SEO:**
+    * Alineado con el argumento de Claude: `fuenteai.com` tiene la ventaja de que el dominio autodescribe la temática de inmediato. No requiere explicaciones para que el usuario o el motor de búsqueda identifiquen la relevancia temática de la página.
+4. **Facilidad de Mantenimiento en Código:**
+    * Cambiar la marca a nivel de código solo nos exige actualizar `SITE_URL` en `astro.config.mjs` y adaptar los textos legales e institucionales.
 
 **Matriz de Puntuación de Antigravity (Actualizada):**
-*   **fuenteai.com:** **29/35** (Memorabilidad: 4 | Pronunciación: 5 | Escritura: 5 | Escalabilidad: 5 | Disponibilidad: 3 | Diferenciación: 3 | Confianza: 4). *Nota: El valor de "AI" global y la simplicidad de escritura compensan la falta de singularidad mitológica.*
-*   **RashnuIndex.com:** **28/35** (Memorabilidad: 4 | Pronunciación: 3 | Escritura: 3 | Escalabilidad: 5 | Disponibilidad: 5 | Diferenciación: 4 | Confianza: 4).
-*   **FuenteIA.com:** **26/35** (Memorabilidad: 3 | Pronunciación: 4 | Escritura: 4 | Escalabilidad: 4 | Disponibilidad: 3 | Diferenciación: 4 | Confianza: 4).
-*   **DescargasIA.com:** **21/35** (Memorabilidad: 4 | Pronunciación: 2 | Escritura: 4 | Escalabilidad: 2 | Disponibilidad: 5 | Diferenciación: 2 | Confianza: 2).
+
+* **fuenteai.com:** **29/35** (Memorabilidad: 4 | Pronunciación: 5 | Escritura: 5 | Escalabilidad: 5 | Disponibilidad: 3 | Diferenciación: 3 | Confianza: 4). *Nota: El valor de "AI" global y la simplicidad de escritura compensan la falta de singularidad mitológica.*
+* **RashnuIndex.com:** **28/35** (Memorabilidad: 4 | Pronunciación: 3 | Escritura: 3 | Escalabilidad: 5 | Disponibilidad: 5 | Diferenciación: 4 | Confianza: 4).
+* **FuenteIA.com:** **26/35** (Memorabilidad: 3 | Pronunciación: 4 | Escritura: 4 | Escalabilidad: 4 | Disponibilidad: 3 | Diferenciación: 4 | Confianza: 4).
+* **DescargasIA.com:** **21/35** (Memorabilidad: 4 | Pronunciación: 2 | Escritura: 4 | Escalabilidad: 2 | Disponibilidad: 5 | Diferenciación: 2 | Confianza: 2).
 
 ### Claude
 
@@ -317,6 +318,57 @@ La decisión ya está suficientemente madura para cerrarse.
 
 — ChatGPT
 
+### ChatGPT — Actualización de voto
+
+**Voto actualizado:** **FuenteAI.com**
+**Marca visible:** **FuenteAI**
+**Descriptor:** Fuentes oficiales de herramientas de IA
+
+Después de revisar el aporte de Claude, ajusto mi voto anterior.
+
+Inicialmente apoyé **RashnuIndex.com** porque tiene mayor diferenciación y más potencial como marca editorial internacional. Sin embargo, considero que Claude señaló correctamente el riesgo principal: **Rashnu necesita explicación antes de que el usuario entienda el producto**.
+
+Para este proyecto, la claridad inicial es crítica.
+
+El usuario que llega buscando una herramienta de IA no debería tener que interpretar una referencia mitológica. Debe entender rápidamente que el sitio le ayuda a encontrar fuentes oficiales, evitar clones, evitar mirrors dudosos y ubicar herramientas confiables.
+
+En ese sentido, **FuenteAI** logra un equilibrio más fuerte:
+
+* conserva el concepto central de “fuente”;
+* comunica origen, referencia y verificación;
+* evita la carga negativa de “descargas”;
+* usa “AI”, que es más internacional que “IA”;
+* es más fácil de explicar que Rashnu;
+* puede escalar hacia índice, comparativas, guías, blog y contenido editorial.
+
+**RashnuIndex** sigue siendo una marca más singular, pero su singularidad tiene un coste: requiere más pedagogía. **FuenteAI** es menos mítica, pero más inmediata.
+
+Mi recomendación final es:
+
+```text
+Dominio canónico: fuenteai.com
+Marca visible: FuenteAI
+Descriptor ES: Fuentes oficiales de herramientas de IA
+Descriptor EN: Official sources for AI tools
+Arquitectura: /es/, /sv/, /it/
+Dominio defensivo: descargasia.com → fuenteai.com/es/
+```
+
+Condiciones antes de cerrar:
+
+1. Confirmar que `fuenteai.com` está disponible a precio normal.
+2. Revisar conflictos básicos de marca en EUIPO, USPTO y Costa Rica.
+3. Mantener `DescargasIA.com` como redirección defensiva para capturar intención hispana.
+4. No seguir abriendo candidatos salvo impedimento real.
+
+Con este ajuste, considero que la decisión está madura para cerrarse.
+
+— ChatGPT
+
 ### Propietario
 
-Pendiente: decisión final.
+**Decisión Final:** **fuenteai.com** (Marca visible: **FuenteAI**).
+
+*   **Razón:** Se opta por el enfoque pragmático propuesto por Claude. La marca "AI" tiene un alcance global incuestionable, se asocia inmediatamente con el sector, y simplifica la comprensión y el posicionamiento SEO en todos los idiomas (ES, SV, IT) sin fricciones conceptuales.
+*   **Acción Inmediata:** Actualizar el nombre del proyecto en `wrangler.jsonc` a `fuenteai` para emparejarlo con el servicio activo en Cloudflare, y cambiar `SITE_URL` en `astro.config.mjs` a `https://fuenteai.com`.
+

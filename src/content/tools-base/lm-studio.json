@@ -1,0 +1,51 @@
+{
+  "name": "LM Studio",
+  "officialWebsite": "https://lmstudio.ai",
+  "categories": [
+    "modelos-locales"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://lmstudio.ai",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://lmstudio.ai",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://lmstudio.ai",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "linux": {
+      "url": "https://lmstudio.ai",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "tags": [
+    "lm-studio",
+    "local",
+    "offline",
+    "interfaz",
+    "modelos-locales"
+  ],
+  "alternatives": [
+    "ollama"
+  ],
+  "initials": "LMS",
+  "trustLevel": "verified",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://lmstudio.ai"
+  ]
+}

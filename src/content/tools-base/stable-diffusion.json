@@ -1,0 +1,58 @@
+{
+  "name": "Stable Diffusion WebUI",
+  "officialWebsite": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+  "categories": [
+    "generacion-imagenes",
+    "modelos-locales"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+      "type": "github-repo",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "windows": {
+      "url": "https://github.com/LykosAI/StabilityMatrix",
+      "type": "github-repo",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "mac": {
+      "url": "https://github.com/comfy-org/ComfyUI",
+      "type": "github-repo",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "linux": {
+      "url": "https://github.com/comfy-org/ComfyUI",
+      "type": "github-repo",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "tags": [
+    "stable-diffusion",
+    "automatic1111",
+    "comfyui",
+    "imagenes",
+    "local"
+  ],
+  "alternatives": [
+    "midjourney",
+    "canva",
+    "lm-studio",
+    "ollama"
+  ],
+  "screenshotUrl": null,
+  "initials": "SD",
+  "trustLevel": "verified",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+    "https://github.com/comfy-org/ComfyUI",
+    "https://github.com/LykosAI/StabilityMatrix"
+  ]
+}

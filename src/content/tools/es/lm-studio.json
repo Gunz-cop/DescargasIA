@@ -1,0 +1,50 @@
+{
+  "shortDescription": "Una interfaz gráfica intuitiva y completa para descubrir, descargar y chatear con modelos LLM locales de forma offline.",
+  "longDescription": "LM Studio es una aplicación de escritorio diseñada para facilitar la ejecución de modelos de IA locales con una interfaz similar a la de ChatGPT. Permite descargar modelos directamente desde Hugging Face, configurar los parámetros de carga en GPU/CPU y levantar un servidor API local compatible con OpenAI de forma extremadamente sencilla.",
+  "bestFor": [],
+  "limitations": [],
+  "safetyNotes": [
+    "LM Studio es 100% gratuito para uso personal. No requiere registrarse. Su web oficial es lmstudio.ai."
+  ],
+  "editorialSections": [
+    {
+      "heading": "Por qué buscan descargar LM Studio",
+      "body": "LM Studio cubre el mismo caso de uso que Ollama —ejecutar modelos de lenguaje de forma local— pero desde un ángulo diferente: una interfaz gráfica completa que hace accesible el proceso de descarga, gestión y uso de modelos sin necesidad de tocar la línea de comandos. Las búsquedas de \"descargar LM Studio\", \"LM Studio para Windows\" o \"cómo usar modelos locales sin código\" vienen frecuentemente de usuarios que quieren la privacidad y el control de la IA local, pero sin la curva técnica de una herramienta de terminal.\n\nEsa accesibilidad es su diferencial más claro. Donde Ollama es una herramienta de infraestructura pensada para desarrolladores, LM Studio es una aplicación completa con buscador de modelos integrado, interfaz de chat, configuración visual de parámetros y soporte para múltiples conversaciones. Podés descargar un modelo de Hugging Face, ajustar su temperatura, iniciar una conversación y guardarla, todo desde una interfaz que se parece más a una app de escritorio que a una terminal."
+    },
+    {
+      "heading": "Cómo descargar LM Studio desde el canal oficial",
+      "body": "LM Studio se distribuye desde lmstudio.ai, que es el único canal oficial de descarga. Hay versiones para Windows, macOS (Intel y Apple Silicon) y Linux en versión beta. El instalador es estándar para cada sistema operativo y no requiere configuración adicional para empezar: una vez instalado, LM Studio te guía a través de la búsqueda y descarga de modelos directamente desde la aplicación.\n\nLM Studio es gratuito para uso personal y no requiere crear una cuenta para funcionar. El modelo de negocio contempla licencias comerciales para uso empresarial, pero para uso individual la aplicación completa está disponible sin costo ni registro. El único dominio oficial es lmstudio.ai; cualquier otro sitio que ofrezca descargas de LM Studio no es fuente oficial."
+    },
+    {
+      "heading": "Qué ofrece LM Studio que otros enfoques no tienen",
+      "body": "La experiencia de usuario de LM Studio está diseñada para reducir la fricción en cada paso del proceso. El buscador integrado conecta directamente con Hugging Face y permite filtrar modelos por tamaño, arquitectura y compatibilidad con tu hardware. Una vez seleccionado el modelo, la descarga y la configuración son automáticas. No necesitás saber qué es GGUF, qué significa Q4_K_M ni cómo se carga un modelo en memoria: LM Studio lo gestiona.\n\nTambién incluye un servidor local compatible con la API de OpenAI, lo que significa que podés usar LM Studio como backend para otras aplicaciones que ya soportan ese formato. Eso lo convierte en una puerta de entrada tanto para usuarios que solo quieren chatear con un modelo local como para desarrolladores que quieren probar integraciones sin depender de la API de OpenAI."
+    },
+    {
+      "heading": "LM Studio vs Ollama: cuándo elegir cada uno",
+      "body": "La comparación entre LM Studio y Ollama es frecuente porque ambos cubren el mismo caso de uso base. La diferencia principal es el perfil de usuario al que apuntan. Ollama es más ligero, más rápido de configurar desde terminal y más flexible como pieza de infraestructura que otros sistemas pueden invocar. LM Studio es más completo como aplicación autónoma, con interfaz visual, gestión de conversaciones y configuración gráfica de parámetros.\n\nPara un desarrollador que quiere integrar modelos locales en sus propias aplicaciones, Ollama suele ser más conveniente. Para alguien que quiere usar modelos locales sin escribir código, LM Studio elimina más fricción. Para muchos usuarios, la respuesta es usar ambos: Ollama para la infraestructura y APIs, LM Studio para explorar modelos y mantener conversaciones. Las dos herramientas coexisten sin conflictos en el mismo sistema."
+    },
+    {
+      "heading": "Lo que necesitás para que LM Studio funcione bien",
+      "body": "Como cualquier herramienta de IA local, LM Studio depende del hardware disponible. Los modelos más pequeños (1B-3B parámetros) corren en equipos con 8GB de RAM, aunque con velocidades que pueden sentirse lentas en conversaciones extensas. Para una experiencia fluida con modelos medianos (7B-13B parámetros), lo recomendable es tener 16GB de RAM o más. Los equipos con Apple Silicon (M1, M2, M3, M4) tienen ventaja por la memoria unificada, que permite a LM Studio usar tanto CPU como GPU sin separación.\n\nEn Windows y Linux, una GPU NVIDIA con suficiente VRAM acelera significativamente la inferencia. LM Studio detecta automáticamente el hardware disponible y ofrece recomendaciones de modelos compatibles. Para usuarios que no tienen hardware potente pero quieren explorar IA local, los modelos de 1B-3B parámetros son un punto de entrada razonable que funciona en equipos más modestos."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿LM Studio es gratuito?",
+      "answer": "Sí, LM Studio es gratuito para uso personal y no requiere cuenta ni registro. Para uso comercial existen licencias de pago. El único canal oficial de descarga es lmstudio.ai."
+    },
+    {
+      "question": "¿LM Studio funciona sin internet?",
+      "answer": "Sí. Una vez descargados los modelos, LM Studio funciona completamente offline. La descarga inicial de modelos requiere conexión, pero el uso posterior es totalmente local."
+    },
+    {
+      "question": "¿Cuál es la diferencia entre LM Studio y Ollama?",
+      "answer": "LM Studio es una aplicación gráfica completa pensada para usuarios que prefieren interfaz visual. Ollama es una herramienta de línea de comandos más orientada a desarrolladores e integración con otras aplicaciones. Ambas ejecutan modelos localmente y pueden coexistir en el mismo sistema."
+    },
+    {
+      "question": "¿Qué modelos puedo usar en LM Studio?",
+      "answer": "LM Studio soporta modelos en formato GGUF disponibles en Hugging Face, incluyendo variantes de Llama, Mistral, Gemma, Phi y muchos otros. Tiene un buscador integrado que filtra por compatibilidad con tu hardware."
+    }
+  ],
+  "spanishSupport": "no"
+}

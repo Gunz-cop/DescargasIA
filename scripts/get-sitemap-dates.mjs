@@ -3,16 +3,28 @@ import path from 'path';
 
 export function getSitemapDates(siteUrl) {
   const dates = {};
+  const locales = ['es', 'sv', 'it'];
 
-  // Leer fechas de herramientas
+  // Leer fechas de herramientas desde content/tools-base
+  const toolsBaseDir = './src/content/tools-base';
   const toolsDir = './src/content/tools';
-  if (fs.existsSync(toolsDir)) {
-    const files = fs.readdirSync(toolsDir).filter(f => f.endsWith('.json'));
+  
+  if (fs.existsSync(toolsBaseDir)) {
+    const files = fs.readdirSync(toolsBaseDir).filter(f => f.endsWith('.json'));
     files.forEach(file => {
       try {
-        const data = JSON.parse(fs.readFileSync(path.join(toolsDir, file), 'utf-8'));
-        if (data.slug && data.lastReviewed) {
-          dates[`${siteUrl}/${data.slug}`] = new Date(data.lastReviewed);
+        const slug = file.replace('.json', '');
+        const data = JSON.parse(fs.readFileSync(path.join(toolsBaseDir, file), 'utf-8'));
+        const lastReviewed = data.lastReviewed;
+        
+        if (lastReviewed) {
+          // Asignar fecha para cada localización que tenga traducción real
+          locales.forEach(lang => {
+            const locFile = path.join(toolsDir, lang, file);
+            if (fs.existsSync(locFile)) {
+              dates[`${siteUrl}/${lang}/${slug}`] = new Date(lastReviewed);
+            }
+          });
         }
       } catch (e) {
         console.error('Error al leer fecha de herramienta para sitemap:', file, e);
@@ -32,7 +44,10 @@ export function getSitemapDates(siteUrl) {
         const slug = file.replace(/\.md$/, '');
         const dateStr = match ? match[1] : (pubMatch ? pubMatch[1] : null);
         if (dateStr) {
-          dates[`${siteUrl}/guias/${slug}`] = new Date(dateStr);
+          locales.forEach(lang => {
+            // Suponiendo que las guías por ahora se mapean o se duplican, o simplemente apuntan a la ruta por defecto
+            dates[`${siteUrl}/${lang}/guias/${slug}`] = new Date(dateStr);
+          });
         }
       } catch (e) {
         console.error('Error al leer fecha de guía para sitemap:', file, e);

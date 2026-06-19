@@ -1,0 +1,50 @@
+{
+  "shortDescription": "El modelo de inteligencia artificial multimodal desarrollado por Google para web y móviles.",
+  "longDescription": "Gemini es la inteligencia artificial desarrollada por Google, integrada de forma nativa en su ecosistema. Permite resolver tareas lógicas, analizar imágenes, programar y conectarse con herramientas como Google Docs, Gmail y YouTube. Dispone de versión web y aplicación móvil oficial.",
+  "bestFor": [],
+  "limitations": [],
+  "safetyNotes": [
+    "Google no distribuye aplicaciones de escritorio nativas para Windows o Mac. Toda versión de escritorio que veas en la web es no oficial y potencialmente peligrosa."
+  ],
+  "editorialSections": [
+    {
+      "heading": "Por qué tanta gente busca descargar Gemini",
+      "body": "Gemini es el modelo de inteligencia artificial de Google, y su nombre aparece con frecuencia en búsquedas como \"descargar Gemini para Android\", \"app de Gemini para Windows\" o \"Gemini gratis en español\". Parte de esa demanda viene de usuarios que conocieron Gemini como la IA integrada en sus teléfonos Android y quieren usarla también desde el escritorio; otra parte viene de personas que simplemente quieren probar una alternativa a ChatGPT y asocian a Google con software confiable y gratuito.\n\nEl problema específico de Gemini en este contexto es el de las aplicaciones de escritorio falsas. Google no distribuye una aplicación nativa de Gemini para Windows ni para macOS. Eso significa que cualquier ejecutable o instalador que encuentres en sitios de descarga prometiendo \"Gemini para PC\" es, en el mejor caso, un wrapper no oficial; en el peor, software malicioso. Esta ficha existe para que esa distinción quede clara antes de que alguien haga clic en el botón equivocado."
+    },
+    {
+      "heading": "Cómo usar Gemini de forma segura en cada plataforma",
+      "body": "En escritorio, el único acceso oficial es gemini.google.com desde el navegador. No existe aplicación nativa de Gemini para Windows o macOS publicada por Google, y eso no es una limitación temporal: es una decisión de producto. Usar Gemini en el navegador es la forma oficial e intencionada de acceder al servicio desde un computador.\n\nEn Android la situación es diferente: Google sí distribuye la app oficial de Gemini a través de Google Play, y en muchos dispositivos Android modernos viene preinstalada o integrada como asistente del sistema. En iOS, la app oficial también está disponible en App Store. El punto crítico para usuarios de Android es evitar APKs de fuentes externas que prometen versiones mejoradas o desbloqueadas de Gemini, ya que Google no distribuye APKs fuera de las tiendas oficiales."
+    },
+    {
+      "heading": "Para qué destaca Gemini en el uso diario",
+      "body": "Gemini tiene ventajas naturales para quienes ya usan el ecosistema de Google. Su integración con Google Docs, Gmail, Google Drive y Google Search lo convierte en un asistente que puede actuar sobre documentos reales, resumir correos, buscar información actualizada y conectar tareas dentro del mismo entorno de trabajo. Eso es algo que herramientas sin acceso a los servicios de Google no pueden replicar de la misma manera.\n\nEn términos de capacidades de modelo, Gemini es competitivo en razonamiento multimodal: puede procesar texto, imágenes y, en algunas versiones, audio y video. Para usuarios que trabajan con contenido visual o que necesitan análisis combinados de texto e imagen, esas capacidades son una ventaja concreta. También tiene acceso a búsqueda web en tiempo real, lo que lo hace especialmente útil para consultas que dependen de información reciente."
+    },
+    {
+      "heading": "El riesgo específico de los instaladores falsos de Gemini",
+      "body": "Gemini tiene un perfil de riesgo particular: al ser una marca de Google, genera una confianza automática que los atacantes aprovechan. Sitios que distribuyen \"Gemini para PC\" o \"Gemini AI Desktop\" explotan esa asociación con Google para hacer que sus instaladores parezcan legítimos. El resultado puede ser desde adware hasta software de acceso remoto disfrazado de una herramienta de IA.\n\nEsta ficha marca explícitamente que Google no distribuye Gemini como aplicación de escritorio nativa. Si encontrás un instalador que promete eso, es una señal de alerta directa. La forma correcta de usar Gemini en una computadora es abrir el navegador e ir a gemini.google.com, sin descargar nada adicional."
+    },
+    {
+      "heading": "Cuándo tiene sentido usar otra herramienta",
+      "body": "Gemini es la opción más natural si tu trabajo ya vive dentro del ecosistema Google. Si usás Gmail, Drive y Docs como herramientas principales, la integración directa de Gemini en esos servicios ofrece una continuidad que otras IAs no tienen. Pero si tu flujo de trabajo es independiente de Google o preferís mayor control sobre tus datos, otras opciones pueden ser más adecuadas.\n\nPara redacción extensa y análisis de documentos, Claude tiende a ofrecer mejor coherencia en textos largos. Para programación dentro de un editor, Cursor es más específico. Para privacidad total y trabajo offline, Ollama o LM Studio son la respuesta. Y si el diferencial que buscás es el acceso a información web en tiempo real, tanto Gemini como Perplexity pueden cumplir esa función, aunque con enfoques distintos."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Existe una aplicación de escritorio oficial de Gemini para Windows?",
+      "answer": "No. Google no distribuye una aplicación nativa de Gemini para Windows ni macOS. El acceso oficial desde computadoras es exclusivamente a través de gemini.google.com en el navegador. Cualquier instalador que prometa lo contrario no es oficial."
+    },
+    {
+      "question": "¿Es seguro descargar la app de Gemini para Android?",
+      "answer": "Sí, siempre que la descargues desde Google Play. Esa es la única tienda oficial para la app de Gemini en Android. Evitá APKs de sitios externos que prometan versiones premium o desbloqueadas."
+    },
+    {
+      "question": "¿Gemini tiene acceso a internet en tiempo real?",
+      "answer": "Sí. Gemini tiene integración con la búsqueda de Google, lo que le permite acceder a información actualizada en tiempo real, a diferencia de modelos que solo usan datos de entrenamiento."
+    },
+    {
+      "question": "¿Es necesaria una cuenta de Google para usar Gemini?",
+      "answer": "Para acceder a gemini.google.com es necesario iniciar sesión con una cuenta de Google. La app móvil también requiere cuenta. No existe acceso anónimo al servicio oficial."
+    }
+  ],
+  "spanishSupport": "yes"
+}

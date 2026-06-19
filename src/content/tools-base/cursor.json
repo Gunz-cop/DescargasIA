@@ -1,0 +1,51 @@
+{
+  "name": "Cursor",
+  "officialWebsite": "https://cursor.com",
+  "categories": [
+    "programacion"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://cursor.com",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://downloader.cursor.sh/windows/nsis/x64",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://downloader.cursor.sh/mac/dmg/x64",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "linux": {
+      "url": "https://downloader.cursor.sh/linux/appImage/x64",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "cursor",
+    "ide",
+    "vscode",
+    "programacion",
+    "autocompletado"
+  ],
+  "alternatives": [
+    "github-copilot"
+  ],
+  "initials": "CS",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://cursor.com"
+  ]
+}

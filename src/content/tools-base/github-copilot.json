@@ -1,0 +1,57 @@
+{
+  "name": "GitHub Copilot",
+  "officialWebsite": "https://github.com/features/copilot",
+  "categories": [
+    "programacion"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://github.com/features/copilot",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "windows": {
+      "url": "https://docs.github.com/copilot/managing-copilot/configure-personal-settings/installing-the-github-copilot-extension-in-your-environment",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "mac": {
+      "url": "https://docs.github.com/copilot/managing-copilot/configure-personal-settings/installing-the-github-copilot-extension-in-your-environment",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "linux": {
+      "url": "https://docs.github.com/copilot/managing-copilot/configure-personal-settings/installing-the-github-copilot-extension-in-your-environment",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "github",
+    "copilot",
+    "vscode",
+    "jetbrains",
+    "programacion"
+  ],
+  "alternatives": [
+    "cursor",
+    "chatgpt",
+    "claude"
+  ],
+  "screenshotUrl": null,
+  "initials": "GH",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://github.com/features/copilot",
+    "https://docs.github.com/copilot/managing-copilot/configure-personal-settings/installing-the-github-copilot-extension-in-your-environment",
+    "https://visualstudio.microsoft.com/github-copilot/",
+    "https://plugins.jetbrains.com/plugin/17718-github-copilot--your-ai-pair-programmer"
+  ]
+}

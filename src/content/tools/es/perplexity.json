@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Buscador conversacional con respuestas citadas, disponible en web, móvil y tienda de Windows.",
+  "longDescription": "Perplexity es un motor de respuestas con IA que combina búsqueda, conversación y fuentes citadas. Su uso principal es web y móvil, con disponibilidad adicional en tiendas oficiales.",
+  "bestFor": [
+    "Buscar respuestas con fuentes visibles",
+    "Investigar temas actuales sin abrir muchas pestañas",
+    "Comparar información y continuar preguntas por hilo",
+    "Usuarios que priorizan citas y enlaces de referencia"
+  ],
+  "limitations": [
+    "Las respuestas con fuentes no sustituyen la lectura crítica de los enlaces originales.",
+    "Algunas funciones avanzadas pueden requerir plan Pro.",
+    "Pueden existir apps o navegadores relacionados que no son la app principal de Perplexity."
+  ],
+  "safetyNotes": [
+    "Evita instalar paquetes de Perplexity desde portales no oficiales.",
+    "Revisa que la app móvil sea publicada por Perplexity en tiendas oficiales.",
+    "Verifica las fuentes citadas antes de tomar decisiones importantes."
+  ],
+  "editorialSummary": "Perplexity es especialmente útil para usuarios que quieren respuestas rápidas con fuentes citadas. La ruta segura es la web oficial o las tiendas oficiales, evitando clones que se promocionan como buscadores IA alternativos.",
+  "editorialSections": [
+    {
+      "heading": "Por qué Perplexity no es solo otro chatbot",
+      "body": "Perplexity se posiciona más cerca de un buscador conversacional que de un asistente general. Su promesa no es únicamente responder, sino acompañar la respuesta con fuentes y enlaces que el usuario puede abrir. Eso lo hace atractivo para estudiantes, profesionales, periodistas, creadores y cualquier persona que necesite investigar rápido sin perder de vista de dónde sale la información.\n\nEsa misma popularidad genera confusión con apps similares, extensiones y navegadores IA. La ficha separa la web oficial, las apps móviles y la disponibilidad en tienda para Windows, de modo que el usuario no tenga que elegir entre resultados dudosos."
+    },
+    {
+      "heading": "PC, móvil y PWA",
+      "body": "En computadora, la forma más universal de usar Perplexity es su web oficial. También puede encontrarse en Microsoft Store para Windows, pero no conviene descargar instaladores sueltos desde páginas de terceros. En móvil, Google Play y App Store son los canales adecuados.\n\nAlgunos usuarios prefieren instalar la web como PWA desde el navegador. Esa puede ser una ruta válida si parte del dominio oficial, pero no debe confundirse con un instalador externo. Si el archivo no viene de una tienda reconocida o de Perplexity, mejor evitarlo."
+    },
+    {
+      "heading": "Cuándo conviene frente a ChatGPT o Gemini",
+      "body": "Perplexity destaca cuando la pregunta depende de información reciente o cuando quieres una respuesta acompañada por fuentes. ChatGPT y Claude pueden ser mejores para redactar, razonar o trabajar sobre documentos largos; Gemini puede integrarse mejor con servicios de Google; Copilot puede encajar si ya estás dentro del ecosistema Microsoft.\n\nLa elección práctica es simple: si necesitas investigar con referencias, prueba Perplexity. Si necesitas construir un texto, analizar una idea o programar, compara con asistentes más conversacionales."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Perplexity tiene app oficial para Windows?",
+      "answer": "Perplexity aparece en Microsoft Store. También puedes usarlo directamente desde la web oficial en cualquier navegador moderno."
+    },
+    {
+      "question": "¿Perplexity tiene app para Android e iOS?",
+      "answer": "Sí. Las apps oficiales están disponibles en Google Play y App Store."
+    },
+    {
+      "question": "¿Perplexity es gratis?",
+      "answer": "Tiene uso gratuito y opciones de pago. Algunas funciones avanzadas pueden requerir Perplexity Pro."
+    },
+    {
+      "question": "¿Las fuentes de Perplexity siempre son correctas?",
+      "answer": "No necesariamente. Las citas ayudan a verificar, pero conviene abrir las fuentes originales cuando la información sea importante."
+    }
+  ],
+  "spanishSupport": "yes"
+}

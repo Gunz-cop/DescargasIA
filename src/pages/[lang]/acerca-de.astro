@@ -1,0 +1,82 @@
+---
+// src/pages/[lang]/acerca-de.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { languages } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang }
+  }));
+}
+
+const { lang } = Astro.params as { lang: 'es' | 'sv' | 'it' };
+
+const titles = {
+  es: 'Acerca de FuenteAI | Misión editorial y metodología',
+  sv: 'Om FuenteAI | Redaktionellt uppdrag och metod',
+  it: 'Chi Siamo | Missione editoriale e metodologia di FuenteAI'
+};
+
+const descs = {
+  es: 'Conoce cómo FuenteAI revisa enlaces oficiales de herramientas de inteligencia artificial, su metodología editorial y compromiso de seguridad.',
+  sv: 'Läs om hur FuenteAI verifierar officiella länkar till AI-verktyg och vårt engagemang för säkerhet.',
+  it: 'Scopri come FuenteAI verifica i collegamenti ufficiali per gli strumenti IA e la nostra metodologia di sicurezza.'
+};
+---
+
+<BaseLayout title={titles[lang]} description={descs[lang]} lang={lang}>
+  <article class="mx-auto max-w-4xl py-10" aria-labelledby="page-title">
+    <header class="border-b border-brand-card-border pb-8">
+      <span class="mb-3 inline-flex rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 font-mono text-[11px] font-black uppercase text-brand-primary">
+        {lang === 'sv' ? 'Redaktionellt Uppdrag' : lang === 'it' ? 'Missione Editoriale' : 'Misión editorial'}
+      </span>
+      <h1 id="page-title" class="max-w-3xl text-4xl font-black leading-tight tracking-tight text-brand-text font-['Outfit'] sm:text-5xl">
+        {lang === 'sv' 
+          ? 'Ett redaktionellt index för att hitta den officiella källan för varje AI-verktyg.'
+          : lang === 'it'
+            ? 'Un indice editoriale per trovare la fonte ufficiale di ciascuno strumento IA.'
+            : 'Un índice de fuentes oficiales para encontrar el canal de distribución legítimo de cada herramienta de IA.'}
+      </h1>
+      <p class="mt-5 max-w-3xl text-base leading-8 text-brand-text-muted">
+        {lang === 'sv'
+          ? 'FuenteAI finns till för att lösa ett mycket konkret problem: när någon vill ladda ner eller använda ett AI-verktyg ska de kunna nå den äkta källan utan att drabbas av kloner, modifierade installerare eller reklam.'
+          : lang === 'it'
+            ? 'FuenteAI nasce per risolvere un problema concreto: quando un utente desidera scaricare o utilizzare uno strumento IA, deve poter raggiungere il sito ufficiale originale senza incappare in cloni o pubblicità ingannevole.'
+            : 'FuenteAI existe para resolver una duda muy concreta: cuando alguien busca descargar o usar una herramienta de inteligencia artificial, quiere llegar al canal real sin pasar por clones, instaladores modificados, APKs de terceros o páginas que confunden el botón correcto con publicidad.'}
+      </p>
+    </header>
+
+    <div class="mt-10 grid gap-8 lg:grid-cols-[1fr_18rem]">
+      <main class="space-y-8">
+        <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5 sm:p-6">
+          <h2 class="text-2xl font-black text-brand-text font-['Outfit']">
+            {lang === 'sv' ? 'Vad vi gör' : lang === 'it' ? 'Cosa facciamo' : 'Qué hacemos'}
+          </h2>
+          <div class="mt-4 space-y-4 text-sm leading-7 text-brand-text-muted">
+            <p>
+              {lang === 'sv'
+                ? 'Vi organiserar AI-verktyg med praktisk information: officiell domän, tillgängliga plattformar, kontokrav, prismodell och rekommenderade alternativ. Prioriteten är inte att spara filer eller ersätta utvecklarna, utan att vägleda användaren.'
+                : lang === 'it'
+                  ? 'Organizziamo schede di strumenti IA con informazioni pratiche: dominio ufficiale, piattaforme disponibili, requisiti di account, modello di prezzo e alternative correlate.'
+                  : 'Organizamos fichas de herramientas de IA con información práctica: dominio oficial, plataformas disponibles, requisitos de cuenta, modelo de precios, advertencias de seguridad y alternativas relacionadas.'}
+            </p>
+          </div>
+        </section>
+
+        <section class="rounded-2xl border border-brand-warning-border bg-brand-warning-bg p-5 sm:p-6">
+          <h2 class="text-2xl font-black text-brand-text font-['Outfit']">
+            {lang === 'sv' ? 'Vad we inte gör' : lang === 'it' ? 'Cosa non facciamo' : 'Lo que no hacemos'}
+          </h2>
+          <ul class="mt-4 grid gap-3 text-sm leading-7 text-brand-warning-text">
+            <li class="rounded-lg border border-brand-warning-border bg-brand-bg/20 p-3">
+              {lang === 'sv' ? 'Vi sparar eller distribuerar inte installationsfiler, APK-filer eller körbara filer.' : lang === 'it' ? 'Non ospitiamo file eseguibili, installer o APK.' : 'No alojamos instaladores, archivos APK, ejecutables ni versiones modificadas.'}
+            </li>
+            <li class="rounded-lg border border-brand-warning-border bg-brand-bg/20 p-3">
+              {lang === 'sv' ? 'Vi använder inte falska nedladdningsknappar.' : lang === 'it' ? 'Non utilizziamo pulsanti di download ingannevoli.' : 'No usamos botones de descarga falsos.'}
+            </li>
+          </ul>
+        </section>
+      </main>
+    </div>
+  </article>
+</BaseLayout>

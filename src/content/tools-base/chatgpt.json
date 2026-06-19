@@ -1,0 +1,60 @@
+{
+  "name": "ChatGPT",
+  "officialWebsite": "https://chatgpt.com",
+  "categories": [
+    "asistentes-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://chatgpt.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://openai.com/chatgpt/desktop",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://openai.com/chatgpt/desktop",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.openai.chatgpt",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/chatgpt/id6448311069",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "openai",
+    "chatbot",
+    "gpt-4o",
+    "gpt-4",
+    "productividad"
+  ],
+  "alternatives": [
+    "gemini",
+    "claude",
+    "perplexity"
+  ],
+  "screenshotUrl": null,
+  "initials": "GPT",
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://openai.com/chatgpt"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "shortDescription": "Buscador y asistente conversacional asistido por IA optimizado específicamente para programadores y desarrolladores.",
+  "longDescription": "Phind es un motor de respuestas conversacional especializado en desarrollo de software y programación. Combina modelos de lenguaje de gran tamaño con una capacidad avanzada de rastreo e indexación web en tiempo real, permitiendo resolver dudas técnicas, explicar código y buscar en documentación técnica oficial con precisión. Se accede de forma web.",
+  "bestFor": [
+    "Desarrolladores que necesitan resolver errores (bugs) o excepciones complejas buscando soluciones en tiempo real.",
+    "Aprender a usar nuevas APIs, frameworks o librerías consultando documentación oficial sintetizada.",
+    "Escribir fragmentos de código limpios basados en especificaciones actualizadas, reduciendo el tiempo de búsqueda manual."
+  ],
+  "limitations": [
+    "El número de consultas diarias de alta velocidad con modelos Pro de última generación está restringido en la versión gratuita.",
+    "Puede alucinar sintaxis en lenguajes o tecnologías muy minoritarias o de lanzamiento extremadamente reciente."
+  ],
+  "safetyNotes": [
+    "Phind es un servicio en la nube que se ejecuta a través de su sitio oficial www.phind.com. No tiene aplicaciones de escritorio oficiales. Evita descargar instaladores sospechosos de internet."
+  ],
+  "editorialSummary": "Phind funciona como un buscador semántico de alto rendimiento para programación que sintetiza hilos de foros y manuales de código. En DescargasIA te facilitamos el acceso directo a su web oficial y segura para prevenir estafas.",
+  "editorialSections": [
+    {
+      "heading": "El problema de los foros de programación frente a las búsquedas asistidas de Phind",
+      "body": "Tradicionalmente, cuando un desarrollador se topa con un error de código, busca el mensaje en Google. Esto le obliga a abrir cinco o diez pestañas de StackOverflow, leer hilos antiguos con respuestas contradictorias o desactualizadas, y probar parches a ciegas.\n\nPhind agiliza esto por completo. En lugar de devolver enlaces, Phind lee simultáneamente las páginas web más relevantes, la documentación oficial actualizada y las discusiones comunitarias, y redacta una respuesta coherente explicando la causa del error y proporcionando una solución de código corregida lista para copiar y pegar."
+    },
+    {
+      "heading": "Por qué usar Phind en lugar de ChatGPT para resolver dudas de código",
+      "body": "Aunque ChatGPT es un excelente programador, su mayor debilidad es la alucinación sobre librerías modernas o cambios de sintaxis recientes (debido a su límite de conocimiento estático). Si le preguntas a ChatGPT por una actualización de framework lanzada hace un mes, probablemente invente la sintaxis o te devuelva un código obsoleto.\n\nPhind está conectado permanentemente a internet y prioriza los sitios web oficiales de documentación técnica (como MDN, documentación de React, Python, etc.) para formular sus respuestas. Además, incluye referencias directas de enlaces para que puedas comprobar que la solución se adhiere a los estándares oficiales de desarrollo."
+    },
+    {
+      "heading": "Integración y uso seguro en el navegador",
+      "body": "Al igual que otros servicios web potentes, Phind ejecuta sus modelos en la nube. No requiere que instales programas en tu ordenador. Se accede de forma gratuita registrándote en phind.com. Para mayor comodidad de los programadores, la plataforma cuenta con una extensión oficial para VS Code que te permite realizar consultas sin salir de tu editor, instalada desde el marketplace oficial de Microsoft."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Phind es de pago?",
+      "answer": "Phind cuenta con un plan gratuito robusto que permite realizar búsquedas rápidas ilimitadas basadas en su propio modelo optimizado para código. Su suscripción de pago desbloquea el acceso prioritario a modelos más potentes (como GPT-4o o Claude 3.5 Sonnet) y funciones avanzadas."
+    },
+    {
+      "question": "¿Es necesario crear una cuenta para usar Phind?",
+      "answer": "No. Puedes ingresar a phind.com y formular tus preguntas de código directamente sin registrarte. Sin embargo, crear una cuenta gratuita te permite conservar tu historial de conversaciones e integrar la extensión de VS Code."
+    },
+    {
+      "question": "¿Phind entiende y responde en idioma español?",
+      "answer": "Sí. Puedes escribir tus preguntas e instrucciones en español, y Phind analizará la información técnica en inglés (donde está la mayoría de la documentación) y te devolverá la respuesta explicada en español."
+    }
+  ],
+  "spanishSupport": "yes"
+}

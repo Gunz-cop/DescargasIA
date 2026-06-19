@@ -1,0 +1,134 @@
+---
+// src/pages/[lang]/aviso-legal.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { languages } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang }
+  }));
+}
+
+const { lang } = Astro.params as { lang: 'es' | 'sv' | 'it' };
+
+const titles = {
+  es: 'Aviso Legal y Exención de Responsabilidad | FuenteAI',
+  sv: 'Användarvillkor & Ansvarsfriskrivning | FuenteAI',
+  it: 'Note Legali e Limitazione di Responsabilità | FuenteAI'
+};
+
+const descs = {
+  es: 'Términos de uso, aviso legal, exención de responsabilidad y política de propiedad intelectual (DMCA) de FuenteAI.',
+  sv: 'Användarvillkor, ansvarsfriskrivning och upphovsrättspolicy för FuenteAI.',
+  it: 'Termini di utilizzo, note legali e limitazione di responsabilità di FuenteAI.'
+};
+---
+
+<BaseLayout title={titles[lang]} description={descs[lang]} lang={lang}>
+  <article class="max-w-3xl mx-auto py-12" aria-labelledby="page-title">
+    <header class="mb-10 border-b border-brand-card-border pb-8">
+      <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-warning-border bg-brand-warning-bg px-3 py-1 text-[11px] font-black uppercase text-brand-warning-text font-mono">
+        {lang === 'sv' ? 'Reviderad: Juni 2026' : lang === 'it' ? 'Revisionato: Giugno 2026' : 'Revisado: Junio 2026'}
+      </span>
+      <h1 id="page-title" class="text-3xl sm:text-4xl font-black tracking-tight text-brand-text font-['Outfit',sans-serif] mb-4">
+        {lang === 'sv' ? 'Användarvillkor & Ansvarsfriskrivning' : lang === 'it' ? 'Note Legali e Limitazione di Responsabilità' : 'Aviso Legal y Exención de Responsabilidad'}
+      </h1>
+      <p class="text-sm text-brand-text-muted leading-relaxed">
+        {lang === 'sv' 
+          ? 'Detta dokument fastställer användarvillkoren och ansvarsfriskrivningen för den informativa portalen FuenteAI.'
+          : lang === 'it'
+            ? 'Questo documento stabilisce le condizioni d\'uso e i limiti di responsabilità per il portale informativo FuenteAI.'
+            : 'El presente documento establece las condiciones de uso, límites de responsabilidad y políticas de propiedad intelectual que rigen el portal informativo FuenteAI.'}
+      </p>
+    </header>
+
+    <div class="space-y-8 text-sm sm:text-base leading-relaxed text-brand-text-muted">
+      {lang === 'es' && (
+        <>
+          <section class="space-y-3">
+            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+              <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> Naturaleza del Servicio
+            </h2>
+            <p>
+              <span class="font-bold text-brand-text">FuenteAI</span> funciona exclusivamente como un directorio editorial independiente y una guía técnica informativa. Nuestro objetivo es orientar a los usuarios y facilitar la localización de los canales y dominios de descarga oficial de herramientas de inteligencia artificial.
+            </p>
+            <div class="rounded-lg border border-brand-success-border bg-brand-success-bg px-4 py-3 mt-2">
+              <p class="text-xs font-bold text-brand-success mb-1 uppercase font-mono">Compromiso Editorial</p>
+              <p class="text-xs text-brand-text-muted">
+                Este portal no aloja archivos ejecutables, mirrors, instaladores modificados ni archivos APK. Todos los enlaces de descarga dirigen directamente a los sitios oficiales de sus respectivos creadores.
+              </p>
+            </div>
+          </section>
+
+          <section class="space-y-3">
+            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+              <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> Límite de Responsabilidad
+            </h2>
+            <p>
+              Aunque realizamos esfuerzos constantes para verificar la legitimidad de cada enlace externo, el software y los servicios enlazados son propiedad exclusiva de sus respectivos desarrolladores y están sujetos a sus propios términos y condiciones.
+            </p>
+            <p>
+              <span class="font-bold text-brand-text">FuenteAI</span> no se hace responsable de fallos de seguridad, pérdidas de datos, malware o cualquier daño resultante de la instalación o uso de herramientas externas obtenidas mediante los enlaces de redirección facilitados. El usuario asume toda la responsabilidad técnica al ejecutar software de terceros.
+            </p>
+          </section>
+        </>
+      )}
+
+      {lang === 'sv' && (
+        <>
+          <section class="space-y-3">
+            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+              <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> Tjänstens natur
+            </h2>
+            <p>
+              <span class="font-bold text-brand-text">FuenteAI</span> fungerar uteslutande som ett oberoende redaktionellt index och en informativ guide. Vårt syfte är att vägleda användare att hitta de officiella och säkra nedladdningskanalerna för AI-verktyg.
+            </p>
+            <div class="rounded-lg border border-brand-success-border bg-brand-success-bg px-4 py-3 mt-2">
+              <p class="text-xs font-bold text-brand-success mb-1 uppercase font-mono">Redaktionellt åtagande</p>
+              <p class="text-xs text-brand-text-muted">
+                Vi sparar eller distribuerar inte installationsfiler eller APK:er. Alla länkar går direkt till programvarans officiella kanaler.
+              </p>
+            </div>
+          </section>
+
+          <section class="space-y-3">
+            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+              <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> Ansvarsfriskrivning
+            </h2>
+            <p>
+              Vi ansvarar inte för eventuella säkerhetsfel, förlust av data eller skadlig programvara som uppstår till följd av användning av de länkade externa verktygen. Användaren bär själv ansvaret för installation och körning av all programvara.
+            </p>
+          </section>
+        </>
+      )}
+
+      {lang === 'it' && (
+        <>
+          <section class="space-y-3">
+            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+              <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> Natura del Servizio
+            </h2>
+            <p>
+              <span class="font-bold text-brand-text">FuenteAI</span> opera esclusivamente come indice editoriale indipendente e guida tecnica informativa per l\'orientamento degli utenti.
+            </p>
+            <div class="rounded-lg border border-brand-success-border bg-brand-success-bg px-4 py-3 mt-2">
+              <p class="text-xs font-bold text-brand-success mb-1 uppercase font-mono">Impegno Editoriale</p>
+              <p class="text-xs text-brand-text-muted">
+                Non ospitiamo file eseguibili, mirror o APK. Tutti i collegamenti reindirizzano ai canali ufficiali legittimi.
+              </p>
+            </div>
+          </section>
+
+          <section class="space-y-3">
+            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+              <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> Limiti di Responsabilità
+            </h2>
+            <p>
+              FuenteAI non è responsabile per problemi di sicurezza, perdite di dati o malware derivanti dall\'uso di software di terze parti qui indicati.
+            </p>
+          </section>
+        </>
+      )}
+    </div>
+  </article>
+</BaseLayout>
