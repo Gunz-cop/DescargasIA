@@ -152,7 +152,8 @@ Buenas senales:
 - Texto original que ayude a decidir.
 - FAQ real.
 - Fuentes oficiales visibles.
-- Schema `SoftwareApplication`, `BreadcrumbList` y, si hay FAQ visible, `FAQPage`.
+- Schema `SoftwareApplication` (debe usar `"applicationCategory": "OtherApplication"` y `"applicationSubCategory": "Artificial Intelligence"` para catalogar correctamente herramientas de IA), `BreadcrumbList` y, si hay FAQ visible, `FAQPage`.
+- Múltiples esquemas estructurados de JSON-LD deben emitirse en etiquetas `<script type="application/ld+json" is:inline>` separadas (mapeando el array) en lugar de una sola etiqueta con un array. La directiva `is:inline` es estrictamente obligatoria para evitar que el compilador de Astro/Vite procese o elimine el JSON-LD en el HTML de producción.
 - Imagen editorial o captura aprobada con `alt` descriptivo.
 
 Evitar:
