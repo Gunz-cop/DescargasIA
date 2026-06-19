@@ -1,0 +1,164 @@
+# Decisión de Marca y Dominio Principal
+
+Documento corto para cerrar la decisión de naming sin alargar el foro general. El objetivo es escoger una marca/dominio suficiente para avanzar con i18n, redirects, estructura editorial y contenido sueco.
+
+Fecha: 2026-06-19
+
+## Estado
+
+**Decisión pendiente:** elegir marca y dominio canónico.
+
+**Decisión ya cerrada:** el proyecto usará un solo dominio con subrutas por idioma (`/es/`, `/sv/`, `/it/` si aplica).
+
+**Plazo recomendado:** cerrar esta decisión antes de implementar i18n.
+
+## Criterios de Evaluación
+
+Puntuar cada candidato de 1 a 5:
+
+1. **Memorabilidad:** se recuerda después de oírlo una vez.
+2. **Pronunciación internacional:** funciona razonablemente en español, inglés, sueco e italiano.
+3. **Facilidad de escritura:** se puede escribir sin demasiada confusión.
+4. **Escalabilidad:** sirve si el proyecto pasa de directorio a plataforma editorial sobre IA.
+5. **Disponibilidad digital:** dominio y presencia social defendibles.
+6. **Diferenciación:** no se confunde con términos genéricos.
+7. **Confianza:** transmite criterio, verificación y calidad.
+
+## Candidatos Finalistas
+
+### 1. RashnuIndex.com
+
+Marca visible sugerida: **Rashnu**  
+Descriptor SEO/producto: **Rashnu Index**
+
+Pros:
+
+* Marca internacional, no atada a un idioma.
+* Tiene personalidad y una narrativa fuerte: Rashnu se asocia con justicia, verdad y juicio imparcial.
+* Encaja con la misión: separar fuentes oficiales de clones, mirrors y descargas falsas.
+* `Index` explica que el producto es un índice/directorio, no una app de IA propia.
+* Más defendible como marca que nombres descriptivos.
+
+Contras:
+
+* No comunica IA ni descargas oficiales por sí solo.
+* Requiere tagline claro desde el primer día.
+* Puede tener errores de escritura: `Rasnu`, `Rashn`, `RashnuAI`, etc.
+* El dominio es más largo que una marca pura.
+* La narrativa mitológica debe usarse con sobriedad para no oscurecer el producto.
+
+Taglines posibles:
+
+```text
+ES: Índice editorial de fuentes oficiales para herramientas de IA.
+SV: Officiellt källindex för AI-verktyg.
+IT: Indice editoriale di fonti ufficiali per strumenti IA.
+EN: Editorial index of official sources for AI tools.
+```
+
+### 2. FuenteIA.com
+
+Marca visible sugerida: **FuenteIA**
+
+Pros:
+
+* Comunica fuente/origen con claridad en español.
+* Suena más confiable que "DescargasIA".
+* Es fácil de explicar para el mercado hispano.
+* Mantiene relación conceptual con fuentes oficiales.
+
+Contras:
+
+* Sigue siendo una marca hispanocéntrica.
+* En sueco e italiano depende de tagline para adquirir sentido.
+* Menos singular que Rashnu.
+* Puede limitar la personalidad internacional del proyecto.
+
+### 3. DescargasIA.com
+
+Marca visible sugerida: **DescargasIA**
+
+Pros:
+
+* Captura intención directa en español.
+* Describe lo que el usuario hispano busca.
+* Ya existe como identidad del proyecto actual.
+* Reduce fricción de continuidad.
+
+Contras:
+
+* No viaja bien a Suecia, Italia u otros mercados.
+* "Descargas" puede sonar a instaladores, mirrors o sitios de baja confianza.
+* No representa bien la evolución hacia índice editorial/verificación.
+* Obliga a resolver la marca internacional más adelante.
+
+## Matriz Inicial de Codex
+
+| Candidato | Memorabilidad | Pronunciación | Escritura | Escalabilidad | Disponibilidad | Diferenciación | Confianza | Total |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| RashnuIndex.com | 4 | 3 | 3 | 5 | 4 | 5 | 5 | 29 |
+| FuenteIA.com | 3 | 4 | 4 | 4 | 3 | 3 | 4 | 25 |
+| DescargasIA.com | 4 | 2 | 4 | 2 | 5 | 3 | 2 | 22 |
+
+Notas:
+
+* La puntuación de disponibilidad debe validarse con dominio real, precio de registro, redes y posibles conflictos de marca.
+* Si `RashnuIndex.com` no está disponible a precio normal, baja automáticamente como candidato.
+* Si se mantiene `DescargasIA.com`, debería considerarse una marca hispana transicional o defensiva, no necesariamente el paraguas internacional.
+
+## Voto Inicial de Codex
+
+Mi voto es **RashnuIndex.com**, con marca visible **Rashnu** y descriptor **Rashnu Index**.
+
+Razón: es el único candidato que convierte el proyecto en una marca internacional con personalidad propia sin perder el vínculo conceptual con verificación, criterio y fuentes oficiales. Su principal debilidad, que no comunica IA de inmediato, se compensa con un tagline claro y títulos SEO descriptivos.
+
+## Pauta si se elige Rashnu
+
+1. Usar `Rashnu` como marca visible.
+2. Usar `Rashnu Index` en metadatos, títulos SEO y explicaciones institucionales.
+3. No hacer una estética religiosa, mística o demasiado oscura.
+4. Usar lenguaje de claridad, fuentes, criterio y verificación editorial.
+5. No usar claims como "auditado", "certificado" o "seguro" salvo evidencia real.
+6. Conservar dominios defensivos o redirects desde `descargasia.com` para capturar búsquedas hispanas.
+7. Comprar variantes razonables si están disponibles a bajo costo: errores comunes o TLD defensivos prioritarios.
+
+## Decisión Recomendada
+
+Si `RashnuIndex.com` está disponible a precio normal:
+
+```text
+Dominio canónico: rashnuindex.com
+Marca visible: Rashnu
+Descriptor: Rashnu Index
+Arquitectura: /es/, /sv/, /it/
+```
+
+Si `RashnuIndex.com` no está disponible o tiene coste premium:
+
+```text
+Fallback recomendado: FuenteIA.com
+```
+
+Si la prioridad absoluta es SEO hispano inmediato:
+
+```text
+Fallback conservador: DescargasIA.com
+```
+
+## Aportes Pendientes
+
+### Antigravity
+
+Pendiente: evaluar riesgos técnicos, disponibilidad, redirects y consistencia con la futura arquitectura i18n.
+
+### Claude
+
+Pendiente: revisar riesgos de marca, pronunciación, SEO y posibilidad de que la historia mitológica distraiga del producto.
+
+### ChatGPT
+
+Pendiente: revisar la matriz, ajustar criterios si hace falta y confirmar si el proceso ya es suficiente para decidir.
+
+### Propietario
+
+Pendiente: decisión final.

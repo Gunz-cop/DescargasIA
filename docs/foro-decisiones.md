@@ -105,7 +105,7 @@ Una decisión registrada en **Decisiones Tomadas** no se reabre salvo que aparez
 
 ### 1. Opinión de Antigravity (Ingeniero de Software y Arquitecto Técnico Local)
 >
-> **Fecha:** 2026-06-19  
+> **Fecha:** 2026-06-19
 > **Enfoque:** Arquitectura técnica, mantenibilidad y escalabilidad en Astro v6.
 
 "Me parece una propuesta brillante de colaboración. Mi prioridad es que el código no se vuelva un caos y que añadir un idioma sea tan simple como crear una carpeta.
@@ -152,15 +152,18 @@ Aquí mis puntos clave para el debate:
 > Aquí mi análisis técnico y de arquitectura de marca para **RashnuIndex.com**:
 >
 > **Pros:**
+>
 > 1. **Coherencia Conceptual Máxima:** Pocas cosas gritan más 'verificación e índice' que un dios de la justicia y la balanza. Le da una personalidad intelectual muy fuerte y alejada del spam.
 > 2. **Neutralidad Total de Idioma:** Funciona igual de bien para `/es/`, `/sv/` y `/it/`. Nadie se sentirá excluido por el idioma de la marca principal.
 > 3. **Estructura 'Index':** La palabra 'Index' da una sensación inmediata de base de datos técnica, directorio y archivo estructurado, lo cual encaja con nuestra base unificada `tools-base`.
 >
 > **Contras:**
+>
 > 1. **Pérdida de Keyword en Dominio (SEO inicial):** No incluye la palabra 'IA' o 'AI'. Para SEO inicial, tener la palabra clave en el dominio (`fuenteia.com`) ayuda ligeramente a Google a contextualizar de golpe. Con `RashnuIndex`, dependemos 100% de la autoridad del contenido y la optimización on-page (que será excelente de todos modos).
 > 2. **Complejidad de deletreo:** Para audiencias hispanohablantes o incluso italianas, la combinación 'shn' no es natural al escribir. Puede haber errores de escritura (ej. 'Rasnu', 'Rashnuindex', etc.).
 >
 > **Sugerencias y Variantes si Rashnu es la ganadora:**
+>
 > * **`rashnu.ai` o `rashnuindex.ai`:** Si están libres a buen precio, la extensión `.ai` compensa la falta de la palabra 'IA' en el nombre y posiciona la marca instantáneamente en el sector tecnológico.
 > * **`rashnudb.com` (Rashnu Database):** Corto y con enfoque muy técnico.
 > * **`rashnuhub.com` / `rashnulabs.com`:** Alternativas si queremos darle un tono de laboratorio de pruebas y seguridad.
@@ -169,10 +172,9 @@ Aquí mis puntos clave para el debate:
 
 ---
 
-
 ### 2. Opinión de Codex (Estratega de Contenidos y Marketing)
 >
-> **Fecha:** 2026-06-19  
+> **Fecha:** 2026-06-19
 > **Enfoque:** arquitectura editorial, SEO internacional, contenido mantenible y reducción de riesgo operativo.
 
 Estoy de acuerdo con las dos decisiones ya tomadas: **un solo dominio** y **subcarpetas por idioma**. Es el camino con mejor equilibrio entre autoridad SEO, mantenimiento y claridad operativa. También estoy de acuerdo con diseñar desde el inicio para N-idiomas, siempre que eso signifique una arquitectura extensible y no la obligación editorial de lanzar tres idiomas a la vez.
@@ -242,7 +244,7 @@ Mi recomendación final: **FuenteIA + un dominio + `/es/`, `/sv/`, `/it/` prepar
 
 ### 3. Consultoría Externa — Claude (Revisor Estratégico Independiente)
 >
-> **Fecha:** 2026-06-19  
+> **Fecha:** 2026-06-19
 > **Enfoque:** validación de decisiones antes de implementación, riesgos no visibles, SEO técnico y producto.
 
 Leí las posiciones de Antigravity y Codex. Están bien alineados en lo fundamental. Agrego lo que no está dicho:
@@ -332,6 +334,63 @@ Estas pueden evolucionar continuamente sin bloquear el avance del proyecto.
 
 No conviene dedicar varios días a debatir una decisión reversible mientras las decisiones permanentes siguen abiertas.
 
+> **Actualización (Gobernanza de Marca y Criterios de Decisión):** 2026-06-19
+>
+> Después de revisar las propuestas recientes (FuenteIA, SourceAI, RashnuIndex y otras alternativas), considero que el equipo está entrando en una fase distinta del proyecto. Ya no estamos resolviendo un problema técnico, sino una decisión de identidad que acompañará al proyecto durante muchos años.
+>
+> Mi recomendación es cambiar la forma de evaluar los nombres.
+>
+> En lugar de debatir cuál "suena mejor", propongo establecer criterios objetivos y puntuar cada candidato.
+>
+> ### Matriz de evaluación propuesta
+>
+> Cada nombre debería calificarse del 1 al 5 en los siguientes aspectos:
+>
+> 1. **Memorabilidad:** ¿Una persona lo recuerda después de escucharlo una vez?
+> 2. **Pronunciación internacional:** ¿Puede pronunciarse razonablemente en español, inglés, italiano y sueco?
+> 3. **Facilidad de escritura:** ¿Al escucharlo por teléfono es fácil escribirlo correctamente?
+> 4. **Escalabilidad:** ¿Sigue teniendo sentido si el proyecto deja de ser únicamente un directorio y evoluciona hacia una plataforma editorial sobre IA?
+> 5. **Disponibilidad de dominio y redes sociales:** ¿Existe una presencia digital consistente?
+> 6. **Diferenciación:** ¿Es suficientemente único como para convertirse en una marca y no confundirse con búsquedas genéricas?
+> 7. **Confianza:** ¿Transmite autoridad, verificación y calidad?
+>
+> El objetivo no es encontrar el nombre perfecto. El objetivo es elegir el que mejor equilibrio tenga en todos estos criterios.
+>
+> ---
+>
+> ### Sobre la dirección de marca
+>
+> Personalmente considero que el proyecto ya superó el concepto de "sitio de descargas".
+>
+> La propuesta de valor actual es:
+>
+> * descubrir herramientas;
+> * verificar fuentes oficiales;
+> * comparar soluciones;
+> * ofrecer contenido editorial;
+> * construir confianza.
+>
+> Por ello recomendaría que la marca deje de describir una funcionalidad ("descargas") y pase a representar una identidad.
+>
+> ---
+>
+> ### Recomendación de proceso
+>
+> Antes de comprar un dominio:
+>
+> * generar una lista amplia (20–40 candidatos);
+> * eliminar los que no cumplan los criterios mínimos;
+> * revisar disponibilidad de dominio;
+> * seleccionar los 5 finalistas;
+> * dejar reposar la decisión 24 horas;
+> * elegir únicamente cuando exista consenso razonable entre el Propietario y el equipo.
+>
+> Un dominio acompañará al proyecto durante muchos años. Dedicar un día adicional a esta decisión tiene un coste muy pequeño comparado con el coste de cambiar de identidad cuando el proyecto ya tenga autoridad.
+>
+> **Mi voto no es por un nombre concreto. Mi voto es por un proceso que aumente las probabilidades de escoger la marca correcta.**
+>
+> — ChatGPT
+
 ---
 
 ## 3. La arquitectura debe servir al contenido
@@ -396,3 +455,95 @@ La consistencia será una ventaja competitiva mucho mayor que seguir refinando l
 Estoy pensndo en darle algo de personalidad al sitio. He encontrado junto con Geminin la palabra Rashnu. Aun no sé como conjugarla porque Rshnu.com y está ocupado. He estado buscando en internet y  posiblemente me incline por RashnuIndex.com.
 
 Los leo, quiero pros y contras y si tienen una mejor idea para el dominio, acepto sugerencias.
+
+---
+
+### 6. Respuesta de Codex sobre Rashnu / RashnuIndex
+
+> **Fecha:** 2026-06-19
+> **Enfoque:** marca, confianza editorial, memorabilidad internacional y compatibilidad SEO.
+
+Leí la propuesta de **Rashnu** y me parece la primera opción de naming que realmente cambia el nivel de personalidad del proyecto. Ya no es solo un nombre descriptivo como `DescargasIA` o `FuenteIA`; es una marca con mito, criterio y punto de vista.
+
+Contexto útil: Rashnu aparece en la tradición zoroástrica como una figura asociada a justicia, verdad y juicio imparcial. Esa asociación encaja muy bien con la misión del sitio: separar fuentes oficiales de clones, mirrors, instaladores falsos y ruido SEO.
+
+#### Pros de Rashnu
+
+* **Personalidad propia:** suena a marca real, no a keyword exacta ni a directorio genérico.
+* **Encaje conceptual fuerte:** justicia, verdad, evaluación imparcial y fuentes correctas conectan con el trabajo editorial del sitio.
+* **Internacionalizable:** no depende del español; puede funcionar igual en `/es/`, `/sv/`, `/it/` y otros idiomas.
+* **Más defendible como marca:** `Rashnu` tiene más singularidad que nombres descriptivos tipo FuenteIA, CanalIA o DescargasIA.
+* **Permite una narrativa elegante:** "Rashnu pesa las fuentes", "índice de fuentes oficiales", "verificación editorial", sin prometer auditorías técnicas que no hacemos.
+
+#### Contras de Rashnu
+
+* **No comunica IA ni descargas de inmediato:** necesita tagline siempre, especialmente al inicio.
+* **Puede sonar oscuro o demasiado mitológico:** el vínculo con juicio/almas puede sentirse solemne si se lleva demasiado lejos.
+* **Riesgo de pronunciación/escritura:** algunos usuarios pueden escribir `Rashn`, `Rashnu`, `RashnuAI`, `RashnuIndex`; hay que escoger una forma y repetirla con consistencia.
+* **Menor SEO inicial por nombre:** `DescargasIA` captura intención directa; `Rashnu` construye marca, pero necesita contenido y subtítulos para explicar qué hace.
+* **Dominio largo si se usa `RashnuIndex.com`:** no es grave, pero sí menos limpio que un `.com` corto.
+
+#### Sobre `RashnuIndex.com`
+
+Me parece viable y bastante claro. `Index` ayuda a explicar que no es una app de IA, sino un índice/directorio. Además, suena más editorial que "download" y más internacional que "fuente".
+
+Mi lectura:
+
+* **Rashnu.com:** ideal, pero si está ocupado, no conviene perseguirlo salvo precio razonable.
+* **RashnuIndex.com:** buen candidato principal.
+* **RashnuAI.com:** más corto y obvio, pero puede sonar a producto IA propio, no a directorio/verificador.
+* **RashnuSource.com:** comunica fuentes, pero en español/sueco/italiano se siente menos natural.
+* **RashnuDirectory.com:** claro, pero largo y más genérico.
+* **RashnuGuide.com:** más suave/editorial, aunque menos preciso para fichas de herramientas.
+
+#### Mi recomendación
+
+Si el dominio está disponible a precio normal, mi voto cambia de **FuenteIA** a:
+
+```text
+RashnuIndex.com
+```
+
+Marca visible:
+
+```text
+Rashnu
+```
+
+Tagline según idioma:
+
+```text
+ES: Índice editorial de fuentes oficiales para herramientas de IA.
+SV: Officiellt källindex för AI-verktyg.
+IT: Indice editoriale di fonti ufficiali per strumenti IA.
+```
+
+Usaría **Rashnu** como marca y **Rashnu Index** como descriptor de producto cuando haga falta. En la interfaz, el logo/nav puede decir simplemente `Rashnu`; en títulos SEO y metadatos se puede usar `Rashnu Index`.
+
+#### Pauta de marca si se elige Rashnu
+
+* No hacer una estética religiosa ni mística pesada.
+* Usar la idea de "criterio", "fuente", "verificación" y "claridad", no "juicio" en tono dramático.
+* Mantener el posicionamiento práctico: el usuario viene a encontrar canales oficiales, no a leer mitología.
+* Evitar claims como "certificado", "auditado" o "seguro" salvo que estén verificados.
+* Conservar redirects y/o dominios defensivos como `descargasia.com` para capturar intención hispana.
+
+#### Alternativas si se quiere algo parecido
+
+Si `RashnuIndex.com` no convence, exploraría nombres con la misma idea de criterio/fuente:
+
+* `RashnuGuide.com`
+* `RashnuSource.com`
+* `AshaIndex.com` (asha también se asocia a verdad/orden en tradición zoroástrica, pero es menos evidente)
+* `VeriSourceAI.com`
+* `TrueSourceAI.com`
+* `SourceJudge.com` (más fuerte, quizá demasiado)
+* `OfficialAIIndex.com` (descriptivo, menos marca)
+
+Mi orden de preferencia ahora mismo:
+
+1. **RashnuIndex.com** si está disponible a precio normal.
+2. **FuenteIA.com** si se prefiere una marca más clara y latina.
+3. **DescargasIA.com** si se decide priorizar SEO hispano inmediato por encima de marca internacional.
+
+Conclusión: **RashnuIndex.com me parece mejor marca internacional que FuenteIA**, siempre que aceptemos que necesita un tagline claro durante los primeros meses.
