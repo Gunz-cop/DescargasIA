@@ -107,10 +107,22 @@ const platformLabels: Record<PlatformKey, string> = {
 
 const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
   .filter((platform) => Boolean(tool.platforms[platform]));
+
+const initials = tool.name
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((part) => part[0])
+  .join('')
+  .toUpperCase();
+
+const platformSummary = availablePlatforms.length === 1
+  ? platformLabels[availablePlatforms[0]]
+  : `${availablePlatforms.length} plataformas`;
 ---
 
 <article
-  class="relative flex h-full flex-col gap-4 overflow-hidden rounded-lg border border-brand-card-border bg-brand-card-bg p-5 transition-all duration-200 hover:border-brand-primary/35 hover:shadow-lg hover:shadow-brand-primary/5 group"
+  class="relative flex h-full flex-col overflow-hidden rounded-lg border border-brand-card-border bg-brand-card-bg transition-all duration-200 hover:border-brand-primary/35 hover:shadow-lg hover:shadow-brand-primary/5 group sm:gap-4 sm:p-5"
   data-name={tool.name.toLowerCase()}
   data-slug={tool.slug}
   data-categories={tool.categories.join(',')}
@@ -119,7 +131,59 @@ const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
 >
   <div class={`absolute inset-x-0 top-0 h-1 ${category.bar}`} aria-hidden="true"></div>
 
-  <div class="flex items-start justify-between gap-3">
+  <div class="flex flex-col gap-3 p-4 sm:hidden">
+    <div class="flex items-center gap-3">
+      <div class={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border text-lg font-black ${category.tone}`} aria-hidden="true">
+        {initials}
+      </div>
+      <div class="min-w-0 flex-1">
+        <a href={`/${tool.slug}`} class="block truncate text-2xl font-black leading-tight tracking-tight text-brand-text">
+          {tool.name}
+        </a>
+        <p class="mt-1 truncate font-mono text-xs font-bold text-brand-success">{officialDomain}</p>
+      </div>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-1.5">
+      <span class={`inline-flex items-center rounded border px-2 py-1 text-[10px] font-extrabold font-mono ${category.tone}`}>
+        {category.label}
+      </span>
+      <Badge variant={trust.variant}>{trust.label}</Badge>
+      <span class="rounded border border-brand-card-border bg-brand-bg/35 px-2 py-1 text-[10px] font-bold text-brand-text-muted">
+        {platformSummary}
+      </span>
+    </div>
+
+    <p class="text-sm leading-relaxed text-brand-text-muted line-clamp-2">
+      {tool.shortDescription}
+    </p>
+
+    <div class="grid grid-cols-[1fr_auto] gap-2 pt-1">
+      <a
+        href={`/ir/${tool.slug}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Ir al canal oficial de ${tool.name}`}
+        class="inline-flex min-h-12 items-center justify-center rounded-md border border-brand-primary bg-brand-primary px-3 py-2 text-sm font-black text-white transition-colors hover:bg-brand-primary-hover"
+      >
+        Descarga oficial
+      </a>
+      <a
+        href={`/${tool.slug}`}
+        aria-label={`Ver ficha editorial de ${tool.name}`}
+        class="inline-flex min-h-12 items-center justify-center rounded-md border border-brand-card-border px-4 py-2 text-sm font-bold text-brand-text transition-colors hover:border-brand-primary/35 hover:text-brand-primary"
+      >
+        Ficha
+      </a>
+    </div>
+
+    <div class="flex items-center justify-between gap-3 border-t border-brand-card-border pt-3 text-[10px] font-bold uppercase text-brand-text-muted">
+      <span>Dominio visible</span>
+      {reviewDate && <span>rev. {reviewDate}</span>}
+    </div>
+  </div>
+
+  <div class="hidden items-start justify-between gap-3 sm:flex">
     <div class="flex flex-wrap gap-1.5">
       <span class={`inline-flex items-center rounded border px-2 py-0.5 text-[10px] font-extrabold font-mono ${category.tone}`}>
         {category.label}
@@ -135,7 +199,7 @@ const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
     )}
   </div>
 
-  <div class="flex flex-col gap-2">
+  <div class="hidden flex-col gap-2 sm:flex">
     <h3 class="text-xl font-black leading-tight tracking-tight text-brand-text transition-colors group-hover:text-brand-primary">
       <a href={`/${tool.slug}`}>{tool.name}</a>
     </h3>
@@ -144,7 +208,7 @@ const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
     </p>
   </div>
 
-  <div class="rounded-md border border-brand-success-border bg-brand-success-bg px-3 py-2">
+  <div class="hidden rounded-md border border-brand-success-border bg-brand-success-bg px-3 py-2 sm:block">
     <div class="flex items-center gap-2">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 text-brand-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
@@ -157,7 +221,7 @@ const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
   </div>
 
   {primarySafetyNote && (
-    <div class="rounded-md border border-brand-warning-border bg-brand-warning-bg px-3 py-2">
+    <div class="hidden rounded-md border border-brand-warning-border bg-brand-warning-bg px-3 py-2 sm:block">
       <div class="flex items-start gap-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="mt-0.5 h-4 w-4 shrink-0 text-brand-warning-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 4.3 2.8 17.2A2 2 0 0 0 4.5 20h15a2 2 0 0 0 1.7-2.8L13.7 4.3a2 2 0 0 0-3.4 0Z" />
@@ -167,7 +231,7 @@ const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
     </div>
   )}
 
-  <div class="flex flex-wrap gap-1.5">
+  <div class="hidden flex-wrap gap-1.5 sm:flex">
     {availablePlatforms.map((platform) => (
       <span class="rounded border border-brand-card-border bg-brand-bg/35 px-2 py-1 text-[11px] font-semibold text-brand-text-muted">
         {platformLabels[platform]}
@@ -175,7 +239,7 @@ const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
     ))}
   </div>
 
-  <div class="mt-auto border-t border-brand-card-border pt-4">
+  <div class="mt-auto hidden border-t border-brand-card-border pt-4 sm:block">
     <div class="grid grid-cols-1 gap-2 sm:grid-cols-[1fr_auto]">
       <a
         href={`/${tool.slug}`}
