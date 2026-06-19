@@ -117,9 +117,13 @@ const schemaItemList = {
     "name": t.name
   }))
 };
+const alternates = Object.keys(languages).map((l) => ({
+  lang: l,
+  url: `${Astro.url.origin}/${l}`
+}));
 ---
 
-<BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaItemList} lang={lang}>
+<BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaItemList} lang={lang} alternates={alternates}>
   <!-- Hero Section -->
   <section class="relative overflow-hidden py-7 text-center sm:py-12" aria-labelledby="hero-title">
     <div class="pointer-events-none absolute inset-x-0 top-0 mx-auto h-px max-w-2xl bg-gradient-to-r from-transparent via-brand-primary/70 to-transparent" aria-hidden="true"></div>

@@ -12,6 +12,7 @@ interface Props {
   jsonLd?: Record<string, any> | Record<string, any>[];
   lang?: 'es' | 'sv' | 'it';
   alternates?: Array<{ lang: string; url: string }>;
+  noindex?: boolean;
 }
 
 const {
@@ -22,7 +23,8 @@ const {
   ogImage = 'https://fuenteia.com/default-share.jpg',
   jsonLd,
   lang = 'es',
-  alternates = []
+  alternates = [],
+  noindex = false
 } = Astro.props;
 
 const t = useTranslations(lang);
@@ -64,6 +66,7 @@ const nav = navNames[lang];
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
+    {noindex && <meta name="robots" content="noindex" />}
     
     <!-- Alternates Hreflang para Multilenguaje -->
     {alternates.map(({ lang: altLang, url }) => (

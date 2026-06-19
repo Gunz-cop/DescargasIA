@@ -82,7 +82,7 @@ const texts = {
 const tx = texts[lang];
 ---
 
-<BaseLayout title={tx.title} description={tx.desc} lang={lang}>
+<BaseLayout title={tx.title} description={tx.desc} lang={lang} noindex={true}>
   <div class="max-w-md mx-auto text-center py-20 flex flex-col items-center justify-center gap-6">
     <div class="relative w-16 h-16" aria-hidden="true">
       <div class="absolute inset-0 rounded-full border-4 border-brand-primary/25"></div>
