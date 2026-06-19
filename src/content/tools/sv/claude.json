@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Anthropics AI-assistent för längre texter, analys, kod och resonemang via officiella kanaler.",
+  "longDescription": "Claude är en konversations-AI från Anthropic. Den används ofta för textarbete, dokumentanalys, kodförklaringar och uppgifter där sammanhang och tydliga instruktioner spelar stor roll.",
+  "bestFor": [
+    "Analysera och sammanfatta långa dokument",
+    "Skriva och bearbeta strukturerade texter",
+    "Resonera kring kod, logik och tekniska problem",
+    "Arbeta i längre samtal där kontexten behöver hållas ihop"
+  ],
+  "limitations": [
+    "Vissa funktioner och modeller kräver betalplan.",
+    "Tillgång till mobilappar kan variera mellan regioner.",
+    "Claude bör inte laddas ner från APK-sidor eller inofficiella arkiv."
+  ],
+  "safetyNotes": [
+    "Anthropic distribuerar desktopappar via claude.ai/download.",
+    "Om Claude inte finns i din appbutik är webbversionen säkrare än en APK från tredje part."
+  ],
+  "editorialSummary": "Claude är särskilt användbart för text, analys och resonemang. Den säkra vägen är claude.ai, Anthropic:s officiella nedladdningssida och officiella appbutiker. FuenteAI länkar inte till inofficiella installerare eller ompaketerade appar.",
+  "editorialSections": [
+    {
+      "heading": "Varför många vill ladda ner Claude",
+      "body": "Claude har blivit populärt bland användare som arbetar med längre texter, dokument, kod och resonemang. Många söker efter Claude för Windows, macOS eller mobil eftersom de vill ha samma AI-assistent nära sitt dagliga arbetsflöde.\n\nDet skapar också förvirring. Claude fungerar i första hand via webben och via appar som publiceras av Anthropic. Om en okänd webbplats erbjuder en egen Claude-installerare bör den inte betraktas som officiell."
+    },
+    {
+      "heading": "Säker åtkomst till Claude",
+      "body": "Den direkta vägen är claude.ai i webbläsaren. För datorer hänvisar Anthropic till claude.ai/download för officiella appar. Där ska du kontrollera att domänen verkligen är Anthropic:s egen innan du laddar ner något.\n\nPå iOS och Android bör du använda respektive officiell appbutik när appen är tillgänglig. Om appen inte syns i din region är webbversionen ett bättre alternativ än att leta efter en fristående APK."
+    },
+    {
+      "heading": "Vad Claude gör bra i praktiken",
+      "body": "Claude passar särskilt bra när arbetet handlar om sammanhang: längre texter, PDF:er, rapporter, planering och dokument som måste analyseras med precision. Den upplevs ofta som försiktig och tydlig i hur den följer instruktioner.\n\nFör kod kan Claude hjälpa till att förklara, granska och skriva delar av en implementation. Det ersätter inte testning eller teknisk granskning, men kan vara ett starkt stöd när du behöver resonera igenom en lösning."
+    },
+    {
+      "heading": "När andra verktyg kan passa bättre",
+      "body": "Claude är inte alltid förstahandsvalet. Om du vill programmera direkt i en editor kan Cursor passa bättre. Om du behöver Googles ekosystem eller sökintegration kan Gemini vara mer naturligt. Om du vill köra modeller utan molntjänst är Ollama eller LM Studio mer relevanta.\n\nDet viktiga är att välja verktyg efter uppgiften. Oavsett vilket alternativ du väljer bör du använda officiella kanaler och undvika nedladdningar som försöker imitera välkända AI-varumärken."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är Claude säkert att använda via FuenteAI?",
+      "answer": "FuenteAI hostar inga Claude-filer. Sidan länkar bara vidare till officiella kanaler som claude.ai, claude.ai/download och appbutiker."
+    },
+    {
+      "question": "Finns Claude som officiell app för Windows och Mac?",
+      "answer": "Ja, Anthropic erbjuder desktopappar via claude.ai/download. Det är den officiella källan för datorversioner."
+    },
+    {
+      "question": "Finns Claude för Android?",
+      "answer": "Tillgänglighet kan variera beroende på region. Om du inte hittar appen i Google Play bör du använda claude.ai i webbläsaren och undvika APK-filer från tredje part."
+    },
+    {
+      "question": "Är Claude gratis?",
+      "answer": "Claude har ett gratisläge med begränsningar och betalplaner för mer kapacitet. Det finns inga legitima upplåsta gratisversioner utanför Anthropic:s egna tjänst."
+    }
+  ],
+  "swedishSupport": "unknown"
+}

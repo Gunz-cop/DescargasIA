@@ -1,0 +1,57 @@
+{
+  "shortDescription": "En grafisk desktopapp för att hitta, ladda ner och köra lokala AI-modeller utan terminal.",
+  "longDescription": "LM Studio är en desktopapp för lokala språkmodeller. Den erbjuder modellbibliotek, chattgränssnitt, inställningar och lokal server i en mer visuell miljö än terminalbaserade verktyg.",
+  "bestFor": [
+    "Använda lokala AI-modeller via ett grafiskt gränssnitt",
+    "Testa modeller från Hugging Face utan mycket kommandorad",
+    "Chatta med modeller offline efter nedladdning",
+    "Köra en lokal API-server kompatibel med vanliga AI-flöden"
+  ],
+  "limitations": [
+    "Prestanda beror på datorns RAM, CPU och GPU.",
+    "Linux-stöd kan vara mer begränsat än Windows och macOS.",
+    "Kommersiell användning kan ha andra licensvillkor än personligt bruk."
+  ],
+  "safetyNotes": [
+    "Den officiella webbplatsen är lmstudio.ai.",
+    "Ladda inte ner LM Studio från programarkiv eller spegelsidor som inte är officiella."
+  ],
+  "editorialSummary": "LM Studio gör lokal AI mer tillgänglig genom ett grafiskt gränssnitt. Det passar användare som vill testa modeller offline men inte vill börja i terminalen. FuenteAI länkar till lmstudio.ai, den officiella källan för nedladdning.",
+  "editorialSections": [
+    {
+      "heading": "Varför många söker efter LM Studio",
+      "body": "LM Studio riktar sig till samma grundbehov som Ollama: att köra språkmodeller lokalt. Skillnaden är upplevelsen. Här får du en app med sök, nedladdning, chatt och inställningar i ett grafiskt gränssnitt.\n\nDet gör verktyget mer tillgängligt för användare som vill ha lokal AI men inte vill börja med kommandorad, modellformat och manuella konfigurationer."
+    },
+    {
+      "heading": "Officiell nedladdning",
+      "body": "LM Studio distribueras från lmstudio.ai. Där finns versioner för Windows och macOS, samt Linux-stöd beroende på aktuell status. Den säkra vägen är alltid den officiella webbplatsen.\n\nEftersom lokala AI-verktyg är populära kan tredjepartssidor erbjuda egna nedladdningar. De behövs inte. Gå till lmstudio.ai och kontrollera att domänen stämmer innan du installerar."
+    },
+    {
+      "heading": "Vad LM Studio gör enklare",
+      "body": "LM Studio hjälper dig hitta kompatibla modeller, ladda ner dem och starta en konversation utan att skriva kommandon. Du kan justera parametrar, spara samtal och testa olika modeller i samma app.\n\nAppen kan också starta en lokal server som liknar vanliga AI-API-flöden. Det gör den användbar både för nyfikna användare och utvecklare som vill testa lokala integrationer."
+    },
+    {
+      "heading": "LM Studio eller Ollama",
+      "body": "LM Studio är oftast lättare för den som vill ha ett visuellt verktyg. Ollama är ofta smidigare för utvecklare som vill skripta, automatisera eller koppla lokala modeller till andra system.\n\nMånga använder båda. LM Studio är bra för att utforska modeller och chatta lokalt; Ollama är starkt som lokal infrastruktur. Valet beror på om du föredrar app eller terminal."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är LM Studio gratis?",
+      "answer": "LM Studio är gratis för personligt bruk. Kontrollera lmstudio.ai för aktuella villkor, särskilt vid kommersiell användning."
+    },
+    {
+      "question": "Fungerar LM Studio offline?",
+      "answer": "Ja. När en modell är nedladdad kan du använda den lokalt utan internetanslutning."
+    },
+    {
+      "question": "Vad är skillnaden mellan LM Studio och Ollama?",
+      "answer": "LM Studio är en grafisk app för lokala modeller. Ollama är mer terminal- och utvecklarorienterat. Båda kan köra modeller lokalt."
+    },
+    {
+      "question": "Var laddar jag ner LM Studio säkert?",
+      "answer": "Använd den officiella webbplatsen lmstudio.ai. Undvik speglar och ompaketerade nedladdningar."
+    }
+  ],
+  "swedishSupport": "no"
+}

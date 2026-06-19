@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Ett lokalt verktyg för att köra och hantera språkmodeller på din egen dator.",
+  "longDescription": "Ollama gör det möjligt att ladda ner och köra stora språkmodeller lokalt, utan att varje fråga skickas till en extern AI-tjänst. Det används ofta av utvecklare och tekniska användare.",
+  "bestFor": [
+    "Köra AI-modeller lokalt på egen dator",
+    "Experimentera med Llama, Gemma, Mistral och liknande modeller",
+    "Bygga lokala AI-flöden via API",
+    "Arbeta där integritet och kontroll är viktigare än enkel molnanvändning"
+  ],
+  "limitations": [
+    "Kräver mer teknisk vana än webbaserade AI-assistenter.",
+    "Prestanda beror starkt på RAM, CPU och GPU.",
+    "Stora modeller kräver kraftfull hårdvara."
+  ],
+  "safetyNotes": [
+    "Använd ollama.com för installation och GitHub-repot github.com/ollama/ollama för källkod.",
+    "Undvik fristående installerare och forks som inte länkas från officiella källor."
+  ],
+  "editorialSummary": "Ollama är ett bra val när du vill köra AI-modeller lokalt och ha mer kontroll över data, kostnad och experiment. Det är ett tekniskt verktyg, inte en vanlig chattapp. FuenteAI pekar till den officiella webbplatsen och det officiella GitHub-repot.",
+  "editorialSections": [
+    {
+      "heading": "Varför tekniska användare väljer Ollama",
+      "body": "Ollama löser ett tydligt problem: att köra språkmodeller på den egna datorn. Det passar utvecklare, experimenterande användare och team som vill testa AI utan att använda en extern molntjänst för varje fråga.\n\nDet är inte samma sak som ChatGPT eller Claude. Ollama är främst ett lokalt verktyg och en modellhanterare. Du installerar det, laddar ner modeller och kör dem lokalt via terminal eller lokalt API."
+    },
+    {
+      "heading": "Officiell installation",
+      "body": "Den officiella webbplatsen är ollama.com. Där finns installationsvägar för macOS, Windows och Linux. För källkod är GitHub-repot github.com/ollama/ollama den relevanta officiella referensen.\n\nEftersom projektet är populärt och open source finns det många guider och forks. Det betyder inte att alla nedladdningar är säkra. Utgå från den officiella webbplatsen när du installerar."
+    },
+    {
+      "heading": "Vad du kan göra med Ollama",
+      "body": "Efter installation kan du köra modeller som Llama, Gemma, Mistral eller Phi direkt på din dator. Du kan använda terminalen, ansluta en grafisk klient eller bygga egna lokala integrationer.\n\nOllama exponerar också ett lokalt API, vilket gör det användbart som infrastruktur för utvecklare. Det är en av anledningarna till att verktyget ofta dyker upp i lokala AI-projekt."
+    },
+    {
+      "heading": "Hårdvara och realistiska förväntningar",
+      "body": "Lokal AI kräver hårdvara. Mindre modeller kan fungera på enklare datorer, men större modeller kräver mer RAM och ofta GPU-stöd för att kännas snabba.\n\nOm du bara vill ha en enkel chattupplevelse kan LM Studio vara lättare att börja med. Om du däremot vill ha ett lätt, skriptbart och utvecklarvänligt lokalt verktyg är Ollama ett starkt val."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är Ollama gratis?",
+      "answer": "Ja, Ollama är gratis och open source. Du behöver inget konto för att installera och köra modeller lokalt."
+    },
+    {
+      "question": "Var laddar jag ner Ollama säkert?",
+      "answer": "Använd ollama.com. För källkod är github.com/ollama/ollama den officiella referensen."
+    },
+    {
+      "question": "Kan Ollama användas offline?",
+      "answer": "Ja, efter att modellerna har laddats ner kan de köras lokalt utan internetanslutning."
+    },
+    {
+      "question": "Vilken hårdvara behöver jag?",
+      "answer": "Det beror på modellens storlek. Mindre modeller fungerar på enklare datorer, medan större modeller kräver mer minne och gärna GPU."
+    }
+  ],
+  "swedishSupport": "no"
+}

@@ -1,0 +1,58 @@
+{
+  "shortDescription": "Googles multimodala AI-assistent för webben och mobilen, med officiella länkar till rätt kanaler.",
+  "longDescription": "Gemini är Googles AI-modell och assistent för text, bild, kod och uppgifter i Googles ekosystem. På dator används den via webben; på mobil distribueras den via officiella appbutiker.",
+  "bestFor": [
+    "Användare som redan arbetar i Googles ekosystem",
+    "Sökning, textarbete och multimodala frågor",
+    "Mobil AI-assistent på Android och iOS",
+    "Uppgifter som kräver aktuell information via Google"
+  ],
+  "limitations": [
+    "Google erbjuder ingen officiell desktopapp för Windows eller macOS.",
+    "Vissa funktioner kan kräva Google-konto eller betalplan.",
+    "Apparnas tillgänglighet kan variera mellan regioner."
+  ],
+  "safetyNotes": [
+    "Ladda inte ner installerare som marknadsförs som Gemini för PC.",
+    "För dator är gemini.google.com den officiella vägen.",
+    "För Android ska du använda Google Play, inte APK-sidor."
+  ],
+  "editorialSummary": "Gemini är det naturliga valet för många som redan använder Google. Den officiella datorvägen är webben på gemini.google.com. På mobil ska du använda Google Play eller App Store. FuenteAI markerar detta tydligt för att undvika falska desktopappar och modifierade APK-filer.",
+  "editorialSections": [
+    {
+      "heading": "Varför många söker efter att ladda ner Gemini",
+      "body": "Gemini är Googles AI-tjänst, och namnet dyker ofta upp i sökningar efter Android-app, iPhone-app eller Gemini för dator. Många förknippar Google med gratis och pålitlig mjukvara, vilket gör att falska nedladdningar kan se mer trovärdiga ut än de borde.\n\nDen viktigaste skillnaden är att Google inte erbjuder en officiell desktopapp för Gemini på Windows eller macOS. Om en webbplats erbjuder ett sådant installationsprogram är det inte Googles officiella distribution."
+    },
+    {
+      "heading": "Säker användning på dator och mobil",
+      "body": "På dator använder du Gemini via gemini.google.com i webbläsaren. Det kräver ingen fristående installerare. Det är den officiella modellen för datoranvändning, inte ett tillfälligt gap.\n\nPå Android finns Gemini via Google Play när tjänsten är tillgänglig i regionen. På iOS ska du använda App Store. Undvik APK-filer och paket som lovar förbättrade, upplåsta eller inofficiella Gemini-versioner."
+    },
+    {
+      "heading": "Vad Gemini passar bra för",
+      "body": "Gemini är särskilt intressant för användare som redan arbetar med Google-tjänster. Det kan kopplas till Googles ekosystem och är byggt för att hantera text, bilder och i vissa sammanhang andra typer av innehåll.\n\nFör frågor som kräver aktuell information kan Gemini vara praktiskt tack vare kopplingen till Googles sök- och produktmiljö. Det betyder inte att svar alltid är perfekta, men det gör tjänsten användbar för vardagliga sök- och arbetsuppgifter."
+    },
+    {
+      "heading": "När ett alternativ kan vara bättre",
+      "body": "Om du skriver långa dokument kan Claude kännas mer fokuserat. Om du programmerar i en editor kan Cursor vara mer direkt. Om du vill köra AI lokalt utan molntjänst är Ollama eller LM Studio bättre jämförelser.\n\nGemini är starkast när Google redan är en del av ditt arbetsflöde. Om du inte använder Googles tjänster särskilt mycket bör du jämföra med andra assistenter innan du låser dig vid ett val."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Finns Gemini som officiell app för Windows?",
+      "answer": "Nej. Google erbjuder ingen officiell Gemini-app för Windows eller macOS. På dator används Gemini via gemini.google.com."
+    },
+    {
+      "question": "Är Gemini-appen för Android säker?",
+      "answer": "Ja, om du installerar den från Google Play. Undvik APK-filer från tredjepartssidor."
+    },
+    {
+      "question": "Behöver jag ett Google-konto?",
+      "answer": "Ja, officiell användning av Gemini kräver normalt ett Google-konto."
+    },
+    {
+      "question": "Har Gemini stöd för svenska?",
+      "answer": "Gemini kan förstå och svara på svenska, men vissa funktioner, namn och integreringar kan variera mellan språk och regioner."
+    }
+  ],
+  "swedishSupport": "partial"
+}

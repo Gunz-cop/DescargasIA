@@ -1,0 +1,57 @@
+{
+  "shortDescription": "AI-kodeditorn baserad på VS Code, med officiella nedladdningar för Windows, macOS och Linux.",
+  "longDescription": "Cursor är en kodeditor byggd för programmering med AI direkt i arbetsflödet. Den bygger på VS Code-grunden och kombinerar editor, chatt, kodförståelse och refaktorering.",
+  "bestFor": [
+    "Utvecklare som vill ha AI direkt i kodeditorn",
+    "Förstå och ändra kod i större projekt",
+    "Generera, granska och refaktorera kod snabbare",
+    "Användare som redan trivs med VS Code-liknande miljö"
+  ],
+  "limitations": [
+    "Avancerad AI-användning kan kräva betalplan.",
+    "Cursor ersätter inte kodgranskning, tester eller säkerhetsarbete.",
+    "Det är inte en generell AI-assistent för alla typer av uppgifter."
+  ],
+  "safetyNotes": [
+    "Ladda ner Cursor från cursor.com eller den officiella nedladdningsdomänen.",
+    "Undvik ompaketerade installerare från arkiv, forum eller tredjepartswebbplatser."
+  ],
+  "editorialSummary": "Cursor är relevant om ditt huvudsakliga arbete sker i kod. Det är inte en allmän chatbot, utan en AI-editor som kan läsa och hjälpa till med projektkontext. Den säkra vägen är cursor.com och officiella nedladdningslänkar.",
+  "editorialSections": [
+    {
+      "heading": "Varför utvecklare laddar ner Cursor",
+      "body": "Cursor riktar sig till programmerare som vill minska avståndet mellan AI-chatt och faktisk kod. I stället för att kopiera kod till en separat tjänst kan du arbeta direkt i editorn med projektets filer som kontext.\n\nDet gör Cursor annorlunda än ChatGPT, Claude eller Gemini. Verktyget är inte främst byggt för allmänna frågor, utan för kod: ändringar, förklaringar, refaktorering och förslag i ett arbetsflöde som liknar VS Code."
+    },
+    {
+      "heading": "Officiell nedladdning och säkerhet",
+      "body": "Cursor distribueras via cursor.com och dess officiella nedladdningsflöde. Det finns installerare för Windows, macOS och Linux, och många VS Code-tillägg fungerar eftersom editorn bygger på samma grund.\n\nEftersom Cursor kan få åtkomst till ditt kodprojekt bör du vara extra försiktig med inofficiella versioner. En manipulerad editor är en större risk än en vanlig app, eftersom den kan läsa källkod och projektfiler."
+    },
+    {
+      "heading": "Vad AI i editorn faktiskt ändrar",
+      "body": "Den stora fördelen är kontext. Cursor kan arbeta med filer, struktur och beroenden i projektet. Det gör svaren mer användbara än en fristående chatt där du manuellt måste klistra in kod.\n\nFunktionerna omfattar kodgenerering, förklaringar, ändringar med instruktioner och chatt kopplad till projektet. För större projekt sparar det tid, men det kräver fortfarande att du granskar och testar resultatet."
+    },
+    {
+      "heading": "När Cursor inte är rätt val",
+      "body": "Om du bara programmerar ibland kan en vanlig AI-assistent räcka. Cursor är som mest värdefullt när kodeditorn är en stor del av din arbetsdag och du vill ha AI nära filerna.\n\nFör generell text, research eller dokumentarbete är Claude, ChatGPT eller Gemini ofta mer flexibla. För lokal AI utan molntjänst är Ollama och LM Studio mer relevanta."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är Cursor gratis?",
+      "answer": "Cursor har ett gratisläge med begränsningar och betalplaner för mer AI-användning. Villkoren kan ändras, så kontrollera cursor.com."
+    },
+    {
+      "question": "Var laddar jag ner Cursor säkert?",
+      "answer": "Använd cursor.com och officiella nedladdningslänkar. Undvik installerare från tredjepartssidor."
+    },
+    {
+      "question": "Fungerar Cursor med VS Code-tillägg?",
+      "answer": "Många VS Code-tillägg fungerar eftersom Cursor bygger på samma tekniska grund, men kompatibilitet kan variera."
+    },
+    {
+      "question": "Fungerar Cursor på Linux?",
+      "answer": "Ja, Cursor har officiella nedladdningar för Linux samt Windows och macOS."
+    }
+  ],
+  "swedishSupport": "partial"
+}

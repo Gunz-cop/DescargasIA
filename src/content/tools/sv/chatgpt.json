@@ -1,0 +1,57 @@
+{
+  "shortDescription": "OpenAI:s officiella AI-assistent för webb, dator och mobil, med säkra länkar till rätt kanaler.",
+  "longDescription": "ChatGPT är OpenAI:s språkmodell och AI-assistent för samtal, skrivande, kod, studier och vardagsproduktivitet. På FuenteAI pekar vi bara till officiella webbplatser, appbutiker och nedladdningssidor.",
+  "bestFor": [
+    "Skriva, sammanfatta och strukturera texter",
+    "Studera, resonera och få idéer steg för steg",
+    "Förklara kod och skapa tekniska utkast",
+    "Använda AI via webben, datorn eller mobilen"
+  ],
+  "limitations": [
+    "Vissa funktioner kräver konto eller betalplan.",
+    "Svar kan behöva kontrolleras mot primärkällor vid viktiga beslut.",
+    "Undvik tredjepartsappar, APK-filer och installerare som inte kommer från OpenAI."
+  ],
+  "safetyNotes": [
+    "Ladda inte ner ChatGPT som APK, EXE eller ZIP från inofficiella nedladdningssidor.",
+    "Använd chatgpt.com, OpenAI:s officiella nedladdningssida eller de officiella appbutikerna."
+  ],
+  "editorialSummary": "ChatGPT är en av de mest efterfrågade AI-tjänsterna för daglig produktivitet. Den säkra vägen är att använda OpenAI:s egna kanaler: webbversionen, officiella desktopappar och appbutikerna för mobil. FuenteAI länkar inte till speglar, modifierade APK-filer eller installerare från tredje part.",
+  "editorialSections": [
+    {
+      "heading": "Varför många söker efter att ladda ner ChatGPT",
+      "body": "ChatGPT blev för många den första AI-tjänsten som kändes användbar på riktigt. Den fungerar som en konversation: du skriver vad du behöver, ber om justeringar och kan fortsätta tills svaret passar uppgiften. Därför söker många efter uttryck som \"ladda ner ChatGPT\", \"ChatGPT för Windows\" eller \"ChatGPT app Android\".\n\nDen populariteten skapar också risk. När ett namn blir känt dyker det upp kloner, falska appar och webbplatser som lovar gratis premiumversioner. En säker sida ska inte behöva erbjuda egna filer. Den ska hjälpa dig att hitta OpenAI:s riktiga kanaler."
+    },
+    {
+      "heading": "Säkraste sättet att använda ChatGPT",
+      "body": "För de flesta är webbversionen på chatgpt.com den enklaste vägen. Där kan du logga in, välja plan och använda tjänsten utan att installera något. Om du vill använda en desktopapp ska den komma från OpenAI:s officiella nedladdningssida. På mobil är Google Play och App Store de säkra kanalerna.\n\nEn enkel regel räcker långt: om en sida erbjuder en ChatGPT-APK, en upplåst Pro-version eller en installerare som inte kommer från OpenAI bör du avbryta. FuenteAI visar den officiella destinationen och plattformen innan du lämnar sidan."
+    },
+    {
+      "heading": "Vad ChatGPT passar bäst för",
+      "body": "ChatGPT är starkt när du behöver arbeta med text, idéer och resonemang. Det kan hjälpa till med utkast, sammanfattningar, e-post, översättningar, kodförklaringar, studiefrågor och planering. Den största fördelen är att du kan iterera: kortare, mer tekniskt, mer vardagligt eller mer strukturerat.\n\nDet är ändå inte en absolut källa. Svar kan vara fel, särskilt i frågor som gäller juridik, medicin, ekonomi eller säkerhet. Använd ChatGPT som ett kraftfullt arbetsverktyg, men kontrollera viktiga fakta mot officiella källor."
+    },
+    {
+      "heading": "När du bör jämföra med alternativ",
+      "body": "ChatGPT är en stark allround-assistent, men inte alltid rätt verktyg för allt. Claude kan vara bekvämt för längre textarbete, Gemini passar bra i Googles ekosystem, Cursor är byggt för kod direkt i editorn, och Ollama eller LM Studio passar när du vill köra modeller lokalt.\n\nValet beror mer på ditt arbetsflöde än på vilken AI som är \"bäst\" i allmänhet. Om du vill skriva, studera och lösa många olika uppgifter är ChatGPT ett tryggt startval. Om du vill arbeta offline, programmera i en IDE eller jämföra webbkällor kan andra verktyg passa bättre."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är det säkert att ladda ner ChatGPT via FuenteAI?",
+      "answer": "FuenteAI hostar inga filer. Sidan länkar bara till officiella kanaler som chatgpt.com, OpenAI:s webbplats, Google Play eller App Store."
+    },
+    {
+      "question": "Finns ChatGPT som officiell app för Windows och macOS?",
+      "answer": "Ja, OpenAI erbjuder officiella desktopappar. Använd bara OpenAI:s egna nedladdningssidor eller länkarna som pekar dit."
+    },
+    {
+      "question": "Behöver jag ett konto för att använda ChatGPT?",
+      "answer": "För många funktioner krävs konto, särskilt historik, appar och betalplaner. Tillgänglighet kan variera beroende på region och plattform."
+    },
+    {
+      "question": "Finns det en officiell APK för ChatGPT?",
+      "answer": "Den rekommenderade kanalen för Android är Google Play. Undvik APK-filer från tredjepartssidor som lovar modifierade eller upplåsta versioner."
+    }
+  ],
+  "swedishSupport": "yes"
+}
