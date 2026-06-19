@@ -18,6 +18,11 @@ const platformDetails = z.object({
   lastChecked: z.string().optional()
 });
 
+const faqItem = z.object({
+  question: z.string(),
+  answer: z.string()
+});
+
 const tools = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/content/tools' }),
   schema: z.object({
@@ -44,6 +49,10 @@ const tools = defineCollection({
     tags: z.array(z.string()).default([]),
     alternatives: z.array(z.string()).default([]),
     safetyNotes: z.array(z.string()).default([]),
+    bestFor: z.array(z.string()).default([]),
+    limitations: z.array(z.string()).default([]),
+    faq: z.array(faqItem).default([]),
+    editorialSummary: z.string().optional(),
     
     // Nivel de confianza editorial general
     trustLevel: z.enum(['official', 'verified', 'pending-review']),

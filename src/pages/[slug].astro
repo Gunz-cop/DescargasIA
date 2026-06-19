@@ -13,35 +13,39 @@ export async function getStaticPaths() {
 }
 
 const { tool } = Astro.props;
+const allTools = await getCollection('tools');
+const toolsBySlug = new Map(allTools.map((entry) => [entry.data.slug, entry.data]));
 
-// Normalización de precios para badges
 const pricingLabels = {
   free: { label: 'Gratis', variant: 'success' as const },
   freemium: { label: 'Freemium', variant: 'primary' as const },
-  paid: { label: 'De Pago', variant: 'danger' as const },
+  paid: { label: 'De pago', variant: 'danger' as const },
   enterprise: { label: 'Enterprise', variant: 'neutral' as const },
-  unknown: { label: 'Precios...', variant: 'neutral' as const }
+  unknown: { label: 'Precio no confirmado', variant: 'neutral' as const }
 };
 const pricing = pricingLabels[tool.data.pricingModel] || pricingLabels.unknown;
 
-// Normalización de soporte de español
 const spanishSupportLabels = {
-  yes: { label: 'Soporte en Español', variant: 'success' as const },
-  partial: { label: 'Soporte Parcial', variant: 'warning' as const },
-  no: { label: 'Solo Inglés', variant: 'danger' as const },
-  unknown: { label: 'Idioma...', variant: 'neutral' as const }
+  yes: { label: 'Español disponible', variant: 'success' as const },
+  partial: { label: 'Español parcial', variant: 'warning' as const },
+  no: { label: 'Solo inglés', variant: 'danger' as const },
+  unknown: { label: 'Idioma no confirmado', variant: 'neutral' as const }
 };
 const spanish = spanishSupportLabels[tool.data.spanishSupport] || spanishSupportLabels.unknown;
 
-// Normalización de niveles de confianza
 const trustLabels = {
-  official: { label: '✓ Canal Oficial de Descarga', variant: 'success' as const },
-  verified: { label: '✓ Enlace Verificado', variant: 'secondary' as const },
-  'pending-review': { label: 'Bajo Revisión', variant: 'warning' as const }
+  official: { label: 'Canal oficial', variant: 'success' as const },
+  verified: { label: 'Enlace verificado', variant: 'secondary' as const },
+  'pending-review': { label: 'Bajo revisión', variant: 'warning' as const }
 };
 const trust = trustLabels[tool.data.trustLevel] || { label: 'Pendiente', variant: 'neutral' as const };
 
-// Formatear la fecha
+const accountLabel = tool.data.requiresAccount === true
+  ? 'Requiere cuenta'
+  : tool.data.requiresAccount === false
+    ? 'Sin cuenta obligatoria'
+    : 'Cuenta no confirmada';
+
 const formatReviewDate = (dateStr: string) => {
   try {
     return new Date(dateStr).toLocaleDateString('es-ES', {
@@ -54,14 +58,65 @@ const formatReviewDate = (dateStr: string) => {
   }
 };
 
-// Generar JSON-LD dinámico para SoftwareApplication
+const platformNames: Record<string, string> = {
+  web: 'Web',
+  windows: 'Windows',
+  mac: 'macOS',
+  linux: 'Linux',
+  android: 'Android',
+  ios: 'iOS'
+};
+
+const platformTypeLabels: Record<string, string> = {
+  'official-site': 'Sitio oficial',
+  'app-store': 'Tienda oficial',
+  'web-app': 'Aplicación web',
+  documentation: 'Documentación oficial',
+  'official-installer': 'Instalador oficial',
+  'github-repo': 'Repositorio oficial',
+  'package-manager': 'Gestor de paquetes'
+};
+
+const platforms = Object.entries(tool.data.platforms)
+  .filter(([, details]) => Boolean(details))
+  .map(([platform, details]) => ({
+    id: platform,
+    name: platformNames[platform] ?? platform,
+    details,
+    typeLabel: platformTypeLabels[details!.type] ?? details!.type,
+    host: new URL(details!.url).hostname.replace(/^www\./, '')
+  }));
+
+const primaryPlatform = platforms.find((item) => item.id === 'web') ?? platforms[0];
+const primaryCta = primaryPlatform
+  ? `/ir/${tool.data.slug}/${primaryPlatform.id}`
+  : `/ir/${tool.data.slug}`;
+
+let officialDomain = 'fuente oficial';
+try {
+  officialDomain = new URL(tool.data.officialWebsite).hostname.replace(/^www\./, '');
+} catch {
+  officialDomain = tool.data.officialWebsite;
+}
+
+const bestFor = tool.data.bestFor.length > 0
+  ? tool.data.bestFor
+  : tool.data.tags.slice(0, 4).map((tag: string) => `Usuarios que buscan ${tag.replaceAll('-', ' ')}`);
+
+const editorialSummary = tool.data.editorialSummary ?? tool.data.longDescription;
+const alternatives = tool.data.alternatives
+  .map((slug: string) => toolsBySlug.get(slug))
+  .filter(Boolean);
+
 const schemaApp = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": tool.data.name,
   "description": tool.data.shortDescription,
-  "applicationCategory": "BusinessApplication", // Categoría genérica
-  "operatingSystem": Object.keys(tool.data.platforms).filter(p => tool.data.platforms[p as keyof typeof tool.data.platforms]).join(', '),
+  "applicationCategory": "ProductivityApplication",
+  "operatingSystem": platforms.map((platform) => platform.name).join(', '),
+  "url": Astro.url.href,
+  "sameAs": tool.data.officialSources,
   "offers": {
     "@type": "Offer",
     "price": tool.data.pricingModel === 'free' ? '0' : undefined,
@@ -88,171 +143,250 @@ const schemaBreadcrumb = {
   ]
 };
 
-const jsonLd = [schemaApp, schemaBreadcrumb];
+const schemaFaq = tool.data.faq.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": tool.data.faq.map((item: { question: string; answer: string }) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+} : null;
+
+const jsonLd = schemaFaq ? [schemaApp, schemaBreadcrumb, schemaFaq] : [schemaApp, schemaBreadcrumb];
 ---
 
-<BaseLayout 
-  title={`Dónde descargar ${tool.data.name} oficial y seguro | DescargasIA`} 
-  description={`Encuentra los enlaces de descarga oficial de ${tool.data.name} para Windows, Mac, Android y iPhone. Evita versiones falsas y descarga seguro.`}
+<BaseLayout
+  title={`Dónde descargar ${tool.data.name} oficial y seguro | DescargasIA`}
+  description={`Ficha editorial para encontrar los canales oficiales de ${tool.data.name}, revisar compatibilidad, advertencias de seguridad y alternativas similares.`}
   jsonLd={jsonLd}
 >
-  <!-- Cabecera de Ficha -->
-  <header class="mb-10 pb-6 border-b border-brand-card-border/60">
-    <nav class="flex items-center gap-2 text-xs text-brand-text-muted mb-4 font-semibold" aria-label="Ruta de navegación">
-      <a href="/" class="hover:text-brand-text transition-colors">Inicio</a>
-      <span class="text-brand-card-border" aria-hidden="true">/</span>
-      <span class="text-brand-text">{tool.data.name}</span>
-    </nav>
+  <nav class="mb-6 flex items-center gap-2 text-xs font-semibold text-brand-text-muted" aria-label="Ruta de navegación">
+    <a href="/" class="hover:text-brand-text transition-colors">Inicio</a>
+    <span class="text-brand-card-border" aria-hidden="true">/</span>
+    <span class="text-brand-text">{tool.data.name}</span>
+  </nav>
 
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-      <div class="flex flex-col gap-2">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-brand-text font-['Outfit'] tracking-tight">
-          Descargar {tool.data.name} Oficial
+  <header class="relative overflow-hidden rounded-2xl border border-brand-card-border bg-brand-card-bg p-5 sm:p-7 lg:p-8">
+    <div class="absolute inset-x-0 top-0 h-1 bg-brand-primary" aria-hidden="true"></div>
+    <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+      <div>
+        <div class="mb-4 flex flex-wrap gap-2">
+          <Badge variant={trust.variant}>{trust.label}</Badge>
+          <Badge variant={pricing.variant}>{pricing.label}</Badge>
+          <Badge variant={spanish.variant}>{spanish.label}</Badge>
+        </div>
+        <h1 class="max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-brand-text font-['Outfit'] sm:text-5xl lg:text-6xl">
+          Descargar {tool.data.name} oficial
         </h1>
-        <p class="text-sm text-brand-text-muted max-w-2xl leading-relaxed">
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-brand-text-muted sm:text-lg">
           {tool.data.shortDescription}
         </p>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <a
+            href={primaryCta}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex min-h-12 items-center justify-center rounded-lg border border-brand-primary bg-brand-primary px-5 py-3 text-sm font-black text-white transition-colors hover:bg-brand-primary-hover"
+          >
+            Ir a la descarga oficial
+          </a>
+          <a
+            href="#compatibilidad"
+            class="inline-flex min-h-12 items-center justify-center rounded-lg border border-brand-card-border bg-brand-bg/35 px-5 py-3 text-sm font-bold text-brand-text transition-colors hover:border-brand-primary/40 hover:text-brand-primary"
+          >
+            Ver plataformas
+          </a>
+        </div>
       </div>
 
-      <!-- Badges de Estado -->
-      <div class="flex flex-wrap gap-2 md:self-end">
-        <Badge variant={trust.variant}>{trust.label}</Badge>
-        <Badge variant={pricing.variant}>{pricing.label}</Badge>
-        <Badge variant={spanish.variant}>{spanish.label}</Badge>
-      </div>
+      <aside class="rounded-xl border border-brand-success-border bg-brand-success-bg p-4" aria-label="Resumen de confianza">
+        <p class="text-[11px] font-black uppercase text-brand-success">Origen verificado</p>
+        <p class="mt-2 font-mono text-lg font-black text-brand-text">{officialDomain}</p>
+        <dl class="mt-4 grid grid-cols-2 gap-3 text-xs">
+          <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
+            <dt class="font-bold uppercase text-brand-text-muted">Plataformas</dt>
+            <dd class="mt-1 font-black text-brand-text">{platforms.length}</dd>
+          </div>
+          <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
+            <dt class="font-bold uppercase text-brand-text-muted">Cuenta</dt>
+            <dd class="mt-1 font-black text-brand-text">{tool.data.requiresAccount === true ? 'Sí' : tool.data.requiresAccount === false ? 'No' : 'Por confirmar'}</dd>
+          </div>
+        </dl>
+        <p class="mt-4 text-xs leading-relaxed text-brand-text-muted">
+          Última revisión editorial: <strong class="text-brand-text">{formatReviewDate(tool.data.lastReviewed)}</strong>.
+        </p>
+      </aside>
     </div>
   </header>
 
-  <!-- Contenido en Columnas -->
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-    <!-- Columna Principal: Enlaces de Descarga y Seguridad (2/3 de pantalla en desktop) -->
-    <div class="lg:col-span-2 flex flex-col gap-8">
-      
-      <!-- Listado de Enlaces Oficiales (Formato Tabla/Lista Premium) -->
-      <section aria-labelledby="descargas-title">
-        <h2 id="descargas-title" class="text-xl font-bold text-brand-text mb-4 font-['Outfit']">
-          Enlaces de Descarga e Instalación Oficiales
+  <div class="mt-8 grid gap-8 lg:grid-cols-[1fr_22rem]">
+    <main class="flex flex-col gap-8">
+      <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5" aria-labelledby="mejor-para-title">
+        <h2 id="mejor-para-title" class="text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
+          Para qué es mejor {tool.data.name}
         </h2>
-
-        <div class="flex flex-col gap-3">
-          {Object.entries(tool.data.platforms).map(([platform, details]) => {
-            if (!details) return null;
-            
-            const icons = {
-              web: '🌐',
-              windows: '🖥️',
-              mac: '🍎',
-              linux: '🐧',
-              android: '🤖',
-              ios: '📱'
-            };
-            const platformNames = {
-              web: 'Versión Web',
-              windows: 'Windows',
-              mac: 'macOS',
-              linux: 'Linux',
-              android: 'Android',
-              ios: 'iOS (iPhone/iPad)'
-            };
-
-            const platKey = platform as keyof typeof icons;
-            const icon = icons[platKey] || '💻';
-            const name = platformNames[platKey] || platform;
-
-            return (
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border border-brand-card-border bg-brand-card-bg/20 hover:border-brand-primary/30 transition-all">
-                <div class="flex items-center gap-3">
-                  <span class="text-2xl" aria-hidden="true">{icon}</span>
-                  <div class="flex flex-col">
-                    <span class="text-sm font-bold text-brand-text capitalize">{name}</span>
-                    <span class="text-[10px] text-brand-text-muted font-medium">{details.label}</span>
-                  </div>
-                </div>
-
-                <div class="flex items-center gap-3 justify-between sm:justify-end">
-                  {details.isOfficial && (
-                    <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-brand-success-bg text-brand-success border border-brand-success-border">
-                      Canal Oficial
-                    </span>
-                  )}
-                  <a 
-                    href={`/ir/${tool.data.slug}/${platform}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center justify-center px-4 py-2 rounded-xl bg-brand-primary text-white text-xs font-black hover:bg-brand-primary-hover hover:scale-[1.02] active:scale-[0.98] transition-all"
-                  >
-                    {details.type === 'web-app' ? 'Abrir Aplicación' : 'Ir a Descarga'}
-                  </a>
-                </div>
-              </div>
-            );
-          })}
+        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+          {bestFor.map((item: string) => (
+            <div class="rounded-xl border border-brand-card-border bg-brand-bg/35 p-4">
+              <p class="text-sm font-bold leading-relaxed text-brand-text">{item}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      <!-- Notas de Seguridad / Advertencias -->
-      {tool.data.safetyNotes && tool.data.safetyNotes.length > 0 && (
-        <section class="p-5 rounded-2xl border border-brand-danger-border bg-brand-danger-bg/20" aria-labelledby="seguridad-title">
-          <div class="flex items-center gap-2 mb-3">
-            <span class="text-lg" aria-hidden="true">⚠️</span>
-            <h2 id="seguridad-title" class="text-sm font-black uppercase tracking-wider text-brand-danger-text font-['Outfit']">
-              Consejos de Seguridad y Confianza
+      <section id="compatibilidad" class="scroll-mt-20" aria-labelledby="descargas-title">
+        <div class="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-[11px] font-black uppercase text-brand-primary">Canales oficiales</p>
+            <h2 id="descargas-title" class="text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
+              Elige tu plataforma
             </h2>
           </div>
-          <ul class="list-disc pl-5 flex flex-col gap-2 text-xs text-brand-text-muted font-medium leading-relaxed">
-            {tool.data.safetyNotes.map(note => (
-              <li>{note}</li>
+          <p class="text-xs text-brand-text-muted">No alojamos instaladores ni mirrors.</p>
+        </div>
+
+        <div class="grid gap-3">
+          {platforms.map(({ id, name, details, typeLabel, host }) => (
+            <article class="rounded-xl border border-brand-card-border bg-brand-card-bg p-4 transition-colors hover:border-brand-primary/35">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h3 class="text-lg font-black text-brand-text">{name}</h3>
+                  <p class="mt-1 text-sm leading-relaxed text-brand-text-muted">{details!.label}</p>
+                  <div class="mt-3 flex flex-wrap gap-2 text-[10px] font-bold uppercase">
+                    <span class="rounded border border-brand-card-border bg-brand-bg/35 px-2 py-1 text-brand-text-muted">{typeLabel}</span>
+                    <span class="rounded border border-brand-success-border bg-brand-success-bg px-2 py-1 text-brand-success">{host}</span>
+                    {details!.lastChecked && (
+                      <span class="rounded border border-brand-card-border bg-brand-bg/35 px-2 py-1 text-brand-text-muted">
+                        rev. {formatReviewDate(details!.lastChecked)}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <a
+                  href={`/ir/${tool.data.slug}/${id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-lg bg-brand-primary px-4 py-2 text-xs font-black text-white transition-colors hover:bg-brand-primary-hover"
+                >
+                  {details!.type === 'web-app' ? 'Abrir oficial' : 'Ir al canal oficial'}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5" aria-labelledby="resumen-title">
+        <h2 id="resumen-title" class="text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
+          Qué debes saber antes de usar {tool.data.name}
+        </h2>
+        <p class="mt-4 text-sm leading-7 text-brand-text-muted">{editorialSummary}</p>
+      </section>
+
+      {tool.data.safetyNotes.length > 0 && (
+        <section class="rounded-2xl border border-brand-warning-border bg-brand-warning-bg p-5" aria-labelledby="seguridad-title">
+          <p class="text-[11px] font-black uppercase text-brand-warning-text">Seguridad</p>
+          <h2 id="seguridad-title" class="mt-1 text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
+            Evita clones y descargas falsas
+          </h2>
+          <ul class="mt-4 grid gap-3 text-sm leading-relaxed text-brand-warning-text">
+            {tool.data.safetyNotes.map((note: string) => (
+              <li class="rounded-lg border border-brand-warning-border bg-brand-bg/20 p-3">{note}</li>
             ))}
           </ul>
         </section>
       )}
 
-      <!-- Notas editoriales y fuentes verificadas -->
-      <section class="p-4 rounded-xl bg-brand-card-bg/10 border border-brand-card-border text-xs text-brand-text-muted font-semibold flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <span>Última revisión editorial: <strong class="text-brand-text">{formatReviewDate(tool.data.lastReviewed)}</strong></span>
-        {tool.data.officialSources && tool.data.officialSources.length > 0 && (
-          <div class="flex items-center gap-1">
-            <span>Fuente consultada:</span>
-            <a href={tool.data.officialSources[0]} target="_blank" rel="noopener noreferrer" class="text-brand-primary hover:underline">
-              {new URL(tool.data.officialSources[0]).hostname}
-            </a>
-          </div>
-        )}
-      </section>
-    </div>
-
-    <!-- Columna Lateral: Descripción Larga y Alternativas (1/3 de pantalla en desktop) -->
-    <div class="flex flex-col gap-8">
-      
-      <!-- Ficha de la Herramienta -->
-      <section class="p-6 rounded-2xl border border-brand-card-border bg-brand-card-bg/20 flex flex-col gap-4" aria-labelledby="detalles-title">
-        <h2 id="detalles-title" class="text-lg font-bold text-brand-text font-['Outfit']">
-          Sobre {tool.data.name}
-        </h2>
-        <div class="text-xs text-brand-text-muted leading-relaxed font-medium flex flex-col gap-3">
-          <p>{tool.data.longDescription}</p>
-        </div>
-      </section>
-
-      <!-- Alternativas Recomendadas -->
-      {tool.data.alternatives && tool.data.alternatives.length > 0 && (
-        <section class="p-6 rounded-2xl border border-brand-card-border bg-brand-card-bg/20 flex flex-col gap-4" aria-labelledby="alternativas-title">
-          <h2 id="alternativas-title" class="text-lg font-bold text-brand-text font-['Outfit']">
-            Alternativas Recomendadas
+      {tool.data.limitations.length > 0 && (
+        <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5" aria-labelledby="limitaciones-title">
+          <h2 id="limitaciones-title" class="text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
+            Limitaciones a tener en cuenta
           </h2>
-          <div class="flex flex-col gap-2">
-            {tool.data.alternatives.map(altSlug => (
-              <a 
-                href={`/${altSlug}`}
-                class="flex items-center justify-between p-3 rounded-xl border border-brand-card-border bg-brand-bg/40 text-xs font-bold text-brand-text-muted hover:text-brand-primary hover:border-brand-primary/30 transition-all"
+          <ul class="mt-4 grid gap-3 text-sm leading-relaxed text-brand-text-muted">
+            {tool.data.limitations.map((item: string) => (
+              <li class="rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">{item}</li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {tool.data.faq.length > 0 && (
+        <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5" aria-labelledby="faq-title">
+          <h2 id="faq-title" class="text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
+            Preguntas frecuentes sobre {tool.data.name}
+          </h2>
+          <div class="mt-4 divide-y divide-brand-card-border">
+            {tool.data.faq.map((item: { question: string; answer: string }) => (
+              <details class="group py-4">
+                <summary class="cursor-pointer list-none text-sm font-black text-brand-text">
+                  {item.question}
+                </summary>
+                <p class="mt-3 text-sm leading-7 text-brand-text-muted">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+    </main>
+
+    <aside class="flex flex-col gap-6">
+      <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5" aria-labelledby="ficha-title">
+        <h2 id="ficha-title" class="text-lg font-black text-brand-text font-['Outfit']">Ficha rápida</h2>
+        <dl class="mt-4 grid gap-3 text-sm">
+          <div class="flex items-center justify-between gap-3 border-b border-brand-card-border pb-3">
+            <dt class="text-brand-text-muted">Precio</dt>
+            <dd class="font-bold text-brand-text">{pricing.label}</dd>
+          </div>
+          <div class="flex items-center justify-between gap-3 border-b border-brand-card-border pb-3">
+            <dt class="text-brand-text-muted">Cuenta</dt>
+            <dd class="font-bold text-brand-text">{accountLabel}</dd>
+          </div>
+          <div class="flex items-center justify-between gap-3 border-b border-brand-card-border pb-3">
+            <dt class="text-brand-text-muted">Español</dt>
+            <dd class="font-bold text-brand-text">{spanish.label}</dd>
+          </div>
+          <div class="flex items-center justify-between gap-3">
+            <dt class="text-brand-text-muted">Confianza</dt>
+            <dd class="font-bold text-brand-text">{trust.label}</dd>
+          </div>
+        </dl>
+      </section>
+
+      {alternatives.length > 0 && (
+        <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5" aria-labelledby="alternativas-title">
+          <h2 id="alternativas-title" class="text-lg font-black text-brand-text font-['Outfit']">
+            Alternativas similares
+          </h2>
+          <div class="mt-4 grid gap-2">
+            {alternatives.map((alt: any) => (
+              <a
+                href={`/${alt.slug}`}
+                class="rounded-xl border border-brand-card-border bg-brand-bg/35 p-3 transition-colors hover:border-brand-primary/35"
               >
-                <span class="capitalize">{altSlug.replace('-', ' ')}</span>
-                <span aria-hidden="true">→</span>
+                <span class="block text-sm font-black text-brand-text">{alt.name}</span>
+                <span class="mt-1 block text-xs leading-relaxed text-brand-text-muted">{alt.shortDescription}</span>
               </a>
             ))}
           </div>
         </section>
       )}
-    </div>
+
+      {tool.data.officialSources.length > 0 && (
+        <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5" aria-labelledby="fuentes-title">
+          <h2 id="fuentes-title" class="text-lg font-black text-brand-text font-['Outfit']">Fuentes oficiales</h2>
+          <div class="mt-4 grid gap-2">
+            {tool.data.officialSources.map((source: string) => (
+              <a href={source} target="_blank" rel="noopener noreferrer" class="truncate rounded-lg border border-brand-card-border bg-brand-bg/35 px-3 py-2 font-mono text-xs font-bold text-brand-primary hover:underline">
+                {new URL(source).hostname.replace(/^www\./, '')}
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </aside>
   </div>
 </BaseLayout>

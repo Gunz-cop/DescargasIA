@@ -47,6 +47,36 @@
   "spanishSupport": "yes",
   "tags": ["openai", "chatbot", "gpt-4o", "gpt-4", "productividad"],
   "alternatives": ["gemini", "claude", "perplexity"],
+  "bestFor": [
+    "Redactar, resumir y reescribir textos en español",
+    "Resolver dudas, estudiar y preparar ideas paso a paso",
+    "Programar, explicar código y crear borradores técnicos",
+    "Usar IA conversacional desde web, escritorio o móvil"
+  ],
+  "limitations": [
+    "Algunas funciones avanzadas pueden requerir cuenta o plan de pago.",
+    "No conviene descargar instaladores desde páginas no oficiales que prometen versiones modificadas.",
+    "Las respuestas pueden requerir verificación cuando se usan para decisiones legales, médicas o financieras."
+  ],
+  "editorialSummary": "ChatGPT es una de las herramientas de IA más buscadas para productividad diaria: sirve para conversar, escribir, resumir, programar y aprender con ayuda de modelos de lenguaje. En DescargasIA reunimos únicamente sus canales oficiales para que puedas usar la versión web o llegar a las apps reales sin pasar por mirrors, APKs modificados ni instaladores de terceros.",
+  "faq": [
+    {
+      "question": "¿Es seguro descargar ChatGPT desde DescargasIA?",
+      "answer": "DescargasIA no aloja archivos de ChatGPT. La ficha solo enlaza a canales oficiales como chatgpt.com, el sitio de OpenAI, Google Play o App Store, según la plataforma."
+    },
+    {
+      "question": "¿ChatGPT tiene aplicación para Windows y macOS?",
+      "answer": "Sí. OpenAI ofrece aplicaciones de escritorio desde su página oficial. En esta ficha se muestran los accesos oficiales disponibles para Windows y macOS."
+    },
+    {
+      "question": "¿Necesito una cuenta para usar ChatGPT?",
+      "answer": "ChatGPT puede requerir cuenta para acceder a funciones completas, historial, apps nativas o planes de pago. La disponibilidad puede variar según plataforma y región."
+    },
+    {
+      "question": "¿Existe un APK oficial de ChatGPT?",
+      "answer": "Para Android, el canal recomendado es Google Play. Evita descargar APKs de páginas de terceros que prometen versiones premium, desbloqueadas o modificadas."
+    }
+  ],
   "safetyNotes": [
     "No instales archivos APK ni ejecutables EXE de ChatGPT provistos por páginas de descarga de terceros.",
     "OpenAI distribuye de forma directa y gratuita todas sus aplicaciones."
