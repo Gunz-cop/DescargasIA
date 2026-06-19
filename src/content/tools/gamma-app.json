@@ -1,0 +1,69 @@
+{
+  "name": "Gamma App",
+  "slug": "gamma-app",
+  "shortDescription": "Plataforma de inteligencia artificial para generar presentaciones, páginas web y documentos en segundos a partir de texto.",
+  "longDescription": "Gamma App es una herramienta de diseño y productividad basada en la nube que utiliza inteligencia artificial para transformar ideas, esquemas o documentos de texto en presentaciones visuales adaptativas, páginas web o documentos formateados. Cuenta con acceso web oficial y no requiere instalar programas en tu equipo.",
+  "officialWebsite": "https://gamma.app",
+  "categories": ["productividad-presentaciones-ia"],
+  "platforms": {
+    "web": {
+      "url": "https://gamma.app",
+      "type": "web-app",
+      "label": "Usar Gamma App oficial en la web",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "spanishSupport": "yes",
+  "tags": ["gamma", "presentaciones", "diapositivas", "productividad", "diseno-ia"],
+  "alternatives": ["chatgpt", "gemini"],
+  "safetyNotes": [
+    "Gamma App funciona exclusivamente a través de su sitio web oficial gamma.app. No tiene aplicación de escritorio oficial para Windows o Mac. Evita descargar instaladores de fuentes desconocidas."
+  ],
+  "bestFor": [
+    "Profesionales y estudiantes que necesitan estructurar y diseñar diapositivas urgentes sin tener que formatear manualmente.",
+    "Crear páginas web o portafolios interactivos en segundos listos para compartir mediante un enlace web.",
+    "Transformar textos largos o resúmenes de reuniones directamente en materiales de presentación visuales organizados."
+  ],
+  "limitations": [
+    "La versión gratuita utiliza créditos que se consumen por cada generación de diapositiva o edición con IA.",
+    "La exportación de presentaciones en PDF o PowerPoint en el plan gratuito incluye una marca de agua de Gamma."
+  ],
+  "initials": "GA",
+  "editorialSummary": "Gamma App resuelve el problema de la maquetación y diseño de diapositivas automatizando por completo el aspecto visual. En DescargasIA proporcionamos el enlace seguro a su versión web oficial para evitar falsas aplicaciones que expongan tus contraseñas.",
+  "editorialSections": [
+    {
+      "heading": "El problema del diseño tradicional de diapositivas frente a Gamma App",
+      "body": "Crear una presentación en PowerPoint o Canva suele ser frustrante. Los usuarios pasan el 80% del tiempo moviendo cuadros de texto, ajustando el tamaño de las fuentes, alineando imágenes y buscando plantillas que no se rompan al agregar contenido, dejando muy poco tiempo para preparar la exposición.\n\nGamma App invierte este proceso utilizando inteligencia artificial. Solo debes escribir un prompt (ej. *'Crear una presentación sobre energías renovables'*) o pegar un documento existente, y la IA estructurará el índice de temas, redactará las diapositivas y creará un diseño visual cohesivo con imágenes relevantes en menos de un minuto."
+    },
+    {
+      "heading": "Por qué elegir Gamma frente a PowerPoint o Canva",
+      "body": "La diferencia fundamental es que Gamma utiliza tarjetas de contenido adaptativo (fluid layouts). Mientras que en PowerPoint trabajas con diapositivas de tamaño fijo que exigen exprimir o recortar el texto, en Gamma el contenido fluye de manera natural. Si agregas más información, la tarjeta se expande estéticamente de manera automática.\n\nAdemás, las presentaciones de Gamma no están limitadas a archivos locales: se pueden ver como páginas web interactivas (donde puedes incrustar videos de YouTube, formularios interactivos o feeds en vivo) simplemente compartiendo un enlace seguro con tus clientes o profesores."
+    },
+    {
+      "heading": "Aclaración sobre la inexistencia de aplicaciones instalables",
+      "body": "Gamma App funciona exclusivamente bajo un modelo de software en la nube. Toda la generación, edición colaborativa en tiempo real y almacenamiento se realiza en sus propios servidores.\n\nNo descargues ningún instalador que prometa ofrecer 'Gamma App gratis para PC'. Este tipo de ejecutables falsos son distribuidos en foros piratas y son virus informáticos diseñados para robar cookies de sesión de tus navegadores."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Gamma App es gratis?",
+      "answer": "Sí, al registrarte de forma gratuita obtienes 400 créditos de bienvenida para generar presentaciones o hacer preguntas a su asistente de diseño. Para eliminar la marca de agua en las exportaciones y obtener créditos ilimitados, es necesario suscribirse a sus planes de pago."
+    },
+    {
+      "question": "¿Se pueden descargar las presentaciones creadas en Gamma?",
+      "answer": "Sí. Gamma permite exportar tus proyectos en formato PDF o como archivo de Microsoft PowerPoint (.pptx) para presentarlos sin conexión a internet."
+    },
+    {
+      "question": "¿Las presentaciones de Gamma se pueden editar manualmente?",
+      "answer": "Sí, totalmente. Además de pedirle a la IA mediante comandos que cambie imágenes, añada bloques o reformule textos, puedes modificar cada elemento, cambiar de temas, colores y añadir componentes directamente usando su interfaz gráfica intuitiva."
+    }
+  ],
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://gamma.app"
+  ]
+}

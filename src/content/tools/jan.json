@@ -1,0 +1,91 @@
+{
+  "name": "Jan AI",
+  "slug": "jan",
+  "shortDescription": "Cliente de inteligencia artificial local y 100% de código abierto para ejecutar modelos LLM de forma privada en tu PC.",
+  "longDescription": "Jan AI es una aplicación de escritorio que convierte tu ordenador en un servidor de inteligencia artificial local. Con una interfaz limpia inspirada en ChatGPT, permite descargar, configurar y chatear con modelos de código abierto (como Llama 3, Gemma o Mistral) de manera offline, garantizando privacidad absoluta de los datos. Funciona en Windows, macOS y Linux.",
+  "officialWebsite": "https://jan.ai",
+  "categories": ["modelos-locales"],
+  "platforms": {
+    "web": {
+      "url": "https://jan.ai",
+      "type": "official-site",
+      "label": "Ver sitio oficial de Jan",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://jan.ai",
+      "type": "official-site",
+      "label": "Descargar instalador para Windows desde su web",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://jan.ai",
+      "type": "official-site",
+      "label": "Descargar instalador para macOS desde su web",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "linux": {
+      "url": "https://jan.ai",
+      "type": "official-site",
+      "label": "Descargar AppImage para Linux desde su web",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "spanishSupport": "yes",
+  "tags": ["jan", "local", "offline", "open-source", "modelos-locales", "interfaz"],
+  "alternatives": ["lm-studio", "ollama"],
+  "safetyNotes": [
+    "Jan es un proyecto transparente de código abierto. Descárgalo únicamente desde su dominio oficial jan.ai o directamente desde su repositorio de lanzamientos en GitHub (github.com/janhq/jan)."
+  ],
+  "bestFor": [
+    "Usuarios que desean una interfaz de chat local sencilla de usar y que no requiera conocimientos técnicos de terminal.",
+    "Empresas y profesionales que buscan soluciones de IA local basadas en software 100% libre e integrable.",
+    "Conectar tanto modelos locales offline como modelos remotos comerciales (mediante APIs de OpenAI, Anthropic, etc.) en un solo panel."
+  ],
+  "limitations": [
+    "El rendimiento del chat y la velocidad de respuesta dependen por completo de la potencia de la CPU y GPU de tu ordenador.",
+    "Requiere descargar modelos de gran tamaño (varios gigabytes) para iniciar su uso por primera vez."
+  ],
+  "initials": "JN",
+  "editorialSummary": "Jan AI destaca por ofrecer una interfaz local limpia y potente bajo una filosofía estricta de código abierto. En DescargasIA listamos de manera directa sus accesos oficiales de descarga para garantizar una instalación transparente y libre de amenazas.",
+  "editorialSections": [
+    {
+      "heading": "El valor del código abierto frente a las interfaces propietarias",
+      "body": "Ejecutar modelos de lenguaje de forma local es el primer paso para proteger tu privacidad, pero de poco sirve si el programa que gestiona esos modelos es de código cerrado. Herramientas como LM Studio son excelentes, pero al no tener código auditable, el usuario debe confiar a ciegas en que la aplicación no realiza telemetría oculta o recopilación de metadatos.\n\nJan es 100% de código abierto (Open Source). Todo su código de desarrollo es público, transparente y auditable por la comunidad global de programadores en GitHub. Si buscas soberanía tecnológica y control absoluto sobre las herramientas que instalas en tu sistema, Jan es la opción idónea."
+    },
+    {
+      "heading": "Diferencias prácticas: ¿Por qué usar Jan en lugar de LM Studio?",
+      "body": "Aunque ambas herramientas permiten descargar y chatear con modelos locales mediante una interfaz intuitiva, existen diferencias de filosofía y diseño:\n\n*   **LM Studio:** Enfocado en usuarios que quieren explorar Hugging Face de forma visual con filtros muy granulares. Es código cerrado y su licencia para uso en redes corporativas comerciales tiene costes asociados.\n*   **Jan AI:** Diseñado con una arquitectura modular y ligera en segundo plano. Permite instalar extensiones adicionales, es gratis tanto para uso personal como comercial en empresas sin costes de licencia, y tiene un menor consumo de memoria RAM cuando está inactivo."
+    },
+    {
+      "heading": "Cómo configurarlo rápidamente en tu ordenador",
+      "body": "El proceso de instalación de Jan es tan sencillo como el de cualquier programa de escritorio habitual. Descargas el instalador para tu sistema operativo desde jan.ai, lo ejecutas y la aplicación se abrirá lista para usar.\n\nDentro de la aplicación, cuentas con un catálogo (Hub) de modelos recomendados (como Llama 3 o Gemma). Solo pulsas el botón 'Download' en el modelo que se adapte a tu memoria RAM, esperas a que finalice la descarga interna, e inicias una nueva conversación de chat local de forma instantánea y privada."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Jan AI es realmente gratuito?",
+      "answer": "Sí, Jan es completamente gratuito y libre de publicidad o suscripciones. Está licenciado bajo la licencia GNU Affero General Public License (AGPL) para fomentar la transparencia."
+    },
+    {
+      "question": "¿Puedo usar Jan en una computadora antigua sin tarjeta gráfica?",
+      "answer": "Sí. Jan soporta inferencia de CPU pura, lo que permite ejecutar modelos ligeros (como los de 1B-3B parámetros) en ordenadores normales. Sin embargo, si cuentas con una GPU NVIDIA con CUDA o un Mac Apple Silicon, Jan la detectará automáticamente para acelerar notablemente las respuestas."
+    },
+    {
+      "question": "¿Dónde se guardan mis conversaciones en Jan?",
+      "answer": "Todos tus historiales de chat, archivos de configuración y modelos descargados se guardan localmente en tu propio disco duro, en una carpeta accesible que puedes exportar o borrar cuando lo desees."
+    }
+  ],
+  "trustLevel": "verified",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://jan.ai",
+    "https://github.com/janhq/jan"
+  ]
+}

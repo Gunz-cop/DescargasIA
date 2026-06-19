@@ -1,0 +1,90 @@
+{
+  "name": "Gemma",
+  "slug": "gemma",
+  "shortDescription": "Modelos de inteligencia artificial de código abierto desarrollados por Google para ejecución local y privada.",
+  "longDescription": "Gemma es una familia de modelos de lenguaje ligeros y de última generación creados por Google a partir de la misma tecnología utilizada en Gemini. A diferencia de este último, Gemma se distribuye con pesos abiertos (open-weights), permitiendo a desarrolladores e investigadores descargar, ejecutar e integrar la IA de forma local y 100% privada en sus propios ordenadores.",
+  "officialWebsite": "https://ai.google.dev/gemma",
+  "categories": ["modelos-locales"],
+  "platforms": {
+    "web": {
+      "url": "https://ai.google.dev/gemma",
+      "type": "documentation",
+      "label": "Ver documentación oficial de Gemma",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://github.com/google/gemma.cpp",
+      "type": "github-repo",
+      "label": "Ver repositorio de gemma.cpp en GitHub",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://github.com/google/gemma.cpp",
+      "type": "github-repo",
+      "label": "Ver repositorio de gemma.cpp en GitHub",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "linux": {
+      "url": "https://github.com/google/gemma.cpp",
+      "type": "github-repo",
+      "label": "Ver repositorio de gemma.cpp en GitHub",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "spanishSupport": "yes",
+  "tags": ["gemma", "google", "local", "offline", "open-weights", "modelos-locales"],
+  "alternatives": ["ollama", "lm-studio"],
+  "safetyNotes": [
+    "Los modelos de Gemma se descargan principalmente mediante gestores locales como Ollama o desde repositorios seguros y oficiales de Google en GitHub y Hugging Face. Evita descargar archivos .exe o instaladores de páginas no oficiales."
+  ],
+  "bestFor": [
+    "Desarrolladores e investigadores que necesitan ejecutar modelos de lenguaje potentes de forma local y privada.",
+    "Procesar textos y datos sumamente confidenciales que no pueden enviarse a servidores externos en la nube.",
+    "Aprender a ajustar (fine-tuning) y personalizar modelos de IA de Google para tareas específicas sin costo de APIs."
+  ],
+  "limitations": [
+    "Al ser modelos ligeros (como Gemma 2 2B/9B/27B), no cuentan con la base de conocimiento enciclopédica de Gemini Pro en la nube.",
+    "Requiere gestores de terceros (como Ollama, LM Studio o Llama.cpp) para chatear de forma visual e interactiva."
+  ],
+  "initials": "GE",
+  "editorialSummary": "Gemma es la respuesta de Google para la comunidad de código abierto, permitiendo ejecutar su tecnología de IA localmente. En DescargasIA enlazamos a la documentación oficial y repositorios de confianza para que lo configures con seguridad.",
+  "editorialSections": [
+    {
+      "heading": "El problema de los chatbots en la nube y por qué elegir Gemma",
+      "body": "Cuando usas Gemini o ChatGPT, cada mensaje que envías se transmite a los servidores de Google u OpenAI. Estas corporaciones analizan tu información para entrenar sus futuros modelos o auditar tus conversaciones, lo que impide su uso para manejar datos bancarios, historiales médicos, secretos comerciales o bases de código de software corporativas privadas.\n\nGemma resuelve esto por completo. Al ser un modelo con pesos abiertos, puedes descargar el archivo del modelo en tu disco duro y ejecutarlo de forma 100% desconectada de internet en tu ordenador. La información nunca sale de tu equipo, garantizando una privacidad absoluta y cumpliendo con las normativas de protección de datos más estrictas."
+    },
+    {
+      "heading": "Diferencias clave: ¿Por qué usar Gemma y no Gemini?",
+      "body": "La elección depende del tipo de tarea y de los recursos de tu hardware:\n\n*   **Gemini (Nube):** Tiene un tamaño descomunal y requiere superordenadores para correr. Cuenta con una gran capacidad de razonamiento general y acceso a internet, pero recopila tus datos y requiere suscripción para sus modelos más avanzados.\n*   **Gemma (Local):** Es una familia de modelos optimizados (de 2B, 9B y 27B de parámetros) diseñados para ejecutarse en computadoras de consumo habitual. Son ideales para tareas especializadas (clasificación de textos, traducción, asistencia de programación básica) y son totalmente modificables por el desarrollador."
+    },
+    {
+      "heading": "Cómo descargar e instalar Gemma en tu PC de forma segura",
+      "body": "Gemma no se distribuye como una aplicación ejecutable (.exe o .msi) con interfaz visual directa. Para usarlo fácilmente en Windows, Mac o Linux, el método recomendado es instalar primero un gestor de modelos locales como **Ollama** o **LM Studio**.\n\nUna vez que tengas Ollama instalado, solo abres la terminal de comandos y escribes `ollama run gemma2` (o el modelo que prefieras). El gestor descargará de forma segura el archivo del modelo desde la base de datos oficial y levantará una interfaz de conversación local."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Gemma es totalmente gratis?",
+      "answer": "Sí, el uso de los modelos Gemma es gratuito bajo la licencia de términos de uso de Google. Puedes descargarlos y utilizarlos en tus aplicaciones comerciales o personales sin tener que pagar costes de licencias."
+    },
+    {
+      "question": "¿Qué requisitos de PC necesita Gemma?",
+      "answer": "Los modelos de 2B parámetros corren fluidamente en PCs con 8GB de RAM. Para los modelos medianos de 9B parámetros, se recomiendan 16GB de RAM y una tarjeta gráfica con 6GB de VRAM. Los modelos grandes de 27B requieren hardware potente con 32GB de RAM o más."
+    },
+    {
+      "question": "¿Gemma funciona sin conexión a internet?",
+      "answer": "Sí. Tras la descarga inicial del modelo a tu ordenador, puedes apagar por completo el Wi-Fi e internet. El modelo se ejecuta 100% local en tu procesador y tarjeta gráfica."
+    }
+  ],
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://ai.google.dev/gemma"
+  ]
+}

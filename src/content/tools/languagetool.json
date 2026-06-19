@@ -1,0 +1,90 @@
+{
+  "name": "LanguageTool",
+  "slug": "languagetool",
+  "shortDescription": "Corrector ortográfico, gramatical y de estilo multilingüe basado en inteligencia artificial.",
+  "longDescription": "LanguageTool es un asistente de escritura de código abierto que utiliza modelos de inteligencia artificial para detectar errores que los correctores tradicionales omiten. Además de la ortografía, analiza la gramática, la redundancia, el tono y la estructura de las oraciones en más de 30 idiomas. Cuenta con aplicaciones de escritorio, extensiones de navegador y complementos para procesadores de texto.",
+  "officialWebsite": "https://languagetool.org/es",
+  "categories": ["traduccion-redaccion-ia"],
+  "platforms": {
+    "web": {
+      "url": "https://languagetool.org/es",
+      "type": "web-app",
+      "label": "Usar corrector web oficial",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "windows": {
+      "url": "https://languagetool.org/es/insights/windows",
+      "type": "official-installer",
+      "label": "Descargar app oficial para Windows",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://apps.apple.com/es/app/languagetool-para-safari/id1534275765",
+      "type": "app-store",
+      "label": "Ver app oficial de macOS en App Store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/es/app/languagetool-grammar-checker/id1625345759",
+      "type": "app-store",
+      "label": "Ver app oficial en App Store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-18"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": false,
+  "spanishSupport": "yes",
+  "tags": ["languagetool", "corrector", "redaccion", "gramatica", "open-source"],
+  "alternatives": ["chatgpt", "deepl"],
+  "safetyNotes": [
+    "LanguageTool es una herramienta de código abierto muy imitada. Obtén sus extensiones y clientes de escritorio únicamente desde su web oficial languagetool.org o las tiendas oficiales."
+  ],
+  "bestFor": [
+    "Redactores, estudiantes y profesionales que necesitan pulir informes y correos electrónicos sin faltas de estilo.",
+    "Corregir textos en tiempo real en cualquier aplicación (Outlook, Slack, navegadores) mediante su cliente de escritorio.",
+    "Mantener la privacidad de los textos gracias a su opción de servidor local autohospedado."
+  ],
+  "limitations": [
+    "La versión gratuita limita las revisiones a textos de hasta 10,000 caracteres por análisis.",
+    "Las sugerencias avanzadas de estilo y tono por inteligencia artificial requieren el plan Premium."
+  ],
+  "initials": "LT",
+  "editorialSummary": "LanguageTool ofrece una corrección ortográfica y de estilo muy superior a los métodos tradicionales de procesadores de texto, integrando sugerencias de IA adaptadas al tono que desees transmitir. En DescargasIA listamos las descargas de sus clientes oficiales y extensiones seguras.",
+  "editorialSections": [
+    {
+      "heading": "El problema de los correctores tradicionales frente a la corrección por IA",
+      "body": "Los correctores ortográficos incluidos en navegadores o en Microsoft Word funcionan mediante diccionarios rígidos: solo marcan palabras mal deletreadas. Sin embargo, no pueden detectar si una oración está mal estructurada, si repites demasiadas palabras o si usas un término que no concuerda con el género o número de la frase (ej. *'los problemas que existía'* en lugar de *'que existían'*).\n\nLanguageTool soluciona esto analizando el texto completo contextualmente. Gracias a sus algoritmos de aprendizaje de lenguaje, detecta discordancias verbales, redundancias, frases demasiado largas y te sugiere sinónimos dinámicos basados en la oración para mejorar la claridad de tus textos."
+    },
+    {
+      "heading": "Por qué usar LanguageTool en lugar de pedirle a ChatGPT que corrija tu texto",
+      "body": "Pedirle a ChatGPT que revise tu ortografía y estilo funciona, pero tiene dos inconvenientes graves en el día a día:\n\n1. **Fricción en el flujo de trabajo:** Debes copiar tu borrador, salir de tu aplicación de correo o documento, ir a la web de ChatGPT, escribir el prompt, esperar la respuesta, copiarla de vuelta y revisar que no haya alterado ideas clave.\n2. **Privacidad:** Todo lo que envías a ChatGPT se procesa en servidores comerciales externos.\n\nLanguageTool se integra de forma invisible directamente en tus aplicaciones mediante extensiones y su app de escritorio. Te avisa de los errores subrayándolos en rojo o amarillo a medida que escribes directamente en tu editor habitual, permitiéndote corregir con un solo clic sin perder la concentración."
+    },
+    {
+      "heading": "La ventaja del código abierto y la opción offline",
+      "body": "A diferencia de herramientas propietarias como Grammarly, el motor de LanguageTool es de código abierto. Para empresas o usuarios con requisitos extremos de seguridad de datos que no pueden enviar información sensible a internet, LanguageTool ofrece la posibilidad de descargar y ejecutar su servidor de corrección en local (mediante un contenedor Docker o instalación Java), garantizando que el análisis de textos se realice 100% dentro de la red local del usuario."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿LanguageTool es gratuito?",
+      "answer": "Sí, ofrece una versión gratuita muy potente que cubre la corrección ortográfica y gramatical estándar para textos de hasta 10,000 caracteres. El plan Premium desbloquea límites de caracteres y sugerencias estilísticas avanzadas."
+    },
+    {
+      "question": "¿Funciona en cualquier navegador y sistema operativo?",
+      "answer": "Sí. LanguageTool tiene extensiones oficiales para Chrome, Firefox, Edge y Safari. Además, cuenta con aplicaciones nativas para Windows, macOS y complementos directos para Microsoft Word, Google Docs y LibreOffice."
+    },
+    {
+      "question": "¿LanguageTool recopila mis contraseñas o textos privados?",
+      "answer": "No. LanguageTool no registra ni almacena tus entradas de texto en sus servidores en la versión gratuita para el análisis, y sus extensiones están diseñadas para ignorar campos confidenciales como contraseñas o números de tarjetas de crédito."
+    }
+  ],
+  "trustLevel": "verified",
+  "lastReviewed": "2026-06-18",
+  "officialSources": [
+    "https://languagetool.org"
+  ]
+}
