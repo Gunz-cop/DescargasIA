@@ -57,7 +57,7 @@ const jsonLdString = jsonLd
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <!-- Datos Estructurados Schema.org -->
     {jsonLdString && (
@@ -65,28 +65,23 @@ const jsonLdString = jsonLd
     )}
   </head>
   <body class="min-h-screen flex flex-col justify-between">
-    <!-- Fondo mesh decorativo premium -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-20">
-      <!-- Glow orbe 1 (Violeta) -->
-      <div class="absolute -top-[20%] -left-[10%] w-[60vw] h-[60vw] rounded-full bg-brand-primary/10 blur-[120px] animate-orb-1"></div>
-      <!-- Glow orbe 2 (Cyan) -->
-      <div class="absolute -bottom-[20%] -right-[10%] w-[50vw] h-[50vw] rounded-full bg-brand-secondary/5 blur-[100px] animate-orb-2"></div>
-      
-      <!-- Mesh grid de fondo -->
-      <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(139,92,246,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(139,92,246,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+    <!-- Fondo editorial sobrio -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-20 bg-brand-bg">
+      <div class="absolute inset-0 bg-[radial-gradient(rgba(16,185,129,0.055)_1px,transparent_1px)] bg-[size:30px_30px]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,var(--brand-bg))]"></div>
     </div>
 
     <!-- HEADER / NAVIGATION -->
-    <header class="sticky top-0 z-40 border-b border-brand-card-border/80 bg-brand-bg/85 backdrop-blur-md transition-all">
+    <header class="sticky top-0 z-40 border-b border-brand-card-border bg-brand-bg/92 backdrop-blur-md transition-all">
       <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2 group">
-          <span class="text-2xl" aria-hidden="true">⚡</span>
-          <span class="text-xl font-black tracking-tight bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent group-hover:brightness-110 transition-all">
+        <a href="/" class="flex items-center gap-2 group" aria-label="Ir al inicio de DescargasIA">
+          <span class="font-mono text-sm font-bold text-brand-primary border border-brand-primary/30 bg-brand-primary/10 rounded px-2 py-1 group-hover:bg-brand-primary/15 transition-colors" aria-hidden="true">&gt;_</span>
+          <span class="text-lg font-black tracking-tight text-brand-text group-hover:text-brand-primary transition-colors">
             DescargasIA
           </span>
         </a>
 
-        <nav class="hidden sm:flex items-center gap-6 text-sm font-semibold text-brand-text-muted">
+        <nav class="hidden sm:flex items-center gap-6 text-sm font-semibold text-brand-text-muted" aria-label="Navegacion principal">
           <a href="/categoria/asistentes-ia" class="hover:text-brand-text transition-colors">Asistentes</a>
           <a href="/categoria/programacion" class="hover:text-brand-text transition-colors">Programación</a>
           <a href="/categoria/modelos-locales" class="hover:text-brand-text transition-colors">Modelos Locales</a>
@@ -98,10 +93,10 @@ const jsonLdString = jsonLd
           <button 
             type="button" 
             id="theme-toggle" 
-            class="p-2 rounded-xl border border-brand-card-border bg-brand-card-bg/40 text-brand-text-muted hover:text-brand-text hover:border-brand-primary/30 transition-all active:scale-95"
+            class="min-h-11 px-3 rounded-lg border border-brand-card-border bg-brand-card-bg text-[11px] font-bold text-brand-text-muted hover:text-brand-text hover:border-brand-primary/35 transition-all active:scale-[0.98] cursor-pointer"
             aria-label="Alternar tema claro/oscuro"
           >
-            <span id="theme-toggle-icon">🌙</span>
+            <span id="theme-toggle-icon">Oscuro</span>
           </button>
         </div>
       </div>
@@ -113,14 +108,14 @@ const jsonLdString = jsonLd
     </main>
 
     <!-- FOOTER -->
-    <footer class="border-t border-brand-card-border/80 bg-brand-card-bg/10 backdrop-blur-sm mt-12 py-10 transition-colors">
+    <footer class="border-t border-brand-card-border bg-brand-card-bg/40 mt-12 py-10 transition-colors">
       <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex flex-col gap-2 text-center md:text-left">
-          <span class="text-base font-black tracking-tight bg-gradient-to-r from-brand-primary to-brand-secondary bg-clip-text text-transparent">
+          <span class="text-base font-black tracking-tight text-brand-text">
             DescargasIA
           </span>
           <p class="text-xs text-brand-text-muted max-w-md leading-relaxed">
-            Directorio independiente de herramientas de inteligencia artificial. Enlazamos exclusivamente a los canales oficiales y oficiales de descarga para garantizar tu seguridad.
+            Índice editorial independiente para encontrar canales oficiales de herramientas de inteligencia artificial. No alojamos instaladores, APKs ni mirrors; verificamos fuentes y enlazamos al origen legítimo.
           </p>
         </div>
 
@@ -150,10 +145,10 @@ const jsonLdString = jsonLd
       const setTheme = (theme) => {
         if (theme === 'light') {
           document.documentElement.classList.add('light');
-          if (themeIcon) themeIcon.textContent = '☀️';
+          if (themeIcon) themeIcon.textContent = 'Claro';
         } else {
           document.documentElement.classList.remove('light');
-          if (themeIcon) themeIcon.textContent = '🌙';
+          if (themeIcon) themeIcon.textContent = 'Oscuro';
         }
         localStorage.setItem('theme', theme);
       };

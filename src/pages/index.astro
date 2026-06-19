@@ -15,8 +15,8 @@ const sortedTools = [...tools].sort((a, b) => {
   return valB - valA;
 });
 
-const pageTitle = "Directorio Confiable de Herramientas de Inteligencia Artificial";
-const pageDesc = "Descarga de forma segura aplicaciones oficiales de ChatGPT, Gemini, Claude, Ollama, Cursor y más. Sin malware ni mirrors, directo a las fuentes oficiales.";
+const pageTitle = "Descarga IA desde canales oficiales | DescargasIA";
+const pageDesc = "Índice editorial en español para encontrar canales oficiales de ChatGPT, Gemini, Claude, Ollama, Cursor y más. Sin mirrors, APKs modificados ni instaladores falsos.";
 
 // Schema para el listado de herramientas
 const schemaItemList = {
@@ -36,22 +36,38 @@ const schemaItemList = {
 
 <BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaItemList}>
   <!-- Hero Section -->
-  <section class="text-center py-16 relative overflow-hidden" aria-labelledby="hero-title">
-    <div class="relative z-10 max-w-3xl mx-auto px-4">
-      <span class="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-black tracking-wider uppercase rounded-full bg-brand-primary/10 text-brand-primary border border-brand-primary/20 mb-6">
-        Enlaces 100% Oficiales y Seguros
+  <section class="py-14 sm:py-16 relative" aria-labelledby="hero-title">
+    <div class="max-w-4xl">
+      <span class="mb-5 inline-flex items-center gap-2 rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-[11px] font-black uppercase text-brand-primary">
+        Índice editorial de seguridad
       </span>
-      
-      <h1 id="hero-title" class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-brand-text mb-6 font-['Outfit',sans-serif] leading-[1.1]">
-        Directorio Confiable de <br class="hidden sm:inline" />
-        <span class="bg-gradient-to-r from-brand-primary via-fuchsia-400 to-brand-secondary bg-clip-text text-transparent drop-shadow-sm">
-          Herramientas de IA
-        </span>
+
+      <h1 id="hero-title" class="mb-5 max-w-3xl text-4xl font-black leading-[1.08] tracking-tight text-brand-text sm:text-5xl md:text-6xl font-['Outfit',sans-serif]">
+        Descarga IA desde el canal oficial.
       </h1>
-      
-      <p class="text-base sm:text-lg text-brand-text-muted mb-8 max-w-2xl mx-auto font-medium leading-relaxed">
-        Evita virus, instaladores modificados y extensiones falsas. Te guiamos directamente a las descargas oficiales del desarrollador.
+
+      <p class="mb-7 max-w-2xl text-base leading-relaxed text-brand-text-muted sm:text-lg">
+        DescargasIA conecta tu búsqueda de ChatGPT, Gemini, Claude, Ollama, Cursor y otras herramientas con la fuente legítima del desarrollador. No alojamos archivos ni recomendamos mirrors.
       </p>
+
+      <div class="grid gap-2 rounded-lg border border-brand-card-border bg-brand-card-bg p-3 sm:grid-cols-4">
+        <div class="rounded-md border border-brand-card-border bg-brand-bg/35 px-3 py-2">
+          <p class="text-[11px] font-bold text-brand-text">Sin mirrors</p>
+          <p class="text-[10px] leading-relaxed text-brand-text-muted">Evitamos copias y páginas intermediarias.</p>
+        </div>
+        <div class="rounded-md border border-brand-card-border bg-brand-bg/35 px-3 py-2">
+          <p class="text-[11px] font-bold text-brand-text">Sin APKs de terceros</p>
+          <p class="text-[10px] leading-relaxed text-brand-text-muted">Priorizamos tiendas y dominios oficiales.</p>
+        </div>
+        <div class="rounded-md border border-brand-card-border bg-brand-bg/35 px-3 py-2">
+          <p class="text-[11px] font-bold text-brand-text">Sin instaladores alojados</p>
+          <p class="text-[10px] leading-relaxed text-brand-text-muted">No redistribuimos ejecutables.</p>
+        </div>
+        <div class="rounded-md border border-brand-success-border bg-brand-success-bg px-3 py-2">
+          <p class="text-[11px] font-bold text-brand-success">Fuente visible</p>
+          <p class="text-[10px] leading-relaxed text-brand-text-muted">Mostramos el dominio antes de salir.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -60,8 +76,8 @@ const schemaItemList = {
     <SearchBar />
 
     <!-- Grid de Herramientas -->
-    <div 
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-300" 
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 transition-all duration-300"
       id="tools-grid"
     >
       {sortedTools.map(tool => (
@@ -70,20 +86,24 @@ const schemaItemList = {
     </div>
 
     <!-- Mensaje de Búsqueda sin Resultados -->
-    <div id="empty-state" class="hidden w-full text-center py-16 bg-brand-card-bg/10 border border-dashed border-brand-card-border rounded-2xl p-8 mt-6">
-      <div class="text-4xl mb-4" aria-hidden="true">🔍</div>
-      <h3 class="text-lg font-bold text-brand-text mb-2">No encontramos herramientas con estos filtros</h3>
-      <p class="text-sm text-brand-text-muted max-w-md mx-auto mb-6">Prueba escribiendo otra palabra o restableciendo los filtros de categoría y dispositivo.</p>
-      <button 
-        id="reset-all-filters-btn" 
-        class="px-5 py-2.5 text-xs font-bold rounded-xl bg-brand-primary/10 text-brand-primary border border-brand-primary/20 hover:bg-brand-primary/20 transition-all cursor-pointer"
+    <div id="empty-state" class="hidden w-full text-center py-16 bg-brand-card-bg border border-dashed border-brand-card-border rounded-lg p-8 mt-6">
+      <div class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-brand-card-border bg-brand-bg/35 text-brand-primary" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" />
+        </svg>
+      </div>
+      <h3 class="text-lg font-bold text-brand-text mb-2">No encontramos una fuente con esos filtros</h3>
+      <p class="text-sm text-brand-text-muted max-w-md mx-auto mb-6">Prueba con otro nombre o restablece categoría y plataforma.</p>
+      <button
+        id="reset-all-filters-btn"
+        class="min-h-11 px-5 py-2.5 text-xs font-bold rounded-md bg-brand-primary text-white border border-brand-primary hover:bg-brand-primary-hover transition-colors cursor-pointer"
       >
-        Restablecer Filtros
+        Restablecer filtros
       </button>
     </div>
   </section>
 
-  <!-- Script de Filtro Client-Side (Vanilla JS - estilo Vet24) -->
+  <!-- Script de Filtro Client-Side (Vanilla JS) -->
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
       const searchInput = document.getElementById('search-input');

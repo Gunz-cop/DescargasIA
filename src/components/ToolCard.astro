@@ -2,110 +2,156 @@
 // src/components/ToolCard.astro
 import Badge from './Badge.astro';
 
+type PlatformKey = 'web' | 'windows' | 'mac' | 'linux' | 'android' | 'ios';
+
+interface PlatformDetails {
+  url: string;
+  type: string;
+  label: string;
+  isOfficial: boolean;
+  lastChecked?: string;
+}
+
 interface Props {
   tool: {
     name: string;
     slug: string;
     shortDescription: string;
+    officialWebsite: string;
     categories: string[];
     pricingModel: 'free' | 'freemium' | 'paid' | 'enterprise' | 'unknown';
     spanishSupport: 'yes' | 'partial' | 'no' | 'unknown';
     trustLevel: 'official' | 'verified' | 'pending-review';
-    platforms: {
-      web?: any;
-      windows?: any;
-      mac?: any;
-      linux?: any;
-      android?: any;
-      ios?: any;
-    };
+    safetyNotes?: string[];
+    lastReviewed?: string;
+    platforms: Partial<Record<PlatformKey, PlatformDetails>>;
   };
 }
 
 const { tool } = Astro.props;
 
-// Normalización de precios para badges
 const pricingLabels = {
   free: { label: 'Gratis', variant: 'success' as const },
   freemium: { label: 'Freemium', variant: 'primary' as const },
-  paid: { label: 'De Pago', variant: 'danger' as const },
+  paid: { label: 'De pago', variant: 'danger' as const },
   enterprise: { label: 'Enterprise', variant: 'neutral' as const },
-  unknown: { label: 'Precios...', variant: 'neutral' as const }
+  unknown: { label: 'Precio no confirmado', variant: 'neutral' as const }
 };
 
 const pricing = pricingLabels[tool.pricingModel] || pricingLabels.unknown;
 
-// Normalización de niveles de confianza
 const trustLabels = {
-  official: { label: '✓ Canal Oficial', variant: 'success' as const },
-  verified: { label: '✓ Enlace Verificado', variant: 'secondary' as const },
-  'pending-review': { label: 'Bajo Revisión', variant: 'warning' as const }
+  official: { label: 'Canal oficial', variant: 'success' as const },
+  verified: { label: 'Enlace verificado', variant: 'secondary' as const },
+  'pending-review': { label: 'Bajo revisión', variant: 'warning' as const }
 };
 
 const trust = trustLabels[tool.trustLevel] || { label: 'Pendiente', variant: 'neutral' as const };
+
+let officialDomain = 'fuente oficial';
+try {
+  officialDomain = new URL(tool.officialWebsite).hostname.replace(/^www\./, '');
+} catch {
+  officialDomain = tool.officialWebsite?.replace(/https?:\/\/(www\.)?/, '').split('/')[0] || 'fuente oficial';
+}
+
+const reviewDate = tool.lastReviewed
+  ? new Date(tool.lastReviewed).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' })
+  : null;
+
+const primarySafetyNote = tool.safetyNotes?.[0] ?? null;
+
+const platformLabels: Record<PlatformKey, string> = {
+  web: 'Web',
+  windows: 'Windows',
+  mac: 'macOS',
+  linux: 'Linux',
+  android: 'Android',
+  ios: 'iOS'
+};
+
+const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
+  .filter((platform) => Boolean(tool.platforms[platform]));
 ---
 
-<article 
-  class="relative flex flex-col justify-between bg-brand-card-bg/40 backdrop-blur-md border border-brand-card-border rounded-2xl p-6 pl-8 hover:border-brand-primary/45 hover:shadow-2xl hover:shadow-brand-primary/5 hover:scale-[1.015] -translate-y-0.5 hover:-translate-y-1 transition-all duration-300 group overflow-hidden"
+<article
+  class="flex h-full flex-col gap-4 rounded-lg border border-brand-card-border bg-brand-card-bg p-5 transition-all duration-200 hover:border-brand-primary/35 hover:shadow-lg hover:shadow-brand-primary/5 group"
   data-name={tool.name.toLowerCase()}
   data-slug={tool.slug}
   data-categories={tool.categories.join(',')}
   data-pricing={tool.pricingModel}
-  data-platforms={Object.keys(tool.platforms).filter(p => tool.platforms[p]).join(',')}
+  data-platforms={Object.keys(tool.platforms).filter(p => tool.platforms[p as PlatformKey]).join(',')}
 >
-  <!-- Barra lateral decorativa gradient (estilo Vet24) -->
-  <div class={`absolute left-0 top-0 bottom-0 w-2 transition-all duration-300 ${tool.trustLevel === 'official' ? 'bg-gradient-to-b from-brand-primary to-brand-primary/60 shadow-[0_0_12px_rgba(139,92,246,0.3)]' : 'bg-brand-secondary/60'}`}></div>
-
-  <div>
-    <!-- Cabecera de la Tarjeta (Badges y Sistemas Operativos) -->
-    <div class="flex flex-wrap items-start justify-between gap-2 mb-4">
-      <div class="flex flex-col gap-1.5">
-        <Badge variant={trust.variant}>{trust.label}</Badge>
-        <Badge variant={pricing.variant}>{pricing.label}</Badge>
-      </div>
-
-      <!-- Dispositivos Soportados -->
-      <div class="flex flex-wrap items-center gap-1 max-w-[60%] justify-end text-[10px] font-bold text-brand-text-muted">
-        {tool.platforms.web && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="Versión Web">🌐 Web</span>}
-        {tool.platforms.windows && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="Windows">🖥️ Win</span>}
-        {tool.platforms.mac && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="macOS">🍎 Mac</span>}
-        {tool.platforms.linux && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="Linux">🐧 Linux</span>}
-        {tool.platforms.android && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="Android">🤖 And</span>}
-        {tool.platforms.ios && <span class="px-1.5 py-0.5 rounded bg-brand-card-bg/80 border border-brand-card-border" title="iOS (iPhone/iPad)">📱 iOS</span>}
-      </div>
+  <div class="flex items-start justify-between gap-3">
+    <div class="flex flex-wrap gap-1.5">
+      <Badge variant={trust.variant}>{trust.label}</Badge>
+      <Badge variant={pricing.variant}>{pricing.label}</Badge>
     </div>
 
-    <!-- Título y descripción -->
-    <h3 class="text-xl font-black text-brand-text group-hover:text-brand-primary transition-colors mb-2 font-['Outfit',sans-serif]">
-      <a href={`/${tool.slug}`}>
-        {tool.name}
-      </a>
-    </h3>
+    {reviewDate && (
+      <span class="shrink-0 rounded border border-brand-card-border bg-brand-bg/40 px-2 py-0.5 font-mono text-[10px] font-semibold text-brand-text-muted">
+        rev. {reviewDate}
+      </span>
+    )}
+  </div>
 
-    <p class="text-xs text-brand-text-muted/90 font-medium leading-relaxed line-clamp-3 mb-6">
+  <div class="flex flex-col gap-2">
+    <h3 class="text-lg font-black leading-tight tracking-tight text-brand-text transition-colors group-hover:text-brand-primary">
+      <a href={`/${tool.slug}`}>{tool.name}</a>
+    </h3>
+    <p class="text-sm leading-relaxed text-brand-text-muted line-clamp-3">
       {tool.shortDescription}
     </p>
   </div>
 
-  <!-- Botones de Acción -->
-  <div class="mt-auto pt-4 border-t border-brand-card-border/60 flex items-center justify-between gap-3">
-    <a 
-      href={`/${tool.slug}`} 
-      class="flex items-center gap-1 text-xs text-brand-text-muted hover:text-brand-primary font-extrabold transition-colors group/link"
-    >
-      Ver Ficha
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+  <div class="rounded-md border border-brand-success-border bg-brand-success-bg px-3 py-2">
+    <div class="flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 shrink-0 text-brand-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
       </svg>
-    </a>
+      <div class="min-w-0">
+        <p class="text-[10px] font-bold uppercase text-brand-text-muted">Fuente principal</p>
+        <p class="truncate font-mono text-xs font-bold text-brand-success">{officialDomain}</p>
+      </div>
+    </div>
+  </div>
 
-    <a 
-      href={`/ir/${tool.slug}`} 
-      target="_blank"
-      rel="noopener noreferrer"
-      class="flex items-center justify-center gap-1 px-4 py-2 text-xs font-black rounded-xl bg-brand-primary text-white hover:bg-brand-primary-hover shadow-md shadow-brand-primary/10 hover:shadow-brand-primary/25 hover:scale-[1.03] active:scale-[0.97] transition-all duration-300 cursor-pointer"
-    >
-      <span>Ir al sitio oficial</span>
-    </a>
+  {primarySafetyNote && (
+    <div class="rounded-md border border-brand-warning-border bg-brand-warning-bg px-3 py-2">
+      <div class="flex items-start gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="mt-0.5 h-4 w-4 shrink-0 text-brand-warning-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v4m0 4h.01M10.3 4.3 2.8 17.2A2 2 0 0 0 4.5 20h15a2 2 0 0 0 1.7-2.8L13.7 4.3a2 2 0 0 0-3.4 0Z" />
+        </svg>
+        <p class="text-xs leading-relaxed text-brand-warning-text line-clamp-2">{primarySafetyNote}</p>
+      </div>
+    </div>
+  )}
+
+  <div class="flex flex-wrap gap-1.5">
+    {availablePlatforms.map((platform) => (
+      <span class="rounded border border-brand-card-border bg-brand-bg/35 px-2 py-1 text-[11px] font-semibold text-brand-text-muted">
+        {platformLabels[platform]}
+      </span>
+    ))}
+  </div>
+
+  <div class="mt-auto border-t border-brand-card-border pt-4">
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-[1fr_auto]">
+      <a
+        href={`/${tool.slug}`}
+        class="inline-flex min-h-11 items-center justify-center rounded-md border border-brand-card-border px-3 py-2 text-xs font-bold text-brand-text-muted transition-colors hover:border-brand-primary/35 hover:text-brand-primary"
+      >
+        Ver ficha
+      </a>
+      <a
+        href={`/ir/${tool.slug}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Ir al canal oficial de ${tool.name}`}
+        class="inline-flex min-h-11 items-center justify-center rounded-md border border-brand-primary/30 bg-brand-primary px-3 py-2 text-xs font-black text-white transition-colors hover:bg-brand-primary-hover"
+      >
+        Ir al canal oficial
+      </a>
+    </div>
   </div>
 </article>
