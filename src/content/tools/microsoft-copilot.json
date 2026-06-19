@@ -1,0 +1,102 @@
+{
+  "name": "Microsoft Copilot",
+  "slug": "microsoft-copilot",
+  "shortDescription": "Asistente de IA de Microsoft disponible en web, Windows, móvil y experiencias de Microsoft 365.",
+  "longDescription": "Microsoft Copilot es el asistente de inteligencia artificial de Microsoft. Puede usarse desde la web, apps móviles, Windows y productos de Microsoft 365 según cuenta, región y licencia.",
+  "officialWebsite": "https://copilot.microsoft.com",
+  "categories": ["asistentes-ia"],
+  "platforms": {
+    "web": {
+      "url": "https://copilot.microsoft.com",
+      "type": "web-app",
+      "label": "Usar Copilot desde la web oficial",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "windows": {
+      "url": "https://www.microsoft.com/en-us/microsoft-365-copilot/download-copilot-app",
+      "type": "official-site",
+      "label": "Ver opciones oficiales para Windows",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.microsoft.copilot",
+      "type": "app-store",
+      "label": "Ver Microsoft Copilot en Google Play",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/microsoft-copilot/id6472538445",
+      "type": "app-store",
+      "label": "Ver Microsoft Copilot en App Store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": "unknown",
+  "spanishSupport": "yes",
+  "tags": ["microsoft", "copilot", "windows", "microsoft-365", "asistente"],
+  "alternatives": ["chatgpt", "gemini", "claude", "perplexity"],
+  "initials": "MS",
+  "screenshotUrl": null,
+  "bestFor": [
+    "Usuarios de Windows y ecosistema Microsoft",
+    "Preguntas rápidas, productividad y asistencia general",
+    "Uso móvil con app oficial en Android o iOS",
+    "Personas que ya trabajan con Microsoft 365"
+  ],
+  "limitations": [
+    "Algunas funciones dependen de cuenta Microsoft, licencia o región.",
+    "Microsoft Copilot y Microsoft 365 Copilot no siempre son lo mismo para todos los usuarios.",
+    "La integración con Windows puede variar según versión, país y configuración."
+  ],
+  "editorialSummary": "Microsoft Copilot puede encontrarse en varios lugares: web, Windows, apps móviles y Microsoft 365. Esta ficha separa los canales oficiales para evitar descargas de clones o instaladores que prometen funciones que en realidad dependen de Microsoft.",
+  "editorialSections": [
+    {
+      "heading": "Por qué Copilot aparece en tantos lugares",
+      "body": "Microsoft usa el nombre Copilot para varias experiencias: el asistente web, la app móvil, integraciones en Windows, Edge y Microsoft 365. Para el usuario normal esto puede sentirse confuso porque una búsqueda como \"descargar Copilot\" no siempre aclara si se refiere a la app general, a Microsoft 365 Copilot o a una función ya incluida en Windows.\n\nLa recomendación segura es empezar por dominios de Microsoft o por las tiendas oficiales. Si una web promete un instalador universal de Copilot con funciones premium desbloqueadas, conviene desconfiar. Las funciones avanzadas suelen depender de cuenta, licencia o disponibilidad oficial, no de un instalador externo."
+    },
+    {
+      "heading": "Web, Windows y móvil",
+      "body": "La versión web en copilot.microsoft.com es la forma más directa de probar el asistente sin instalar paquetes desconocidos. En Windows, Copilot puede estar integrado o disponible mediante rutas oficiales de Microsoft. En Android e iOS, la referencia segura son Google Play y App Store.\n\nEsta ficha muestra esas rutas separadas porque no todos los usuarios necesitan lo mismo. Quien está en PC quizá solo necesita abrir la web; quien está en móvil sí busca la app; quien trabaja con Microsoft 365 debe revisar condiciones de licencia y cuenta."
+    },
+    {
+      "heading": "Cuándo elegir Copilot",
+      "body": "Copilot tiene sentido si ya usas servicios de Microsoft o quieres un asistente general con integración en ese ecosistema. Puede servir para investigar, redactar, resumir, generar ideas y apoyar tareas diarias.\n\nSi buscas una experiencia más conversacional independiente, ChatGPT o Claude pueden sentirse más directos. Si tu intención es investigar con fuentes visibles, Perplexity puede ser mejor. Copilot compite bien cuando el contexto Microsoft importa: Windows, Edge, Office, archivos o productividad personal."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Microsoft Copilot se descarga en Windows?",
+      "answer": "Depende de la experiencia. Algunas funciones están integradas o disponibles desde Microsoft; también puedes usar Copilot desde la web oficial sin instalar nada."
+    },
+    {
+      "question": "¿Microsoft Copilot tiene app para Android e iPhone?",
+      "answer": "Sí. Existen apps oficiales en Google Play y App Store. Usa esas tiendas para evitar clones."
+    },
+    {
+      "question": "¿Copilot es lo mismo que Microsoft 365 Copilot?",
+      "answer": "No siempre. Microsoft usa Copilot en varias experiencias. Microsoft 365 Copilot puede requerir licencias o cuentas específicas."
+    },
+    {
+      "question": "¿Necesito cuenta para usar Copilot?",
+      "answer": "Algunas funciones pueden requerir cuenta Microsoft o licencia. La disponibilidad cambia según plataforma y región."
+    }
+  ],
+  "safetyNotes": [
+    "No descargues instaladores de Copilot desde sitios que no sean Microsoft o tiendas oficiales.",
+    "Desconfía de versiones que prometen Microsoft 365 Copilot gratis sin licencia.",
+    "Verifica si estás entrando a copilot.microsoft.com o a un dominio oficial de Microsoft."
+  ],
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://copilot.microsoft.com",
+    "https://www.microsoft.com/en-us/microsoft-365-copilot/download-copilot-app",
+    "https://play.google.com/store/apps/details?id=com.microsoft.copilot",
+    "https://apps.apple.com/us/app/microsoft-copilot/id6472538445"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "name": "ElevenLabs",
+  "slug": "elevenlabs",
+  "shortDescription": "Plataforma de voz por IA para texto a voz, doblaje, clonación de voz y audio para creadores.",
+  "longDescription": "ElevenLabs ofrece herramientas de generación de voz, texto a voz, doblaje y APIs de audio con inteligencia artificial desde su web y apps oficiales.",
+  "officialWebsite": "https://elevenlabs.io",
+  "categories": ["video-ia"],
+  "platforms": {
+    "web": {
+      "url": "https://elevenlabs.io/text-to-speech",
+      "type": "web-app",
+      "label": "Usar Text to Speech en la web oficial",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=io.elevenlabs.coreapp",
+      "type": "app-store",
+      "label": "Ver ElevenLabs en Google Play",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/elevenlabs-ai-voice-generator/id6743162587",
+      "type": "app-store",
+      "label": "Ver ElevenLabs en App Store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "spanishSupport": "yes",
+  "tags": ["elevenlabs", "voz", "text-to-speech", "audio", "doblaje"],
+  "alternatives": ["runway", "luma-dream-machine", "canva"],
+  "initials": "EL",
+  "screenshotUrl": null,
+  "bestFor": [
+    "Convertir texto en voz natural",
+    "Crear narraciones, doblajes y voces para contenido",
+    "Probar APIs de audio para productos y agentes",
+    "Creadores que necesitan audio en varios idiomas"
+  ],
+  "limitations": [
+    "La clonación de voz debe usarse con consentimiento y responsabilidad.",
+    "Los límites gratuitos y funciones avanzadas pueden cambiar por plan.",
+    "No es una herramienta de edición de video completa; se especializa en voz y audio."
+  ],
+  "editorialSummary": "ElevenLabs es una referencia en generación de voz por IA. Esta ficha prioriza web y tiendas oficiales, y recuerda que las funciones de clonación de voz requieren cuidado ético y legal.",
+  "editorialSections": [
+    {
+      "heading": "Por qué ElevenLabs es tan buscado",
+      "body": "ElevenLabs se hizo conocido por voces sintéticas con una naturalidad muy superior a los sistemas clásicos de texto a voz. Para creadores, educadores, marketers y desarrolladores, eso abre usos concretos: narrar videos, doblar piezas, crear prototipos de asistentes de voz o producir audio sin grabar cada línea manualmente.\n\nEsa demanda también atrae páginas que prometen créditos gratis, clonación sin límites o apps modificadas. En una herramienta de voz, descargar desde fuentes dudosas es especialmente sensible porque puedes subir textos, audios o muestras de voz. La ruta segura es la web oficial o las tiendas oficiales."
+    },
+    {
+      "heading": "Texto a voz, doblaje y API",
+      "body": "La función más visible es Text to Speech: escribes un texto, eliges una voz y generas audio. Pero ElevenLabs también ofrece capacidades para doblaje, voces personalizadas, lectura, herramientas para creadores y APIs para integrar audio en productos.\n\nNo todos los usuarios necesitan lo mismo. Quien crea videos puede centrarse en narración y exportación; quien desarrolla agentes necesita latencia, formatos y API; quien explora clonación de voz debe revisar permisos y políticas. La ficha enlaza al canal general para que el usuario llegue al origen correcto antes de elegir función."
+    },
+    {
+      "heading": "Uso responsable de voz sintética",
+      "body": "La voz tiene una dimensión personal que no existe del mismo modo en una imagen o un texto. Clonar una voz sin permiso puede causar daño, fraude o suplantación. Aunque la tecnología sea potente, el criterio editorial debe ser claro: usa voces propias, autorizadas o provistas por la plataforma.\n\nElevenLabs puede ser una gran herramienta para accesibilidad, educación, audiolibros, videos y productos interactivos. Pero si una web promete clonar voces famosas o desbloquear funciones de pago, no es una ruta confiable."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿ElevenLabs tiene app oficial?",
+      "answer": "Sí. Además de la web oficial, ElevenLabs tiene apps en Google Play y App Store."
+    },
+    {
+      "question": "¿ElevenLabs funciona en español?",
+      "answer": "Sí. ElevenLabs soporta múltiples idiomas, incluido español, aunque la calidad puede depender del modelo y la voz elegida."
+    },
+    {
+      "question": "¿Es seguro clonar voces con ElevenLabs?",
+      "answer": "Debe hacerse solo con consentimiento y respetando las políticas de la plataforma y la ley aplicable."
+    },
+    {
+      "question": "¿ElevenLabs es gratis?",
+      "answer": "Tiene plan gratuito y planes de pago. Los límites de caracteres y funciones pueden variar."
+    }
+  ],
+  "safetyNotes": [
+    "No uses apps modificadas que prometan créditos ilimitados.",
+    "Evita subir muestras de voz a sitios que no sean ElevenLabs o servicios autorizados.",
+    "Usa clonación de voz solo con consentimiento."
+  ],
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://elevenlabs.io/text-to-speech",
+    "https://elevenlabs.io/docs/overview/capabilities/text-to-speech",
+    "https://play.google.com/store/apps/details?id=io.elevenlabs.coreapp",
+    "https://apps.apple.com/us/app/elevenlabs-ai-voice-generator/id6743162587"
+  ]
+}

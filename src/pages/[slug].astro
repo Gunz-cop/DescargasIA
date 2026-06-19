@@ -114,7 +114,24 @@ const visualAccents: Record<string, { bg: string; fg: string; border: string }> 
   gemini: { bg: '#172554', fg: '#dbeafe', border: '#38bdf8' },
   cursor: { bg: '#082f49', fg: '#e0f2fe', border: '#38bdf8' },
   ollama: { bg: '#1c1917', fg: '#f5f5f4', border: '#d6d3d1' },
-  'lm-studio': { bg: '#2e1065', fg: '#ede9fe', border: '#8b5cf6' }
+  'lm-studio': { bg: '#2e1065', fg: '#ede9fe', border: '#8b5cf6' },
+  'stable-diffusion': { bg: '#4c0519', fg: '#ffe4e6', border: '#f43f5e' },
+  midjourney: { bg: '#312e81', fg: '#e0e7ff', border: '#818cf8' },
+  canva: { bg: '#164e63', fg: '#cffafe', border: '#22d3ee' },
+  'microsoft-copilot': { bg: '#172554', fg: '#dbeafe', border: '#3b82f6' },
+  perplexity: { bg: '#134e4a', fg: '#ccfbf1', border: '#2dd4bf' },
+  anythingllm: { bg: '#365314', fg: '#ecfccb', border: '#a3e635' },
+  jan: { bg: '#27272a', fg: '#f4f4f5', border: '#d4d4d8' },
+  elevenlabs: { bg: '#831843', fg: '#fce7f3', border: '#f472b6' },
+  runway: { bg: '#171717', fg: '#fafafa', border: '#d4d4d4' },
+  'luma-dream-machine': { bg: '#3b0764', fg: '#f3e8ff', border: '#a855f7' },
+  'github-copilot': { bg: '#0f172a', fg: '#e2e8f0', border: '#94a3b8' },
+  deepl: { bg: '#172554', fg: '#dbeafe', border: '#60a5fa' },
+  'gamma-app': { bg: '#701a75', fg: '#fae8ff', border: '#d946ef' },
+  gemma: { bg: '#78350f', fg: '#fef3c7', border: '#fbbf24' },
+  languagetool: { bg: '#064e3b', fg: '#d1fae5', border: '#34d399' },
+  phind: { bg: '#164e63', fg: '#cffafe', border: '#22d3ee' },
+  suno: { bg: '#713f12', fg: '#fef9c3', border: '#facc15' }
 };
 const visualAccent = visualAccents[tool.data.slug] ?? { bg: '#022c22', fg: '#ecfdf5', border: '#10b981' };
 const toolInitials = tool.data.initials ?? tool.data.name

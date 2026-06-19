@@ -1,0 +1,95 @@
+{
+  "name": "Runway",
+  "slug": "runway",
+  "shortDescription": "Plataforma de generación y edición de video con IA para creadores, equipos y producción visual.",
+  "longDescription": "Runway es una plataforma web de inteligencia artificial para generación de video, imagen, edición creativa y modelos generativos avanzados.",
+  "officialWebsite": "https://runwayml.com",
+  "categories": ["video-ia", "generacion-imagenes"],
+  "platforms": {
+    "web": {
+      "url": "https://runwayml.com",
+      "type": "web-app",
+      "label": "Usar Runway desde la web oficial",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.runwayml.prod",
+      "type": "app-store",
+      "label": "Ver Runway en Google Play",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/runwayml/id1665024375",
+      "type": "app-store",
+      "label": "Ver Runway en App Store",
+      "isOfficial": true,
+      "lastChecked": "2026-06-19"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "spanishSupport": "partial",
+  "tags": ["runway", "video", "gen-3", "gen-4", "creadores"],
+  "alternatives": ["luma-dream-machine", "elevenlabs", "canva"],
+  "initials": "RW",
+  "screenshotUrl": null,
+  "bestFor": [
+    "Generar y editar video con modelos de IA",
+    "Crear clips, escenas y recursos visuales para contenido",
+    "Equipos creativos que trabajan desde navegador",
+    "Usuarios que buscan video IA sin instalar software local"
+  ],
+  "limitations": [
+    "No es un editor de escritorio tradicional para instalar desde cualquier portal.",
+    "Los límites, modelos y calidad dependen del plan disponible.",
+    "Puede requerir conexión estable y cuenta para generar contenido."
+  ],
+  "editorialSummary": "Runway es una plataforma líder de video por IA. La ruta segura es su web oficial o apps publicadas en tiendas; los instaladores de escritorio no oficiales pueden ser wrappers o paquetes ajenos.",
+  "editorialSections": [
+    {
+      "heading": "Runway no se descarga como un editor clásico",
+      "body": "Muchos creadores buscan \"descargar Runway para PC\" esperando un programa de escritorio. Runway funciona principalmente como plataforma web, con apps móviles oficiales para ciertos flujos. Eso significa que el acceso correcto empieza en runwayml.com o en tiendas oficiales, no en portales que empaquetan accesos web como si fueran aplicaciones propias.\n\nEsta diferencia importa porque las herramientas de video por IA suelen requerir cuenta, créditos, procesamiento en la nube y modelos que cambian con el tiempo. Un instalador externo no te da acceso legítimo a esas funciones."
+    },
+    {
+      "heading": "Para qué sirve mejor",
+      "body": "Runway es útil para generar clips, experimentar con video desde texto o imagen, crear recursos visuales y acelerar etapas creativas de producción. No reemplaza todo el proceso audiovisual, pero puede ayudar a prototipar escenas, generar material conceptual y producir piezas cortas para redes o presentaciones.\n\nSu valor está en reunir modelos creativos dentro de una interfaz pensada para creadores. Si vienes de edición tradicional, piensa en Runway como una plataforma generativa más que como un editor de línea de tiempo convencional."
+    },
+    {
+      "heading": "Runway frente a Luma y Canva",
+      "body": "Runway y Luma compiten en generación de video, pero pueden sentirse distintos según el tipo de resultado, interfaz y modelos activos. Canva, por su parte, es más fuerte para diseño y piezas listas para publicar, no necesariamente para generación de video avanzada.\n\nSi tu búsqueda es video IA creativo, Runway merece estar en la lista corta. Si solo necesitas adaptar una pieza gráfica o crear contenido rápido, Canva puede ser más simple. Si quieres comparar modelos de video, revisa también Luma Dream Machine."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Runway tiene app oficial para PC?",
+      "answer": "Runway funciona principalmente desde la web oficial. Evita instaladores de escritorio publicados por terceros."
+    },
+    {
+      "question": "¿Runway tiene app móvil?",
+      "answer": "Sí. Runway aparece en Google Play y App Store con apps oficiales."
+    },
+    {
+      "question": "¿Runway es gratis?",
+      "answer": "Tiene opciones gratuitas o de prueba y planes de pago. Los límites pueden variar según modelo y cuenta."
+    },
+    {
+      "question": "¿Runway sirve para generar video con IA?",
+      "answer": "Sí. Es una de sus funciones principales, junto con otras herramientas creativas de imagen y video."
+    }
+  ],
+  "safetyNotes": [
+    "Evita wrappers no oficiales que se anuncian como Runway para escritorio.",
+    "Usa runwayml.com o tiendas oficiales para acceder a la plataforma.",
+    "No subas material sensible a clones o portales no verificados."
+  ],
+  "trustLevel": "official",
+  "lastReviewed": "2026-06-19",
+  "officialSources": [
+    "https://runwayml.com",
+    "https://app.runwayml.com",
+    "https://play.google.com/store/apps/details?id=com.runwayml.prod",
+    "https://apps.apple.com/us/app/runwayml/id1665024375"
+  ]
+}
