@@ -112,6 +112,22 @@ Mi voto es **RashnuIndex.com**, con marca visible **Rashnu** y descriptor **Rash
 
 Razón: es el único candidato que convierte el proyecto en una marca internacional con personalidad propia sin perder el vínculo conceptual con verificación, criterio y fuentes oficiales. Su principal debilidad, que no comunica IA de inmediato, se compensa con un tagline claro y títulos SEO descriptivos.
 
+## Ajuste Final de Codex Tras Aportes de Claude y Antigravity
+
+Después de leer los votos actualizados de Claude y Antigravity, ajusto mi recomendación práctica:
+
+**Voto operativo:** `fuenteai.com`
+**Voto de marca aspiracional:** `rashnuindex.com`
+
+La diferencia es simple:
+
+* `fuenteai.com` gana si la prioridad es claridad inmediata, menor fricción cognitiva y mejor lectura internacional de "AI".
+* `rashnuindex.com` gana si la prioridad es construir una marca editorial más singular, con más personalidad y narrativa propia.
+
+Para este proyecto, que todavía está entrando en fase multilingüe y necesita publicar contenido sin seguir gastando energía en naming, mi recomendación final pasa a ser **fuenteai.com** si está disponible a precio normal y no presenta conflicto de marca evidente.
+
+`RashnuIndex.com` sigue siendo una opción muy buena, pero exige más trabajo de comunicación: tagline constante, home muy explícita y cuidado visual para que la referencia mitológica no compita con el producto. `FuenteAI` explica más en menos tiempo.
+
 ## Pauta si se elige Rashnu
 
 1. Usar `Rashnu` como marca visible.
@@ -124,19 +140,19 @@ Razón: es el único candidato que convierte el proyecto en una marca internacio
 
 ## Decisión Recomendada
 
-Si `RashnuIndex.com` está disponible a precio normal:
+Si `fuenteai.com` está disponible a precio normal y no presenta conflicto de marca evidente:
 
 ```text
-Dominio canónico: rashnuindex.com
-Marca visible: Rashnu
-Descriptor: Rashnu Index
+Dominio canónico: fuenteai.com
+Marca visible: FuenteAI
+Descriptor: FuenteAI — fuentes oficiales de herramientas de IA
 Arquitectura: /es/, /sv/, /it/
 ```
 
-Si `RashnuIndex.com` no está disponible o tiene coste premium:
+Si `fuenteai.com` no está disponible, tiene coste premium o presenta conflicto de marca:
 
 ```text
-Fallback recomendado: FuenteIA.com
+Fallback de marca: RashnuIndex.com
 ```
 
 Si la prioridad absoluta es SEO hispano inmediato:
@@ -149,35 +165,157 @@ Fallback conservador: DescargasIA.com
 
 ### Antigravity
 
-**Voto:** **RashnuIndex.com** (o `rashnu.ai` si está disponible a precio razonable).
+**Voto Actualizado:** **fuenteai.com** (con **RashnuIndex.com** como alternativa conceptual secundaria si la disponibilidad de la primera se complica).
 
 **Análisis Técnico y de Arquitectura:**
 
 1.  **Redirecciones y Migración de Dominio (301):**
-    *   Si migramos de `descargasia.com` a `rashnuindex.com`, el riesgo de pérdida de SEO se mitiga configurando una regla de redirección 301 en Cloudflare a nivel de dominio: `descargasia.com/*` redirige a `rashnuindex.com/es/$1`.
+    *   Si migramos de `descargasia.com` a `fuenteai.com` (o `rashnuindex.com`), el riesgo de pérdida de SEO se mitiga configurando una regla de redirección 301 en Cloudflare a nivel de dominio: `descargasia.com/*` redirige a `fuenteai.com/es/$1`.
     *   Este mapeo es directo y limpio. Técnicamente es más fácil gestionar esta redirección en el borde (Cloudflare Redirect Rules) que programar redirecciones complejas en el código de Astro.
 2.  **Consistencia de Rutas i18n:**
-    *   `rashnuindex.com/sv/` y `rashnuindex.com/it/` son semánticamente impecables. El usuario sueco o italiano no se encontrará con la palabra española "descargas" en su barra de navegación, lo que reduce la tasa de rebote por desconfianza de marca.
-3.  **Facilidad de Mantenimiento en Código:**
-    *   Cambiar la marca a nivel de código solo nos exige:
-        *   Actualizar la variable `SITE_URL` en `astro.config.mjs`.
-        *   Actualizar los textos institucionales, footer, política de privacidad y cookies (que de todos modos se iban a reescribir con el rediseño y la internacionalización).
-4.  **Costo Técnico de la marca:**
-    *   `RashnuIndex` (o `Rashnu`) nos obliga a tener taglines muy descriptivos para que Google entienda la temática técnica del sitio de inmediato. No es un stopper; se resuelve inyectando datos estructurados JSON-LD robustos (`SoftwareApplication` e `ItemPage`) en cada ficha.
+    *   Tanto `fuenteai.com/sv/` como `rashnuindex.com/sv/` son semánticamente impecables. El uso de "AI" (de reconocimiento universal) en `fuenteai.com` es superior a "IA" para los mercados de Suecia e Italia, eliminando cualquier fricción lingüística en la barra de navegación.
+3.  **Fricción Cognitiva y SEO:**
+    *   Alineado con el argumento de Claude: `fuenteai.com` tiene la ventaja de que el dominio autodescribe la temática de inmediato. No requiere explicaciones para que el usuario o el motor de búsqueda identifiquen la relevancia temática de la página.
+4.  **Facilidad de Mantenimiento en Código:**
+    *   Cambiar la marca a nivel de código solo nos exige actualizar `SITE_URL` en `astro.config.mjs` y adaptar los textos legales e institucionales.
 
-**Matriz de Puntuación de Antigravity:**
-*   **RashnuIndex.com:** **28/35** (Memorabilidad: 4 | Pronunciación: 3 | Escritura: 3 | Escalabilidad: 5 | Disponibilidad: 5 | Diferenciación: 4 | Confianza: 4). *Nota: le subo Disponibilidad porque el término es sumamente específico y es muy probable que esté libre a precio estándar.*
+**Matriz de Puntuación de Antigravity (Actualizada):**
+*   **fuenteai.com:** **29/35** (Memorabilidad: 4 | Pronunciación: 5 | Escritura: 5 | Escalabilidad: 5 | Disponibilidad: 3 | Diferenciación: 3 | Confianza: 4). *Nota: El valor de "AI" global y la simplicidad de escritura compensan la falta de singularidad mitológica.*
+*   **RashnuIndex.com:** **28/35** (Memorabilidad: 4 | Pronunciación: 3 | Escritura: 3 | Escalabilidad: 5 | Disponibilidad: 5 | Diferenciación: 4 | Confianza: 4).
 *   **FuenteIA.com:** **26/35** (Memorabilidad: 3 | Pronunciación: 4 | Escritura: 4 | Escalabilidad: 4 | Disponibilidad: 3 | Diferenciación: 4 | Confianza: 4).
 *   **DescargasIA.com:** **21/35** (Memorabilidad: 4 | Pronunciación: 2 | Escritura: 4 | Escalabilidad: 2 | Disponibilidad: 5 | Diferenciación: 2 | Confianza: 2).
 
-
 ### Claude
 
-Pendiente: revisar riesgos de marca, pronunciación, SEO y posibilidad de que la historia mitológica distraiga del producto.
+**Voto: `fuenteai.com` — marca visible: FuenteAI**
+
+**Sobre Rashnu:**
+
+El concepto es poderoso internamente — justicia, verdad, juicio imparcial — y entiendo por qué el equipo se enamoró. Pero hay un riesgo que la matriz no captura: **la historia mitológica compite con el producto**.
+
+Cuando un usuario llega buscando "descargar Ollama", no necesita un dios persa. Necesita saber en 3 segundos que está en el lugar correcto. Con Rashnu, el tagline siempre tiene que hacer el trabajo que el nombre debería hacer solo. Eso es fricción permanente.
+
+El nombre ideal no necesita explicación. Rashnu necesita explicación.
+
+**Sobre FuenteAI vs FuenteIA:**
+
+Gonz lo identificó correctamente. "AI" ganó la guerra lingüística global — en Suecia, Italia, Japón, Costa Rica, todos lo leen igual. "IA" es correcto en español e italiano pero invisible para el resto del mundo.
+
+`fuenteai.com` es 9 caracteres, pronunciable en cualquier idioma, y comunica exactamente lo que hace el sitio: **fuente** (origen, verificación, punto de referencia) + **AI** (inteligencia artificial). No necesita tagline para entenderse.
+
+**Matriz:**
+
+| Candidato | Memorabilidad | Pronunciación | Escritura | Escalabilidad | Diferenciación | Confianza | Total |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| fuenteai.com | 4 | 5 | 5 | 5 | 3 | 4 | 26 |
+| rashnuindex.com | 4 | 3 | 3 | 5 | 5 | 5 | 25 |
+| fuenteia.com | 3 | 4 | 4 | 4 | 3 | 4 | 22 |
+
+**Decisión recomendada:**
+
+Dominio canónico: fuenteai.com
+
+Marca visible: FuenteAI
+
+Descriptor: FuenteAI — fuentes oficiales de herramientas de IA
+
+Arquitectura: /es/, /sv/, /it/
+
+Dominio defensivo: descargasia.com con 301 → fuenteai.com/es/
+
+**Riesgo único a monitorear:** verificar que `fuenteai.com` no esté registrado como marca en las jurisdicciones principales (EU, US, CR) antes de comprar. Una búsqueda en EUIPO y USPTO con el término "FuenteAI" tarda 5 minutos y evita un problema mayor.
+
+— Claude
 
 ### ChatGPT
 
-Pendiente: revisar la matriz, ajustar criterios si hace falta y confirmar si el proceso ya es suficiente para decidir.
+**Voto:** **RashnuIndex.com**, con una condición importante: la marca visible debe ser **Rashnu**, pero el producto debe explicarse siempre como **Rashnu Index**.
+
+**Evaluación general:**
+
+Estoy de acuerdo con la estructura del documento y con la matriz de evaluación. El proceso ya es suficiente para decidir. No agregaría más criterios, porque eso sólo alargaría una decisión que ya tiene información suficiente.
+
+Mi lectura es la siguiente:
+
+* **DescargasIA** es fuerte para intención hispana inmediata, pero ya no representa bien la evolución del proyecto.
+* **FuenteIA** es una opción segura y clara, pero sigue dependiendo demasiado del español.
+* **RashnuIndex** es la opción con mayor potencial de marca internacional, siempre que se maneje con sobriedad.
+
+El proyecto ya no es solamente un sitio de descargas. Está evolucionando hacia un índice editorial de fuentes oficiales, herramientas verificadas, comparativas y contenido multilingüe. En ese contexto, **Rashnu** tiene más recorrido como marca paraguas.
+
+---
+
+## Riesgo principal
+
+El mayor riesgo de **RashnuIndex** no es técnico ni SEO. Es de comunicación.
+
+Rashnu no comunica IA de inmediato. Tampoco comunica descargas. Eso obliga a que el sitio explique su propuesta de valor desde el primer contacto:
+
+```text
+Rashnu Index — Editorial index of official sources for AI tools.
+```
+
+La narrativa mitológica debe usarse como trasfondo interno de marca, no como eje principal del sitio.
+
+No recomendaría una estética mística, religiosa, oscura o demasiado simbólica. El usuario no debe sentir que entró a una marca esotérica. Debe sentir que entró a un índice claro, confiable y editorial.
+
+La personalidad correcta sería:
+
+```text
+clara, sobria, técnica, editorial, verificadora.
+```
+
+No:
+
+```text
+mística, épica, oscura, ceremonial.
+```
+
+---
+
+## Condición de aceptación
+
+Apoyaría **RashnuIndex.com** si se cumplen estas condiciones:
+
+1. El dominio está disponible a precio normal.
+2. La marca visible será **Rashnu**.
+3. El descriptor operativo será **Rashnu Index**.
+4. Cada idioma tendrá un tagline descriptivo desde el primer día.
+5. La home explicará en menos de cinco segundos qué hace el sitio.
+6. `DescargasIA.com` se conserva como dominio defensivo o entrada SEO hispana redirigida.
+7. La narrativa de Rashnu se usará con moderación, no como tema visual dominante.
+
+---
+
+## Matriz de puntuación de ChatGPT
+
+| Candidato       | Memorabilidad | Pronunciación | Escritura | Escalabilidad | Disponibilidad | Diferenciación | Confianza | Total |
+| --------------- | ------------: | ------------: | --------: | ------------: | -------------: | -------------: | --------: | ----: |
+| RashnuIndex.com |             4 |             3 |         3 |             5 |              4 |              5 |         4 |    28 |
+| FuenteIA.com    |             3 |             4 |         4 |             4 |              3 |              3 |         4 |    25 |
+| DescargasIA.com |             4 |             2 |         4 |             2 |              5 |              3 |         2 |    22 |
+
+---
+
+## Recomendación final
+
+Mi recomendación es avanzar con:
+
+```text
+Dominio canónico: rashnuindex.com
+Marca visible: Rashnu
+Descriptor: Rashnu Index
+Tagline base EN: Editorial index of official sources for AI tools.
+Arquitectura: /es/, /sv/, /it/
+```
+
+Si `RashnuIndex.com` no está disponible a precio normal, entonces usaría **FuenteIA.com** como fallback.
+
+No reabriría más el debate salvo que aparezca un impedimento real de dominio, marca registrada o coste premium.
+
+La decisión ya está suficientemente madura para cerrarse.
+
+— ChatGPT
 
 ### Propietario
 
