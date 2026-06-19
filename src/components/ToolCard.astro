@@ -222,22 +222,6 @@ const platformSummary = availablePlatforms.length === 1
     </div>
   </div>
 
-  <div class="hidden items-start justify-between gap-3 sm:flex">
-    <div class="flex flex-wrap gap-1.5">
-      <span class={`inline-flex items-center rounded border px-2 py-0.5 text-[10px] font-extrabold font-mono ${category.tone}`}>
-        {category.label}
-      </span>
-      <Badge variant={trust.variant}>{trust.label}</Badge>
-      <Badge variant={pricing.variant}>{pricing.label}</Badge>
-    </div>
-
-    {reviewDate && (
-      <span class="shrink-0 rounded border border-brand-card-border bg-brand-bg/40 px-2 py-0.5 font-mono text-[10px] font-semibold text-brand-text-muted">
-        rev. {reviewDate}
-      </span>
-    )}
-  </div>
-
   <div class="hidden gap-3 sm:flex">
     <div class={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border text-base font-black ${visual.mark}`} aria-hidden="true">
       {initials}
@@ -246,6 +230,18 @@ const platformSummary = availablePlatforms.length === 1
       <h3 class={`text-xl font-black leading-tight tracking-tight text-brand-text transition-colors ${visual.accent}`}>
         <a href={`/${tool.slug}`}>{tool.name}</a>
       </h3>
+      <div class="mt-2 flex flex-wrap gap-1.5">
+        <span class={`inline-flex items-center rounded border px-2 py-0.5 text-[10px] font-extrabold font-mono ${category.tone}`}>
+          {category.label}
+        </span>
+        <Badge variant={trust.variant}>{trust.label}</Badge>
+        <Badge variant={pricing.variant}>{pricing.label}</Badge>
+        {reviewDate && (
+          <span class="shrink-0 rounded border border-brand-card-border bg-brand-bg/40 px-2 py-0.5 font-mono text-[10px] font-semibold text-brand-text-muted">
+            rev. {reviewDate}
+          </span>
+        )}
+      </div>
       <p class="mt-2 text-sm leading-relaxed text-brand-text-muted line-clamp-3">
         {tool.shortDescription}
       </p>
