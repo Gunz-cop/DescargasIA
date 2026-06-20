@@ -16,7 +16,7 @@
     "Använd ollama.com för installation och GitHub-repot github.com/ollama/ollama för källkod.",
     "Undvik fristående installerare och forks som inte länkas från officiella källor."
   ],
-  "editorialSummary": "Ollama är ett bra val när du vill köra AI-modeller lokalt och ha mer kontroll över data, kostnad och experiment. Det är ett tekniskt verktyg, inte en vanlig chattapp. FuenteAI pekar till den officiella webbplatsen och det officiella GitHub-repot.",
+  "editorialSummary": "Ollama är ett bra val när du vill köra AI-modeller lokalt och ha mer kontroll över data, kostnad och experiment. Det är ett tekniskt verktyg, inte en vanlig chattapp. FuenteAI pekar vidare till den officiella webbplatsen och det officiella GitHub-repot.",
   "editorialSections": [
     {
       "heading": "Varför tekniska användare väljer Ollama",
@@ -51,7 +51,11 @@
     {
       "question": "Vilken hårdvara behöver jag?",
       "answer": "Det beror på modellens storlek. Mindre modeller fungerar på enklare datorer, medan större modeller kräver mer minne och gärna GPU."
+    },
+    {
+      "question": "Har Ollama stöd för svenska?",
+      "answer": "Ollamas gränssnitt och dokumentation är främst tekniska och engelskspråkiga. Om en lokal modell fungerar bra på svenska beror på modellen du väljer."
     }
   ],
-  "swedishSupport": "no"
+  "swedishSupport": "partial"
 }

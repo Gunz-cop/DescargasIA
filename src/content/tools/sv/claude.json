@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Anthropics AI-assistent för längre texter, analys, kod och resonemang via officiella kanaler.",
+  "shortDescription": "Anthropics AI-assistent för längre texter, analys, kod och resonemang, med länkar till officiella kanaler.",
   "longDescription": "Claude är en konversations-AI från Anthropic. Den används ofta för textarbete, dokumentanalys, kodförklaringar och uppgifter där sammanhang och tydliga instruktioner spelar stor roll.",
   "bestFor": [
     "Analysera och sammanfatta långa dokument",
@@ -38,7 +38,7 @@
   "faq": [
     {
       "question": "Är Claude säkert att använda via FuenteAI?",
-      "answer": "FuenteAI hostar inga Claude-filer. Sidan länkar bara vidare till officiella kanaler som claude.ai, claude.ai/download och appbutiker."
+      "answer": "FuenteAI hostar inga Claude-filer. Sidan länkar bara vidare till officiella kanaler som claude.ai, claude.ai/download och appbutikerna."
     },
     {
       "question": "Finns Claude som officiell app för Windows och Mac?",
@@ -53,5 +53,5 @@
       "answer": "Claude har ett gratisläge med begränsningar och betalplaner för mer kapacitet. Det finns inga legitima upplåsta gratisversioner utanför Anthropic:s egna tjänst."
     }
   ],
-  "swedishSupport": "unknown"
+  "swedishSupport": "partial"
 }

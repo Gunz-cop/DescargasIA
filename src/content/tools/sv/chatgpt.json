@@ -1,6 +1,6 @@
 {
-  "shortDescription": "OpenAI:s officiella AI-assistent för webb, dator och mobil, med säkra länkar till rätt kanaler.",
-  "longDescription": "ChatGPT är OpenAI:s språkmodell och AI-assistent för samtal, skrivande, kod, studier och vardagsproduktivitet. På FuenteAI pekar vi bara till officiella webbplatser, appbutiker och nedladdningssidor.",
+  "shortDescription": "OpenAI:s officiella AI-assistent för webb, dator och mobil, med länkar till rätt officiella kanaler.",
+  "longDescription": "ChatGPT är OpenAI:s språkmodell och AI-assistent för samtal, skrivande, kod, studier och vardagsproduktivitet. På FuenteAI pekar vi bara vidare till officiella webbplatser, appbutiker och nedladdningssidor.",
   "bestFor": [
     "Skriva, sammanfatta och strukturera texter",
     "Studera, resonera och få idéer steg för steg",
@@ -16,7 +16,7 @@
     "Ladda inte ner ChatGPT som APK, EXE eller ZIP från inofficiella nedladdningssidor.",
     "Använd chatgpt.com, OpenAI:s officiella nedladdningssida eller de officiella appbutikerna."
   ],
-  "editorialSummary": "ChatGPT är en av de mest efterfrågade AI-tjänsterna för daglig produktivitet. Den säkra vägen är att använda OpenAI:s egna kanaler: webbversionen, officiella desktopappar och appbutikerna för mobil. FuenteAI länkar inte till speglar, modifierade APK-filer eller installerare från tredje part.",
+  "editorialSummary": "ChatGPT är en av de mest efterfrågade AI-tjänsterna för daglig produktivitet. Rätt väg är OpenAI:s egna kanaler: webbversionen, officiella desktopappar och appbutikerna för mobil. FuenteAI länkar inte till speglar, modifierade APK-filer eller installerare från tredje part.",
   "editorialSections": [
     {
       "heading": "Varför många söker efter att ladda ner ChatGPT",
@@ -24,7 +24,7 @@
     },
     {
       "heading": "Säkraste sättet att använda ChatGPT",
-      "body": "För de flesta är webbversionen på chatgpt.com den enklaste vägen. Där kan du logga in, välja plan och använda tjänsten utan att installera något. Om du vill använda en desktopapp ska den komma från OpenAI:s officiella nedladdningssida. På mobil är Google Play och App Store de säkra kanalerna.\n\nEn enkel regel räcker långt: om en sida erbjuder en ChatGPT-APK, en upplåst Pro-version eller en installerare som inte kommer från OpenAI bör du avbryta. FuenteAI visar den officiella destinationen och plattformen innan du lämnar sidan."
+      "body": "För de flesta är webbversionen på chatgpt.com den enklaste vägen. Där kan du logga in, välja plan och använda tjänsten utan att installera något. Om du vill använda en desktopapp ska den komma från OpenAI:s officiella nedladdningssida. På mobil är Google Play och App Store rätt kanaler.\n\nEn enkel regel räcker långt: om en sida erbjuder en ChatGPT-APK, en upplåst Pro-version eller en installerare som inte kommer från OpenAI bör du avbryta. FuenteAI visar den officiella destinationen och plattformen innan du lämnar sidan."
     },
     {
       "heading": "Vad ChatGPT passar bäst för",

@@ -24,7 +24,7 @@
     },
     {
       "heading": "Officiell nedladdning och säkerhet",
-      "body": "Cursor distribueras via cursor.com och dess officiella nedladdningsflöde. Det finns installerare för Windows, macOS och Linux, och många VS Code-tillägg fungerar eftersom editorn bygger på samma grund.\n\nEftersom Cursor kan få åtkomst till ditt kodprojekt bör du vara extra försiktig med inofficiella versioner. En manipulerad editor är en större risk än en vanlig app, eftersom den kan läsa källkod och projektfiler."
+      "body": "Cursor distribueras via cursor.com och dess officiella nedladdningsflöde. Det finns installerare för Windows, macOS och Linux, och många VS Code-tillägg fungerar eftersom editorn bygger på samma grund.\n\nEftersom Cursor kan få åtkomst till ditt kodprojekt bör du vara extra försiktig med inofficiella versioner. En manipulerad editor kan innebära större risk än en vanlig app, eftersom den kan läsa källkod och projektfiler."
     },
     {
       "heading": "Vad AI i editorn faktiskt ändrar",

@@ -16,6 +16,10 @@ Este documento actúa como la bitácora canónica de discusión, estrategia y to
 
 1. **Arquitectura de un Solo Dominio:** Se descarta el uso de dominios separados por idioma para el despliegue principal. Se utilizarán subrutas (ej. `/es/`, `/sv/`, y potencialmente `/it/`).
 2. **Redirección de Dominio Defensivo:** Si se adquieren dominios nacionales específicos (como `.se` o `.it`), se configurarán como redirecciones permanentes (301) hacia sus respectivas subcarpetas en el dominio principal.
+3. **Selector de Idioma con Banderas (FuenteAI):** Se aprueba el uso de emojis de banderas como apoyo visual combinadas con el nombre nativo del idioma (ej. "🇪🇸 Español", "🇸🇪 Svenska", "🇮🇹 Italiano").
+   * La bandera es apoyo visual, no reemplazo. El nombre del idioma siempre debe ser visible.
+   * Se muestra "Italiano (próximamente)" en el selector para denotar soporte futuro sin enlazar ni indexar páginas vacías.
+   * Se mantiene el enrutamiento limpio, la accesibilidad (`aria-label`) y la compatibilidad móvil responsiva sin agregar dependencias externas pesadas.
 
 ---
 

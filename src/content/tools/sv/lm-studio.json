@@ -16,7 +16,7 @@
     "Den officiella webbplatsen är lmstudio.ai.",
     "Ladda inte ner LM Studio från programarkiv eller spegelsidor som inte är officiella."
   ],
-  "editorialSummary": "LM Studio gör lokal AI mer tillgänglig genom ett grafiskt gränssnitt. Det passar användare som vill testa modeller offline men inte vill börja i terminalen. FuenteAI länkar till lmstudio.ai, den officiella källan för nedladdning.",
+  "editorialSummary": "LM Studio gör lokal AI mer tillgänglig genom ett grafiskt gränssnitt. Det passar användare som vill testa modeller offline men inte vill börja i terminalen. FuenteAI länkar vidare till lmstudio.ai, den officiella källan för nedladdning.",
   "editorialSections": [
     {
       "heading": "Varför många söker efter LM Studio",
@@ -51,7 +51,11 @@
     {
       "question": "Var laddar jag ner LM Studio säkert?",
       "answer": "Använd den officiella webbplatsen lmstudio.ai. Undvik speglar och ompaketerade nedladdningar."
+    },
+    {
+      "question": "Har LM Studio stöd för svenska?",
+      "answer": "Appen och dokumentationen är främst engelskspråkiga. Själva svaren på svenska beror på vilken lokal modell du laddar ner och kör."
     }
   ],
-  "swedishSupport": "no"
+  "swedishSupport": "partial"
 }

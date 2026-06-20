@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Googles multimodala AI-assistent för webben och mobilen, med officiella länkar till rätt kanaler.",
+  "shortDescription": "Googles multimodala AI-assistent för webben och mobilen, med länkar till rätt officiella kanaler.",
   "longDescription": "Gemini är Googles AI-modell och assistent för text, bild, kod och uppgifter i Googles ekosystem. På dator används den via webben; på mobil distribueras den via officiella appbutiker.",
   "bestFor": [
     "Användare som redan arbetar i Googles ekosystem",
@@ -17,7 +17,7 @@
     "För dator är gemini.google.com den officiella vägen.",
     "För Android ska du använda Google Play, inte APK-sidor."
   ],
-  "editorialSummary": "Gemini är det naturliga valet för många som redan använder Google. Den officiella datorvägen är webben på gemini.google.com. På mobil ska du använda Google Play eller App Store. FuenteAI markerar detta tydligt för att undvika falska desktopappar och modifierade APK-filer.",
+  "editorialSummary": "Gemini är ett naturligt val för många som redan använder Google. Den officiella datorvägen är webben på gemini.google.com. På mobil ska du använda Google Play eller App Store. FuenteAI markerar detta tydligt för att undvika falska desktopappar och modifierade APK-filer.",
   "editorialSections": [
     {
       "heading": "Varför många söker efter att ladda ner Gemini",
