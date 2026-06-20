@@ -18,12 +18,18 @@ export default defineConfig({
     locales: ['es', 'sv', 'it'],
     routing: {
       prefixDefaultLocale: true,
-      redirectToDefaultLocale: true
+      redirectToDefaultLocale: false
     }
   },
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/ir/') && !/\/it(\/|$)/.test(page) && !/\/r(\/|$)/.test(page),
+      filter: (page) => {
+        const isEsHome = page.replace(/\/$/, '') === `${SITE_URL}/es`;
+        const isIt = /\/it(\/|$)/.test(page);
+        const isIr = page.includes('/ir/');
+        const isR = /\/r(\/|$)/.test(page);
+        return !isEsHome && !isIt && !isIr && !isR;
+      },
       serialize(item) {
         const cleanUrl = item.url.replace(/\/$/, ''); // Remover slash final para la coincidencia de clave
         if (sitemapDates[cleanUrl]) {

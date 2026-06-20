@@ -22,9 +22,15 @@ const descs = {
   sv: 'Användarvillkor, ansvarsfriskrivning och upphovsrättspolicy för FuenteAI.',
   it: 'Termini di utilizzo, note legali e limitazione di responsabilità di FuenteAI.'
 };
+const alternates = Object.keys(languages)
+  .filter((l) => l !== 'it')
+  .map((l) => ({
+    lang: l,
+    url: l === 'es' ? `${Astro.url.origin}/es/aviso-legal` : `${Astro.url.origin}/${l}/aviso-legal`
+  }));
 ---
 
-<BaseLayout title={titles[lang]} description={descs[lang]} lang={lang}>
+<BaseLayout title={titles[lang]} description={descs[lang]} lang={lang} alternates={alternates}>
   <article class="max-w-3xl mx-auto py-12" aria-labelledby="page-title">
     <header class="mb-10 border-b border-brand-card-border pb-8">
       <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-warning-border bg-brand-warning-bg px-3 py-1 text-[11px] font-black uppercase text-brand-warning-text font-mono">

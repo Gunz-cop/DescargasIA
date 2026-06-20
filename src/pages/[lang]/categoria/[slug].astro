@@ -98,13 +98,19 @@ const schemaBreadcrumb = {
     }
   ]
 };
+const alternates = Object.keys(languages)
+  .filter((l) => l !== 'it')
+  .map((l) => ({
+    lang: l,
+    url: l === 'es' ? `${Astro.url.origin}/es/categoria/${cat.data.slug}` : `${Astro.url.origin}/${l}/categoria/${cat.data.slug}`
+  }));
 ---
 
-<BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaBreadcrumb} lang={lang}>
+<BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaBreadcrumb} lang={lang} alternates={alternates}>
   <!-- Cabecera de Categoría -->
   <header class="mb-10 pb-6 border-b border-brand-card-border/60">
     <nav class="flex items-center gap-2 text-xs text-brand-text-muted mb-4 font-semibold" aria-label="Ruta de navegación">
-      <a href={`/${lang}`} class="hover:text-brand-text transition-colors">{lang === 'sv' ? 'Hem' : lang === 'it' ? 'Home' : 'Inicio'}</a>
+      <a href={lang === 'es' ? '/' : `/${lang}`} class="hover:text-brand-text transition-colors">{lang === 'sv' ? 'Hem' : lang === 'it' ? 'Home' : 'Inicio'}</a>
       <span class="text-brand-card-border" aria-hidden="true">/</span>
       <span class="text-brand-text-muted">{lang === 'sv' ? 'Kategori' : lang === 'it' ? 'Categoria' : 'Categoría'}</span>
       <span class="text-brand-card-border" aria-hidden="true">/</span>

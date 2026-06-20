@@ -66,13 +66,16 @@ const nav = navNames[lang];
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    {noindex && <meta name="robots" content="noindex" />}
+    {(noindex || lang === 'it') && <meta name="robots" content="noindex" />}
     
     <!-- Alternates Hreflang para Multilenguaje -->
     {alternates.map(({ lang: altLang, url }) => (
       <link rel="alternate" hreflang={altLang === 'es' ? 'es-ES' : altLang === 'sv' ? 'sv-SE' : 'it-IT'} href={url} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={`${Astro.url.origin}/es`} />
+    {(() => {
+      const defaultAlt = alternates.find((alt) => alt.lang === 'es')?.url || `${Astro.url.origin}`;
+      return <link rel="alternate" hreflang="x-default" href={defaultAlt} />;
+    })()}
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -111,7 +114,7 @@ const nav = navNames[lang];
     <!-- HEADER / NAVIGATION -->
     <header class="sticky top-0 z-40 border-b border-brand-card-border bg-brand-bg/92 backdrop-blur-md transition-all">
       <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-        <a href={`/${lang}`} class="flex items-center gap-2 group" aria-label={`Ir al inicio de FuenteAI - ${lang}`}>
+        <a href={lang === 'es' ? '/' : `/${lang}`} class="flex items-center gap-2 group" aria-label={`Ir al inicio de FuenteAI - ${lang}`}>
           <span class="font-mono text-sm font-bold text-brand-primary border border-brand-primary/30 bg-brand-primary/10 rounded px-2 py-1 group-hover:bg-brand-primary/15 transition-colors" aria-hidden="true">&gt;_</span>
           <span class="text-lg font-black tracking-tight text-brand-text group-hover:text-brand-primary transition-colors">
             FuenteAI
@@ -134,11 +137,18 @@ const nav = navNames[lang];
               class="min-h-11 px-2.5 rounded-lg border border-brand-card-border bg-brand-card-bg text-[11px] font-bold text-brand-text-muted hover:text-brand-text hover:border-brand-primary/35 transition-all focus:outline-none cursor-pointer"
               aria-label="Cambiar idioma / Byt språk / Cambia lingua"
             >
-              {Object.entries(languages).map(([key, name]) => (
-                <option value={key} selected={key === lang}>
-                  {name}
-                </option>
-              ))}
+              {(() => {
+                const list = [
+                  { key: 'es', label: '🇪🇸 Español', enabled: true },
+                  { key: 'sv', label: '🇸🇪 Svenska', enabled: true },
+                  { key: 'it', label: lang === 'sv' ? '🇮🇹 Italiano (kommer snart)' : lang === 'it' ? '🇮🇹 Italiano (prossimamente)' : '🇮🇹 Italiano (próximamente)', enabled: false }
+                ];
+                return list.map(({ key, label, enabled }) => (
+                  <option value={key} selected={key === lang} disabled={!enabled}>
+                    {label}
+                  </option>
+                ));
+              })()}
             </select>
           </div>
 
@@ -192,13 +202,28 @@ const nav = navNames[lang];
       if (langSelector) {
         langSelector.addEventListener('change', (e) => {
           const newLang = e.target.value;
-          // Reemplazar la primera parte de la ruta del path (/es/ -> /sv/)
           const pathSegments = window.location.pathname.split('/').filter(Boolean);
-          if (pathSegments.length > 0 && ['es', 'sv', 'it'].includes(pathSegments[0])) {
-            pathSegments[0] = newLang;
-            window.location.pathname = '/' + pathSegments.join('/');
+          
+          if (newLang === 'es') {
+            if (pathSegments.length <= 1) {
+              window.location.pathname = '/';
+              return;
+            }
+            if (['es', 'sv', 'it'].includes(pathSegments[0])) {
+              pathSegments[0] = 'es';
+              window.location.pathname = '/' + pathSegments.join('/');
+            } else {
+              window.location.pathname = '/es/' + pathSegments.join('/');
+            }
           } else {
-            window.location.pathname = '/' + newLang;
+            if (pathSegments.length === 0) {
+              window.location.pathname = '/' + newLang;
+            } else if (['es', 'sv', 'it'].includes(pathSegments[0])) {
+              pathSegments[0] = newLang;
+              window.location.pathname = '/' + pathSegments.join('/');
+            } else {
+              window.location.pathname = '/' + newLang + '/' + pathSegments.join('/');
+            }
           }
         });
       }

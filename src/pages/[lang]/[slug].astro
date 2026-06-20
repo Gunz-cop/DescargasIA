@@ -275,7 +275,7 @@ const docDesc = lang === 'sv'
   alternates={resolvedAlternates}
 >
   <nav class="mb-6 flex items-center gap-2 text-xs font-semibold text-brand-text-muted" aria-label="Ruta de navegación">
-    <a href={`/${lang}`} class="hover:text-brand-text transition-colors">{lang === 'sv' ? 'Hem' : lang === 'it' ? 'Home' : 'Inicio'}</a>
+    <a href={lang === 'es' ? '/' : `/${lang}`} class="hover:text-brand-text transition-colors">{lang === 'sv' ? 'Hem' : lang === 'it' ? 'Home' : 'Inicio'}</a>
     <span class="text-brand-card-border" aria-hidden="true">/</span>
     <span class="text-brand-text">{tool.name}</span>
   </nav>

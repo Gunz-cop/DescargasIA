@@ -22,9 +22,15 @@ const descs = {
   sv: 'Läs om hur FuenteAI verifierar officiella länkar till AI-verktyg och vårt engagemang för säkerhet.',
   it: 'Scopri come FuenteAI verifica i collegamenti ufficiali per gli strumenti IA e la nostra metodologia di sicurezza.'
 };
+const alternates = Object.keys(languages)
+  .filter((l) => l !== 'it')
+  .map((l) => ({
+    lang: l,
+    url: l === 'es' ? `${Astro.url.origin}/es/acerca-de` : `${Astro.url.origin}/${l}/acerca-de`
+  }));
 ---
 
-<BaseLayout title={titles[lang]} description={descs[lang]} lang={lang}>
+<BaseLayout title={titles[lang]} description={descs[lang]} lang={lang} alternates={alternates}>
   <article class="mx-auto max-w-4xl py-10" aria-labelledby="page-title">
     <header class="border-b border-brand-card-border pb-8">
       <span class="mb-3 inline-flex rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 font-mono text-[11px] font-black uppercase text-brand-primary">
