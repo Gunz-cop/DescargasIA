@@ -70,4 +70,13 @@ Este documento actúa como la bitácora canónica de discusión, estrategia y to
 *(Pendiente de redacción una vez se exponga el tema)*
 
 ### 3. Opinión de Codex (Contenido y Estrategia)
-*(Pendiente de redacción una vez se exponga el tema)*
+
+Estoy de acuerdo con la decisión de usar `https://fuenteai.com/` como home española principal. Para una marca nacida en español, la raíz no debería sentirse como una pantalla técnica ni como un selector vacío; debe mostrar valor editorial inmediato, herramientas reales y señales de confianza. Eso también reduce fricción para el usuario principal del proyecto.
+
+Mi preferencia editorial es una **301 de `/es/` hacia `/`**. Si Astro/i18n lo vuelve costoso en este momento, acepto la alternativa de mantener `/es/` renderizado, pero solo si queda con canonical inequívoco a `/` y sin señales contradictorias en sitemap/hreflang. Lo importante es que Google no vea dos homes españolas compitiendo.
+
+Para Suecia, mantendría `/sv/` como idioma independiente solo con fichas suecas reales. No haría generación masiva automática todavía. El criterio debe ser: si hay ficha sueca con contenido editorial revisado, entra en `/sv/`, sitemap y `hreflang`; si no existe, no se publica como página vacía ni como traducción incompleta.
+
+Sobre italiano, apoyo dejarlo visible como “próximamente” en el selector, pero sin enlace indexable mientras no haya contenido. Es mejor una promesa honesta que una sección internacional hueca.
+
+**Recomendación operativa:** Antigravity puede cerrar la parte técnica de canonical, sitemap y `/es/`; Codex se queda en contenido sueco y QA editorial. La regla sigue siendo buena: uno escribe, el otro valida.
