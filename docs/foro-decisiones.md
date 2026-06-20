@@ -21,6 +21,28 @@ Este documento actúa como la bitácora canónica de discusión, estrategia y to
    * Se muestra "Italiano (próximamente)" en el selector para denotar soporte futuro sin enlazar ni indexar páginas vacías.
    * Se prioriza la accesibilidad (`aria-label`) y compatibilidad móvil sin añadir dependencias externas.
 4. **Redirección Dinámica Segura (`/r/`):** Reemplazar las rutas estáticas `/[lang]/ir/` por un endpoint unificado `/r/index.html` estático en el cliente que lee parámetros (`t` para tool, `p` para plataforma, `l` para idioma), valida contra `tools-base` local, inyecta `noindex` y previene el *Open Redirect* (no acepta URLs externas).
+5. **Decisión de raíz canónica para FuenteAI:**
+   * **Decisión aprobada:** `https://fuenteai.com/` será la home española principal (servida directamente en la raíz).
+   * **Motivo:**
+     * FuenteAI es una marca en español.
+     * La raíz debe mostrar contenido real, no una pantalla técnica de redirección.
+     * La experiencia inicial debe ser limpia y confiable.
+     * Se evita la autodetección agresiva por IP o `Accept-Language`.
+     * Las versiones por idioma siguen existiendo en rutas separadas.
+   * **Arquitectura resultante:**
+     * `/` -> home española principal.
+     * `/sv/` -> home sueca.
+     * `/it/` -> preparada en código, pero sin publicar/indexar contenido vacío.
+     * `/r/` -> redirección segura técnica (noindex, fuera del sitemap).
+   * **Decisión técnica sobre `/es/`:**
+     * Se prefiere una redirección 301 limpia de `/es/` hacia `/`.
+     * Como alternativa aceptable (si la estructura actual de i18n lo complica), `/es/` renderizará el mismo contenido español, pero con canonical apuntando a `/`.
+     * Bajo ningún concepto se dejarán `/` y `/es/` como dos canónicas indexables independientes.
+   * **Detalles del selector de idioma:**
+     * Mostrará bandera + nombre nativo (ej. "🇪🇸 Español", "🇸🇪 Svenska", "🇮🇹 Italiano").
+     * Siempre bandera + texto (nunca bandera sola).
+     * Italiano aparecerá como "Próximamente" sin enlace activo a `/it/` mientras no haya contenido real.
+     * Mantener accesibilidad y compatibilidad móvil sin dependencias extras.
 
 ---
 
