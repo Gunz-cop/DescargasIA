@@ -132,24 +132,64 @@ const nav = navNames[lang];
         <div class="flex items-center gap-3">
           <!-- Selector de Idioma -->
           <div class="relative inline-block text-left">
-            <select
-              id="lang-selector"
-              class="min-h-11 px-2.5 rounded-lg border border-brand-card-border bg-brand-card-bg text-[11px] font-bold text-brand-text-muted hover:text-brand-text hover:border-brand-primary/35 transition-all focus:outline-none cursor-pointer"
-              aria-label="Cambiar idioma / Byt språk / Cambia lingua"
-            >
-              {(() => {
-                const list = [
-                  { key: 'es', label: '🇪🇸 Español', enabled: true },
-                  { key: 'sv', label: '🇸🇪 Svenska', enabled: true },
-                  { key: 'it', label: lang === 'sv' ? '🇮🇹 Italiano (kommer snart)' : lang === 'it' ? '🇮🇹 Italiano (prossimamente)' : '🇮🇹 Italiano (próximamente)', enabled: false }
-                ];
-                return list.map(({ key, label, enabled }) => (
-                  <option value={key} selected={key === lang} disabled={!enabled}>
-                    {label}
-                  </option>
-                ));
-              })()}
-            </select>
+            <details id="lang-dropdown" class="relative group select-none">
+              <summary
+                class="min-h-11 px-3 flex items-center gap-2 rounded-lg border border-brand-card-border bg-brand-card-bg text-xs font-bold text-brand-text-muted hover:text-brand-text hover:border-brand-primary/35 transition-all list-none cursor-pointer"
+                aria-label="Cambiar idioma / Byt språk / Cambia lingua"
+              >
+                {lang === 'es' && (
+                  <svg class="h-3.5 w-5 rounded-sm shrink-0" viewBox="0 0 3 2" aria-hidden="true">
+                    <rect width="3" height="2" fill="#c11b17"/>
+                    <rect y="0.5" width="3" height="1" fill="#fdd017"/>
+                  </svg>
+                  <span>Español</span>
+                )}
+                {lang === 'sv' && (
+                  <svg class="h-3.5 w-5 rounded-sm shrink-0" viewBox="0 0 16 10" aria-hidden="true">
+                    <rect width="16" height="10" fill="#006aa7"/>
+                    <rect x="5" width="2" height="10" fill="#fecc00"/>
+                    <rect y="4" width="16" height="2" fill="#fecc00"/>
+                  </svg>
+                  <span>Svenska</span>
+                )}
+                {lang === 'it' && (
+                  <svg class="h-3.5 w-5 rounded-sm shrink-0" viewBox="0 0 3 2" aria-hidden="true">
+                    <rect width="1" height="2" fill="#009246"/>
+                    <rect x="1" width="1" height="2" fill="#ffffff"/>
+                    <rect x="2" width="1" height="2" fill="#ce2b37"/>
+                  </svg>
+                  <span>Italiano</span>
+                )}
+                <svg class="h-4 w-4 text-brand-text-muted transition-transform group-open:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                </svg>
+              </summary>
+              <div class="absolute right-0 mt-1.5 w-48 rounded-lg border border-brand-card-border bg-brand-card-bg py-1 shadow-xl z-50">
+                <a href="#" data-lang="es" class="flex items-center gap-2 px-3 py-2 text-xs font-bold text-brand-text hover:bg-brand-bg/40 transition-colors" role="menuitem">
+                  <svg class="h-3.5 w-5 rounded-sm shrink-0" viewBox="0 0 3 2" aria-hidden="true">
+                    <rect width="3" height="2" fill="#c11b17"/>
+                    <rect y="0.5" width="3" height="1" fill="#fdd017"/>
+                  </svg>
+                  <span>Español</span>
+                </a>
+                <a href="#" data-lang="sv" class="flex items-center gap-2 px-3 py-2 text-xs font-bold text-brand-text hover:bg-brand-bg/40 transition-colors" role="menuitem">
+                  <svg class="h-3.5 w-5 rounded-sm shrink-0" viewBox="0 0 16 10" aria-hidden="true">
+                    <rect width="16" height="10" fill="#006aa7"/>
+                    <rect x="5" width="2" height="10" fill="#fecc00"/>
+                    <rect y="4" width="16" height="2" fill="#fecc00"/>
+                  </svg>
+                  <span>Svenska</span>
+                </a>
+                <div class="flex items-center gap-2 px-3 py-2 text-xs font-bold text-brand-text-muted opacity-50 cursor-not-allowed" role="menuitem" aria-disabled="true">
+                  <svg class="h-3.5 w-5 rounded-sm shrink-0" viewBox="0 0 3 2" aria-hidden="true">
+                    <rect width="1" height="2" fill="#009246"/>
+                    <rect x="1" width="1" height="2" fill="#ffffff"/>
+                    <rect x="2" width="1" height="2" fill="#ce2b37"/>
+                  </svg>
+                  <span>{lang === 'sv' ? 'Italiano (kommer snart)' : 'Italiano (próximamente)'}</span>
+                </div>
+              </div>
+            </details>
           </div>
 
           <!-- Toggle de modo claro/oscuro simple -->
@@ -198,33 +238,43 @@ const nav = navNames[lang];
     <!-- Theme & Language Switch Scripts -->
     <script is:inline>
       // Selector de idioma client-side
-      const langSelector = document.getElementById('lang-selector');
-      if (langSelector) {
-        langSelector.addEventListener('change', (e) => {
-          const newLang = e.target.value;
-          const pathSegments = window.location.pathname.split('/').filter(Boolean);
-          
-          if (newLang === 'es') {
-            if (pathSegments.length <= 1) {
-              window.location.pathname = '/';
-              return;
-            }
-            if (['es', 'sv', 'it'].includes(pathSegments[0])) {
-              pathSegments[0] = 'es';
-              window.location.pathname = '/' + pathSegments.join('/');
-            } else {
-              window.location.pathname = '/es/' + pathSegments.join('/');
-            }
-          } else {
-            if (pathSegments.length === 0) {
-              window.location.pathname = '/' + newLang;
-            } else if (['es', 'sv', 'it'].includes(pathSegments[0])) {
-              pathSegments[0] = newLang;
-              window.location.pathname = '/' + pathSegments.join('/');
-            } else {
-              window.location.pathname = '/' + newLang + '/' + pathSegments.join('/');
-            }
+      const dropdown = document.getElementById('lang-dropdown');
+      if (dropdown) {
+        // Cerrar dropdown al hacer click fuera
+        document.addEventListener('click', (e) => {
+          if (!dropdown.contains(e.target)) {
+            dropdown.removeAttribute('open');
           }
+        });
+        
+        dropdown.querySelectorAll('a[data-lang]').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const newLang = link.getAttribute('data-lang');
+            const pathSegments = window.location.pathname.split('/').filter(Boolean);
+            
+            if (newLang === 'es') {
+              if (pathSegments.length <= 1) {
+                window.location.pathname = '/';
+                return;
+              }
+              if (['es', 'sv', 'it'].includes(pathSegments[0])) {
+                pathSegments[0] = 'es';
+                window.location.pathname = '/' + pathSegments.join('/');
+              } else {
+                window.location.pathname = '/es/' + pathSegments.join('/');
+              }
+            } else {
+              if (pathSegments.length === 0) {
+                window.location.pathname = '/' + newLang;
+              } else if (['es', 'sv', 'it'].includes(pathSegments[0])) {
+                pathSegments[0] = newLang;
+                window.location.pathname = '/' + pathSegments.join('/');
+              } else {
+                window.location.pathname = '/' + newLang + '/' + pathSegments.join('/');
+              }
+            }
+          });
         });
       }
 
