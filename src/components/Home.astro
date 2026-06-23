@@ -124,30 +124,151 @@ const alternates = Object.keys(languages)
   }));
 
 const canonicalUrl = lang === 'es' ? `${Astro.url.origin}` : undefined;
+
+const promptQueries = {
+  es: [
+    "descargar ChatGPT oficial para Mac",
+    "instalar localmente Llama 3 con Ollama",
+    "configurar Cursor AI en Windows 11",
+    "usar Claude 3.5 Sonnet sin intermediarios",
+    "descargar la app de Gemini en Android",
+    "generar imágenes con Stable Diffusion"
+  ],
+  sv: [
+    "ladda ner ChatGPT officiell för Mac",
+    "installera Llama 3 lokalt med Ollama",
+    "konfigurera Cursor AI i Windows 11",
+    "använda Claude 3.5 Sonnet säkert",
+    "ladda ner Gemini-appen till Android",
+    "generera bilder med Stable Diffusion"
+  ],
+  it: [
+    "scaricare ChatGPT ufficiale per Mac",
+    "installare Llama 3 in locale con Ollama",
+    "configurare Cursor AI su Windows 11",
+    "usare Claude 3.5 Sonnet in sicurezza",
+    "scaricare l'app di Gemini su Android",
+    "generare immagini con Stable Diffusion"
+  ]
+};
+
+const currentPrompts = promptQueries[lang] || promptQueries.es;
 ---
 
-<BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaItemList} lang={lang} alternates={alternates} canonicalUrl={canonicalUrl}>
-  <!-- Hero Section -->
-  <section class="relative overflow-hidden py-7 text-center sm:py-12" aria-labelledby="hero-title">
-    <div class="pointer-events-none absolute inset-x-0 top-0 mx-auto h-px max-w-2xl bg-gradient-to-r from-transparent via-brand-primary/70 to-transparent" aria-hidden="true"></div>
-    <div class="mx-auto max-w-4xl">
-      <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 text-[11px] font-black uppercase text-brand-primary">
-        {lang === 'sv' ? 'Officiellt Index · Noll spegelsajter' : lang === 'it' ? 'Indice Ufficiale · Zero mirror' : 'Índice oficial. Cero mirrors.'}
+<BaseLayout title={pageTitle} description={pageDesc} jsonLd={schemaItemList} lang={lang} alternates={alternates} canonicalUrl={canonicalUrl} transparentHeader={true}>
+  <!-- Suno-like Premium Hero Section -->
+  <section class="relative min-h-[75vh] flex flex-col justify-center items-center py-8 md:py-16 px-4 text-center overflow-visible" aria-labelledby="hero-title">
+    
+    <!-- Background glowing gradient blobs -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10" aria-hidden="true">
+      <div class="absolute top-[5%] right-[-15%] md:right-[5%] w-[38rem] h-[38rem] rounded-full blob-1 blur-[110px] animate-pulse-glow" style="animation-delay: 0s;"></div>
+      <div class="absolute top-[15%] left-[-20%] md:left-[-5%] w-[35rem] h-[35rem] rounded-full blob-2 blur-[100px] animate-pulse-glow" style="animation-delay: 2s;"></div>
+      <div class="absolute top-[35%] left-[25%] w-[28rem] h-[28rem] rounded-full blob-3 blur-[90px] animate-pulse-glow" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="mx-auto max-w-3xl w-full z-10">
+      <!-- Badge -->
+      <span class="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-950/15 px-3 py-1 text-[11px] font-black uppercase tracking-wider text-emerald-400 backdrop-blur-md">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 text-emerald-400" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M2.166 11.38A10.002 10.002 0 0110 3c4.857 0 8.86 3.446 9.717 8H17.43a8.002 8.002 0 00-14.86 0H2.167zM10 18a8.002 8.002 0 01-7.43-6h2.264a6.002 6.002 0 0011.332 0h2.264A8.002 8.002 0 0110 18z" clip-rule="evenodd" />
+        </svg>
+        {lang === 'sv' ? 'Officiellt Index · Noll Spegelsajter' : lang === 'it' ? 'Indice Ufficiale · Zero Mirror' : 'Fuentes 100% Oficiales · Cero Clones'}
       </span>
 
-      <h1 id="hero-title" class="mx-auto mb-4 max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-brand-text sm:text-6xl md:text-7xl font-['Outfit',sans-serif]">
-        {t('hero.title')}
+      <!-- Typing Headline -->
+      <h1 id="hero-title" class="mx-auto mb-4 min-h-[5.5rem] sm:min-h-[7.5rem] md:min-h-[9rem] text-4xl font-extrabold leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl font-['Outfit',sans-serif]">
+        <span class="block text-brand-text-muted/70 text-lg sm:text-xl md:text-2xl font-bold mb-1 sm:mb-2 uppercase tracking-widest font-mono">
+          {lang === 'sv' ? 'SÖK ELLER LADDA NER' : lang === 'it' ? 'CERCA O SCARICA' : 'DESCARGA OFICIAL DE'}
+        </span>
+        <div id="dynamic-text-container" class="inline" data-prompts={JSON.stringify(currentPrompts)}>
+          <span id="typed-text" class="typing-cursor"></span>
+        </div>
       </h1>
 
-      <p class="mx-auto max-w-2xl text-base leading-relaxed text-brand-text-muted sm:text-lg">
+      <p class="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-brand-text-muted sm:text-lg">
         {t('hero.subtitle')}
       </p>
 
-      <div class="mx-auto mt-7 max-w-2xl">
-        <SearchBar variant="hero" />
+      <!-- Prompt Search Box -->
+      <div class="mx-auto mt-8 max-w-2xl w-full">
+        <div class="w-full bg-brand-card-bg/60 backdrop-blur-xl border border-brand-card-border rounded-2xl p-2.5 shadow-2xl transition-all focus-within:border-brand-primary/45">
+          <!-- Text input row -->
+          <div class="flex items-center gap-2 px-3 py-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 text-brand-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" />
+            </svg>
+            <input
+              type="search"
+              id="search-input-hero"
+              placeholder={lang === 'sv' ? 'Sök AI-verktyg... (t.ex. ChatGPT, Cursor, Ollama)' : lang === 'it' ? 'Cerca strumenti IA... (es. ChatGPT, Cursor, Ollama)' : '¿Qué herramienta de IA buscas? (ej. ChatGPT, Cursor, Ollama)'}
+              autocomplete="off"
+              class="w-full bg-transparent text-white placeholder-brand-text-muted/50 focus:outline-none text-base py-2.5"
+            />
+          </div>
+          <!-- Action buttons row -->
+          <div class="flex items-center justify-between mt-2.5 pt-2.5 border-t border-brand-card-border/40">
+            <div class="flex items-center gap-2">
+              <!-- Sliders/Filters toggle button -->
+              <button
+                id="toggle-hero-filters-btn"
+                type="button"
+                class="flex h-9 px-3.5 items-center gap-2 rounded-full bg-brand-bg/60 text-brand-text-muted hover:text-white border border-brand-card-border hover:border-brand-primary/40 text-xs font-black transition-all cursor-pointer active:scale-95"
+                aria-label="Toggle advanced filters"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                </svg>
+                <span>{lang === 'sv' ? 'Filtrera sökning' : lang === 'it' ? 'Filtra ricerca' : 'Filtros avanzados'}</span>
+              </button>
+            </div>
+            <button
+              id="hero-search-btn"
+              class="inline-flex h-9 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 px-6 text-xs font-black text-white hover:shadow-lg hover:shadow-emerald-500/15 active:scale-95 transition-all cursor-pointer"
+            >
+              {lang === 'sv' ? 'SÖK' : lang === 'it' ? 'CERCA' : 'BUSCAR'}
+            </button>
+          </div>
+        </div>
+
+        <!-- Advanced accordion filters panel inside hero -->
+        <div id="hero-filters-panel" class="w-full mt-3 overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out">
+          <div class="bg-brand-card-bg/40 backdrop-blur-xl border border-brand-card-border rounded-xl p-4 text-left">
+            <!-- Categories -->
+            <div class="mb-4">
+              <span class="text-[10px] font-black uppercase text-brand-text-muted tracking-wider block mb-2">{lang === 'sv' ? 'Kategorier' : lang === 'it' ? 'Categorie' : 'Categorías'}</span>
+              <div class="flex flex-wrap gap-1.5" id="hero-category-filters">
+                <button data-category="todos" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand-primary text-white border border-transparent transition-all cursor-pointer active:scale-95">
+                  {lang === 'sv' ? 'Alla' : lang === 'it' ? 'Tutte' : 'Todas'}
+                </button>
+                {categoryStats.map(cat => (
+                  <button data-category={cat.slug} class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand-bg/60 text-brand-text-muted border border-brand-card-border hover:border-brand-primary/30 hover:text-brand-text transition-all cursor-pointer active:scale-95">
+                    {cat.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <!-- Platforms -->
+            <div>
+              <span class="text-[10px] font-black uppercase text-brand-text-muted tracking-wider block mb-2">{lang === 'sv' ? 'Plattformar' : lang === 'it' ? 'Piattaforme' : 'Plataformas'}</span>
+              <div class="flex flex-wrap gap-1.5" id="hero-platform-filters">
+                <button data-platform="todos" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand-primary text-white border border-transparent transition-all cursor-pointer active:scale-95">
+                  {lang === 'sv' ? 'Alla' : lang === 'it' ? 'Qualsiasi' : 'Cualquiera'}
+                </button>
+                <button data-platform="web" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand-bg/60 text-brand-text-muted border border-brand-card-border hover:border-brand-primary/30 hover:text-brand-text transition-all cursor-pointer active:scale-95">Web</button>
+                <button data-platform="windows" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand-bg/60 text-brand-text-muted border border-brand-card-border hover:border-brand-primary/30 hover:text-brand-text transition-all cursor-pointer active:scale-95">Windows</button>
+                <button data-platform="mac" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand-bg/60 text-brand-text-muted border border-brand-card-border hover:border-brand-primary/30 hover:text-brand-text transition-all cursor-pointer active:scale-95">macOS</button>
+                <button data-platform="linux" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand-bg/60 text-brand-text-muted border border-brand-card-border hover:border-brand-primary/30 hover:text-brand-text transition-all cursor-pointer active:scale-95">Linux</button>
+                <button data-platform="android" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand-bg/60 text-brand-text-muted border border-brand-card-border hover:border-brand-primary/30 hover:text-brand-text transition-all cursor-pointer active:scale-95">Android</button>
+                <button data-platform="ios" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-brand-bg/60 text-brand-text-muted border border-brand-card-border hover:border-brand-primary/30 hover:text-brand-text transition-all cursor-pointer active:scale-95">iOS</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="mt-4 flex flex-wrap justify-center gap-x-3 gap-y-1 text-[11px] font-bold uppercase text-brand-text-muted" aria-label="Señales de confianza del índice">
+      <!-- Trust signals / mini counter -->
+      <div class="mt-5 flex flex-wrap justify-center gap-x-4 gap-y-1 text-[11px] font-bold uppercase tracking-wider text-brand-text-muted/65" aria-label="Señales de confianza del índice">
         <span>{sortedTools.length} {lang === 'sv' ? 'verktyg' : lang === 'it' ? 'schede' : 'fichas'}</span>
         <span aria-hidden="true">/</span>
         <span>{verifiedDomainsCount} {t('stats.verified').toLowerCase()}</span>
@@ -156,25 +277,47 @@ const canonicalUrl = lang === 'es' ? `${Astro.url.origin}` : undefined;
         <span aria-hidden="true">/</span>
         <span>0 {lang === 'sv' ? 'filer sparade' : lang === 'it' ? 'file ospitati' : 'archivos alojados'}</span>
       </div>
+
+      <!-- Scroll down indicator -->
+      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-1 opacity-60 hover:opacity-100 transition-opacity">
+        <span class="text-[10px] font-black uppercase tracking-widest text-brand-text-muted">{lang === 'sv' ? 'Utforska' : lang === 'it' ? 'Esplora' : 'Explorar'}</span>
+        <a href="#directorio" class="flex h-8 w-8 items-center justify-center rounded-full border border-brand-card-border bg-brand-card-bg/40 text-brand-text-muted hover:text-brand-primary transition-all animate-bounce" aria-label="Ir al directorio">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grayscale brand logos showcase -->
+  <section class="border-t border-b border-brand-card-border/50 bg-brand-bg/10 py-6 overflow-hidden pointer-events-none select-none z-10 relative">
+    <div class="max-w-5xl mx-auto px-4 flex flex-wrap justify-center items-center gap-x-10 gap-y-6 opacity-30 md:gap-x-16">
+      <span class="text-sm font-black tracking-widest font-mono text-white">OPENAI</span>
+      <span class="text-sm font-black tracking-widest font-mono text-white">ANTHROPIC</span>
+      <span class="text-sm font-black tracking-widest font-mono text-white">GOOGLE</span>
+      <span class="text-sm font-black tracking-widest font-mono text-white">META AI</span>
+      <span class="text-sm font-black tracking-widest font-mono text-white">MICROSOFT</span>
+      <span class="text-sm font-black tracking-widest font-mono text-white">GITHUB</span>
+      <span class="text-sm font-black tracking-widest font-mono text-white">APPLE</span>
     </div>
   </section>
 
   <!-- Buscador y Filtros -->
-  <section id="directorio" class="scroll-mt-20">
-    <div class="mb-4 flex flex-col gap-1 border-t border-brand-card-border pt-5 sm:flex-row sm:items-end sm:justify-between">
+  <section id="directorio" class="scroll-mt-20 py-10">
+    <div class="mb-6 flex flex-col gap-1 border-b border-brand-card-border/40 pb-5 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <p class="text-[11px] font-black uppercase text-brand-primary">{lang === 'sv' ? 'Verifierade källor' : lang === 'it' ? 'Fonti verificate' : 'Fuentes indexadas'}</p>
-        <h2 class="text-2xl font-black tracking-tight text-brand-text font-['Outfit',sans-serif]">{lang === 'sv' ? 'Välj ett verktyg' : lang === 'it' ? 'Scegli uno strumento' : 'Elige una herramienta'}</h2>
+        <p class="text-[11px] font-black uppercase tracking-wider text-brand-primary">{lang === 'sv' ? 'Verifierade källor' : lang === 'it' ? 'Fonti verificate' : 'Fuentes indexadas'}</p>
+        <h2 class="text-3xl font-black tracking-tight text-white font-['Outfit',sans-serif]">{lang === 'sv' ? 'Välj ett verktyg' : lang === 'it' ? 'Scegli uno strumento' : 'Elige una herramienta'}</h2>
       </div>
       <p class="text-xs leading-relaxed text-brand-text-muted">
         {sortedTools.length} {lang === 'sv' ? 'granskade verktyg tillgängliga' : lang === 'it' ? 'schede editoriali disponibili' : 'fichas editoriales disponibles'}
       </p>
     </div>
-    <SearchBar variant="filters" />
 
     <!-- Grid de Herramientas -->
     <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 transition-all duration-300"
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch gap-5 sm:gap-8 transition-all duration-300 mt-6 max-w-6xl mx-auto"
       id="tools-grid"
     >
       {sortedTools.map(tool => (
@@ -202,24 +345,85 @@ const canonicalUrl = lang === 'es' ? `${Astro.url.origin}` : undefined;
     </div>
   </section>
 
-  <!-- Script de Filtro Client-Side (Vanilla JS) -->
+  <!-- Script de Filtro Client-Side y Efectos (Vanilla JS) -->
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
-      const searchInput = document.getElementById('search-input');
-      const clearBtn = document.getElementById('btn-clear-search');
+      // Elementos del buscador y efectos
+      const searchInputHero = document.getElementById('search-input-hero');
+      const searchSubmitBtn = document.getElementById('hero-search-btn');
+      const toggleHeroFiltersBtn = document.getElementById('toggle-hero-filters-btn');
+      const heroFiltersPanel = document.getElementById('hero-filters-panel');
+      
       const toolsGrid = document.getElementById('tools-grid');
       const emptyState = document.getElementById('empty-state');
       const resetBtn = document.getElementById('reset-all-filters-btn');
       
-      const categoryButtons = document.querySelectorAll('#category-filters-container button');
-      const platformButtons = document.querySelectorAll('#platform-filters-container button');
+      const categoryButtons = document.querySelectorAll('#hero-category-filters button');
+      const platformButtons = document.querySelectorAll('#hero-platform-filters button');
       const cards = document.querySelectorAll('#tools-grid article');
       
       let searchQuery = '';
       let activeCategory = 'todos';
       let activePlatform = 'todos';
       
-      // Aplicar filtros completos
+      // --- EFECTO MAQUINA DE ESCRIBIR (Typing Effect) ---
+      const typedText = document.getElementById('typed-text');
+      const container = document.getElementById('dynamic-text-container');
+      if (typedText && container) {
+        const prompts = JSON.parse(container.getAttribute('data-prompts') || '[]');
+        let promptIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let delay = 100;
+
+        const type = () => {
+          const currentPrompt = prompts[promptIndex] || '';
+          if (isDeleting) {
+            typedText.textContent = currentPrompt.substring(0, charIndex - 1);
+            charIndex--;
+            delay = 30; // Más rápido al borrar
+          } else {
+            typedText.textContent = currentPrompt.substring(0, charIndex + 1);
+            charIndex++;
+            delay = 60; // Escritura fluida
+          }
+
+          if (!isDeleting && charIndex === currentPrompt.length) {
+            isDeleting = true;
+            delay = 2200; // Pausa al completar la frase
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            promptIndex = (promptIndex + 1) % prompts.length;
+            delay = 400; // Pausa antes de empezar la siguiente
+          }
+
+          setTimeout(type, delay);
+        };
+
+        // Iniciar máquina
+        type();
+      }
+
+      // --- ACORDEÓN DE FILTROS AVANZADOS ---
+      if (toggleHeroFiltersBtn && heroFiltersPanel) {
+        let isOpen = false;
+        toggleHeroFiltersBtn.addEventListener('click', () => {
+          isOpen = !isOpen;
+          if (isOpen) {
+            heroFiltersPanel.style.maxHeight = '500px';
+            heroFiltersPanel.style.opacity = '1';
+            toggleHeroFiltersBtn.classList.add('text-white', 'border-brand-primary/60');
+            toggleHeroFiltersBtn.classList.remove('text-brand-text-muted');
+          } else {
+            heroFiltersPanel.style.maxHeight = '0px';
+            heroFiltersPanel.style.opacity = '0';
+            toggleHeroFiltersBtn.classList.remove('text-white', 'border-brand-primary/60');
+            toggleHeroFiltersBtn.classList.add('text-brand-text-muted');
+          }
+        });
+      }
+      
+      // --- LÓGICA DE FILTRADO COMPLETA ---
       const applyFilters = () => {
         let visibleCount = 0;
         
@@ -269,47 +473,52 @@ const canonicalUrl = lang === 'es' ? `${Astro.url.origin}` : undefined;
       };
       
       // Evento de búsqueda
-      searchInput?.addEventListener('input', () => {
-        searchQuery = searchInput.value.trim().toLowerCase();
-        if (clearBtn) {
-          clearBtn.classList.toggle('hidden', !searchQuery);
-        }
-        applyFilters();
-      });
-      
-      clearBtn?.addEventListener('click', () => {
-        if (searchInput) searchInput.value = '';
-        searchQuery = '';
-        clearBtn.classList.add('hidden');
+      searchInputHero?.addEventListener('input', () => {
+        searchQuery = searchInputHero.value.trim().toLowerCase();
         applyFilters();
       });
 
-      // Evento de Categoría
+      // Búsqueda al presionar Enter en el Hero
+      searchInputHero?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          applyFilters();
+          document.getElementById('directorio')?.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+      
+      // Botón Buscar
+      searchSubmitBtn?.addEventListener('click', () => {
+        applyFilters();
+        document.getElementById('directorio')?.scrollIntoView({ behavior: 'smooth' });
+      });
+
+      // Filtro de Categoría
       categoryButtons.forEach(btn => {
         btn.addEventListener('click', () => {
           categoryButtons.forEach(b => {
             b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
-            b.classList.add('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
+            b.classList.add('bg-brand-bg/60', 'text-brand-text-muted', 'border-brand-card-border');
           });
           btn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
-          btn.classList.remove('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
+          btn.classList.remove('bg-brand-bg/60', 'text-brand-text-muted', 'border-brand-card-border');
           
-          activeCategory = btn.getAttribute('data-filter-category') || 'todos';
+          activeCategory = btn.getAttribute('data-category') || 'todos';
           applyFilters();
         });
       });
       
-      // Evento de Plataforma
+      // Filtro de Plataforma
       platformButtons.forEach(btn => {
         btn.addEventListener('click', () => {
           platformButtons.forEach(b => {
             b.classList.remove('bg-brand-primary', 'text-white', 'border-transparent');
-            b.classList.add('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
+            b.classList.add('bg-brand-bg/60', 'text-brand-text-muted', 'border-brand-card-border');
           });
           btn.classList.add('bg-brand-primary', 'text-white', 'border-transparent');
-          btn.classList.remove('bg-brand-bg/40', 'text-brand-text-muted', 'border-brand-card-border');
+          btn.classList.remove('bg-brand-bg/60', 'text-brand-text-muted', 'border-brand-card-border');
           
-          activePlatform = btn.getAttribute('data-filter-platform') || 'todos';
+          activePlatform = btn.getAttribute('data-platform') || 'todos';
           applyFilters();
         });
       });
@@ -320,27 +529,26 @@ const canonicalUrl = lang === 'es' ? `${Astro.url.origin}` : undefined;
         activeCategory = 'todos';
         activePlatform = 'todos';
         
-        if (searchInput) searchInput.value = '';
-        if (clearBtn) clearBtn.classList.add('hidden');
+        if (searchInputHero) searchInputHero.value = '';
         
         // Reset botones categorías
         categoryButtons.forEach(b => {
-          const isAll = b.getAttribute('data-filter-category') === 'todos';
+          const isAll = b.getAttribute('data-category') === 'todos';
           b.classList.toggle('bg-brand-primary', isAll);
           b.classList.toggle('text-white', isAll);
           b.classList.toggle('border-transparent', isAll);
-          b.classList.toggle('bg-brand-bg/40', !isAll);
+          b.classList.toggle('bg-brand-bg/60', !isAll);
           b.classList.toggle('text-brand-text-muted', !isAll);
           b.classList.toggle('border-brand-card-border', !isAll);
         });
         
         // Reset botones plataformas
         platformButtons.forEach(b => {
-          const isAll = b.getAttribute('data-filter-platform') === 'todos';
+          const isAll = b.getAttribute('data-platform') === 'todos';
           b.classList.toggle('bg-brand-primary', isAll);
           b.classList.toggle('text-white', isAll);
           b.classList.toggle('border-transparent', isAll);
-          b.classList.toggle('bg-brand-bg/40', !isAll);
+          b.classList.toggle('bg-brand-bg/60', !isAll);
           b.classList.toggle('text-brand-text-muted', !isAll);
           b.classList.toggle('border-brand-card-border', !isAll);
         });

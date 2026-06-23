@@ -44,7 +44,7 @@
 
 :root.light, .light {
   /* Light Theme (Clean Editorial Panel) */
-  --brand-bg: #f6f8f7;
+  --brand-bg: #f8f9f7;
   --brand-text: #0f172a;
   --brand-text-muted: #51615c;
   --brand-primary: #047857;
@@ -93,6 +93,67 @@ body {
   outline-offset: 3px;
 }
 
+/* Background blobs colors (Light / Dark theme separation) */
+.blob-1 {
+  background: rgba(10, 31, 15, 0.45);
+}
+.blob-2 {
+  background: rgba(13, 43, 43, 0.4);
+}
+.blob-3 {
+  background: rgba(8, 22, 32, 0.35);
+}
+
+.light .blob-1 {
+  background: rgba(10, 31, 15, 0.08);
+}
+.light .blob-2 {
+  background: rgba(13, 43, 43, 0.07);
+}
+.light .blob-3 {
+  background: rgba(8, 22, 32, 0.05);
+}
+
+/* Pulsing blobs in background */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 15s ease-in-out infinite;
+}
+
+/* Typing text color contrast */
+#typed-text {
+  color: var(--brand-primary);
+  display: inline;
+}
+
+:root:not(.light) #typed-text {
+  background: linear-gradient(90deg, #34d399, #5eead4, #67e8f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom styles for typing effect cursor */
+.typing-cursor::after {
+  content: '|';
+  animation: blink-cursor 0.8s infinite;
+  color: var(--brand-primary);
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -101,5 +162,9 @@ body {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+  .animate-pulse-glow,
+  .typing-cursor::after {
+    animation: none !important;
   }
 }
