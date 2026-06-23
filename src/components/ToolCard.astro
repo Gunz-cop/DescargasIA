@@ -291,60 +291,52 @@ const hoverStyle = hoverStyles[tool.slug] ?? {
 >
   <div class={`absolute inset-x-0 top-0 h-[2px] rounded-t-[24px] opacity-60 group-hover:opacity-100 transition-opacity duration-300 ${visual.bar}`} aria-hidden="true"></div>
 
-  <div class="flex flex-col gap-3 p-4 sm:hidden flex-1 justify-between">
-    <div class="flex flex-col gap-3">
-      <div class="flex items-center gap-3">
-        <div class={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border text-lg font-black transition-transform duration-200 group-hover:scale-105 ${visual.mark}`} aria-hidden="true">
+  <div class="flex flex-col gap-5 p-6 sm:hidden flex-1 justify-between">
+    <div class="flex flex-col gap-5">
+      <!-- Header block -->
+      <div class="flex flex-col gap-1">
+        <a href={`/${lang}/${tool.slug}`} class="text-[20px] font-bold leading-tight text-white hover:text-brand-primary transition-colors font-['Outfit']">
+          {tool.name}
+        </a>
+        <p class="flex items-center gap-1 font-mono text-xs text-brand-success">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0 text-brand-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
+          </svg>
+          {officialDomain}
+        </p>
+      </div>
+
+      <!-- Centered Avatar Visual -->
+      <div class="flex justify-center py-1">
+        <div class={`flex h-20 w-20 items-center justify-center rounded-[24px] border text-2xl font-black transition-transform duration-300 group-hover:scale-105 ${visual.mark}`} aria-hidden="true">
           {initials}
         </div>
-        <div class="min-w-0 flex-1">
-          <a href={`/${lang}/${tool.slug}`} class="block truncate text-2xl font-black leading-tight tracking-tight text-brand-text">
-            {tool.name}
-          </a>
-          <p class="mt-1 truncate font-mono text-xs font-bold text-brand-success">{officialDomain}</p>
-        </div>
       </div>
 
-      <div class="flex flex-wrap items-center gap-1.5">
-        <span class={`inline-flex items-center rounded border px-2 py-1 text-[10px] font-extrabold font-mono ${category.tone}`}>
-          {category.label}
-        </span>
-        <Badge variant={trust.variant}>{trust.label}</Badge>
-        <span class="rounded border border-brand-card-border bg-brand-bg/35 px-2 py-1 text-[10px] font-bold text-brand-text-muted">
-          {platformSummary}
-        </span>
-      </div>
-
-      <p class="text-sm leading-relaxed text-brand-text-muted line-clamp-2">
+      <!-- Description -->
+      <p class="text-[14px] leading-6 font-medium text-white/70 line-clamp-3">
         {tool.shortDescription}
       </p>
-    </div>
 
-    <div class="flex flex-col gap-3">
-      <div class="grid grid-cols-[1fr_auto] gap-2 pt-1">
-        <a
-          href={`/r/?t=${tool.slug}&l=${lang}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Ir al canal oficial de ${tool.name}`}
-          class="inline-flex min-h-12 items-center justify-center rounded-md border border-brand-primary bg-brand-primary px-3 py-2 text-sm font-black text-white transition-colors hover:bg-brand-primary-hover"
-        >
-          {lang === 'sv' ? 'Ladda ner' : lang === 'it' ? 'Scarica' : 'Descarga oficial'}
-        </a>
-        <a
-          href={`/${lang}/${tool.slug}`}
-          aria-label={`Ver ficha editorial de ${tool.name}`}
-          class="inline-flex min-h-12 items-center justify-center rounded-md border border-brand-card-border px-4 py-2 text-sm font-bold text-brand-text transition-colors hover:border-brand-primary/35 hover:text-brand-primary"
-        >
-          {lang === 'sv' ? 'Fakta' : lang === 'it' ? 'Scheda' : 'Ficha'}
-        </a>
-      </div>
-
-      <div class="flex items-center justify-between gap-3 border-t border-brand-card-border pt-3 text-[10px] font-bold uppercase text-brand-text-muted">
-        <span>{lang === 'sv' ? 'Domän' : lang === 'it' ? 'Dominio' : 'Dominio visible'}</span>
-        {reviewDate && <span>rev. {reviewDate}</span>}
+      <!-- Badges -->
+      <div class="flex gap-2 flex-wrap">
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold text-white/60">
+          {category.label}
+        </span>
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-semibold text-white/60">
+          {pricing.label}
+        </span>
       </div>
     </div>
+
+    <!-- Button -->
+    <a
+      href={`/${lang}/${tool.slug}`}
+      aria-label={`Ver ficha de ${tool.name}`}
+      class="w-full rounded-xl bg-brand-primary px-4 py-3 text-sm font-black text-white text-center transition-colors hover:bg-brand-primary-hover mt-auto"
+    >
+      {lang === 'sv' ? 'Mer info' : lang === 'it' ? 'Scheda' : 'Ver ficha'}
+    </a>
   </div>
 
   <div class="hidden sm:flex sm:flex-col flex-1 justify-between gap-6">
