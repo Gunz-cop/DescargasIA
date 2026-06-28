@@ -22,6 +22,12 @@
       "type": "app-store",
       "isOfficial": true,
       "lastChecked": "2026-06-18"
+    },
+    "mac": {
+      "url": "https://gemini.google/mac",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-06-28"
     }
   },
   "pricingModel": "freemium",

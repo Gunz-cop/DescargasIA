@@ -1,31 +1,32 @@
 {
   "shortDescription": "Googles multimodala AI-assistent för webben och mobilen, med länkar till rätt officiella kanaler.",
-  "longDescription": "Gemini är Googles AI-modell och assistent för text, bild, kod och uppgifter i Googles ekosystem. På dator används den via webben; på mobil distribueras den via officiella appbutiker.",
+  "longDescription": "Gemini är Googles AI-modell och assistent för text, bild, kod och uppgifter i Googles ekosystem. På dator används den via webben eller den officiella macOS-appen; på mobil distribueras den via officiella appbutiker.",
   "bestFor": [
     "Användare som redan arbetar i Googles ekosystem",
     "Sökning, textarbete och multimodala frågor",
     "Mobil AI-assistent på Android och iOS",
+    "Mac-användare som vill ha en officiell skrivbordsapp",
     "Uppgifter som kräver aktuell information via Google"
   ],
   "limitations": [
-    "Google erbjuder ingen officiell desktopapp för Windows eller macOS.",
-    "Vissa funktioner kan kräva Google-konto eller betalplan.",
-    "Apparnas tillgänglighet kan variera mellan regioner."
+    "Google erbjuder ingen officiell desktopapp för Windows (endast webbåtkomst).",
+    "macOS-appen kräver Apple Silicon och macOS Sequoia (15.0) eller senare.",
+    "Vissa funktioner kan kräva Google-konto eller betalplan."
   ],
   "safetyNotes": [
-    "Ladda inte ner installerare som marknadsförs som Gemini för PC.",
-    "För dator är gemini.google.com den officiella vägen.",
+    "Google erbjuder en officiell skrivbordsapp endast för macOS. Ladda inte ner installerare för Windows.",
+    "För Windows-datorer är gemini.google.com den enda officiella vägen.",
     "För Android ska du använda Google Play, inte APK-sidor."
   ],
-  "editorialSummary": "Gemini är ett naturligt val för många som redan använder Google. Den officiella datorvägen är webben på gemini.google.com. På mobil ska du använda Google Play eller App Store. FuenteAI markerar detta tydligt för att undvika falska desktopappar och modifierade APK-filer.",
+  "editorialSummary": "Gemini är ett naturligt val för många som redan använder Google. Den officiella datorvägen är webben på gemini.google.com för Windows, och den officiella appen för macOS. På mobil ska du använda Google Play eller App Store. FuenteAI markerar detta tydligt för att undvika falska skrivbordsappar och modifierade APK-filer.",
   "editorialSections": [
     {
       "heading": "Varför många söker efter att ladda ner Gemini",
-      "body": "Gemini är Googles AI-tjänst, och namnet dyker ofta upp i sökningar efter Android-app, iPhone-app eller Gemini för dator. Många förknippar Google med gratis och pålitlig mjukvara, vilket gör att falska nedladdningar kan se mer trovärdiga ut än de borde.\n\nDen viktigaste skillnaden är att Google inte erbjuder en officiell desktopapp för Gemini på Windows eller macOS. Om en webbplats erbjuder ett sådant installationsprogram är det inte Googles officiella distribution."
+      "body": "Gemini är Googles AI-tjänst, och namnet dyker ofta upp i sökningar efter Android-app, iPhone-app eller Gemini för dator. Många förknippar Google med gratis och pålitlig mjukvara, vilket gör att falska nedladdningar kan se mer trovärdiga ut än de borde.\n\nEn viktig detalj är att Google inte erbjuder någon Windows-app. Det finns nu en officiell desktopapp för macOS, men för Windows-användare är alla fristående installationsprogram som hittas på nätet inofficiella och potentiellt skadliga."
     },
     {
       "heading": "Säker användning på dator och mobil",
-      "body": "På dator använder du Gemini via gemini.google.com i webbläsaren. Det kräver ingen fristående installerare. Det är den officiella modellen för datoranvändning, inte ett tillfälligt gap.\n\nPå Android finns Gemini via Google Play när tjänsten är tillgänglig i regionen. På iOS ska du använda App Store. Undvik APK-filer och paket som lovar förbättrade, upplåsta eller inofficiella Gemini-versioner."
+      "body": "På Mac-datorer erbjuder Google nu en officiell app som kan laddas ner från gemini.google/mac. Appen kräver Apple Silicon (M-chip) samt macOS Sequoia (15.0) eller senare.\n\nPå Windows-datorer använder du Gemini via gemini.google.com i webbläsaren. Det kräver ingen installerare.\n\nPå Android finns Gemini via Google Play när tjänsten är tillgänglig i regionen. På iOS ska du använda App Store. Undvik APK-filer och paket som lovar inofficiella Gemini-versioner."
     },
     {
       "heading": "Vad Gemini passar bra för",
@@ -38,8 +39,12 @@
   ],
   "faq": [
     {
+      "question": "Finns det en officiell Gemini-app för macOS?",
+      "answer": "Ja, Google erbjuder en officiell app för macOS. Den är kompatibel med Mac-datorer som har Apple Silicon och kör macOS 15.0 eller senare. Den kan laddas ner direkt från gemini.google/mac."
+    },
+    {
       "question": "Finns Gemini som officiell app för Windows?",
-      "answer": "Nej. Google erbjuder ingen officiell Gemini-app för Windows eller macOS. På dator används Gemini via gemini.google.com."
+      "answer": "Nej. Google erbjuder ingen officiell Gemini-app för Windows. På Windows-datorer används Gemini via webbläsaren på gemini.google.com."
     },
     {
       "question": "Är Gemini-appen för Android säker?",
