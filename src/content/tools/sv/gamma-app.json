@@ -1,0 +1,54 @@
+{
+  "shortDescription": "AI-verktyg för presentationer, dokument och webbsidor direkt i webbläsaren.",
+  "longDescription": "Gamma är en AI-baserad tjänst för att skapa presentationer, dokument och visuella sidor från instruktioner och innehåll. Den används via officiell webbtjänst.",
+  "bestFor": [
+    "Skapa presentationsutkast snabbt",
+    "Omvandla idéer till visuella sidor",
+    "Bygga interna dokument och pitchmaterial",
+    "Användare som vill börja från prompt eller outline"
+  ],
+  "limitations": [
+    "Resultatet behöver redaktionell och visuell granskning innan publicering.",
+    "Vissa export- och varumärkesfunktioner kan kräva betalplan.",
+    "Gamma är främst webbaserat, inte en klassisk desktopapp."
+  ],
+  "safetyNotes": [
+    "Använd gamma.app som officiell kanal.",
+    "Undvik installerare som marknadsför Gamma som en lokal PowerPoint-ersättare.",
+    "Kontrollera bildrättigheter och textfakta innan material delas externt."
+  ],
+  "editorialSummary": "Gamma är användbart när du snabbt vill gå från idé till presentationsliknande format. Det ersätter inte mänsklig granskning, men kan spara tid i det första utkastet. Den säkra vägen är den officiella webbtjänsten.",
+  "editorialSections": [
+    {
+      "heading": "Presentationer från idé till struktur",
+      "body": "Gamma är byggt för användare som vill skapa något mer visuellt än ett vanligt dokument men snabbare än en manuell slide-deck. Du kan börja med en instruktion, en outline eller text och låta verktyget skapa struktur, rubriker och layoutförslag.\n\nDet betyder inte att den första versionen är färdig. Precis som med andra AI-verktyg behöver fakta, ton, bilder och prioriteringar granskas. Gamma är bäst som startmotor, inte som publiceringsansvarig."
+    },
+    {
+      "heading": "Webbtjänst, inte fristående installerare",
+      "body": "Gamma används via den officiella webbplatsen. Om du söker efter \"ladda ner Gamma\" kan du stöta på sidor som låter som appbutiker eller installationspaket, men det är inte den säkra huvudvägen.\n\nFör en webbtjänst är domänen viktigare än en fil. Kontrollera att du är på gamma.app och undvik paket som lovar offlineversioner, upplåsta planer eller exportfunktioner utanför Gamma."
+    },
+    {
+      "heading": "När Gamma passar bättre än Canva eller ChatGPT",
+      "body": "ChatGPT kan hjälpa till att skriva innehållet, och Canva är starkt för designmallar. Gamma hamnar mellan dem: det kan ta en idé och forma den till en visuell presentation eller sida utan att du börjar helt manuellt.\n\nOm du redan har en tydlig grafisk mall kan Canva vara bättre. Om du mest behöver resonera fram innehåll kan en textassistent räcka. Om du vill ha struktur och visuell form samtidigt är Gamma värt att jämföra."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Finns Gamma som app för Windows eller Mac?",
+      "answer": "Gamma används främst via webben på gamma.app. Undvik fristående installerare från inofficiella sidor."
+    },
+    {
+      "question": "Är Gamma gratis?",
+      "answer": "Gamma har gratis användning och betalplaner. Export, AI-gränser och varumärkesfunktioner kan variera mellan planer."
+    },
+    {
+      "question": "Kan Gamma skapa presentationer på svenska?",
+      "answer": "Du kan skriva instruktioner och innehåll på svenska, men gränssnitt och vissa funktioner kan vara delvis engelska."
+    },
+    {
+      "question": "Ersätter Gamma PowerPoint?",
+      "answer": "Inte helt. Gamma är bra för snabb struktur och visuellt innehåll, medan PowerPoint kan vara bättre för detaljerad kontroll och etablerade företagsmallar."
+    }
+  ],
+  "swedishSupport": "partial"
+}

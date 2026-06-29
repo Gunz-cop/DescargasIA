@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Webbaserat AI-videoverktyg från Luma för att skapa klipp från text, bild och kreativa instruktioner.",
+  "longDescription": "Luma Dream Machine är ett AI-verktyg för videogenerering och kreativa visuella klipp. Det används via officiella Luma-kanaler, inte via fristående nedladdningspaket.",
+  "bestFor": [
+    "Skapa korta AI-videoklipp från prompts",
+    "Prototypa visuella idéer och rörelse",
+    "Utforska text-till-video och bild-till-video",
+    "Kreatörer som vill testa AI-video i webben"
+  ],
+  "limitations": [
+    "Resultat kan vara oförutsägbara och kräva flera försök.",
+    "Krediter, köer och export kan bero på aktuell plan.",
+    "Det är en molntjänst, inte en lokal videoredigerare."
+  ],
+  "safetyNotes": [
+    "Använd Lumas officiella webbplats eller officiella appar där de finns.",
+    "Undvik installerare som lovar lokal Dream Machine eller obegränsade krediter.",
+    "Kontrollera rättigheter och regler innan du använder genererat material kommersiellt."
+  ],
+  "editorialSummary": "Luma Dream Machine är relevant för AI-video och kreativa prototyper. Den säkra vägen är Lumas egna kanaler. Var skeptisk mot tredjepartssidor som erbjuder installerare, obegränsad användning eller upplåsta krediter.",
+  "editorialSections": [
+    {
+      "heading": "AI-video utan traditionell redigering",
+      "body": "Luma Dream Machine används för att generera rörligt material från text eller bild, snarare än att redigera video på klassiskt sätt. Det gör verktyget intressant för idéskisser, moodboards, korta klipp och visuella experiment.\n\nDet är inte samma sak som en full videoredigerare. Du får genererade resultat som kan behöva flera försök, efterbearbetning och manuell bedömning innan de används i ett riktigt projekt."
+    },
+    {
+      "heading": "Webbflöde och falska installerare",
+      "body": "För de flesta användare är Luma en webbaserad tjänst. Därför bör du inte leta efter en lokal Dream Machine-installerare från slumpmässiga nedladdningssidor. Officiell domän och konto är viktigare än en fil.\n\nAI-video lockar många falska erbjudanden eftersom efterfrågan är hög. Om en sida lovar obegränsade krediter, premium gratis eller en fristående app som inte nämns av Luma bör du avstå."
+    },
+    {
+      "heading": "När Luma passar jämfört med Runway",
+      "body": "Luma passar när du snabbt vill testa rörelse, scenidéer och visuella prompts. Runway kan vara mer relevant om du också vill ha bredare kreativa videoverktyg och redigeringsnära funktioner.\n\nDet bästa valet beror på arbetsflödet. För promptbaserad utforskning kan Luma vara smidigt. För mer kontrollerade produktionsflöden kan andra AI-videoverktyg behöva jämföras."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Finns Luma Dream Machine som app att ladda ner?",
+      "answer": "Dream Machine används främst via Lumas officiella webbtjänst. Undvik fristående installerare från tredjepartssidor."
+    },
+    {
+      "question": "Är Luma Dream Machine gratis?",
+      "answer": "Tillgång, krediter och planer kan ändras. Kontrollera aktuell information på Lumas officiella webbplats."
+    },
+    {
+      "question": "Kan jag skriva prompts på svenska?",
+      "answer": "Du kan testa svenska prompts, men resultat och gränssnitt kan fungera bättre med engelska beroende på modell och funktion."
+    },
+    {
+      "question": "Får jag använda genererade videor kommersiellt?",
+      "answer": "Kontrollera Lumas aktuella villkor och din plan innan kommersiell användning."
+    }
+  ],
+  "swedishSupport": "partial"
+}

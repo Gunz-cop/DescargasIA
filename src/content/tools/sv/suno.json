@@ -1,0 +1,54 @@
+{
+  "shortDescription": "AI-musikverktyg för att skapa låtar och ljudidéer från text via officiell webbtjänst.",
+  "longDescription": "Suno är en AI-tjänst för musikgenerering. Den används via officiella kanaler och kan skapa musikidéer, låtar och ljudutkast från instruktioner.",
+  "bestFor": [
+    "Skapa musikidéer och demos snabbt",
+    "Experimentera med stil, text och struktur",
+    "Producera utkast för kreativa projekt",
+    "Användare som vill testa AI-musik utan traditionell produktion"
+  ],
+  "limitations": [
+    "Rättigheter och kommersiell användning beror på aktuella villkor och plan.",
+    "Resultat kan behöva flera försök och manuell kurering.",
+    "Det är en webbtjänst, inte en full musikstudio."
+  ],
+  "safetyNotes": [
+    "Använd Sunos officiella webbplats och appar där de finns.",
+    "Undvik tredjepartsverktyg som lovar upplåsta krediter eller nedladdning av premiumlåtar.",
+    "Kontrollera villkor innan du publicerar eller säljer musik skapad med AI."
+  ],
+  "editorialSummary": "Suno gör det enkelt att testa AI-genererad musik från textidéer. För seriös användning är villkor, rättigheter och källkanal avgörande. FuenteAI länkar bara till officiella Suno-kanaler och inte till upplåsta eller ompackade tjänster.",
+  "editorialSections": [
+    {
+      "heading": "Musikidéer från text",
+      "body": "Suno används för att skapa musik från instruktioner, stilidéer och ibland text. Det kan vara inspirerande för kreatörer som vill höra en idé snabbt i stället för att börja i ett traditionellt musikprogram.\n\nResultatet bör ändå ses som ett utkast eller en genererad produktion som behöver bedömning. Text, uttal, mix och stil kan variera mellan generationer."
+    },
+    {
+      "heading": "Officiell tjänst och rättigheter",
+      "body": "AI-musik väcker frågor om licenser, kommersiell användning och publicering. Därför bör du läsa Sunos aktuella villkor innan du använder genererade låtar i kundprojekt, streaming eller annonser.\n\nUndvik sidor som säger sig ge obegränsade krediter, premium gratis eller nedladdning av låtar utanför Sunos system. Sådana erbjudanden kan vara både osäkra och rättighetsmässigt problematiska."
+    },
+    {
+      "heading": "När Suno passar jämfört med ElevenLabs",
+      "body": "Suno är bäst för musik och låtliknande resultat. ElevenLabs är mer relevant för tal, berättarröst och röstproduktion. Båda kan ingå i ett ljudflöde, men de löser olika problem.\n\nOm du behöver en spoken voiceover är Suno fel startpunkt. Om du vill höra en musikalisk idé snabbt är Suno mer passande än en vanlig textassistent."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är Suno gratis?",
+      "answer": "Suno kan ha gratis användning och betalplaner. Kontrollera aktuella gränser, krediter och villkor på den officiella webbplatsen."
+    },
+    {
+      "question": "Kan Suno skapa musik på svenska?",
+      "answer": "Du kan prova svenska texter och instruktioner, men uttal och kvalitet kan variera mellan generationer."
+    },
+    {
+      "question": "Får jag använda Suno-låtar kommersiellt?",
+      "answer": "Det beror på Sunos aktuella villkor och din plan. Läs villkoren innan publicering eller försäljning."
+    },
+    {
+      "question": "Finns det en officiell Suno APK?",
+      "answer": "Använd Sunos officiella kanaler och appbutiker där de anges. Undvik APK-filer från tredjepartsportaler."
+    }
+  ],
+  "swedishSupport": "partial"
+}

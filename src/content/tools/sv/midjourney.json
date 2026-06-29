@@ -1,0 +1,54 @@
+{
+  "shortDescription": "AI-bildgenerator för kreativa bilder, använd via Midjourneys officiella webb- och communitykanaler.",
+  "longDescription": "Midjourney är ett AI-verktyg för bildgenerering. Det är känt för kreativa och stiliserade bilder och bör användas via officiella Midjourney-kanaler.",
+  "bestFor": [
+    "Skapa konceptbilder, moodboards och visuella idéer",
+    "Utforska konstnärliga stilar med prompts",
+    "Ta fram referensbilder för kreativa projekt",
+    "Användare som prioriterar bildkvalitet och estetik"
+  ],
+  "limitations": [
+    "Kräver konto och tillgång enligt Midjourneys aktuella modell.",
+    "Det är inte en traditionell lokal bildredigerare.",
+    "Rättigheter, stil och kommersiell användning bör kontrolleras i villkoren."
+  ],
+  "safetyNotes": [
+    "Använd Midjourneys officiella webbplats och officiella communityflöden.",
+    "Undvik APK-filer, desktopinstallerare och kloner som påstår sig vara Midjourney.",
+    "Kontrollera villkor innan du använder bilder kommersiellt."
+  ],
+  "editorialSummary": "Midjourney är starkt för kreativa AI-bilder men ska inte laddas ner från tredjepartsportaler. Använd officiella kanaler och var uppmärksam på kontokrav, abonnemang och bildrättigheter.",
+  "editorialSections": [
+    {
+      "heading": "Varför Midjourney lockar så många sökningar",
+      "body": "Midjourney blev känt för bilder med stark visuell stil och hög kreativ kvalitet. Det används för idéarbete, illustration, koncept, produktvisualisering och experiment med uttryck som är svåra att skapa manuellt snabbt.\n\nPopulariteten gör också namnet attraktivt för kloner. Sidor som lovar \"Midjourney gratis nedladdning\" eller en Android-APK bör behandlas med stor skepsis."
+    },
+    {
+      "heading": "Officiell användning i stället för installerare",
+      "body": "Midjourney har historiskt varit knutet till officiella onlineflöden snarare än en vanlig desktopapp. Därför är rätt väg att gå via Midjourneys egna webbplats och de kanaler som tjänsten själv anger.\n\nOm en sida erbjuder en lokal installerare, modifierad app eller obegränsad gratisgenerering är det sannolikt inte en legitim distributionsväg. FuenteAI hostar inga sådana filer."
+    },
+    {
+      "heading": "När Stable Diffusion kan vara bättre",
+      "body": "Midjourney passar när du vill ha snabb, estetiskt stark bildgenerering i en kontrollerad tjänst. Stable Diffusion passar bättre om du vill ha mer lokal kontroll, egna modeller, workflows och teknisk anpassning.\n\nValet handlar om kontroll mot enkelhet. Midjourney är ofta smidigare för kreativa resultat snabbt; Stable Diffusion kräver mer kunskap men kan ge mer flexibilitet."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Finns Midjourney som officiell app att ladda ner?",
+      "answer": "Använd Midjourneys officiella kanaler. Undvik fristående APK- eller EXE-filer från tredjepartssidor."
+    },
+    {
+      "question": "Är Midjourney gratis?",
+      "answer": "Tillgång och priser kan ändras. Kontrollera Midjourneys officiella webbplats för aktuell information."
+    },
+    {
+      "question": "Kan jag använda Midjourney på svenska?",
+      "answer": "Du kan prova svenska prompts, men engelska prompts kan ibland ge mer förutsägbara resultat."
+    },
+    {
+      "question": "Får jag använda bilder kommersiellt?",
+      "answer": "Kontrollera Midjourneys aktuella villkor och din plan innan kommersiell användning."
+    }
+  ],
+  "swedishSupport": "partial"
+}

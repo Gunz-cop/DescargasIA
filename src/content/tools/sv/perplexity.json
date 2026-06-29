@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Konversationsbaserad AI-sökmotor med källor, tillgänglig via webb, mobil och officiella butiker.",
+  "longDescription": "Perplexity är en AI-söktjänst som kombinerar svar, följdfrågor och citerade källor. Den används främst via webben och officiella appar.",
+  "bestFor": [
+    "Söka svar med synliga källor",
+    "Undersöka aktuella ämnen utan många flikar",
+    "Fortsätta research i frågetrådar",
+    "Användare som vill kunna öppna referenserna bakom svaret"
+  ],
+  "limitations": [
+    "Citerade källor ersätter inte kritisk läsning av originalen.",
+    "Vissa avancerade funktioner kan kräva Pro-plan.",
+    "Det finns relaterade appar och webbläsare som inte är samma sak som huvudtjänsten."
+  ],
+  "safetyNotes": [
+    "Installera Perplexity via officiell webbplats, Microsoft Store, Google Play eller App Store.",
+    "Undvik paket från nedladdningsportaler och appar med otydlig publisher.",
+    "Öppna viktiga källor själv innan du fattar beslut."
+  ],
+  "editorialSummary": "Perplexity är särskilt användbart när du vill ha snabba svar med källor att följa upp. Den säkra vägen är webbversionen eller officiella appbutiker, inte kloner som marknadsför sig som alternativa AI-sökmotorer.",
+  "editorialSections": [
+    {
+      "heading": "Mer sökmotor än vanlig chatbot",
+      "body": "Perplexity placerar sig närmare en konversationssökning än en allmän assistent. Poängen är inte bara att få ett svar, utan att se vilka källor svaret bygger på och kunna fortsätta med följdfrågor.\n\nDet gör tjänsten användbar för studier, research, snabb omvärldsbevakning och jämförelser. Men källor kan fortfarande missförstås, väljas snävt eller behöva öppnas för sammanhang."
+    },
+    {
+      "heading": "Webb, mobil och Windows-butik",
+      "body": "På datorn är den officiella webben den mest universella vägen. Perplexity finns också i Microsoft Store för Windows, medan mobilappar bör hämtas från Google Play eller App Store.\n\nOm du ser en fristående installerare från en okänd nedladdningssida är det bättre att avstå. Perplexity är en kontobaserad tjänst där officiell domän och officiell butik spelar större roll än en slumpmässig fil."
+    },
+    {
+      "heading": "När Perplexity passar jämfört med ChatGPT och Gemini",
+      "body": "Perplexity är starkt när frågan beror på aktuell information eller när du vill följa källorna bakom svaret. ChatGPT och Claude kan vara bättre för skrivande, resonemang och arbete med längre dokument. Gemini kan passa om du redan är djupt inne i Googles ekosystem.\n\nEtt praktiskt val är enkelt: använd Perplexity för research med referenser, och en mer traditionell assistent när du vill skapa, resonera eller bearbeta eget material."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Har Perplexity en officiell Windows-app?",
+      "answer": "Perplexity finns i Microsoft Store och kan också användas via den officiella webben i en modern webbläsare."
+    },
+    {
+      "question": "Finns Perplexity för Android och iOS?",
+      "answer": "Ja. Använd Google Play eller App Store för de officiella mobilapparna."
+    },
+    {
+      "question": "Är Perplexity gratis?",
+      "answer": "Det finns gratis användning och betalalternativ. Avancerade funktioner kan kräva Perplexity Pro."
+    },
+    {
+      "question": "Är Perplexitys källor alltid korrekta?",
+      "answer": "Nej. Källor hjälper dig att verifiera, men viktig information bör kontrolleras i originalkällan."
+    }
+  ],
+  "swedishSupport": "partial"
+}

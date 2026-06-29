@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Designplattform med AI-funktioner för bilder, presentationer, video och socialt innehåll.",
+  "longDescription": "Canva är en webbaserad designplattform med AI-funktioner för visuellt innehåll, mallar, presentationer och marknadsföringsmaterial. FuenteAI länkar till officiella kanaler och appbutiker.",
+  "bestFor": [
+    "Skapa presentationer, inlägg och enkla designer snabbt",
+    "Använda AI-stöd för bild, text och layout",
+    "Arbeta i webbläsaren utan avancerad designprogramvara",
+    "Team som behöver mallar och delning"
+  ],
+  "limitations": [
+    "Vissa AI- och varumärkesfunktioner kräver betalplan.",
+    "Canva ersätter inte alltid professionella verktyg för avancerad designproduktion.",
+    "Undvik inofficiella appar som lovar upplåst Pro eller gratis premiuminnehåll."
+  ],
+  "safetyNotes": [
+    "Använd canva.com eller officiella appbutiker.",
+    "Ladda inte ner modifierade Canva-appar eller APK-filer från tredjepartssidor.",
+    "Kontrollera licensvillkor för mallar, bilder och AI-genererat material innan kommersiell användning."
+  ],
+  "editorialSummary": "Canva är ett praktiskt val för användare som vill skapa visuellt innehåll med låg tröskel och AI-stöd. Den säkra vägen är webben eller officiella appbutiker; erbjudanden om Canva Pro gratis via externa installerare bör undvikas.",
+  "editorialSections": [
+    {
+      "heading": "Canva som AI-stött designverktyg",
+      "body": "Canva är populärt eftersom det gör design tillgängligt för personer som inte arbetar i traditionella designprogram. Med mallar, drag-and-drop och AI-funktioner kan du snabbare skapa presentationer, sociala inlägg, affischer, enkla videor och varumärkesmaterial.\n\nAI-funktionerna hjälper, men de gör inte allt automatiskt. Du behöver fortfarande välja rätt mall, kontrollera text, bildrättigheter och kvalitet. För vardagsproduktion är Canva ofta tillräckligt; för komplex tryckproduktion eller avancerad bildredigering kan andra verktyg passa bättre."
+    },
+    {
+      "heading": "Webb, dator och mobil",
+      "body": "Canva fungerar framför allt via webben, vilket gör att många användare inte behöver installera något. På mobil bör appen komma från Google Play eller App Store. Om en datorapp är aktuell bör den nås via Canvas egna kanaler eller etablerade butiker.\n\nVar särskilt försiktig med sidor som marknadsför \"Canva Pro gratis\", moddade appar eller nedladdningspaket. Canva är en kontobaserad tjänst, så premiumfunktioner låses inte upp legitimt genom en okänd APK eller EXE-fil."
+    },
+    {
+      "heading": "När Canva räcker och när du bör jämföra",
+      "body": "Canva passar bra för snabb design, marknadsföringsmaterial och presentationer där färdiga mallar sparar tid. Det är också användbart för mindre team som vill hålla en enhetlig visuell stil utan tung programvara.\n\nOm du framför allt vill generera bilder kan Stable Diffusion eller Midjourney vara mer relevanta. Om fokus är presentationer med AI kan Gamma vara ett alternativ. Välj efter slutresultatet, inte bara efter att verktyget har AI-funktioner."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är Canva gratis?",
+      "answer": "Canva har gratis användning och betalplaner. Vissa mallar, AI-funktioner och varumärkesverktyg kräver betalplan."
+    },
+    {
+      "question": "Finns Canva som app för Android och iOS?",
+      "answer": "Ja. Använd Google Play eller App Store för mobilapparna."
+    },
+    {
+      "question": "Är Canva Pro APK säkert?",
+      "answer": "Nej. Undvik modifierade APK-filer och upplåsta versioner. Använd officiella kanaler och legitima planer."
+    },
+    {
+      "question": "Har Canva stöd för svenska?",
+      "answer": "Canva kan användas på flera språk, inklusive svenska i många delar, men funktioner och mallinnehåll kan variera."
+    }
+  ],
+  "swedishSupport": "yes"
+}

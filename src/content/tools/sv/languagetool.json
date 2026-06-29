@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Skrivstöd för grammatik, stavning och stil med webb, tillägg och appar via officiella kanaler.",
+  "longDescription": "LanguageTool är ett skriv- och korrekturverktyg för flera språk. Det kan användas via webben, webbläsartillägg, appar och integrationer beroende på plattform.",
+  "bestFor": [
+    "Kontrollera stavning, grammatik och stil",
+    "Förbättra texter i webbläsare och dokumentflöden",
+    "Skriva på flera språk med samma verktyg",
+    "Användare som vill ha lätt korrekturstöd utan full AI-chatt"
+  ],
+  "limitations": [
+    "Förslag bör granskas, särskilt i specialiserade texter.",
+    "Vissa avancerade funktioner kräver betalplan.",
+    "Språkstöd och kvalitet varierar mellan språk."
+  ],
+  "safetyNotes": [
+    "Installera tillägg från officiella browser stores eller LanguageTools webbplats.",
+    "Undvik kopior som ber om bred textåtkomst utan tydlig publisher.",
+    "Var försiktig med känsliga texter i externa skrivverktyg."
+  ],
+  "editorialSummary": "LanguageTool passar när du vill förbättra stavning, grammatik och stil utan att använda en full chatbot. Eftersom verktyget kan läsa text i webbläsare och appar bör du installera det från officiella källor och kontrollera behörigheter.",
+  "editorialSections": [
+    {
+      "heading": "Skrivstöd snarare än allmän AI-assistent",
+      "body": "LanguageTool är fokuserat på korrektur: stavning, grammatik, stil och skrivförslag. Det gör det mer direkt än en allmän chatbot när du redan har en text och vill förbättra den.\n\nFör idégenerering eller längre omskrivningar kan ChatGPT, Claude eller Gemini vara bättre. För löpande textkontroll i webbläsaren eller dokumentflödet är LanguageTool mer specialiserat."
+    },
+    {
+      "heading": "Tillägg kräver förtroende",
+      "body": "Ett skrivtillägg behöver ofta läsa texten du skriver på olika webbplatser. Därför är officiell källa och korrekt publisher viktigt. Installera via LanguageTools egna länkar eller etablerade extension stores.\n\nUndvik kopior som använder liknande namn eller erbjuder premiumfunktioner gratis. De kan begära omfattande behörigheter och hantera text på ett sätt du inte förväntar dig."
+    },
+    {
+      "heading": "När LanguageTool passar bäst",
+      "body": "LanguageTool är särskilt användbart för e-post, blogginlägg, akademiska utkast och arbetsdokument där du vill hitta vanliga fel snabbt. Det kan ge små förbättringar utan att ändra hela textens röst.\n\nFör svenska texter bör du ändå läsa igenom förslagen. Grammatikverktyg kan missa sammanhang, facktermer eller avsiktliga stilval."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Har LanguageTool stöd för svenska?",
+      "answer": "Ja, LanguageTool stöder svenska, men kvaliteten på förslag kan variera beroende på text och funktion."
+    },
+    {
+      "question": "Är LanguageTool gratis?",
+      "answer": "Det finns gratis användning och betalplaner. Avancerade förslag och högre gränser kan kräva Premium."
+    },
+    {
+      "question": "Är webbläsartillägget säkert?",
+      "answer": "Installera bara från officiella källor och kontrollera behörigheter. Var försiktig med känsliga texter."
+    },
+    {
+      "question": "Ersätter LanguageTool mänsklig korrekturläsning?",
+      "answer": "Nej. Det hjälper till att hitta fel, men viktiga texter bör fortfarande granskas manuellt."
+    }
+  ],
+  "swedishSupport": "yes"
+}

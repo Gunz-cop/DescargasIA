@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Översättningsverktyg med webb, appar och dokumentöversättning via officiella kanaler.",
+  "longDescription": "DeepL är en AI-baserad översättningstjänst för text och dokument. Den används via webben, officiella appar och tillägg beroende på plattform.",
+  "bestFor": [
+    "Översätta texter med hög språklig kvalitet",
+    "Arbeta med dokumentöversättning i stödda format",
+    "Jämföra formuleringar mellan flera språk",
+    "Användare som behöver snabb översättning i arbetsflödet"
+  ],
+  "limitations": [
+    "Vissa dokument- och produktivitetsfunktioner kräver betalplan.",
+    "Översättningar bör granskas vid juridiska, medicinska eller tekniska texter.",
+    "Undvik inofficiella klienter som ber om textåtkomst eller API-nycklar."
+  ],
+  "safetyNotes": [
+    "Använd deepl.com eller DeepL:s officiella appar och tillägg.",
+    "Ladda inte upp känsliga dokument utan att först förstå planens integritetsvillkor.",
+    "Undvik nedladdningsportaler som erbjuder egna DeepL-installerare."
+  ],
+  "editorialSummary": "DeepL är ett starkt val för översättning när du vill ha naturliga formuleringar och stöd för dokument. FuenteAI pekar till officiella kanaler och påminner om att viktiga texter alltid bör granskas av en människa.",
+  "editorialSections": [
+    {
+      "heading": "DeepL jämfört med allmänna AI-assistenter",
+      "body": "ChatGPT, Claude och Gemini kan översätta text, men DeepL är byggt särskilt för översättning. Det gör tjänsten intressant när du vill bevara ton, terminologi och format utan att behöva skriva långa instruktioner.\n\nFör avtal, manualer och publicerat material räcker ändå inte en automatisk översättning ensam. DeepL kan spara tid, men ansvarig granskning behövs när texten får konsekvenser."
+    },
+    {
+      "heading": "Officiella appar och dokumentflöden",
+      "body": "Den enklaste vägen är DeepL:s webbplats. För återkommande arbete kan officiella appar eller tillägg passa bättre, särskilt om du ofta översätter markerad text eller dokument. Plattformsvägen bör alltid komma från DeepL:s egna sidor eller etablerade butiker.\n\nVar försiktig med fristående klienter som lovar obegränsad Pro-funktionalitet. De kan samla in text, API-nycklar eller dokument. För översättning är datakänslighet en praktisk säkerhetsfråga, inte bara en teknisk detalj."
+    },
+    {
+      "heading": "När DeepL är bäst",
+      "body": "DeepL passar särskilt bra när du redan har en text och vill få en smidig översättning snabbt. Det är mindre lämpat om du behöver kreativ idégenerering, research eller längre resonemang runt innehållet.\n\nOm du vill skriva om, sammanfatta och skapa nya texter kan en assistent som ChatGPT eller Claude vara bättre. Om du främst vill översätta korrekt och konsekvent är DeepL ofta mer fokuserat."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Kan DeepL översätta till och från svenska?",
+      "answer": "Ja, DeepL stöder svenska. Kvalitet kan variera beroende på ämne, texttyp och språkkombination."
+    },
+    {
+      "question": "Är DeepL gratis?",
+      "answer": "DeepL har gratis användning och betalplaner. Vissa gränser, dokumentfunktioner och professionella funktioner kräver betalplan."
+    },
+    {
+      "question": "Var laddar jag ner DeepL säkert?",
+      "answer": "Använd DeepL:s officiella webbplats eller officiella appbutiker. Undvik nedladdningsportaler med egna installerare."
+    },
+    {
+      "question": "Kan jag ladda upp känsliga dokument till DeepL?",
+      "answer": "Läs DeepL:s aktuella villkor och välj rätt plan innan du laddar upp känsligt material. Automatisk översättning bör granskas."
+    }
+  ],
+  "swedishSupport": "yes"
+}

@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Microsofts AI-assistent i webben, Windows och Microsoft 365-miljön via officiella kanaler.",
+  "longDescription": "Microsoft Copilot är Microsofts AI-assistent för webb, Windows, Edge och delar av Microsoft 365. Tillgång och funktioner beror på konto, region och plan.",
+  "bestFor": [
+    "Använda AI i Microsofts ekosystem",
+    "Söka, skriva och sammanfatta i webben",
+    "Få AI-stöd nära Windows och Edge",
+    "Organisationer som redan arbetar i Microsoft 365"
+  ],
+  "limitations": [
+    "Funktioner varierar mellan gratisläge, Pro och företagsplaner.",
+    "Alla Microsoft 365-funktioner ingår inte för alla konton.",
+    "Undvik appar som imiterar Copilot eller lovar upplåst åtkomst."
+  ],
+  "safetyNotes": [
+    "Använd Microsofts officiella webbplats, Windows-kanaler eller appbutiker.",
+    "Ladda inte ner Copilot från portaler som erbjuder egna installerare.",
+    "Kontrollera kontotyp och datavillkor i företagsmiljöer."
+  ],
+  "editorialSummary": "Microsoft Copilot passar bäst för användare som redan arbetar i Windows, Edge eller Microsoft 365. Rätt väg är Microsofts egna kanaler. Var uppmärksam på att Copilot inte är en enda fristående app med samma funktioner överallt.",
+  "editorialSections": [
+    {
+      "heading": "Copilot i Microsofts ekosystem",
+      "body": "Microsoft Copilot är inte bara en chatbot på en webbsida. Namnet används för AI-funktioner i flera Microsoft-miljöer: webben, Edge, Windows och Microsoft 365. Därför kan två användare få ganska olika upplevelser beroende på konto och plan.\n\nDet gör officiella källor viktiga. Om du vill veta vad som ingår för dig bör du börja hos Microsoft, inte hos en nedladdningsportal som paketerar Copilot som om det vore en vanlig app."
+    },
+    {
+      "heading": "Ingen magisk gratis premiumversion",
+      "body": "Eftersom Copilot finns nära Windows och Office dyker det upp många sökningar efter installerare, Pro-versioner och aktiverare. Det finns ingen legitim väg där en okänd fil låser upp Microsofts betalfunktioner.\n\nAnvänd webbversionen, Microsoft Store eller Microsofts egna instruktioner beroende på plattform. I organisationer bör administratören dessutom kontrollera licens, datahantering och aktiverade funktioner."
+    },
+    {
+      "heading": "När Copilot passar bättre än ChatGPT",
+      "body": "Copilot är extra relevant när du redan arbetar i Microsofts miljö och vill ha AI nära sök, dokument, möten eller Windows-flöden. Det kan minska friktionen jämfört med att kopiera allt till en separat assistent.\n\nChatGPT eller Claude kan fortfarande vara bättre för längre fristående resonemang, kreativt skrivande eller bredare experiment. Välj Copilot när integrationen med Microsoft väger tyngre än en helt fristående AI-chatt."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Finns Microsoft Copilot som app för Windows?",
+      "answer": "Copilot kan finnas via Windows, webben och Microsofts officiella kanaler. Tillgänglighet beror på version, region och konto."
+    },
+    {
+      "question": "Är Microsoft Copilot gratis?",
+      "answer": "Det finns gratis användning och betalplaner. Microsoft 365-funktioner och Pro-funktioner kan kräva separat plan."
+    },
+    {
+      "question": "Har Copilot stöd för svenska?",
+      "answer": "Copilot kan användas på svenska i många sammanhang, men funktioner och kvalitet kan variera mellan produkter."
+    },
+    {
+      "question": "Är tredjepartsinstallerare för Copilot säkra?",
+      "answer": "Nej. Använd Microsofts egna kanaler och undvik filer som lovar upplåst Copilot eller gratis Pro."
+    }
+  ],
+  "swedishSupport": "yes"
+}

@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Webbaserad kreativ AI-plattform för video, generering och visuella produktionsflöden.",
+  "longDescription": "Runway är en AI-plattform för video och kreativ produktion. Den används via officiella webbtjänster och produktkanaler, inte via speglade installerare.",
+  "bestFor": [
+    "Skapa och experimentera med AI-video",
+    "Prototypa visuella scener och rörelse",
+    "Använda kreativa verktyg för bild och video",
+    "Team och kreatörer som arbetar med visuellt innehåll"
+  ],
+  "limitations": [
+    "Avancerade funktioner, export och kapacitet kan kräva betalplan.",
+    "Genererat videoresultat kan kräva flera försök och efterbearbetning.",
+    "Runway är inte en traditionell offline-videoredigerare."
+  ],
+  "safetyNotes": [
+    "Använd runwayml.com och officiella Runway-kanaler.",
+    "Undvik installerare som lovar lokal Runway eller obegränsad generering.",
+    "Kontrollera rättigheter, villkor och källmaterial innan kommersiell publicering."
+  ],
+  "editorialSummary": "Runway är ett kraftfullt verktyg för AI-video och kreativa experiment. Det bör användas via Runways officiella webbmiljö. Tredjepartsinstallerare och löften om obegränsade krediter är varningssignaler.",
+  "editorialSections": [
+    {
+      "heading": "AI-video för kreativa arbetsflöden",
+      "body": "Runway riktar sig till kreatörer som vill arbeta med generativ video, visuella effekter och snabba prototyper. Det kan vara användbart för idéarbete, reklam, socialt innehåll och visuella tester där traditionell produktion vore långsam.\n\nSamtidigt kräver resultaten kurering. AI-video kan ge oväntade artefakter, rörelsefel eller stilbrott. För professionellt material behövs ofta flera försök och efterarbete."
+    },
+    {
+      "heading": "Webbplattform i stället för nedladdningspaket",
+      "body": "Runway används främst via webben och officiella produktkanaler. Det är därför fel signal när en okänd sida erbjuder en lokal installerare, en crackad plan eller obegränsade krediter.\n\nFuenteAI länkar inte till sådana filer. Om du vill använda Runway säkert bör du börja på den officiella domänen och kontrollera aktuell plan, exportvillkor och funktioner där."
+    },
+    {
+      "heading": "Runway eller Luma",
+      "body": "Runway och Luma överlappar inom AI-video, men de kan kännas olika i arbetsflöde. Runway har en bred kreativ plattformskänsla, medan Luma ofta lockar användare som vill experimentera snabbt med genererade klipp.\n\nDet bästa valet beror på om du behöver ett större produktionsflöde eller snabb promptbaserad utforskning. Testa små projekt innan du binder arbetet till en tjänst."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Kan jag ladda ner Runway som program?",
+      "answer": "Runway används främst via den officiella webbtjänsten. Undvik fristående installerare från tredjepartssidor."
+    },
+    {
+      "question": "Är Runway gratis?",
+      "answer": "Runway kan ha gratisnivåer och betalplaner. Kontrollera aktuella gränser och priser på den officiella webbplatsen."
+    },
+    {
+      "question": "Kan Runway skapa video från text?",
+      "answer": "Runway erbjuder generativa videoverktyg, men exakt funktion och tillgång beror på aktuell produktversion och plan."
+    },
+    {
+      "question": "Fungerar Runway på svenska?",
+      "answer": "Du kan testa svenska prompts, men gränssnitt och resultat kan vara mer förutsägbara på engelska."
+    }
+  ],
+  "swedishSupport": "partial"
+}

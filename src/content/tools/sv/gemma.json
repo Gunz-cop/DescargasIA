@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Googles öppna modellfamilj för lokala och utvecklarorienterade AI-experiment.",
+  "longDescription": "Gemma är en familj öppna AI-modeller från Google för utvecklare, forskning och lokala experiment. Den laddas inte ner som en vanlig konsumentapp.",
+  "bestFor": [
+    "Testa öppna språkmodeller från Google",
+    "Bygga prototyper med lokala eller hostade modeller",
+    "Utvecklare som vill jämföra modellfamiljer",
+    "Lära sig om modellkörning och distribution"
+  ],
+  "limitations": [
+    "Kräver teknisk kunskap och kompatibel körmiljö.",
+    "Prestanda, språkstöd och licensvillkor beror på modellvariant.",
+    "Det är en modellfamilj, inte en fristående chattapp för alla användare."
+  ],
+  "safetyNotes": [
+    "Använd Googles officiella dokumentation, modellkort och erkända plattformar.",
+    "Kontrollera licens och användningsvillkor innan kommersiell användning.",
+    "Undvik ompackade modellfiler från okända källor."
+  ],
+  "editorialSummary": "Gemma är relevant för utvecklare som vill arbeta med öppna modeller från Google. För vanliga användare är Gemini oftast enklare. För Gemma bör du följa officiell dokumentation och kontrollera modellvariant, licens och körmiljö.",
+  "editorialSections": [
+    {
+      "heading": "Gemma är inte Gemini",
+      "body": "Gemini är Googles konsument- och produktassistent. Gemma är en modellfamilj riktad mot utvecklare och tekniska användare som vill köra, finjustera eller bygga ovanpå öppna modeller. Förväxlingen är vanlig eftersom namnen liknar varandra.\n\nOm du bara vill prata med en AI i webben är Gemini rättare startpunkt. Om du vill ladda ner modellvikter, testa lokalt eller bygga in en modell i ett projekt är Gemma mer relevant."
+    },
+    {
+      "heading": "Officiella källor och modellfiler",
+      "body": "För modellfamiljer är källan extra viktig. Du bör använda Googles egna sidor, dokumentation och erkända modellplattformar som projektet hänvisar till. Då får du också modellkort, licensinformation och instruktioner.\n\nUndvik slumpmässiga ZIP-filer eller speglar som påstår sig innehålla en snabbare eller upplåst version. Modellfiler kan vara stora och svåra att verifiera om de kommer från fel plats."
+    },
+    {
+      "heading": "När Gemma passar",
+      "body": "Gemma passar om du vill lära dig modellkörning, jämföra öppna modeller eller bygga prototyper där du själv styr miljön. Det kräver ofta terminal, bibliotek, GPU-överväganden eller molnresurser.\n\nVill du ha enklare lokal användning kan LM Studio, Jan eller Ollama vara smidigare gränssnitt runt modeller. Gemma är modellen; verktygen runt den avgör hur enkel upplevelsen blir."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är Gemma en app jag kan installera?",
+      "answer": "Nej. Gemma är en modellfamilj. Du använder den via dokumentation, utvecklarverktyg eller plattformar som stöder modellen."
+    },
+    {
+      "question": "Vad är skillnaden mellan Gemma och Gemini?",
+      "answer": "Gemini är Googles AI-assistent och produktfamilj. Gemma är öppna modeller för utvecklare och tekniska experiment."
+    },
+    {
+      "question": "Kan Gemma användas på svenska?",
+      "answer": "Det beror på modellvariant och uppgift. Testa kvaliteten för svenska innan du använder den i ett viktigt flöde."
+    },
+    {
+      "question": "Var hittar jag Gemma säkert?",
+      "answer": "Börja med Googles officiella Gemma-sidor och dokumentation. Undvik ompackade modellfiler från okända källor."
+    }
+  ],
+  "swedishSupport": "partial"
+}

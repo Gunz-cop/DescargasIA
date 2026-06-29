@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Öppen desktopapp för att köra och chatta med lokala AI-modeller på egen dator.",
+  "longDescription": "Jan är en öppen AI-app för lokal modellkörning och chatt på datorn. Den passar användare som vill testa lokala modeller via en grafisk app.",
+  "bestFor": [
+    "Köra lokala modeller via ett desktopgränssnitt",
+    "Testa AI utan att alltid använda molntjänster",
+    "Jämföra modeller på egen hårdvara",
+    "Användare som vill ha ett mer app-likt alternativ till terminalverktyg"
+  ],
+  "limitations": [
+    "Kräver tillräcklig hårdvara för de modeller du vill köra.",
+    "Modellkvalitet och svenskt stöd varierar mycket.",
+    "Lokala modeller kan ändå kräva nedladdning av stora filer."
+  ],
+  "safetyNotes": [
+    "Ladda ner Jan från den officiella webbplatsen eller officiellt GitHub.",
+    "Undvik ompackade installerare och modellpaket från okända källor.",
+    "Kontrollera modelllicenser innan kommersiell användning."
+  ],
+  "editorialSummary": "Jan är ett bra alternativ för användare som vill prova lokala AI-modeller i en desktopapp. Det ger mer kontroll än molnchattar, men kräver hårdvara, modellval och försiktighet med nedladdningskällor.",
+  "editorialSections": [
+    {
+      "heading": "Lokal AI i en vanlig app",
+      "body": "Jan försöker göra lokala språkmodeller mer tillgängliga genom ett grafiskt gränssnitt. I stället för att börja i terminalen kan du installera appen, välja modeller och chatta på din dator.\n\nDet är särskilt attraktivt för användare som vill experimentera med integritet, offlineflöden eller modelljämförelser. Men lokal AI är fortfarande beroende av hårdvara och modellstorlek."
+    },
+    {
+      "heading": "Officiella nedladdningar och modellkällor",
+      "body": "Den säkra vägen är Jan:s officiella webbplats och projektets officiella GitHub. Där kan du kontrollera versioner, plattformar och dokumentation. FuenteAI hostar inte installerare eller modellfiler.\n\nVar extra noggrann med modeller du laddar ner. En app kan vara legitim men en modellfil kan komma från en annan källa med egna licens- eller säkerhetsfrågor."
+    },
+    {
+      "heading": "Jan, Ollama eller LM Studio",
+      "body": "Jan, Ollama och LM Studio ligger nära varandra i behov: de hjälper dig att använda lokala modeller. Jan passar den som vill ha en öppen desktopupplevelse, LM Studio är populärt för grafisk modellhantering, och Ollama är starkt för terminal- och utvecklarflöden.\n\nVälj efter hur du vill arbeta. Vill du klicka runt i en app, börja med Jan eller LM Studio. Vill du integrera lokala modeller i scripts och utveckling kan Ollama passa bättre."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är Jan gratis och öppen källkod?",
+      "answer": "Jan är ett öppet projekt. Kontrollera alltid aktuell licens och officiell dokumentation innan användning."
+    },
+    {
+      "question": "Behöver Jan internet?",
+      "answer": "Du behöver normalt internet för att hämta app och modeller. Lokal användning efter installation beror på vald modell och konfiguration."
+    },
+    {
+      "question": "Fungerar Jan på svenska?",
+      "answer": "Appens språkstöd kan variera. Svar på svenska beror framför allt på modellen du kör."
+    },
+    {
+      "question": "Var laddar jag ner Jan säkert?",
+      "answer": "Använd Jan:s officiella webbplats eller officiella GitHub-repo. Undvik ompackade installerare."
+    }
+  ],
+  "swedishSupport": "partial"
+}

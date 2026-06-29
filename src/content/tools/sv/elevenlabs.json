@@ -1,0 +1,54 @@
+{
+  "shortDescription": "AI-röstverktyg för text-till-tal, dubbning och röstgenerering via officiell webbtjänst.",
+  "longDescription": "ElevenLabs är en AI-plattform för röst, text-till-tal och ljudproduktion. Den används främst via webben och officiella API- eller produktkanaler.",
+  "bestFor": [
+    "Skapa naturligt tal från text",
+    "Producera berättarröst, prototyper och ljudklipp",
+    "Testa röstflöden för appar eller innehåll",
+    "Arbeta med dubbning och flerspråkigt ljud där det stöds"
+  ],
+  "limitations": [
+    "Röstkloning och kommersiell användning kräver tydlig rättighetskontroll.",
+    "Vissa funktioner och högre gränser kräver betalplan.",
+    "Det är inte en traditionell desktopapp med fristående installerare."
+  ],
+  "safetyNotes": [
+    "Använd ElevenLabs officiella webbplats och dokumentation.",
+    "Undvik verktyg som erbjuder piratkopierade röster eller kringgång av begränsningar.",
+    "Klona inte röster utan samtycke och kontrollera regler för publicering."
+  ],
+  "editorialSummary": "ElevenLabs är ett av de mest kända verktygen för AI-röster. Det bör användas via officiella webben eller API-dokumentationen, inte via nedladdade paket från tredje part. Var extra noggrann med samtycke och rättigheter vid röstkloning.",
+  "editorialSections": [
+    {
+      "heading": "Vad ElevenLabs används till",
+      "body": "ElevenLabs används för att skapa tal från text, röstprototyper, berättarröster och ljud för digitala produkter. För kreatörer kan det minska tiden från manus till provlyssning, särskilt när flera språk eller röststilar behövs.\n\nDet är samtidigt ett verktyg där ansvar spelar stor roll. AI-röster kan låta övertygande, och därför måste du ha rätt att använda rösten och innehållet du skapar."
+    },
+    {
+      "heading": "Ingen vanlig nedladdningsapp",
+      "body": "För de flesta användare är ElevenLabs en webbtjänst. Utvecklare kan använda dokumentation och API, men det betyder inte att du bör leta efter en fristående EXE- eller APK-fil. Rätt väg är den officiella produktwebben.\n\nSidor som lovar upplåsta röster, gratis premium eller obegränsad röstkloning är en tydlig varningssignal. De kan bryta mot villkor, sakna samtycke eller försöka samla in kontouppgifter."
+    },
+    {
+      "heading": "När alternativ kan passa bättre",
+      "body": "ElevenLabs är starkt för röst och ljud, men inte för allt innehållsarbete. Om du behöver skriva manus kan ChatGPT eller Claude vara bättre i första steget. Om du behöver musik kan Suno vara mer relevant.\n\nEtt bra arbetsflöde kan därför kombinera flera verktyg: skriv texten i en assistent, granska den, och använd ElevenLabs när du är redo att producera röst."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Finns ElevenLabs som app att ladda ner?",
+      "answer": "ElevenLabs används främst via den officiella webbtjänsten och utvecklardokumentation/API. Undvik fristående installerare från tredje part."
+    },
+    {
+      "question": "Kan ElevenLabs skapa svenska röster?",
+      "answer": "ElevenLabs har stöd för flera språk och kan användas med svenska i relevanta röstflöden, men kvalitet och tillgänglighet kan variera."
+    },
+    {
+      "question": "Är röstkloning lagligt?",
+      "answer": "Det beror på samtycke, användning och lokala regler. Klona inte röster utan tydligt tillstånd."
+    },
+    {
+      "question": "Är ElevenLabs gratis?",
+      "answer": "Tjänsten har begränsade gratisnivåer och betalplaner. Kontrollera aktuella gränser på den officiella webbplatsen."
+    }
+  ],
+  "swedishSupport": "partial"
+}

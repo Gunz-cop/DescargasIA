@@ -1,0 +1,54 @@
+{
+  "shortDescription": "AI-assistent för kod i editorer och GitHub, installerad via officiella tillägg och integrationer.",
+  "longDescription": "GitHub Copilot är en AI-kodassistent för autokomplettering, chatt och kodhjälp i utvecklingsmiljöer. Den används via officiella editor-tillägg och GitHub-kanaler.",
+  "bestFor": [
+    "Få kodförslag direkt i editorn",
+    "Förklara, refaktorera och skriva tester snabbare",
+    "Arbeta i VS Code, JetBrains eller GitHub-miljöer",
+    "Utvecklare som vill ha AI i sitt befintliga arbetsflöde"
+  ],
+  "limitations": [
+    "Kräver GitHub-konto och ofta betalplan eller behörighet via organisation.",
+    "Förslag måste granskas, testas och anpassas till projektet.",
+    "Copilot är inte en fristående IDE som ersätter editorn."
+  ],
+  "safetyNotes": [
+    "Installera Copilot från officiella marketplace-kanaler eller GitHub:s dokumentation.",
+    "Undvik tillägg som imiterar Copilot eller lovar gratis premiumåtkomst.",
+    "Granska kodförslag innan de mergas, särskilt för säkerhet och licenser."
+  ],
+  "editorialSummary": "GitHub Copilot är bäst när du vill ha AI-hjälp inne i din editor. Det är inte en separat app att ladda ner från valfri portal, utan en tjänst och integration via GitHub och officiella editor-marknadsplatser.",
+  "editorialSections": [
+    {
+      "heading": "Copilot är en integration, inte en separat editor",
+      "body": "Många söker efter \"ladda ner GitHub Copilot\", men Copilot fungerar främst som ett tillägg eller en integrerad funktion i verktyg du redan använder. Det kan ge kodförslag, chatta om projektet och hjälpa till med tester eller refaktorisering.\n\nDet betyder att rätt kanal beror på din editor. VS Code, JetBrains och andra miljöer har egna officiella vägar. En fristående EXE från en nedladdningssida är inte rätt lösning."
+    },
+    {
+      "heading": "Hur du använder Copilot säkert",
+      "body": "Använd GitHub:s dokumentation och officiella marketplace-listningar. Kontrollera publisher, behörigheter och att tillägget faktiskt är GitHub Copilot. Organisationer bör också se över policyer för kod, data och telemetri.\n\nAI-förslag kan vara användbara men felaktiga. De kan missa säkerhetskrav, projektkonventioner eller edge cases. Behandla Copilot som en snabb kollega i editorn, inte som slutgiltig kodgranskare."
+    },
+    {
+      "heading": "När Cursor kan vara ett alternativ",
+      "body": "Copilot passar bra om du vill behålla din befintliga editor och lägga till AI-stöd. Cursor är däremot en AI-fokuserad editor där hela arbetsflödet är byggt runt kodchatt och projektkontext.\n\nOm ditt team redan standardiserat på VS Code eller JetBrains är Copilot ofta smidigare. Om du vill prova en mer AI-centrerad utvecklingsmiljö kan Cursor vara värt att jämföra."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Var laddar jag ner GitHub Copilot?",
+      "answer": "Via GitHub:s officiella dokumentation eller din editors officiella marketplace. Det är normalt ett tillägg eller en integration."
+    },
+    {
+      "question": "Är GitHub Copilot gratis?",
+      "answer": "Tillgång beror på aktuell plan, konto och organisation. Kontrollera GitHub:s officiella prissättning och villkor."
+    },
+    {
+      "question": "Fungerar Copilot på svenska?",
+      "answer": "Du kan skriva instruktioner på svenska, men kod, dokumentation och gränssnitt är ofta främst engelskspråkiga."
+    },
+    {
+      "question": "Kan jag lita på Copilots kodförslag?",
+      "answer": "Nej, inte utan granskning. Testa, läs igenom och kontrollera säkerhet innan du använder förslag i produktion."
+    }
+  ],
+  "swedishSupport": "partial"
+}

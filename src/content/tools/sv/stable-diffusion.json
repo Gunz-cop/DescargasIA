@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Öppen modellfamilj för AI-bilder, ofta använd lokalt via appar, gränssnitt och communityverktyg.",
+  "longDescription": "Stable Diffusion är en modellfamilj för bildgenerering. Den används via olika officiella, öppna eller communitybaserade verktyg snarare än en enda konsumentapp.",
+  "bestFor": [
+    "Generera bilder med hög kontroll och egna workflows",
+    "Köra bildmodeller lokalt där hårdvara räcker",
+    "Experimentera med modeller, LoRA och pipelines",
+    "Användare som vill ha mer kontroll än i stängda bildtjänster"
+  ],
+  "limitations": [
+    "Kräver teknisk förståelse om du kör lokalt.",
+    "Modeller, gränssnitt och licenser varierar.",
+    "Resultat och säkerhetsfilter beror på valt verktyg och modell."
+  ],
+  "safetyNotes": [
+    "Använd erkända officiella källor, dokumentation och betrodda projekt.",
+    "Undvik modellpaket och installerare från okända speglar.",
+    "Kontrollera licenser för modeller, checkpoints och kommersiell användning."
+  ],
+  "editorialSummary": "Stable Diffusion ger stor frihet för AI-bildgenerering, men kräver mer ansvar än en sluten webbtjänst. Det finns många gränssnitt och modeller; använd kända källor, kontrollera licenser och undvik ompackade installerare.",
+  "editorialSections": [
+    {
+      "heading": "Inte en enda app",
+      "body": "Stable Diffusion är inte en vanlig app med en enda nedladdningsknapp. Det är en modellfamilj och ett ekosystem av gränssnitt, checkpoints, workflows och tjänster. Därför kan sökningar efter \"ladda ner Stable Diffusion\" leda till mycket olika resultat.\n\nFör nybörjare kan en etablerad app eller molntjänst vara enklare. För tekniska användare ger lokal körning mer kontroll över modell, prompt, bildstorlek och efterbearbetning."
+    },
+    {
+      "heading": "Var försiktig med modeller och installerare",
+      "body": "Eftersom ekosystemet är öppet finns många legitima projekt, men också speglar och ompackade paket. En okänd installerare kan lägga till kod du inte bett om, och en modellfil kan ha oklara villkor.\n\nBörja med officiell dokumentation, välkända repos eller plattformar som tydligt visar modellkort och licens. Kontrollera hash, publisher och communityförtroende när det är relevant."
+    },
+    {
+      "heading": "När Midjourney är enklare",
+      "body": "Stable Diffusion passar användare som vill ha maximal kontroll och kan hantera teknisk komplexitet. Midjourney är ofta enklare om du främst vill få snygga bilder snabbt utan att välja modeller och workflows.\n\nValet är alltså inte bara bildkvalitet. Det handlar om kontroll, tid, hårdvara och hur mycket du vill förstå av processen bakom bilden."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Finns Stable Diffusion som officiell app?",
+      "answer": "Stable Diffusion är ett modell-ekosystem, inte en enda officiell konsumentapp. Använd erkända projekt och officiella modellkällor."
+    },
+    {
+      "question": "Kan jag köra Stable Diffusion lokalt?",
+      "answer": "Ja, om din hårdvara och valda verktyg stöder det. Lokal körning kräver ofta teknisk installation."
+    },
+    {
+      "question": "Är Stable Diffusion gratis?",
+      "answer": "Många modeller och verktyg är öppna, men licenser, hostade tjänster och kommersiell användning varierar."
+    },
+    {
+      "question": "Fungerar svenska prompts?",
+      "answer": "Det går att prova svenska prompts, men många modeller ger mer förutsägbara resultat med engelska prompts."
+    }
+  ],
+  "swedishSupport": "partial"
+}

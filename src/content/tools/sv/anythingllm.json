@@ -1,0 +1,54 @@
+{
+  "shortDescription": "Lokal AI-arbetsyta för dokument, RAG och privata assistenter, med officiella appar och källkod.",
+  "longDescription": "AnythingLLM är ett verktyg för att bygga lokala eller självhostade AI-arbetsytor med egna dokument, modeller och teamflöden. FuenteAI pekar till de officiella kanalerna, inte till ompackade installerare.",
+  "bestFor": [
+    "Bygga en privat assistent med egna dokument",
+    "Testa RAG-flöden utan att börja från tom kod",
+    "Använda lokala eller externa språkmodeller i samma gränssnitt",
+    "Team som vill ha mer kontroll över data och distribution"
+  ],
+  "limitations": [
+    "Kräver mer teknisk förståelse än en vanlig chatbot.",
+    "Resultaten beror på vald modell, dokumentkvalitet och konfiguration.",
+    "Självhosting innebär eget ansvar för säkerhet, åtkomst och underhåll."
+  ],
+  "safetyNotes": [
+    "Ladda bara ner AnythingLLM från den officiella webbplatsen eller det officiella GitHub-repot.",
+    "Undvik portabla paket, modifierade installerare och guider som ber dig köra okänd kod.",
+    "Kontrollera behörigheter och datakällor innan du laddar upp interna dokument."
+  ],
+  "editorialSummary": "AnythingLLM passar när du vill använda AI med egna filer och mer kontroll än i en vanlig molnchatt. Det är inte en enkel knapp för alla användare: välj officiella appar, läs dokumentationen och undvik nedladdningar från tredjepartssidor.",
+  "editorialSections": [
+    {
+      "heading": "När AnythingLLM är rätt val",
+      "body": "AnythingLLM är mest relevant när frågan inte bara är \"vilken AI ska jag prata med?\" utan \"hur kan jag låta AI arbeta med mitt eget material?\" Verktyget kan koppla arbetsytor, dokument och modeller på ett sätt som passar kunskapsbaser, interna sökflöden och experiment med RAG.\n\nDet gör det kraftfullt, men också mer krävande än ChatGPT eller Claude. Om du bara vill skriva, sammanfatta eller ställa frågor räcker ofta en webbtjänst. Om du vill styra datakällor och modellval blir AnythingLLM mer intressant."
+    },
+    {
+      "heading": "Officiell nedladdning och självhosting",
+      "body": "Den säkra vägen är AnythingLLM:s officiella webbplats och projektets officiella GitHub. Där kan du kontrollera vilka appar, paket och instruktioner som faktiskt hör till projektet. FuenteAI hostar inga filer och ersätter inte installationsguiden.\n\nVar försiktig med bloggar som erbjuder egna ZIP-filer eller \"förenklade\" installerare. För tekniska verktyg är det vanligt att inofficiella paket släpar efter eller ändrar beteende. Utgå från källan och verifiera versionen innan du installerar."
+    },
+    {
+      "heading": "Data, modeller och ansvar",
+      "body": "AnythingLLM kan användas med lokala modeller eller externa leverantörer beroende på konfiguration. Det betyder att integritet och kostnad inte bara beror på verktyget, utan på hur du sätter upp det och vilka modeller du kopplar in.\n\nOm du arbetar med känsliga dokument bör du läsa dokumentationen noggrant, begränsa åtkomst och testa med mindre viktiga filer först. Verktyget ger kontroll, men kontroll kräver också disciplin."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är AnythingLLM en vanlig chatbot?",
+      "answer": "Nej. Det är mer en AI-arbetsyta för egna dokument, modeller och kunskapsbaser än en enkel fristående chatt."
+    },
+    {
+      "question": "Var laddar jag ner AnythingLLM säkert?",
+      "answer": "Använd den officiella webbplatsen eller projektets officiella GitHub-repo. Undvik ompackade installerare från nedladdningsportaler."
+    },
+    {
+      "question": "Kan AnythingLLM köras lokalt?",
+      "answer": "Ja, verktyget är relevant för lokala och självhostade flöden, men exakt installation beror på plattform och vald konfiguration."
+    },
+    {
+      "question": "Har AnythingLLM stöd för svenska?",
+      "answer": "Gränssnitt och dokumentation kan främst vara engelska. Svar på svenska beror på modellen du använder."
+    }
+  ],
+  "swedishSupport": "partial"
+}

@@ -1,0 +1,54 @@
+{
+  "shortDescription": "AI-sökmotor och kodassistent för utvecklare, med fokus på tekniska svar och källor.",
+  "longDescription": "Phind är en AI-baserad sök- och svarstjänst för programmering och tekniska frågor. Den används via officiell webbtjänst och relaterade kanaler.",
+  "bestFor": [
+    "Söka tekniska svar med utvecklarfokus",
+    "Felsöka kod och förstå dokumentation",
+    "Jämföra lösningar med källhänvisningar",
+    "Utvecklare som vill kombinera sökning och AI-svar"
+  ],
+  "limitations": [
+    "Svar kan vara fel eller bygga på föråldrad dokumentation.",
+    "Kräver granskning och test i ditt eget projekt.",
+    "Det är främst en webbtjänst, inte en lokal IDE."
+  ],
+  "safetyNotes": [
+    "Använd Phinds officiella webbplats.",
+    "Kör inte kommandon eller kod från AI-svar utan att förstå dem.",
+    "Undvik inofficiella appar som ber om kodbasåtkomst eller kontouppgifter."
+  ],
+  "editorialSummary": "Phind är användbart för utvecklare som vill ha AI-stödd teknisk sökning. Det kan spara tid vid felsökning och dokumentationsfrågor, men alla kodförslag bör testas och läsas kritiskt.",
+  "editorialSections": [
+    {
+      "heading": "AI-sökning för programmerare",
+      "body": "Phind är byggt för tekniska frågor där vanliga sökresultat ofta kräver många flikar. Du kan fråga om felmeddelanden, bibliotek, API:er eller arkitekturval och få ett svar som försöker sammanfatta relevanta källor.\n\nDet är praktiskt, men inte magiskt. Tekniska ekosystem ändras snabbt, och ett svar kan blanda versioner eller anta fel kontext. Använd det som startpunkt, inte som slutgiltig auktoritet."
+    },
+    {
+      "heading": "Ingen lokal kodassistent att ladda ner",
+      "body": "För de flesta användare är Phind en webbtjänst. Om du söker efter en desktopapp eller upplåst version bör du vara försiktig. Rätt start är Phinds officiella webbplats.\n\nVar extra skeptisk mot verktyg som ber om åtkomst till hela kodbasen och säger sig vara Phind utan tydlig officiell koppling. Kod och tokens är känsliga tillgångar."
+    },
+    {
+      "heading": "Phind jämfört med Copilot och Cursor",
+      "body": "Phind passar bäst för research och tekniska frågor i webbläsaren. GitHub Copilot och Cursor arbetar närmare editorn och kan föreslå ändringar i en aktiv kodbas.\n\nOm du behöver förstå ett fel eller jämföra bibliotek kan Phind vara effektivt. Om du vill att AI ska arbeta direkt i projektfilerna passar en editorintegration bättre."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är Phind gratis?",
+      "answer": "Phind kan ha gratis användning och betalalternativ. Kontrollera aktuell planinformation på den officiella webbplatsen."
+    },
+    {
+      "question": "Kan Phind skriva kod åt mig?",
+      "answer": "Phind kan föreslå kod och förklara tekniska lösningar, men du måste granska och testa allt i ditt projekt."
+    },
+    {
+      "question": "Finns Phind som app?",
+      "answer": "Phind används främst via webben. Undvik inofficiella appar eller installerare."
+    },
+    {
+      "question": "Fungerar Phind på svenska?",
+      "answer": "Du kan ställa frågor på svenska, men teknisk dokumentation och svar fungerar ofta bäst på engelska."
+    }
+  ],
+  "swedishSupport": "partial"
+}
