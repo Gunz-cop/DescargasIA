@@ -88,6 +88,11 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+a, a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
 *:focus-visible {
   outline: 2px solid var(--brand-primary);
   outline-offset: 3px;
