@@ -89,117 +89,117 @@ const category = categoryStyles[primaryCategory] ?? {
 
 const visualStyles: Record<string, { mark: string; bar: string; accent: string }> = {
   chatgpt: {
-    mark: 'border-emerald-300/40 bg-emerald-400/14 text-emerald-700 dark:text-emerald-100 shadow-[0_0_24px_rgba(16,185,129,0.16)]',
+    mark: 'border-emerald-200 dark:border-emerald-300/40 bg-emerald-100 dark:bg-emerald-400/14 text-emerald-800 dark:text-emerald-100 shadow-[0_0_24px_rgba(16,185,129,0.16)]',
     bar: 'bg-emerald-400',
     accent: 'group-hover:text-emerald-300'
   },
   claude: {
-    mark: 'border-orange-300/45 bg-orange-400/14 text-orange-700 dark:text-orange-100 shadow-[0_0_24px_rgba(251,146,60,0.16)]',
+    mark: 'border-orange-200 dark:border-orange-300/45 bg-orange-100 dark:bg-orange-400/14 text-orange-800 dark:text-orange-100 shadow-[0_0_24px_rgba(251,146,60,0.16)]',
     bar: 'bg-orange-400',
     accent: 'group-hover:text-orange-300'
   },
   gemini: {
-    mark: 'border-sky-300/45 bg-[linear-gradient(135deg,rgba(56,189,248,0.24),rgba(168,85,247,0.18),rgba(244,114,182,0.16))] text-sky-700 dark:text-sky-50 shadow-[0_0_24px_rgba(56,189,248,0.14)]',
+    mark: 'border-sky-200 dark:border-sky-300/45 bg-sky-100 dark:bg-[linear-gradient(135deg,rgba(56,189,248,0.24),rgba(168,85,247,0.18),rgba(244,114,182,0.16))] text-sky-800 dark:text-sky-50 shadow-[0_0_24px_rgba(56,189,248,0.14)]',
     bar: 'bg-[linear-gradient(90deg,#38bdf8,#a855f7,#f472b6)]',
     accent: 'group-hover:text-sky-300'
   },
   cursor: {
-    mark: 'border-sky-300/45 bg-sky-400/14 text-sky-700 dark:text-sky-100 shadow-[0_0_24px_rgba(56,189,248,0.16)]',
+    mark: 'border-sky-200 dark:border-sky-300/45 bg-sky-100 dark:bg-sky-400/14 text-sky-800 dark:text-sky-100 shadow-[0_0_24px_rgba(56,189,248,0.16)]',
     bar: 'bg-sky-400',
     accent: 'group-hover:text-sky-300'
   },
   ollama: {
-    mark: 'border-stone-300/35 bg-stone-400/12 text-stone-700 dark:text-stone-100 shadow-[0_0_24px_rgba(214,211,209,0.10)]',
+    mark: 'border-stone-200 dark:border-stone-300/35 bg-stone-100 dark:bg-stone-400/12 text-stone-800 dark:text-stone-100 shadow-[0_0_24px_rgba(214,211,209,0.10)]',
     bar: 'bg-stone-300',
     accent: 'group-hover:text-stone-200'
   },
   'lm-studio': {
-    mark: 'border-violet-300/45 bg-violet-400/14 text-violet-700 dark:text-violet-100 shadow-[0_0_24px_rgba(139,92,246,0.16)]',
+    mark: 'border-violet-200 dark:border-violet-300/45 bg-violet-100 dark:bg-violet-400/14 text-violet-800 dark:text-violet-100 shadow-[0_0_24px_rgba(139,92,246,0.16)]',
     bar: 'bg-violet-400',
     accent: 'group-hover:text-violet-300'
   },
   'stable-diffusion': {
-    mark: 'border-rose-300/45 bg-[linear-gradient(135deg,rgba(244,63,94,0.18),rgba(59,130,246,0.16))] text-rose-700 dark:text-rose-50 shadow-[0_0_24px_rgba(244,63,94,0.14)]',
+    mark: 'border-rose-200 dark:border-rose-300/45 bg-rose-100 dark:bg-[linear-gradient(135deg,rgba(244,63,94,0.18),rgba(59,130,246,0.16))] text-rose-800 dark:text-rose-50 shadow-[0_0_24px_rgba(244,63,94,0.14)]',
     bar: 'bg-[linear-gradient(90deg,#f43f5e,#3b82f6)]',
     accent: 'group-hover:text-rose-300'
   },
   midjourney: {
-    mark: 'border-indigo-300/45 bg-indigo-400/14 text-indigo-700 dark:text-indigo-100 shadow-[0_0_24px_rgba(129,140,248,0.16)]',
+    mark: 'border-indigo-200 dark:border-indigo-300/45 bg-indigo-100 dark:bg-indigo-400/14 text-indigo-800 dark:text-indigo-100 shadow-[0_0_24px_rgba(129,140,248,0.16)]',
     bar: 'bg-indigo-400',
     accent: 'group-hover:text-indigo-300'
   },
   canva: {
-    mark: 'border-cyan-300/45 bg-[linear-gradient(135deg,rgba(34,211,238,0.22),rgba(168,85,247,0.18))] text-cyan-700 dark:text-cyan-50 shadow-[0_0_24px_rgba(34,211,238,0.16)]',
+    mark: 'border-cyan-200 dark:border-cyan-300/45 bg-cyan-100 dark:bg-[linear-gradient(135deg,rgba(34,211,238,0.22),rgba(168,85,247,0.18))] text-cyan-800 dark:text-cyan-50 shadow-[0_0_24px_rgba(34,211,238,0.16)]',
     bar: 'bg-[linear-gradient(90deg,#22d3ee,#a855f7)]',
     accent: 'group-hover:text-cyan-300'
   },
   'microsoft-copilot': {
-    mark: 'border-blue-300/45 bg-[linear-gradient(135deg,rgba(59,130,246,0.18),rgba(34,197,94,0.15))] text-blue-700 dark:text-blue-50 shadow-[0_0_24px_rgba(59,130,246,0.14)]',
+    mark: 'border-blue-200 dark:border-blue-300/45 bg-blue-100 dark:bg-[linear-gradient(135deg,rgba(59,130,246,0.18),rgba(34,197,94,0.15))] text-blue-800 dark:text-blue-50 shadow-[0_0_24px_rgba(59,130,246,0.14)]',
     bar: 'bg-[linear-gradient(90deg,#3b82f6,#22c55e)]',
     accent: 'group-hover:text-blue-300'
   },
   perplexity: {
-    mark: 'border-teal-300/45 bg-teal-400/14 text-teal-700 dark:text-teal-100 shadow-[0_0_24px_rgba(45,212,191,0.16)]',
+    mark: 'border-teal-200 dark:border-teal-300/45 bg-teal-100 dark:bg-teal-400/14 text-teal-800 dark:text-teal-100 shadow-[0_0_24px_rgba(45,212,191,0.16)]',
     bar: 'bg-teal-400',
     accent: 'group-hover:text-teal-300'
   },
   anythingllm: {
-    mark: 'border-lime-300/45 bg-lime-400/12 text-lime-700 dark:text-lime-100 shadow-[0_0_24px_rgba(163,230,53,0.12)]',
+    mark: 'border-lime-200 dark:border-lime-300/45 bg-lime-100 dark:bg-lime-400/12 text-lime-800 dark:text-lime-100 shadow-[0_0_24px_rgba(163,230,53,0.12)]',
     bar: 'bg-lime-400',
     accent: 'group-hover:text-lime-300'
   },
   jan: {
-    mark: 'border-zinc-300/40 bg-zinc-400/12 text-zinc-700 dark:text-zinc-100 shadow-[0_0_24px_rgba(212,212,216,0.10)]',
+    mark: 'border-zinc-200 dark:border-zinc-300/40 bg-zinc-100 dark:bg-zinc-400/12 text-zinc-800 dark:text-zinc-100 shadow-[0_0_24px_rgba(212,212,216,0.10)]',
     bar: 'bg-zinc-300',
     accent: 'group-hover:text-zinc-200'
   },
   elevenlabs: {
-    mark: 'border-pink-300/45 bg-pink-400/14 text-pink-700 dark:text-pink-100 shadow-[0_0_24px_rgba(244,114,182,0.16)]',
+    mark: 'border-pink-200 dark:border-pink-300/45 bg-pink-100 dark:bg-pink-400/14 text-pink-800 dark:text-pink-100 shadow-[0_0_24px_rgba(244,114,182,0.16)]',
     bar: 'bg-pink-400',
     accent: 'group-hover:text-pink-300'
   },
   runway: {
-    mark: 'border-neutral-200/45 bg-neutral-300/12 text-neutral-700 dark:text-neutral-200 shadow-[0_0_24px_rgba(245,245,245,0.10)]',
+    mark: 'border-neutral-200 dark:border-neutral-200/45 bg-neutral-100 dark:bg-neutral-300/12 text-neutral-800 dark:text-neutral-200 shadow-[0_0_24px_rgba(245,245,245,0.10)]',
     bar: 'bg-neutral-200',
     accent: 'group-hover:text-neutral-100'
   },
   'luma-dream-machine': {
-    mark: 'border-purple-300/45 bg-[linear-gradient(135deg,rgba(147,51,234,0.20),rgba(14,165,233,0.16))] text-purple-700 dark:text-purple-50 shadow-[0_0_24px_rgba(147,51,234,0.14)]',
+    mark: 'border-purple-200 dark:border-purple-300/45 bg-purple-100 dark:bg-[linear-gradient(135deg,rgba(147,51,234,0.20),rgba(14,165,233,0.16))] text-purple-800 dark:text-purple-50 shadow-[0_0_24px_rgba(147,51,234,0.14)]',
     bar: 'bg-[linear-gradient(90deg,#9333ea,#0ea5e9)]',
     accent: 'group-hover:text-purple-300'
   },
   'github-copilot': {
-    mark: 'border-slate-300/45 bg-slate-400/14 text-slate-700 dark:text-slate-100 shadow-[0_0_24px_rgba(148,163,184,0.14)]',
+    mark: 'border-slate-200 dark:border-slate-300/45 bg-slate-100 dark:bg-slate-400/14 text-slate-800 dark:text-slate-100 shadow-[0_0_24px_rgba(148,163,184,0.14)]',
     bar: 'bg-slate-300',
     accent: 'group-hover:text-slate-200'
   },
   deepl: {
-    mark: 'border-blue-300/45 bg-blue-400/14 text-blue-700 dark:text-blue-100 shadow-[0_0_24px_rgba(96,165,250,0.14)]',
+    mark: 'border-blue-200 dark:border-blue-300/45 bg-blue-100 dark:bg-blue-400/14 text-blue-800 dark:text-blue-100 shadow-[0_0_24px_rgba(96,165,250,0.14)]',
     bar: 'bg-blue-400',
     accent: 'group-hover:text-blue-300'
   },
   'gamma-app': {
-    mark: 'border-fuchsia-300/45 bg-fuchsia-400/14 text-fuchsia-700 dark:text-fuchsia-100 shadow-[0_0_24px_rgba(217,70,239,0.14)]',
+    mark: 'border-fuchsia-200 dark:border-fuchsia-300/45 bg-fuchsia-100 dark:bg-fuchsia-400/14 text-fuchsia-800 dark:text-fuchsia-100 shadow-[0_0_24px_rgba(217,70,239,0.14)]',
     bar: 'bg-fuchsia-400',
     accent: 'group-hover:text-fuchsia-300'
   },
   gemma: {
-    mark: 'border-amber-300/45 bg-amber-400/14 text-amber-700 dark:text-amber-100 shadow-[0_0_24px_rgba(251,191,36,0.12)]',
+    mark: 'border-amber-200 dark:border-amber-300/45 bg-amber-100 dark:bg-amber-400/14 text-amber-800 dark:text-amber-100 shadow-[0_0_24px_rgba(251,191,36,0.12)]',
     bar: 'bg-amber-400',
     accent: 'group-hover:text-amber-300'
   },
   languagetool: {
-    mark: 'border-emerald-300/45 bg-emerald-400/14 text-emerald-700 dark:text-emerald-100 shadow-[0_0_24px_rgba(52,211,153,0.14)]',
+    mark: 'border-emerald-200 dark:border-emerald-300/45 bg-emerald-100 dark:bg-emerald-400/14 text-emerald-800 dark:text-emerald-100 shadow-[0_0_24px_rgba(52,211,153,0.14)]',
     bar: 'bg-emerald-400',
     accent: 'group-hover:text-emerald-300'
   },
   phind: {
-    mark: 'border-cyan-300/45 bg-cyan-400/14 text-cyan-700 dark:text-cyan-100 shadow-[0_0_24px_rgba(34,211,238,0.14)]',
+    mark: 'border-cyan-200 dark:border-cyan-300/45 bg-cyan-100 dark:bg-cyan-400/14 text-cyan-800 dark:text-cyan-100 shadow-[0_0_24px_rgba(34,211,238,0.14)]',
     bar: 'bg-cyan-400',
     accent: 'group-hover:text-cyan-300'
   },
   suno: {
-    mark: 'border-yellow-300/45 bg-yellow-400/14 text-yellow-700 dark:text-yellow-100 shadow-[0_0_24px_rgba(250,204,21,0.12)]',
+    mark: 'border-yellow-200 dark:border-yellow-300/45 bg-yellow-100 dark:bg-yellow-400/14 text-yellow-800 dark:text-yellow-100 shadow-[0_0_24px_rgba(250,204,21,0.12)]',
     bar: 'bg-yellow-400',
     accent: 'group-hover:text-yellow-300'
   }
