@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Familia de modelos de generación de imágenes de pesos abiertos de última generación que destaca por su realismo y calidad en el renderizado de texto.",
+  "longDescription": "Flux (o FLUX.1) es una suite de modelos avanzados de generación de imágenes por inteligencia artificial creada por Black Forest Labs (fundado por ingenieros clave de Stable Diffusion). Gracias a su arquitectura híbrida de rectificación de flujo basada en transformadores, produce imágenes con un fotorrealismo sobresaliente, excelente seguimiento de indicaciones y renderizado tipográfico preciso. Se ofrece bajo licencia de pesos abiertos para uso personal y local.",
+  "bestFor": [
+    "Generar imágenes hiperrealistas y artísticas de alta definición",
+    "Renderizar texto legible dentro de las imágenes generadas",
+    "Ejecutar modelos de generación de imágenes de forma local y privada",
+    "Utilizar alternativas de pesos abiertos que compiten directamente con Midjourney"
+  ],
+  "limitations": [
+    "Al ser un modelo y no un software empaquetado, requiere gestores de terceros (como ComfyUI o WebUI) para ejecutarse de forma local.",
+    "Demanda requisitos de hardware elevados (especialmente memoria VRAM de tarjeta gráfica dedicada) para un rendimiento local fluido.",
+    "La versión comercial avanzada (Flux.1 Pro) es de pago y solo es accesible a través de APIs web."
+  ],
+  "safetyNotes": [
+    "Flux no tiene un instalador oficial .exe o ejecutable propio. No descargues ejecutables que afirmen ser 'Flux AI Installer'.",
+    "Los pesos oficiales del modelo deben descargarse de Hugging Face. Para uso web, accede a los espacios oficiales verificados en Hugging Face o plataformas web que integran el modelo."
+  ],
+  "editorialSummary": "Flux es el estándar moderno en la generación de imágenes con IA de pesos abiertos. En FuenteAI te conectamos con el repositorio oficial de código en GitHub, los modelos en Hugging Face y las demos web seguras para que puedas experimentar con esta herramienta sin riesgo de infectar tu equipo con instaladores falsos.",
+  "editorialSections": [
+    {
+      "heading": "Qué es Flux y por qué revoluciona la generación de imágenes",
+      "body": "Flux.1 es una familia de modelos de generación de imágenes por IA creada por Black Forest Labs, un equipo compuesto por los creadores originales de Stable Diffusion. A diferencia de las plataformas cerradas, Flux destaca por ofrecer modelos de pesos abiertos (como Flux.1 Schnell y Flux.1 Dev) de un realismo visual impactante, capaces de renderizar manos y texto escrito con una fidelidad superior a la de la mayoría de sus competidores.\n\nEsta apertura técnica genera que miles de creadores busquen \"descargar Flux\" para instalarlo en sus ordenadores. Al no ser un programa convencional de un solo clic, existe el peligro de que páginas maliciosas empaqueten virus o malware bajo la apariencia de un \"instalador oficial de Flux para Windows\". En esta ficha te indicamos el camino correcto para acceder a su código y sus modelos oficiales."
+    },
+    {
+      "heading": "Cómo ejecutar o probar Flux de manera segura",
+      "body": "Dado que Flux es un modelo y no un programa autónomo, su uso local se realiza cargando sus pesos en interfaces gráficas reputadas de la comunidad de IA, como ComfyUI, Stable Diffusion WebUI Forge o DiffusionBee (en el caso de macOS). Los archivos del modelo (en formatos `.safetensors` o `.sft`) deben descargarse exclusivamente desde el perfil oficial de Black Forest Labs en Hugging Face.\n\nSi no posees una tarjeta gráfica potente y deseas probar Flux sin instalar nada, la vía correcta es usar las demos interactivas oficiales alojadas en Hugging Face Spaces (como la de Flux.1 Schnell, que es rápida y gratuita) o plataformas web especializadas que ofrecen acceso a su API oficial. Nunca ejecutes archivos `.exe` descargados de blogs o tutoriales de dudosa procedencia."
+    },
+    {
+      "heading": "Las tres versiones de la familia Flux.1",
+      "body": "Black Forest Labs distribuye su modelo en tres variantes para adaptarse a distintas necesidades: Flux.1 Schnell es la versión más rápida y optimizada para uso personal, ideal para equipos locales de rango medio; Flux.1 Dev es un modelo con mayor nivel de detalle pensado para desarrollo no comercial; y Flux.1 Pro es la versión cerrada de máximo rendimiento, diseñada para uso comercial a través de llamadas de API.\n\nEsta flexibilidad permite a los creadores de contenido y programadores adaptar el modelo a sus flujos de trabajo locales, logrando resultados profesionales similares a Midjourney de forma privada y sin que sus imágenes pasen por servidores externos."
+    },
+    {
+      "heading": "Requisitos de hardware para ejecución local",
+      "body": "Para ejecutar Flux de forma local en tu ordenador, necesitarás contar con una tarjeta gráfica dedicada (preferentemente NVIDIA) con al menos 8 GB de memoria de video (VRAM) para versiones optimizadas o cuantizadas, y 12 GB o más de VRAM para ejecutar el modelo Dev a resolución completa. Además, se recomienda contar con al menos 16 GB o 32 GB de memoria RAM en el sistema operativo."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Flux es gratuito?",
+      "answer": "Sí, las versiones Flux.1 Schnell (bajo licencia Apache 2.0) y Flux.1 Dev (para uso no comercial) se pueden descargar y ejecutar de forma gratuita y local. La versión Flux.1 Pro está orientada al uso empresarial de pago mediante API."
+    },
+    {
+      "question": "¿Tiene Flux aplicación oficial de escritorio para instalar en Windows?",
+      "answer": "No. Flux es un modelo de red neuronal. Para ejecutarlo en tu PC necesitas interfaces gráficas de terceros como ComfyUI o WebUI Forge. No descargues instaladores independientes de Flux que prometan ser apps oficiales."
+    },
+    {
+      "question": "¿Dónde se descargan los archivos oficiales de Flux?",
+      "answer": "Los pesos oficiales del modelo se encuentran en la plataforma Hugging Face, en el perfil verificado 'blackforest-labs'. El código de desarrollo se encuentra alojado en su repositorio oficial de GitHub."
+    },
+    {
+      "question": "¿Cómo se usa Flux gratis online?",
+      "answer": "Puedes usarlo de forma gratuita y en línea a través de los espacios públicos verificados en Hugging Face Spaces, donde Black Forest Labs aloja demostraciones interactivas del modelo."
+    }
+  ],
+  "spanishSupport": "yes"
+}

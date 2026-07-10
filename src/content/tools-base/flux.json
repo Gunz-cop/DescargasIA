@@ -1,0 +1,54 @@
+{
+  "name": "Flux",
+  "officialWebsite": "https://blackforestlabs.ai",
+  "categories": [
+    "generacion-imagenes"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://huggingface.co/spaces/black-forest-labs/FLUX.1-schnell",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-07-10"
+    },
+    "windows": {
+      "url": "https://github.com/blackforest-labs/flux",
+      "type": "github-repo",
+      "isOfficial": true,
+      "lastChecked": "2026-07-10"
+    },
+    "mac": {
+      "url": "https://github.com/blackforest-labs/flux",
+      "type": "github-repo",
+      "isOfficial": true,
+      "lastChecked": "2026-07-10"
+    },
+    "linux": {
+      "url": "https://github.com/blackforest-labs/flux",
+      "type": "github-repo",
+      "isOfficial": true,
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "tags": [
+    "flux",
+    "imagen",
+    "black-forest-labs",
+    "open-weights",
+    "modelo-local"
+  ],
+  "alternatives": [
+    "stable-diffusion",
+    "midjourney"
+  ],
+  "screenshotUrl": null,
+  "initials": "FL",
+  "trustLevel": "official",
+  "lastReviewed": "2026-07-10",
+  "officialSources": [
+    "https://blackforestlabs.ai",
+    "https://huggingface.co/blackforest-labs"
+  ]
+}

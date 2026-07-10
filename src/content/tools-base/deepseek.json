@@ -1,0 +1,48 @@
+{
+  "name": "DeepSeek",
+  "officialWebsite": "https://www.deepseek.com",
+  "categories": [
+    "asistentes-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://chat.deepseek.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-07-10"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.deepseek.chat",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-07-10"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/deepseek-ai-assistant/id6475255479",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": true,
+  "tags": [
+    "deepseek",
+    "reasoning",
+    "r1",
+    "chatbot",
+    "asistente"
+  ],
+  "alternatives": [
+    "chatgpt",
+    "claude",
+    "perplexity"
+  ],
+  "screenshotUrl": null,
+  "initials": "DS",
+  "trustLevel": "official",
+  "lastReviewed": "2026-07-10",
+  "officialSources": [
+    "https://www.deepseek.com"
+  ]
+}

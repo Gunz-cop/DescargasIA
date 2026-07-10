@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Asistente de investigación y notas de Google que genera resúmenes y discusiones de audio interactivas a partir de tus propios documentos.",
+  "longDescription": "NotebookLM es una libreta de notas e investigación virtual potenciada por inteligencia artificial, desarrollada por Google. A diferencia de los chatbots generales, trabaja exclusivamente sobre las fuentes y documentos (PDF, Google Docs, webs) que tú elijas, permitiendo generar resúmenes, responder preguntas y crear discusiones en formato podcast (\"Audio Overviews\") de forma automática.",
+  "bestFor": [
+    "Resumir y sintetizar documentos extensos como PDFs y libros",
+    "Generar discusiones de audio tipo podcast (Audio Overviews) automáticamente",
+    "Estudiar apuntes, notas académicas y documentos de investigación",
+    "Organizar ideas y fuentes de información privadas con seguridad"
+  ],
+  "limitations": [
+    "Es una aplicación exclusivamente basada en la web, sin instalador offline.",
+    "Solo puede procesar información a partir de los documentos subidos por el usuario.",
+    "La generación de audios (Audio Overviews) suele estar disponible inicialmente en inglés, aunque su soporte en español está en desarrollo activo."
+  ],
+  "safetyNotes": [
+    "No descargues supuestas aplicaciones o instaladores de NotebookLM para escritorio, ya que Google no distribuye ejecutables de este servicio.",
+    "Usa el acceso web oficial mediante tu cuenta de Google."
+  ],
+  "editorialSummary": "NotebookLM es una de las innovaciones más notables de Google en productividad, ideal para estudiantes, investigadores y profesionales que manejan gran volumen de información. En FuenteAI te proveemos el enlace directo verificado a su plataforma oficial basada en la web para evitar que caigas en falsas descargas o extensiones fraudulentas.",
+  "editorialSections": [
+    {
+      "heading": "Por qué tanta gente busca descargar NotebookLM",
+      "body": "NotebookLM ha ganado una enorme popularidad gracias a su capacidad de transformar textos planos y aburridos en resúmenes estructurados e incluso en conversaciones de audio dinámicas interpretadas por voces sintéticas ultra realistas. Esto ha despertado un gran interés, llevando a muchos usuarios a buscar \"descargar NotebookLM\" o encontrar una app de escritorio.\n\nSin embargo, es crucial aclarar que NotebookLM no cuenta con un instalador oficial de escritorio para Windows o macOS, ni tampoco con una app nativa en la Play Store o App Store. Al ser una herramienta integrada en el ecosistema web de Google Labs, se utiliza exclusivamente a través del navegador. Nuestra prioridad es guiarte directamente a este acceso web seguro."
+    },
+    {
+      "heading": "Cómo empezar a utilizar NotebookLM de forma segura",
+      "body": "Para acceder a NotebookLM de forma segura, el único camino verificado es su sitio oficial en notebooklm.google. Solo necesitas contar con una cuenta de Google activa para ingresar y empezar a subir tus documentos de estudio o trabajo.\n\nDado que tus notas e información cargada son privadas y se manejan bajo las políticas de privacidad de Google, es fundamental que nunca ingreses tus credenciales de Google en páginas de terceros que prometan darte acceso a NotebookLM o \"mejoras\" para el sistema. El acceso web de Google es directo y completamente gratuito."
+    },
+    {
+      "heading": "Qué hace diferente a NotebookLM de un chatbot tradicional",
+      "body": "A diferencia de asistentes generales como ChatGPT o Claude que dependen de su base de datos general para responder, NotebookLM se comporta como un experto centrado únicamente en los documentos que le proporcionas. Cuando le haces una pregunta, responde basándose exclusivamente en el material que subiste, citando la página y el párrafo exacto de donde extrajo la información.\n\nSu función más llamativa, llamada \"Audio Overview\", genera un archivo de audio donde dos presentadores de inteligencia artificial conversan sobre el contenido de tus notas, debatiendo los puntos clave de forma muy natural. Esto lo hace una herramienta inigualable para repasar apuntes de manera auditiva."
+    },
+    {
+      "heading": "Requisitos de compatibilidad y uso",
+      "body": "Al tratarse de una herramienta web, NotebookLM funciona en cualquier sistema operativo (Windows, macOS, Linux, iPadOS, Android) que disponga de un navegador moderno como Google Chrome, Safari, Firefox o Edge. Dado que el procesamiento se realiza en los servidores en la nube de Google, no necesitas un ordenador con especificaciones técnicas elevadas ni tarjeta gráfica dedicada para utilizarlo."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿NotebookLM es gratuito?",
+      "answer": "Sí. NotebookLM es un proyecto experimental de Google Labs y es completamente gratuito para los usuarios con una cuenta de Google activa."
+    },
+    {
+      "question": "¿Tiene NotebookLM aplicación oficial para Windows o Mac?",
+      "answer": "No. Google no ofrece aplicaciones de escritorio de NotebookLM. Es una aplicación 100% web accesible desde el navegador en notebooklm.google."
+    },
+    {
+      "question": "¿NotebookLM admite el idioma español?",
+      "answer": "Sí. Puedes subir documentos en español y hacerle preguntas en español. Las respuestas y el análisis de texto se realizarán en español con gran precisión."
+    },
+    {
+      "question": "¿Qué tipos de archivos puedo subir a NotebookLM?",
+      "answer": "Actualmente permite subir archivos PDF, documentos de Google Docs, archivos de texto plano (.txt), copiar texto directamente, o enlazar a URLs web públicas y videos de YouTube."
+    }
+  ],
+  "spanishSupport": "yes"
+}
