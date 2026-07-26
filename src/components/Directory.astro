@@ -1,0 +1,349 @@
+---
+// src/components/Directory.astro
+// Buscador + filtros + rejilla de resultados.
+// Sustituye al buscador del hero y al SearchBar duplicado: un solo control,
+// con estado reflejado en la URL, aria-pressed real y recuento en vivo.
+import ToolCard from './ToolCard.astro';
+import { CATEGORIES, PLATFORM_ORDER, PLATFORM_SHORT, type Lang } from '../utils/brand';
+import { useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  tools: any[];
+}
+
+const { lang, tools } = Astro.props;
+const t = useTranslations(lang);
+
+// Sólo se ofrecen filtros de categorías que realmente tienen fichas.
+const usedCategories = CATEGORIES.filter((cat) =>
+  tools.some((tool) => tool.categories.includes(cat.slug))
+);
+
+const usedPlatforms = PLATFORM_ORDER.filter((platform) =>
+  tools.some((tool) => Boolean(tool.platforms[platform]))
+);
+
+const countLabel = tools.length === 1 ? t('directory.count.one') : t('directory.count.other');
+---
+
+<section id="directorio" class="scroll-mt-24 py-14 sm:py-16" aria-labelledby="directorio-title">
+  <div class="rule-double mb-6 flex flex-col gap-3 pt-4 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <p class="eyebrow text-brand-primary">{t('directory.eyebrow')}</p>
+      <h2 id="directorio-title" class="display mt-1 text-[30px] sm:text-[36px]">{t('directory.title')}</h2>
+    </div>
+
+    <div class="flex items-center gap-4 pb-1">
+      <p class="data-tag text-brand-text-subtle">
+        <span id="results-count">{tools.length}</span> {t('directory.of')} {tools.length} {countLabel}
+      </p>
+      <div
+        class="hidden items-center gap-0.5 rounded-md border border-brand-card-border p-0.5 lg:flex"
+        role="group"
+        aria-label={t('view.label')}
+        id="view-switch"
+      >
+        <button type="button" data-view="list" aria-pressed="true" class="view-btn">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          {t('view.list')}
+        </button>
+        <button type="button" data-view="grid" aria-pressed="false" class="view-btn">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <rect x="4" y="4" width="7" height="7" rx="1.5" />
+            <rect x="13" y="4" width="7" height="7" rx="1.5" />
+            <rect x="4" y="13" width="7" height="7" rx="1.5" />
+            <rect x="13" y="13" width="7" height="7" rx="1.5" />
+          </svg>
+          {t('view.grid')}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controles -->
+  <div class="rounded-lg border border-brand-card-border bg-brand-surface">
+    <div class="flex items-center gap-2.5 border-b border-brand-hairline px-4">
+      <svg class="h-[18px] w-[18px] shrink-0 text-brand-text-subtle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" />
+      </svg>
+      <label for="directory-search" class="sr-only">{t('search.label')}</label>
+      <input
+        type="search"
+        id="directory-search"
+        placeholder={t('search.placeholder')}
+        autocomplete="off"
+        aria-describedby="directory-search-hint"
+        class="min-w-0 flex-1 bg-transparent py-3.5 text-[15px] text-brand-text placeholder:text-brand-text-subtle focus:outline-none"
+      />
+      <p id="directory-search-hint" class="sr-only">{t('search.hint')}</p>
+      <button
+        type="button"
+        id="clear-search"
+        hidden
+        class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-brand-text-subtle transition-colors hover:bg-brand-surface-sunken hover:text-brand-text"
+        aria-label={t('search.clear')}
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="flex flex-col gap-3 p-4">
+      <!-- Categorías -->
+      <div class="flex items-center gap-3">
+        <span id="filter-category-label" class="eyebrow hidden w-20 shrink-0 text-brand-text-subtle sm:block">{t('filters.category')}</span>
+        <div
+          class="scrollbar-none -mx-1 flex flex-1 gap-1.5 overflow-x-auto px-1 py-0.5"
+          id="category-filters"
+          role="group"
+          aria-labelledby="filter-category-label"
+        >
+          <button type="button" class="chip shrink-0" data-category="todos" aria-pressed="true">{t('filters.all')}</button>
+          {usedCategories.map((cat) => (
+            <button type="button" class="chip shrink-0" data-category={cat.slug} aria-pressed="false">
+              <span class="h-1.5 w-1.5 rounded-full" style={`background:${cat.tone}`} aria-hidden="true"></span>
+              {cat.short[lang]}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Plataformas -->
+      <div class="flex items-center gap-3">
+        <span id="filter-platform-label" class="eyebrow hidden w-20 shrink-0 text-brand-text-subtle sm:block">{t('filters.platform')}</span>
+        <div
+          class="scrollbar-none -mx-1 flex flex-1 gap-1.5 overflow-x-auto px-1 py-0.5"
+          id="platform-filters"
+          role="group"
+          aria-labelledby="filter-platform-label"
+        >
+          <button type="button" class="chip shrink-0" data-platform="todos" aria-pressed="true">{t('filters.any')}</button>
+          {usedPlatforms.map((platform) => (
+            <button type="button" class="chip shrink-0" data-platform={platform} aria-pressed="false">
+              {PLATFORM_SHORT[platform]}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <button
+        type="button"
+        id="reset-filters"
+        hidden
+        class="self-start rounded-md px-1 py-1 text-[13px] font-medium text-brand-primary underline underline-offset-4 transition-colors hover:text-brand-primary-hover sm:ml-[calc(5rem+0.75rem)]"
+      >
+        {t('filters.reset')}
+      </button>
+    </div>
+  </div>
+
+  <!-- Anuncio para lectores de pantalla -->
+  <p
+    id="results-live"
+    class="sr-only"
+    role="status"
+    aria-live="polite"
+    data-template={`{n} ${t('directory.of')} ${tools.length} ${countLabel}`}
+  ></p>
+
+  <!-- Resultados -->
+  <div id="tools-grid" class="tools mt-6" data-view="list">
+    {tools.map((tool, index) => <ToolCard tool={tool} index={index + 1} />)}
+  </div>
+
+  <div
+    id="empty-state"
+    hidden
+    class="mt-6 rounded-lg border border-dashed border-brand-card-border bg-brand-surface-sunken px-6 py-14 text-center"
+  >
+    <h3 class="display text-[22px]">{t('empty.title')}</h3>
+    <p class="mx-auto mt-2 max-w-sm text-[14px] leading-6 text-brand-text-muted">{t('empty.body')}</p>
+    <button
+      type="button"
+      id="empty-reset"
+      class="mt-5 inline-flex min-h-11 items-center rounded-md bg-brand-primary px-4 text-[13px] font-semibold text-brand-on-primary transition-colors hover:bg-brand-primary-hover"
+    >
+      {t('filters.reset')}
+    </button>
+  </div>
+</section>
+
+<script>
+  const section = document.getElementById('directorio');
+  if (section) {
+    const input = document.getElementById('directory-search') as HTMLInputElement | null;
+    const clearBtn = document.getElementById('clear-search') as HTMLButtonElement | null;
+    const resetBtn = document.getElementById('reset-filters') as HTMLButtonElement | null;
+    const emptyReset = document.getElementById('empty-reset') as HTMLButtonElement | null;
+    const grid = document.getElementById('tools-grid');
+    const emptyState = document.getElementById('empty-state');
+    const counter = document.getElementById('results-count');
+    const live = document.getElementById('results-live');
+    const categoryBtns = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('#category-filters button')
+    );
+    const platformBtns = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('#platform-filters button')
+    );
+    const cards = Array.from(grid?.querySelectorAll<HTMLElement>('article') ?? []);
+
+    const state = { q: '', category: 'todos', platform: 'todos' };
+
+    const normalize = (value: string) =>
+      value
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(new RegExp('[\\u0300-\\u036f]', 'g'), '')
+        .trim();
+
+    const setPressed = (buttons: HTMLButtonElement[], attr: string, value: string) => {
+      buttons.forEach((btn) => {
+        btn.setAttribute('aria-pressed', String(btn.dataset[attr] === value));
+      });
+    };
+
+    const syncUrl = () => {
+      const url = new URL(window.location.href);
+      const set = (key: string, value: string, empty: string) => {
+        if (value && value !== empty) url.searchParams.set(key, value);
+        else url.searchParams.delete(key);
+      };
+      set('q', state.q, '');
+      set('cat', state.category, 'todos');
+      set('plat', state.platform, 'todos');
+      window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+    };
+
+    const apply = (updateUrl = true) => {
+      const query = normalize(state.q);
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const haystack = card.dataset.name ?? '';
+        const categories = (card.dataset.categories ?? '').split(',');
+        const platforms = (card.dataset.platforms ?? '').split(',');
+
+        const matches =
+          (!query || haystack.includes(query)) &&
+          (state.category === 'todos' || categories.includes(state.category)) &&
+          (state.platform === 'todos' || platforms.includes(state.platform));
+
+        card.hidden = !matches;
+        if (matches) visible++;
+      });
+
+      if (counter) counter.textContent = String(visible);
+      if (emptyState) emptyState.hidden = visible !== 0;
+      if (grid) grid.hidden = visible === 0;
+
+      const hasFilters = state.q !== '' || state.category !== 'todos' || state.platform !== 'todos';
+      if (resetBtn) resetBtn.hidden = !hasFilters;
+      if (clearBtn) clearBtn.hidden = state.q === '';
+      if (live && hasFilters) {
+        const template = live.dataset.template ?? '{n}';
+        live.textContent = template.replace('{n}', String(visible));
+      }
+
+      if (updateUrl) syncUrl();
+    };
+
+    // Estado inicial desde la URL (enlaces compartibles).
+    const params = new URLSearchParams(window.location.search);
+    state.q = params.get('q') ?? '';
+    state.category = params.get('cat') ?? 'todos';
+    state.platform = params.get('plat') ?? 'todos';
+    if (input) input.value = state.q;
+    setPressed(categoryBtns, 'category', state.category);
+    setPressed(platformBtns, 'platform', state.platform);
+    apply(false);
+
+    input?.addEventListener('input', () => {
+      state.q = input.value;
+      apply();
+    });
+
+    input?.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        state.q = '';
+        input.value = '';
+        apply();
+      }
+    });
+
+    clearBtn?.addEventListener('click', () => {
+      state.q = '';
+      if (input) {
+        input.value = '';
+        input.focus();
+      }
+      apply();
+    });
+
+    categoryBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.category = btn.dataset.category ?? 'todos';
+        setPressed(categoryBtns, 'category', state.category);
+        apply();
+      });
+    });
+
+    platformBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.platform = btn.dataset.platform ?? 'todos';
+        setPressed(platformBtns, 'platform', state.platform);
+        apply();
+      });
+    });
+
+    const resetAll = () => {
+      state.q = '';
+      state.category = 'todos';
+      state.platform = 'todos';
+      if (input) input.value = '';
+      setPressed(categoryBtns, 'category', 'todos');
+      setPressed(platformBtns, 'platform', 'todos');
+      apply();
+      input?.focus();
+    };
+
+    resetBtn?.addEventListener('click', resetAll);
+    emptyReset?.addEventListener('click', resetAll);
+
+    // --- Conmutador de vista (registro / fichas) ---
+    // Cambia un atributo del contenedor: mismo DOM, otro layout.
+    const viewBtns = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('#view-switch button')
+    );
+
+    const setView = (view: string, persist = true) => {
+      const next = view === 'grid' ? 'grid' : 'list';
+      grid?.setAttribute('data-view', next);
+      viewBtns.forEach((btn) => {
+        btn.setAttribute('aria-pressed', String(btn.dataset.view === next));
+      });
+      if (persist) {
+        try {
+          localStorage.setItem('directory-view', next);
+        } catch (error) {
+          /* sin persistencia disponible */
+        }
+      }
+    };
+
+    let storedView: string | null = null;
+    try {
+      storedView = localStorage.getItem('directory-view');
+    } catch (error) {
+      /* sin acceso a localStorage */
+    }
+    if (storedView) setView(storedView, false);
+
+    viewBtns.forEach((btn) => {
+      btn.addEventListener('click', () => setView(btn.dataset.view ?? 'list'));
+    });
+  }
+</script>

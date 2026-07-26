@@ -182,7 +182,7 @@ No agregar capturas o logos oficiales sin revisar condiciones de uso de marca. S
 ## Checklist Para Nuevas Fichas
 
 1. El usuario entiende para que sirve la herramienta antes del primer scroll.
-2. El CTA primario lleva a `/ir/` y explica destino oficial.
+2. El CTA primario lleva a `/r/` y explica destino oficial.
 3. El selector de plataforma no mezcla web app con instaladores sin aclaracion.
 4. Hay advertencias especificas si existen riesgos comunes.
 5. Hay contenido editorial suficiente para evitar una pagina delgada.

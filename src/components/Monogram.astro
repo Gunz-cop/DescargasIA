@@ -1,0 +1,26 @@
+---
+// src/components/Monogram.astro
+// Identificador editorial propio (no es el logo de la marca).
+// El color se pasa como una única variable CSS `--tone`; global.css deriva
+// fondo, borde y texto con color-mix, por lo que funciona en ambos temas.
+interface Props {
+  initials: string;
+  tone: string;
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+
+const { initials, tone, size = 'md', class: className = '' } = Astro.props;
+
+const sizes = {
+  sm: 'h-9 w-9 rounded-[8px] text-[13px]',
+  md: 'h-12 w-12 rounded-[11px] text-[16px]',
+  lg: 'h-16 w-16 rounded-[14px] text-[22px] sm:h-20 sm:w-20 sm:text-[28px]'
+};
+---
+
+<span
+  class={`monogram inline-flex shrink-0 items-center justify-center ${sizes[size]} ${className}`}
+  style={`--tone: ${tone}`}
+  aria-hidden="true"
+>{initials}</span>

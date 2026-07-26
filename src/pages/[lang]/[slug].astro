@@ -1,10 +1,19 @@
 ---
 // src/pages/[lang]/[slug].astro
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Badge from '../../components/Badge.astro';
+import Monogram from '../../components/Monogram.astro';
 import { getTranslatedTools, getTranslatedTool } from '../../utils/tools';
 import { useTranslations, languages } from '../../i18n/ui';
+import {
+  formatDate,
+  getCategoryLabel,
+  getCategory,
+  getDomain,
+  getInitials,
+  getToolTone,
+  PLATFORM_ORDER,
+  type Lang
+} from '../../utils/brand';
 
 export async function getStaticPaths() {
   const locales = Object.keys(languages);
@@ -23,69 +32,62 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { tool, lang } = Astro.props as { tool: any; lang: 'es' | 'sv' | 'it' };
+const { tool, lang } = Astro.props as { tool: any; lang: Lang };
 const t = useTranslations(lang);
 
 const allTools = await getTranslatedTools(lang);
 const toolsBySlug = new Map(allTools.map((entry) => [entry.slug, entry]));
 
 const pricingLabels = {
-  free: { label: t('info.pricing.free'), variant: 'success' as const },
-  freemium: { label: t('info.pricing.freemium'), variant: 'primary' as const },
-  paid: { label: t('info.pricing.paid'), variant: 'danger' as const },
-  enterprise: { label: t('info.pricing.enterprise'), variant: 'neutral' as const },
-  unknown: { label: t('info.pricing.unknown'), variant: 'neutral' as const }
+  free: t('info.pricing.free'),
+  freemium: t('info.pricing.freemium'),
+  paid: t('info.pricing.paid'),
+  enterprise: t('info.pricing.enterprise'),
+  unknown: t('info.pricing.unknown')
 };
-const pricing = pricingLabels[tool.pricingModel] || pricingLabels.unknown;
+const pricingLabel = pricingLabels[tool.pricingModel as keyof typeof pricingLabels] ?? pricingLabels.unknown;
 
-const spanishSupportLabels = {
-  yes: { label: t('info.spanish.yes'), variant: 'success' as const },
-  partial: { label: t('info.spanish.partial'), variant: 'warning' as const },
-  no: { label: t('info.spanish.no'), variant: 'danger' as const },
-  unknown: { label: t('info.spanish.unknown'), variant: 'neutral' as const }
-};
-const spanish = spanishSupportLabels[tool.spanishSupport as 'yes' | 'partial' | 'no' | 'unknown'] || spanishSupportLabels.unknown;
+const languageSupport = {
+  es: tool.spanishSupport,
+  sv: tool.swedishSupport,
+  it: tool.italianSupport
+}[lang];
 
-const swedishSupportLabels = {
-  yes: { label: t('info.swedish.yes'), variant: 'success' as const },
-  partial: { label: t('info.swedish.partial'), variant: 'warning' as const },
-  no: { label: t('info.swedish.no'), variant: 'danger' as const },
-  unknown: { label: t('info.swedish.unknown'), variant: 'neutral' as const }
-};
-const swedish = swedishSupportLabels[tool.swedishSupport as 'yes' | 'partial' | 'no' | 'unknown'] || swedishSupportLabels.unknown;
+const languageLabels = {
+  es: {
+    yes: t('info.spanish.yes'),
+    partial: t('info.spanish.partial'),
+    no: t('info.spanish.no'),
+    unknown: t('info.spanish.unknown')
+  },
+  sv: {
+    yes: t('info.swedish.yes'),
+    partial: t('info.swedish.partial'),
+    no: t('info.swedish.no'),
+    unknown: t('info.swedish.unknown')
+  },
+  it: {
+    yes: t('info.italian.yes'),
+    partial: t('info.italian.partial'),
+    no: t('info.italian.no'),
+    unknown: t('info.italian.unknown')
+  }
+}[lang];
 
-const italianSupportLabels = {
-  yes: { label: t('info.italian.yes'), variant: 'success' as const },
-  partial: { label: t('info.italian.partial'), variant: 'warning' as const },
-  no: { label: t('info.italian.no'), variant: 'danger' as const },
-  unknown: { label: t('info.italian.unknown'), variant: 'neutral' as const }
-};
-const italian = italianSupportLabels[tool.italianSupport as 'yes' | 'partial' | 'no' | 'unknown'] || italianSupportLabels.unknown;
+const languageLabel = languageLabels[(languageSupport as keyof typeof languageLabels) ?? 'unknown'] ?? languageLabels.unknown;
 
 const trustLabels = {
-  official: { label: t('info.trust.official'), variant: 'success' as const },
-  verified: { label: t('info.trust.verified'), variant: 'secondary' as const },
-  'pending-review': { label: t('info.trust.pending-review'), variant: 'warning' as const }
+  official: t('info.trust.official'),
+  verified: t('info.trust.verified'),
+  'pending-review': t('info.trust.pending-review')
 };
-const trust = trustLabels[tool.trustLevel as 'official' | 'verified' | 'pending-review'] || { label: t('info.trust.pending-review'), variant: 'neutral' as const };
+const trustLabel = trustLabels[tool.trustLevel as keyof typeof trustLabels] ?? trustLabels['pending-review'];
 
 const accountLabel = tool.requiresAccount === true
   ? t('info.account.required')
   : tool.requiresAccount === false
     ? t('info.account.optional')
     : t('info.account.unknown');
-
-const formatReviewDate = (dateStr: string) => {
-  try {
-    return new Date(dateStr).toLocaleDateString(lang === 'es' ? 'es-ES' : lang === 'sv' ? 'sv-SE' : 'it-IT', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    });
-  } catch {
-    return dateStr;
-  }
-};
 
 const platformNames: Record<string, string> = {
   web: t('platform.web'),
@@ -116,20 +118,19 @@ const platformBtnLabels: Record<string, string> = {
   'package-manager': t('platform.btn.package-manager')
 };
 
-const platforms = Object.entries(tool.platforms)
-  .filter(([, details]) => Boolean(details))
-  .map(([platform, details]) => {
-    const d = details as any;
+const platforms = PLATFORM_ORDER
+  .filter((key) => Boolean(tool.platforms[key]))
+  .map((key) => {
+    const details = tool.platforms[key] as any;
     return {
-      id: platform,
-      name: platformNames[platform] ?? platform,
-      url: d.url,
-      type: d.type,
-      isOfficial: d.isOfficial,
-      lastChecked: d.lastChecked,
-      typeLabel: platformTypeLabels[d.type] ?? d.type,
-      btnLabel: platformBtnLabels[d.type] ?? t('card.cta'),
-      host: new URL(d.url).hostname.replace(/^www\./, '')
+      id: key,
+      name: platformNames[key] ?? key,
+      url: details.url,
+      type: details.type,
+      lastChecked: details.lastChecked,
+      typeLabel: platformTypeLabels[details.type] ?? details.type,
+      btnLabel: platformBtnLabels[details.type] ?? t('card.cta'),
+      host: getDomain(details.url)
     };
   });
 
@@ -138,121 +139,98 @@ const primaryCta = primaryPlatform
   ? `/r/?t=${tool.slug}&p=${primaryPlatform.id}&l=${lang}`
   : `/r/?t=${tool.slug}&l=${lang}`;
 
-let officialDomain = 'fuente oficial';
-try {
-  officialDomain = new URL(tool.officialWebsite).hostname.replace(/^www\./, '');
-} catch {
-  officialDomain = tool.officialWebsite;
-}
+const officialDomain = getDomain(tool.officialWebsite);
+const tone = getToolTone(tool.slug, tool.categories);
+const initials = getInitials(tool.name, tool.initials);
+const primaryCategorySlug = tool.categories[0] ?? '';
+const primaryCategory = getCategory(primaryCategorySlug);
+const categoryLabel = getCategoryLabel(primaryCategorySlug, lang);
+const reviewDateLong = formatDate(tool.lastReviewed, lang, true);
+const reviewDateShort = formatDate(tool.lastReviewed, lang);
 
 const bestFor = tool.bestFor.length > 0
   ? tool.bestFor
-  : tool.tags.slice(0, 4).map((tag: string) => lang === 'sv' ? `Användare som söker efter ${tag}` : lang === 'it' ? `Utenti che cercano ${tag}` : `Usuarios que buscan ${tag.replaceAll('-', ' ')}`);
+  : tool.tags.slice(0, 4).map((tag: string) =>
+      lang === 'sv'
+        ? `Användare som söker efter ${tag}`
+        : lang === 'it'
+          ? `Utenti che cercano ${tag}`
+          : `Usuarios que buscan ${tag.replaceAll('-', ' ')}`
+    );
 
 const editorialSummary = tool.editorialSummary ?? tool.longDescription;
 const alternatives = tool.alternatives
   .map((slug: string) => toolsBySlug.get(slug))
   .filter(Boolean);
 
-const visualAccents: Record<string, { bg: string; fg: string; border: string }> = {
-  chatgpt: { bg: '#064e3b', fg: '#d1fae5', border: '#10b981' },
-  claude: { bg: '#431407', fg: '#ffedd5', border: '#fb923c' },
-  gemini: { bg: '#172554', fg: '#dbeafe', border: '#38bdf8' },
-  cursor: { bg: '#082f49', fg: '#e0f2fe', border: '#38bdf8' },
-  ollama: { bg: '#1c1917', fg: '#f5f5f4', border: '#d6d3d1' },
-  'lm-studio': { bg: '#2e1065', fg: '#ede9fe', border: '#8b5cf6' },
-  'stable-diffusion': { bg: '#4c0519', fg: '#ffe4e6', border: '#f43f5e' },
-  midjourney: { bg: '#312e81', fg: '#e0e7ff', border: '#818cf8' },
-  canva: { bg: '#164e63', fg: '#cffafe', border: '#22d3ee' },
-  'microsoft-copilot': { bg: '#172554', fg: '#dbeafe', border: '#3b82f6' },
-  perplexity: { bg: '#134e4a', fg: '#ccfbf1', border: '#2dd4bf' },
-  anythingllm: { bg: '#365314', fg: '#ecfccb', border: '#a3e635' },
-  jan: { bg: '#27272a', fg: '#f4f4f5', border: '#d4d4d8' },
-  elevenlabs: { bg: '#831843', fg: '#fce7f3', border: '#f472b6' },
-  runway: { bg: '#171717', fg: '#fafafa', border: '#d4d4d4' },
-  'luma-dream-machine': { bg: '#3b0764', fg: '#f3e8ff', border: '#a855f7' },
-  'github-copilot': { bg: '#0f172a', fg: '#e2e8f0', border: '#94a3b8' },
-  deepl: { bg: '#172554', fg: '#dbeafe', border: '#60a5fa' },
-  'gamma-app': { bg: '#701a75', fg: '#fae8ff', border: '#d946ef' },
-  gemma: { bg: '#78350f', fg: '#fef3c7', border: '#fbbf24' },
-  languagetool: { bg: '#064e3b', fg: '#d1fae5', border: '#34d399' },
-  phind: { bg: '#164e63', fg: '#cffafe', border: '#22d3ee' },
-  suno: { bg: '#713f12', fg: '#fef9c3', border: '#facc15' }
-};
-const visualAccent = visualAccents[tool.slug] ?? { bg: '#022c22', fg: '#ecfdf5', border: '#10b981' };
-const toolInitials = tool.initials ?? tool.name
-  .split(/\s+/)
-  .filter(Boolean)
-  .slice(0, 2)
-  .map((part: string) => part[0])
-  .join('')
-  .toUpperCase();
-const generatedVisualSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="Identificador editorial de ${tool.name}"><rect width="960" height="540" rx="40" fill="${visualAccent.bg}"/><rect x="28" y="28" width="904" height="484" rx="30" fill="none" stroke="${visualAccent.border}" stroke-width="3" opacity=".55"/><circle cx="480" cy="250" r="112" fill="${visualAccent.border}" opacity=".12"/><text x="480" y="282" text-anchor="middle" font-family="Arial, sans-serif" font-size="96" font-weight="800" fill="${visualAccent.fg}">${toolInitials}</text><text x="480" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="${visualAccent.fg}" opacity=".82">${tool.name} oficial</text></svg>`;
-const generatedVisualUrl = `data:image/svg+xml,${encodeURIComponent(generatedVisualSvg)}`;
-const toolImage = tool.screenshotUrl ?? generatedVisualUrl;
+// Sólo se declara imagen cuando existe una captura oficial aprobada.
+// (Antes se emitía un SVG generado como data-URI: ni los buscadores ni las
+// redes sociales pueden recuperarlo, así que sólo añadía peso al HTML.)
+const toolImage: string | undefined = tool.screenshotUrl ?? undefined;
 
 const schemaApp = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": tool.name,
-  "description": tool.shortDescription,
-  "applicationCategory": "OtherApplication",
-  "applicationSubCategory": "Artificial Intelligence",
-  "operatingSystem": platforms.map((platform) => platform.name).join(', '),
-  "url": Astro.url.href,
-  "dateModified": tool.lastReviewed,
-  "image": toolImage,
-  "sameAs": tool.officialSources,
-  "offers": {
-    "@type": "Offer",
-    "price": tool.pricingModel === 'free' ? '0' : undefined,
-    "priceCurrency": tool.pricingModel === 'free' ? 'USD' : undefined
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: tool.name,
+  description: tool.shortDescription,
+  applicationCategory: 'OtherApplication',
+  applicationSubCategory: 'Artificial Intelligence',
+  operatingSystem: platforms.map((platform) => platform.name).join(', '),
+  url: Astro.url.href,
+  dateModified: tool.lastReviewed,
+  ...(toolImage ? { image: toolImage } : {}),
+  sameAs: tool.officialSources,
+  offers: {
+    '@type': 'Offer',
+    price: tool.pricingModel === 'free' ? '0' : undefined,
+    priceCurrency: tool.pricingModel === 'free' ? 'USD' : undefined
   }
 };
 
 const schemaBreadcrumb = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
     {
-      "@type": "ListItem",
-      "position": 1,
-      "name": lang === 'sv' ? 'Hem' : lang === 'it' ? 'Home' : 'Inicio',
-      "item": `${Astro.url.origin}/${lang}`
+      '@type': 'ListItem',
+      position: 1,
+      name: t('nav.home'),
+      item: `${Astro.url.origin}/${lang}`
     },
+    ...(primaryCategory
+      ? [{
+          '@type': 'ListItem',
+          position: 2,
+          name: categoryLabel,
+          item: `${Astro.url.origin}/${lang}/categoria/${primaryCategory.slug}`
+        }]
+      : []),
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": tool.name,
-      "item": Astro.url.href
+      '@type': 'ListItem',
+      position: primaryCategory ? 3 : 2,
+      name: tool.name,
+      item: Astro.url.href
     }
   ]
 };
 
 const schemaFaq = tool.faq.length > 0 ? {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": tool.faq.map((item: { question: string; answer: string }) => ({
-    "@type": "Question",
-    "name": item.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": item.answer
-    }
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: tool.faq.map((item: { question: string; answer: string }) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer }
   }))
 } : null;
 
 const jsonLd = schemaFaq ? [schemaApp, schemaBreadcrumb, schemaFaq] : [schemaApp, schemaBreadcrumb];
 
-// Definición de alternates hreflang dinámicos
-const alternates = Object.keys(languages).map(async (l) => {
-  const tExist = await getTranslatedTool(l, tool.slug);
-  if (tExist) {
-    return { lang: l, url: `${Astro.url.origin}/${l}/${tool.slug}` };
-  }
-  return null;
+const alternatePromises = Object.keys(languages).map(async (l) => {
+  const exists = await getTranslatedTool(l, tool.slug);
+  return exists ? { lang: l, url: `${Astro.url.origin}/${l}/${tool.slug}` } : null;
 });
-const resolvedAlternates = (await Promise.all(alternates)).filter(Boolean) as Array<{ lang: string; url: string }>;
+const resolvedAlternates = (await Promise.all(alternatePromises)).filter(Boolean) as Array<{ lang: string; url: string }>;
 
 const docTitle = lang === 'sv'
   ? `Ladda ner ${tool.name} officiell och säker | FuenteAI`
@@ -265,6 +243,23 @@ const docDesc = lang === 'sv'
   : lang === 'it'
     ? `Trova i canali ufficiali per ${tool.name}. Controlla compatibilità, prezzi, requisiti dell'account e recensioni.`
     : `Ficha editorial para encontrar los canales oficiales de ${tool.name}, revisar compatibilidad, advertencias de seguridad y alternativas similares.`;
+
+const h1 = lang === 'sv'
+  ? `Ladda ner ${tool.name} officiell`
+  : lang === 'it'
+    ? `Scaricare ${tool.name} ufficiale`
+    : `Descargar ${tool.name} oficial`;
+
+const quickFacts = [
+  { label: t('tool.price'), value: pricingLabel },
+  { label: t('tool.account'), value: accountLabel },
+  { label: t('tool.language'), value: languageLabel },
+  { label: t('tool.trust'), value: trustLabel },
+  { label: t('tool.platforms.count'), value: String(platforms.length) }
+];
+
+const slugify = (value: string) =>
+  value.toLowerCase().replace(new RegExp('[^a-z0-9]+', 'g'), '-').replace(new RegExp('(^-|-$)', 'g'), '');
 ---
 
 <BaseLayout
@@ -273,152 +268,189 @@ const docDesc = lang === 'sv'
   jsonLd={jsonLd}
   lang={lang}
   alternates={resolvedAlternates}
+  ogImage={toolImage}
 >
-  <nav class="mb-6 flex items-center gap-2 text-xs font-semibold text-brand-text-muted" aria-label="Ruta de navegación">
-    <a href={lang === 'es' ? '/' : `/${lang}`} class="hover:text-brand-text transition-colors">{lang === 'sv' ? 'Hem' : lang === 'it' ? 'Home' : 'Inicio'}</a>
-    <span class="text-brand-card-border" aria-hidden="true">/</span>
-    <span class="text-brand-text">{tool.name}</span>
+  <!-- Migas -->
+  <nav class="flex flex-wrap items-center gap-2 pt-6 text-[13px] text-brand-text-muted" aria-label="Breadcrumb">
+    <a href={`/${lang}`} class="transition-colors hover:text-brand-text">{t('nav.home')}</a>
+    <span class="text-brand-text-subtle" aria-hidden="true">/</span>
+    {primaryCategory && (
+      <>
+        <a href={`/${lang}/categoria/${primaryCategory.slug}`} class="transition-colors hover:text-brand-text">{categoryLabel}</a>
+        <span class="text-brand-text-subtle" aria-hidden="true">/</span>
+      </>
+    )}
+    <span class="text-brand-text" aria-current="page">{tool.name}</span>
   </nav>
 
-  <header class="relative overflow-hidden rounded-2xl border border-brand-card-border bg-brand-card-bg p-5 sm:p-7 lg:p-8">
-    <div class="absolute inset-x-0 top-0 h-1 bg-brand-primary" aria-hidden="true"></div>
-    <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
-      <div>
-        <div class="mb-4 flex flex-wrap gap-2">
-          <Badge variant={trust.variant}>{trust.label}</Badge>
-          <Badge variant={pricing.variant}>{pricing.label}</Badge>
-          {lang === 'es' && <Badge variant={spanish.variant}>{spanish.label}</Badge>}
-          {lang === 'sv' && <Badge variant={swedish.variant}>{swedish.label}</Badge>}
-          {lang === 'it' && <Badge variant={italian.variant}>{italian.label}</Badge>}
-        </div>
-        <h1 class="max-w-3xl text-4xl font-black leading-[1.02] tracking-tight text-brand-text font-['Outfit'] sm:text-5xl lg:text-6xl">
-          {lang === 'sv' ? `Ladda ner ${tool.name} officiell` : lang === 'it' ? `Scaricare ${tool.name} ufficiale` : `Descargar ${tool.name} oficial`}
-        </h1>
-        <p class="mt-4 max-w-2xl text-base leading-relaxed text-brand-text-muted sm:text-lg">
-          {tool.shortDescription}
-        </p>
-        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-          <a
-            href={primaryCta}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex min-h-12 items-center justify-center rounded-lg border border-brand-primary bg-brand-primary px-5 py-3 text-sm font-black text-white transition-colors hover:bg-brand-primary-hover"
-          >
-            {lang === 'sv' ? 'Gå till officiell nedladdning' : lang === 'it' ? 'Vai al download ufficiale' : 'Ir a la descarga oficial'}
-          </a>
-          <a
-            href="#compatibilidad"
-            class="inline-flex min-h-12 items-center justify-center rounded-lg border border-brand-card-border bg-brand-bg/35 px-5 py-3 text-sm font-bold text-brand-text transition-colors hover:border-brand-primary/40 hover:text-brand-primary"
-          >
-            {lang === 'sv' ? 'Se plattformar' : lang === 'it' ? 'Vedi piattaforme' : 'Ver plataformas'}
-          </a>
-        </div>
-      </div>
-
-      <aside class="overflow-hidden rounded-xl border border-brand-success-border bg-brand-success-bg" aria-label="Resumen de confianza">
-        <img
-          src={toolImage}
-          alt={tool.screenshotUrl ? `Captura de pantalla oficial de ${tool.name}` : `Identificador visual de ${tool.name}`}
-          class="aspect-video w-full border-b border-brand-success-border object-cover"
-          loading="eager"
-        />
-        <div class="p-4">
-          <p class="text-[11px] font-black uppercase text-brand-success">{lang === 'sv' ? 'Bekräftad domän' : lang === 'it' ? 'Dominio verificato' : 'Origen verificado'}</p>
-          <p class="mt-2 font-mono text-lg font-black text-brand-text">{officialDomain}</p>
-          <dl class="mt-4 grid grid-cols-2 gap-3 text-xs">
-            <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
-              <dt class="font-bold uppercase text-brand-text-muted">{lang === 'sv' ? 'Plattformar' : lang === 'it' ? 'Piattaforme' : 'Plataformas'}</dt>
-              <dd class="mt-1 font-black text-brand-text">{platforms.length}</dd>
-            </div>
-            <div class="rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">
-              <dt class="font-bold uppercase text-brand-text-muted">{lang === 'sv' ? 'Konto' : lang === 'it' ? 'Account' : 'Cuenta'}</dt>
-              <dd class="mt-1 font-black text-brand-text">{tool.requiresAccount === true ? (lang === 'sv' ? 'Ja' : lang === 'it' ? 'Sì' : 'Sí') : tool.requiresAccount === false ? 'No' : (lang === 'sv' ? 'Ej bekräftat' : lang === 'it' ? 'Non confermato' : 'Por confirmar')}</dd>
-            </div>
-          </dl>
-          <p class="mt-4 text-xs leading-relaxed text-brand-text-muted">
-            {t('info.reviewed-on')}: <strong class="text-brand-text">{formatReviewDate(tool.lastReviewed)}</strong>.
+  <!-- CABECERA DE FICHA -->
+  <header class="mt-5 border-b border-brand-hairline pb-10">
+    <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start">
+      <div class="min-w-0">
+        <div class="flex items-center gap-4">
+          <Monogram initials={initials} tone={tone} size="lg" />
+          <p class="flex flex-col gap-1 text-[13px] text-brand-text-muted">
+            <span class="inline-flex w-fit items-center gap-1.5 rounded-md border border-brand-success-border bg-brand-success-bg px-2 py-0.5 font-medium text-brand-success">
+              <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
+              </svg>
+              {trustLabel}
+            </span>
+            <span>{categoryLabel} · {pricingLabel}</span>
           </p>
         </div>
-      </aside>
+
+        <h1 class="display mt-5 max-w-[16ch] text-[38px] sm:text-[52px]">{h1}</h1>
+
+        <p class="mt-5 max-w-2xl border-l-2 border-brand-primary pl-4 text-[16px] leading-7 text-brand-text-muted">
+          {tool.shortDescription}
+        </p>
+      </div>
+
+      <!-- Sello de verificación: el elemento firma de la ficha.
+           Declara lo que comprobamos nosotros, no un aval de la marca. -->
+      <div class="flex shrink-0 justify-start lg:justify-end lg:pt-2">
+        <p class="stamp">
+          <span class="stamp__label block">{t('tool.verified-origin')}</span>
+          <span class="stamp__value mt-1.5 block">{officialDomain}</span>
+          <span class="stamp__meta mt-1.5 block">
+            {reviewDateShort ? `rev. ${reviewDateShort}` : `${platforms.length} ${t('tool.platforms.count')}`}
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-9 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-end">
+      <dl class="grid gap-px overflow-hidden rounded-lg border border-brand-card-border bg-brand-card-border sm:grid-cols-3">
+        <div class="bg-brand-surface px-4 py-3.5">
+          <dt class="eyebrow text-brand-text-subtle">{t('tool.platforms.count')}</dt>
+          <dd class="mt-1.5 text-[14px] font-semibold text-brand-text">{platforms.length}</dd>
+        </div>
+        <div class="bg-brand-surface px-4 py-3.5">
+          <dt class="eyebrow text-brand-text-subtle">{t('tool.account')}</dt>
+          <dd class="mt-1.5 text-[14px] font-semibold text-brand-text">{accountLabel}</dd>
+        </div>
+        <div class="bg-brand-surface px-4 py-3.5">
+          <dt class="eyebrow text-brand-text-subtle">{t('info.reviewed-on')}</dt>
+          <dd class="mt-1.5 text-[14px] font-semibold text-brand-text">{reviewDateLong ?? '—'}</dd>
+        </div>
+      </dl>
+
+      <div class="flex flex-col gap-2.5 sm:flex-row lg:justify-end">
+        <a
+          href={primaryCta}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-brand-primary px-5 text-[14px] font-semibold text-brand-on-primary transition-colors hover:bg-brand-primary-hover"
+        >
+          {t('tool.cta.primary')}
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0h-7m7 0v7" />
+          </svg>
+        </a>
+        <a
+          href="#compatibilidad"
+          class="inline-flex min-h-12 items-center justify-center rounded-md border border-brand-card-border bg-brand-surface px-5 text-[14px] font-medium text-brand-text transition-colors hover:border-brand-text/30 hover:bg-brand-surface-sunken"
+        >
+          {t('tool.cta.secondary')}
+        </a>
+      </div>
     </div>
   </header>
 
-  <div class="mt-8 grid gap-8 lg:grid-cols-[1fr_22rem]">
-    <main class="flex flex-col gap-8">
-      <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5" aria-labelledby="mejor-para-title">
-        <h2 id="mejor-para-title" class="text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
+  <div class="mt-10 grid gap-10 lg:grid-cols-[1fr_19rem] lg:gap-12">
+    <div class="flex min-w-0 flex-col gap-12">
+      <!-- Canales oficiales -->
+      <section id="compatibilidad" class="scroll-mt-24" aria-labelledby="descargas-title">
+        <div class="mb-5 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="eyebrow text-brand-primary">{t('tool.platforms.eyebrow')}</p>
+            <h2 id="descargas-title" class="display mt-1.5 text-[30px]">{t('tool.platforms.title')}</h2>
+          </div>
+          <p class="text-[13px] text-brand-text-subtle">{t('tool.platforms.note')}</p>
+        </div>
+
+        <ul class="grid gap-px overflow-hidden rounded-lg border border-brand-card-border bg-brand-card-border" role="list">
+          {platforms.map(({ id, name, typeLabel, host, lastChecked, btnLabel }) => (
+            <li class="flex flex-col gap-3 bg-brand-surface p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+              <div class="min-w-0">
+                <h3 class="text-[15px] font-semibold text-brand-text">{name}</h3>
+                <p class="mt-0.5 text-[13px] text-brand-text-muted">{typeLabel}</p>
+                <p class="data-tag mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-brand-text-subtle">
+                  <span class="text-brand-success">{host}</span>
+                  {lastChecked && formatDate(lastChecked, lang) && (
+                    <>
+                      <span aria-hidden="true">·</span>
+                      <span>rev. {formatDate(lastChecked, lang)}</span>
+                    </>
+                  )}
+                </p>
+              </div>
+              <a
+                href={`/r/?t=${tool.slug}&p=${id}&l=${lang}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex min-h-11 shrink-0 items-center justify-center gap-1.5 rounded-md border border-brand-primary/40 bg-brand-primary-soft px-4 text-[13px] font-semibold text-brand-primary transition-colors hover:bg-brand-primary hover:text-brand-on-primary"
+              >
+                {btnLabel}
+                <span class="sr-only">— {name}</span>
+                <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0h-7m7 0v7" />
+                </svg>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- Para qué sirve mejor -->
+      <section aria-labelledby="mejor-para-title">
+        <h2 id="mejor-para-title" class="display text-[30px]">
           {t('section.best-for')} {tool.name}
         </h2>
-        <div class="mt-4 grid gap-3 sm:grid-cols-2">
+        <ul class="mt-5 grid gap-3 sm:grid-cols-2" role="list">
           {bestFor.map((item: string) => (
-            <div class="rounded-xl border border-brand-card-border bg-brand-bg/35 p-4">
-              <p class="text-sm font-bold leading-relaxed text-brand-text">{item}</p>
-            </div>
+            <li class="flex gap-2.5 rounded-lg border border-brand-card-border bg-brand-surface p-4">
+              <svg class="mt-0.5 h-4 w-4 shrink-0 text-brand-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
+              </svg>
+              <span class="text-[14px] leading-6 text-brand-text">{item}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
-      <section id="compatibilidad" class="scroll-mt-20" aria-labelledby="descargas-title">
-        <div class="mb-4 flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p class="text-[11px] font-black uppercase text-brand-primary">{lang === 'sv' ? 'Officiella kanaler' : lang === 'it' ? 'Canali ufficiali' : 'Canales oficiales'}</p>
-            <h2 id="descargas-title" class="text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
-              {lang === 'sv' ? 'Välj din plattform' : lang === 'it' ? 'Scegli la tua piattaforma' : 'Elige tu plataforma'}
-            </h2>
-          </div>
-          <p class="text-xs text-brand-text-muted">{lang === 'sv' ? 'Vi tillhandahåller inga egna installationsfiler.' : lang === 'it' ? 'Non ospitiamo installer o mirror.' : 'No alojamos instaladores ni mirrors.'}</p>
-        </div>
-
-        <div class="grid gap-3">
-          {platforms.map(({ id, name, url, type, typeLabel, host, lastChecked, btnLabel }) => (
-            <article class="rounded-xl border border-brand-card-border bg-brand-card-bg p-4 transition-colors hover:border-brand-primary/35">
-              <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <h3 class="text-lg font-black text-brand-text">{name}</h3>
-                  <p class="mt-1 text-sm leading-relaxed text-brand-text-muted">{typeLabel}</p>
-                  <div class="mt-3 flex flex-wrap gap-2 text-[10px] font-bold uppercase">
-                    <span class="rounded border border-brand-success-border bg-brand-success-bg px-2 py-1 text-brand-success">{host}</span>
-                    {lastChecked && (
-                      <span class="rounded border border-brand-card-border bg-brand-bg/35 px-2 py-1 text-brand-text-muted">
-                        rev. {formatReviewDate(lastChecked)}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <a
-                  href={`/r/?t=${tool.slug}&p=${id}&l=${lang}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-lg bg-brand-primary px-4 py-2 text-xs font-black text-white transition-colors hover:bg-brand-primary-hover"
-                >
-                  {btnLabel}
-                </a>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5" aria-labelledby="resumen-title">
-        <h2 id="resumen-title" class="text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
-          {lang === 'sv' ? `Vad du bör veta om ${tool.name}` : lang === 'it' ? `Cosa dovresti sapere prima di usare ${tool.name}` : `Qué debes saber antes de usar ${tool.name}`}
+      <!-- Resumen editorial -->
+      <section aria-labelledby="resumen-title">
+        <h2 id="resumen-title" class="display text-[30px]">
+          {lang === 'sv'
+            ? `Vad du bör veta om ${tool.name}`
+            : lang === 'it'
+              ? `Cosa dovresti sapere prima di usare ${tool.name}`
+              : `Qué debes saber antes de usar ${tool.name}`}
         </h2>
-        <p class="mt-4 text-sm leading-7 text-brand-text-muted">{editorialSummary}</p>
+        <p class="mt-4 max-w-[68ch] text-[15px] leading-7 text-brand-text-muted">{editorialSummary}</p>
       </section>
 
       {tool.editorialSections.length > 0 && (
-        <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5 sm:p-6" aria-labelledby="guia-title">
-          <p class="text-[11px] font-black uppercase text-brand-primary">{lang === 'sv' ? 'Redaktionell granskning' : lang === 'it' ? 'Guida editoriale' : 'Guía editorial'}</p>
-          <h2 id="guia-title" class="mt-1 text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
-            {lang === 'sv' ? `Guide till ${tool.name} utan spegelsajter` : lang === 'it' ? `Guida all'uso di ${tool.name} in sicurezza` : `Guía completa para usar ${tool.name} sin caer en descargas falsas`}
+        <section aria-labelledby="guia-title">
+          <p class="eyebrow text-brand-primary">
+            {lang === 'sv' ? 'Redaktionell granskning' : lang === 'it' ? 'Guida editoriale' : 'Guía editorial'}
+          </p>
+          <h2 id="guia-title" class="display mt-1.5 text-[30px]">
+            {lang === 'sv'
+              ? `Guide till ${tool.name} utan spegelsajter`
+              : lang === 'it'
+                ? `Guida all'uso di ${tool.name} in sicurezza`
+                : `Guía completa para usar ${tool.name} sin caer en descargas falsas`}
           </h2>
-          <div class="mt-5 space-y-6">
+          <div class="mt-6 flex flex-col gap-8">
             {tool.editorialSections.map((section: { heading: string; body: string }) => (
-              <section class="border-t border-brand-card-border pt-5" aria-labelledby={`${tool.slug}-${section.heading.toLowerCase().replaceAll(' ', '-')}`}>
-                <h3 id={`${tool.slug}-${section.heading.toLowerCase().replaceAll(' ', '-')}`} class="text-lg font-black tracking-tight text-brand-text font-['Outfit']">
+              <section aria-labelledby={`${tool.slug}-${slugify(section.heading)}`}>
+                <h3 id={`${tool.slug}-${slugify(section.heading)}`} class="display text-[22px]">
                   {section.heading}
                 </h3>
-                <div class="mt-3 space-y-3 text-sm leading-7 text-brand-text-muted">
+                <div class="mt-3 flex max-w-[68ch] flex-col gap-3 text-[15px] leading-7 text-brand-text-muted">
                   {section.body.split('\n\n').map((paragraph: string) => (
                     <p>{paragraph}</p>
                   ))}
@@ -430,105 +462,112 @@ const docDesc = lang === 'sv'
       )}
 
       {tool.safetyNotes.length > 0 && (
-        <section class="rounded-2xl border border-brand-warning-border bg-brand-warning-bg p-5" aria-labelledby="seguridad-title">
-          <p class="text-[11px] font-black uppercase text-brand-warning-text">{t('section.safety')}</p>
-          <h2 id="seguridad-title" class="mt-1 text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
-            {lang === 'sv' ? 'Undvik spegelsajter och skadliga filer' : lang === 'it' ? 'Evita cloni e falsi download' : 'Evita clones y descargas falsas'}
+        <section class="rounded-lg border border-brand-warning-border bg-brand-warning-bg p-5 sm:p-6" aria-labelledby="seguridad-title">
+          <p class="eyebrow text-brand-warning-text">{t('section.safety')}</p>
+          <h2 id="seguridad-title" class="display mt-1.5 text-[26px]">
+            {lang === 'sv'
+              ? 'Undvik spegelsajter och skadliga filer'
+              : lang === 'it'
+                ? 'Evita cloni e falsi download'
+                : 'Evita clones y descargas falsas'}
           </h2>
-          <ul class="mt-4 grid gap-3 text-sm leading-relaxed text-brand-warning-text">
+          <ul class="mt-4 flex flex-col gap-2.5" role="list">
             {tool.safetyNotes.map((note: string) => (
-              <li class="rounded-lg border border-brand-warning-border bg-brand-bg/20 p-3">{note}</li>
+              <li class="flex gap-2.5 text-[14px] leading-6 text-brand-text">
+                <svg class="mt-1 h-3.5 w-3.5 shrink-0 text-brand-warning-text" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2 1.5 21h21L12 2Zm0 6 .9 7h-1.8L12 8Zm0 9.6a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z" />
+                </svg>
+                {note}
+              </li>
             ))}
           </ul>
         </section>
       )}
 
       {tool.limitations.length > 0 && (
-        <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5" aria-labelledby="limitaciones-title">
-          <h2 id="limitaciones-title" class="text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
-            {t('section.limitations')}
-          </h2>
-          <ul class="mt-4 grid gap-3 text-sm leading-relaxed text-brand-text-muted">
+        <section aria-labelledby="limitaciones-title">
+          <h2 id="limitaciones-title" class="display text-[30px]">{t('section.limitations')}</h2>
+          <ul class="mt-5 flex flex-col gap-2.5" role="list">
             {tool.limitations.map((item: string) => (
-              <li class="rounded-lg border border-brand-card-border bg-brand-bg/35 p-3">{item}</li>
+              <li class="rounded-lg border border-brand-card-border bg-brand-surface p-4 text-[14px] leading-6 text-brand-text-muted">
+                {item}
+              </li>
             ))}
           </ul>
         </section>
       )}
 
       {tool.faq.length > 0 && (
-        <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5" aria-labelledby="faq-title">
-          <h2 id="faq-title" class="text-2xl font-black tracking-tight text-brand-text font-['Outfit']">
-            {t('section.faq')} {tool.name}
-          </h2>
-          <div class="mt-4 divide-y divide-brand-card-border">
+        <section aria-labelledby="faq-title">
+          <h2 id="faq-title" class="display text-[30px]">{t('section.faq')} {tool.name}</h2>
+          <div class="mt-5 overflow-hidden rounded-lg border border-brand-card-border">
             {tool.faq.map((item: { question: string; answer: string }) => (
-              <details class="group py-4">
-                <summary class="cursor-pointer list-none text-sm font-black text-brand-text">
+              <details class="group border-b border-brand-hairline bg-brand-surface last:border-b-0">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-4 text-[15px] font-semibold text-brand-text hover:bg-brand-surface-sunken">
                   {item.question}
+                  <svg class="details-marker h-4 w-4 shrink-0 text-brand-text-subtle" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                  </svg>
                 </summary>
-                <p class="mt-3 text-sm leading-7 text-brand-text-muted">{item.answer}</p>
+                <p class="px-4 pb-4 text-[14px] leading-7 text-brand-text-muted">{item.answer}</p>
               </details>
             ))}
           </div>
         </section>
       )}
-    </main>
+    </div>
 
-    <aside class="flex flex-col gap-6">
-      <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5" aria-labelledby="ficha-title">
-        <h2 id="ficha-title" class="text-lg font-black text-brand-text font-['Outfit']">{lang === 'sv' ? 'Snabbfakta' : lang === 'it' ? 'Scheda rapida' : 'Ficha rápida'}</h2>
-        <dl class="mt-4 grid gap-3 text-sm">
-          <div class="flex items-center justify-between gap-3 border-b border-brand-card-border pb-3">
-            <dt class="text-brand-text-muted">{lang === 'sv' ? 'Prismodell' : lang === 'it' ? 'Prezzo' : 'Precio'}</dt>
-            <dd class="font-bold text-brand-text">{pricing.label}</dd>
-          </div>
-          <div class="flex items-center justify-between gap-3 border-b border-brand-card-border pb-3">
-            <dt class="text-brand-text-muted">{lang === 'sv' ? 'Konto' : lang === 'it' ? 'Account' : 'Cuenta'}</dt>
-            <dd class="font-bold text-brand-text">{accountLabel}</dd>
-          </div>
-          <div class="flex items-center justify-between gap-3 border-b border-brand-card-border pb-3">
-            <dt class="text-brand-text-muted">{lang === 'sv' ? 'Svenska' : lang === 'it' ? 'Italiano' : 'Español'}</dt>
-            <dd class="font-bold text-brand-text">
-              {lang === 'sv' ? swedish.label : lang === 'it' ? italian.label : spanish.label}
-            </dd>
-          </div>
-          <div class="flex items-center justify-between gap-3">
-            <dt class="text-brand-text-muted">{lang === 'sv' ? 'Tillit' : lang === 'it' ? 'Fiducia' : 'Confianza'}</dt>
-            <dd class="font-bold text-brand-text">{trust.label}</dd>
-          </div>
+    <!-- Columna lateral -->
+    <aside class="flex flex-col gap-8 lg:sticky lg:top-24 lg:self-start">
+      <section class="rounded-lg border border-brand-card-border bg-brand-surface p-5" aria-labelledby="ficha-title">
+        <h2 id="ficha-title" class="display text-[19px]">{t('tool.quickfacts')}</h2>
+        <dl class="mt-4 flex flex-col gap-3 text-[13px]">
+          {quickFacts.map((fact) => (
+            <div class="flex items-baseline justify-between gap-4 border-b border-brand-hairline pb-3 last:border-b-0 last:pb-0">
+              <dt class="shrink-0 text-brand-text-muted">{fact.label}</dt>
+              <dd class="text-right font-medium text-brand-text">{fact.value}</dd>
+            </div>
+          ))}
         </dl>
       </section>
 
       {alternatives.length > 0 && (
-        <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5" aria-labelledby="alternativas-title">
-          <h2 id="alternativas-title" class="text-lg font-black text-brand-text font-['Outfit']">
-            {t('section.alternatives')}
-          </h2>
-          <div class="mt-4 grid gap-2">
+        <section class="rounded-lg border border-brand-card-border bg-brand-surface p-5" aria-labelledby="alternativas-title">
+          <h2 id="alternativas-title" class="display text-[19px]">{t('section.alternatives')}</h2>
+          <ul class="mt-4 flex flex-col gap-1" role="list">
             {alternatives.map((alt: any) => (
-              <a
-                href={`/${lang}/${alt.slug}`}
-                class="rounded-xl border border-brand-card-border bg-brand-bg/35 p-3 transition-colors hover:border-brand-primary/35"
-              >
-                <span class="block text-sm font-black text-brand-text">{alt.name}</span>
-                <span class="mt-1 block text-xs leading-relaxed text-brand-text-muted">{alt.shortDescription}</span>
-              </a>
+              <li>
+                <a
+                  href={`/${lang}/${alt.slug}`}
+                  class="flex items-start gap-3 rounded-md p-2 transition-colors hover:bg-brand-surface-sunken"
+                >
+                  <Monogram initials={getInitials(alt.name, alt.initials)} tone={getToolTone(alt.slug, alt.categories)} size="sm" />
+                  <span class="min-w-0">
+                    <span class="block text-[14px] font-semibold text-brand-text">{alt.name}</span>
+                    <span class="mt-0.5 line-clamp-2 block text-[12px] leading-5 text-brand-text-muted">{alt.shortDescription}</span>
+                  </span>
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       )}
 
       {tool.officialSources.length > 0 && (
-        <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg p-5" aria-labelledby="fuentes-title">
-          <h2 id="fuentes-title" class="text-lg font-black text-brand-text font-['Outfit']">{lang === 'sv' ? 'Officiella källor' : lang === 'it' ? 'Fonti ufficiali' : 'Fuentes oficiales'}</h2>
-          <div class="mt-4 grid gap-2">
+        <section class="rounded-lg border border-brand-card-border bg-brand-surface p-5" aria-labelledby="fuentes-title">
+          <h2 id="fuentes-title" class="display text-[19px]">{t('tool.official-sources')}</h2>
+          <ul class="mt-4 flex flex-col gap-1.5" role="list">
             {tool.officialSources.map((source: string) => (
-              <a href={source} target="_blank" rel="noopener noreferrer" class="truncate rounded-lg border border-brand-card-border bg-brand-bg/35 px-3 py-2 font-mono text-xs font-bold text-brand-primary hover:underline">
-                {new URL(source).hostname.replace(/^www\./, '')}
-              </a>
+              <li>
+                <a
+                  href={source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="data-tag block truncate text-brand-secondary transition-colors hover:text-brand-primary"
+                >{getDomain(source)}</a>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       )}
     </aside>

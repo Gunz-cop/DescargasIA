@@ -33,10 +33,10 @@ const alternates = Object.keys(languages)
 <BaseLayout title={titles[lang]} description={descs[lang]} lang={lang} alternates={alternates}>
   <article class="mx-auto max-w-4xl py-10" aria-labelledby="page-title">
     <header class="border-b border-brand-card-border pb-8">
-      <span class="mb-3 inline-flex rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 font-mono text-[11px] font-black uppercase text-brand-primary">
+      <span class="mb-3 inline-flex rounded border border-brand-primary/30 bg-brand-primary/10 px-3 py-1 font-mono eyebrow text-brand-primary">
         {lang === 'sv' ? 'Redaktionellt Uppdrag' : lang === 'it' ? 'Missione Editoriale' : 'Misión editorial'}
       </span>
-      <h1 id="page-title" class="max-w-3xl text-4xl font-black leading-tight tracking-tight text-brand-text font-['Outfit'] sm:text-5xl">
+      <h1 id="page-title" class="max-w-3xl text-[30px] leading-[1.12] text-brand-text display sm:text-[38px]">
         {lang === 'sv' 
           ? 'Ett redaktionellt index för att hitta den officiella källan för varje AI-verktyg.'
           : lang === 'it'
@@ -55,7 +55,7 @@ const alternates = Object.keys(languages)
     <div class="mt-10 grid gap-8 lg:grid-cols-[1fr_18rem]">
       <main class="space-y-8">
         <section class="rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5 sm:p-6">
-          <h2 class="text-2xl font-black text-brand-text font-['Outfit']">
+          <h2 class="text-[22px] text-brand-text display">
             {lang === 'sv' ? 'Vad vi gör' : lang === 'it' ? 'Cosa facciamo' : 'Qué hacemos'}
           </h2>
           <div class="mt-4 space-y-4 text-sm leading-7 text-brand-text-muted">
@@ -70,7 +70,7 @@ const alternates = Object.keys(languages)
         </section>
 
         <section class="rounded-2xl border border-brand-warning-border bg-brand-warning-bg p-5 sm:p-6">
-          <h2 class="text-2xl font-black text-brand-text font-['Outfit']">
+          <h2 class="text-[22px] text-brand-text display">
             {lang === 'sv' ? 'Vad we inte gör' : lang === 'it' ? 'Cosa non facciamo' : 'Lo que no hacemos'}
           </h2>
           <ul class="mt-4 grid gap-3 text-sm leading-7 text-brand-warning-text">

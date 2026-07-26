@@ -1,14 +1,34 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   FuenteAI — Sistema de diseño "Registro Editorial"
+   --------------------------------------------------------------------------
+   Principios:
+   1. La confianza se comunica con datos (dominio, fecha, tipo de canal),
+      no con efectos visuales.
+   2. Una sola tinta de marca (sello ámbar/ember) para acciones e identidad.
+      El verde queda reservado SIEMPRE para "verificado".
+   3. Tres voces tipográficas con papeles distintos: serif editorial para
+      titulares, sistema para interfaz, monoespaciada para la capa de datos.
+   4. Jerarquía por tamaño, contraste de voz y espacio; nunca por grosor extremo.
+   ========================================================================== */
+
 @theme {
+  /* --- Color (mapeado a tokens semánticos definidos abajo) --- */
   --color-brand-bg: var(--brand-bg);
   --color-brand-text: var(--brand-text);
   --color-brand-text-muted: var(--brand-text-muted);
+  --color-brand-text-subtle: var(--brand-text-subtle);
   --color-brand-primary: var(--brand-primary);
   --color-brand-primary-hover: var(--brand-primary-hover);
+  --color-brand-primary-soft: var(--brand-primary-soft);
+  --color-brand-on-primary: var(--brand-on-primary);
   --color-brand-secondary: var(--brand-secondary);
   --color-brand-card-bg: var(--brand-card-bg);
   --color-brand-card-border: var(--brand-card-border);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-surface-sunken: var(--brand-surface-sunken);
+  --color-brand-hairline: var(--brand-hairline);
   --color-brand-success: var(--brand-success);
   --color-brand-success-border: var(--brand-success-border);
   --color-brand-success-bg: var(--brand-success-bg);
@@ -18,60 +38,405 @@
   --color-brand-danger-bg: var(--brand-danger-bg);
   --color-brand-danger-border: var(--brand-danger-border);
   --color-brand-danger-text: var(--brand-danger-text);
-  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* --- Tipografía ---
+     Tres voces con papeles distintos:
+     · display  → serif editorial. La voz de la publicación.
+     · sans     → interfaz y texto corrido. Pila del sistema, coste cero.
+     · mono     → la capa de datos: dominios, fechas, números de registro.
+     Sólo se descargan display y mono (2 familias, 3 cortes). */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", "Noto Sans", Arial, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Cascadia Mono",
+    "Segoe UI Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* --- Radios (escala única) --- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* --- Sombras (mínimas, sólo elevación real) --- */
+  --shadow-raised: 0 1px 2px rgba(16, 18, 20, 0.06), 0 1px 1px rgba(16, 18, 20, 0.04);
+  --shadow-overlay: 0 12px 32px -8px rgba(16, 18, 20, 0.18), 0 2px 8px rgba(16, 18, 20, 0.08);
 }
 
+/* --------------------------------------------------------------------------
+   Tema claro ("Papel") — tema base. Funciona sin JavaScript.
+   -------------------------------------------------------------------------- */
 :root {
-  /* Default: Dark Theme (Editorial Security Index) */
-  --brand-bg: #07110f;
-  --brand-text: #f4f7f6;
-  --brand-text-muted: #9aa8a3;
-  --brand-primary: #10b981;
-  --brand-primary-hover: #059669;
-  --brand-secondary: #38bdf8;
-  --brand-card-bg: rgba(12, 22, 20, 0.78);
-  --brand-card-border: rgba(148, 163, 184, 0.16);
-  --brand-success: #10b981;
-  --brand-success-border: rgba(16, 185, 129, 0.32);
-  --brand-success-bg: rgba(16, 185, 129, 0.12);
-  --brand-warning-bg: rgba(245, 158, 11, 0.12);
-  --brand-warning-border: rgba(245, 158, 11, 0.3);
-  --brand-warning-text: #fbbf24;
-  --brand-danger-bg: rgba(239, 68, 68, 0.1);
-  --brand-danger-border: rgba(239, 68, 68, 0.25);
-  --brand-danger-text: #f87171;
-}
+  color-scheme: light;
 
-:root.light, .light {
-  /* Light Theme (Clean Editorial Panel) */
-  --brand-bg: #f8f9f7;
-  --brand-text: #0f172a;
-  --brand-text-muted: #51615c;
-  --brand-primary: #047857;
-  --brand-primary-hover: #065f46;
-  --brand-secondary: #0369a1;
+  --brand-bg: #fbfaf7;
+  --brand-surface: #ffffff;
+  --brand-surface-sunken: #f4f2ec;
   --brand-card-bg: #ffffff;
-  --brand-card-border: rgba(15, 23, 42, 0.12);
-  --brand-success: #047857;
-  --brand-success-border: rgba(4, 120, 87, 0.26);
-  --brand-success-bg: rgba(4, 120, 87, 0.1);
-  --brand-warning-bg: rgba(217, 119, 6, 0.1);
-  --brand-warning-border: rgba(217, 119, 6, 0.25);
-  --brand-warning-text: #92400e;
-  --brand-danger-bg: rgba(220, 38, 38, 0.1);
-  --brand-danger-border: rgba(220, 38, 38, 0.25);
-  --brand-danger-text: #dc2626;
+  --brand-card-border: #e2ded4;
+  --brand-hairline: #ece8de;
+
+  --brand-text: #16181a;
+  --brand-text-muted: #5a6067;
+  --brand-text-subtle: #6b7178;
+
+  --brand-primary: #a63d1e;
+  --brand-primary-hover: #8a3117;
+  --brand-primary-soft: rgba(166, 61, 30, 0.08);
+  --brand-on-primary: #ffffff;
+  --brand-secondary: #1f5f7a;
+
+  --brand-success: #14713f;
+  --brand-success-border: rgba(20, 113, 63, 0.28);
+  --brand-success-bg: rgba(20, 113, 63, 0.08);
+
+  --brand-warning-text: #8a5200;
+  --brand-warning-border: rgba(138, 82, 0, 0.26);
+  --brand-warning-bg: rgba(138, 82, 0, 0.08);
+
+  --brand-danger-text: #b3261e;
+  --brand-danger-border: rgba(179, 38, 30, 0.26);
+  --brand-danger-bg: rgba(179, 38, 30, 0.07);
+
+  /* Trama de registro: retícula tenue tipo papel pautado */
+  --brand-grid: rgba(22, 24, 26, 0.075);
 }
 
-/* Glassmorphism Utilities */
-.glass-panel {
-  background: var(--brand-card-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* --------------------------------------------------------------------------
+   Tema oscuro ("Tinta")
+   -------------------------------------------------------------------------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --brand-bg: #0c0e10;
+  --brand-surface: #14171a;
+  --brand-surface-sunken: #101315;
+  --brand-card-bg: #14171a;
+  --brand-card-border: #262b30;
+  --brand-hairline: #1e2226;
+
+  --brand-text: #eceae5;
+  --brand-text-muted: #9aa1a8;
+  --brand-text-subtle: #7c838a;
+
+  --brand-primary: #f0794c;
+  --brand-primary-hover: #ff8f68;
+  --brand-primary-soft: rgba(240, 121, 76, 0.12);
+  --brand-on-primary: #16181a;
+  --brand-secondary: #7fb8d4;
+
+  --brand-success: #46c88a;
+  --brand-success-border: rgba(70, 200, 138, 0.3);
+  --brand-success-bg: rgba(70, 200, 138, 0.1);
+
+  --brand-warning-text: #e5ab52;
+  --brand-warning-border: rgba(229, 171, 82, 0.28);
+  --brand-warning-bg: rgba(229, 171, 82, 0.1);
+
+  --brand-danger-text: #f08b82;
+  --brand-danger-border: rgba(240, 139, 130, 0.28);
+  --brand-danger-bg: rgba(240, 139, 130, 0.08);
+
+  --brand-grid: rgba(236, 234, 229, 0.07);
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--brand-bg);
+  color: var(--brand-text);
+  font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* El atributo [hidden] debe ganar a las utilidades de display de Tailwind
+   (misma especificidad, pero las utilidades aparecen después en la cascada). */
+[hidden] {
+  display: none !important;
+}
+
+/* Enlaces dentro de texto corrido: subrayado discreto y legible */
+.link-inline {
+  color: var(--brand-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--brand-primary) 45%, transparent);
+}
+.link-inline:hover {
+  text-decoration-color: currentColor;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand-primary) 22%, transparent);
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ==========================================================================
+   Utilidades del sistema
+   ========================================================================== */
+
+/* Saltar al contenido (visible sólo al enfocar con teclado) */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0.5rem;
+  z-index: 100;
+  translate: -50% -160%;
+  padding: 0.625rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--brand-primary);
+  color: var(--brand-on-primary);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: translate 0.15s ease;
+}
+.skip-link:focus-visible {
+  translate: -50% 0;
+}
+
+/* Superficie estándar de tarjeta/panel */
+.surface {
+  background: var(--brand-surface);
   border: 1px solid var(--brand-card-border);
 }
 
-/* Scrollbar Utility */
+/* Pauta de libro de registro: renglones horizontales, como un libro contable.
+   Sustituye a la retícula de puntos genérica. */
+.registry-grid {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 31px,
+    var(--brand-grid) 31px,
+    var(--brand-grid) 32px
+  );
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 88%);
+}
+
+/* Filete de sección: la regla gruesa/fina de las publicaciones impresas */
+.rule-double {
+  border-top: 3px solid var(--brand-text);
+  box-shadow: 0 2px 0 0 var(--brand-text);
+}
+
+/* Etiqueta de dato: dominios, fechas, identificadores */
+.data-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+/* Rótulo de sección */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Titulares: serif editorial. Es la voz de la publicación, no un adorno. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1.06;
+}
+
+/* Cursiva del display para el énfasis dentro de los titulares */
+.display em,
+.display .em {
+  font-style: italic;
+  color: var(--brand-primary);
+}
+
+/* Número de registro: la marca de que esto es un índice, no un catálogo */
+.record-num {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: color-mix(in srgb, var(--brand-primary) 70%, var(--brand-text-subtle));
+  font-variant-numeric: tabular-nums;
+}
+
+/* Monograma por herramienta: una sola variable --tone controla el color,
+   y funciona en ambos temas sin duplicar mapas de clases. */
+.monogram {
+  --tone: var(--brand-primary);
+  background: color-mix(in srgb, var(--tone) 12%, var(--brand-surface));
+  border: 1px solid color-mix(in srgb, var(--tone) 30%, transparent);
+  color: color-mix(in srgb, var(--tone) 62%, var(--brand-text));
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+/* Filo de color de categoría en la ficha */
+.tone-rule {
+  background: color-mix(in srgb, var(--tone, var(--brand-primary)) 70%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   Sello de verificación. Es el elemento firma del sitio: declara lo que
+   FuenteAI comprobó (el dominio y la fecha), nunca un aval de la marca.
+   -------------------------------------------------------------------------- */
+.stamp {
+  position: relative;
+  display: inline-block;
+  padding: 0.75rem 1.125rem 0.625rem;
+  border: 2px solid var(--brand-primary);
+  border-radius: 3px;
+  color: var(--brand-primary);
+  rotate: -1.4deg;
+  background: color-mix(in srgb, var(--brand-primary) 5%, transparent);
+}
+.stamp::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid color-mix(in srgb, var(--brand-primary) 45%, transparent);
+  border-radius: 2px;
+  pointer-events: none;
+}
+.stamp__label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.stamp__value {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.stamp__meta {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* Icono del conmutador de tema: muestra la acción, no el estado actual */
+.theme-icon-sun {
+  display: none;
+}
+:root[data-theme="dark"] .theme-icon-sun {
+  display: block;
+}
+:root[data-theme="dark"] .theme-icon-moon {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   Directorio: dos vistas sobre EL MISMO DOM.
+   `list` es un libro de registro (una fila por herramienta); `grid` es una
+   rejilla de tarjetas. Se conmuta con un atributo en el contenedor, sin
+   duplicar marcado ni re-renderizar nada.
+   -------------------------------------------------------------------------- */
+.tools {
+  display: grid;
+  gap: 1rem;
+}
+
+.tools[data-view="grid"] {
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+}
+
+.tools[data-view="list"] {
+  gap: 0;
+  border: 1px solid var(--brand-card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--brand-card-border);
+  grid-template-columns: 1fr;
+}
+
+.tools[data-view="list"] .record {
+  border-radius: 0;
+  border: 0;
+  margin-bottom: 1px;
+}
+.tools[data-view="list"] .record:last-child {
+  margin-bottom: 0;
+}
+
+/* Piezas que sólo tienen sentido en una de las dos vistas */
+.tools[data-view="grid"] .record__num {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+}
+
+@media (min-width: 60rem) {
+  .tools[data-view="list"] .record {
+    display: grid;
+    grid-template-columns: 3.25rem minmax(12rem, 1.05fr) minmax(0, 1.55fr) auto;
+    align-items: center;
+    column-gap: 1.25rem;
+    padding: 1rem 1.25rem;
+  }
+  .tools[data-view="list"] .record__num {
+    grid-column: 1;
+    align-self: center;
+  }
+  .tools[data-view="list"] .record__id {
+    grid-column: 2;
+  }
+  .tools[data-view="list"] .record__body {
+    grid-column: 3;
+  }
+  .tools[data-view="list"] .record__actions {
+    grid-column: 4;
+    border: 0;
+    padding: 0;
+    justify-content: flex-end;
+  }
+  .tools[data-view="list"] .record__desc {
+    -webkit-line-clamp: 2;
+  }
+  /* En vista lista la acción secundaria aparece al pasar el cursor o al
+     enfocar con teclado: reduce ruido sin esconder funcionalidad. */
+  .tools[data-view="list"] .record__secondary {
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+  .tools[data-view="list"] .record:hover .record__secondary,
+  .tools[data-view="list"] .record:focus-within .record__secondary {
+    opacity: 1;
+  }
+}
+
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
@@ -80,96 +445,73 @@
   scrollbar-width: none;
 }
 
-/* Base Body Styling */
-body {
-  background-color: var(--brand-bg);
+/* Botón de filtro (chip) — estado gestionado con aria-pressed, no con clases */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2.25rem;
+  padding: 0 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--brand-card-border);
+  background: var(--brand-surface);
+  color: var(--brand-text-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+}
+.chip:hover {
   color: var(--brand-text);
-  font-family: 'Inter', 'Outfit', system-ui, -apple-system, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  border-color: color-mix(in srgb, var(--brand-text) 25%, var(--brand-card-border));
+}
+.chip[aria-pressed="true"] {
+  background: var(--brand-text);
+  border-color: var(--brand-text);
+  color: var(--brand-bg);
+  font-weight: 600;
 }
 
-a, a:visited {
-  color: inherit;
-  text-decoration: none;
+/* Conmutador de vista del directorio */
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  height: 2rem;
+  padding: 0 0.625rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--brand-text-muted);
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+.view-btn:hover {
+  color: var(--brand-text);
+}
+.view-btn[aria-pressed="true"] {
+  background: var(--brand-surface-sunken);
+  color: var(--brand-text);
+  font-weight: 600;
 }
 
-*:focus-visible {
-  outline: 2px solid var(--brand-primary);
-  outline-offset: 3px;
+/* Acordeón de detalles con marcador propio */
+.details-marker {
+  transition: rotate 0.2s ease;
 }
-
-/* Background blobs colors (Light / Dark theme separation) */
-.blob-1 {
-  background: rgba(10, 31, 15, 0.45);
-}
-.blob-2 {
-  background: rgba(13, 43, 43, 0.4);
-}
-.blob-3 {
-  background: rgba(8, 22, 32, 0.35);
-}
-
-.light .blob-1 {
-  background: rgba(10, 31, 15, 0.08);
-}
-.light .blob-2 {
-  background: rgba(13, 43, 43, 0.07);
-}
-.light .blob-3 {
-  background: rgba(8, 22, 32, 0.05);
-}
-
-/* Pulsing blobs in background */
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.75;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.95;
-    transform: scale(1.05);
-  }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 15s ease-in-out infinite;
-}
-
-/* Typing text color contrast */
-#typed-text {
-  color: var(--brand-primary);
-  display: inline;
-}
-
-:root:not(.light) #typed-text {
-  background: linear-gradient(90deg, #34d399, #5eead4, #67e8f9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Custom styles for typing effect cursor */
-.typing-cursor::after {
-  content: '|';
-  animation: blink-cursor 0.8s infinite;
-  color: var(--brand-primary);
-}
-
-@keyframes blink-cursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+details[open] > summary .details-marker {
+  rotate: 180deg;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-  }
-  .animate-pulse-glow,
-  .typing-cursor::after {
-    animation: none !important;
   }
 }

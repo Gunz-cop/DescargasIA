@@ -33,10 +33,10 @@ const alternates = Object.keys(languages)
 <BaseLayout title={titles[lang]} description={descs[lang]} lang={lang} alternates={alternates}>
   <article class="max-w-3xl mx-auto py-12" aria-labelledby="page-title">
     <header class="mb-10 border-b border-brand-card-border pb-8">
-      <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-warning-border bg-brand-warning-bg px-3 py-1 text-[11px] font-black uppercase text-brand-warning-text font-mono">
+      <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-warning-border bg-brand-warning-bg px-3 py-1 eyebrow text-brand-warning-text font-mono">
         {lang === 'sv' ? 'Reviderad: Juni 2026' : lang === 'it' ? 'Revisionato: Giugno 2026' : 'Revisado: Junio 2026'}
       </span>
-      <h1 id="page-title" class="text-3xl sm:text-4xl font-black tracking-tight text-brand-text font-['Outfit',sans-serif] mb-4">
+      <h1 id="page-title" class="text-[30px] sm:text-[38px] text-brand-text display mb-4">
         {lang === 'sv' ? 'Användarvillkor & Ansvarsfriskrivning' : lang === 'it' ? 'Note Legali e Limitazione di Responsabilità' : 'Aviso Legal y Exención de Responsabilidad'}
       </h1>
       <p class="text-sm text-brand-text-muted leading-relaxed">
@@ -52,7 +52,7 @@ const alternates = Object.keys(languages)
       {lang === 'es' && (
         <>
           <section class="space-y-3">
-            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+            <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
               <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> Naturaleza del Servicio
             </h2>
             <p>
@@ -67,7 +67,7 @@ const alternates = Object.keys(languages)
           </section>
 
           <section class="space-y-3">
-            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+            <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
               <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> Límite de Responsabilidad
             </h2>
             <p>
@@ -83,7 +83,7 @@ const alternates = Object.keys(languages)
       {lang === 'sv' && (
         <>
           <section class="space-y-3">
-            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+            <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
               <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> Tjänstens natur
             </h2>
             <p>
@@ -98,7 +98,7 @@ const alternates = Object.keys(languages)
           </section>
 
           <section class="space-y-3">
-            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+            <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
               <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> Ansvarsfriskrivning
             </h2>
             <p>
@@ -111,7 +111,7 @@ const alternates = Object.keys(languages)
       {lang === 'it' && (
         <>
           <section class="space-y-3">
-            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+            <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
               <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> Natura del Servizio
             </h2>
             <p>
@@ -126,7 +126,7 @@ const alternates = Object.keys(languages)
           </section>
 
           <section class="space-y-3">
-            <h2 class="text-lg font-bold text-brand-text font-['Outfit',sans-serif] flex items-center gap-2">
+            <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
               <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> Limiti di Responsabilità
             </h2>
             <p>

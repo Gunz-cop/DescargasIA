@@ -1,9 +1,20 @@
 ---
 // src/components/ToolCard.astro
-import Badge from './Badge.astro';
+// Un registro del índice. Una sola estructura DOM que sirve para las dos
+// vistas del directorio (libro de registro y rejilla): el contenedor decide
+// el layout con `data-view`, aquí no hay marcado duplicado.
+import Monogram from './Monogram.astro';
+import {
+  getCategoryLabel,
+  getDomain,
+  getInitials,
+  getToolTone,
+  PLATFORM_ORDER,
+  PLATFORM_SHORT,
+  type Lang,
+  type PlatformKey
+} from '../utils/brand';
 import { useTranslations } from '../i18n/ui';
-
-type PlatformKey = 'web' | 'windows' | 'mac' | 'linux' | 'android' | 'ios';
 
 interface PlatformDetails {
   url: string;
@@ -20,385 +31,122 @@ interface Props {
     officialWebsite: string;
     categories: string[];
     pricingModel: 'free' | 'freemium' | 'paid' | 'enterprise' | 'unknown';
-    spanishSupport?: 'yes' | 'partial' | 'no' | 'unknown';
-    swedishSupport?: 'yes' | 'partial' | 'no' | 'unknown';
-    italianSupport?: 'yes' | 'partial' | 'no' | 'unknown';
     trustLevel: 'official' | 'verified' | 'pending-review';
-    safetyNotes?: string[];
-    lastReviewed?: string;
+    tags?: string[];
+    initials?: string;
     platforms: Partial<Record<PlatformKey, PlatformDetails>>;
   };
+  /** Número de registro dentro del índice (1-based). */
+  index?: number;
 }
 
-const { tool } = Astro.props;
-const lang = (Astro.currentLocale || 'es') as 'es' | 'sv' | 'it';
+const { tool, index } = Astro.props;
+const lang = (Astro.currentLocale || 'es') as Lang;
 const t = useTranslations(lang);
 
 const pricingLabels = {
-  free: { label: t('info.pricing.free'), variant: 'success' as const },
-  freemium: { label: t('info.pricing.freemium'), variant: 'primary' as const },
-  paid: { label: t('info.pricing.paid'), variant: 'danger' as const },
-  enterprise: { label: t('info.pricing.enterprise'), variant: 'neutral' as const },
-  unknown: { label: t('info.pricing.unknown'), variant: 'neutral' as const }
+  free: t('info.pricing.free'),
+  freemium: t('info.pricing.freemium'),
+  paid: t('info.pricing.paid'),
+  enterprise: t('info.pricing.enterprise'),
+  unknown: t('info.pricing.unknown')
 };
 
-const pricing = pricingLabels[tool.pricingModel] || pricingLabels.unknown;
+const tone = getToolTone(tool.slug, tool.categories);
+const initials = getInitials(tool.name, tool.initials);
+const domain = getDomain(tool.officialWebsite);
+const categoryLabel = getCategoryLabel(tool.categories[0] ?? '', lang, 'short');
+const pricingLabel = pricingLabels[tool.pricingModel] ?? pricingLabels.unknown;
 
-const trustLabels = {
-  official: { label: t('info.trust.official'), variant: 'success' as const },
-  verified: { label: t('info.trust.verified'), variant: 'secondary' as const },
-  'pending-review': { label: t('info.trust.pending-review'), variant: 'warning' as const }
-};
+const availablePlatforms = PLATFORM_ORDER.filter((platform) => Boolean(tool.platforms[platform]));
+const titleId = `tool-${tool.slug}-title`;
+const recordNumber = index != null ? String(index).padStart(3, '0') : null;
 
-const trust = trustLabels[tool.trustLevel] || { label: t('info.trust.pending-review'), variant: 'neutral' as const };
-
-const categoryStyles: Record<string, { label: string; tone: string; bar: string }> = {
-  'asistentes-ia': {
-    label: lang === 'sv' ? 'Assistent' : lang === 'it' ? 'Assistente' : 'Asistente',
-    tone: 'border-emerald-400/35 bg-emerald-500/10 text-brand-text',
-    bar: 'bg-emerald-400'
-  },
-  programacion: {
-    label: lang === 'sv' ? 'Programmering' : lang === 'it' ? 'Programmazione' : 'Programación',
-    tone: 'border-sky-400/35 bg-sky-500/10 text-brand-text',
-    bar: 'bg-sky-400'
-  },
-  'modelos-locales': {
-    label: lang === 'sv' ? 'Lokal modell' : lang === 'it' ? 'Modello locale' : 'Modelo local',
-    tone: 'border-amber-400/35 bg-amber-500/10 text-brand-text',
-    bar: 'bg-amber-400'
-  },
-  'generacion-imagenes': {
-    label: lang === 'sv' ? 'Bild' : lang === 'it' ? 'Immagine' : 'Imagen',
-    tone: 'border-fuchsia-400/35 bg-fuchsia-500/10 text-brand-text',
-    bar: 'bg-fuchsia-400'
-  },
-  'video-ia': {
-    label: lang === 'sv' ? 'Video' : lang === 'it' ? 'Video' : 'Video',
-    tone: 'border-cyan-400/35 bg-cyan-500/10 text-brand-text',
-    bar: 'bg-cyan-400'
-  }
-};
-
-const primaryCategory = tool.categories[0] ?? 'asistentes-ia';
-const category = categoryStyles[primaryCategory] ?? {
-  label: lang === 'sv' ? 'Verktyg' : lang === 'it' ? 'Strumento' : 'Herramienta',
-  tone: 'border-brand-card-border bg-brand-bg/40 text-brand-text-muted',
-  bar: 'bg-brand-primary'
-};
-
-const visualStyles: Record<string, { mark: string; bar: string; accent: string }> = {
-  chatgpt: {
-    mark: 'border-emerald-200 dark:border-emerald-300/40 bg-emerald-100 dark:bg-emerald-400/14 text-emerald-800 dark:text-emerald-100 shadow-[0_0_24px_rgba(16,185,129,0.16)]',
-    bar: 'bg-emerald-400',
-    accent: 'group-hover:text-emerald-300'
-  },
-  claude: {
-    mark: 'border-orange-200 dark:border-orange-300/45 bg-orange-100 dark:bg-orange-400/14 text-orange-800 dark:text-orange-100 shadow-[0_0_24px_rgba(251,146,60,0.16)]',
-    bar: 'bg-orange-400',
-    accent: 'group-hover:text-orange-300'
-  },
-  gemini: {
-    mark: 'border-sky-200 dark:border-sky-300/45 bg-sky-100 dark:bg-[linear-gradient(135deg,rgba(56,189,248,0.24),rgba(168,85,247,0.18),rgba(244,114,182,0.16))] text-sky-800 dark:text-sky-50 shadow-[0_0_24px_rgba(56,189,248,0.14)]',
-    bar: 'bg-[linear-gradient(90deg,#38bdf8,#a855f7,#f472b6)]',
-    accent: 'group-hover:text-sky-300'
-  },
-  cursor: {
-    mark: 'border-sky-200 dark:border-sky-300/45 bg-sky-100 dark:bg-sky-400/14 text-sky-800 dark:text-sky-100 shadow-[0_0_24px_rgba(56,189,248,0.16)]',
-    bar: 'bg-sky-400',
-    accent: 'group-hover:text-sky-300'
-  },
-  ollama: {
-    mark: 'border-stone-200 dark:border-stone-300/35 bg-stone-100 dark:bg-stone-400/12 text-stone-800 dark:text-stone-100 shadow-[0_0_24px_rgba(214,211,209,0.10)]',
-    bar: 'bg-stone-300',
-    accent: 'group-hover:text-stone-200'
-  },
-  'lm-studio': {
-    mark: 'border-violet-200 dark:border-violet-300/45 bg-violet-100 dark:bg-violet-400/14 text-violet-800 dark:text-violet-100 shadow-[0_0_24px_rgba(139,92,246,0.16)]',
-    bar: 'bg-violet-400',
-    accent: 'group-hover:text-violet-300'
-  },
-  'stable-diffusion': {
-    mark: 'border-rose-200 dark:border-rose-300/45 bg-rose-100 dark:bg-[linear-gradient(135deg,rgba(244,63,94,0.18),rgba(59,130,246,0.16))] text-rose-800 dark:text-rose-50 shadow-[0_0_24px_rgba(244,63,94,0.14)]',
-    bar: 'bg-[linear-gradient(90deg,#f43f5e,#3b82f6)]',
-    accent: 'group-hover:text-rose-300'
-  },
-  midjourney: {
-    mark: 'border-indigo-200 dark:border-indigo-300/45 bg-indigo-100 dark:bg-indigo-400/14 text-indigo-800 dark:text-indigo-100 shadow-[0_0_24px_rgba(129,140,248,0.16)]',
-    bar: 'bg-indigo-400',
-    accent: 'group-hover:text-indigo-300'
-  },
-  canva: {
-    mark: 'border-cyan-200 dark:border-cyan-300/45 bg-cyan-100 dark:bg-[linear-gradient(135deg,rgba(34,211,238,0.22),rgba(168,85,247,0.18))] text-cyan-800 dark:text-cyan-50 shadow-[0_0_24px_rgba(34,211,238,0.16)]',
-    bar: 'bg-[linear-gradient(90deg,#22d3ee,#a855f7)]',
-    accent: 'group-hover:text-cyan-300'
-  },
-  'microsoft-copilot': {
-    mark: 'border-blue-200 dark:border-blue-300/45 bg-blue-100 dark:bg-[linear-gradient(135deg,rgba(59,130,246,0.18),rgba(34,197,94,0.15))] text-blue-800 dark:text-blue-50 shadow-[0_0_24px_rgba(59,130,246,0.14)]',
-    bar: 'bg-[linear-gradient(90deg,#3b82f6,#22c55e)]',
-    accent: 'group-hover:text-blue-300'
-  },
-  perplexity: {
-    mark: 'border-teal-200 dark:border-teal-300/45 bg-teal-100 dark:bg-teal-400/14 text-teal-800 dark:text-teal-100 shadow-[0_0_24px_rgba(45,212,191,0.16)]',
-    bar: 'bg-teal-400',
-    accent: 'group-hover:text-teal-300'
-  },
-  anythingllm: {
-    mark: 'border-lime-200 dark:border-lime-300/45 bg-lime-100 dark:bg-lime-400/12 text-lime-800 dark:text-lime-100 shadow-[0_0_24px_rgba(163,230,53,0.12)]',
-    bar: 'bg-lime-400',
-    accent: 'group-hover:text-lime-300'
-  },
-  jan: {
-    mark: 'border-zinc-200 dark:border-zinc-300/40 bg-zinc-100 dark:bg-zinc-400/12 text-zinc-800 dark:text-zinc-100 shadow-[0_0_24px_rgba(212,212,216,0.10)]',
-    bar: 'bg-zinc-300',
-    accent: 'group-hover:text-zinc-200'
-  },
-  elevenlabs: {
-    mark: 'border-pink-200 dark:border-pink-300/45 bg-pink-100 dark:bg-pink-400/14 text-pink-800 dark:text-pink-100 shadow-[0_0_24px_rgba(244,114,182,0.16)]',
-    bar: 'bg-pink-400',
-    accent: 'group-hover:text-pink-300'
-  },
-  runway: {
-    mark: 'border-neutral-200 dark:border-neutral-200/45 bg-neutral-100 dark:bg-neutral-300/12 text-neutral-800 dark:text-neutral-200 shadow-[0_0_24px_rgba(245,245,245,0.10)]',
-    bar: 'bg-neutral-200',
-    accent: 'group-hover:text-neutral-100'
-  },
-  'luma-dream-machine': {
-    mark: 'border-purple-200 dark:border-purple-300/45 bg-purple-100 dark:bg-[linear-gradient(135deg,rgba(147,51,234,0.20),rgba(14,165,233,0.16))] text-purple-800 dark:text-purple-50 shadow-[0_0_24px_rgba(147,51,234,0.14)]',
-    bar: 'bg-[linear-gradient(90deg,#9333ea,#0ea5e9)]',
-    accent: 'group-hover:text-purple-300'
-  },
-  'github-copilot': {
-    mark: 'border-slate-200 dark:border-slate-300/45 bg-slate-100 dark:bg-slate-400/14 text-slate-800 dark:text-slate-100 shadow-[0_0_24px_rgba(148,163,184,0.14)]',
-    bar: 'bg-slate-300',
-    accent: 'group-hover:text-slate-200'
-  },
-  deepl: {
-    mark: 'border-blue-200 dark:border-blue-300/45 bg-blue-100 dark:bg-blue-400/14 text-blue-800 dark:text-blue-100 shadow-[0_0_24px_rgba(96,165,250,0.14)]',
-    bar: 'bg-blue-400',
-    accent: 'group-hover:text-blue-300'
-  },
-  'gamma-app': {
-    mark: 'border-fuchsia-200 dark:border-fuchsia-300/45 bg-fuchsia-100 dark:bg-fuchsia-400/14 text-fuchsia-800 dark:text-fuchsia-100 shadow-[0_0_24px_rgba(217,70,239,0.14)]',
-    bar: 'bg-fuchsia-400',
-    accent: 'group-hover:text-fuchsia-300'
-  },
-  gemma: {
-    mark: 'border-amber-200 dark:border-amber-300/45 bg-amber-100 dark:bg-amber-400/14 text-amber-800 dark:text-amber-100 shadow-[0_0_24px_rgba(251,191,36,0.12)]',
-    bar: 'bg-amber-400',
-    accent: 'group-hover:text-amber-300'
-  },
-  languagetool: {
-    mark: 'border-emerald-200 dark:border-emerald-300/45 bg-emerald-100 dark:bg-emerald-400/14 text-emerald-800 dark:text-emerald-100 shadow-[0_0_24px_rgba(52,211,153,0.14)]',
-    bar: 'bg-emerald-400',
-    accent: 'group-hover:text-emerald-300'
-  },
-  phind: {
-    mark: 'border-cyan-200 dark:border-cyan-300/45 bg-cyan-100 dark:bg-cyan-400/14 text-cyan-800 dark:text-cyan-100 shadow-[0_0_24px_rgba(34,211,238,0.14)]',
-    bar: 'bg-cyan-400',
-    accent: 'group-hover:text-cyan-300'
-  },
-  suno: {
-    mark: 'border-yellow-200 dark:border-yellow-300/45 bg-yellow-100 dark:bg-yellow-400/14 text-yellow-800 dark:text-yellow-100 shadow-[0_0_24px_rgba(250,204,21,0.12)]',
-    bar: 'bg-yellow-400',
-    accent: 'group-hover:text-yellow-300'
-  },
-  deepseek: {
-    mark: 'border-indigo-200 dark:border-indigo-300/45 bg-indigo-100 dark:bg-indigo-400/14 text-indigo-800 dark:text-indigo-100 shadow-[0_0_24px_rgba(99,102,241,0.16)]',
-    bar: 'bg-indigo-400',
-    accent: 'group-hover:text-indigo-300'
-  },
-  notebooklm: {
-    mark: 'border-teal-200 dark:border-teal-300/45 bg-teal-100 dark:bg-teal-400/14 text-teal-800 dark:text-teal-100 shadow-[0_0_24px_rgba(20,184,166,0.16)]',
-    bar: 'bg-teal-400',
-    accent: 'group-hover:text-teal-300'
-  },
-  flux: {
-    mark: 'border-fuchsia-200 dark:border-fuchsia-300/45 bg-fuchsia-100 dark:bg-fuchsia-400/14 text-fuchsia-800 dark:text-fuchsia-100 shadow-[0_0_24px_rgba(217,70,239,0.16)]',
-    bar: 'bg-fuchsia-400',
-    accent: 'group-hover:text-fuchsia-300'
-  }
-};
-
-const visual = visualStyles[tool.slug] ?? {
-  mark: category.tone,
-  bar: category.bar,
-  accent: 'group-hover:text-brand-primary'
-};
-
-let officialDomain = 'fuente oficial';
-try {
-  officialDomain = new URL(tool.officialWebsite).hostname.replace(/^www\./, '');
-} catch {
-  officialDomain = tool.officialWebsite?.replace(/https?:\/\/(www\.)?/, '').split('/')[0] || 'fuente oficial';
-}
-
-const reviewDate = tool.lastReviewed
-  ? new Date(tool.lastReviewed).toLocaleDateString(lang === 'es' ? 'es-ES' : lang === 'sv' ? 'sv-SE' : 'it-IT', { month: 'short', year: 'numeric' })
-  : null;
-
-const primarySafetyNote = tool.safetyNotes?.[0] ?? null;
-
-const platformLabels: Record<PlatformKey, string> = {
-  web: t('platform.web'),
-  windows: 'Windows',
-  mac: 'macOS',
-  linux: 'Linux',
-  android: 'Android',
-  ios: 'iOS'
-};
-
-const availablePlatforms = (Object.keys(platformLabels) as PlatformKey[])
-  .filter((platform) => Boolean(tool.platforms[platform]));
-
-const initials = tool.initials ?? tool.name
-  .split(/\s+/)
-  .filter(Boolean)
-  .slice(0, 2)
-  .map((part) => part[0])
-  .join('')
-  .toUpperCase();
-
-const platformSummary = availablePlatforms.length === 1
-  ? platformLabels[availablePlatforms[0]]
-  : `${availablePlatforms.length} ${lang === 'sv' ? 'plattformar' : lang === 'it' ? 'piattaforme' : 'plataformas'}`;
-
-// Dynamic hover border/shadow styles matching the color of each tool
-const hoverStyles: Record<string, { border: string; shadow: string }> = {
-  chatgpt: { border: 'group-hover:border-emerald-400/40', shadow: 'group-hover:shadow-emerald-500/8' },
-  claude: { border: 'group-hover:border-orange-400/40', shadow: 'group-hover:shadow-orange-500/8' },
-  gemini: { border: 'group-hover:border-sky-400/40', shadow: 'group-hover:shadow-sky-500/8' },
-  cursor: { border: 'group-hover:border-sky-400/40', shadow: 'group-hover:shadow-sky-500/8' },
-  ollama: { border: 'group-hover:border-stone-300/40', shadow: 'group-hover:shadow-stone-400/8' },
-  'lm-studio': { border: 'group-hover:border-violet-400/40', shadow: 'group-hover:shadow-violet-500/8' },
-  'stable-diffusion': { border: 'group-hover:border-rose-400/40', shadow: 'group-hover:shadow-rose-500/8' },
-  midjourney: { border: 'group-hover:border-indigo-400/40', shadow: 'group-hover:shadow-indigo-500/8' },
-  canva: { border: 'group-hover:border-cyan-400/40', shadow: 'group-hover:shadow-cyan-500/8' },
-  'microsoft-copilot': { border: 'group-hover:border-blue-400/40', shadow: 'group-hover:shadow-blue-500/8' },
-  perplexity: { border: 'group-hover:border-teal-400/40', shadow: 'group-hover:shadow-teal-500/8' },
-  anythingllm: { border: 'group-hover:border-lime-400/40', shadow: 'group-hover:shadow-lime-500/8' },
-  jan: { border: 'group-hover:border-zinc-300/40', shadow: 'group-hover:shadow-zinc-400/8' },
-  elevenlabs: { border: 'group-hover:border-pink-400/40', shadow: 'group-hover:shadow-pink-500/8' },
-  runway: { border: 'group-hover:border-neutral-300/40', shadow: 'group-hover:shadow-neutral-400/8' },
-  'luma-dream-machine': { border: 'group-hover:border-purple-400/40', shadow: 'group-hover:shadow-purple-500/8' },
-  'github-copilot': { border: 'group-hover:border-slate-300/40', shadow: 'group-hover:shadow-slate-400/8' },
-  deepl: { border: 'group-hover:border-blue-400/40', shadow: 'group-hover:shadow-blue-500/8' },
-  'gamma-app': { border: 'group-hover:border-fuchsia-400/40', shadow: 'group-hover:shadow-fuchsia-500/8' },
-  gemma: { border: 'group-hover:border-amber-400/40', shadow: 'group-hover:shadow-amber-500/8' },
-  languagetool: { border: 'group-hover:border-emerald-400/40', shadow: 'group-hover:shadow-emerald-500/8' },
-  phind: { border: 'group-hover:border-cyan-400/40', shadow: 'group-hover:shadow-cyan-500/8' },
-  suno: { border: 'group-hover:border-yellow-400/40', shadow: 'group-hover:shadow-yellow-500/8' }
-};
-
-const hoverStyle = hoverStyles[tool.slug] ?? {
-  border: 'group-hover:border-brand-primary/40',
-  shadow: 'group-hover:shadow-brand-primary/8'
-};
+// Búsqueda: nombre + slug + etiquetas, normalizado sin acentos.
+const searchIndex = [tool.name, tool.slug, ...(tool.tags ?? [])]
+  .join(' ')
+  .toLowerCase()
+  .normalize('NFD')
+  .replace(new RegExp('[\\u0300-\\u036f]', 'g'), '');
 ---
 
 <article
-  class="relative flex h-full flex-col overflow-hidden rounded-[24px] border border-brand-card-border bg-brand-card-bg transition-all duration-300 hover:shadow-xl group p-8 min-h-[460px] sm:max-w-[376px] sm:mx-auto w-full gap-6 max-sm:p-0"
-  data-name={tool.name.toLowerCase()}
+  class="record group relative flex flex-col gap-4 overflow-hidden rounded-lg border border-brand-card-border bg-brand-surface p-5 pl-6 transition-colors duration-150 hover:bg-brand-surface-sunken focus-within:bg-brand-surface-sunken"
+  aria-labelledby={titleId}
+  data-name={searchIndex}
   data-slug={tool.slug}
   data-categories={tool.categories.join(',')}
   data-pricing={tool.pricingModel}
-  data-platforms={Object.keys(tool.platforms).filter(p => tool.platforms[p as PlatformKey]).join(',')}
+  data-platforms={availablePlatforms.join(',')}
 >
-  <div class={`absolute inset-x-0 top-0 h-[2px] rounded-t-[24px] opacity-60 group-hover:opacity-100 transition-opacity duration-300 ${visual.bar}`} aria-hidden="true"></div>
+  <span class="tone-rule absolute inset-y-0 left-0 w-[3px]" style={`--tone: ${tone}`} aria-hidden="true"></span>
 
-  <div class="flex flex-col gap-5 p-6 sm:hidden flex-1 justify-between">
-    <div class="flex flex-col gap-5">
-      <!-- Header block -->
-      <div class="flex flex-col gap-1">
-        <a href={`/${lang}/${tool.slug}`} class="text-[20px] font-bold leading-tight text-brand-text hover:text-brand-primary transition-colors font-['Outfit']">
+  {recordNumber && (
+    <span class="record__num record-num" aria-hidden="true">№&nbsp;{recordNumber}</span>
+  )}
+
+  <!-- Identidad -->
+  <div class="record__id flex items-center gap-3">
+    <Monogram initials={initials} tone={tone} />
+    <div class="min-w-0">
+      <h3 id={titleId} class="display text-[20px] leading-tight">
+        <a href={`/${lang}/${tool.slug}`} class="text-brand-text transition-colors hover:text-brand-primary">
           {tool.name}
         </a>
-        <p class="flex items-center gap-1 font-mono text-xs text-brand-success">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0 text-brand-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
-          </svg>
-          {officialDomain}
-        </p>
-      </div>
-
-      <!-- Centered Avatar Visual -->
-      <div class="flex justify-center py-1">
-        <div class={`flex h-20 w-20 items-center justify-center rounded-[24px] border text-2xl font-black transition-transform duration-300 group-hover:scale-105 ${visual.mark}`} aria-hidden="true">
-          {initials}
-        </div>
-      </div>
-
-      <!-- Description -->
-      <p class="text-[14px] leading-6 font-medium text-brand-text-muted line-clamp-3">
-        {tool.shortDescription}
+      </h3>
+      <p class="mt-0.5 flex items-center gap-1.5 text-brand-success" title={t('card.verified-domain')}>
+        <svg class="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
+        </svg>
+        <span class="data-tag truncate">{domain}</span>
       </p>
-
-      <!-- Badges -->
-      <div class="flex gap-2 flex-wrap">
-        <span class="rounded-full border border-brand-card-border bg-brand-bg/60 px-3 py-1 text-[11px] font-semibold text-brand-text-muted">
-          {category.label}
-        </span>
-        <span class="rounded-full border border-brand-card-border bg-brand-bg/60 px-3 py-1 text-[11px] font-semibold text-brand-text-muted">
-          {pricing.label}
-        </span>
-      </div>
     </div>
-
-    <!-- Button -->
-    <a
-      href={`/${lang}/${tool.slug}`}
-      aria-label={`Ver ficha de ${tool.name}`}
-      class="w-full rounded-xl bg-brand-primary px-4 py-3 text-sm font-black text-white text-center transition-colors hover:bg-brand-primary-hover mt-auto"
-    >
-      {lang === 'sv' ? 'Mer info' : lang === 'it' ? 'Scheda' : 'Ver ficha'}
-    </a>
   </div>
 
-  <div class="hidden sm:flex sm:flex-col flex-1 justify-between gap-6">
-    <div class="flex flex-col gap-6">
-      <!-- Header block -->
-      <div class="flex flex-col gap-1">
-        <a href={`/${lang}/${tool.slug}`} class="text-[20px] font-bold leading-tight text-brand-text hover:text-brand-primary transition-colors font-['Outfit']">
-          {tool.name}
-        </a>
-        <p class="flex items-center gap-1 font-mono text-xs text-brand-success">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0 text-brand-success" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
-          </svg>
-          {officialDomain}
-        </p>
-      </div>
+  <!-- Cuerpo -->
+  <div class="record__body flex min-w-0 flex-col gap-2">
+    <p class="record__desc line-clamp-3 text-[14px] leading-6 text-brand-text-muted">
+      {tool.shortDescription}
+    </p>
+    <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-brand-text-subtle">
+      <span class="inline-flex items-center gap-1.5 text-brand-text-muted">
+        <span class="h-1.5 w-1.5 rounded-full" style={`background:${tone}`} aria-hidden="true"></span>
+        {categoryLabel}
+      </span>
+      <span aria-hidden="true">·</span>
+      <span>{pricingLabel}</span>
+      {availablePlatforms.length > 0 && (
+        <>
+          <span aria-hidden="true">·</span>
+          <span class="data-tag">
+            <span class="sr-only">{t('card.platforms')}: </span>
+            {availablePlatforms.map((platform) => PLATFORM_SHORT[platform]).join(' · ')}
+          </span>
+        </>
+      )}
+    </p>
+  </div>
 
-      <!-- Centered Avatar Visual -->
-      <div class="flex justify-center py-2">
-        <div class={`flex h-24 w-24 items-center justify-center rounded-[28px] border text-3xl font-black transition-transform duration-300 group-hover:scale-105 ${visual.mark}`} aria-hidden="true">
-          {initials}
-        </div>
-      </div>
-
-      <!-- Description -->
-      <p class="text-[15px] leading-6 font-medium text-brand-text-muted line-clamp-3">
-        {tool.shortDescription}
-      </p>
-
-      <!-- Badges -->
-      <div class="flex gap-2 flex-wrap">
-        <span class="rounded-full border border-brand-card-border bg-brand-bg/60 px-3 py-1 text-[11px] font-semibold text-brand-text-muted">
-          {category.label}
-        </span>
-        <span class="rounded-full border border-brand-card-border bg-brand-bg/60 px-3 py-1 text-[11px] font-semibold text-brand-text-muted">
-          {pricing.label}
-        </span>
-      </div>
-    </div>
-
-    <!-- Button -->
+  <!-- Acciones: el canal oficial es la acción principal del índice -->
+  <div class="record__actions mt-auto flex items-center gap-1.5 border-t border-brand-hairline pt-3">
+    <a
+      href={`/r/?t=${tool.slug}&l=${lang}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-md border border-brand-primary/45 bg-brand-primary-soft px-3.5 text-[13px] font-semibold text-brand-primary transition-colors hover:bg-brand-primary hover:text-brand-on-primary"
+    >
+      {t('card.official-channel')}
+      <span class="sr-only">— {tool.name}</span>
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0h-7m7 0v7" />
+      </svg>
+    </a>
     <a
       href={`/${lang}/${tool.slug}`}
-      aria-label={`Ver ficha de ${tool.name}`}
-      class="w-full rounded-xl bg-brand-primary px-4 py-3 text-sm font-black text-white text-center transition-colors hover:bg-brand-primary-hover mt-auto"
+      class="record__secondary inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-md px-3 text-[13px] font-medium text-brand-text-muted transition-colors hover:text-brand-primary"
     >
-      {lang === 'sv' ? 'Mer info' : lang === 'it' ? 'Scheda' : 'Ver ficha'}
+      {t('card.sheet')}
+      <span class="sr-only">— {tool.name}</span>
     </a>
   </div>
 </article>
