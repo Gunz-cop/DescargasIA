@@ -13,7 +13,6 @@ import {
   getDomain,
   getInitials,
   PLATFORM_ORDER,
-  PLATFORM_SHORT,
   type Lang
 } from '../../utils/brand';
 
@@ -64,6 +63,10 @@ const platformNames: Record<string, string> = {
   web: t('platform.web'), windows: t('platform.windows'), mac: t('platform.mac'),
   linux: t('platform.linux'), android: t('platform.android'), ios: t('platform.ios')
 };
+const platformShort: Record<string, string> = {
+  web: t('platform.short.web'), windows: t('platform.short.windows'), mac: t('platform.short.mac'),
+  linux: t('platform.short.linux'), android: t('platform.short.android'), ios: t('platform.short.ios')
+};
 const platformTypeLabels: Record<string, string> = {
   'official-site': t('platform.type.official-site'),
   'app-store': t('platform.type.app-store'),
@@ -90,7 +93,7 @@ const platforms = PLATFORM_ORDER
     return {
       id: key,
       name: platformNames[key] ?? key,
-      short: PLATFORM_SHORT[key],
+      short: platformShort[key],
       type: details.type,
       lastChecked: details.lastChecked,
       typeLabel: platformTypeLabels[details.type] ?? details.type,

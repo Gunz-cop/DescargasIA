@@ -64,6 +64,13 @@ export const ui = {
     'platform.android': 'App para Android',
     'platform.ios': 'App para iOS/iPad',
 
+    'platform.short.web': 'Web',
+    'platform.short.windows': 'Windows',
+    'platform.short.mac': 'macOS',
+    'platform.short.linux': 'Linux',
+    'platform.short.android': 'Android',
+    'platform.short.ios': 'iOS',
+
     'platform.type.official-site': 'Sitio oficial de la marca',
     'platform.type.app-store': 'Tienda de aplicaciones oficial',
     'platform.type.web-app': 'Aplicación Web oficial',
@@ -269,6 +276,13 @@ export const ui = {
     'platform.android': 'App för Android',
     'platform.ios': 'App för iOS/iPad',
 
+    'platform.short.web': 'Webb',
+    'platform.short.windows': 'Windows',
+    'platform.short.mac': 'macOS',
+    'platform.short.linux': 'Linux',
+    'platform.short.android': 'Android',
+    'platform.short.ios': 'iOS',
+
     'platform.type.official-site': 'Officiell webbplats',
     'platform.type.app-store': 'Officiell appbutik',
     'platform.type.web-app': 'Officiell webbapp',
@@ -473,6 +487,13 @@ export const ui = {
     'platform.linux': 'Desktop per Linux',
     'platform.android': 'App per Android',
     'platform.ios': 'App per iOS/iPad',
+
+    'platform.short.web': 'Web',
+    'platform.short.windows': 'Windows',
+    'platform.short.mac': 'macOS',
+    'platform.short.linux': 'Linux',
+    'platform.short.android': 'Android',
+    'platform.short.ios': 'iOS',
 
     'platform.type.official-site': 'Sito ufficiale del brand',
     'platform.type.app-store': 'Store di applicazioni ufficiale',

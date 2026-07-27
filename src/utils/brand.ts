@@ -192,16 +192,6 @@ export function getDomain(url: string): string {
 /** Orden canónico de plataformas en toda la interfaz. */
 export const PLATFORM_ORDER: PlatformKey[] = ['web', 'windows', 'mac', 'linux', 'android', 'ios'];
 
-/** Etiqueta corta de plataforma (chips, listas compactas). */
-export const PLATFORM_SHORT: Record<PlatformKey, string> = {
-  web: 'Web',
-  windows: 'Windows',
-  mac: 'macOS',
-  linux: 'Linux',
-  android: 'Android',
-  ios: 'iOS'
-};
-
 /** Fecha corta y localizada; devuelve null si no hay dato válido. */
 export function formatDate(value: string | undefined, lang: Lang, long = false): string | null {
   if (!value) return null;

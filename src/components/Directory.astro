@@ -3,7 +3,7 @@
 // §6 SearchBar + NeedChips + CountHeadline + ResultGrid.
 // Todos los conteos se derivan del catálogo; ninguno está escrito a mano.
 import ToolCard from './ToolCard.astro';
-import { CATEGORIES, PLATFORM_ORDER, PLATFORM_SHORT, type Lang } from '../utils/brand';
+import { CATEGORIES, PLATFORM_ORDER, type Lang } from '../utils/brand';
 import { useTranslations } from '../i18n/ui';
 
 interface Props {
@@ -25,6 +25,15 @@ const usedPlatforms = PLATFORM_ORDER.filter((platform) =>
 );
 
 const freeCount = tools.filter((tool) => tool.pricingModel === 'free').length;
+
+const platformShort: Record<string, string> = {
+  web: t('platform.short.web'),
+  windows: t('platform.short.windows'),
+  mac: t('platform.short.mac'),
+  linux: t('platform.short.linux'),
+  android: t('platform.short.android'),
+  ios: t('platform.short.ios')
+};
 
 // §3.3 — el contador arranca en 2 ("la mayoría conoce 2") y sube al total.
 const KNOWN_BASELINE = 2;
@@ -119,7 +128,7 @@ const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necess
       )}
       {usedPlatforms.map((platform) => (
         <button type="button" class="fai-chip shrink-0 !px-3.5 !text-[13px] sm:!min-h-9" data-platform={platform} aria-pressed="false">
-          {PLATFORM_SHORT[platform]}
+          {platformShort[platform]}
         </button>
       ))}
     </div>
