@@ -14,24 +14,23 @@ La home funciona como un buscador editorial de descargas oficiales de IA. Las ta
 - La confianza debe verse sin exigir lectura profunda: dominio, canal oficial, revision y advertencias.
 - La UI no debe sugerir afiliacion, patrocinio o endorsement de las marcas listadas.
 
-## Estructura Unica Responsive
+## Estructura De La Tarjeta
 
 `src/components/ToolCard.astro` renderiza **un solo arbol DOM** para todos los
-tamanos de pantalla. No duplicar bloques mobile/desktop: el orden de lectura es
-el mismo en ambos y el layout se adapta con la rejilla contenedora.
+tamanos. Orden, de arriba a abajo:
 
-Orden de la tarjeta, de arriba a abajo:
+1. Avatar y nombre de la herramienta.
+2. One-liner de 2 lineas con altura minima, para que el pie de todas las
+   tarjetas de una fila quede alineado.
+3. Pie **en columna**: dominio oficial y, si hay dato, badge. Nunca en fila con
+   `space-between`: a 253px de columna parte ambos textos.
 
-1. Monograma + nombre (enlace a la ficha) + dominio oficial con marca de verificacion.
-2. Descripcion corta, maximo 3 lineas (`line-clamp-3`).
-3. Metadatos en una linea: categoria principal y modelo de precios.
-4. Plataformas disponibles en monoespaciada.
-5. Acciones: `Ir al canal oficial` (primaria, tono ambar suave) y `Ver ficha` (secundaria, fantasma).
+El dominio es la prueba de confianza y por eso no se trunca ni se parte
+(`white-space: nowrap`).
 
-La accion primaria usa estilo tenue a proposito: con 26 tarjetas en pantalla, un
-boton solido por tarjeta convierte la rejilla en un muro de color y destruye la
-jerarquia. El relleno solido queda reservado para los CTA de decision (hero y
-ficha de herramienta).
+El badge `nueva para ti` / `ya la conocias` depende del campo `knownBy` del §4
+del brief, que el catalogo todavia no tiene. Mientras no exista, la tarjeta no
+pinta badge.
 
 ## Identidad Visual
 
@@ -40,15 +39,12 @@ ficha de herramienta).
 - Evitar reproducir logos, lockups, iconos oficiales o combinaciones visuales exactas que puedan parecer afiliacion.
 - Si se incorporan logos en el futuro, deben ser assets curados localmente, con fuente y reglas de uso documentadas.
 
-### Como se define el color de una herramienta
+### Color
 
-Existe **un unico mapa**: `TOOL_TONES` en `src/utils/brand.ts`. Cada herramienta
-declara un solo color hexadecimal. El CSS (`.monogram`, `.tone-rule` en
-`src/styles/global.css`) deriva fondo, borde y texto desde ese tono con
-`color-mix()`, por lo que funciona en tema claro y oscuro sin escribir clases
-duplicadas. Si una herramienta no tiene tono propio, se hereda el de su categoria.
-
-No volver a crear mapas paralelos de clases Tailwind por herramienta.
+El avatar solo tiene dos estados, definidos en CSS: `.fai-avatar--find`
+(gradiente teal, hallazgo) y `.fai-avatar--known` (`--fai-deep`). No hay mapa
+de color por herramienta: la direccion "Senal nocturna" no lo usa. Los chips de
+necesidad si llevan el `tone` de su categoria, definido en `src/utils/brand.ts`.
 
 ## Al Agregar Una Nueva Herramienta
 
@@ -56,6 +52,6 @@ No volver a crear mapas paralelos de clases Tailwind por herramienta.
 2. Definir categoria principal y plataformas reales.
 3. Revisar que `shortDescription` se entienda en 1-2 lineas.
 4. Agregar advertencias solo si ayudan a evitar clones, mirrors o instaladores falsos.
-5. Si la marca necesita reconocimiento visual especial, agregar una entrada en `TOOL_TONES` dentro de `src/utils/brand.ts` (un solo color).
+5. No hay color propio por marca: el avatar usa los dos estados del sistema.
 6. Verificar mobile primero: nombre reconocible, CTA claro y dominio visible.
 7. Ejecutar `npm run build` antes de publicar.

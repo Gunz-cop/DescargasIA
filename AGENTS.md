@@ -2,7 +2,9 @@
 
 Antes de modificar UX, contenido o estructura editorial, lee estas guias:
 
-- `docs/design-system.md`: direccion de diseno, tokens de color, tipografia y componentes base.
+- `docs/BRIEF-IMPLEMENTACION.md`: brief de la direccion visual vigente ("Senal nocturna").
+- `docs/design-system.md`: como se implementa ese brief sobre el stack actual (tokens, tipografia, movimiento, componentes).
+- `docs/fuenteai-referencia-visual.html`: referencia visual. Opciones 1a (home + ficha) y 2a (busqueda, movil, movimiento); 1b y 1c estan descartadas.
 - `docs/ux-home-cards.md`: reglas para las tarjetas de herramientas en la home.
 - `docs/ux-tool-pages.md`: estructura recomendada para fichas individuales de herramientas.
 - `docs/tool-ficha-authoring.md`: como usar la skill `descargasia-tool-ficha` para crear fichas nuevas.

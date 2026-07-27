@@ -1,10 +1,9 @@
 ---
-// src/components/Home.astro
+// src/components/Home.astro — §6, home por necesidad (dirección 1a)
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Directory from './Directory.astro';
-import CategoryNav from './CategoryNav.astro';
 import { getTranslatedTools } from '../utils/tools';
-import { formatDate, getDomain, type Lang } from '../utils/brand';
+import { getDomain, type Lang } from '../utils/brand';
 import { useTranslations, languages } from '../i18n/ui';
 
 interface Props {
@@ -16,8 +15,7 @@ const t = useTranslations(lang);
 
 const tools = await getTranslatedTools(lang);
 
-// Orden: canal oficial primero, luego verificado, luego pendiente.
-// A igualdad de confianza, alfabético (antes el orden era inestable).
+// Canal oficial primero; a igualdad de confianza, alfabético.
 const trustPriority = { official: 3, verified: 2, 'pending-review': 1 } as const;
 const sortedTools = [...tools].sort((a, b) => {
   const diff = (trustPriority[b.trustLevel] ?? 0) - (trustPriority[a.trustLevel] ?? 0);
@@ -39,39 +37,6 @@ const pageDesc = lang === 'sv'
 const verifiedDomainsCount = new Set(
   tools.map((tool) => getDomain(tool.officialWebsite)).filter(Boolean)
 ).size;
-
-const platformLinksCount = tools.reduce(
-  (total, tool) => total + Object.values(tool.platforms).filter(Boolean).length,
-  0
-);
-
-const stats = [
-  { value: String(sortedTools.length), label: t('home.stat.tools') },
-  { value: String(verifiedDomainsCount), label: t('home.stat.domains') },
-  { value: String(platformLinksCount), label: t('home.stat.links') },
-  { value: '0', label: t('home.stat.hosted') }
-];
-
-// El titular se parte por la última coma: la segunda mitad va en cursiva
-// ámbar. Funciona igual en los tres idiomas sin duplicar cadenas.
-const fullH1 = t('home.h1');
-const splitAt = fullH1.lastIndexOf(',');
-const h1Lead = splitAt > 0 ? fullH1.slice(0, splitAt + 1) : fullH1;
-const h1Accent = splitAt > 0 ? fullH1.slice(splitAt + 1).trim() : '';
-
-// "Edición" del índice: la revisión más reciente de todo el catálogo.
-const latestReview = tools
-  .map((tool) => tool.lastReviewed)
-  .filter(Boolean)
-  .sort()
-  .at(-1);
-const edition = (formatDate(latestReview, lang) ?? '').toUpperCase();
-
-const methodSteps = [
-  { n: '01', title: t('home.method.1.title'), body: t('home.method.1.body') },
-  { n: '02', title: t('home.method.2.title'), body: t('home.method.2.body') },
-  { n: '03', title: t('home.method.3.title'), body: t('home.method.3.body') }
-];
 
 const origin = Astro.url.origin;
 
@@ -106,6 +71,12 @@ const alternates = Object.keys(languages)
   }));
 
 const canonicalUrl = lang === 'es' ? origin : undefined;
+
+const eyebrow = lang === 'sv'
+  ? 'Katalog över officiella AI-källor'
+  : lang === 'it'
+    ? 'Directory di fonti ufficiali di IA'
+    : 'Directorio de fuentes oficiales de IA';
 ---
 
 <BaseLayout
@@ -116,95 +87,25 @@ const canonicalUrl = lang === 'es' ? origin : undefined;
   alternates={alternates}
   canonicalUrl={canonicalUrl}
 >
-  <!-- HERO: cabecera de publicación. Contenido real, sin animaciones. -->
-  <section class="relative pb-6 pt-10 sm:pt-14" aria-labelledby="hero-title">
-    <div
-      class="registry-grid pointer-events-none absolute inset-x-0 -top-16 h-[520px] -z-10"
-      aria-hidden="true"
-    ></div>
+  <section class="pb-2 pt-14 text-center sm:pt-20" aria-labelledby="hero-title">
+    <p class="fai-mono-sm text-fai-signal">{eyebrow}</p>
 
-    <!-- Cabecera de mancheta: rótulo + edición -->
-    <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-b border-brand-text pb-2.5">
-      <p class="eyebrow text-brand-primary">{t('home.eyebrow')}</p>
-      <p class="eyebrow text-brand-text-subtle">
-        {edition} · ES / SV
-      </p>
-    </div>
-
-    <h1 id="hero-title" class="display mt-7 max-w-[19ch] text-[42px] sm:text-[64px] lg:text-[78px]">
-      {h1Lead} <em>{h1Accent}</em>
+    <h1 id="hero-title" class="fai-hero mx-auto mt-6 max-w-[16ch] text-fai-ink">
+      {t('home.question')}
     </h1>
 
-    <div class="mt-7 grid gap-8 lg:grid-cols-[minmax(0,32rem)_1fr] lg:items-end">
-      <div>
-        <p class="border-l-2 border-brand-primary pl-4 text-[16px] leading-7 text-brand-text-muted sm:text-[17px]">
-          {t('home.lede')}
-        </p>
+    <p class="mx-auto mt-6 max-w-[58ch] text-[16px] leading-[1.55] text-fai-muted sm:text-[17px]">
+      {t('home.answer')}
+    </p>
 
-        <div class="mt-6 flex flex-col gap-2.5 sm:flex-row">
-          <a
-            href="#directorio"
-            class="inline-flex min-h-12 items-center justify-center rounded-md bg-brand-primary px-5 text-[14px] font-semibold text-brand-on-primary transition-colors hover:bg-brand-primary-hover"
-          >
-            {t('home.cta.browse')}
-          </a>
-          <a
-            href="#metodologia"
-            class="inline-flex min-h-12 items-center justify-center rounded-md border border-brand-card-border bg-brand-surface px-5 text-[14px] font-medium text-brand-text transition-colors hover:border-brand-text/30 hover:bg-brand-surface-sunken"
-          >
-            {t('home.cta.method')}
-          </a>
-        </div>
-      </div>
-
-      <!-- Cifras del índice, en columna de datos -->
-      <dl class="grid grid-cols-2 border-t border-brand-hairline sm:grid-cols-4 lg:border-t-0">
-        {stats.map((stat) => (
-          <div class="border-b border-brand-hairline px-1 py-3 sm:border-b-0 sm:border-l sm:pl-4 sm:first:border-l-0 sm:first:pl-0">
-            <dd class="display text-[34px] tabular-nums leading-none text-brand-text">{stat.value}</dd>
-            <dt class="eyebrow mt-2 text-brand-text-subtle">{stat.label}</dt>
-          </div>
-        ))}
-      </dl>
-    </div>
+    <p class="fai-mono-sm mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-fai-muted-2">
+      <span>{sortedTools.length} {t('home.verified-sources')}</span>
+      <span aria-hidden="true">·</span>
+      <span>{verifiedDomainsCount} {t('home.stat.domains')}</span>
+      <span aria-hidden="true">·</span>
+      <span>0 {t('home.stat.hosted')}</span>
+    </p>
   </section>
 
-  <!-- ÍNDICE POR CATEGORÍA -->
-  <section class="pt-14 sm:pt-16" aria-labelledby="categorias-title">
-    <div class="mb-6">
-      <p class="eyebrow text-brand-primary">{t('home.categories.eyebrow')}</p>
-      <h2 id="categorias-title" class="display mt-1.5 text-[32px] sm:text-[38px]">{t('home.categories.title')}</h2>
-    </div>
-    <CategoryNav lang={lang} tools={tools} />
-  </section>
-
-  <!-- DIRECTORIO -->
   <Directory lang={lang} tools={sortedTools} />
-
-  <!-- METODOLOGÍA -->
-  <section id="metodologia" class="scroll-mt-24 border-t border-brand-hairline py-14 sm:py-16" aria-labelledby="metodologia-title">
-    <div class="grid gap-8 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-14">
-      <div>
-        <p class="eyebrow text-brand-primary">{t('home.method.eyebrow')}</p>
-        <h2 id="metodologia-title" class="display mt-1.5 text-[32px] sm:text-[38px]">{t('home.method.title')}</h2>
-        <p class="mt-4 text-[14px] leading-6 text-brand-text-muted">{t('home.method.note')}</p>
-        <a
-          href={`/${lang}/acerca-de`}
-          class="link-inline mt-4 inline-block text-[14px] font-medium"
-        >{t('footer.about')} →</a>
-      </div>
-
-      <ol class="grid gap-px overflow-hidden rounded-lg border border-brand-card-border bg-brand-card-border" role="list">
-        {methodSteps.map((step) => (
-          <li class="flex gap-4 bg-brand-surface p-5">
-            <span class="data-tag mt-0.5 shrink-0 text-brand-primary" aria-hidden="true">{step.n}</span>
-            <div>
-              <h3 class="text-[15px] font-semibold text-brand-text">{step.title}</h3>
-              <p class="mt-1.5 text-[14px] leading-6 text-brand-text-muted">{step.body}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
 </BaseLayout>

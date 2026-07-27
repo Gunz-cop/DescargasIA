@@ -1,143 +1,90 @@
 @import "tailwindcss";
+@import "./fonts.css";
 
 /* ==========================================================================
-   FuenteAI — Sistema de diseño "Registro Editorial"
+   FuenteAI — dirección "Señal nocturna"
    --------------------------------------------------------------------------
-   Principios:
-   1. La confianza se comunica con datos (dominio, fecha, tipo de canal),
-      no con efectos visuales.
-   2. Una sola tinta de marca (sello ámbar/ember) para acciones e identidad.
-      El verde queda reservado SIEMPRE para "verificado".
-   3. Tres voces tipográficas con papeles distintos: serif editorial para
-      titulares, sistema para interfaz, monoespaciada para la capa de datos.
-   4. Jerarquía por tamaño, contraste de voz y espacio; nunca por grosor extremo.
+   Promesa que guía cada decisión:
+   1. La fuente oficial verificada de cada herramienta, siempre visible.
+   2. Descubrimiento incidental: las alternativas pesan lo mismo que el
+      resultado buscado, nunca son una nota al pie.
+
+   Reglas de color: máximo dos superficies (bg y surface). El lima es escaso —
+   conteos, hallazgos y un solo CTA por vista. Los halos radiales son el único
+   gradiente; nada de gradientes en tarjetas ni botones (salvo el avatar de
+   herramienta y el bloque de fuente oficial).
    ========================================================================== */
 
 @theme {
-  /* --- Color (mapeado a tokens semánticos definidos abajo) --- */
-  --color-brand-bg: var(--brand-bg);
-  --color-brand-text: var(--brand-text);
-  --color-brand-text-muted: var(--brand-text-muted);
-  --color-brand-text-subtle: var(--brand-text-subtle);
-  --color-brand-primary: var(--brand-primary);
-  --color-brand-primary-hover: var(--brand-primary-hover);
-  --color-brand-primary-soft: var(--brand-primary-soft);
-  --color-brand-on-primary: var(--brand-on-primary);
-  --color-brand-secondary: var(--brand-secondary);
-  --color-brand-card-bg: var(--brand-card-bg);
-  --color-brand-card-border: var(--brand-card-border);
-  --color-brand-surface: var(--brand-surface);
-  --color-brand-surface-sunken: var(--brand-surface-sunken);
-  --color-brand-hairline: var(--brand-hairline);
-  --color-brand-success: var(--brand-success);
-  --color-brand-success-border: var(--brand-success-border);
-  --color-brand-success-bg: var(--brand-success-bg);
-  --color-brand-warning-bg: var(--brand-warning-bg);
-  --color-brand-warning-border: var(--brand-warning-border);
-  --color-brand-warning-text: var(--brand-warning-text);
-  --color-brand-danger-bg: var(--brand-danger-bg);
-  --color-brand-danger-border: var(--brand-danger-border);
-  --color-brand-danger-text: var(--brand-danger-text);
+  /* --- §1 Paleta --- */
+  --color-fai-bg: var(--fai-bg);
+  --color-fai-surface: var(--fai-surface);
+  --color-fai-card: var(--fai-card);
+  --color-fai-line: var(--fai-line);
+  --color-fai-signal: var(--fai-signal);
+  --color-fai-find: var(--fai-find);
+  --color-fai-ink: var(--fai-ink);
+  --color-fai-ink-2: var(--fai-ink-2);
+  --color-fai-muted: var(--fai-muted);
+  --color-fai-muted-2: var(--fai-muted-2);
+  --color-fai-deep: var(--fai-deep);
 
-  /* --- Tipografía ---
-     Tres voces con papeles distintos:
-     · display  → serif editorial. La voz de la publicación.
-     · sans     → interfaz y texto corrido. Pila del sistema, coste cero.
-     · mono     → la capa de datos: dominios, fechas, números de registro.
-     Sólo se descargan display y mono (2 familias, 3 cortes). */
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", "Noto Sans", Arial, sans-serif;
-  --font-display: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", "Cascadia Mono",
-    "Segoe UI Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  /* Alias de compatibilidad: las páginas legales y el interstitial /r siguen
+     usando los nombres `brand-*`. Se mapean a la paleta nueva para no dejar
+     ninguna vista fuera del sistema. */
+  --color-brand-bg: var(--fai-bg);
+  --color-brand-text: var(--fai-ink);
+  --color-brand-text-muted: var(--fai-muted);
+  --color-brand-text-subtle: var(--fai-muted-2);
+  --color-brand-primary: var(--fai-signal);
+  --color-brand-primary-hover: var(--fai-find);
+  --color-brand-primary-soft: rgba(15, 191, 143, 0.09);
+  --color-brand-on-primary: #04120e;
+  --color-brand-secondary: var(--fai-signal);
+  --color-brand-card-bg: var(--fai-surface);
+  --color-brand-card-border: var(--fai-line);
+  --color-brand-surface: var(--fai-surface);
+  --color-brand-surface-sunken: rgba(232, 245, 240, 0.04);
+  --color-brand-hairline: var(--fai-line);
+  --color-brand-success: var(--fai-signal);
+  --color-brand-success-border: rgba(15, 191, 143, 0.32);
+  --color-brand-success-bg: rgba(15, 191, 143, 0.1);
+  --color-brand-warning-bg: rgba(198, 242, 78, 0.08);
+  --color-brand-warning-border: rgba(198, 242, 78, 0.28);
+  --color-brand-warning-text: var(--fai-find);
+  --color-brand-danger-bg: rgba(255, 138, 128, 0.08);
+  --color-brand-danger-border: rgba(255, 138, 128, 0.26);
+  --color-brand-danger-text: #ff9d92;
 
-  /* --- Radios (escala única) --- */
+  /* --- §2 Tipografía --- */
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas,
+    monospace;
+
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
   --radius-xl: 20px;
-
-  /* --- Sombras (mínimas, sólo elevación real) --- */
-  --shadow-raised: 0 1px 2px rgba(16, 18, 20, 0.06), 0 1px 1px rgba(16, 18, 20, 0.04);
-  --shadow-overlay: 0 12px 32px -8px rgba(16, 18, 20, 0.18), 0 2px 8px rgba(16, 18, 20, 0.08);
 }
 
-/* --------------------------------------------------------------------------
-   Tema claro ("Papel") — tema base. Funciona sin JavaScript.
-   -------------------------------------------------------------------------- */
 :root {
-  color-scheme: light;
-
-  --brand-bg: #fbfaf7;
-  --brand-surface: #ffffff;
-  --brand-surface-sunken: #f4f2ec;
-  --brand-card-bg: #ffffff;
-  --brand-card-border: #e2ded4;
-  --brand-hairline: #ece8de;
-
-  --brand-text: #16181a;
-  --brand-text-muted: #5a6067;
-  --brand-text-subtle: #6b7178;
-
-  --brand-primary: #a63d1e;
-  --brand-primary-hover: #8a3117;
-  --brand-primary-soft: rgba(166, 61, 30, 0.08);
-  --brand-on-primary: #ffffff;
-  --brand-secondary: #1f5f7a;
-
-  --brand-success: #14713f;
-  --brand-success-border: rgba(20, 113, 63, 0.28);
-  --brand-success-bg: rgba(20, 113, 63, 0.08);
-
-  --brand-warning-text: #8a5200;
-  --brand-warning-border: rgba(138, 82, 0, 0.26);
-  --brand-warning-bg: rgba(138, 82, 0, 0.08);
-
-  --brand-danger-text: #b3261e;
-  --brand-danger-border: rgba(179, 38, 30, 0.26);
-  --brand-danger-bg: rgba(179, 38, 30, 0.07);
-
-  /* Trama de registro: retícula tenue tipo papel pautado */
-  --brand-grid: rgba(22, 24, 26, 0.075);
-}
-
-/* --------------------------------------------------------------------------
-   Tema oscuro ("Tinta")
-   -------------------------------------------------------------------------- */
-:root[data-theme="dark"] {
   color-scheme: dark;
 
-  --brand-bg: #0c0e10;
-  --brand-surface: #14171a;
-  --brand-surface-sunken: #101315;
-  --brand-card-bg: #14171a;
-  --brand-card-border: #262b30;
-  --brand-hairline: #1e2226;
-
-  --brand-text: #eceae5;
-  --brand-text-muted: #9aa1a8;
-  --brand-text-subtle: #7c838a;
-
-  --brand-primary: #f0794c;
-  --brand-primary-hover: #ff8f68;
-  --brand-primary-soft: rgba(240, 121, 76, 0.12);
-  --brand-on-primary: #16181a;
-  --brand-secondary: #7fb8d4;
-
-  --brand-success: #46c88a;
-  --brand-success-border: rgba(70, 200, 138, 0.3);
-  --brand-success-bg: rgba(70, 200, 138, 0.1);
-
-  --brand-warning-text: #e5ab52;
-  --brand-warning-border: rgba(229, 171, 82, 0.28);
-  --brand-warning-bg: rgba(229, 171, 82, 0.1);
-
-  --brand-danger-text: #f08b82;
-  --brand-danger-border: rgba(240, 139, 130, 0.28);
-  --brand-danger-bg: rgba(240, 139, 130, 0.08);
-
-  --brand-grid: rgba(236, 234, 229, 0.07);
+  --fai-bg: #04120e;
+  --fai-surface: #0a211b;
+  --fai-card: rgba(232, 245, 240, 0.04);
+  --fai-line: rgba(232, 245, 240, 0.1);
+  --fai-signal: #0fbf8f;
+  --fai-find: #c6f24e;
+  --fai-ink: #e8f5f0;
+  --fai-ink-2: #d8ebe4;
+  --fai-muted: #9bb5ad;
+  --fai-muted-2: #7fa79b;
+  --fai-deep: #1b3a32;
 }
 
 /* ==========================================================================
@@ -150,12 +97,15 @@ html {
 }
 
 body {
-  background-color: var(--brand-bg);
-  color: var(--brand-text);
+  background-color: var(--fai-bg);
+  color: var(--fai-ink);
   font-family: var(--font-sans);
-  font-synthesis-weight: none;
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+/* §2 — `text-wrap: pretty` en todo párrafo */
+p {
+  text-wrap: pretty;
 }
 
 a,
@@ -164,32 +114,39 @@ a:visited {
   text-decoration: none;
 }
 
-/* El atributo [hidden] debe ganar a las utilidades de display de Tailwind
-   (misma especificidad, pero las utilidades aparecen después en la cascada). */
+/* El atributo [hidden] debe ganar a las utilidades de display de Tailwind. */
 [hidden] {
   display: none !important;
 }
 
-/* Enlaces dentro de texto corrido: subrayado discreto y legible */
+/* §1 — enlaces: signal, hover find, subrayado solo en texto corrido */
 .link-inline {
-  color: var(--brand-primary);
+  color: var(--fai-signal);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  text-decoration-color: color-mix(in srgb, var(--brand-primary) 45%, transparent);
 }
 .link-inline:hover {
-  text-decoration-color: currentColor;
+  color: var(--fai-find);
 }
 
+/* §3.4 — foco de teclado */
 *:focus-visible {
-  outline: 2px solid var(--brand-primary);
-  outline-offset: 2px;
+  outline: none;
+  border-color: var(--fai-signal);
+  box-shadow: 0 0 0 4px rgba(15, 191, 143, 0.25);
   border-radius: 3px;
+}
+/* Respaldo para elementos sin borde propio */
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--fai-signal);
+  outline-offset: 2px;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--brand-primary) 22%, transparent);
+  background: rgba(198, 242, 78, 0.25);
+  color: var(--fai-ink);
 }
 
 summary::-webkit-details-marker {
@@ -197,244 +154,365 @@ summary::-webkit-details-marker {
 }
 
 /* ==========================================================================
-   Utilidades del sistema
+   §2 Tipografía — escala
    ========================================================================== */
 
-/* Saltar al contenido (visible sólo al enfocar con teclado) */
-.skip-link {
-  position: absolute;
-  left: 50%;
-  top: 0.5rem;
-  z-index: 100;
-  translate: -50% -160%;
-  padding: 0.625rem 1rem;
-  border-radius: var(--radius-md);
-  background: var(--brand-primary);
-  color: var(--brand-on-primary);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  transition: translate 0.15s ease;
-}
-.skip-link:focus-visible {
-  translate: -50% 0;
-}
-
-/* Superficie estándar de tarjeta/panel */
-.surface {
-  background: var(--brand-surface);
-  border: 1px solid var(--brand-card-border);
-}
-
-/* Pauta de libro de registro: renglones horizontales, como un libro contable.
-   Sustituye a la retícula de puntos genérica. */
-.registry-grid {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0,
-    transparent 31px,
-    var(--brand-grid) 31px,
-    var(--brand-grid) 32px
-  );
-  mask-image: linear-gradient(to bottom, #000 0%, transparent 88%);
-}
-
-/* Filete de sección: la regla gruesa/fina de las publicaciones impresas */
-.rule-double {
-  border-top: 3px solid var(--brand-text);
-  box-shadow: 0 2px 0 0 var(--brand-text);
-}
-
-/* Etiqueta de dato: dominios, fechas, identificadores */
-.data-tag {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: -0.01em;
-}
-
-/* Rótulo de sección */
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* Titulares: serif editorial. Es la voz de la publicación, no un adorno. */
-.display {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.012em;
-  line-height: 1.06;
-}
-
-/* Cursiva del display para el énfasis dentro de los titulares */
-.display em,
-.display .em {
-  font-style: italic;
-  color: var(--brand-primary);
-}
-
-/* Número de registro: la marca de que esto es un índice, no un catálogo */
-.record-num {
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
+.fai-hero {
+  font-size: clamp(40px, 6.4vw, 84px);
+  line-height: 0.98;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  color: color-mix(in srgb, var(--brand-primary) 70%, var(--brand-text-subtle));
+  letter-spacing: -0.035em;
+}
+
+.fai-h2 {
+  font-size: clamp(32px, 4.2vw, 52px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.fai-count {
+  font-size: clamp(40px, 5vw, 56px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.035em;
   font-variant-numeric: tabular-nums;
+  color: var(--fai-find);
 }
 
-/* Monograma por herramienta: una sola variable --tone controla el color,
-   y funciona en ambos temas sin duplicar mapas de clases. */
-.monogram {
-  --tone: var(--brand-primary);
-  background: color-mix(in srgb, var(--tone) 12%, var(--brand-surface));
-  border: 1px solid color-mix(in srgb, var(--tone) 30%, transparent);
-  color: color-mix(in srgb, var(--tone) 62%, var(--brand-text));
-  font-family: var(--font-mono);
-  font-weight: 700;
-  letter-spacing: -0.04em;
-}
-
-/* Filo de color de categoría en la ficha */
-.tone-rule {
-  background: color-mix(in srgb, var(--tone, var(--brand-primary)) 70%, transparent);
-}
-
-/* --------------------------------------------------------------------------
-   Sello de verificación. Es el elemento firma del sitio: declara lo que
-   FuenteAI comprobó (el dominio y la fecha), nunca un aval de la marca.
-   -------------------------------------------------------------------------- */
-.stamp {
-  position: relative;
-  display: inline-block;
-  padding: 0.75rem 1.125rem 0.625rem;
-  border: 2px solid var(--brand-primary);
-  border-radius: 3px;
-  color: var(--brand-primary);
-  rotate: -1.4deg;
-  background: color-mix(in srgb, var(--brand-primary) 5%, transparent);
-}
-.stamp::before {
-  content: "";
-  position: absolute;
-  inset: 3px;
-  border: 1px solid color-mix(in srgb, var(--brand-primary) 45%, transparent);
-  border-radius: 2px;
-  pointer-events: none;
-}
-.stamp__label {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  opacity: 0.85;
-}
-.stamp__value {
-  font-family: var(--font-mono);
-  font-size: 1rem;
+.fai-section-title {
+  font-size: clamp(22px, 2.4vw, 26px);
+  line-height: 1.15;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
-.stamp__meta {
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.8;
+
+.fai-card-title {
+  font-size: 19px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-/* Icono del conmutador de tema: muestra la acción, no el estado actual */
-.theme-icon-sun {
-  display: none;
+/* Metadatos, dominios, badges, breadcrumb */
+.fai-mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
-:root[data-theme="dark"] .theme-icon-sun {
+.fai-mono-sm {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+/* Dominios: mono pero sin versalitas ni tracking amplio, para que se lean */
+.fai-domain {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--fai-signal);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .fai-card-title {
+    font-size: 17px;
+  }
+  /* §2 — en móvil nada baja de 14px. Los rótulos mono suben a 12px: van en
+     mayúsculas y con tracking amplio, así que leen por encima de su cuerpo. */
+  .fai-mono-sm {
+    font-size: 12px;
+  }
+  .fai-mono,
+  .fai-domain {
+    font-size: 13px;
+  }
+}
+
+/* ==========================================================================
+   §3.1 Respiración de fondo
+   ========================================================================== */
+
+.fai-halos {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.fai-halo {
+  position: absolute;
+  filter: blur(20px);
+  will-change: transform, opacity;
+}
+
+.fai-halo--signal {
+  width: 760px;
+  height: 560px;
+  top: -120px;
+  left: 50%;
+  margin-left: -540px;
+  background: radial-gradient(closest-side, rgba(15, 191, 143, 0.34), transparent);
+  animation: fai-breathe-a 9s ease-in-out infinite;
+}
+
+.fai-halo--find {
+  width: 520px;
+  height: 420px;
+  top: 120px;
+  left: 50%;
+  margin-left: 60px;
+  background: radial-gradient(closest-side, rgba(198, 242, 78, 0.16), transparent);
+  animation: fai-breathe-b 12s ease-in-out infinite;
+}
+
+@keyframes fai-breathe-a {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(-18px) scale(1.08);
+  }
+}
+
+@keyframes fai-breathe-b {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: translateY(-18px) scale(1.08);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   §3.2 Entrada en cascada
+   ========================================================================== */
+
+.fai-rise {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.fai-rise.is-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--fai-delay, 0ms);
+}
+
+/* Sin JS la información nunca queda oculta */
+.no-js .fai-rise {
+  opacity: 1;
+  transform: none;
+}
+
+/* ==========================================================================
+   §3.4 Hover con borde vivo
+   ========================================================================== */
+
+.fai-live {
+  border: 1px solid var(--fai-line);
+  background: var(--fai-card);
+  transition: border-color 140ms ease-out, background-color 140ms ease-out;
+}
+
+/* Cuando una tarjeta es a la vez `fai-live` y `fai-rise`, las dos reglas
+   compiten por la propiedad `transition` y gana la cascada (más específica),
+   dejando el hover en 260 ms. Se declaran juntas para que cada propiedad
+   conserve su duración: entrada 260 ms con retraso, hover 140 ms sin él. */
+.fai-live.fai-rise.is-in {
+  transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 140ms ease-out, background-color 140ms ease-out;
+  transition-delay: var(--fai-delay, 0ms), var(--fai-delay, 0ms), 0ms, 0ms;
+}
+.fai-live:hover {
+  border-color: var(--fai-signal);
+  background: rgba(15, 191, 143, 0.09);
+}
+.fai-live:focus-within {
+  border-color: var(--fai-signal);
+  background: rgba(15, 191, 143, 0.09);
+  box-shadow: 0 0 0 4px rgba(15, 191, 143, 0.25);
+}
+
+/* ==========================================================================
+   §3.5 Cursor del buscador
+   ========================================================================== */
+
+.fai-caret {
+  display: none;
+  width: 2px;
+  height: 20px;
+  background: var(--fai-find);
+  animation: fai-blink 1.1s steps(2, end) infinite;
+}
+.fai-search:focus-within .fai-caret {
   display: block;
 }
-:root[data-theme="dark"] .theme-icon-moon {
-  display: none;
-}
 
-/* --------------------------------------------------------------------------
-   Directorio: dos vistas sobre EL MISMO DOM.
-   `list` es un libro de registro (una fila por herramienta); `grid` es una
-   rejilla de tarjetas. Se conmuta con un atributo en el contenedor, sin
-   duplicar marcado ni re-renderizar nada.
-   -------------------------------------------------------------------------- */
-.tools {
-  display: grid;
-  gap: 1rem;
-}
-
-.tools[data-view="grid"] {
-  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
-}
-
-.tools[data-view="list"] {
-  gap: 0;
-  border: 1px solid var(--brand-card-border);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--brand-card-border);
-  grid-template-columns: 1fr;
-}
-
-.tools[data-view="list"] .record {
-  border-radius: 0;
-  border: 0;
-  margin-bottom: 1px;
-}
-.tools[data-view="list"] .record:last-child {
-  margin-bottom: 0;
-}
-
-/* Piezas que sólo tienen sentido en una de las dos vistas */
-.tools[data-view="grid"] .record__num {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-}
-
-@media (min-width: 60rem) {
-  .tools[data-view="list"] .record {
-    display: grid;
-    grid-template-columns: 3.25rem minmax(12rem, 1.05fr) minmax(0, 1.55fr) auto;
-    align-items: center;
-    column-gap: 1.25rem;
-    padding: 1rem 1.25rem;
-  }
-  .tools[data-view="list"] .record__num {
-    grid-column: 1;
-    align-self: center;
-  }
-  .tools[data-view="list"] .record__id {
-    grid-column: 2;
-  }
-  .tools[data-view="list"] .record__body {
-    grid-column: 3;
-  }
-  .tools[data-view="list"] .record__actions {
-    grid-column: 4;
-    border: 0;
-    padding: 0;
-    justify-content: flex-end;
-  }
-  .tools[data-view="list"] .record__desc {
-    -webkit-line-clamp: 2;
-  }
-  /* En vista lista la acción secundaria aparece al pasar el cursor o al
-     enfocar con teclado: reduce ruido sin esconder funcionalidad. */
-  .tools[data-view="list"] .record__secondary {
-    opacity: 0;
-    transition: opacity 0.15s ease;
-  }
-  .tools[data-view="list"] .record:hover .record__secondary,
-  .tools[data-view="list"] .record:focus-within .record__secondary {
+@keyframes fai-blink {
+  0%,
+  100% {
     opacity: 1;
   }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   Piezas del sistema
+   ========================================================================== */
+
+/* Avatar de herramienta: gradiente teal→verde para hallazgo, --fai-deep para
+   una herramienta que el visitante probablemente ya conoce. */
+.fai-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border-radius: 12px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--fai-ink);
+}
+.fai-avatar--find {
+  background: linear-gradient(140deg, #0fbf8f, #1f7a5e);
+  color: #04120e;
+}
+.fai-avatar--known {
+  background: var(--fai-deep);
+}
+
+/* Badge: nunca comunica solo por color, siempre lleva texto (§8) */
+.fai-badge {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 4px 9px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.fai-badge--find {
+  background: rgba(198, 242, 78, 0.14);
+  border: 1px solid rgba(198, 242, 78, 0.4);
+  color: var(--fai-find);
+}
+.fai-badge--known {
+  border: 1px solid var(--fai-line);
+  color: var(--fai-muted-2);
+}
+
+/* Chip de necesidad/categoría; la activa en lima con halo (§6) */
+.fai-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  border: 1px solid var(--fai-line);
+  background: var(--fai-card);
+  color: var(--fai-ink);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 140ms ease-out, background-color 140ms ease-out;
+}
+.fai-chip:hover {
+  border-color: var(--fai-signal);
+  background: rgba(15, 191, 143, 0.09);
+}
+.fai-chip[aria-pressed="true"],
+.fai-chip[aria-current="page"] {
+  background: var(--fai-find);
+  border-color: var(--fai-find);
+  color: #06231c;
+  font-weight: 600;
+  box-shadow: 0 0 40px rgba(198, 242, 78, 0.35);
+}
+.fai-chip__count {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.75;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Rejilla de resultados (§6 ResultGrid) */
+.fai-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 620px) {
+  .fai-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 900px) {
+  .fai-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1200px) {
+  .fai-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.fai-grid--3 {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 620px) {
+  .fai-grid--3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 900px) {
+  .fai-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Tarjeta +N en lima punteado, última celda del bloque */
+.fai-more {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-height: 100%;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px dashed rgba(198, 242, 78, 0.45);
+  background: rgba(198, 242, 78, 0.05);
+  color: var(--fai-find);
+  transition: background-color 140ms ease-out, border-color 140ms ease-out;
+}
+.fai-more:hover {
+  background: rgba(198, 242, 78, 0.1);
+  border-color: var(--fai-find);
 }
 
 .scrollbar-none::-webkit-scrollbar {
@@ -445,57 +523,25 @@ summary::-webkit-details-marker {
   scrollbar-width: none;
 }
 
-/* Botón de filtro (chip) — estado gestionado con aria-pressed, no con clases */
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  min-height: 2.25rem;
-  padding: 0 0.75rem;
+/* Saltar al contenido */
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0.5rem;
+  z-index: 100;
+  translate: -50% -160%;
+  padding: 0.625rem 1rem;
   border-radius: var(--radius-md);
-  border: 1px solid var(--brand-card-border);
-  background: var(--brand-surface);
-  color: var(--brand-text-muted);
+  background: var(--fai-find);
+  color: #06231c;
   font-size: 0.8125rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
-}
-.chip:hover {
-  color: var(--brand-text);
-  border-color: color-mix(in srgb, var(--brand-text) 25%, var(--brand-card-border));
-}
-.chip[aria-pressed="true"] {
-  background: var(--brand-text);
-  border-color: var(--brand-text);
-  color: var(--brand-bg);
   font-weight: 600;
+  transition: translate 0.15s ease;
+}
+.skip-link:focus-visible {
+  translate: -50% 0;
 }
 
-/* Conmutador de vista del directorio */
-.view-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  height: 2rem;
-  padding: 0 0.625rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--brand-text-muted);
-  cursor: pointer;
-  transition: color 0.15s ease, background-color 0.15s ease;
-}
-.view-btn:hover {
-  color: var(--brand-text);
-}
-.view-btn[aria-pressed="true"] {
-  background: var(--brand-surface-sunken);
-  color: var(--brand-text);
-  font-weight: 600;
-}
-
-/* Acordeón de detalles con marcador propio */
 .details-marker {
   transition: rotate 0.2s ease;
 }
@@ -503,14 +549,42 @@ details[open] > summary .details-marker {
   rotate: 180deg;
 }
 
+/* ==========================================================================
+   §3.6 Movimiento reducido
+   --------------------------------------------------------------------------
+   Halos estáticos al 70 %, cascada y contador en su estado final inmediato,
+   el hover solo cambia color. Ninguna información depende del movimiento.
+   ========================================================================== */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+
+  .fai-halo {
+    animation: none !important;
+    opacity: 0.7 !important;
+    transform: none !important;
+  }
+
+  .fai-rise,
+  .fai-rise.is-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .fai-caret {
+    animation: none !important;
+  }
+
+  .fai-live {
+    transition: border-color 140ms ease-out, color 140ms ease-out;
+  }
+
   *,
   *::before,
   *::after {
-    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }

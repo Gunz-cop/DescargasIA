@@ -1,12 +1,11 @@
 /**
- * Fuente única de verdad para la identidad visual del directorio.
+ * Metadatos compartidos del directorio: necesidades (categorías),
+ * plataformas y utilidades de dominio, fecha e iniciales.
  *
- * Antes existían tres mapas de color paralelos (ToolCard.visualStyles,
- * ToolCard.hoverStyles y [slug].visualAccents) con ~26 entradas cada uno y
- * desincronizados entre sí. Aquí se reduce todo a UN tono por herramienta:
- * el CSS (.monogram, .tone-rule) deriva fondo, borde y texto desde
- * `--tone` con color-mix, por lo que funciona en tema claro y oscuro sin
- * duplicar clases.
+ * El color por herramienta ya no vive aquí: en la dirección "Señal nocturna"
+ * el avatar sólo tiene dos estados (hallazgo / conocida) y los define el CSS
+ * (`.fai-avatar--find`, `.fai-avatar--known`). El `tone` de cada categoría se
+ * conserva porque marca los chips de necesidad.
  */
 
 export type Lang = 'es' | 'sv' | 'it';
@@ -127,46 +126,7 @@ export function getCategoryLabel(slug: string, lang: Lang, variant: 'label' | 's
   return cat[variant][lang] ?? cat[variant].es;
 }
 
-/**
- * Tono editorial por herramienta. Es un identificador propio (monograma),
- * no el logo ni el color corporativo exacto de la marca: sirve para
- * escanear la lista, no para sugerir afiliación.
- */
-const TOOL_TONES: Record<string, string> = {
-  chatgpt: '#10a37f',
-  claude: '#c9622f',
-  gemini: '#3b7fc4',
-  cursor: '#2f7fd0',
-  ollama: '#6b7280',
-  'lm-studio': '#7c5ce0',
-  'stable-diffusion': '#c2436d',
-  midjourney: '#5b5bd6',
-  canva: '#1897c0',
-  'microsoft-copilot': '#2e7dd7',
-  perplexity: '#1f9c9c',
-  anythingllm: '#7aa33c',
-  jan: '#71767b',
-  elevenlabs: '#cf4f86',
-  runway: '#6e7378',
-  'luma-dream-machine': '#8b5cf6',
-  'github-copilot': '#5a6472',
-  deepl: '#2c7bd1',
-  'gamma-app': '#b04bc0',
-  gemma: '#bd8a24',
-  languagetool: '#2f9e62',
-  phind: '#1795a8',
-  suno: '#bd9420',
-  deepseek: '#4d6bf5',
-  notebooklm: '#1e9e8f',
-  flux: '#b848a8'
-};
-
-/** Devuelve el tono de una herramienta, con la categoría como respaldo. */
-export function getToolTone(slug: string, categories: string[] = []): string {
-  return TOOL_TONES[slug] ?? getCategory(categories[0] ?? '')?.tone ?? '#a63d1e';
-}
-
-/** Iniciales editoriales para el monograma. */
+/** Iniciales editoriales para el avatar de la tarjeta. */
 export function getInitials(name: string, explicit?: string): string {
   if (explicit) return explicit;
   return name

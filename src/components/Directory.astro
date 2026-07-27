@@ -1,8 +1,7 @@
 ---
 // src/components/Directory.astro
-// Buscador + filtros + rejilla de resultados.
-// Sustituye al buscador del hero y al SearchBar duplicado: un solo control,
-// con estado reflejado en la URL, aria-pressed real y recuento en vivo.
+// §6 SearchBar + NeedChips + CountHeadline + ResultGrid.
+// Todos los conteos se derivan del catálogo; ninguno está escrito a mano.
 import ToolCard from './ToolCard.astro';
 import { CATEGORIES, PLATFORM_ORDER, PLATFORM_SHORT, type Lang } from '../utils/brand';
 import { useTranslations } from '../i18n/ui';
@@ -15,157 +14,126 @@ interface Props {
 const { lang, tools } = Astro.props;
 const t = useTranslations(lang);
 
-// Sólo se ofrecen filtros de categorías que realmente tienen fichas.
-const usedCategories = CATEGORIES.filter((cat) =>
-  tools.some((tool) => tool.categories.includes(cat.slug))
-);
+// Sólo se ofrecen necesidades que realmente tienen fichas verificadas.
+const needs = CATEGORIES.map((cat) => ({
+  ...cat,
+  count: tools.filter((tool) => tool.categories.includes(cat.slug)).length
+})).filter((cat) => cat.count > 0);
 
 const usedPlatforms = PLATFORM_ORDER.filter((platform) =>
   tools.some((tool) => Boolean(tool.platforms[platform]))
 );
 
-const countLabel = tools.length === 1 ? t('directory.count.one') : t('directory.count.other');
+const freeCount = tools.filter((tool) => tool.pricingModel === 'free').length;
+
+// §3.3 — el contador arranca en 2 ("la mayoría conoce 2") y sube al total.
+const KNOWN_BASELINE = 2;
+const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necessità' : 'todas las necesidades';
 ---
 
-<section id="directorio" class="scroll-mt-24 py-14 sm:py-16" aria-labelledby="directorio-title">
-  <div class="rule-double mb-6 flex flex-col gap-3 pt-4 sm:flex-row sm:items-end sm:justify-between">
-    <div>
-      <p class="eyebrow text-brand-primary">{t('directory.eyebrow')}</p>
-      <h2 id="directorio-title" class="display mt-1 text-[30px] sm:text-[36px]">{t('directory.title')}</h2>
-    </div>
+<section id="directorio" class="scroll-mt-24 py-12" aria-labelledby="directorio-title">
+  <h2 id="directorio-title" class="sr-only">{t('directory.title')}</h2>
 
-    <div class="flex items-center gap-4 pb-1">
-      <p class="data-tag text-brand-text-subtle">
-        <span id="results-count">{tools.length}</span> {t('directory.of')} {tools.length} {countLabel}
-      </p>
-      <div
-        class="hidden items-center gap-0.5 rounded-md border border-brand-card-border p-0.5 lg:flex"
-        role="group"
-        aria-label={t('view.label')}
-        id="view-switch"
-      >
-        <button type="button" data-view="list" aria-pressed="true" class="view-btn">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
-          </svg>
-          {t('view.list')}
-        </button>
-        <button type="button" data-view="grid" aria-pressed="false" class="view-btn">
-          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-            <rect x="4" y="4" width="7" height="7" rx="1.5" />
-            <rect x="13" y="4" width="7" height="7" rx="1.5" />
-            <rect x="4" y="13" width="7" height="7" rx="1.5" />
-            <rect x="13" y="13" width="7" height="7" rx="1.5" />
-          </svg>
-          {t('view.grid')}
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Controles -->
-  <div class="rounded-lg border border-brand-card-border bg-brand-surface">
-    <div class="flex items-center gap-2.5 border-b border-brand-hairline px-4">
-      <svg class="h-[18px] w-[18px] shrink-0 text-brand-text-subtle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-4.35-4.35M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" />
+  <!-- Buscador -->
+  <div class="fai-search fai-live mx-auto flex max-w-[720px] items-center gap-3 rounded-[14px] px-4 py-3">
+    <span class="fai-mono-sm shrink-0 text-fai-muted-2" aria-hidden="true">
+      {lang === 'sv' ? 'Sök' : lang === 'it' ? 'Cerca' : 'Buscar'}
+    </span>
+    <label for="directory-search" class="sr-only">{t('search.label')}</label>
+    <input
+      type="search"
+      id="directory-search"
+      placeholder={t('search.placeholder')}
+      autocomplete="off"
+      aria-describedby="directory-search-hint"
+      class="min-w-0 flex-1 bg-transparent py-1.5 text-[16px] text-fai-ink placeholder:text-fai-muted-2 focus:outline-none"
+    />
+    <!-- §3.5 Cursor del buscador: sólo visible cuando el campo tiene foco -->
+    <span class="fai-caret shrink-0" aria-hidden="true"></span>
+    <p id="directory-search-hint" class="sr-only">{t('search.hint')}</p>
+    <span class="fai-mono-sm hidden shrink-0 text-fai-muted-2 sm:inline">
+      ↵ · esc
+    </span>
+    <button
+      type="button"
+      id="clear-search"
+      hidden
+      class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md text-fai-muted-2 transition-colors hover:text-fai-ink"
+      aria-label={t('search.clear')}
+    >
+      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
       </svg>
-      <label for="directory-search" class="sr-only">{t('search.label')}</label>
-      <input
-        type="search"
-        id="directory-search"
-        placeholder={t('search.placeholder')}
-        autocomplete="off"
-        aria-describedby="directory-search-hint"
-        class="min-w-0 flex-1 bg-transparent py-3.5 text-[15px] text-brand-text placeholder:text-brand-text-subtle focus:outline-none"
-      />
-      <p id="directory-search-hint" class="sr-only">{t('search.hint')}</p>
-      <button
-        type="button"
-        id="clear-search"
-        hidden
-        class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-brand-text-subtle transition-colors hover:bg-brand-surface-sunken hover:text-brand-text"
-        aria-label={t('search.clear')}
-      >
-        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-        </svg>
+    </button>
+  </div>
+
+  <!-- §6 NeedChips -->
+  <div class="mt-7 flex flex-wrap justify-center gap-2.5" id="need-chips" role="group" aria-label={t('filters.category')}>
+    <button type="button" class="fai-chip" data-category="todos" aria-pressed="true">
+      {t('filters.all')}
+      <span class="fai-chip__count">{tools.length}</span>
+    </button>
+    {needs.map((need) => (
+      <button type="button" class="fai-chip" data-category={need.slug} aria-pressed="false">
+        {need.short[lang]}
+        <span class="fai-chip__count">{need.count}</span>
       </button>
+    ))}
+  </div>
+
+  <!-- §6 CountHeadline -->
+  <div class="mt-12 flex flex-col gap-5 border-t border-fai-line pt-7 lg:flex-row lg:items-start lg:justify-between">
+    <div>
+      <p class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span
+          class="fai-count"
+          id="results-count"
+          data-count-to={tools.length}
+          data-count-from={KNOWN_BASELINE}
+        >{tools.length}</span>
+        <span class="fai-section-title text-fai-ink">
+          {t('count.for')} <span id="need-label">{allLabel}</span>
+        </span>
+      </p>
+      <p class="fai-mono-sm mt-2.5 text-fai-muted-2">
+        {t('count.most-know')} <span id="missing-count">{Math.max(tools.length - KNOWN_BASELINE, 0)}</span>
+      </p>
     </div>
 
-    <div class="flex flex-col gap-3 p-4">
-      <!-- Categorías -->
-      <div class="flex items-center gap-3">
-        <span id="filter-category-label" class="eyebrow hidden w-20 shrink-0 text-brand-text-subtle sm:block">{t('filters.category')}</span>
-        <div
-          class="scrollbar-none -mx-1 flex flex-1 gap-1.5 overflow-x-auto px-1 py-0.5"
-          id="category-filters"
-          role="group"
-          aria-labelledby="filter-category-label"
-        >
-          <button type="button" class="chip shrink-0" data-category="todos" aria-pressed="true">{t('filters.all')}</button>
-          {usedCategories.map((cat) => (
-            <button type="button" class="chip shrink-0" data-category={cat.slug} aria-pressed="false">
-              <span class="h-1.5 w-1.5 rounded-full" style={`background:${cat.tone}`} aria-hidden="true"></span>
-              {cat.short[lang]}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <!-- Plataformas -->
-      <div class="flex items-center gap-3">
-        <span id="filter-platform-label" class="eyebrow hidden w-20 shrink-0 text-brand-text-subtle sm:block">{t('filters.platform')}</span>
-        <div
-          class="scrollbar-none -mx-1 flex flex-1 gap-1.5 overflow-x-auto px-1 py-0.5"
-          id="platform-filters"
-          role="group"
-          aria-labelledby="filter-platform-label"
-        >
-          <button type="button" class="chip shrink-0" data-platform="todos" aria-pressed="true">{t('filters.any')}</button>
-          {usedPlatforms.map((platform) => (
-            <button type="button" class="chip shrink-0" data-platform={platform} aria-pressed="false">
-              {PLATFORM_SHORT[platform]}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <button
-        type="button"
-        id="reset-filters"
-        hidden
-        class="self-start rounded-md px-1 py-1 text-[13px] font-medium text-brand-primary underline underline-offset-4 transition-colors hover:text-brand-primary-hover sm:ml-[calc(5rem+0.75rem)]"
-      >
-        {t('filters.reset')}
-      </button>
+    <!-- Filtros secundarios: sólo sobre datos que el catálogo ya verifica -->
+    <div class="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1" id="secondary-filters" role="group" aria-label={t('filters.platform')}>
+      {freeCount > 0 && (
+        <button type="button" class="fai-chip shrink-0 !min-h-9 !px-3.5 !text-[13px]" data-pricing="free" aria-pressed="false">
+          {t('info.pricing.free')}
+          <span class="fai-chip__count">{freeCount}</span>
+        </button>
+      )}
+      {usedPlatforms.map((platform) => (
+        <button type="button" class="fai-chip shrink-0 !min-h-9 !px-3.5 !text-[13px]" data-platform={platform} aria-pressed="false">
+          {PLATFORM_SHORT[platform]}
+        </button>
+      ))}
     </div>
   </div>
 
-  <!-- Anuncio para lectores de pantalla -->
-  <p
-    id="results-live"
-    class="sr-only"
-    role="status"
-    aria-live="polite"
-    data-template={`{n} ${t('directory.of')} ${tools.length} ${countLabel}`}
-  ></p>
+  <p id="results-live" class="sr-only" role="status" aria-live="polite"></p>
 
-  <!-- Resultados -->
-  <div id="tools-grid" class="tools mt-6" data-view="list">
-    {tools.map((tool, index) => <ToolCard tool={tool} index={index + 1} />)}
+  <!-- §6 ResultGrid -->
+  <div id="tools-grid" class="fai-grid mt-7">
+    {tools.map((tool, index) => <ToolCard tool={tool} index={index} />)}
   </div>
 
   <div
     id="empty-state"
     hidden
-    class="mt-6 rounded-lg border border-dashed border-brand-card-border bg-brand-surface-sunken px-6 py-14 text-center"
+    class="mt-7 rounded-[14px] border border-dashed border-fai-line px-6 py-16 text-center"
   >
-    <h3 class="display text-[22px]">{t('empty.title')}</h3>
-    <p class="mx-auto mt-2 max-w-sm text-[14px] leading-6 text-brand-text-muted">{t('empty.body')}</p>
+    <p class="fai-section-title text-fai-ink">{t('empty.title')}</p>
+    <p class="mx-auto mt-2.5 max-w-sm text-[14px] leading-[1.55] text-fai-muted">{t('empty.body')}</p>
     <button
       type="button"
       id="empty-reset"
-      class="mt-5 inline-flex min-h-11 items-center rounded-md bg-brand-primary px-4 text-[13px] font-semibold text-brand-on-primary transition-colors hover:bg-brand-primary-hover"
+      class="fai-chip mt-6 !bg-fai-find !border-fai-find !text-[#06231c] font-semibold"
     >
       {t('filters.reset')}
     </button>
@@ -177,21 +145,24 @@ const countLabel = tools.length === 1 ? t('directory.count.one') : t('directory.
   if (section) {
     const input = document.getElementById('directory-search') as HTMLInputElement | null;
     const clearBtn = document.getElementById('clear-search') as HTMLButtonElement | null;
-    const resetBtn = document.getElementById('reset-filters') as HTMLButtonElement | null;
     const emptyReset = document.getElementById('empty-reset') as HTMLButtonElement | null;
     const grid = document.getElementById('tools-grid');
     const emptyState = document.getElementById('empty-state');
     const counter = document.getElementById('results-count');
+    const missing = document.getElementById('missing-count');
+    const needLabel = document.getElementById('need-label');
     const live = document.getElementById('results-live');
-    const categoryBtns = Array.from(
-      document.querySelectorAll<HTMLButtonElement>('#category-filters button')
-    );
-    const platformBtns = Array.from(
-      document.querySelectorAll<HTMLButtonElement>('#platform-filters button')
+
+    const needChips = Array.from(document.querySelectorAll<HTMLButtonElement>('#need-chips button'));
+    const secondaryChips = Array.from(
+      document.querySelectorAll<HTMLButtonElement>('#secondary-filters button')
     );
     const cards = Array.from(grid?.querySelectorAll<HTMLElement>('article') ?? []);
 
-    const state = { q: '', category: 'todos', platform: 'todos' };
+    const allLabel = needLabel?.textContent ?? '';
+    const KNOWN_BASELINE = 2;
+
+    const state = { q: '', category: 'todos', platform: '', pricing: '' };
 
     const normalize = (value: string) =>
       value
@@ -199,12 +170,6 @@ const countLabel = tools.length === 1 ? t('directory.count.one') : t('directory.
         .normalize('NFD')
         .replace(new RegExp('[\\u0300-\\u036f]', 'g'), '')
         .trim();
-
-    const setPressed = (buttons: HTMLButtonElement[], attr: string, value: string) => {
-      buttons.forEach((btn) => {
-        btn.setAttribute('aria-pressed', String(btn.dataset[attr] === value));
-      });
-    };
 
     const syncUrl = () => {
       const url = new URL(window.location.href);
@@ -214,7 +179,8 @@ const countLabel = tools.length === 1 ? t('directory.count.one') : t('directory.
       };
       set('q', state.q, '');
       set('cat', state.category, 'todos');
-      set('plat', state.platform, 'todos');
+      set('plat', state.platform, '');
+      set('precio', state.pricing, '');
       window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
     };
 
@@ -223,42 +189,58 @@ const countLabel = tools.length === 1 ? t('directory.count.one') : t('directory.
       let visible = 0;
 
       cards.forEach((card) => {
-        const haystack = card.dataset.name ?? '';
-        const categories = (card.dataset.categories ?? '').split(',');
-        const platforms = (card.dataset.platforms ?? '').split(',');
-
         const matches =
-          (!query || haystack.includes(query)) &&
-          (state.category === 'todos' || categories.includes(state.category)) &&
-          (state.platform === 'todos' || platforms.includes(state.platform));
+          (!query || (card.dataset.name ?? '').includes(query)) &&
+          (state.category === 'todos' || (card.dataset.categories ?? '').split(',').includes(state.category)) &&
+          (!state.platform || (card.dataset.platforms ?? '').split(',').includes(state.platform)) &&
+          (!state.pricing || card.dataset.pricing === state.pricing);
 
         card.hidden = !matches;
-        if (matches) visible++;
+        if (matches) {
+          // El retraso de la cascada se recalcula sobre lo que queda visible.
+          card.dataset.riseIndex = String(visible);
+          visible++;
+        }
       });
 
       if (counter) counter.textContent = String(visible);
+      if (missing) missing.textContent = String(Math.max(visible - KNOWN_BASELINE, 0));
+      if (needLabel) {
+        const active = needChips.find((chip) => chip.dataset.category === state.category);
+        needLabel.textContent =
+          state.category === 'todos'
+            ? allLabel
+            : (active?.childNodes[0]?.textContent ?? '').trim().toLowerCase();
+      }
       if (emptyState) emptyState.hidden = visible !== 0;
       if (grid) grid.hidden = visible === 0;
-
-      const hasFilters = state.q !== '' || state.category !== 'todos' || state.platform !== 'todos';
-      if (resetBtn) resetBtn.hidden = !hasFilters;
       if (clearBtn) clearBtn.hidden = state.q === '';
-      if (live && hasFilters) {
-        const template = live.dataset.template ?? '{n}';
-        live.textContent = template.replace('{n}', String(visible));
-      }
+      if (live) live.textContent = String(visible);
 
       if (updateUrl) syncUrl();
     };
 
-    // Estado inicial desde la URL (enlaces compartibles).
+    // Estado inicial desde la URL (enlaces compartibles)
     const params = new URLSearchParams(window.location.search);
     state.q = params.get('q') ?? '';
     state.category = params.get('cat') ?? 'todos';
-    state.platform = params.get('plat') ?? 'todos';
+    state.platform = params.get('plat') ?? '';
+    state.pricing = params.get('precio') ?? '';
     if (input) input.value = state.q;
-    setPressed(categoryBtns, 'category', state.category);
-    setPressed(platformBtns, 'platform', state.platform);
+
+    const paint = () => {
+      needChips.forEach((chip) =>
+        chip.setAttribute('aria-pressed', String(chip.dataset.category === state.category))
+      );
+      secondaryChips.forEach((chip) => {
+        const on =
+          (chip.dataset.platform && chip.dataset.platform === state.platform) ||
+          (chip.dataset.pricing && chip.dataset.pricing === state.pricing);
+        chip.setAttribute('aria-pressed', String(Boolean(on)));
+      });
+    };
+
+    paint();
     apply(false);
 
     input?.addEventListener('input', () => {
@@ -272,6 +254,10 @@ const countLabel = tools.length === 1 ? t('directory.count.one') : t('directory.
         input.value = '';
         apply();
       }
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        grid?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
 
     clearBtn?.addEventListener('click', () => {
@@ -283,67 +269,37 @@ const countLabel = tools.length === 1 ? t('directory.count.one') : t('directory.
       apply();
     });
 
-    categoryBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        state.category = btn.dataset.category ?? 'todos';
-        setPressed(categoryBtns, 'category', state.category);
+    needChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        state.category = chip.dataset.category ?? 'todos';
+        paint();
         apply();
       });
     });
 
-    platformBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        state.platform = btn.dataset.platform ?? 'todos';
-        setPressed(platformBtns, 'platform', state.platform);
+    secondaryChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        // Se comportan como conmutadores: volver a pulsar quita el filtro.
+        if (chip.dataset.platform) {
+          state.platform = state.platform === chip.dataset.platform ? '' : chip.dataset.platform;
+        }
+        if (chip.dataset.pricing) {
+          state.pricing = state.pricing === chip.dataset.pricing ? '' : chip.dataset.pricing;
+        }
+        paint();
         apply();
       });
     });
 
-    const resetAll = () => {
+    emptyReset?.addEventListener('click', () => {
       state.q = '';
       state.category = 'todos';
-      state.platform = 'todos';
+      state.platform = '';
+      state.pricing = '';
       if (input) input.value = '';
-      setPressed(categoryBtns, 'category', 'todos');
-      setPressed(platformBtns, 'platform', 'todos');
+      paint();
       apply();
       input?.focus();
-    };
-
-    resetBtn?.addEventListener('click', resetAll);
-    emptyReset?.addEventListener('click', resetAll);
-
-    // --- Conmutador de vista (registro / fichas) ---
-    // Cambia un atributo del contenedor: mismo DOM, otro layout.
-    const viewBtns = Array.from(
-      document.querySelectorAll<HTMLButtonElement>('#view-switch button')
-    );
-
-    const setView = (view: string, persist = true) => {
-      const next = view === 'grid' ? 'grid' : 'list';
-      grid?.setAttribute('data-view', next);
-      viewBtns.forEach((btn) => {
-        btn.setAttribute('aria-pressed', String(btn.dataset.view === next));
-      });
-      if (persist) {
-        try {
-          localStorage.setItem('directory-view', next);
-        } catch (error) {
-          /* sin persistencia disponible */
-        }
-      }
-    };
-
-    let storedView: string | null = null;
-    try {
-      storedView = localStorage.getItem('directory-view');
-    } catch (error) {
-      /* sin acceso a localStorage */
-    }
-    if (storedView) setView(storedView, false);
-
-    viewBtns.forEach((btn) => {
-      btn.addEventListener('click', () => setView(btn.dataset.view ?? 'list'));
     });
   }
 </script>

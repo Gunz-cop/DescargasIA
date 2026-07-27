@@ -1,8 +1,11 @@
 ---
-// src/layouts/BaseLayout.astro
+// src/layouts/BaseLayout.astro — §6 Shell
+// Fondo con halos, cabecera, pie de confianza de tres columnas.
 import '../styles/global.css';
+import Motion from '../components/Motion.astro';
 import { useTranslations } from '../i18n/ui';
 import { CATEGORIES, type Lang } from '../utils/brand';
+import { getTranslatedTools } from '../utils/tools';
 
 interface Props {
   title: string;
@@ -30,21 +33,21 @@ const {
 
 const t = useTranslations(lang);
 
+// El contador de la cabecera se deriva del catálogo, nunca se escribe a mano.
+const verifiedCount = (await getTranslatedTools(lang)).length;
+
 const hreflangMap: Record<string, string> = { es: 'es-ES', sv: 'sv-SE', it: 'it-IT' };
 const ogLocaleMap: Record<string, string> = { es: 'es_ES', sv: 'sv_SE', it: 'it_IT' };
 
 const home = `/${lang}`;
 
-// El selector de idioma usa URLs reales calculadas en build. Si una página no
-// existe en el idioma destino se enlaza su portada en vez de provocar un 404.
-const switcherLangs: Array<{ code: Lang; label: string; available: boolean; url: string }> = (
-  ['es', 'sv'] as const
-).map((code) => {
+// URLs reales calculadas en build: si la página no existe en el idioma destino
+// se enlaza su portada en vez de provocar un 404.
+const switcherLangs = (['es', 'sv'] as const).map((code) => {
   const alt = alternates.find((entry) => entry.lang === code);
   return {
     code,
     label: code === 'es' ? 'Español' : 'Svenska',
-    available: Boolean(alt),
     url: alt?.url ?? `/${code}`
   };
 });
@@ -54,6 +57,12 @@ const legalLinks = [
   { href: `/${lang}/aviso-legal`, label: t('footer.legal') },
   { href: `/${lang}/privacidad`, label: t('footer.privacy') },
   { href: `/${lang}/cookies`, label: t('footer.cookies') }
+];
+
+const trustColumns = [
+  { title: t('trust.no-clones'), body: t('trust.no-clones.body') },
+  { title: t('trust.weekly'), body: t('trust.weekly.body') },
+  { title: t('trust.no-sponsors'), body: t('trust.no-sponsors.body') }
 ];
 
 const year = new Date().getFullYear();
@@ -70,35 +79,19 @@ const rightsLine = lang === 'sv'
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Tema aplicado antes del primer pintado (sin parpadeo) -->
-    <script is:inline>
-      (() => {
-        let theme = 'light';
-        try {
-          const stored = localStorage.getItem('theme');
-          if (stored === 'light' || stored === 'dark') {
-            theme = stored;
-          } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            theme = 'dark';
-          }
-        } catch (error) {
-          /* localStorage bloqueado: se mantiene el tema claro por defecto */
-        }
-        document.documentElement.dataset.theme = theme;
-      })();
-    </script>
-
-    <!-- SEO básico -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
     {(noindex || lang === 'it') && <meta name="robots" content="noindex" />}
 
-    <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0c0e10" media="(prefers-color-scheme: dark)" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#04120e" />
+    <meta name="color-scheme" content="dark" />
 
-    <!-- Alternates hreflang -->
+    <!-- §2 Fuentes autoalojadas: se precargan los dos cortes que aparecen en
+         el primer viewport; el resto los pide el navegador por unicode-range. -->
+    <link rel="preload" href="/fonts/space-grotesk-700-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ibm-plex-mono-500-latin.woff2" as="font" type="font/woff2" crossorigin />
+
     {alternates.map(({ lang: altLang, url }) => (
       <link rel="alternate" hreflang={hreflangMap[altLang] ?? altLang} href={url} />
     ))}
@@ -109,16 +102,6 @@ const rightsLine = lang === 'sv'
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Tipografía: sólo la serif de titulares y la monoespaciada de datos.
-         El texto de interfaz usa la pila del sistema (0 bytes). -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;700&display=swap"
-    />
-
-    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
@@ -128,7 +111,6 @@ const rightsLine = lang === 'sv'
     <meta property="og:locale" content={ogLocaleMap[lang] ?? 'es_ES'} />
     <meta property="og:site_name" content="FuenteAI" />
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -137,108 +119,90 @@ const rightsLine = lang === 'sv'
     {jsonLd && (Array.isArray(jsonLd) ? jsonLd : [jsonLd]).map(schema => (
       <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
     ))}
+
+    <script is:inline>
+      document.documentElement.classList.remove('no-js');
+    </script>
   </head>
-  <body class="flex min-h-screen flex-col">
+  <body class="no-js flex min-h-screen flex-col">
     <a href="#contenido" class="skip-link">{t('a11y.skip')}</a>
 
+    <!-- §3.1 Respiración de fondo: dos halos radiales, único gradiente del sistema -->
+    <div class="fai-halos" aria-hidden="true">
+      <span class="fai-halo fai-halo--signal"></span>
+      <span class="fai-halo fai-halo--find"></span>
+    </div>
+
     <!-- CABECERA -->
-    <header class="sticky top-0 z-40 border-b border-brand-hairline bg-brand-bg/85 backdrop-blur-md">
-      <div class="mx-auto flex h-16 max-w-6xl items-center gap-3 px-5">
+    <header class="sticky top-0 z-40 border-b border-fai-line bg-[#04120e]/85 backdrop-blur-md">
+      <div class="mx-auto flex h-16 max-w-[1240px] items-center gap-4 px-5">
         <a href={home} class="group flex items-center gap-2.5" aria-label={`FuenteAI — ${t('nav.home')}`}>
-          <svg class="h-[26px] w-[26px] text-brand-primary" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4" stroke="currentColor" stroke-width="1.5" opacity=".4" />
-            <path d="M7.4 12.3 10.6 15.5 16.8 8.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          <span class="display text-[22px] text-brand-text transition-colors group-hover:text-brand-primary">
-            Fuente<span class="font-mono text-[0.82em] font-bold tracking-tight">AI</span>
+          <span class="fai-avatar fai-avatar--find h-6 w-6 rounded-[7px]" aria-hidden="true"></span>
+          <span class="text-[17px] font-bold tracking-[-0.02em] text-fai-ink transition-colors group-hover:text-fai-signal">
+            FuenteAI
           </span>
         </a>
 
-        <!-- Navegación de escritorio -->
-        <nav class="ml-4 hidden items-center gap-1 md:flex" aria-label={t('nav.sections')}>
-          <a
-            href={`${home}#directorio`}
-            class="rounded-md px-2.5 py-2 text-[14px] font-medium text-brand-text-muted transition-colors hover:bg-brand-surface-sunken hover:text-brand-text"
-          >{t('nav.directory')}</a>
+        <nav class="ml-3 hidden items-center gap-1 md:flex" aria-label={t('nav.sections')}>
+          <a href={`${home}#directorio`} class="rounded-md px-3 py-2 text-[14px] text-fai-muted transition-colors hover:text-fai-ink">
+            {t('nav.directory')}
+          </a>
 
-          <details class="group/cat relative" name="header-menus">
-            <summary
-              class="flex cursor-pointer list-none items-center gap-1.5 rounded-md px-2.5 py-2 text-[14px] font-medium text-brand-text-muted transition-colors hover:bg-brand-surface-sunken hover:text-brand-text"
-            >
+          <details class="relative" name="header-menus">
+            <summary class="flex cursor-pointer list-none items-center gap-1.5 rounded-md px-3 py-2 text-[14px] text-fai-muted transition-colors hover:text-fai-ink">
               {t('nav.categories')}
               <svg class="details-marker h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
               </svg>
             </summary>
-            <div class="absolute left-0 top-full z-50 mt-1 w-64 rounded-lg border border-brand-card-border bg-brand-surface p-1.5 shadow-overlay">
+            <div class="absolute left-0 top-full z-50 mt-1 w-64 rounded-[14px] border border-fai-line bg-fai-surface p-1.5 shadow-2xl">
               {CATEGORIES.map((cat) => (
-                <a
-                  href={`/${lang}/categoria/${cat.slug}`}
-                  class="flex items-center gap-2.5 rounded-md px-2.5 py-2 text-[14px] text-brand-text transition-colors hover:bg-brand-surface-sunken"
-                >
-                  <span class="h-1.5 w-1.5 shrink-0 rounded-full" style={`background:${cat.tone}`} aria-hidden="true"></span>
+                <a href={`/${lang}/categoria/${cat.slug}`} class="block rounded-md px-3 py-2 text-[14px] text-fai-ink transition-colors hover:bg-fai-card hover:text-fai-signal">
                   {cat.label[lang]}
                 </a>
               ))}
             </div>
           </details>
 
-          <a
-            href={`/${lang}/acerca-de`}
-            class="rounded-md px-2.5 py-2 text-[14px] font-medium text-brand-text-muted transition-colors hover:bg-brand-surface-sunken hover:text-brand-text"
-          >{t('nav.about')}</a>
+          <a href={`/${lang}/acerca-de`} class="rounded-md px-3 py-2 text-[14px] text-fai-muted transition-colors hover:text-fai-ink">
+            {t('nav.about')}
+          </a>
         </nav>
 
-        <div class="ml-auto flex items-center gap-1.5">
-          <!-- Idioma -->
+        <div class="ml-auto flex items-center gap-2">
+          <!-- Contador derivado del catálogo -->
+          <a
+            href={`${home}#directorio`}
+            class="fai-mono-sm hidden items-center rounded-full border border-[rgba(198,242,78,.4)] bg-[rgba(198,242,78,.12)] px-3 py-1.5 text-fai-find transition-colors hover:bg-[rgba(198,242,78,.2)] sm:inline-flex"
+          >
+            {verifiedCount} {t('home.verified-sources')}
+          </a>
+
           <details class="relative" name="header-menus">
             <summary
-              class="flex min-h-10 cursor-pointer list-none items-center gap-1.5 rounded-md border border-brand-card-border bg-brand-surface px-2.5 text-[13px] font-medium text-brand-text-muted transition-colors hover:text-brand-text"
+              class="fai-mono-sm flex min-h-10 cursor-pointer list-none items-center gap-1.5 rounded-md border border-fai-line px-2.5 text-fai-muted transition-colors hover:text-fai-ink"
               aria-label={t('lang.change')}
             >
-              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" />
-              </svg>
-              <span class="uppercase">{lang}</span>
+              {lang}
             </summary>
-            <div class="absolute right-0 top-full z-50 mt-1 w-52 rounded-lg border border-brand-card-border bg-brand-surface p-1.5 shadow-overlay">
+            <div class="absolute right-0 top-full z-50 mt-1 w-48 rounded-[14px] border border-fai-line bg-fai-surface p-1.5 shadow-2xl">
               {switcherLangs.map((option) => (
                 <a
                   href={option.url}
                   hreflang={option.code}
                   aria-current={option.code === lang ? 'true' : undefined}
-                  class="flex items-center justify-between gap-2 rounded-md px-2.5 py-2 text-[14px] text-brand-text transition-colors hover:bg-brand-surface-sunken aria-[current]:font-semibold aria-[current]:text-brand-primary"
-                >
-                  {option.label}
-                </a>
+                  class="block rounded-md px-3 py-2 text-[14px] text-fai-ink transition-colors hover:bg-fai-card aria-[current]:text-fai-find"
+                >{option.label}</a>
               ))}
-              <span class="flex items-center gap-2 rounded-md px-2.5 py-2 text-[14px] text-brand-text-subtle">
-                Italiano <span class="data-tag">({t('lang.soon')})</span>
+              <span class="block px-3 py-2 text-[14px] text-fai-muted-2">
+                Italiano <span class="fai-mono-sm">({t('lang.soon')})</span>
               </span>
             </div>
           </details>
 
-          <!-- Tema -->
-          <button
-            type="button"
-            id="theme-toggle"
-            class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-brand-card-border bg-brand-surface text-brand-text-muted transition-colors hover:text-brand-text"
-            aria-label={t('theme.toggle')}
-          >
-            <svg class="theme-icon-sun h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <circle cx="12" cy="12" r="4.2" />
-              <path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6l1.4 1.4m10 10 1.4 1.4m0-12.8-1.4 1.4m-10 10-1.4 1.4" stroke-linecap="round" />
-            </svg>
-            <svg class="theme-icon-moon h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z" stroke-linejoin="round" />
-            </svg>
-          </button>
-
-          <!-- Menú móvil -->
-          <details class="md:hidden" id="mobile-menu" name="header-menus">
+          <details class="md:hidden" name="header-menus">
             <summary
-              class="inline-flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-md border border-brand-card-border bg-brand-surface text-brand-text-muted transition-colors hover:text-brand-text"
+              class="inline-flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-md border border-fai-line text-fai-muted transition-colors hover:text-fai-ink"
               aria-label={t('nav.open-menu')}
             >
               <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -246,29 +210,21 @@ const rightsLine = lang === 'sv'
               </svg>
             </summary>
             <nav
-              class="absolute inset-x-0 top-16 z-50 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-brand-card-border bg-brand-surface p-4 shadow-overlay"
+              class="absolute inset-x-0 top-16 z-50 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-fai-line bg-fai-surface p-4 shadow-2xl"
               aria-label={t('nav.menu')}
             >
-              <a
-                href={`${home}#directorio`}
-                class="block rounded-md px-3 py-2.5 text-[15px] font-medium text-brand-text hover:bg-brand-surface-sunken"
-              >{t('nav.directory')}</a>
-              <p class="eyebrow mt-4 px-3 py-1 text-brand-text-subtle">{t('nav.categories')}</p>
+              <a href={`${home}#directorio`} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">
+                {t('nav.directory')}
+              </a>
+              <p class="fai-mono-sm mt-4 px-3 py-1 text-fai-muted-2">{t('nav.categories')}</p>
               {CATEGORIES.map((cat) => (
-                <a
-                  href={`/${lang}/categoria/${cat.slug}`}
-                  class="flex items-center gap-2.5 rounded-md px-3 py-2.5 text-[15px] text-brand-text hover:bg-brand-surface-sunken"
-                >
-                  <span class="h-1.5 w-1.5 shrink-0 rounded-full" style={`background:${cat.tone}`} aria-hidden="true"></span>
+                <a href={`/${lang}/categoria/${cat.slug}`} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">
                   {cat.label[lang]}
                 </a>
               ))}
-              <p class="eyebrow mt-4 px-3 py-1 text-brand-text-subtle">{t('nav.legal')}</p>
+              <p class="fai-mono-sm mt-4 px-3 py-1 text-fai-muted-2">{t('nav.legal')}</p>
               {legalLinks.map((link) => (
-                <a
-                  href={link.href}
-                  class="block rounded-md px-3 py-2.5 text-[15px] text-brand-text hover:bg-brand-surface-sunken"
-                >{link.label}</a>
+                <a href={link.href} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">{link.label}</a>
               ))}
             </nav>
           </details>
@@ -276,76 +232,39 @@ const rightsLine = lang === 'sv'
       </div>
     </header>
 
-    <!-- CONTENIDO -->
-    <main id="contenido" class="mx-auto w-full max-w-6xl flex-1 px-5 pb-16">
+    <main id="contenido" class="mx-auto w-full max-w-[1240px] flex-1 px-5 pb-16">
       <slot />
     </main>
 
-    <!-- PIE -->
-    <footer class="border-t border-brand-hairline bg-brand-surface-sunken">
-      <div class="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
-        <div>
-          <span class="display flex items-center gap-2 text-[20px]">
-            <svg class="h-5 w-5 text-brand-primary" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4" stroke="currentColor" stroke-width="1.5" opacity=".4" />
-              <path d="M7.4 12.3 10.6 15.5 16.8 8.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <span>Fuente<span class="font-mono font-bold">AI</span></span>
-          </span>
-          <p class="mt-3 max-w-md text-[13px] leading-6 text-brand-text-muted">
-            {t('footer.disclaimer')}
-          </p>
-        </div>
-
-        <nav aria-label={t('nav.categories')}>
-          <h2 class="eyebrow text-brand-text-subtle">{t('nav.categories')}</h2>
-          <ul class="mt-3 grid gap-1.5" role="list">
-            {CATEGORIES.map((cat) => (
-              <li>
-                <a
-                  href={`/${lang}/categoria/${cat.slug}`}
-                  class="text-[13px] text-brand-text-muted transition-colors hover:text-brand-text"
-                >{cat.label[lang]}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <nav aria-label={t('nav.legal')}>
-          <h2 class="eyebrow text-brand-text-subtle">{t('nav.legal')}</h2>
-          <ul class="mt-3 grid gap-1.5" role="list">
-            {legalLinks.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-[13px] text-brand-text-muted transition-colors hover:text-brand-text"
-                >{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+    <!-- PIE DE CONFIANZA -->
+    <footer class="border-t border-fai-line bg-fai-surface/60">
+      <div class="mx-auto grid max-w-[1240px] gap-8 px-5 py-12 sm:grid-cols-3">
+        {trustColumns.map((column) => (
+          <div>
+            <h2 class="fai-mono-sm text-fai-signal">{column.title}</h2>
+            <p class="mt-2.5 text-[14px] leading-[1.55] text-fai-muted sm:text-[13px]">{column.body}</p>
+          </div>
+        ))}
       </div>
 
-      <div class="border-t border-brand-hairline">
-        <p class="mx-auto max-w-6xl px-5 py-5 text-[12px] leading-5 text-brand-text-subtle">
-          © {year} FuenteAI. {rightsLine}
-        </p>
+      <div class="border-t border-fai-line">
+        <div class="mx-auto flex max-w-[1240px] flex-wrap items-center gap-x-5 gap-y-3 px-5 py-5">
+          <span class="text-[14px] font-bold tracking-[-0.02em] text-fai-ink">FuenteAI</span>
+          <nav class="flex flex-wrap gap-x-4 gap-y-2" aria-label={t('nav.legal')}>
+            {legalLinks.map((link) => (
+              <a href={link.href} class="text-[13px] text-fai-muted transition-colors hover:text-fai-signal">{link.label}</a>
+            ))}
+          </nav>
+          <p class="w-full text-[12px] leading-[1.55] text-fai-muted-2 sm:w-auto sm:flex-1 sm:text-right">
+            © {year} FuenteAI. {rightsLine}
+          </p>
+        </div>
       </div>
     </footer>
 
-    <script is:inline>
-      // Tema: alterna y persiste. El estado inicial ya se aplicó en <head>.
-      const themeToggle = document.getElementById('theme-toggle');
-      themeToggle?.addEventListener('click', () => {
-        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        document.documentElement.dataset.theme = next;
-        try {
-          localStorage.setItem('theme', next);
-        } catch (error) {
-          /* sin persistencia disponible */
-        }
-      });
+    <Motion />
 
+    <script is:inline>
       // Cierra los menús <details> al hacer clic fuera o al pulsar Escape.
       const menus = Array.from(document.querySelectorAll('header details'));
       document.addEventListener('click', (event) => {

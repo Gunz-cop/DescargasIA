@@ -1,27 +1,17 @@
 ---
-// src/components/ToolCard.astro
-// Un registro del índice. Una sola estructura DOM que sirve para las dos
-// vistas del directorio (libro de registro y rejilla): el contenedor decide
-// el layout con `data-view`, aquí no hay marcado duplicado.
-import Monogram from './Monogram.astro';
+// src/components/ToolCard.astro — §6 ToolCard
+//
+// Pie en COLUMNA, nunca en fila con space-between: a 253px de ancho de columna
+// una fila parte el dominio y el badge en dos líneas. El dominio es la prueba
+// de confianza, así que no se trunca ni se parte (`white-space: nowrap`).
 import {
-  getCategoryLabel,
   getDomain,
   getInitials,
-  getToolTone,
   PLATFORM_ORDER,
-  PLATFORM_SHORT,
   type Lang,
   type PlatformKey
 } from '../utils/brand';
 import { useTranslations } from '../i18n/ui';
-
-interface PlatformDetails {
-  url: string;
-  type: string;
-  isOfficial: boolean;
-  lastChecked?: string;
-}
 
 interface Props {
   tool: {
@@ -36,33 +26,31 @@ interface Props {
     initials?: string;
     platforms: Partial<Record<PlatformKey, PlatformDetails>>;
   };
-  /** Número de registro dentro del índice (1-based). */
+  /** Posición en la rejilla: alimenta el retraso de la cascada (§3.2). */
   index?: number;
+  /**
+   * Depende del campo `knownBy` del §4, que el catálogo todavía no tiene.
+   * Mientras no exista, la tarjeta no muestra badge: afirmar "ya la conocías"
+   * sobre las 26 fichas sería un dato inventado sobre el visitante.
+   */
+  variant?: 'find' | 'known';
 }
 
-const { tool, index } = Astro.props;
+interface PlatformDetails {
+  url: string;
+  type: string;
+  isOfficial: boolean;
+  lastChecked?: string;
+}
+
+const { tool, index = 0, variant } = Astro.props;
 const lang = (Astro.currentLocale || 'es') as Lang;
 const t = useTranslations(lang);
 
-const pricingLabels = {
-  free: t('info.pricing.free'),
-  freemium: t('info.pricing.freemium'),
-  paid: t('info.pricing.paid'),
-  enterprise: t('info.pricing.enterprise'),
-  unknown: t('info.pricing.unknown')
-};
-
-const tone = getToolTone(tool.slug, tool.categories);
 const initials = getInitials(tool.name, tool.initials);
 const domain = getDomain(tool.officialWebsite);
-const categoryLabel = getCategoryLabel(tool.categories[0] ?? '', lang, 'short');
-const pricingLabel = pricingLabels[tool.pricingModel] ?? pricingLabels.unknown;
-
 const availablePlatforms = PLATFORM_ORDER.filter((platform) => Boolean(tool.platforms[platform]));
-const titleId = `tool-${tool.slug}-title`;
-const recordNumber = index != null ? String(index).padStart(3, '0') : null;
 
-// Búsqueda: nombre + slug + etiquetas, normalizado sin acentos.
 const searchIndex = [tool.name, tool.slug, ...(tool.tags ?? [])]
   .join(' ')
   .toLowerCase()
@@ -71,82 +59,51 @@ const searchIndex = [tool.name, tool.slug, ...(tool.tags ?? [])]
 ---
 
 <article
-  class="record group relative flex flex-col gap-4 overflow-hidden rounded-lg border border-brand-card-border bg-brand-surface p-5 pl-6 transition-colors duration-150 hover:bg-brand-surface-sunken focus-within:bg-brand-surface-sunken"
-  aria-labelledby={titleId}
+  class="fai-rise fai-live flex h-full flex-col rounded-[14px] p-5"
+  data-rise-index={index}
   data-name={searchIndex}
   data-slug={tool.slug}
   data-categories={tool.categories.join(',')}
   data-pricing={tool.pricingModel}
   data-platforms={availablePlatforms.join(',')}
 >
-  <span class="tone-rule absolute inset-y-0 left-0 w-[3px]" style={`--tone: ${tone}`} aria-hidden="true"></span>
-
-  {recordNumber && (
-    <span class="record__num record-num" aria-hidden="true">№&nbsp;{recordNumber}</span>
-  )}
-
-  <!-- Identidad -->
-  <div class="record__id flex items-center gap-3">
-    <Monogram initials={initials} tone={tone} />
-    <div class="min-w-0">
-      <h3 id={titleId} class="display text-[20px] leading-tight">
-        <a href={`/${lang}/${tool.slug}`} class="text-brand-text transition-colors hover:text-brand-primary">
-          {tool.name}
-        </a>
-      </h3>
-      <p class="mt-0.5 flex items-center gap-1.5 text-brand-success" title={t('card.verified-domain')}>
-        <svg class="h-3.5 w-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5" />
-        </svg>
-        <span class="data-tag truncate">{domain}</span>
-      </p>
-    </div>
+  <div class="flex items-center gap-3">
+    <span
+      class={`fai-avatar h-9 w-9 text-[15px] ${variant === 'find' ? 'fai-avatar--find' : 'fai-avatar--known'}`}
+      aria-hidden="true"
+    >{initials.slice(0, 1)}</span>
+    <h3 class="fai-card-title min-w-0 text-fai-ink">
+      <a href={`/${lang}/${tool.slug}`} class="transition-colors hover:text-fai-signal">
+        {tool.name}
+      </a>
+    </h3>
   </div>
 
-  <!-- Cuerpo -->
-  <div class="record__body flex min-w-0 flex-col gap-2">
-    <p class="record__desc line-clamp-3 text-[14px] leading-6 text-brand-text-muted">
-      {tool.shortDescription}
-    </p>
-    <p class="flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] text-brand-text-subtle">
-      <span class="inline-flex items-center gap-1.5 text-brand-text-muted">
-        <span class="h-1.5 w-1.5 rounded-full" style={`background:${tone}`} aria-hidden="true"></span>
-        {categoryLabel}
-      </span>
-      <span aria-hidden="true">·</span>
-      <span>{pricingLabel}</span>
-      {availablePlatforms.length > 0 && (
-        <>
-          <span aria-hidden="true">·</span>
-          <span class="data-tag">
-            <span class="sr-only">{t('card.platforms')}: </span>
-            {availablePlatforms.map((platform) => PLATFORM_SHORT[platform]).join(' · ')}
-          </span>
-        </>
-      )}
-    </p>
-  </div>
+  <!-- One-liner: dos líneas con altura mínima para que las tarjetas de una
+       misma fila alineen su pie sin depender del largo del texto. -->
+  <p class="mt-3 line-clamp-2 min-h-[42px] text-[14px] leading-[1.5] text-fai-muted">
+    {tool.shortDescription}
+  </p>
 
-  <!-- Acciones: el canal oficial es la acción principal del índice -->
-  <div class="record__actions mt-auto flex items-center gap-1.5 border-t border-brand-hairline pt-3">
+  <!-- Pie: dominio y badge en líneas separadas (columna, gap 9px) -->
+  <div class="mt-auto flex flex-col gap-[9px] pt-4">
     <a
       href={`/r/?t=${tool.slug}&l=${lang}`}
       target="_blank"
       rel="noopener noreferrer"
-      class="inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-md border border-brand-primary/45 bg-brand-primary-soft px-3.5 text-[13px] font-semibold text-brand-primary transition-colors hover:bg-brand-primary hover:text-brand-on-primary"
+      class="fai-domain inline-flex items-center gap-1 transition-colors hover:text-fai-find"
     >
-      {t('card.official-channel')}
-      <span class="sr-only">— {tool.name}</span>
-      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      {domain}
+      <span class="sr-only">— {t('card.official-channel')} {tool.name}</span>
+      <svg class="h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0h-7m7 0v7" />
       </svg>
     </a>
-    <a
-      href={`/${lang}/${tool.slug}`}
-      class="record__secondary inline-flex min-h-11 items-center justify-center whitespace-nowrap rounded-md px-3 text-[13px] font-medium text-brand-text-muted transition-colors hover:text-brand-primary"
-    >
-      {t('card.sheet')}
-      <span class="sr-only">— {tool.name}</span>
-    </a>
+
+    {variant && (
+      <span class={`fai-badge self-start ${variant === 'find' ? 'fai-badge--find' : 'fai-badge--known'}`}>
+        {variant === 'find' ? t('badge.new-for-you') : t('badge.known')}
+      </span>
+    )}
   </div>
 </article>
