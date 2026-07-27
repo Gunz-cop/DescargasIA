@@ -105,12 +105,12 @@ const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necess
         </span>
       </p>
       <p class="fai-mono-sm mt-2.5 text-fai-muted-2">
-        {t('count.most-know')} <span id="missing-count">{Math.max(tools.length - KNOWN_BASELINE, 0)}</span>
+        {t(Math.max(tools.length - KNOWN_BASELINE, 0) === 1 ? 'count.most-know.one' : 'count.most-know.other')} <span id="missing-count">{Math.max(tools.length - KNOWN_BASELINE, 0)}</span>
       </p>
     </div>
 
     <!-- Filtros secundarios: sólo sobre datos que el catálogo ya verifica -->
-    <div class="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1" id="secondary-filters" role="group" aria-label={t('filters.platform')}>
+    <div class="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 lg:mx-0 lg:flex-wrap lg:overflow-visible lg:px-0 lg:pb-0" id="secondary-filters" role="group" aria-label={t('filters.platform')}>
       {freeCount > 0 && (
         <button type="button" class="fai-chip shrink-0 !px-3.5 !text-[13px] sm:!min-h-9" data-pricing="free" aria-pressed="false">
           {t('info.pricing.free')}

@@ -5,7 +5,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ToolCard from '../../../components/ToolCard.astro';
 import { getTranslatedTools } from '../../../utils/tools';
 import { useTranslations, languages } from '../../../i18n/ui';
-import { CATEGORIES, getCategoryLabel, type Lang } from '../../../utils/brand';
+import { CATEGORIES, getCategoryLabel, getCategory, type Lang } from '../../../utils/brand';
 
 export async function getStaticPaths() {
   const locales = Object.keys(languages);
@@ -34,6 +34,7 @@ const sortedTools = [...tools].sort((a, b) => {
 });
 
 const localizedCatName = getCategoryLabel(cat.data.slug, lang);
+const localizedCatDescription = getCategory(cat.data.slug)?.description[lang] ?? cat.data.description;
 
 // Conteos de las demás necesidades, derivados del catálogo.
 const otherNeeds = CATEGORIES.map((need) => ({
@@ -119,10 +120,10 @@ const alternates = Object.keys(languages)
     </h1>
     {sortedTools.length > KNOWN_BASELINE && (
       <p class="fai-mono-sm mt-2.5 text-fai-muted-2">
-        {t('count.most-know')} {sortedTools.length - KNOWN_BASELINE}
+        {t(sortedTools.length - KNOWN_BASELINE === 1 ? 'count.most-know.one' : 'count.most-know.other')} {sortedTools.length - KNOWN_BASELINE}
       </p>
     )}
-    <p class="mt-5 max-w-[62ch] text-[15px] leading-[1.55] text-fai-muted">{cat.data.description}</p>
+    <p class="mt-5 max-w-[62ch] text-[15px] leading-[1.55] text-fai-muted">{localizedCatDescription}</p>
   </header>
 
   {sortedTools.length > 0 ? (

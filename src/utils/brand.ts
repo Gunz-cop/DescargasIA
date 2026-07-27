@@ -20,6 +20,8 @@ export interface CategoryMeta {
   /** Etiqueta corta para chips y navegación */
   short: Trilingual;
   blurb: Trilingual;
+  /** Descripción larga mostrada en la cabecera de la página de categoría */
+  description: Trilingual;
 }
 
 /** Categorías del directorio, en el orden en que deben mostrarse. */
@@ -33,6 +35,11 @@ export const CATEGORIES: CategoryMeta[] = [
       es: 'Chatbots y asistentes conversacionales',
       sv: 'Chattbottar och assistenter',
       it: 'Chatbot e assistenti conversazionali'
+    },
+    description: {
+      es: 'Chatbots interactivos y asistentes virtuales inteligentes para responder preguntas, redactar textos y organizar tareas diarias.',
+      sv: 'Interaktiva chattbottar och intelligenta virtuella assistenter för att svara på frågor, skriva texter och organisera dagliga uppgifter.',
+      it: 'Chatbot interattivi e assistenti virtuali intelligenti per rispondere a domande, scrivere testi e organizzare le attività quotidiane.'
     }
   },
   {
@@ -44,6 +51,11 @@ export const CATEGORIES: CategoryMeta[] = [
       es: 'Editores, copilotos y herramientas dev',
       sv: 'Editorer, copiloter och dev-verktyg',
       it: 'Editor, copilot e strumenti dev'
+    },
+    description: {
+      es: 'Herramientas de IA y editores de código diseñados para escribir, depurar, autocompletar y refactorizar software de forma asistida.',
+      sv: 'AI-verktyg och kodredigerare för att skriva, felsöka, autokomplettera och refaktorera programvara med assisterad hjälp.',
+      it: 'Strumenti IA ed editor di codice progettati per scrivere, eseguire il debug, completare automaticamente e rifattorizzare software in modo assistito.'
     }
   },
   {
@@ -55,6 +67,11 @@ export const CATEGORIES: CategoryMeta[] = [
       es: 'Ejecutar modelos en tu propio equipo',
       sv: 'Kör modeller på din egen dator',
       it: 'Eseguire modelli sul tuo computer'
+    },
+    description: {
+      es: 'Software y plataformas para ejecutar modelos de inteligencia artificial de código abierto de forma 100% local y privada en tu PC.',
+      sv: 'Programvara och plattformar för att köra AI-modeller med öppen källkod helt lokalt och privat på din dator.',
+      it: 'Software e piattaforme per eseguire modelli di intelligenza artificiale open source in modo 100% locale e privato sul tuo PC.'
     }
   },
   {
@@ -66,6 +83,11 @@ export const CATEGORIES: CategoryMeta[] = [
       es: 'Crear y editar imágenes con IA',
       sv: 'Skapa och redigera bilder med AI',
       it: 'Creare e modificare immagini con IA'
+    },
+    description: {
+      es: 'Herramientas de IA para crear, editar y transformar imágenes, ilustraciones y arte digital a partir de descripciones de texto.',
+      sv: 'AI-verktyg för att skapa, redigera och omvandla bilder, illustrationer och digital konst utifrån textbeskrivningar.',
+      it: 'Strumenti IA per creare, modificare e trasformare immagini, illustrazioni e arte digitale a partire da descrizioni testuali.'
     }
   },
   {
@@ -77,6 +99,11 @@ export const CATEGORIES: CategoryMeta[] = [
       es: 'Generar y editar vídeo con IA',
       sv: 'Generera och redigera video med AI',
       it: 'Generare e modificare video con IA'
+    },
+    description: {
+      es: 'Herramientas de IA para crear, editar, animar y procesar videos a partir de texto, imágenes o plantillas automáticas.',
+      sv: 'AI-verktyg för att skapa, redigera, animera och bearbeta video utifrån text, bilder eller automatiska mallar.',
+      it: 'Strumenti IA per creare, modificare, animare ed elaborare video a partire da testo, immagini o modelli automatici.'
     }
   },
   {
@@ -88,6 +115,11 @@ export const CATEGORIES: CategoryMeta[] = [
       es: 'Voz, música y efectos de sonido',
       sv: 'Röst, musik och ljudeffekter',
       it: 'Voce, musica ed effetti sonori'
+    },
+    description: {
+      es: 'Herramientas de inteligencia artificial para generar canciones completas, pistas instrumentales y efectos de sonido originales libres de regalías.',
+      sv: 'AI-verktyg för att generera hela låtar, instrumentala spår och originella ljudeffekter fria från royalties.',
+      it: 'Strumenti di intelligenza artificiale per generare canzoni complete, tracce strumentali ed effetti sonori originali senza royalty.'
     }
   },
   {
@@ -99,6 +131,11 @@ export const CATEGORIES: CategoryMeta[] = [
       es: 'Traducir, corregir y redactar textos',
       sv: 'Översätt, korrigera och skriv text',
       it: 'Tradurre, correggere e scrivere testi'
+    },
+    description: {
+      es: 'Herramientas de IA diseñadas para corregir textos, optimizar el estilo y traducir documentos con precisión semántica y naturalidad.',
+      sv: 'AI-verktyg utformade för att korrigera texter, förbättra stilen och översätta dokument med semantisk precision och naturligt språk.',
+      it: 'Strumenti IA progettati per correggere testi, ottimizzare lo stile e tradurre documenti con precisione semantica e naturalezza.'
     }
   },
   {
@@ -110,6 +147,11 @@ export const CATEGORIES: CategoryMeta[] = [
       es: 'Documentos, presentaciones y notas',
       sv: 'Dokument, presentationer och anteckningar',
       it: 'Documenti, presentazioni e note'
+    },
+    description: {
+      es: 'Herramientas de IA para automatizar la creación de diapositivas, organizar flujos de trabajo y generar documentos profesionales en segundos.',
+      sv: 'AI-verktyg för att automatisera skapandet av bilder, organisera arbetsflöden och generera professionella dokument på sekunder.',
+      it: 'Strumenti IA per automatizzare la creazione di diapositive, organizzare i flussi di lavoro e generare documenti professionali in pochi secondi.'
     }
   }
 ];

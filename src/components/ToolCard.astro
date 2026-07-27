@@ -90,15 +90,13 @@ const searchIndex = [tool.name, tool.slug, ...(tool.tags ?? [])]
   <!-- Pie: dominio y badge en líneas separadas (columna, gap 9px) -->
   <div class="mt-auto flex flex-col gap-[9px] pt-4">
     <a
-      href={`/r/?t=${tool.slug}&l=${lang}`}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={`/${lang}/${tool.slug}`}
       class="fai-domain fai-card-above -mx-1 inline-flex min-h-11 w-fit max-w-full items-center gap-1 rounded-md px-1 transition-colors hover:text-fai-find sm:min-h-0"
     >
       {domain}
-      <span class="sr-only">— {t('card.official-channel')} {tool.name}</span>
+      <span class="sr-only">— {t('card.sheet')} {tool.name}</span>
       <svg class="h-3 w-3 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7m0 0h-7m7 0v7" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
       </svg>
     </a>
 
