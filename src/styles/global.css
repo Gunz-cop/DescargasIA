@@ -422,6 +422,73 @@ summary::-webkit-details-marker {
   color: var(--fai-muted-2);
 }
 
+/* --------------------------------------------------------------------------
+   Táctil
+   -------------------------------------------------------------------------- */
+
+/* Los destinos de ancla no pueden quedar debajo de la cabecera pegajosa. */
+:target,
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+/* En una pantalla táctil no hay hover: el estado :active es el único acuse de
+   recibo que recibe el dedo. */
+@media (hover: none) {
+  .fai-chip:active,
+  .fai-live:active {
+    border-color: var(--fai-signal);
+    background: rgba(15, 191, 143, 0.14);
+  }
+}
+
+/* Toda la tarjeta lleva a la ficha. El enlace del título se estira sobre la
+   superficie completa; los enlaces que deben seguir siendo independientes
+   (el dominio) se elevan por encima con z-index. */
+.fai-card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.fai-card-above {
+  position: relative;
+  z-index: 1;
+}
+
+/* Barra de contexto: aparece en móvil cuando los chips salen de pantalla, para
+   no obligar a volver arriba cada vez que se quiere cambiar de necesidad. */
+.fai-context {
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 11px 20px;
+  border-bottom: 1px solid var(--fai-line);
+  background: rgba(4, 18, 14, 0.92);
+  backdrop-filter: blur(12px);
+  /* Sube su propio alto MÁS el offset de la cabecera: con -100% a secas el
+     borde inferior se quedaba asomando justo debajo del header. */
+  translate: 0 calc(-100% - 4rem);
+  visibility: hidden;
+  pointer-events: none;
+  transition: translate 180ms ease-out, visibility 180ms;
+}
+.fai-context.is-visible {
+  translate: 0 0;
+  visibility: visible;
+  pointer-events: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .fai-context {
+    transition: none;
+  }
+}
+
 /* Chip de necesidad/categoría; la activa en lima con halo (§6) */
 .fai-chip {
   display: inline-flex;

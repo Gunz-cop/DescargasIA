@@ -285,9 +285,10 @@ const metaChips = [
         </a>
       )}
 
-      <p class="mt-3.5 text-[12px] leading-[1.5] text-fai-muted-2">
-        {t('official.mirrors')}
-        {reviewDateLong && <> {t('official.reviewed')} {reviewDateLong}.</>}
+      <p class="mt-3.5 text-[13px] leading-[1.5] text-fai-muted-2 sm:text-[12px]">
+        {reviewDateLong
+          ? `${t('official.mirrors')} ${t('official.reviewed')} ${reviewDateLong}.`
+          : t('official.mirrors')}
       </p>
     </aside>
   </header>

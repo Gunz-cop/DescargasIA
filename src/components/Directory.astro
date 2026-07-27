@@ -31,7 +31,7 @@ const KNOWN_BASELINE = 2;
 const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necessità' : 'todas las necesidades';
 ---
 
-<section id="directorio" class="scroll-mt-24 py-12" aria-labelledby="directorio-title">
+<section id="directorio" class="scroll-mt-24 pb-12 pt-7 sm:pt-12" aria-labelledby="directorio-title">
   <h2 id="directorio-title" class="sr-only">{t('directory.title')}</h2>
 
   <!-- Buscador -->
@@ -40,13 +40,20 @@ const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necess
       {lang === 'sv' ? 'Sök' : lang === 'it' ? 'Cerca' : 'Buscar'}
     </span>
     <label for="directory-search" class="sr-only">{t('search.label')}</label>
+    <!-- 16px evita el zoom automático de iOS al enfocar. `enterkeyhint` pone
+         "buscar" en la tecla de acción del teclado móvil. -->
     <input
       type="search"
       id="directory-search"
       placeholder={t('search.placeholder')}
       autocomplete="off"
+      autocapitalize="off"
+      autocorrect="off"
+      spellcheck="false"
+      enterkeyhint="search"
       aria-describedby="directory-search-hint"
-      class="min-w-0 flex-1 bg-transparent py-1.5 text-[16px] text-fai-ink placeholder:text-fai-muted-2 focus:outline-none"
+      aria-controls="tools-grid"
+      class="min-w-0 flex-1 bg-transparent py-2.5 text-[16px] text-fai-ink placeholder:text-fai-muted-2 focus:outline-none"
     />
     <!-- §3.5 Cursor del buscador: sólo visible cuando el campo tiene foco -->
     <span class="fai-caret shrink-0" aria-hidden="true"></span>
@@ -82,8 +89,10 @@ const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necess
   </div>
 
   <!-- §6 CountHeadline -->
-  <div class="mt-12 flex flex-col gap-5 border-t border-fai-line pt-7 lg:flex-row lg:items-start lg:justify-between">
-    <div>
+  <div class="mt-10 flex flex-col gap-5 border-t border-fai-line pt-7 sm:mt-12 lg:flex-row lg:items-start lg:justify-between">
+    <!-- El margen de desplazamiento cubre cabecera (64px) + barra de contexto
+         (44px); con el valor por defecto el subtítulo quedaba tapado. -->
+    <div id="conteo" class="scroll-mt-[7.5rem] lg:scroll-mt-24">
       <p class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
         <span
           class="fai-count"
@@ -103,13 +112,13 @@ const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necess
     <!-- Filtros secundarios: sólo sobre datos que el catálogo ya verifica -->
     <div class="scrollbar-none -mx-1 flex gap-2 overflow-x-auto px-1 pb-1" id="secondary-filters" role="group" aria-label={t('filters.platform')}>
       {freeCount > 0 && (
-        <button type="button" class="fai-chip shrink-0 !min-h-9 !px-3.5 !text-[13px]" data-pricing="free" aria-pressed="false">
+        <button type="button" class="fai-chip shrink-0 !px-3.5 !text-[13px] sm:!min-h-9" data-pricing="free" aria-pressed="false">
           {t('info.pricing.free')}
           <span class="fai-chip__count">{freeCount}</span>
         </button>
       )}
       {usedPlatforms.map((platform) => (
-        <button type="button" class="fai-chip shrink-0 !min-h-9 !px-3.5 !text-[13px]" data-platform={platform} aria-pressed="false">
+        <button type="button" class="fai-chip shrink-0 !px-3.5 !text-[13px] sm:!min-h-9" data-platform={platform} aria-pressed="false">
           {PLATFORM_SHORT[platform]}
         </button>
       ))}
@@ -117,6 +126,27 @@ const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necess
   </div>
 
   <p id="results-live" class="sr-only" role="status" aria-live="polite"></p>
+
+  <!--
+    Barra de contexto (sólo móvil). Cuando los chips salen de pantalla no hay
+    forma de saber qué filtro está puesto ni de cambiarlo sin volver arriba.
+    Aparece al desplazarse más allá de los chips y lleva de vuelta a ellos.
+  -->
+  <button
+    type="button"
+    id="context-bar"
+    class="fai-context lg:hidden"
+    aria-controls="need-chips"
+  >
+    <span class="fai-mono-sm shrink-0 text-fai-muted-2">{t('filters.category')}</span>
+    <span id="context-label" class="min-w-0 flex-1 truncate text-left text-[14px] font-medium text-fai-ink">
+      {t('filters.all')}
+    </span>
+    <span class="fai-mono-sm shrink-0 text-fai-find" id="context-count">{tools.length}</span>
+    <svg class="h-4 w-4 shrink-0 text-fai-muted-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
 
   <!-- §6 ResultGrid -->
   <div id="tools-grid" class="fai-grid mt-7">
@@ -152,6 +182,12 @@ const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necess
     const missing = document.getElementById('missing-count');
     const needLabel = document.getElementById('need-label');
     const live = document.getElementById('results-live');
+
+    const chipsRow = document.getElementById('need-chips');
+    const contextBar = document.getElementById('context-bar');
+    const contextLabel = document.getElementById('context-label');
+    const contextCount = document.getElementById('context-count');
+    const headline = document.getElementById('conteo');
 
     const needChips = Array.from(document.querySelectorAll<HTMLButtonElement>('#need-chips button'));
     const secondaryChips = Array.from(
@@ -203,15 +239,22 @@ const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necess
         }
       });
 
-      if (counter) counter.textContent = String(visible);
-      if (missing) missing.textContent = String(Math.max(visible - KNOWN_BASELINE, 0));
-      if (needLabel) {
-        const active = needChips.find((chip) => chip.dataset.category === state.category);
-        needLabel.textContent =
-          state.category === 'todos'
-            ? allLabel
-            : (active?.childNodes[0]?.textContent ?? '').trim().toLowerCase();
+      if (counter) {
+        counter.textContent = String(visible);
+        // El animador del §3.3 lee `data-count-to`. Si se filtra antes de que
+        // el contador entre en viewport, la animación arrancaba con el total
+        // del build y pisaba el recuento real: se mantiene sincronizado.
+        counter.dataset.countTo = String(visible);
       }
+      if (missing) missing.textContent = String(Math.max(visible - KNOWN_BASELINE, 0));
+
+      const active = needChips.find((chip) => chip.dataset.category === state.category);
+      const activeName = (active?.childNodes[0]?.textContent ?? '').trim();
+      if (needLabel) {
+        needLabel.textContent = state.category === 'todos' ? allLabel : activeName.toLowerCase();
+      }
+      if (contextLabel) contextLabel.textContent = activeName || allLabel;
+      if (contextCount) contextCount.textContent = String(visible);
       if (emptyState) emptyState.hidden = visible !== 0;
       if (grid) grid.hidden = visible === 0;
       if (clearBtn) clearBtn.hidden = state.q === '';
@@ -269,13 +312,48 @@ const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necess
       apply();
     });
 
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const scrollBehavior: ScrollBehavior = prefersReduced ? 'auto' : 'smooth';
+
+    /**
+     * Al filtrar, los resultados quedaban a más de una pantalla de distancia en
+     * móvil: se tocaba un chip y aparentemente no pasaba nada. Se lleva al
+     * titular de conteo, que es donde está la confirmación (número + necesidad).
+     * Sólo se desplaza si de verdad no se ve, para no dar tirones en escritorio.
+     */
+    const revealResults = () => {
+      if (!headline) return;
+      const rect = headline.getBoundingClientRect();
+      const alreadyVisible = rect.top >= 64 && rect.bottom <= window.innerHeight;
+      if (alreadyVisible) return;
+      headline.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
+    };
+
     needChips.forEach((chip) => {
       chip.addEventListener('click', () => {
         state.category = chip.dataset.category ?? 'todos';
         paint();
         apply();
+        revealResults();
       });
     });
+
+    // --- Barra de contexto (móvil) ---
+    if (contextBar && chipsRow && 'IntersectionObserver' in window) {
+      const chipsObserver = new IntersectionObserver(
+        ([entry]) => {
+          // Sólo cuando los chips han salido por arriba, no al cargar la página.
+          const scrolledPast = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+          contextBar.classList.toggle('is-visible', scrolledPast);
+        },
+        { threshold: 0 }
+      );
+      chipsObserver.observe(chipsRow);
+
+      contextBar.addEventListener('click', () => {
+        chipsRow.scrollIntoView({ behavior: scrollBehavior, block: 'center' });
+      });
+    }
 
     secondaryChips.forEach((chip) => {
       chip.addEventListener('click', () => {

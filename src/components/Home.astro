@@ -87,23 +87,27 @@ const eyebrow = lang === 'sv'
   alternates={alternates}
   canonicalUrl={canonicalUrl}
 >
-  <section class="pb-2 pt-14 text-center sm:pt-20" aria-labelledby="hero-title">
+  <!-- En móvil el hero se compacta: la acción principal (buscar y elegir
+       necesidad) tiene que entrar en la primera pantalla, no a 550px. -->
+  <section class="pb-2 pt-8 text-center sm:pt-20" aria-labelledby="hero-title">
     <p class="fai-mono-sm text-fai-signal">{eyebrow}</p>
 
-    <h1 id="hero-title" class="fai-hero mx-auto mt-6 max-w-[16ch] text-fai-ink">
+    <h1 id="hero-title" class="fai-hero mx-auto mt-4 max-w-[16ch] text-fai-ink sm:mt-6">
       {t('home.question')}
     </h1>
 
-    <p class="mx-auto mt-6 max-w-[58ch] text-[16px] leading-[1.55] text-fai-muted sm:text-[17px]">
+    <p class="mx-auto mt-4 max-w-[58ch] text-[16px] leading-[1.5] text-fai-muted sm:mt-6 sm:text-[17px] sm:leading-[1.55]">
       {t('home.answer')}
     </p>
 
-    <p class="fai-mono-sm mt-7 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-fai-muted-2">
-      <span>{sortedTools.length} {t('home.verified-sources')}</span>
+    <!-- Las cifras van con separadores en línea: en móvil el tracking del mono
+         las partía en tres renglones y empujaban el buscador fuera de vista. -->
+    <p class="fai-mono-sm mt-5 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-fai-muted-2 sm:mt-7 sm:gap-x-3">
+      <span class="whitespace-nowrap">{sortedTools.length} {t('home.verified-sources')}</span>
       <span aria-hidden="true">·</span>
-      <span>{verifiedDomainsCount} {t('home.stat.domains')}</span>
+      <span class="whitespace-nowrap">{verifiedDomainsCount} {t('home.stat.domains')}</span>
       <span aria-hidden="true">·</span>
-      <span>0 {t('home.stat.hosted')}</span>
+      <span class="whitespace-nowrap">0 {t('home.stat.hosted')}</span>
     </p>
   </section>
 

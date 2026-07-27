@@ -59,7 +59,7 @@ const searchIndex = [tool.name, tool.slug, ...(tool.tags ?? [])]
 ---
 
 <article
-  class="fai-rise fai-live flex h-full flex-col rounded-[14px] p-5"
+  class="fai-rise fai-live relative flex h-full flex-col rounded-[14px] p-5"
   data-rise-index={index}
   data-name={searchIndex}
   data-slug={tool.slug}
@@ -73,7 +73,9 @@ const searchIndex = [tool.name, tool.slug, ...(tool.tags ?? [])]
       aria-hidden="true"
     >{initials.slice(0, 1)}</span>
     <h3 class="fai-card-title min-w-0 text-fai-ink">
-      <a href={`/${lang}/${tool.slug}`} class="transition-colors hover:text-fai-signal">
+      <!-- Enlace estirado: en móvil el objetivo táctil es la tarjeta entera,
+           no las 22px de alto que mide el texto del título. -->
+      <a href={`/${lang}/${tool.slug}`} class="fai-card-link transition-colors hover:text-fai-signal">
         {tool.name}
       </a>
     </h3>
@@ -91,7 +93,7 @@ const searchIndex = [tool.name, tool.slug, ...(tool.tags ?? [])]
       href={`/r/?t=${tool.slug}&l=${lang}`}
       target="_blank"
       rel="noopener noreferrer"
-      class="fai-domain inline-flex items-center gap-1 transition-colors hover:text-fai-find"
+      class="fai-domain fai-card-above -mx-1 inline-flex min-h-11 w-fit max-w-full items-center gap-1 rounded-md px-1 transition-colors hover:text-fai-find sm:min-h-0"
     >
       {domain}
       <span class="sr-only">— {t('card.official-channel')} {tool.name}</span>

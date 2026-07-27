@@ -136,7 +136,7 @@ const rightsLine = lang === 'sv'
     <!-- CABECERA -->
     <header class="sticky top-0 z-40 border-b border-fai-line bg-[#04120e]/85 backdrop-blur-md">
       <div class="mx-auto flex h-16 max-w-[1240px] items-center gap-4 px-5">
-        <a href={home} class="group flex items-center gap-2.5" aria-label={`FuenteAI — ${t('nav.home')}`}>
+        <a href={home} class="group -mx-2 flex min-h-11 items-center gap-2.5 rounded-md px-2" aria-label={`FuenteAI — ${t('nav.home')}`}>
           <span class="fai-avatar fai-avatar--find h-6 w-6 rounded-[7px]" aria-hidden="true"></span>
           <span class="text-[17px] font-bold tracking-[-0.02em] text-fai-ink transition-colors group-hover:text-fai-signal">
             FuenteAI
@@ -157,7 +157,7 @@ const rightsLine = lang === 'sv'
             </summary>
             <div class="absolute left-0 top-full z-50 mt-1 w-64 rounded-[14px] border border-fai-line bg-fai-surface p-1.5 shadow-2xl">
               {CATEGORIES.map((cat) => (
-                <a href={`/${lang}/categoria/${cat.slug}`} class="block rounded-md px-3 py-2 text-[14px] text-fai-ink transition-colors hover:bg-fai-card hover:text-fai-signal">
+                <a href={`/${lang}/categoria/${cat.slug}`} class="flex min-h-11 items-center rounded-md px-3 text-[14px] text-fai-ink transition-colors hover:bg-fai-card hover:text-fai-signal">
                   {cat.label[lang]}
                 </a>
               ))}
@@ -180,7 +180,7 @@ const rightsLine = lang === 'sv'
 
           <details class="relative" name="header-menus">
             <summary
-              class="fai-mono-sm flex min-h-10 cursor-pointer list-none items-center gap-1.5 rounded-md border border-fai-line px-2.5 text-fai-muted transition-colors hover:text-fai-ink"
+              class="fai-mono-sm flex min-h-11 min-w-11 cursor-pointer list-none items-center justify-center gap-1.5 rounded-md border border-fai-line px-2.5 text-fai-muted transition-colors hover:text-fai-ink"
               aria-label={t('lang.change')}
             >
               {lang}
@@ -191,7 +191,7 @@ const rightsLine = lang === 'sv'
                   href={option.url}
                   hreflang={option.code}
                   aria-current={option.code === lang ? 'true' : undefined}
-                  class="block rounded-md px-3 py-2 text-[14px] text-fai-ink transition-colors hover:bg-fai-card aria-[current]:text-fai-find"
+                  class="flex min-h-11 items-center rounded-md px-3 text-[14px] text-fai-ink transition-colors hover:bg-fai-card aria-[current]:text-fai-find"
                 >{option.label}</a>
               ))}
               <span class="block px-3 py-2 text-[14px] text-fai-muted-2">
@@ -252,7 +252,7 @@ const rightsLine = lang === 'sv'
           <span class="text-[14px] font-bold tracking-[-0.02em] text-fai-ink">FuenteAI</span>
           <nav class="flex flex-wrap gap-x-4 gap-y-2" aria-label={t('nav.legal')}>
             {legalLinks.map((link) => (
-              <a href={link.href} class="text-[13px] text-fai-muted transition-colors hover:text-fai-signal">{link.label}</a>
+              <a href={link.href} class="-mx-2 inline-flex min-h-11 items-center rounded-md px-2 text-[13px] text-fai-muted transition-colors hover:text-fai-signal sm:min-h-0">{link.label}</a>
             ))}
           </nav>
           <p class="w-full text-[12px] leading-[1.55] text-fai-muted-2 sm:w-auto sm:flex-1 sm:text-right">
@@ -267,6 +267,17 @@ const rightsLine = lang === 'sv'
     <script is:inline>
       // Cierra los menús <details> al hacer clic fuera o al pulsar Escape.
       const menus = Array.from(document.querySelectorAll('header details'));
+
+      // Al tocar un enlace del menú móvil hay que cerrarlo: los enlaces de
+      // ancla (#directorio) no recargan la página y el panel se quedaba
+      // abierto tapando justo el contenido al que acababas de saltar.
+      menus.forEach((menu) => {
+        menu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            menu.open = false;
+          });
+        });
+      });
       document.addEventListener('click', (event) => {
         menus.forEach((menu) => {
           if (menu.open && !menu.contains(event.target)) menu.open = false;
