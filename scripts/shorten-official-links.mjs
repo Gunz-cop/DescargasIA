@@ -54,7 +54,7 @@ async function main() {
   }
 
   // Scan all tool json files
-  const toolsDir = path.resolve('src/content/tools');
+  const toolsDir = path.resolve('src/content/tools-base');
   let toolFiles = [];
   try {
     toolFiles = await fs.readdir(toolsDir);
