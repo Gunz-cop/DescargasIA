@@ -28,11 +28,11 @@ ChatGPT es el asistente conversacional de inteligencia artificial desarrollado p
 
 Aquí tienes los enlaces de acceso seguros y oficiales verificados por nuestro equipo:
 
-*   **Versión Web**: [Abrir ChatGPT en el navegador](/r/?t=chatgpt&p=web&l=es)
-*   **Windows**: [Descargar instalador oficial para Windows](/r/?t=chatgpt&p=windows&l=es)
-*   **macOS**: [Descargar instalador oficial para macOS](/r/?t=chatgpt&p=mac&l=es)
-*   **Móviles (Android)**: [Ver app oficial en Google Play](/r/?t=chatgpt&p=android&l=es)
-*   **Móviles (iOS)**: [Ver app oficial en App Store](/r/?t=chatgpt&p=ios&l=es)
+*   **Versión Web**: [Abrir ChatGPT en el navegador](/r?t=chatgpt&p=web&l=es)
+*   **Windows**: [Descargar instalador oficial para Windows](/r?t=chatgpt&p=windows&l=es)
+*   **macOS**: [Descargar instalador oficial para macOS](/r?t=chatgpt&p=mac&l=es)
+*   **Móviles (Android)**: [Ver app oficial en Google Play](/r?t=chatgpt&p=android&l=es)
+*   **Móviles (iOS)**: [Ver app oficial en App Store](/r?t=chatgpt&p=ios&l=es)
 
 ## Cómo instalarla de forma segura paso a paso
 

@@ -1,0 +1,108 @@
+---
+// src/components/AdSlot.astro
+// Reserva el hueco publicitario y, cuando se le pasa `network`, carga el
+// creativo real de Adsterra correspondiente. Sin `network`, se queda en
+// modo placeholder (solo el hueco reservado y la etiqueta).
+//
+// `eager` controla cuándo se pide el script de la red publicitaria:
+// - eager: el script se inserta de inmediato en el HTML (para el único
+//   hueco que ya vive en la primera pantalla — ahí no hay nada que diferir,
+//   el usuario lo va a ver igual sin necesidad de scroll).
+// - lazy (por defecto): el contenedor se reserva con su alto final para no
+//   causar salto de layout, pero el script de terceros no se pide hasta que
+//   el hueco entra en viewport (IntersectionObserver, rootMargin 300px). Así
+//   los anuncios que están más abajo en la página no compiten por ancho de
+//   banda ni bloquean el hilo principal durante la carga inicial.
+interface Props {
+  /** Determina alto/ancho reservado. */
+  format?: 'native' | 'banner-300x250' | 'bar';
+  /** Qué creativo de Adsterra cargar en este hueco. Omitir = placeholder. */
+  network?: 'native-banner' | 'banner-300x250' | 'banner-320x50';
+  /** Identificador estable del contenedor visual (no del script de Adsterra). */
+  slotId: string;
+  /** true solo para el hueco que ya está en la primera pantalla sin scroll. */
+  eager?: boolean;
+  class?: string;
+}
+
+const { format = 'native', network, slotId, eager = false, class: className = '' } = Astro.props;
+
+const dims: Record<string, string> = {
+  native: 'min-h-[50px]',
+  'banner-300x250': 'min-h-[250px] sm:max-w-[300px] sm:mx-auto',
+  bar: 'min-h-14'
+};
+
+// Native Banner — una sola instancia por carga de página (recomendación de Adsterra).
+const NATIVE_CONTAINER_ID = 'container-fa1e8876d85c18dfb461e25de7b492d5';
+const NATIVE_SRC = 'https://pl30788864.effectivecpmnetwork.com/fa1e8876d85c18dfb461e25de7b492d5/invoke.js';
+
+// Banners "highperformanceformat" (atOptions + invoke.js por tamaño).
+const BANNER_KEYS: Record<string, string> = {
+  'banner-300x250': '1bdd21d4821614421dcf647bc99a473e',
+  'banner-320x50': '61f98306735e1c9df254c5d978e24994'
+};
+const BANNER_DIMS: Record<string, { width: number; height: number }> = {
+  'banner-300x250': { width: 300, height: 250 },
+  'banner-320x50': { width: 320, height: 50 }
+};
+
+const adConfig = network
+  ? network === 'native-banner'
+    ? { kind: 'native-banner', containerId: NATIVE_CONTAINER_ID, src: NATIVE_SRC }
+    : { kind: 'banner', src: `https://www.highperformanceformat.com/${BANNER_KEYS[network]}/invoke.js`, atOptions: { key: BANNER_KEYS[network], format: 'iframe', ...BANNER_DIMS[network], params: {} } }
+  : null;
+---
+
+<div
+  id={slotId}
+  data-ad-slot={format}
+  data-ad-network={network}
+  class:list={[
+    'flex flex-col items-center justify-center gap-1 rounded-[14px] border border-fai-line bg-fai-card/60 px-4 py-3 text-center',
+    dims[format],
+    className
+  ]}
+>
+  <span class="fai-mono-sm uppercase tracking-wide text-fai-muted-2">Publicidad</span>
+
+  {adConfig?.kind === 'native-banner' && <div id={adConfig.containerId}></div>}
+
+  {adConfig && eager && adConfig.kind === 'native-banner' && (
+    <script is:inline async data-cfasync="false" src={adConfig.src}></script>
+  )}
+  {adConfig && eager && adConfig.kind === 'banner' && (
+    <>
+      <script is:inline define:vars={{ opts: adConfig.atOptions }}>atOptions = opts;</script>
+      <script is:inline src={adConfig.src}></script>
+    </>
+  )}
+
+  {adConfig && !eager && (
+    <script is:inline define:vars={{ slotId, adConfig }}>
+      (() => {
+        const el = document.getElementById(slotId);
+        if (!el) return;
+        const load = () => {
+          if (adConfig.kind === 'banner') {
+            window.atOptions = adConfig.atOptions;
+          }
+          const s = document.createElement('script');
+          s.src = adConfig.src;
+          if (adConfig.kind === 'native-banner') {
+            s.async = true;
+            s.dataset.cfasync = 'false';
+          }
+          el.appendChild(s);
+        };
+        const io = new IntersectionObserver((entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            io.disconnect();
+            load();
+          }
+        }, { rootMargin: '300px' });
+        io.observe(el);
+      })();
+    </script>
+  )}
+</div>

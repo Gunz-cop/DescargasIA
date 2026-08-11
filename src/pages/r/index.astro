@@ -3,6 +3,9 @@
 import '../../styles/global.css';
 import { getCollection } from 'astro:content';
 import linkzipCache from '../../linkzip-cache.json';
+import AdSlot from '../../components/AdSlot.astro';
+
+const REDIRECT_DELAY_SECONDS = 5;
 
 const baseTools = await getCollection('toolsBase');
 
@@ -69,8 +72,11 @@ const toolsDb = baseTools.reduce((acc, tool) => {
         <p id="redirect-destination" class="data-tag mt-4 rounded-md border border-brand-success-border bg-brand-success-bg px-3 py-2 text-brand-success">
           Destino:
         </p>
+
+        <AdSlot slotId="ad-redirect-native" format="native" network="native-banner" eager class="mt-4" />
+
         <p id="redirect-fallback" class="mt-3 text-[12px] leading-5 text-brand-text-subtle">
-          Si la redirección no se completa automáticamente en unos segundos, usa el botón.
+          Si la redirección no se completa automáticamente en unos segundos, usa el botón. (<span id="redirect-countdown">{REDIRECT_DELAY_SECONDS}</span>s)
         </p>
         <a
           href=""
@@ -100,7 +106,7 @@ const toolsDb = baseTools.reduce((acc, tool) => {
     </div>
 
     <!-- Client Script -->
-    <script is:inline define:vars={{ toolsDb }}>
+    <script is:inline define:vars={{ toolsDb, REDIRECT_DELAY_SECONDS }}>
       document.addEventListener('DOMContentLoaded', () => {
         const params = new URLSearchParams(window.location.search);
         const toolId = params.get('t');
@@ -192,7 +198,7 @@ const toolsDb = baseTools.reduce((acc, tool) => {
           }
           
           destination.textContent = `${t.destination} ${hostname}`;
-          fallback.textContent = t.fallback;
+          fallback.innerHTML = `${t.fallback} (<span id="redirect-countdown">${REDIRECT_DELAY_SECONDS}</span>s)`;
           btn.textContent = `${t.btn} ${hostname}`;
           btn.href = targetUrl;
 
@@ -200,10 +206,21 @@ const toolsDb = baseTools.reduce((acc, tool) => {
           content.hidden = false;
           errorBox.hidden = true;
 
-          // Auto redirect
+          // Auto redirect: se mantiene la pantalla el tiempo suficiente para
+          // registrar una impresión publicitaria válida antes de continuar.
+          // fallback.innerHTML reemplazó el nodo #redirect-countdown, así que
+          // se vuelve a buscar aquí en vez de reusar la referencia anterior.
+          let remaining = REDIRECT_DELAY_SECONDS;
+          const tick = setInterval(() => {
+            remaining -= 1;
+            const el = document.getElementById('redirect-countdown');
+            if (el) el.textContent = String(Math.max(remaining, 0));
+            if (remaining <= 0) clearInterval(tick);
+          }, 1000);
+
           setTimeout(() => {
             window.location.replace(targetUrl);
-          }, 600);
+          }, REDIRECT_DELAY_SECONDS * 1000);
         } else {
           // Validation failed
           document.title = t.errorTitle + ' | FuenteAI';
