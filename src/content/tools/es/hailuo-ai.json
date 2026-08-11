@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Generador de video con IA de MiniMax, con apps móviles oficiales y modelos que combinan video con audio sincronizado.",
+  "longDescription": "Hailuo AI es la plataforma de generación de video con inteligencia artificial de MiniMax, una compañía china de IA que se convirtió en una de las más comentadas dentro de la comunidad de código abierto por sus modelos multimodales. Permite generar clips a partir de texto o imágenes, con funciones como referencia de personaje para mantener consistencia entre escenas y, en sus versiones más recientes, generación de audio sincronizado junto con el video. Esta ficha enlaza solo a los canales oficiales de MiniMax.",
+  "bestFor": [
+    "Generar videos cortos a partir de texto o una imagen de referencia",
+    "Mantener la consistencia de un personaje o estilo a través de varias escenas",
+    "Producir video con banda sonora sincronizada generada por IA en el mismo proceso",
+    "Crear contenido desde el móvil con la app oficial de Android e iOS"
+  ],
+  "limitations": [
+    "La generación en 1080p y otras funciones avanzadas suelen requerir un plan de pago o créditos adicionales; el uso gratuito tiene límites de resolución y cantidad.",
+    "Como plataforma con desarrollo muy activo, los nombres de los modelos (Hailuo 02, Hailuo 2.3, MiniMax-H3) cambian con frecuencia, lo que puede generar confusión sobre cuál estás usando.",
+    "Al ser un servicio con raíz china, algunos métodos de pago o disponibilidad de funciones pueden variar según la región."
+  ],
+  "safetyNotes": [
+    "Descarga la app únicamente desde Google Play o App Store con los enlaces oficiales de esta ficha; el nombre \"Hailuo\" también aparece en sitios de terceros sin relación con MiniMax.",
+    "El soporte oficial se gestiona desde support@hailuoai.video; desconfía de canales de soporte no oficiales que pidan datos de pago fuera de la plataforma."
+  ],
+  "editorialSummary": "MiniMax se convirtió en uno de los nombres más presentes en la conversación sobre modelos abiertos de video y audio, con lanzamientos frecuentes que dominan las listas de tendencias en comunidades como Hugging Face. Hailuo AI es la forma en que ese trabajo de investigación llega al público general como una app lista para usar. En FuenteAI enlazamos solo a los canales oficiales de MiniMax.",
+  "editorialSections": [
+    {
+      "heading": "De los modelos de investigación a una app de video",
+      "body": "MiniMax publica con frecuencia nuevas versiones de sus modelos de generación de video y audio, muchas de las cuales generan bastante actividad en plataformas de investigación abierta como Hugging Face, donde aparecen entre los proyectos más comentados. Hailuo AI es el producto orientado al público general que empaqueta esos avances en una app simple: describes lo que quieres o subes una imagen, y el sistema genera el video.\n\nEsta cercanía entre la investigación de punta y el producto final es parte de lo que hace interesante seguir a MiniMax: las mejoras que se ven primero como demos técnicas suelen llegar relativamente rápido a Hailuo AI como funciones disponibles para cualquier usuario."
+    },
+    {
+      "heading": "Video con audio sincronizado en el mismo proceso",
+      "body": "Una de las funciones más destacadas de las versiones recientes de Hailuo AI es la generación de audio —música, efectos, incluso diálogo— sincronizado directamente con el video generado, en lugar de tener que agregar el sonido como un paso separado en otra herramienta. Esto simplifica considerablemente el flujo de trabajo para crear contenido corto con sonido desde cero.\n\nTambién ofrece referencia de personaje, que permite mantener la apariencia de un mismo personaje o estilo visual consistente a través de varias generaciones, útil para contar una historia con varias escenas sin que el protagonista cambie de aspecto entre una y otra."
+    },
+    {
+      "heading": "Apps nativas para móvil, no solo web",
+      "body": "A diferencia de algunos generadores de video que funcionan solo desde el navegador, Hailuo AI ofrece apps oficiales para Android e iOS, publicadas directamente por el equipo de MiniMax, lo que permite generar y revisar videos desde el teléfono sin depender de una computadora.\n\nEsto resulta útil para creadores de contenido para redes sociales que trabajan principalmente desde el móvil, aunque para proyectos más elaborados que requieran edición posterior, seguir combinando Hailuo AI con un editor de video tradicional suele dar mejores resultados."
+    },
+    {
+      "heading": "Hailuo AI frente a Kling AI, Wan y otras alternativas de video IA",
+      "body": "Hailuo AI compite de cerca con Kling AI (Kuaishou) y Wan (Alibaba), otros dos generadores de video respaldados por grandes tecnológicas chinas. La elección entre ellos suele depender de matices: Hailuo destaca por su generación de audio sincronizado, Kling AI por la duración máxima de sus videos, y Wan por su integración con el ecosistema más amplio de Alibaba Cloud.\n\nPara quien prioriza la integración con flujos de edición profesional en Occidente, Runway sigue siendo una referencia distinta, con más herramientas complementarias pensadas para producción audiovisual tradicional."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Hailuo AI es gratis?",
+      "answer": "Tiene un nivel gratuito con límites de resolución y cantidad de generaciones. La resolución 1080p y otras funciones avanzadas suelen requerir plan de pago."
+    },
+    {
+      "question": "¿Hailuo AI tiene app oficial para Android e iOS?",
+      "answer": "Sí, ambas publicadas oficialmente vinculadas a MiniMax, disponibles en Google Play y App Store."
+    },
+    {
+      "question": "¿Qué es MiniMax-H3 y cómo se relaciona con Hailuo AI?",
+      "answer": "MiniMax-H3 es uno de los modelos de generación de video con audio de MiniMax; Hailuo AI es la app donde el público general puede usarlo sin configuración técnica."
+    },
+    {
+      "question": "¿Es seguro descargar Hailuo AI desde cualquier sitio?",
+      "answer": "Usa siempre hailuoai.video, Google Play o App Store. Evita sitios de terceros que usen el nombre \"Hailuo\" sin relación verificada con MiniMax."
+    }
+  ],
+  "spanishSupport": "partial"
+}

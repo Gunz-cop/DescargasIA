@@ -1,0 +1,58 @@
+{
+  "shortDescription": "Genera videos con avatares de IA que hablan a partir de un guion de texto, con traducción automática a varios idiomas.",
+  "longDescription": "HeyGen es una plataforma de video con inteligencia artificial especializada en avatares digitales: a partir de un guion de texto o una grabación propia, genera un video de una persona (real o generada) hablando de forma natural, con sincronización de labios y voz. También ofrece traducción de video a más de cien idiomas manteniendo el movimiento de labios ajustado al nuevo audio. Está disponible en web, Android e iOS. Esta ficha enlaza solo a los canales oficiales de HeyGen.",
+  "bestFor": [
+    "Crear videos explicativos o corporativos con un presentador de IA, sin cámara ni estudio",
+    "Traducir un video propio a otro idioma manteniendo el movimiento de labios sincronizado",
+    "Generar un \"gemelo digital\" a partir de una grabación corta de 15 segundos",
+    "Producir contenido educativo o de formación interna de forma rápida y repetible"
+  ],
+  "limitations": [
+    "Crear un avatar personalizado o clonar la propia voz requiere grabar muestras y, en la mayoría de los planes, verificación de consentimiento antes de activarlo.",
+    "El plan gratuito limita minutos de generación y calidad; producir video profesional en volumen requiere un plan de pago.",
+    "Los resultados, aunque muy realistas, pueden mostrar imperfecciones sutiles en movimientos poco comunes o expresiones muy específicas."
+  ],
+  "safetyNotes": [
+    "HeyGen exige verificación de consentimiento para clonar la voz o el rostro de una persona real; no se debe usar la plataforma para suplantar a alguien sin su autorización explícita.",
+    "Descarga la app solo desde Google Play o App Store; existen apps de terceros con nombres parecidos que no tienen relación con HeyGen Technology Inc.",
+    "Los videos con avatares de IA deben identificarse como generados por IA cuando se usan en contextos informativos o publicitarios, siguiendo buenas prácticas de transparencia."
+  ],
+  "editorialSummary": "HeyGen se volvió una referencia en la generación de video con avatares de IA, especialmente para equipos que necesitan producir contenido de formación, marketing o soporte sin grabar con cámara cada vez. Su función de traducción de video con sincronización de labios lo diferencia de generadores de video más genéricos. En FuenteAI enlazamos solo a sus canales oficiales.",
+  "editorialSections": [
+    {
+      "heading": "Qué es un \"avatar de IA\" en HeyGen",
+      "body": "En HeyGen, un avatar es una representación digital de una persona (existente o generada) que puede hablar cualquier guion con movimiento de labios y expresión sincronizados. Para crear un avatar personalizado —tu propio \"gemelo digital\"— basta con grabar un video corto de referencia; el sistema genera después video nuevo repitiendo tu apariencia y voz con guiones distintos.\n\nEsta capacidad es la que atrajo tanto a empresas que necesitan producir contenido de formación o marketing de forma constante, como a creadores individuales que quieren escalar la producción de video sin grabar cada versión desde cero."
+    },
+    {
+      "heading": "Traducción de video con labios sincronizados",
+      "body": "Una de las funciones más buscadas de HeyGen es la traducción automática de un video existente a otro idioma, ajustando el movimiento de labios para que coincida con el nuevo audio. Esto resuelve un problema clásico del doblaje tradicional, donde la boca no coincide con las palabras.\n\nPara equipos que producen contenido en varios idiomas —tutoriales, videos corporativos, cursos online— esta función puede ahorrar buena parte del trabajo de doblaje manual, aunque conviene revisar el resultado antes de publicarlo, especialmente en idiomas con estructuras gramaticales muy distintas al original."
+    },
+    {
+      "heading": "Consentimiento y uso responsable de la clonación",
+      "body": "HeyGen exige un proceso de verificación antes de permitir clonar la voz o el rostro de una persona: normalmente se pide que la propia persona grabe una frase de consentimiento frente a la cámara. Esta medida busca evitar que la plataforma se use para crear videos de alguien sin su autorización.\n\nAun con esas salvaguardas, la responsabilidad de un uso ético recae en quien produce el contenido: identificar claramente cuando un video fue generado con IA, y no usar avatares para hacer pasar contenido generado como una grabación real sin aclararlo, sobre todo en contextos informativos o publicitarios."
+    },
+    {
+      "heading": "Cuándo elegir HeyGen frente a otras herramientas de video",
+      "body": "Si tu objetivo es un presentador hablando a cámara —tutoriales, videos corporativos, contenido educativo— HeyGen está más especializado en ese caso que Runway o Kling AI, que se orientan más a video cinematográfico o animación de escenas. Si además necesitas voces realistas para narración sin avatar visual, ElevenLabs puede complementar el flujo.\n\nPara animación creativa, efectos visuales o transformación de imágenes en video con movimiento de cámara, Runway o Kling AI siguen siendo más adecuados que HeyGen, que está pensado específicamente alrededor del formato \"persona hablando a cámara\"."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿HeyGen es gratis?",
+      "answer": "Tiene un plan gratuito con minutos de generación limitados. Para uso profesional o en volumen se necesita un plan de pago."
+    },
+    {
+      "question": "¿HeyGen tiene app para Android e iOS?",
+      "answer": "Sí, ambas están disponibles de forma oficial en Google Play y App Store."
+    },
+    {
+      "question": "¿Puedo clonar mi propia voz y rostro en HeyGen?",
+      "answer": "Sí, pero requiere un proceso de verificación de consentimiento grabando una frase frente a la cámara antes de activar la clonación."
+    },
+    {
+      "question": "¿Es legal usar HeyGen para crear un video de otra persona?",
+      "answer": "Solo con su autorización explícita. HeyGen exige verificación de consentimiento y su uso para suplantar a alguien sin permiso va contra sus políticas."
+    }
+  ],
+  "spanishSupport": "yes"
+}

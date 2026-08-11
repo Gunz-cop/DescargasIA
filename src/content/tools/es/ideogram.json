@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Generador de imágenes con IA conocido por renderizar texto legible dentro de las imágenes, con app oficial para iOS.",
+  "longDescription": "Ideogram es un generador de imágenes con inteligencia artificial que se hizo notar por resolver un problema histórico de esta categoría: escribir texto legible y bien ubicado dentro de una imagen generada, útil para logos, carteles, memes o diseños con tipografía. Se accede principalmente desde la web, y cuenta con una app oficial para iOS. Esta ficha enlaza solo a los canales verificados de Ideogram.",
+  "bestFor": [
+    "Generar imágenes con texto legible integrado: logos, carteles, portadas",
+    "Crear diseños gráficos rápidos sin herramientas de edición complejas",
+    "Producir variaciones de un mismo concepto visual para elegir la mejor",
+    "Diseñar desde el iPhone o iPad con la app oficial"
+  ],
+  "limitations": [
+    "No existe una aplicación oficial para Android; la documentación de Ideogram solo menciona la app de iOS. En Android, el acceso recomendado es la versión web.",
+    "El plan gratuito ofrece créditos semanales limitados; el uso frecuente o los modelos más recientes suelen requerir un plan de pago.",
+    "Como todo generador de imágenes con IA, algunos resultados pueden necesitar varios intentos de prompt para lograr el texto o composición exactos."
+  ],
+  "safetyNotes": [
+    "En las tiendas de Android circulan apps con nombres parecidos (\"Ideogram AI\", \"Ideo AI\") que no son oficiales, publicadas por desarrolladores sin relación con Ideogram. Ideogram no tiene app oficial confirmada en Google Play; usa la versión web en Android.",
+    "Descarga la app de iOS únicamente desde el enlace oficial de App Store verificando que el desarrollador sea Ideogram."
+  ],
+  "editorialSummary": "Ideogram resolvió algo que frustraba a usuarios de otros generadores de imágenes: lograr que el texto dentro de una imagen se vea correcto y legible, no como símbolos deformados. Esa especialización lo convirtió en una herramienta habitual para quien necesita carteles, logos o diseños con tipografía generados por IA. En FuenteAI enlazamos a sus canales oficiales, incluyendo una advertencia clara sobre las apps de Android no oficiales que usan su nombre.",
+  "editorialSections": [
+    {
+      "heading": "El problema del texto en imágenes con IA",
+      "body": "Durante años, pedirle a un generador de imágenes con IA que escribiera una palabra dentro de la imagen producía resultados ilegibles: letras deformadas, símbolos sin sentido o palabras mal escritas. Ideogram construyó su reputación resolviendo específicamente ese problema, con modelos entrenados para renderizar texto correctamente dentro de composiciones visuales.\n\nEso lo volvió especialmente útil para tareas concretas: diseñar un logo con el nombre de una marca, un cartel con un mensaje claro, o una portada con un título legible, sin necesidad de agregar el texto después en un editor de imágenes aparte."
+    },
+    {
+      "heading": "Web primero, iOS oficial, Android sin app propia",
+      "body": "La forma más completa de usar Ideogram es la versión web en ideogram.ai, donde están disponibles todas las funciones y modelos. Para iOS existe una app oficial publicada por Ideogram en la App Store, pensada para generar y guardar imágenes desde el iPhone o iPad.\n\nPara Android, la documentación oficial de Ideogram no menciona una app propia: el acceso recomendado es directamente desde el navegador del móvil. Esto es relevante porque en Google Play circulan aplicaciones con nombres muy similares (\"Ideogram AI\", \"Ideo AI\") que no tienen relación oficial con la empresa y no deberían confundirse con el producto real."
+    },
+    {
+      "heading": "Casos de uso más frecuentes",
+      "body": "Ideogram se usa mucho para diseño rápido: crear conceptos de logo antes de refinarlos con un diseñador, generar carteles o miniaturas para redes sociales, producir mockups de portadas o packaging, y en general cualquier pieza donde el texto forme parte del diseño visual, no solo un elemento decorativo alrededor de la imagen.\n\nComo con cualquier IA generativa, conviene tratarlo como punto de partida creativo. Para uso comercial serio —una marca registrada, por ejemplo— sigue siendo recomendable pasar por revisión de diseño humano antes de publicar el resultado final."
+    },
+    {
+      "heading": "Cuándo elegir Ideogram sobre otras opciones",
+      "body": "Si tu prioridad es texto legible dentro de la imagen, Ideogram suele superar a competidores generales como Midjourney o Stable Diffusion en esa tarea específica. Si en cambio buscas máximo fotorrealismo o control técnico total sobre el proceso de generación, Flux o Stable Diffusion pueden ofrecer más flexibilidad.\n\nLeonardo AI es otra alternativa a considerar si además del texto necesitas herramientas de edición más completas o apps nativas también para Android, algo que Ideogram todavía no ofrece de forma oficial."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Ideogram tiene app oficial para Android?",
+      "answer": "No, según la documentación oficial de Ideogram. El acceso recomendado en Android es la versión web en ideogram.ai. Desconfía de apps con nombres similares en Google Play."
+    },
+    {
+      "question": "¿Ideogram es gratis?",
+      "answer": "Tiene un plan gratuito con créditos semanales limitados. El uso frecuente o los modelos más avanzados requieren un plan de pago."
+    },
+    {
+      "question": "¿Para qué sirve mejor Ideogram frente a otros generadores de imágenes?",
+      "answer": "Se destaca especialmente en generar texto legible dentro de las imágenes: logos, carteles y diseños con tipografía."
+    },
+    {
+      "question": "¿Es seguro descargar Ideogram desde Google Play?",
+      "answer": "No hay confirmación de una app oficial de Ideogram en Google Play. Usa la versión web en Android para evitar apps no oficiales con nombres similares."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

@@ -1,0 +1,37 @@
+{
+  "name": "LTX Studio",
+  "officialWebsite": "https://ltx.studio",
+  "categories": [
+    "video-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://ltx.studio",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "lightricks",
+    "video-ia",
+    "guion-a-video",
+    "produccion-audiovisual"
+  ],
+  "alternatives": [
+    "runway",
+    "kling-ai",
+    "luma-dream-machine",
+    "hailuo-ai"
+  ],
+  "screenshotUrl": null,
+  "initials": "LTX",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": [
+    "https://ltx.studio",
+    "https://www.lightricks.com"
+  ]
+}

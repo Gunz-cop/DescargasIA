@@ -1,0 +1,57 @@
+{
+  "shortDescription": "El chatbot de la china Zhipu AI (antes ChatGLM), potenciado por sus modelos abiertos GLM, con acceso web gratuito.",
+  "longDescription": "Z.ai es el asistente conversacional de Zhipu AI, un laboratorio de inteligencia artificial nacido como spin-off de la Universidad de Tsinghua que se listó en la bolsa de Hong Kong en 2026. Está construido sobre la familia de modelos GLM, publicados con licencia abierta (MIT en su versión más reciente), lo que lo convirtió en una referencia dentro del ecosistema de modelos abiertos. Además del chat, ofrece un plan específico para desarrolladores que integra los modelos GLM en editores de código como Claude Code o Cline. Esta ficha enlaza solo al canal oficial en chat.z.ai.",
+  "bestFor": [
+    "Chatear de forma gratuita con uno de los modelos abiertos más potentes del momento (GLM)",
+    "Investigar y responder preguntas con capacidades de búsqueda web integrada",
+    "Programar conectando el GLM Coding Plan a editores como Claude Code, Cline o Roo Code",
+    "Generar imágenes o transcribir audio a través de las capacidades multimodales de la plataforma"
+  ],
+  "limitations": [
+    "El acceso principal es web; no se confirma una aplicación móvil oficial estable para Android o iOS al momento de esta revisión.",
+    "El GLM Coding Plan es un servicio de suscripción separado del chat gratuito, pensado para conectarse a otras herramientas de programación, no un editor propio.",
+    "Como servicio con raíz china, algunas funciones pueden tener matices de disponibilidad según la región."
+  ],
+  "safetyNotes": [
+    "Usa siempre chat.z.ai para acceder al chat oficial. En tiendas móviles existen apps con nombres parecidos (\"Z.ai\", \"Chat Z\") de desarrolladores no relacionados con Zhipu AI; no las confundas con el producto oficial.",
+    "Z.ai no requiere pago para el chat básico; desconfía de páginas de terceros que pidan pago para \"activar\" el acceso gratuito."
+  ],
+  "editorialSummary": "Z.ai (la marca internacional de Zhipu AI) se volvió una referencia dentro del movimiento de modelos abiertos gracias a su familia GLM, que compite de cerca con los modelos cerrados más conocidos. Su presencia constante en las conversaciones sobre IA abierta —y su salida a bolsa en 2026— fue la señal que nos llevó a documentar su acceso oficial con cuidado, dado que su nombre corto y genérico atrae fácilmente apps no oficiales.",
+  "editorialSections": [
+    {
+      "heading": "De ChatGLM a Z.ai: un laboratorio con raíces académicas",
+      "body": "Zhipu AI nació como una spin-off de la Universidad de Tsinghua, una de las instituciones académicas más influyentes en investigación de IA en China. Con el tiempo, la compañía adoptó la marca internacional Z.ai y llevó su familia de modelos GLM a competir directamente con los laboratorios más conocidos de Estados Unidos, publicando versiones con licencia abierta que cualquier desarrollador puede usar o ejecutar.\n\nEsta combinación de respaldo académico y apertura del modelo explica por qué GLM aparece con frecuencia entre los proyectos más comentados en comunidades técnicas y en plataformas como Hugging Face, donde nuevas versiones del modelo se publican de forma regular."
+    },
+    {
+      "heading": "Chat gratuito con capacidades multimodales",
+      "body": "El producto principal para el público general es el chat en chat.z.ai, gratuito y sin necesidad de tarjeta de pago para empezar. Además de conversación de texto, la plataforma soporta análisis de imágenes, búsqueda web integrada para respuestas actualizadas, y capacidades de generación de imagen y transcripción de audio a través de su plataforma abierta.\n\nPara quien solo quiere probar un modelo de lenguaje potente sin comprometerse con una suscripción, Z.ai es una de las formas más directas de hacerlo, comparable en gratuidad a las versiones básicas de ChatGPT o Claude."
+    },
+    {
+      "heading": "El GLM Coding Plan: un producto aparte para desarrolladores",
+      "body": "Z.ai no ofrece un editor de código propio, sino un plan de suscripción (GLM Coding Plan) que conecta los modelos GLM a herramientas de programación ya existentes, como Claude Code, Cline o Roo Code, mediante un endpoint compatible con OpenAI. Esto permite a un desarrollador seguir usando su editor habitual, pero con los modelos GLM como motor detrás.\n\nEsta es una diferencia importante frente a herramientas como Cursor o Devin Desktop, que son editores completos: el GLM Coding Plan es más bien un \"motor intercambiable\" que se conecta a herramientas de terceros, pensado para quien ya tiene un flujo de trabajo definido y solo quiere cambiar qué modelo lo impulsa."
+    },
+    {
+      "heading": "Cuándo considerar Z.ai frente a otras opciones",
+      "body": "Z.ai tiene sentido si te interesa un modelo abierto de primer nivel sin costo para uso conversacional básico, o si programas y quieres experimentar con GLM como motor dentro de tu editor habitual mediante el Coding Plan. También es una opción a considerar si sigues de cerca el desarrollo de modelos open source.\n\nSi buscas una aplicación móvil pulida y oficial, hoy Kimi o Qwen Chat ofrecen una cobertura de plataformas más completa. Si tu prioridad es el ecosistema de plugins más maduro para uso diario, ChatGPT o Claude siguen siendo referencias más establecidas."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Z.ai es gratis?",
+      "answer": "Sí, el chat en chat.z.ai es gratuito. El GLM Coding Plan para desarrolladores es un servicio de suscripción aparte."
+    },
+    {
+      "question": "¿Z.ai tiene app oficial para Android o iOS?",
+      "answer": "No hay una app móvil oficial confirmada de forma sólida al momento de esta revisión. El acceso recomendado es la web en chat.z.ai."
+    },
+    {
+      "question": "¿Qué diferencia hay entre Z.ai y el GLM Coding Plan?",
+      "answer": "Z.ai es el chat gratuito para el público general. El GLM Coding Plan es una suscripción separada que conecta los modelos GLM a editores de código de terceros como Claude Code o Cline."
+    },
+    {
+      "question": "¿Es seguro usar apps de terceros llamadas \"Z.ai\" en la tienda móvil?",
+      "answer": "No se recomienda. Existen apps con nombres similares sin relación oficial con Zhipu AI. Usa chat.z.ai desde el navegador para mayor seguridad."
+    }
+  ],
+  "spanishSupport": "partial"
+}

@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Agente de programación de código abierto que vive en la terminal, desarrollado por el equipo de Qwen (Alibaba).",
+  "longDescription": "Qwen Code es un agente de programación de código abierto que se ejecuta desde la línea de comandos, desarrollado por el equipo de QwenLM en Alibaba. Permite delegar tareas de programación —explorar un repositorio, escribir código, corregir errores— describiendo el objetivo en lenguaje natural, sin salir de la terminal. Es compatible con distintos proveedores de modelos, incluidos los propios modelos Qwen, OpenAI, Anthropic, Gemini o modelos locales ejecutados con Ollama. Esta ficha enlaza solo al repositorio oficial en GitHub.",
+  "bestFor": [
+    "Programar desde la terminal delegando tareas a un agente de código en lenguaje natural",
+    "Explorar y modificar un repositorio completo sin cambiar de editor",
+    "Usar modelos Qwen3-Coder u otros proveedores compatibles según prefieras",
+    "Combinar el agente con modelos locales ejecutados con Ollama para trabajar sin depender de una API en la nube"
+  ],
+  "limitations": [
+    "No es una aplicación con instalador gráfico: se instala y usa desde la línea de comandos, lo que requiere comodidad básica con la terminal.",
+    "Para usar los modelos Qwen alojados en la nube se necesita una clave de API, que puede tener costo según el volumen de uso; usar un modelo local con Ollama evita ese costo pero requiere hardware suficiente.",
+    "Al ser un proyecto de desarrollo activo, los comandos y funciones pueden cambiar entre versiones; conviene revisar la documentación oficial ante cualquier duda."
+  ],
+  "safetyNotes": [
+    "Instala Qwen Code únicamente desde el repositorio oficial en github.com/QwenLM/qwen-code o los paquetes oficiales publicados desde ahí. Evita scripts de instalación de fuentes no verificadas.",
+    "Al darle a un agente de código permisos para modificar archivos o ejecutar comandos en tu proyecto, revisa qué acciones propone antes de aprobarlas, especialmente en repositorios con cambios importantes sin respaldo."
+  ],
+  "editorialSummary": "Qwen Code es la respuesta de Alibaba al auge de los agentes de programación que viven en la terminal, en la misma categoría que Claude Code o Gemini CLI, pero construido como proyecto abierto y con soporte nativo para modelos locales. Su desarrollo está estrechamente ligado a los modelos Qwen3-Coder, muy presentes en Hugging Face, lo que lo convirtió en una pieza natural para completar esta lista de fichas descubiertas a partir de las tendencias del catálogo abierto.",
+  "editorialSections": [
+    {
+      "heading": "Qué es un agente de código en la terminal",
+      "body": "A diferencia de un editor con IA integrada como Cursor o Devin Desktop, un agente de código en terminal como Qwen Code no tiene interfaz gráfica propia: se invoca desde la línea de comandos dentro de la carpeta de tu proyecto, y a partir de ahí puedes describirle una tarea —\"corrige el error en el archivo de autenticación\", \"agrega pruebas para esta función\"— y el agente explora el código, propone cambios y los aplica con tu aprobación.\n\nEste enfoque resulta cómodo para quien ya trabaja mucho en la terminal o quiere integrar el agente en scripts y flujos de automatización, en lugar de depender de una interfaz gráfica separada."
+    },
+    {
+      "heading": "Flexible en qué modelo usa por debajo",
+      "body": "Una de las características más destacadas de Qwen Code es que no está atado exclusivamente a los modelos de Alibaba: es compatible con proveedores como OpenAI, Anthropic o Gemini a través de sus respectivas APIs, además de los modelos Qwen3-Coder propios. También soporta modelos ejecutados localmente con herramientas como Ollama o vLLM.\n\nEsta flexibilidad lo distingue de agentes de terminal atados a un único proveedor: puedes elegir el modelo según costo, privacidad o capacidad, sin cambiar de herramienta. Para quien ya ejecuta modelos locales, es una de las formas más directas de conectar un agente de código a esos modelos sin depender de una API externa."
+    },
+    {
+      "heading": "Más allá de la terminal: plugins e integraciones",
+      "body": "Aunque su forma principal de uso es la terminal, el proyecto también ofrece plugins para integrarse en editores (IDE), un modo daemon para ejecutarse en segundo plano, SDKs para construir herramientas propias sobre él, y bots para plataformas de mensajería como Telegram o WeChat.\n\nEsta variedad de formas de uso refleja un proyecto pensado para desarrolladores que quieren adaptar el agente a su flujo de trabajo específico, más que para quien busca una experiencia lista para usar sin configuración."
+    },
+    {
+      "heading": "Cuándo elegir Qwen Code frente a otras herramientas",
+      "body": "Si ya trabajas cómodo en la terminal y quieres un agente de código abierto con libertad para elegir el modelo detrás (incluidos modelos locales), Qwen Code es una opción sólida a considerar junto a alternativas como Kimi Code. Si prefieres un editor completo con interfaz gráfica integrada, Devin Desktop, Cursor o GitHub Copilot dentro de tu IDE habitual pueden sentirse más cómodos.\n\nLa elección depende de tu flujo de trabajo: terminal y scripts favorecen a Qwen Code; un entorno visual integrado favorece a los editores completos de esta lista."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Qwen Code es gratis?",
+      "answer": "El agente en sí es de código abierto y gratuito. El costo depende del modelo que conectes: usar la API de Qwen u otros proveedores en la nube puede tener costo, mientras que un modelo local con Ollama no lo tiene."
+    },
+    {
+      "question": "¿Necesito saber usar la terminal para usar Qwen Code?",
+      "answer": "Sí, es una herramienta de línea de comandos. No tiene una interfaz gráfica tradicional como un editor completo."
+    },
+    {
+      "question": "¿Qwen Code solo funciona con modelos de Qwen?",
+      "answer": "No. Es compatible con OpenAI, Anthropic, Gemini y modelos locales ejecutados con Ollama o vLLM, además de los modelos Qwen propios."
+    },
+    {
+      "question": "¿Es seguro dejar que Qwen Code modifique archivos de mi proyecto?",
+      "answer": "Revisa siempre los cambios que propone antes de aprobarlos, especialmente en proyectos importantes sin respaldo en control de versiones."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

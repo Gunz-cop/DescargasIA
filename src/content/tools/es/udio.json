@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Generador de canciones completas con IA a partir de texto o letras, accesible desde la web oficial.",
+  "longDescription": "Udio es una plataforma que genera canciones completas —voz, instrumentación y estructura— a partir de una descripción de estilo o de una letra escrita por el usuario. Compite directamente con Suno en el espacio de música generada por IA, con un catálogo de estilos amplio y una comunidad activa de usuarios que comparten sus creaciones dentro de la plataforma. El acceso es exclusivamente web, en udio.com. Esta ficha enlaza solo al canal oficial.",
+  "bestFor": [
+    "Generar una canción completa a partir de una idea de letra o estilo musical",
+    "Experimentar con géneros musicales distintos sin saber tocar un instrumento",
+    "Crear pistas de fondo o maquetas rápidas para proyectos personales",
+    "Descubrir y escuchar canciones generadas por otros usuarios de la comunidad"
+  ],
+  "limitations": [
+    "Udio pausó la posibilidad de descargar archivos de audio de las canciones generadas mientras desarrolla un sistema con licencias musicales; conviene revisar el estado vigente de esta función antes de asumir que las pistas se pueden exportar libremente.",
+    "El plan gratuito limita la cantidad de generaciones diarias y la duración de las canciones; los planes de pago amplían créditos y desbloquean funciones como derechos de uso comercial.",
+    "No existe una app oficial confirmada para Android o iOS; el acceso es únicamente a través del navegador."
+  ],
+  "safetyNotes": [
+    "Usa siempre udio.com para acceder a la plataforma; existen apps de terceros en tiendas móviles con nombres parecidos (\"AUdio AI\", entre otros) que no tienen relación oficial con Udio.",
+    "La generación de música con voces que imitan a artistas reales puede tener restricciones legales; revisa las políticas de uso de Udio antes de publicar contenido que use un estilo vocal muy identificable."
+  ],
+  "editorialSummary": "Udio se convirtió rápidamente en uno de los generadores de música con IA más comentados, gracias a la calidad de sus voces sintéticas y la naturalidad de las estructuras de canción que produce. Al mismo tiempo, atravesó tensiones legales con la industria musical que llevaron a pausar temporalmente las descargas de audio. En FuenteAI enlazamos solo al canal web oficial y explicamos ese contexto para evitar confusión.",
+  "editorialSections": [
+    {
+      "heading": "Qué puede generar Udio",
+      "body": "A partir de una letra propia o de una descripción de estilo (\"balada acústica en español\", \"pop electrónico con voz femenina\"), Udio genera una canción completa con voz, instrumentación y estructura de verso-coro. La calidad de las voces sintéticas y la coherencia musical de las pistas generadas fueron parte de lo que lo hizo destacar rápidamente frente a otros generadores de música.\n\nLa plataforma también tiene un componente social: se pueden explorar canciones generadas por otros usuarios, seguir creadores y descubrir estilos, de forma similar a una red de música generada por IA."
+    },
+    {
+      "heading": "Por qué las descargas están limitadas",
+      "body": "A finales de 2025, Udio deshabilitó la posibilidad de descargar las pistas generadas mientras trabaja en un sistema de licencias con la industria musical, en un contexto de tensiones legales sobre el uso de material protegido por derechos de autor para entrenar modelos de música generativa.\n\nEsto es relevante para quien piensa usar Udio con fines comerciales o de distribución: antes de asumir que una canción generada se puede descargar y usar libremente, conviene revisar el estado vigente de esta función directamente en udio.com, ya que puede cambiar a medida que la plataforma avanza en sus acuerdos de licencia."
+    },
+    {
+      "heading": "Solo web, sin apps móviles oficiales",
+      "body": "A diferencia de otras herramientas de esta lista, Udio no tiene una app nativa confirmada para Android o iOS. El acceso es exclusivamente a través del navegador en udio.com, tanto en computadora como en móvil.\n\nEsto simplifica la elección: cualquier app que prometa ser \"Udio oficial\" en una tienda de aplicaciones debería tratarse con sospecha, ya que no corresponde a un canal reconocido por la plataforma."
+    },
+    {
+      "heading": "Udio frente a Suno y otras alternativas",
+      "body": "Udio y Suno compiten de cerca en calidad de generación musical, y la elección entre ambos suele depender de preferencia personal sobre el estilo de las voces y la naturalidad de ciertos géneros. Si tu prioridad es exportar y usar el audio generado sin restricciones, conviene comparar las condiciones vigentes de descarga y licencia de cada plataforma antes de decidir.\n\nPara música instrumental o bandas sonoras con enfoque más orientado a proyectos audiovisuales, AIVA puede ser una alternativa a considerar, con un enfoque distinto centrado en composición instrumental."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Puedo descargar las canciones que genero en Udio?",
+      "answer": "La descarga de audio estuvo pausada mientras Udio desarrolla un sistema de licencias musicales. Revisa el estado actual de esta función directamente en udio.com."
+    },
+    {
+      "question": "¿Udio tiene app para Android o iOS?",
+      "answer": "No hay una app oficial confirmada. El acceso es a través de la web en udio.com desde cualquier dispositivo."
+    },
+    {
+      "question": "¿Udio es gratis?",
+      "answer": "Tiene un plan gratuito con generaciones diarias limitadas. Los planes de pago amplían créditos y funciones adicionales."
+    },
+    {
+      "question": "¿Es seguro usar apps de terceros que dicen ser Udio?",
+      "answer": "No. Udio no tiene app móvil oficial; cualquier app en una tienda que use un nombre parecido no tiene relación verificada con la plataforma."
+    }
+  ],
+  "spanishSupport": "partial"
+}

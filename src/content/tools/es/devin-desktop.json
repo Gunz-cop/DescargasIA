@@ -1,0 +1,57 @@
+{
+  "shortDescription": "El editor de código agéntico antes llamado Windsurf, ahora integrado en la marca Devin de Cognition.",
+  "longDescription": "Devin Desktop es el editor de código con inteligencia artificial que hasta mediados de 2026 se llamaba Windsurf. Tras la adquisición de Windsurf por parte de Cognition (la empresa detrás del agente de programación Devin), el producto se renombró y se integró junto con Devin Cloud, Devin CLI y Devin Review bajo una sola marca. Sigue siendo un editor basado en el mismo motor que VS Code, con el agente Cascade capaz de entender un repositorio completo y ejecutar tareas de varios pasos. Esta ficha enlaza solo a los canales oficiales de Cognition en devin.ai.",
+  "bestFor": [
+    "Programar con un agente que entiende el repositorio completo, no solo el archivo abierto",
+    "Delegar tareas de varios pasos: refactors, tests o correcciones de errores",
+    "Migrar desde Windsurf sin perder el editor ni la configuración",
+    "Combinar agentes locales (en el editor) con agentes en la nube desde una sola interfaz"
+  ],
+  "limitations": [
+    "El nombre cambió de Windsurf a Devin Desktop en 2026; buscar \"Windsurf\" en internet puede llevar a versiones desactualizadas o sitios de terceros que aún usan el nombre antiguo.",
+    "Requiere cuenta de Cognition/Devin para usar las funciones de agente; el plan gratuito tiene límites de uso.",
+    "Al ser un editor derivado de VS Code, algunas extensiones o flujos muy específicos de otros IDEs pueden no tener equivalente exacto."
+  ],
+  "safetyNotes": [
+    "Descarga el instalador únicamente desde devin.ai/download. Sitios como Softonic, Uptodown o SourceForge pueden alojar versiones antiguas o modificadas del instalador de Windsurf.",
+    "windsurf.com redirige automáticamente a devin.ai: si un enlace de descarga no redirige ahí, probablemente no sea oficial."
+  ],
+  "editorialSummary": "Windsurf se ganó un lugar entre los editores con IA gracias a Cascade, su sistema de agente capaz de razonar sobre un proyecto entero. Su adquisición por Cognition y el rebranding a Devin Desktop generó dudas sobre si seguía siendo el mismo producto; esta ficha aclara el cambio y enlaza directo a la fuente oficial actual.",
+  "editorialSections": [
+    {
+      "heading": "Windsurf ya no existe con ese nombre",
+      "body": "En junio de 2026, Cognition —la compañía detrás del agente autónomo Devin— completó la integración de Windsurf en su propia marca. El editor pasó a llamarse Devin Desktop, y ahora convive con Devin Cloud (agentes en la nube), Devin CLI y Devin Review dentro de un mismo ecosistema. El motor del editor, basado en VS Code, y el sistema de agente Cascade se mantuvieron, así que quien usaba Windsurf no perdió funcionalidad, solo cambió el nombre y el dominio.\n\nEsto genera un problema práctico de búsqueda: muchos tutoriales, comparativas y videos de 2025 todavía hablan de \"Windsurf\", y los sitios de descarga de terceros no siempre actualizan sus fichas. Si buscas \"Windsurf download\" hoy, el destino correcto es devin.ai/download, no un mirror desactualizado."
+    },
+    {
+      "heading": "Qué hace Cascade, el agente del editor",
+      "body": "La característica central de Devin Desktop es Cascade, un agente que puede leer múltiples archivos de un proyecto, entender las relaciones entre ellos y ejecutar cambios coordinados: no se limita a autocompletar líneas sueltas. Puede aplicar un refactor que toca varios archivos, escribir pruebas para una función existente o investigar por qué falla un test.\n\nA diferencia de un simple autocompletado, Cascade funciona mejor cuando se le da contexto claro sobre el objetivo. Tratarlo como colaborador que necesita instrucciones, no como una varita mágica, produce mejores resultados y menos revisión manual después."
+    },
+    {
+      "heading": "Instalación en Windows, macOS y Linux",
+      "body": "Devin Desktop se descarga desde devin.ai/download, donde se eligen automáticamente los binarios correctos: macOS para Apple Silicon o Intel, Windows en x64 o ARM64, y Linux con requisitos mínimos de glibc que cubren distribuciones como Ubuntu 20+, Debian 10+ o Fedora 36+.\n\nComo con cualquier editor derivado de VS Code, conviene revisar que el equipo cumpla los requisitos mínimos antes de instalar, especialmente en Linux, donde versiones muy antiguas de las librerías del sistema pueden impedir que el editor arranque correctamente."
+    },
+    {
+      "heading": "Cuándo compararlo con otras opciones",
+      "body": "Si ya usas Cursor o GitHub Copilot y estás conforme, cambiar de editor completo puede no valer la pena solo por probar Cascade. Devin Desktop tiene más sentido para quien busca un editor pensado desde cero para trabajar con agentes, o para quien ya usa Devin en la nube y quiere una experiencia unificada entre lo local y lo remoto.\n\nSi tu flujo depende de un IDE específico como JetBrains, revisa primero si existe una integración equivalente antes de migrar todo el entorno de trabajo a un nuevo editor."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Windsurf y Devin Desktop son la misma herramienta?",
+      "answer": "Sí. Windsurf fue renombrado a Devin Desktop en 2026 tras su integración en la marca Devin de Cognition. El editor y el agente Cascade se mantuvieron."
+    },
+    {
+      "question": "¿Devin Desktop tiene instalador para Windows y Linux, o solo Mac?",
+      "answer": "Está disponible para Windows (x64 y ARM64), macOS (Apple Silicon e Intel) y Linux, todo desde devin.ai/download."
+    },
+    {
+      "question": "¿Es gratis usar Devin Desktop?",
+      "answer": "Tiene un nivel gratuito con límites de uso. Los planes de pago (Pro y Max) desbloquean más capacidad de agente."
+    },
+    {
+      "question": "¿Es seguro descargarlo desde sitios como Softonic o Uptodown?",
+      "answer": "No se recomienda. Esos portales pueden alojar versiones desactualizadas del antiguo instalador de Windsurf. Descarga siempre desde devin.ai/download."
+    }
+  ],
+  "spanishSupport": "partial"
+}

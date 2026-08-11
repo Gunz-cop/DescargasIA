@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Compositora de IA especializada en música instrumental y bandas sonoras, con app de escritorio para Windows y macOS.",
+  "longDescription": "AIVA es una herramienta de composición musical con inteligencia artificial enfocada en piezas instrumentales: bandas sonoras, música ambiental, temas para videojuegos o proyectos audiovisuales. A diferencia de generadores centrados en canciones con voz, AIVA se especializa en composición orquestal y de estilos instrumentales variados, con una app de escritorio propia además del acceso web. Esta ficha enlaza solo a los canales oficiales de AIVA.",
+  "bestFor": [
+    "Componer música instrumental para videos, videojuegos o proyectos audiovisuales",
+    "Generar bandas sonoras en estilos específicos (cinematográfico, ambiental, orquestal)",
+    "Obtener piezas musicales con derechos claros para uso comercial en los planes de pago",
+    "Trabajar desde una app de escritorio en Windows o macOS, no solo desde el navegador"
+  ],
+  "limitations": [
+    "El plan gratuito limita el uso a fines no comerciales y restringe la cantidad de descargas disponibles por mes.",
+    "Para obtener la titularidad de los derechos de autor sobre una composición generada se necesita un plan de pago específico; el plan gratuito no otorga esos derechos.",
+    "Está más orientada a música instrumental que a canciones con letra y voz; para eso, herramientas como Suno o Udio son más adecuadas."
+  ],
+  "safetyNotes": [
+    "Descarga la app de escritorio únicamente desde aiva.ai/download; evita instaladores alojados en portales de descarga genéricos que puedan estar desactualizados o modificados.",
+    "Revisa los términos de licencia según el plan contratado antes de usar una composición de AIVA en un proyecto comercial, ya que los derechos varían según el nivel de suscripción."
+  ],
+  "editorialSummary": "AIVA ocupa un espacio distinto dentro de la música generada por IA: en lugar de competir por la mejor canción con voz, se enfocó en composición instrumental para proyectos audiovisuales, un nicho con menos competencia directa y una necesidad muy concreta para creadores de video, videojuegos y contenido. En FuenteAI enlazamos a su web y a su app de escritorio oficial.",
+  "editorialSections": [
+    {
+      "heading": "Un enfoque distinto: composición, no canciones",
+      "body": "Mientras Suno y Udio se concentran en generar canciones completas con voz, AIVA se especializa en piezas instrumentales: música orquestal, ambiental, electrónica o cinematográfica, pensada para acompañar video, videojuegos o contenido audiovisual en general. Esta especialización la hace especialmente útil para creadores que necesitan una banda sonora original sin letra, más que un tema pop con voz.\n\nEl sistema permite elegir un estilo o \"preset\" (por ejemplo, música de suspenso, tema heroico, ambiente relajante) y genera una pieza completa que después se puede ajustar en duración y estructura."
+    },
+    {
+      "heading": "App de escritorio: una diferencia frente a otras herramientas de música IA",
+      "body": "A diferencia de Suno y Udio, que funcionan solo desde el navegador, AIVA ofrece una aplicación de escritorio nativa para Windows y macOS, descargable directamente desde aiva.ai/download. Esto permite trabajar con la composición de forma más integrada, sin depender exclusivamente de la conexión web para cada acción.\n\nLa app de escritorio conserva la misma cuenta y créditos que la versión web, por lo que se puede alternar entre ambas según convenga: navegador para explorar rápido, escritorio para sesiones de trabajo más largas."
+    },
+    {
+      "heading": "Derechos de autor: lo que cambia según el plan",
+      "body": "Un punto que suele generar dudas es la titularidad de los derechos sobre la música generada. En el plan gratuito, las composiciones están pensadas principalmente para uso personal y no comercial. Para obtener los derechos de autor completos sobre una pieza y poder monetizarla o usarla en un proyecto comercial, AIVA requiere un plan de pago específico diseñado para eso.\n\nAntes de usar una composición de AIVA en un video que planeas monetizar, o en un proyecto comercial, conviene revisar exactamente qué plan otorga esos derechos, ya que no todos los niveles de suscripción los incluyen de la misma forma."
+    },
+    {
+      "heading": "Cuándo elegir AIVA frente a Suno o Udio",
+      "body": "Si necesitas una canción pop con voz para redes sociales o un proyecto creativo con letra, Suno o Udio son más adecuados. Si en cambio necesitas música de fondo instrumental para un video, un juego o una presentación —sin voz, con estructura orquestal o ambiental— AIVA está más orientada a resolver exactamente ese caso.\n\nAlgunos creadores usan ambas herramientas según el proyecto: AIVA para bandas sonoras instrumentales y Suno o Udio cuando el proyecto necesita una canción con voz protagonista."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿AIVA sirve para generar canciones con voz?",
+      "answer": "No es su enfoque principal. AIVA está especializada en música instrumental: bandas sonoras, ambientales y orquestales, sin voz."
+    },
+    {
+      "question": "¿AIVA tiene aplicación de escritorio?",
+      "answer": "Sí, para Windows y macOS, descargable desde aiva.ai/download, además del acceso web."
+    },
+    {
+      "question": "¿Puedo usar la música de AIVA comercialmente?",
+      "answer": "Depende del plan. El plan gratuito es para uso no comercial; para obtener los derechos de autor completos se necesita un plan de pago específico."
+    },
+    {
+      "question": "¿Es seguro descargar la app de AIVA desde cualquier sitio?",
+      "answer": "Descárgala solo desde aiva.ai/download para evitar instaladores desactualizados o modificados de portales de terceros."
+    }
+  ],
+  "spanishSupport": "partial"
+}

@@ -1,0 +1,51 @@
+{
+  "name": "ComfyUI",
+  "officialWebsite": "https://www.comfy.org",
+  "categories": [
+    "generacion-imagenes",
+    "modelos-locales"
+  ],
+  "platforms": {
+    "windows": {
+      "url": "https://www.comfy.org/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "mac": {
+      "url": "https://www.comfy.org/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "linux": {
+      "url": "https://github.com/comfyanonymous/ComfyUI",
+      "type": "github-repo",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "tags": [
+    "modelo-local",
+    "open-source",
+    "stable-diffusion",
+    "flujos-de-trabajo",
+    "nodos"
+  ],
+  "alternatives": [
+    "invokeai",
+    "stable-diffusion",
+    "flux"
+  ],
+  "screenshotUrl": null,
+  "initials": "CFU",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": [
+    "https://www.comfy.org",
+    "https://github.com/comfyanonymous/ComfyUI",
+    "https://docs.comfy.org"
+  ]
+}

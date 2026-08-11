@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Suite de generación de imágenes y video con IA, con lienzo en tiempo real y apps oficiales para móvil.",
+  "longDescription": "Leonardo AI es una plataforma de generación de imágenes y video con inteligencia artificial que combina texto a imagen, edición asistida y una función de \"Realtime Canvas\" que convierte bocetos simples en imágenes terminadas mientras dibujas. Además de la versión web, ofrece apps nativas para Android e iOS, algo poco común entre los generadores de imágenes de este nivel. Esta ficha enlaza solo a los canales oficiales de Leonardo AI.",
+  "bestFor": [
+    "Generar imágenes e ilustraciones a partir de descripciones de texto",
+    "Convertir bocetos rápidos en imágenes terminadas con Realtime Canvas",
+    "Editar imágenes existentes: mejorar calidad, ampliar el encuadre o cambiar el fondo",
+    "Crear desde el móvil con apps nativas de Android e iOS, no solo desde la web"
+  ],
+  "limitations": [
+    "El plan gratuito otorga créditos diarios limitados; generar en volumen o usar los modelos más avanzados suele requerir un plan de pago.",
+    "Los derechos de uso comercial de las imágenes generadas dependen del plan contratado; conviene revisar los términos antes de usar el contenido en un proyecto comercial.",
+    "Como con cualquier generador de imágenes con IA, los resultados pueden requerir varios intentos o ajustes de prompt para lograr exactamente lo que se busca."
+  ],
+  "safetyNotes": [
+    "Usa siempre app.leonardo.ai o las apps oficiales listadas en esta ficha; existen sitios que imitan la interfaz de Leonardo para capturar datos de pago.",
+    "Leonardo AI no reparte licencias ni claves de activación por fuera de su plataforma; cualquier oferta de \"Leonardo Premium gratis\" fuera del sitio oficial es sospechosa."
+  ],
+  "editorialSummary": "Leonardo AI se ganó un lugar propio en la generación de imágenes con IA gracias a su enfoque más orientado a diseñadores y creadores de videojuegos, con herramientas como el entrenamiento de estilos propios y el lienzo en tiempo real. En FuenteAI enlazamos a sus canales oficiales para que puedas probarlo desde la web o el móvil sin pasar por copias.",
+  "editorialSections": [
+    {
+      "heading": "Qué lo distingue de otros generadores de imágenes",
+      "body": "A diferencia de herramientas centradas casi exclusivamente en el prompt de texto, Leonardo AI puso desde el inicio mucho peso en el control creativo: modelos de estilo entrenables, referencias de imagen, y el Realtime Canvas, que muestra una imagen generándose mientras dibujas trazos básicos en un lienzo. Esa combinación lo hizo popular entre diseñadores de videojuegos y creadores que necesitan iterar rápido sobre una idea visual.\n\nTambién ofrece generación de video para animar imágenes generadas, usando modelos propios y de terceros, lo que amplía su uso más allá de la imagen estática."
+    },
+    {
+      "heading": "Apps nativas: una rareza en su categoría",
+      "body": "La mayoría de los generadores de imágenes con IA se usan solo desde el navegador. Leonardo AI es una excepción relevante: tiene apps propias para Android e iOS que permiten generar, editar y guardar imágenes directamente desde el móvil, sincronizando el trabajo con la cuenta web.\n\nEsto lo hace especialmente útil para quien quiere generar ideas visuales rápidas sin sentarse frente a una computadora, aunque para trabajos más elaborados —como entrenar un modelo de estilo propio— la versión web sigue siendo la más completa."
+    },
+    {
+      "heading": "Planes gratuitos y de pago",
+      "body": "Leonardo AI ofrece un nivel gratuito con créditos diarios limitados, suficiente para probar la herramienta y generar imágenes ocasionales. Los planes de pago (Essential, Premium, Ultimate) aumentan la cantidad de créditos, desbloquean modelos más avanzados y, según el plan, otorgan derechos de uso comercial más amplios sobre las imágenes generadas.\n\nAntes de usar imágenes generadas con Leonardo en un proyecto comercial, conviene revisar los términos de uso vigentes según el plan contratado, ya que las políticas de propiedad y licencia pueden variar entre el plan gratuito y los de pago."
+    },
+    {
+      "heading": "Cómo elegir entre Leonardo y otras alternativas",
+      "body": "Si buscas el máximo control artístico con modelos de código abierto y ejecución local, Stable Diffusion o Flux ofrecen más flexibilidad técnica. Si priorizas resultados muy pulidos con mínima curva de aprendizaje, Midjourney sigue siendo una referencia. Si necesitas texto legible dentro de la imagen (logos, carteles), Ideogram suele destacar en esa tarea específica.\n\nLeonardo AI encaja mejor para quien quiere una plataforma todo en uno, con apps móviles y herramientas de edición integradas, sin necesidad de configurar nada técnico."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Leonardo AI es gratis?",
+      "answer": "Tiene un plan gratuito con créditos diarios limitados. Para generar más contenido o acceder a modelos avanzados se necesita un plan de pago."
+    },
+    {
+      "question": "¿Leonardo AI tiene app para el móvil?",
+      "answer": "Sí, tiene apps oficiales para Android e iOS, además de la versión web en app.leonardo.ai."
+    },
+    {
+      "question": "¿Puedo usar las imágenes generadas comercialmente?",
+      "answer": "Depende del plan contratado. Revisa los términos de uso vigentes en Leonardo AI antes de usar una imagen en un proyecto comercial."
+    },
+    {
+      "question": "¿Es seguro descargar la app de Leonardo AI desde cualquier tienda?",
+      "answer": "Descárgala solo desde Google Play o App Store con los enlaces oficiales listados en esta ficha, verificando que el desarrollador sea Leonardo AI."
+    }
+  ],
+  "spanishSupport": "partial"
+}

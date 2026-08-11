@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Generador de video e imagen de Alibaba Cloud (Tongyi Wanxiang), con narrativa multi-escena y apps oficiales.",
+  "longDescription": "Wan, también conocido como Tongyi Wanxiang, es el modelo de generación visual de Alibaba Cloud desarrollado por Tongyi Lab. Convierte descripciones de texto o imágenes de referencia en video, con funciones orientadas a narrativa de varias escenas, generación de audio nativo y transferencia de estilo. Además de sus modelos abiertos, muy presentes en comunidades de investigación, Alibaba ofrece un sitio y apps propias para usarlo sin configuración técnica. Esta ficha enlaza solo a los canales oficiales de Wan.",
+  "bestFor": [
+    "Generar video a partir de texto o imagen con control cinematográfico del resultado",
+    "Contar una historia con varias escenas manteniendo coherencia visual entre ellas",
+    "Generar imágenes secuenciales consistentes (hasta 12 imágenes relacionadas)",
+    "Producir video con audio nativo generado en el mismo proceso, sin herramientas externas"
+  ],
+  "limitations": [
+    "El servicio se ofrece de forma gratuita con uso diario limitado según la plataforma; los créditos o resolución máxima pueden variar según cambios de política de Alibaba.",
+    "Como con otros productos chinos de IA generativa, la disponibilidad de ciertas funciones o métodos de pago puede variar según la región de acceso.",
+    "Los modelos abiertos de la familia Wan evolucionan rápido (2.1, 2.5, 2.6, 2.7), lo que puede generar confusión sobre qué versión está detrás de la app en un momento dado."
+  ],
+  "safetyNotes": [
+    "Descarga la app oficial únicamente desde wan.video, Google Play o App Store con los enlaces verificados de esta ficha; existen apps de terceros con nombres genéricos como \"Wan AI Video Generator\" sin relación confirmada con Alibaba.",
+    "El desarrollador oficial en las tiendas de apps figura como Alibaba Cloud; verifica ese dato antes de instalar cualquier app que use el nombre \"Wan\"."
+  ],
+  "editorialSummary": "Wan (Tongyi Wanxiang) es la apuesta de Alibaba Cloud en generación de video con IA, respaldada por uno de los modelos abiertos más activos de la escena actual, con nuevas versiones apareciendo constantemente en comunidades como Hugging Face. Su salto a una web y apps propias en 2026 simplificó el acceso para quien no quiere lidiar con la parte técnica del modelo. En FuenteAI enlazamos solo a sus canales oficiales.",
+  "editorialSections": [
+    {
+      "heading": "Un modelo de investigación muy activo en código abierto",
+      "body": "La familia de modelos Wan, publicada por Tongyi Lab de Alibaba, se ha convertido en una presencia constante entre los proyectos de video generativo más comentados en plataformas de investigación abierta, con actualizaciones frecuentes (de la versión 2.1 a la 2.7 en relativamente poco tiempo) que suelen aparecer entre lo más descargado en Hugging Face. Ese ritmo de desarrollo es parte de lo que llamó la atención sobre el proyecto.\n\nPara quien no tiene interés en la parte técnica, Alibaba lanzó un sitio independiente en wan.video que empaqueta esos avances en un producto usable directamente, sin necesidad de descargar pesos de modelo ni configurar nada."
+    },
+    {
+      "heading": "De texto o imagen a video con control narrativo",
+      "body": "Wan permite generar video a partir de una descripción de texto o de una imagen de referencia, con funciones pensadas para narrativa más elaborada: transferencia de estilo entre escenas, generación de imágenes secuenciales consistentes (hasta 12 imágenes relacionadas entre sí) y, en sus versiones más recientes, generación de audio nativo integrado con el video.\n\nEsto lo acerca a un flujo de producción más narrativo que el de un simple generador de clips sueltos, pensado para quien quiere contar algo con varias escenas coherentes entre sí, no solo producir un video aislado."
+    },
+    {
+      "heading": "Acceso gratuito y disponible en apps nativas",
+      "body": "Una de las características más comentadas de Wan es que, al menos en su lanzamiento inicial, ofrece uso diario sin costo tanto en la web como en las apps oficiales de Android e iOS, algo poco frecuente entre generadores de video de este nivel técnico.\n\nEsto puede cambiar con el tiempo a medida que Alibaba ajuste su modelo de negocio, por lo que conviene revisar las condiciones vigentes directamente en wan.video antes de asumir que el acceso gratuito se mantiene sin límites."
+    },
+    {
+      "heading": "Wan frente a Kling AI, Hailuo AI y otras alternativas",
+      "body": "Wan compite en el mismo espacio que Kling AI (Kuaishou) y Hailuo AI (MiniMax), los tres respaldados por grandes tecnológicas chinas con inversión fuerte en generación de video. La diferencia práctica suele estar en detalles: Wan pone énfasis en narrativa multi-escena y transferencia de estilo, Hailuo AI en audio sincronizado, y Kling AI en la duración máxima del video generado.\n\nSi buscas integración con flujos de edición profesional occidentales, Runway sigue siendo una alternativa distinta y más orientada a producción tradicional que a generación pura desde cero."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Wan y Tongyi Wanxiang son lo mismo?",
+      "answer": "Sí. Tongyi Wanxiang es el nombre del proyecto de Alibaba Cloud, y Wan es la marca del producto y del modelo tal como se conoce internacionalmente."
+    },
+    {
+      "question": "¿Wan es gratis?",
+      "answer": "Ofrece uso diario gratuito en su lanzamiento inicial, aunque las condiciones pueden cambiar. Revisa el estado vigente en wan.video."
+    },
+    {
+      "question": "¿Wan tiene app oficial para Android e iOS?",
+      "answer": "Sí, publicada por Alibaba Cloud, disponible en Google Play y App Store con los enlaces verificados de esta ficha."
+    },
+    {
+      "question": "¿Es seguro instalar cualquier app llamada \"Wan\" en la tienda?",
+      "answer": "No. Existen apps de terceros con nombres genéricos parecidos. Verifica que el desarrollador sea Alibaba Cloud antes de instalar."
+    }
+  ],
+  "spanishSupport": "partial"
+}

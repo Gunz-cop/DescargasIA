@@ -1,0 +1,38 @@
+{
+  "name": "Z.ai (GLM)",
+  "officialWebsite": "https://chat.z.ai",
+  "categories": [
+    "asistentes-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://chat.z.ai",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "glm",
+    "zhipu-ai",
+    "asistente-ia",
+    "open-source",
+    "china"
+  ],
+  "alternatives": [
+    "chatgpt",
+    "claude",
+    "qwen-chat",
+    "kimi"
+  ],
+  "screenshotUrl": null,
+  "initials": "ZAI",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": [
+    "https://chat.z.ai",
+    "https://z.ai"
+  ]
+}

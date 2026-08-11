@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Motor de nodos de código abierto para ejecutar modelos de imagen y video localmente, con control total sobre el flujo de generación.",
+  "longDescription": "ComfyUI es una interfaz de código abierto para ejecutar modelos de generación de imagen y video (Stable Diffusion, Flux, Wan, entre otros) en tu propia computadora, mediante un sistema de nodos conectables que representa cada paso del proceso de generación. A diferencia de una app con botones fijos, permite construir y modificar el flujo de trabajo exacto que necesitas, lo que la volvió el estándar de facto entre usuarios avanzados de IA generativa local. Existe una app de escritorio oficial (Comfy Desktop) para Windows y macOS, además de la instalación desde código fuente para Linux. Esta ficha enlaza solo a los canales oficiales de Comfy Org.",
+  "bestFor": [
+    "Ejecutar modelos de imagen y video de código abierto localmente, con control total del proceso",
+    "Construir flujos de trabajo personalizados combinando distintos modelos y técnicas",
+    "Experimentar con los modelos más recientes publicados en Hugging Face sin depender de un servicio en la nube",
+    "Reutilizar y compartir flujos de trabajo completos con otras personas de la comunidad"
+  ],
+  "limitations": [
+    "Tiene una curva de aprendizaje considerable: el sistema de nodos requiere entender el proceso técnico de generación, a diferencia de apps con interfaz simplificada como Leonardo AI.",
+    "El rendimiento depende directamente del hardware; se recomienda una GPU dedicada con memoria suficiente para modelos grandes.",
+    "La app de escritorio oficial cubre Windows y macOS; en Linux, la instalación se hace desde el código fuente en GitHub, sin instalador gráfico."
+  ],
+  "safetyNotes": [
+    "Descarga la app de escritorio únicamente desde comfy.org/download o el código fuente desde github.com/comfyanonymous/ComfyUI. Evita instaladores de portales de software genéricos.",
+    "Al instalar flujos de trabajo o nodos personalizados (\"custom nodes\") compartidos por la comunidad, revisa su procedencia: al ser extensiones de código, un nodo malicioso podría ejecutar código no deseado en tu equipo."
+  ],
+  "editorialSummary": "ComfyUI se convirtió en la herramienta de referencia para quien quiere ir más allá de generar una imagen con un clic y realmente entender y controlar cómo funciona un modelo de difusión por dentro. Su presencia es enorme en el ecosistema que rodea a Hugging Face: buena parte de los modelos y LoRAs que se publican ahí incluyen directamente un flujo de trabajo listo para ComfyUI. En FuenteAI enlazamos solo a los canales oficiales de Comfy Org.",
+  "editorialSections": [
+    {
+      "heading": "Qué significa trabajar con nodos",
+      "body": "En lugar de una interfaz con un botón de \"generar\" y algunas opciones fijas, ComfyUI representa cada paso del proceso de generación como un nodo visual conectado a los demás: carga del modelo, codificación del texto, muestreo, decodificación de la imagen final, y cualquier paso adicional que quieras agregar (upscaling, inpainting, control de pose, entre otros). Puedes ver y modificar exactamente qué está pasando en cada etapa.\n\nEsta transparencia es lo que la distingue de herramientas más simplificadas: no oculta el proceso técnico, lo expone para que puedas ajustarlo. Es más trabajo inicial, pero da un control que una interfaz de un solo botón no puede ofrecer."
+    },
+    {
+      "heading": "El puente natural con Hugging Face",
+      "body": "Gran parte de los modelos, LoRAs y checkpoints que se publican en Hugging Face —muchos de los que aparecen constantemente entre lo más descargado— están pensados para usarse precisamente en ComfyUI. Es común encontrar, junto a un modelo nuevo, un archivo de flujo de trabajo (\"workflow\") listo para cargar directamente en la interfaz.\n\nEsta relación es tan estrecha que buena parte de la actividad que se ve en la sección de Spaces de Hugging Face son en realidad demostraciones de flujos de ComfyUI corriendo en la nube, antes de que el usuario decida instalarlos localmente para tener control total y privacidad."
+    },
+    {
+      "heading": "Instalación: app de escritorio o desde el código fuente",
+      "body": "Para Windows y macOS, Comfy Org ofrece Comfy Desktop, una app de escritorio oficial que instala ComfyUI en un entorno autocontenido y facilita mantener varias configuraciones independientes actualizadas, descargable desde comfy.org/download.\n\nPara Linux, no existe un instalador gráfico oficial: la vía recomendada es clonar el repositorio oficial en GitHub (comfyanonymous/ComfyUI) y seguir las instrucciones de instalación desde código fuente, un proceso más técnico pero bien documentado."
+    },
+    {
+      "heading": "Cuándo elegir ComfyUI frente a otras opciones locales",
+      "body": "Si buscas máximo control y no te importa invertir tiempo en aprender el sistema de nodos, ComfyUI es probablemente la herramienta local más potente y flexible disponible hoy. Si en cambio prefieres una interfaz más guiada sin sacrificar del todo la ejecución local, InvokeAI ofrece un balance distinto, más cercano a una app tradicional.\n\nPara generación de imágenes en la nube sin instalar nada, herramientas como Leonardo AI, Midjourney o Flux (en su versión alojada) siguen siendo más directas para quien no necesita ese nivel de control técnico."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿ComfyUI es gratis?",
+      "answer": "Sí, es completamente gratuito y de código abierto. No requiere cuenta ni suscripción para funcionar."
+    },
+    {
+      "question": "¿ComfyUI tiene instalador para Linux?",
+      "answer": "No un instalador gráfico oficial. En Linux se instala desde el código fuente disponible en el repositorio oficial de GitHub."
+    },
+    {
+      "question": "¿Necesito una GPU potente para usar ComfyUI?",
+      "answer": "Se recomienda una GPU dedicada con memoria suficiente. El rendimiento y los modelos que puedes ejecutar dependen directamente de tu hardware."
+    },
+    {
+      "question": "¿Es seguro instalar nodos personalizados de la comunidad?",
+      "answer": "Conviene revisar su procedencia antes de instalarlos, ya que son extensiones de código que podrían ejecutar acciones no deseadas si provienen de una fuente poco confiable."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

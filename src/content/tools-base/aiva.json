@@ -1,0 +1,46 @@
+{
+  "name": "AIVA",
+  "officialWebsite": "https://www.aiva.ai",
+  "categories": [
+    "musica-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://www.aiva.ai",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "windows": {
+      "url": "https://www.aiva.ai/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "mac": {
+      "url": "https://www.aiva.ai/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "musica-ia",
+    "composicion-ia",
+    "banda-sonora",
+    "royalty-free"
+  ],
+  "alternatives": [
+    "suno",
+    "udio"
+  ],
+  "screenshotUrl": null,
+  "initials": "AIV",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": [
+    "https://www.aiva.ai"
+  ]
+}

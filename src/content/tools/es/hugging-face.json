@@ -1,0 +1,61 @@
+{
+  "shortDescription": "La plataforma y comunidad donde se publican, comparten y descargan modelos, datasets y demos de IA de código abierto.",
+  "longDescription": "Hugging Face es una plataforma web y una comunidad donde investigadores, empresas y desarrolladores publican modelos de inteligencia artificial, conjuntos de datos y aplicaciones de demostración (llamadas Spaces). Alberga más de dos millones de modelos, muchos de ellos de código abierto y descargables gratis, junto con la librería Transformers, ampliamente usada para ejecutar esos modelos desde Python. No es una aplicación que se instale como tal, sino un centro de acceso y distribución: su función en FuenteAI es servir como fuente confiable para encontrar modelos y proyectos de IA legítimos antes de instalarlos con otras herramientas.",
+  "bestFor": [
+    "Buscar y descargar modelos de IA de código abierto directamente desde su fuente oficial",
+    "Probar demos de IA sin instalar nada, a través de los Spaces interactivos",
+    "Encontrar el modelo exacto que necesitas para usarlo con Ollama, LM Studio o GPT4All",
+    "Explorar datasets abiertos para investigación o proyectos propios"
+  ],
+  "limitations": [
+    "Hugging Face no es una app de escritorio ni un instalador: es un sitio web y un conjunto de librerías. Para \"usar\" un modelo localmente normalmente necesitas otra herramienta (Ollama, LM Studio, GPT4All, Transformers en Python) que lo cargue.",
+    "No todos los modelos alojados ahí son igual de confiables: cualquier persona puede subir un modelo, así que conviene revisar quién lo publicó (organización verificada, empresa reconocida, laboratorio) antes de descargarlo.",
+    "Algunos modelos requieren aceptar condiciones de uso o solicitar acceso (modelos \"gated\") antes de poder descargarlos, incluso siendo gratuitos."
+  ],
+  "safetyNotes": [
+    "Hugging Face no distribuye instaladores de aplicaciones de terceros; si un sitio afirma ofrecer un \"instalador de Hugging Face\", no es un canal oficial.",
+    "Al descargar un modelo, revisa la página del repositorio (model card) y prioriza organizaciones verificadas o reconocidas. Un modelo sin documentación ni procedencia clara merece más cautela antes de ejecutarlo localmente."
+  ],
+  "editorialSummary": "Hugging Face se convirtió en el punto de encuentro de facto del mundo de la IA abierta: ahí es donde compañías como Meta, Mistral o Stability AI publican sus modelos, y donde miles de desarrolladores independientes comparten los suyos. No es una herramienta que se descarga como ChatGPT o Grok, sino la fuente de la que después se alimentan herramientas como Ollama, LM Studio o GPT4All. En FuenteAI lo incluimos porque entender qué es y cómo usarlo evita mucha confusión frecuente entre quienes empiezan a explorar modelos locales.",
+  "editorialSections": [
+    {
+      "heading": "Qué es realmente Hugging Face (y qué no es)",
+      "body": "Hugging Face no es un chatbot ni una app que respondas preguntas con ella directamente en la mayoría de los casos. Es una plataforma donde se publican tres tipos de recursos: modelos (los archivos de pesos entrenados que hacen funcionar una IA), datasets (conjuntos de datos para entrenar o evaluar modelos) y Spaces (aplicaciones de demostración que sí puedes probar directamente en el navegador, sin instalar nada).\n\nEsta distinción es importante porque mucha gente busca \"descargar Hugging Face\" esperando encontrar una app de escritorio, cuando en realidad lo que existe es un sitio web (huggingface.co) y librerías de Python como huggingface_hub y transformers que se instalan con pip, no con un instalador tradicional."
+    },
+    {
+      "heading": "Cómo se conecta con las herramientas de IA local",
+      "body": "Si usas Ollama, LM Studio, GPT4All o Jan para correr modelos en tu propia computadora, es muy probable que en algún momento termines en Hugging Face buscando qué modelo descargar. Muchas de esas aplicaciones incluso permiten buscar directamente en el catálogo de Hugging Face desde su propia interfaz.\n\nEntender esta relación evita confusión: Hugging Face es la fuente y el catálogo; Ollama, LM Studio o GPT4All son los programas que efectivamente ejecutan el modelo en tu equipo. Uno no reemplaza al otro, se complementan."
+    },
+    {
+      "heading": "Los Spaces: probar IA sin instalar nada",
+      "body": "Además de modelos para descargar, Hugging Face aloja más de un millón de Spaces: aplicaciones de demostración que corren directamente en el navegador, muchas veces construidas por la propia comunidad para mostrar lo que hace un modelo específico —generación de imágenes, transcripción de audio, traducción, entre otros.\n\nLos Spaces son una forma rápida de probar una tecnología antes de instalar nada en tu computadora, aunque hay que tener presente que algunos pueden tardar en cargar (si el servidor está \"dormido\") o tener límites de uso en su versión gratuita."
+    },
+    {
+      "heading": "Cómo evaluar si un modelo es confiable",
+      "body": "Como cualquier persona puede subir un modelo a Hugging Face, no todos tienen el mismo respaldo. Antes de descargar uno, conviene revisar la página del repositorio: quién lo publicó, si la organización está verificada, cuántas descargas y \"me gusta\" tiene, y si incluye una model card con documentación clara sobre su entrenamiento y limitaciones.\n\nUn modelo publicado por una organización reconocida (una empresa, un laboratorio de investigación, una universidad) generalmente ofrece más garantías que uno subido por una cuenta sin historial ni documentación. Esto no es una certificación de seguridad absoluta, pero sí una señal razonable antes de ejecutar algo en tu equipo."
+    },
+    {
+      "heading": "Cuándo usar Hugging Face directamente",
+      "body": "Tiene sentido entrar a Hugging Face directamente cuando buscas un modelo específico para un caso técnico (por ejemplo, un modelo de traducción para un idioma concreto), cuando quieres investigar qué modelos existen antes de elegir una herramienta local, o cuando quieres probar una demo rápida sin instalar software.\n\nSi lo que buscas es simplemente chatear con una IA sin complicarte con configuraciones técnicas, herramientas como ChatGPT, Claude o Gemini —o, para uso local simplificado, GPT4All u Ollama— son un mejor punto de partida que navegar directamente el catálogo de Hugging Face."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Hugging Face tiene una aplicación para descargar e instalar?",
+      "answer": "No como tal. Hugging Face es un sitio web y un conjunto de librerías de Python (huggingface_hub, transformers) que se instalan con pip, no un programa de escritorio con instalador."
+    },
+    {
+      "question": "¿Necesito cuenta para usar Hugging Face?",
+      "answer": "No es obligatorio para explorar modelos, datasets o Spaces públicos. Sí se necesita cuenta para subir contenido propio o acceder a algunos modelos con acceso restringido (\"gated\")."
+    },
+    {
+      "question": "¿Es seguro descargar modelos desde Hugging Face?",
+      "answer": "En general sí, pero conviene revisar quién publicó el modelo. Prioriza organizaciones verificadas o reconocidas y revisa la documentación (model card) antes de ejecutarlo en tu equipo."
+    },
+    {
+      "question": "¿Hugging Face es lo mismo que Ollama o LM Studio?",
+      "answer": "No. Hugging Face es la plataforma donde se publican los modelos; Ollama y LM Studio son aplicaciones que descargan y ejecutan esos modelos localmente en tu computadora."
+    }
+  ],
+  "spanishSupport": "partial"
+}

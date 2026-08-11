@@ -1,0 +1,50 @@
+{
+  "name": "InvokeAI",
+  "officialWebsite": "https://www.invoke.ai",
+  "categories": [
+    "generacion-imagenes",
+    "modelos-locales"
+  ],
+  "platforms": {
+    "windows": {
+      "url": "https://www.invoke.ai/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "mac": {
+      "url": "https://www.invoke.ai/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "linux": {
+      "url": "https://www.invoke.ai/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "tags": [
+    "modelo-local",
+    "open-source",
+    "stable-diffusion",
+    "estudio-de-imagen",
+    "sin-conexion"
+  ],
+  "alternatives": [
+    "comfyui",
+    "stable-diffusion",
+    "flux"
+  ],
+  "screenshotUrl": null,
+  "initials": "INV",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": [
+    "https://www.invoke.ai",
+    "https://github.com/invoke-ai/InvokeAI"
+  ]
+}

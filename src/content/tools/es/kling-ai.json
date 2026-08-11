@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Generador de video con IA de Kuaishou: convierte texto e imágenes en clips de hasta varios minutos en alta resolución.",
+  "longDescription": "Kling AI es una plataforma de generación de video con inteligencia artificial desarrollada por Kuaishou, la tecnológica china detrás de una de las apps de video corto más grandes del mundo. Permite convertir descripciones de texto o imágenes fijas en clips de video, con opciones de extensión que permiten alargar un video generado hasta varios minutos. Está disponible en web, Android e iOS. Esta ficha enlaza solo a los canales oficiales de Kling AI.",
+  "bestFor": [
+    "Convertir una imagen fija en un video animado con movimiento de cámara",
+    "Generar clips cortos a partir de una descripción de texto",
+    "Extender un video generado más allá de los primeros segundos",
+    "Crear contenido visual desde el móvil con las apps oficiales de Android e iOS"
+  ],
+  "limitations": [
+    "El plan gratuito ofrece créditos limitados y marcas de agua o restricciones de resolución en algunos casos; para uso comercial suele necesitarse un plan de pago.",
+    "Al ser un producto de una empresa china con presencia internacional, algunas funciones o formas de pago pueden variar según la región desde la que accedas.",
+    "Como todo generador de video con IA, los clips más largos y complejos pueden requerir varios intentos para lograr el resultado esperado."
+  ],
+  "safetyNotes": [
+    "En tiendas de apps circulan versiones de Kling AI con nombres o paquetes ligeramente distintos, algunos ofrecidos como \"premium desbloqueado\" fuera de las tiendas oficiales. Descarga solo desde Google Play, App Store o klingai.com.",
+    "El soporte oficial de Kling AI se gestiona desde support@klingai.com; desconfía de canales de soporte por redes sociales que pidan datos de pago fuera de la plataforma."
+  ],
+  "editorialSummary": "Kling AI llegó al mercado internacional como una de las alternativas más potentes en generación de video con IA, respaldada por la infraestructura de Kuaishou en tecnología de video a gran escala. Su capacidad de generar clips largos y en alta resolución lo puso rápido en el radar de creadores fuera de China. En FuenteAI enlazamos a la web y a las apps oficiales verificadas.",
+  "editorialSections": [
+    {
+      "heading": "De quién es Kling AI y por qué importa",
+      "body": "Kling AI es un producto de Kuaishou, una de las compañías tecnológicas más grandes de China, con experiencia previa en plataformas de video de gran escala. Esa base técnica se nota en la calidad y duración de los videos que puede generar, comparado con generadores más nuevos o con menos infraestructura detrás.\n\nLa plataforma tiene una versión en chino (klingai.kuaishou.com) y otra en inglés (klingai.com) pensada para el público internacional. Esta ficha enlaza a la versión internacional, que es la relevante para usuarios hispanohablantes."
+    },
+    {
+      "heading": "Qué puede generar y hasta qué duración",
+      "body": "Kling AI puede generar video a partir de texto o de una imagen de referencia, con salidas en 1080p o 4K según el plan. Una de sus funciones más destacadas es la extensión de video: a partir de un clip inicial de pocos segundos, se puede seguir extendiendo hasta llegar a videos de varios minutos, algo poco común entre generadores de este tipo.\n\nTambién ofrece generación de imágenes con IA dentro de la misma app, útil para crear el fotograma inicial que luego se convierte en video, o para trabajar imagen y video dentro de una sola herramienta."
+    },
+    {
+      "heading": "Disponible en web y en apps móviles nativas",
+      "body": "A diferencia de varios generadores de video que solo funcionan desde el navegador, Kling AI ofrece apps nativas para Android e iOS, lo que permite generar y revisar videos directamente desde el móvil sin depender de una computadora.\n\nEsto es útil para creadores de contenido que trabajan principalmente desde el teléfono, aunque para proyectos más elaborados o edición posterior del video, seguir usando la versión web junto con un editor de video tradicional suele dar más control."
+    },
+    {
+      "heading": "Cómo se compara con otras herramientas de video IA",
+      "body": "Frente a Runway o Luma Dream Machine, Kling AI compite principalmente en duración y resolución máxima de los videos generados. Si tu prioridad es la integración con flujos de edición profesional, Runway suele tener más herramientas complementarias. Si necesitas avatares humanos hablando con guion, HeyGen está más especializado en ese caso de uso específico.\n\nLa elección entre estas herramientas suele depender del tipo de contenido: animación de imágenes y clips creativos favorecen a Kling AI o Luma; videos con presentador virtual favorecen a HeyGen; y proyectos que requieren integración con software de edición favorecen a Runway."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Kling AI es gratis?",
+      "answer": "Tiene un plan gratuito con créditos limitados. Para resolución más alta, videos más largos o uso sin marca de agua suele requerirse un plan de pago."
+    },
+    {
+      "question": "¿Kling AI tiene app oficial para Android e iOS?",
+      "answer": "Sí, ambas están disponibles en Google Play y App Store bajo el nombre \"Kling AI: AI Image&Video Maker\"."
+    },
+    {
+      "question": "¿Cuánto puede durar un video generado con Kling AI?",
+      "answer": "Los clips iniciales suelen ser de pocos segundos, pero la función de extensión permite alargarlos hasta varios minutos."
+    },
+    {
+      "question": "¿Es seguro descargar Kling AI desde cualquier sitio?",
+      "answer": "Usa siempre klingai.com, Google Play o App Store. Evita versiones \"premium desbloqueado\" ofrecidas fuera de esos canales."
+    }
+  ],
+  "spanishSupport": "partial"
+}

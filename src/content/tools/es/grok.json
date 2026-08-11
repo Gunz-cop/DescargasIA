@@ -1,0 +1,57 @@
+{
+  "shortDescription": "El asistente conversacional de xAI, integrado con X y disponible en web, iOS y Android.",
+  "longDescription": "Grok es el modelo de lenguaje desarrollado por xAI, la compañía de inteligencia artificial fundada por Elon Musk. Se distingue por su acceso a información en tiempo real a través de X (antes Twitter), un tono más directo y menos filtrado que otros asistentes, y funciones de generación de imágenes integradas. Este directorio enlaza únicamente a los canales oficiales de xAI: la web grok.com y las apps verificadas de Google Play y App Store.",
+  "bestFor": [
+    "Consultar temas de actualidad con contexto de conversaciones recientes en X",
+    "Generar imágenes rápidas a partir de descripciones de texto",
+    "Redactar y resumir textos con un tono más informal",
+    "Usar un asistente conversacional desde el móvil sin instalar nada en el escritorio"
+  ],
+  "limitations": [
+    "No existe todavía un instalador de escritorio oficial confirmado para Windows o macOS; el acceso principal es web y móvil.",
+    "Algunas funciones avanzadas, como el acceso a X en tiempo real o los modelos más recientes, pueden requerir una cuenta de pago (X Premium o suscripción de xAI).",
+    "Las respuestas sobre temas sensibles o de actualidad pueden variar y conviene verificarlas con fuentes primarias antes de darlas por ciertas."
+  ],
+  "safetyNotes": [
+    "Existen aplicaciones falsas que imitan a Grok en las tiendas de apps, algunas incluso usando nombres genéricos como \"xAI Chatbot Assistant\". Verifica siempre que el desarrollador listado sea xAI o X Corp antes de instalar.",
+    "xAI no distribuye Grok mediante APK sueltos ni instaladores fuera de Google Play, App Store o el propio grok.com."
+  ],
+  "editorialSummary": "Grok llegó como la apuesta conversacional de xAI y ganó terreno rápido gracias a su integración con X y a un estilo de respuesta menos acartonado que el de otros asistentes. En FuenteAI reunimos sus accesos oficiales para que puedas probarlo desde la web o el móvil sin caer en clones ni en apps falsas que usan su nombre para ganar descargas.",
+  "editorialSections": [
+    {
+      "heading": "Por qué Grok se volvió una búsqueda frecuente",
+      "body": "Grok apareció primero como una función exclusiva para suscriptores de X Premium y después se convirtió en una app independiente disponible para cualquiera. Ese cambio generó confusión: mucha gente todavía busca \"cómo activar Grok en X\" sin saber que ahora también existe como aplicación propia en grok.com, Google Play y App Store.\n\nA esa confusión se suma el hecho de que Grok comparte apellido con una marca muy mediática. Cuando un producto se vuelve noticia constante, aparecen copias que intentan aprovechar el tráfico de búsqueda. Por eso esta ficha prioriza dejar clara la ruta oficial antes que explicar funciones."
+    },
+    {
+      "heading": "Cuidado con las apps falsas de Grok",
+      "body": "En las tiendas de aplicaciones han circulado apps que se hacen pasar por Grok usando iconos parecidos o nombres genéricos tipo \"AI Chatbot Assistant\". Esas apps no tienen relación con xAI y pueden pedir datos, suscripciones o permisos innecesarios. La forma de evitarlo es simple: entra siempre desde el enlace verificado de Google Play o App Store que aparece en esta ficha, o escribe grok.com directamente en el navegador.\n\nSi buscas \"Grok\" en la tienda de tu móvil y ves varios resultados parecidos, revisa el nombre del desarrollador. La app oficial figura a nombre de xAI o de X Corp; cualquier otro publisher debería hacerte desconfiar."
+    },
+    {
+      "heading": "Qué puedes hacer con Grok hoy",
+      "body": "Grok funciona bien como asistente conversacional general: responde preguntas, ayuda a redactar y resumir, y puede generar imágenes a partir de una descripción. Su diferencia más marcada frente a ChatGPT o Claude es el acceso a contenido reciente de X, lo que lo hace útil para preguntas sobre temas que están pasando en ese momento.\n\nComo con cualquier asistente conectado a redes sociales, conviene tratar sus respuestas sobre temas virales o polémicos con cautela: la información en tiempo real puede incluir rumores o contenido no verificado que todavía no se ha corregido."
+    },
+    {
+      "heading": "Cuándo conviene mirar otras alternativas",
+      "body": "Si tu prioridad es programar dentro de un editor, Grok no es la herramienta más orientada a eso; Cursor o los asistentes de código suelen encajar mejor. Si buscas un tono más neutral y cuidadoso para trabajos de redacción extensa, Claude o ChatGPT pueden sentirse más pulidos.\n\nGrok tiene sentido cuando quieres una conversación más directa, con menos rodeos, y cuando te interesa que el asistente pueda referenciar lo que se está discutiendo en X en ese momento. Compara con las alternativas enlazadas en esta ficha según lo que necesites resolver."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Grok tiene aplicación oficial para Windows o macOS?",
+      "answer": "Al momento de esta revisión no hay un instalador de escritorio oficial confirmado. El acceso recomendado es la web en grok.com o las apps de Android e iOS."
+    },
+    {
+      "question": "¿Es seguro descargar Grok desde cualquier resultado de búsqueda?",
+      "answer": "No. Han circulado apps falsas con nombres parecidos. Usa siempre grok.com o los enlaces verificados de Google Play y App Store listados en esta ficha."
+    },
+    {
+      "question": "¿Necesito una cuenta de X para usar Grok?",
+      "answer": "No es obligatorio en todos los casos: existe una app independiente de Grok, aunque algunas funciones pueden estar más integradas si tienes cuenta de X."
+    },
+    {
+      "question": "¿Grok es gratis?",
+      "answer": "Tiene un nivel de acceso gratuito con límites, y funciones o modelos más avanzados pueden requerir una suscripción de pago."
+    }
+  ],
+  "spanishSupport": "yes"
+}

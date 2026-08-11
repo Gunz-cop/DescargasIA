@@ -1,0 +1,50 @@
+{
+  "name": "Grok",
+  "officialWebsite": "https://grok.com",
+  "categories": [
+    "asistentes-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://grok.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=ai.x.grok",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/grok/id6670324846",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "xai",
+    "chatbot",
+    "asistente-ia",
+    "elon-musk",
+    "x-twitter"
+  ],
+  "alternatives": [
+    "chatgpt",
+    "claude",
+    "gemini",
+    "mistral-vibe"
+  ],
+  "screenshotUrl": null,
+  "initials": "GRK",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": [
+    "https://x.ai",
+    "https://grok.com"
+  ]
+}

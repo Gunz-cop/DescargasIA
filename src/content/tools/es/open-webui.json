@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Interfaz de chat de código abierto para usar modelos locales (Ollama y otros) con una experiencia similar a ChatGPT.",
+  "longDescription": "Open WebUI es una interfaz de chat de código abierto, autoalojada, que se conecta a modelos de lenguaje locales —principalmente a través de Ollama— o a APIs compatibles con OpenAI, ofreciendo una experiencia visual similar a ChatGPT pero corriendo enteramente en tu propio equipo o servidor. No es una app que se instale con un clic: se despliega mediante Docker o Python, lo que la posiciona como una herramienta para quien ya tiene experiencia ejecutando modelos locales y quiere una interfaz más completa que la línea de comandos. Esta ficha enlaza solo a la documentación y el repositorio oficiales del proyecto.",
+  "bestFor": [
+    "Tener una interfaz de chat visual, similar a ChatGPT, para modelos que ya ejecutas con Ollama",
+    "Gestionar varios modelos locales, conversaciones y usuarios desde un mismo panel",
+    "Conectar modelos locales o remotos compatibles con la API de OpenAI en una sola interfaz",
+    "Montar un chat de IA privado autoalojado para un equipo pequeño o uso personal"
+  ],
+  "limitations": [
+    "No es una app de instalación directa: requiere Docker o Python, y conocimientos básicos de línea de comandos para desplegarla correctamente.",
+    "Por sí sola no genera respuestas: necesita conectarse a un motor como Ollama, LM Studio en modo servidor, o una API compatible con OpenAI para funcionar.",
+    "Al ser autoalojada, la responsabilidad de mantener el servicio actualizado y seguro recae en quien la instala, a diferencia de un servicio en la nube gestionado por una empresa."
+  ],
+  "safetyNotes": [
+    "Instala Open WebUI únicamente siguiendo las instrucciones oficiales en docs.openwebui.com o el repositorio verificado en GitHub (open-webui/open-webui). Evita scripts de instalación de terceros no verificados.",
+    "Si expones tu instancia de Open WebUI a internet en lugar de mantenerla solo en tu red local, configura autenticación adecuada; una instancia abierta sin protección puede quedar accesible para cualquiera."
+  ],
+  "editorialSummary": "Open WebUI se convirtió en la interfaz de facto para quien ya ejecuta modelos locales con Ollama y quiere algo más cómodo que la terminal: un chat visual, con historial, gestión de modelos y soporte para varios usuarios. No es la puerta de entrada más sencilla al mundo de la IA local, pero para quien ya dio el paso de instalar Ollama, es probablemente el siguiente paso más lógico. En FuenteAI lo incluimos aclarando desde el inicio que requiere algo de configuración técnica.",
+  "editorialSections": [
+    {
+      "heading": "Para quién es realmente Open WebUI",
+      "body": "Si estás empezando con IA local, herramientas como GPT4All, LM Studio o Jan ofrecen una experiencia de instalación mucho más simple: descargas un instalador, lo ejecutas, y tienes un chat funcionando en minutos. Open WebUI no está pensado para ese primer paso: es una interfaz que se despliega mediante Docker o Python, y que asume que ya tienes (o vas a instalar por separado) un motor como Ollama corriendo los modelos.\n\nDicho esto, para quien ya superó esa primera etapa y quiere algo más completo que la terminal de Ollama —historial de conversaciones, gestión de varios modelos, una interfaz que se siente como ChatGPT— Open WebUI es probablemente la opción más popular y madura dentro de la comunidad de IA local."
+    },
+    {
+      "heading": "Cómo se conecta con Ollama y otras fuentes de modelos",
+      "body": "Open WebUI no ejecuta modelos por sí sola: actúa como una capa de interfaz sobre un motor que sí lo hace, principalmente Ollama, aunque también puede conectarse a cualquier API compatible con el estándar de OpenAI, incluidas algunas configuraciones de LM Studio en modo servidor. Existe incluso una imagen de Docker que combina Open WebUI y Ollama en un solo paquete, pensada para simplificar la instalación inicial.\n\nEsta arquitectura de \"interfaz separada del motor\" es común en el ecosistema de IA local y tiene una ventaja concreta: puedes cambiar de motor o de modelo sin perder tu historial de conversaciones ni tener que aprender una interfaz nueva cada vez."
+    },
+    {
+      "heading": "Instalación: Docker es el camino recomendado",
+      "body": "La forma más directa y respaldada oficialmente de instalar Open WebUI es mediante Docker, con un comando que descarga y ejecuta el contenedor en tu equipo o servidor. También existe una instalación vía pip para Python, aunque con requisitos de versión específicos (Python 3.11) que conviene revisar antes de intentarlo.\n\nNinguna de las dos vías es un \"instalador\" en el sentido tradicional de hacer doble clic en un archivo. Si nunca usaste Docker, vale la pena dedicar tiempo a entender lo básico antes de instalar Open WebUI, ya que buena parte de los problemas de instalación se relacionan más con Docker que con la herramienta en sí."
+    },
+    {
+      "heading": "Cuándo tiene sentido dar el salto a Open WebUI",
+      "body": "Si ya usas Ollama desde la terminal y sientes que te falta una interfaz visual más cómoda, con historial y gestión de modelos, Open WebUI es un paso natural. También tiene sentido si quieres montar un chat de IA privado para que varias personas de un equipo pequeño lo usen desde el navegador, sin depender de un servicio en la nube.\n\nSi todavía no instalaste ninguna herramienta de IA local, es más razonable empezar por GPT4All, LM Studio o Jan, que no requieren Docker ni línea de comandos, y considerar Open WebUI más adelante como una mejora de interfaz una vez que ya tengas modelos locales funcionando."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Open WebUI es gratis?",
+      "answer": "Sí, es completamente gratuito y de código abierto, sin necesidad de cuenta ni suscripción."
+    },
+    {
+      "question": "¿Puedo instalar Open WebUI con un simple instalador como GPT4All?",
+      "answer": "No. Se instala mediante Docker o Python, lo que requiere algo de familiaridad técnica. No es la opción más simple para empezar con IA local."
+    },
+    {
+      "question": "¿Necesito Ollama para usar Open WebUI?",
+      "answer": "Es la combinación más común, aunque también puede conectarse a otras APIs compatibles con OpenAI. Por sí sola, Open WebUI no genera respuestas."
+    },
+    {
+      "question": "¿Es seguro exponer Open WebUI a internet?",
+      "answer": "Solo si configuras autenticación adecuada. Sin protección, una instancia expuesta públicamente puede quedar accesible para cualquiera."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

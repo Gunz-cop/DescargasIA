@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Estudio de producción audiovisual con IA de Lightricks: guion, storyboard y video en un mismo flujo, desde el navegador.",
+  "longDescription": "LTX Studio es una plataforma web de producción audiovisual con inteligencia artificial desarrollada por Lightricks, la compañía israelí también conocida por Facetune y Videoleap. A diferencia de un generador de video suelto, LTX Studio propone un flujo completo de producción: desde el guion y el storyboard hasta la generación de escenas y video final, con control de encuadre y dirección de cámara. Funciona exclusivamente en el navegador, sin app móvil. Esta ficha enlaza solo al canal oficial en ltx.studio.",
+  "bestFor": [
+    "Planificar un video completo desde el guion hasta el storyboard antes de generar nada",
+    "Convertir un guion o texto en escenas y secuencias de video coherentes entre sí",
+    "Controlar encuadre y dirección de cámara en las escenas generadas",
+    "Producir contenido audiovisual más elaborado que un simple clip suelto de IA"
+  ],
+  "limitations": [
+    "LTX Studio está pensado para computadora de escritorio; no existe una app móvil oficial, a diferencia de otros generadores de video de esta lista.",
+    "El plan gratuito tiene límites de generación; producir un proyecto completo con varias escenas suele requerir un plan de pago.",
+    "Al ser una herramienta de producción más compleja que un generador simple de clips, tiene una curva de aprendizaje algo mayor para aprovechar todo su flujo de trabajo."
+  ],
+  "safetyNotes": [
+    "Usa siempre ltx.studio como punto de acceso oficial; Lightricks no distribuye la plataforma completa como app instalable fuera del navegador.",
+    "LTX Studio no requiere pago para crear una cuenta básica y explorar la plataforma; desconfía de ofertas de \"acceso premium gratuito\" fuera del sitio oficial."
+  ],
+  "editorialSummary": "LTX Studio se diferencia de la mayoría de los generadores de video con IA al proponer un flujo de producción completo, no solo clips sueltos generados desde un prompt. El respaldo de Lightricks, una compañía con trayectoria en apps de edición como Videoleap, y la apertura del modelo LTX-2 que sostiene la plataforma, la volvieron una referencia dentro del ecosistema de herramientas de video con IA. En FuenteAI enlazamos solo a su canal oficial.",
+  "editorialSections": [
+    {
+      "heading": "Un estudio de producción, no solo un generador de clips",
+      "body": "Mientras muchas herramientas de video con IA se limitan a convertir un prompt en un clip corto, LTX Studio propone algo más cercano a un flujo de producción real: escribir o adaptar un guion, generar un storyboard visual, definir personajes y escenas, y finalmente producir el video con control sobre encuadre y movimiento de cámara.\n\nEste enfoque lo acerca más a un entorno de preproducción y producción audiovisual que a un generador de clips aislados, pensado para quien quiere construir algo con estructura narrativa, no solo probar qué genera la IA a partir de una frase suelta."
+    },
+    {
+      "heading": "El modelo detrás: LTX-2, ahora de código abierto",
+      "body": "En enero de 2026, Lightricks liberó como código abierto la versión completa de LTX-2, el modelo que impulsa la plataforma. Esta decisión generó bastante atención en comunidades de investigación como Hugging Face, donde versiones y variantes del modelo aparecieron rápidamente entre los proyectos de video más comentados.\n\nPara el usuario final de LTX Studio esto no cambia demasiado la experiencia directa —la plataforma sigue siendo un producto cerrado en cuanto a interfaz—, pero explica por qué el nombre \"LTX\" circula tanto en discusiones técnicas sobre generación de video, más allá del producto web en sí."
+    },
+    {
+      "heading": "Solo navegador: sin app móvil",
+      "body": "A diferencia de Kling AI, Hailuo AI o Wan, que ofrecen apps nativas para móvil, LTX Studio funciona exclusivamente desde el navegador en computadora de escritorio. No existe una versión oficial para Android o iOS, algo que conviene saber antes de buscarla en una tienda de aplicaciones.\n\nEsta decisión tiene sentido dado el tipo de trabajo que propone la plataforma: planificar guion, storyboard y escenas es una tarea que generalmente se hace más cómoda en una pantalla grande que en un teléfono."
+    },
+    {
+      "heading": "Cuándo elegir LTX Studio sobre un generador de clips simple",
+      "body": "Si tu objetivo es un proyecto con estructura narrativa —un cortometraje conceptual, un storyboard para presentar una idea, una secuencia de escenas coherentes— LTX Studio está más orientado a ese caso que herramientas centradas en clips sueltos como Kling AI o Hailuo AI.\n\nSi en cambio solo necesitas un clip rápido a partir de una imagen o una frase, sin necesidad de planificación previa, un generador más directo puede ser más ágil. La elección depende de si tu proyecto necesita estructura de producción o solo un resultado visual puntual."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿LTX Studio tiene app móvil?",
+      "answer": "No. Es una plataforma exclusivamente web, pensada para usarse desde computadora de escritorio en ltx.studio."
+    },
+    {
+      "question": "¿LTX Studio es gratis?",
+      "answer": "Tiene un plan gratuito con límites de generación. Los planes de pago van desde uso ocasional hasta producción más intensiva."
+    },
+    {
+      "question": "¿Qué es LTX-2 y cómo se relaciona con LTX Studio?",
+      "answer": "LTX-2 es el modelo de generación de video de Lightricks que impulsa la plataforma; en enero de 2026 se liberó como código abierto para la comunidad técnica."
+    },
+    {
+      "question": "¿Es seguro crear una cuenta en LTX Studio?",
+      "answer": "Sí, siempre que se haga desde ltx.studio directamente. No requiere pago para la cuenta básica; desconfía de ofertas de acceso premium fuera del sitio oficial."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

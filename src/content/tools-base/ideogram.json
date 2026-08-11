@@ -1,0 +1,43 @@
+{
+  "name": "Ideogram",
+  "officialWebsite": "https://ideogram.ai",
+  "categories": [
+    "generacion-imagenes"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://ideogram.ai",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/ideogram-ai-image-generator/id6476790495",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "generador-de-imagenes",
+    "tipografia-ia",
+    "diseno-grafico",
+    "arte-ia"
+  ],
+  "alternatives": [
+    "midjourney",
+    "leonardo-ai",
+    "stable-diffusion",
+    "flux"
+  ],
+  "screenshotUrl": null,
+  "initials": "IDG",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": [
+    "https://ideogram.ai",
+    "https://docs.ideogram.ai"
+  ]
+}

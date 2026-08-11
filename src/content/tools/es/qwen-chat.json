@@ -1,0 +1,57 @@
+{
+  "shortDescription": "El asistente conversacional de Alibaba basado en los modelos abiertos Qwen, con soporte para más de 100 idiomas.",
+  "longDescription": "Qwen Chat es la interfaz conversacional oficial de Alibaba Cloud para su familia de modelos Qwen, uno de los proyectos de IA de código abierto más activos del momento. Permite chatear, analizar imágenes y PDFs, generar código, buscar en la web en tiempo real y construir flujos de trabajo con agentes, todo con una de las coberturas de idiomas más amplias entre los asistentes conversacionales. Esta ficha enlaza solo a los canales oficiales verificados de Qwen.",
+  "bestFor": [
+    "Chatear con un asistente que reconoce y responde en más de 100 idiomas",
+    "Analizar imágenes, documentos PDF o capturas de pantalla dentro de la misma conversación",
+    "Generar código apoyándose en los modelos Qwen3-Coder",
+    "Buscar información actualizada en la web directamente desde el chat"
+  ],
+  "limitations": [
+    "El nombre de la app en las tiendas puede variar (\"Qwen\", \"Qwen Studio\") y existen varias apps no oficiales con nombres muy parecidos; verifica siempre que el desarrollador listado sea Alibaba o Qwen.",
+    "Algunas funciones de agente o los modelos más grandes pueden tener límites de uso más estrictos en la cuenta gratuita.",
+    "Al ser un producto con desarrollo muy activo, la interfaz y los nombres de los modelos disponibles cambian con frecuencia."
+  ],
+  "safetyNotes": [
+    "En las tiendas de aplicaciones circulan varias apps con nombres como \"Qwen AI\" o \"Quen\" que no tienen relación oficial con Alibaba. Verifica el desarrollador antes de instalar.",
+    "Descarga siempre desde chat.qwen.ai o los enlaces oficiales de Google Play y App Store listados en esta ficha."
+  ],
+  "editorialSummary": "Qwen es uno de los proyectos de modelos abiertos más prolíficos de los últimos años, y Qwen Chat es la forma más directa de probarlo sin tocar una línea de código. Detectamos su fuerte presencia en Hugging Face —donde Alibaba publica constantemente nuevas versiones de sus modelos— como señal de que vale la pena documentar bien su acceso oficial, dado el ruido de apps no oficiales que rodea a su nombre.",
+  "editorialSections": [
+    {
+      "heading": "De los modelos abiertos a una app para cualquiera",
+      "body": "Alibaba construye Qwen como una familia de modelos de código abierto que cualquier desarrollador puede descargar, ajustar o ejecutar localmente, algo que la volvió muy visible en comunidades como Hugging Face, donde nuevas versiones de Qwen aparecen constantemente entre los modelos más descargados. Qwen Chat es la capa que convierte esos modelos técnicos en un producto usable por cualquier persona, sin necesidad de instalar nada técnico ni entender qué versión de modelo hay detrás.\n\nEsta dualidad —modelo abierto para desarrolladores, app simple para el resto— es parte de por qué Qwen generó tanto ruido en 2026: la misma tecnología que corre en servidores de investigación también está disponible como chat gratuito para cualquier usuario."
+    },
+    {
+      "heading": "Cuidado con el ruido de nombres parecidos",
+      "body": "Precisamente por ser tan popular, el nombre \"Qwen\" aparece en decenas de apps no oficiales en las tiendas móviles: wrappers de terceros, apps que solo hacen de interfaz para la API pública sin relación con Alibaba, e incluso alguna que aclara explícitamente no estar afiliada a Qwen. Esto genera confusión real para quien busca la app oficial por primera vez.\n\nLa forma más segura de evitarlo es entrar directo a chat.qwen.ai desde el navegador, o usar los enlaces verificados de Google Play y App Store que aparecen en esta ficha, revisando siempre que el desarrollador listado corresponda a Alibaba o al equipo de Qwen."
+    },
+    {
+      "heading": "Qué puede hacer además de conversar",
+      "body": "Qwen Chat no se limita a responder preguntas de texto: puede analizar imágenes y extraer información de documentos PDF, generar código apoyándose en los modelos especializados Qwen3-Coder, y buscar información actualizada en la web para respuestas con datos recientes. También ofrece capacidades de agente para automatizar tareas de varios pasos.\n\nSu cobertura de idiomas es una de las más amplias del mercado, con soporte para más de 100 idiomas, lo que lo hace especialmente útil para tareas de traducción o comunicación multilingüe comparado con asistentes más centrados en inglés."
+    },
+    {
+      "heading": "Cuándo elegir Qwen frente a otros asistentes",
+      "body": "Qwen Chat tiene sentido si te interesa un asistente respaldado por un ecosistema de modelos abiertos muy activo, si necesitas cobertura amplia de idiomas, o si ya usas otros productos de Alibaba Cloud. Su naturaleza open source también lo hace atractivo para quien más adelante quiera ejecutar versiones del modelo de forma local con herramientas como Ollama.\n\nSi tu prioridad es el ecosistema de plugins más maduro, ChatGPT sigue teniendo ventaja; si buscas privacidad europea, Mistral Vibe puede ser preferible. La elección depende de qué tanto valoras la apertura del modelo frente a la madurez del ecosistema."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Qwen Chat es gratis?",
+      "answer": "Sí, tiene un nivel de uso gratuito. Algunas funciones de agente o modelos más avanzados pueden tener límites adicionales."
+    },
+    {
+      "question": "¿Cómo sé si una app de Qwen en la tienda es oficial?",
+      "answer": "Verifica que el desarrollador listado sea Alibaba o el equipo de Qwen. Existen varias apps no oficiales con nombres muy similares."
+    },
+    {
+      "question": "¿Necesito cuenta para usar Qwen Chat?",
+      "answer": "Sí, para guardar el historial de conversaciones y acceder a todas las funciones se requiere una cuenta."
+    },
+    {
+      "question": "¿Qwen Chat funciona en español?",
+      "answer": "Sí, admite español entre los más de 100 idiomas que soporta, aunque la profundidad puede variar frente al inglés o el chino."
+    }
+  ],
+  "spanishSupport": "yes"
+}

@@ -1,0 +1,61 @@
+{
+  "name": "QuillBot",
+  "officialWebsite": "https://quillbot.com",
+  "categories": [
+    "traduccion-redaccion-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://quillbot.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "windows": {
+      "url": "https://quillbot.com/app/windows",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "mac": {
+      "url": "https://quillbot.com/app/mac",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.quillbot.mobile",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/quillbot-ai-writing-assistant/id6738683741",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "parafraseo",
+    "escritura-ia",
+    "gramatica",
+    "traductor",
+    "resumen-de-textos"
+  ],
+  "alternatives": [
+    "grammarly",
+    "languagetool",
+    "deepl"
+  ],
+  "screenshotUrl": null,
+  "initials": "QLB",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": [
+    "https://quillbot.com",
+    "https://quillbot.com/app"
+  ]
+}

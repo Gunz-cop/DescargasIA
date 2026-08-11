@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Parafraseador y asistente de escritura con IA: reescribe, resume, corrige gramática y traduce, con soporte para varios idiomas.",
+  "longDescription": "QuillBot es un asistente de escritura conocido principalmente por su función de parafraseo: reescribe un texto manteniendo el significado pero cambiando la redacción, útil para variar el estilo, evitar repeticiones o simplificar un párrafo complejo. También incluye corrector gramatical, resumidor de textos y traductor. Está disponible como web, extensión de navegador, apps de escritorio para Windows y macOS, complemento de Word y apps móviles. Esta ficha enlaza solo a los canales oficiales de QuillBot.",
+  "bestFor": [
+    "Reformular un párrafo o texto completo manteniendo el significado original",
+    "Resumir textos largos en puntos clave o un párrafo breve",
+    "Corregir gramática y ortografía como apoyo adicional al redactar",
+    "Traducir textos cortos entre varios idiomas, incluido el español"
+  ],
+  "limitations": [
+    "El plan gratuito limita la longitud de los textos que se pueden parafrasear o resumir de una sola vez; textos largos requieren el plan Premium.",
+    "El parafraseo automático puede alterar matices sutiles del significado original; conviene revisar el resultado antes de usarlo en un trabajo académico o profesional importante.",
+    "Usar QuillBot para reescribir un texto ajeno sin citarlo no lo convierte en contenido original propio a efectos de integridad académica; revisa las políticas de tu institución antes de entregarlo como trabajo propio."
+  ],
+  "safetyNotes": [
+    "Descarga QuillBot únicamente desde quillbot.com, las tiendas oficiales de extensiones o Google Play y App Store. Existen APKs de terceros que no corresponden a la app oficial.",
+    "QuillBot no requiere pago para usar sus funciones básicas de parafraseo y gramática; ofertas de \"Premium gratis\" fuera del sitio oficial no son legítimas."
+  ],
+  "editorialSummary": "QuillBot se hizo un lugar propio entre estudiantes y redactores gracias a su función de parafraseo, que resuelve un problema muy concreto: decir lo mismo con otras palabras sin empezar de cero. A diferencia de Grammarly, que se centra casi exclusivamente en inglés, QuillBot ofrece soporte más amplio para otros idiomas, incluido el español. En FuenteAI enlazamos a sus canales oficiales en web, escritorio y móvil.",
+  "editorialSections": [
+    {
+      "heading": "El parafraseo como función central",
+      "body": "La herramienta insignia de QuillBot es el parafraseador: pegas un texto y la IA lo reescribe manteniendo el sentido, con distintos modos según el objetivo (más formal, más simple, más fluido, más creativo). Es especialmente útil cuando un párrafo suena repetitivo, demasiado complejo, o cuando necesitas variar la redacción de una idea que ya tenías clara.\n\nEsta función no reemplaza pensar el contenido: sigue siendo responsabilidad de quien escribe verificar que la versión reformulada mantenga el significado exacto que se quería comunicar, sin introducir ambigüedades nuevas."
+    },
+    {
+      "heading": "Más allá del parafraseo: gramática, resumen y traducción",
+      "body": "QuillBot no se limita a reformular texto. Incluye un corrector gramatical que revisa ortografía y estructura, un resumidor que condensa textos largos en puntos clave, y un traductor básico entre varios idiomas. Todo integrado en una misma cuenta y accesible desde la web o las extensiones.\n\nEsta combinación lo convierte en una herramienta más completa que un simple parafraseador para quien necesita apoyo en distintas etapas de la escritura: desde entender un texto largo (resumen) hasta pulir la redacción final (gramática y parafraseo)."
+    },
+    {
+      "heading": "Disponible en escritorio, navegador y móvil",
+      "body": "Además de la web en quillbot.com, existen apps de escritorio oficiales para Windows y macOS que funcionan de forma similar a la extensión de navegador pero integradas en el sistema, un complemento directo para Microsoft Word, y apps móviles para Android e iOS.\n\nEsta variedad de canales permite usar QuillBot en el flujo de trabajo donde ya estés escribiendo, sin tener que copiar y pegar constantemente entre ventanas distintas."
+    },
+    {
+      "heading": "QuillBot frente a Grammarly y otras alternativas",
+      "body": "La diferencia más práctica frente a Grammarly es el idioma: QuillBot ofrece soporte más amplio para idiomas distintos al inglés, incluido el español, mientras que Grammarly está enfocado casi exclusivamente en inglés. Si tu prioridad es reformular texto o resumir, QuillBot tiene ventaja; si buscas la corrección gramatical más completa en español, LanguageTool sigue siendo una opción más especializada en ese punto concreto.\n\nMuchos usuarios combinan herramientas: QuillBot para reformular y resumir, LanguageTool para revisión gramatical fina en español, y DeepL cuando el trabajo implica traducción entre idiomas."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿QuillBot funciona en español?",
+      "answer": "Sí, ofrece soporte para varios idiomas incluido el español, aunque la profundidad de algunas funciones puede variar respecto al inglés."
+    },
+    {
+      "question": "¿QuillBot es gratis?",
+      "answer": "Tiene un plan gratuito con límites de longitud de texto. El plan Premium amplía esos límites y desbloquea modos adicionales de parafraseo."
+    },
+    {
+      "question": "¿QuillBot tiene app de escritorio para Windows y Mac?",
+      "answer": "Sí, disponibles en quillbot.com/app, además de extensiones de navegador y apps móviles para Android e iOS."
+    },
+    {
+      "question": "¿Usar QuillBot para parafrasear un trabajo cuenta como plagio?",
+      "answer": "Depende del contexto y de las políticas de tu institución. Revisar y citar correctamente sigue siendo responsabilidad de quien entrega el trabajo."
+    }
+  ],
+  "spanishSupport": "partial"
+}

@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Asistente conversacional de la china Moonshot AI, conocido por su gran ventana de contexto para documentos largos.",
+  "longDescription": "Kimi es el asistente de inteligencia artificial desarrollado por Moonshot AI, una compañía china que se hizo notar por ofrecer una de las ventanas de contexto más grandes del mercado: la capacidad de procesar documentos extensos, libros completos o conversaciones muy largas sin perder el hilo. Está disponible en web, apps móviles, cliente de escritorio y una herramienta para desarrolladores llamada Kimi Code. Esta ficha enlaza solo a los canales oficiales de Moonshot AI.",
+  "bestFor": [
+    "Analizar documentos muy largos (informes extensos, libros, actas) sin dividirlos en partes",
+    "Mantener conversaciones extensas donde el asistente recuerda todo el historial",
+    "Automatizar tareas de escritorio con Kimi Work, conectando archivos locales",
+    "Programar con Kimi Code desde la terminal, apoyándose en los modelos Kimi K2"
+  ],
+  "limitations": [
+    "Kimi Work, el cliente de escritorio orientado a automatización, está disponible para Windows y para Mac con chip Apple Silicon; no cubre Mac con procesador Intel.",
+    "Como servicio con raíz china, algunas funciones o tiempos de respuesta pueden variar según la región desde la que accedas.",
+    "Las funciones más avanzadas de automatización y agente pueden tener límites de uso más estrictos en el plan gratuito."
+  ],
+  "safetyNotes": [
+    "Descarga la app o el cliente de escritorio únicamente desde kimi.com/products/download; evita instaladores de portales genéricos de software que puedan estar desactualizados.",
+    "Al usar Kimi Work para conectar archivos locales o automatizar tareas del escritorio, revisa qué permisos le otorgas antes de aceptar, como harías con cualquier herramienta con acceso a tu sistema."
+  ],
+  "editorialSummary": "Kimi entró al radar internacional gracias a su capacidad de manejar documentos y conversaciones extremadamente largos sin perder coherencia, un punto débil histórico de muchos asistentes conversacionales. Su presencia constante entre los modelos más comentados en comunidades como Hugging Face —con lanzamientos frecuentes de la familia Kimi K— fue la señal que nos llevó a documentar bien sus canales oficiales.",
+  "editorialSections": [
+    {
+      "heading": "La ventaja del contexto largo",
+      "body": "Muchos asistentes conversacionales \"olvidan\" el inicio de una conversación larga o no pueden procesar un documento completo de una vez. Kimi construyó buena parte de su reputación resolviendo justamente eso: puede recibir documentos extensos, transcripciones largas o conversaciones de muchos mensajes y seguir respondiendo con coherencia sobre todo ese contenido.\n\nEsto lo hace especialmente útil para tareas como resumir un informe completo, analizar un contrato largo, o mantener una conversación de trabajo extendida sin tener que repetir contexto constantemente."
+    },
+    {
+      "heading": "Más que un chat: Kimi Work y Kimi Code",
+      "body": "Además del chat conversacional estándar, Moonshot AI ofrece Kimi Work, un cliente de escritorio pensado para automatizar tareas conectando archivos locales y flujos de trabajo del sistema, disponible para Windows y para Mac con Apple Silicon. Para desarrolladores, Kimi Code es una herramienta de línea de comandos que se instala directamente desde la terminal para tareas de programación asistida.\n\nEsta variedad de productos bajo un mismo nombre puede generar confusión: si buscas simplemente chatear, la web o la app móvil son suficientes; si buscas automatización de escritorio o programación, Kimi Work y Kimi Code son productos más específicos dentro del mismo ecosistema."
+    },
+    {
+      "heading": "Disponibilidad multiplataforma",
+      "body": "Kimi cubre prácticamente todos los sistemas relevantes: web desde cualquier navegador, apps nativas para iOS y Android, cliente de escritorio para Windows y Mac (Apple Silicon), e incluso soporte para HarmonyOS, el sistema operativo propio de Huawei. Todos los enlaces de descarga están centralizados en la página oficial kimi.com/products/download.\n\nEsta cobertura amplia es poco común entre asistentes de IA y refleja el interés de Moonshot AI en llegar tanto al público internacional como al mercado chino, donde HarmonyOS tiene peso relevante."
+    },
+    {
+      "heading": "Cuándo elegir Kimi sobre otros asistentes",
+      "body": "Si tu trabajo implica frecuentemente documentos muy extensos —investigación, análisis legal, revisión de contratos largos— Kimi puede tener una ventaja concreta sobre asistentes con ventanas de contexto más limitadas. Si además programas y quieres una herramienta de terminal, Kimi Code es una opción a considerar junto a Qwen Code o Devin Desktop.\n\nPara uso conversacional general sin necesidad de documentos extremadamente largos, ChatGPT, Claude o Qwen Chat pueden ofrecer una experiencia igual de sólida con ecosistemas de plugins más maduros en algunos casos."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Kimi es gratis?",
+      "answer": "Sí, tiene un nivel gratuito para chat, escritorio y móvil. Las funciones de automatización avanzada pueden tener límites adicionales."
+    },
+    {
+      "question": "¿Kimi tiene app para Windows y Mac?",
+      "answer": "Sí. El cliente de escritorio Kimi Work está disponible para Windows y para Mac con chip Apple Silicon, descargable desde kimi.com/products/download."
+    },
+    {
+      "question": "¿Qué es Kimi Code?",
+      "answer": "Es una herramienta de línea de comandos para programar con asistencia de los modelos Kimi K2, instalable directamente desde la terminal."
+    },
+    {
+      "question": "¿Es seguro descargar Kimi desde cualquier sitio?",
+      "answer": "Usa siempre kimi.com/products/download o las tiendas oficiales de Google Play y App Store para evitar instaladores desactualizados de terceros."
+    }
+  ],
+  "spanishSupport": "partial"
+}

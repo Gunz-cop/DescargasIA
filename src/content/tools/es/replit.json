@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Entorno de programación en la nube con IA integrada para crear apps completas desde el navegador o el móvil.",
+  "longDescription": "Replit es un entorno de desarrollo que corre completamente en el navegador, sin instalación local, y que integra Replit Agent para generar aplicaciones completas a partir de una descripción en lenguaje natural (lo que suele llamarse \"vibe coding\"). Permite escribir, ejecutar y publicar proyectos en decenas de lenguajes sin configurar un entorno local. Esta ficha enlaza solo a los canales oficiales: la web replit.com y las apps verificadas de Google Play y App Store.",
+  "bestFor": [
+    "Crear un prototipo funcional describiendo la idea en lenguaje natural",
+    "Programar y ejecutar código desde el navegador sin instalar nada",
+    "Aprender a programar con un entorno que no requiere configuración previa",
+    "Publicar una app pequeña o un backend rápido sin gestionar servidores propios"
+  ],
+  "limitations": [
+    "No es un editor de escritorio tradicional: depende de conexión a internet, ya que el entorno completo corre en los servidores de Replit.",
+    "El plan gratuito tiene créditos limitados para el Agent; proyectos más ambiciosos suelen requerir un plan de pago.",
+    "Para publicar una app nativa en App Store, Replit indica que conviene usar la versión web completa en lugar del flujo simplificado del móvil."
+  ],
+  "safetyNotes": [
+    "Descarga la app móvil solo desde Google Play o App Store; existen versiones no oficiales en portales de APK que no provienen de Replit.",
+    "Replit no requiere pago para crear una cuenta básica ni para empezar a programar; desconfía de páginas externas que pidan datos de pago para \"activar\" el acceso."
+  ],
+  "editorialSummary": "Replit pasó de ser un editor de código colaborativo en el navegador a convertirse en una de las plataformas más mencionadas del \"vibe coding\": describir una app en lenguaje natural y dejar que el Agent construya buena parte del código. En FuenteAI enlazamos directo a la web y a las apps oficiales para que puedas probarlo sin pasar por copias.",
+  "editorialSections": [
+    {
+      "heading": "De editor colaborativo a plataforma de agentes",
+      "body": "Replit nació como un IDE en el navegador pensado para programar en grupo sin configurar nada en el equipo local. Con la llegada de Replit Agent, la propuesta cambió: ahora puedes describir qué quieres construir —una app de tareas, un panel de datos, un sitio simple— y el Agent genera buena parte de la estructura, escribe el código y lo ejecuta en el mismo entorno.\n\nEsto lo acerca a herramientas como v0 o Cursor, pero con una diferencia clave: todo corre en la nube de Replit, así que no necesitas instalar Node, Python ni ninguna dependencia en tu computadora para empezar a ver resultados."
+    },
+    {
+      "heading": "Qué significa \"vibe coding\" en la práctica",
+      "body": "El término describe programar guiando a un agente con instrucciones en lenguaje natural en lugar de escribir cada línea a mano. Funciona especialmente bien para prototipos, herramientas internas o ideas que quieres validar rápido, donde el objetivo es tener algo funcionando antes que un código perfectamente optimizado.\n\nEso no elimina la necesidad de entender lo que se genera. Revisar el código que produce el Agent, entender qué hace cada parte y corregir errores sigue siendo responsabilidad de quien programa, especialmente antes de publicar algo con datos reales de usuarios."
+    },
+    {
+      "heading": "Desde el navegador y desde el móvil",
+      "body": "La versión web en replit.com es el entorno más completo: ahí están todas las funciones de edición, ejecución, bases de datos y despliegue. Las apps de Android e iOS permiten seguir trabajando desde el teléfono, útil para ajustes rápidos o revisar el estado de un proyecto, aunque para flujos completos —como publicar una app nativa en la App Store— Replit recomienda usar la versión web.\n\nNo existe una versión de escritorio instalable tradicional: al ser una plataforma en la nube, todo el trabajo se guarda y ejecuta en los servidores de Replit, lo que también significa que necesitas conexión a internet para usarla."
+    },
+    {
+      "heading": "Cuándo conviene y cuándo no",
+      "body": "Replit tiene sentido para prototipar rápido, aprender a programar sin fricción de configuración, o construir herramientas internas pequeñas. Si tu proyecto necesita control total del entorno de ejecución, dependencias muy específicas de sistema o trabajar completamente sin conexión, un editor local como Devin Desktop o Cursor puede encajar mejor.\n\nPara equipos que ya trabajan con GitHub Copilot dentro de su propio IDE, Replit puede complementar como espacio de prototipado rápido en lugar de reemplazar el flujo de desarrollo principal."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Replit es gratis?",
+      "answer": "Tiene un plan gratuito con créditos limitados para el Agent. Proyectos más grandes o uso constante suelen requerir un plan de pago."
+    },
+    {
+      "question": "¿Necesito instalar algo para usar Replit?",
+      "answer": "No. El entorno corre completo en el navegador. También existen apps oficiales para Android e iOS para trabajar desde el móvil."
+    },
+    {
+      "question": "¿Es seguro descargar la app de Replit desde cualquier tienda?",
+      "answer": "Usa siempre los enlaces oficiales de Google Play o App Store. Hay APKs de terceros que no provienen de Replit y no deberían usarse."
+    },
+    {
+      "question": "¿Replit sirve para publicar apps reales, no solo prototipos?",
+      "answer": "Sí, permite desplegar proyectos funcionales, aunque para publicar apps nativas en tiendas conviene usar el flujo completo desde la versión web."
+    }
+  ],
+  "spanishSupport": "partial"
+}

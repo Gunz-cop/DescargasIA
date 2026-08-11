@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Estudio de generación de imágenes local y de código abierto, con interfaz guiada y lienzo unificado, para Windows, Mac y Linux.",
+  "longDescription": "InvokeAI es un motor de generación de imágenes con IA de código abierto, pensado para ejecutarse localmente con una interfaz más guiada que la de herramientas basadas en nodos. Incluye un lienzo unificado para generar, editar y retocar imágenes con modelos como Stable Diffusion o Flux, todo dentro de la misma aplicación de escritorio. Está disponible bajo licencia Apache 2.0 para Windows, macOS (Apple Silicon) y Linux. Esta ficha enlaza solo a los canales oficiales de InvokeAI.",
+  "bestFor": [
+    "Generar y editar imágenes con IA localmente, sin depender de un servicio en la nube",
+    "Trabajar con un lienzo unificado que combina generación, retoque y composición en un mismo espacio",
+    "Usar modelos de código abierto como Stable Diffusion o Flux con una interfaz más accesible que la de un editor de nodos",
+    "Mantener control total sobre tus imágenes y datos, sin enviarlos a servidores externos"
+  ],
+  "limitations": [
+    "En macOS solo es compatible con equipos Apple Silicon (chips M1 o posteriores); no funciona en Mac con procesador Intel.",
+    "Requiere una GPU dedicada (NVIDIA o AMD) para un rendimiento razonable; en equipos sin GPU dedicada la generación puede ser muy lenta o inviable.",
+    "Necesita al menos 15 GB de espacio libre en disco para la instalación, los modelos y los archivos generados."
+  ],
+  "safetyNotes": [
+    "Descarga InvokeAI únicamente desde invoke.ai/download o el repositorio oficial en github.com/invoke-ai/InvokeAI. Evita instaladores de portales de software genéricos que puedan estar desactualizados.",
+    "InvokeAI no requiere cuenta ni pago para funcionar; es software libre bajo licencia Apache 2.0, así que cualquier oferta de \"versión premium\" fuera del proyecto oficial no es legítima."
+  ],
+  "editorialSummary": "Dentro del ecosistema de generación de imágenes local que orbita alrededor de Hugging Face, InvokeAI ocupa el lugar de la opción más accesible frente a alternativas basadas en nodos como ComfyUI: mantiene el control y la privacidad de ejecutar todo en tu propia computadora, pero con una interfaz pensada para no requerir entender cada paso técnico del proceso. En FuenteAI enlazamos solo a sus canales oficiales.",
+  "editorialSections": [
+    {
+      "heading": "Generación local con una interfaz más cercana a un editor tradicional",
+      "body": "InvokeAI se distingue de otras herramientas locales de imagen por priorizar una experiencia más parecida a un programa de edición convencional que a un editor técnico de flujos. Su lienzo unificado permite generar una imagen, retocar partes específicas, extender los bordes o combinar varias generaciones en un mismo espacio de trabajo continuo.\n\nEsto reduce la barrera de entrada frente a herramientas basadas en nodos: no hace falta entender cada etapa del proceso de difusión para empezar a generar imágenes útiles, aunque sigue ofreciendo opciones avanzadas para quien quiera profundizar."
+    },
+    {
+      "heading": "Qué modelos puede ejecutar",
+      "body": "InvokeAI es compatible con modelos de la familia Stable Diffusion y con Flux, dos de los ecosistemas de generación de imágenes de código abierto más activos y con mayor presencia en Hugging Face. Puedes descargar modelos desde ahí y cargarlos directamente en InvokeAI para generar con ellos localmente.\n\nEsta compatibilidad es la que conecta directamente a InvokeAI con la conversación más amplia sobre modelos abiertos: mientras Hugging Face es donde se publican los modelos, InvokeAI es una de las formas más accesibles de efectivamente usarlos en tu propia computadora."
+    },
+    {
+      "heading": "Requisitos de hardware antes de instalar",
+      "body": "A diferencia de un chatbot de texto liviano, la generación de imágenes con IA es exigente en hardware. InvokeAI recomienda un procesador de gama media (Intel Core i5 o AMD Ryzen 5 equivalente o superior), al menos 8 GB de RAM (16 GB recomendado), y sobre todo una GPU dedicada con soporte CUDA (NVIDIA) para un rendimiento fluido.\n\nEn Mac, la compatibilidad se limita a chips Apple Silicon; los equipos Intel más antiguos no están soportados. Vale la pena revisar estos requisitos antes de instalar para evitar frustración con tiempos de generación muy largos en hardware insuficiente."
+    },
+    {
+      "heading": "InvokeAI frente a ComfyUI y otras opciones locales",
+      "body": "Si prefieres control técnico total sobre cada paso del proceso de generación, ComfyUI sigue siendo la opción más flexible, aunque con más curva de aprendizaje. InvokeAI apunta a un público que quiere generación local seria pero con una interfaz que se sienta más como una herramienta de edición terminada que como un editor de flujos técnico.\n\nPara quien no quiere lidiar con instalación local en absoluto, herramientas en la nube como Leonardo AI o el propio Flux alojado siguen siendo más directas, a costa de perder la privacidad y el control que ofrece ejecutar todo en tu propio equipo."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿InvokeAI es gratis?",
+      "answer": "Sí, es software libre y de código abierto bajo licencia Apache 2.0, sin costo ni necesidad de cuenta."
+    },
+    {
+      "question": "¿InvokeAI funciona en cualquier Mac?",
+      "answer": "No. Solo es compatible con Mac con chip Apple Silicon (M1 o posterior); no funciona en modelos con procesador Intel."
+    },
+    {
+      "question": "¿Necesito GPU para usar InvokeAI?",
+      "answer": "Se recomienda fuertemente una GPU dedicada NVIDIA o AMD. Sin ella, la generación puede ser extremadamente lenta o no funcionar bien."
+    },
+    {
+      "question": "¿Es seguro descargar InvokeAI desde cualquier sitio?",
+      "answer": "Descárgalo solo desde invoke.ai/download o el repositorio oficial en GitHub para evitar instaladores modificados de terceros."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

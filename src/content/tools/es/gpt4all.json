@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Chatbot local y gratuito de Nomic AI para ejecutar modelos de lenguaje open source sin conexión a internet.",
+  "longDescription": "GPT4All es una aplicación de escritorio desarrollada por Nomic AI que permite descargar y ejecutar modelos de lenguaje de código abierto directamente en tu computadora, sin enviar datos a servidores externos. Incluye una interfaz simple para elegir modelos, chatear con ellos y, con la función LocalDocs, hacerles preguntas sobre tus propios documentos en PDF, texto o Word. Todo el procesamiento ocurre en el equipo local. Esta ficha enlaza solo a los canales oficiales de Nomic AI y a su repositorio en GitHub.",
+  "bestFor": [
+    "Ejecutar modelos de IA en tu propia computadora sin conexión ni cuenta",
+    "Mantener conversaciones o consultas privadas que no salen de tu equipo",
+    "Hacer preguntas sobre documentos propios (PDF, TXT, DOCX) con LocalDocs",
+    "Experimentar con distintos modelos open source desde una interfaz simple"
+  ],
+  "limitations": [
+    "El rendimiento depende directamente del hardware: equipos con poca RAM o sin GPU dedicada ejecutan los modelos más lento.",
+    "La calidad de las respuestas suele ser menor que la de modelos cerrados como ChatGPT o Claude, especialmente en modelos pequeños pensados para correr en consumo doméstico.",
+    "Descargar modelos grandes puede ocupar varios gigabytes de espacio en disco y tardar según la conexión."
+  ],
+  "safetyNotes": [
+    "Descarga el instalador únicamente desde nomic.ai/gpt4all o desde los releases oficiales en github.com/nomic-ai/gpt4all. Evita mirrors en portales de descarga genéricos.",
+    "GPT4All no requiere cuenta ni pago para funcionar; si una página te pide registro o tarjeta para \"desbloquear\" la app, no es el canal oficial."
+  ],
+  "editorialSummary": "GPT4All fue una de las primeras apps que hizo accesible correr modelos de lenguaje directamente en una laptop común, sin depender de la nube. Sigue siendo una puerta de entrada sencilla al mundo de los modelos locales para quienes priorizan privacidad y no quieren depender de una suscripción. En FuenteAI enlazamos solo a Nomic AI y a su repositorio oficial.",
+  "editorialSections": [
+    {
+      "heading": "Qué significa \"modelo local\" en la práctica",
+      "body": "Cuando usas ChatGPT o Claude, cada mensaje viaja a un servidor externo, se procesa ahí y la respuesta vuelve a tu pantalla. GPT4All invierte esa lógica: descargas el modelo una vez y todo el procesamiento ocurre en tu propia computadora, sin conexión a internet necesaria después de la descarga inicial. Eso significa que tus conversaciones no salen de tu equipo.\n\nEsta diferencia importa para quien trabaja con información sensible, quiere evitar depender de un servicio en la nube, o simplemente prefiere no pagar una suscripción mensual para tener un asistente conversacional básico funcionando."
+    },
+    {
+      "heading": "Instalación y primeros pasos",
+      "body": "GPT4All se instala como cualquier programa de escritorio: se descarga el instalador para Windows, macOS o Linux desde nomic.ai/gpt4all y se ejecuta. Dentro de la app hay un catálogo de modelos que se pueden descargar directamente, con indicaciones de tamaño y requisitos aproximados de memoria RAM.\n\nUn equipo con 8 GB de RAM puede ejecutar modelos pequeños sin problema, pero modelos más grandes y capaces necesitan más memoria y, preferentemente, una tarjeta gráfica dedicada para responder con fluidez. Vale la pena empezar con un modelo liviano antes de descargar los más pesados."
+    },
+    {
+      "heading": "LocalDocs: preguntar sobre tus propios archivos",
+      "body": "Una de las funciones más útiles de GPT4All es LocalDocs, que indexa carpetas de documentos propios (PDF, TXT, DOCX) para que el modelo pueda responder preguntas basándose en ese contenido. Es una forma sencilla de tener un asistente que conoce tus apuntes, contratos o manuales sin subir nada a la nube.\n\nEsta función es especialmente útil para profesionales que manejan documentación sensible —legal, médica, financiera— y quieren aprovechar IA generativa sin exponer esos archivos a un tercero."
+    },
+    {
+      "heading": "Cuándo elegir GPT4All frente a otras opciones locales",
+      "body": "Dentro del ecosistema de IA local, GPT4All destaca por su simplicidad: la interfaz está pensada para quien no quiere lidiar con líneas de comando. Si prefieres una experiencia más técnica con más control sobre parámetros, Ollama o LM Studio pueden ofrecer más flexibilidad; si buscas gestionar documentos y flujos más complejos, AnythingLLM va un paso más allá.\n\nLa elección depende de cuánto control técnico quieras. Para alguien que solo quiere probar un modelo local por primera vez sin fricción, GPT4All suele ser el punto de entrada más amigable."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿GPT4All es realmente gratis?",
+      "answer": "Sí. Es una aplicación de código abierto y gratuita, sin necesidad de cuenta ni suscripción para usarla."
+    },
+    {
+      "question": "¿Necesito internet para usar GPT4All?",
+      "answer": "Solo para descargar la app y los modelos la primera vez. Después de eso, puede funcionar completamente sin conexión."
+    },
+    {
+      "question": "¿GPT4All funciona en cualquier computadora?",
+      "answer": "Funciona en Windows, macOS y Linux, pero el rendimiento depende del hardware. Se recomienda al menos 8 GB de RAM para modelos básicos."
+    },
+    {
+      "question": "¿Es seguro descargar GPT4All desde cualquier sitio?",
+      "answer": "Descárgalo solo desde nomic.ai/gpt4all o desde los releases oficiales en GitHub (nomic-ai/gpt4all) para evitar versiones modificadas."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

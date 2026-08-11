@@ -1,0 +1,50 @@
+{
+  "name": "Open WebUI",
+  "officialWebsite": "https://docs.openwebui.com",
+  "categories": [
+    "modelos-locales"
+  ],
+  "platforms": {
+    "windows": {
+      "url": "https://docs.openwebui.com/getting-started/",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "mac": {
+      "url": "https://docs.openwebui.com/getting-started/",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "linux": {
+      "url": "https://docs.openwebui.com/getting-started/",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "tags": [
+    "modelo-local",
+    "open-source",
+    "ollama",
+    "self-hosted",
+    "interfaz-de-chat"
+  ],
+  "alternatives": [
+    "ollama",
+    "lm-studio",
+    "anythingllm",
+    "jan"
+  ],
+  "screenshotUrl": null,
+  "initials": "OWU",
+  "trustLevel": "verified",
+  "lastReviewed": "2026-08-11",
+  "officialSources": [
+    "https://docs.openwebui.com",
+    "https://github.com/open-webui/open-webui"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Espacio de trabajo todo en uno para notas, documentos y proyectos, con un agente de IA integrado para redactar y organizar.",
+  "longDescription": "Notion es una plataforma de productividad que combina notas, documentos, bases de datos y gestión de proyectos en un solo espacio de trabajo flexible. Notion AI se integra directamente dentro de esa misma app: puede redactar borradores, resumir páginas largas, traducir contenido y automatizar tareas repetitivas sin salir del documento en el que estás trabajando. Está disponible en web, escritorio (Windows y macOS) y móvil (Android e iOS). Esta ficha enlaza solo a los canales oficiales de Notion.",
+  "bestFor": [
+    "Organizar notas, documentos y proyectos en un mismo espacio de trabajo flexible",
+    "Redactar, resumir o mejorar borradores directamente dentro de un documento con Notion AI",
+    "Centralizar bases de datos, tareas y wikis de equipo con la misma herramienta",
+    "Trabajar sincronizado entre escritorio, navegador y móvil"
+  ],
+  "limitations": [
+    "Notion AI no viene incluido gratis de forma ilimitada: se puede agregar a cualquier plan pagando un costo adicional por miembro, aunque el plan gratuito de Notion incluye un uso básico limitado.",
+    "La curva de aprendizaje puede ser mayor que la de un editor de notas simple, dado que Notion es una herramienta muy flexible con muchas formas de estructurar la información.",
+    "No existe una app de escritorio oficial confirmada para Linux; en ese sistema el acceso recomendado es la versión web."
+  ],
+  "safetyNotes": [
+    "Descarga Notion únicamente desde notion.com/desktop, Google Play o App Store. Evita instaladores de portales de descarga genéricos que puedan no estar actualizados.",
+    "Notion no pide pago para crear una cuenta básica; cualquier sitio que solicite pago previo para \"activar\" el acceso gratuito no es un canal oficial."
+  ],
+  "editorialSummary": "Notion pasó de ser una app de notas más a convertirse en el espacio de trabajo central de equipos enteros, y la incorporación de Notion AI directamente dentro de los documentos lo acercó todavía más a herramientas de productividad con IA como Gamma o NotebookLM. En FuenteAI enlazamos a sus canales oficiales para escritorio, móvil y web.",
+  "editorialSections": [
+    {
+      "heading": "Qué es Notion antes de hablar de la IA",
+      "body": "Notion combina notas, documentos, bases de datos, tableros de tareas y wikis en una sola herramienta flexible, donde cada usuario o equipo arma su propia estructura según lo que necesite: desde un diario personal simple hasta un sistema completo de gestión de proyectos. Esa flexibilidad es su mayor fortaleza y, al mismo tiempo, lo que le da una curva de aprendizaje más pronunciada que la de una app de notas tradicional.\n\nEntender esta base es importante antes de evaluar Notion AI, porque la inteligencia artificial no es un producto aparte: funciona integrada dentro de esa misma estructura de páginas y bases de datos que ya usas."
+    },
+    {
+      "heading": "Qué hace Notion AI dentro de tus documentos",
+      "body": "Notion AI aparece directamente dentro de cualquier página: puede redactar un borrador desde cero a partir de una instrucción, resumir una página larga en unos puntos clave, traducir contenido, corregir la redacción o generar una tabla a partir de texto libre. También incorpora capacidades de agente para tareas de varios pasos, como buscar información dentro de tu propio espacio de trabajo y usarla para completar una tarea.\n\nLa ventaja frente a copiar texto hacia un chatbot externo es que todo ocurre en el mismo lugar donde ya estás trabajando, sin perder el contexto de la página ni tener que pegar el resultado de vuelta manualmente."
+    },
+    {
+      "heading": "Disponible en todos los dispositivos, con matices",
+      "body": "Notion se descarga como app de escritorio para Windows y macOS desde notion.com/desktop, y como app móvil para Android e iOS desde las tiendas oficiales. La sincronización entre dispositivos es automática, así que un documento editado en el escritorio aparece actualizado también en el móvil.\n\nPara Linux, Notion no ofrece una aplicación de escritorio oficial confirmada; en ese sistema, la alternativa recomendada es usar la versión web, que mantiene la mayoría de las funciones del escritorio nativo."
+    },
+    {
+      "heading": "Cuándo conviene Notion frente a herramientas más específicas",
+      "body": "Si necesitas un espacio único donde centralizar notas, documentos y gestión de proyectos de equipo, Notion tiene sentido por esa combinación. Si tu necesidad es más puntual —crear una presentación de diapositivas, por ejemplo— Gamma puede ser más directo; si buscas resumir y consultar documentos extensos con IA, NotebookLM está más enfocado en ese caso específico.\n\nAlgunos equipos usan Notion como \"hub\" central y complementan con herramientas más especializadas para tareas puntuales, en lugar de intentar que Notion resuelva absolutamente todo por sí solo."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Notion AI es gratis?",
+      "answer": "El plan gratuito de Notion incluye un uso básico limitado de IA. Para uso más amplio, se agrega como complemento de pago a cualquier plan."
+    },
+    {
+      "question": "¿Notion tiene app para Windows, Mac, Android e iOS?",
+      "answer": "Sí, para Windows y macOS desde notion.com/desktop, y para Android e iOS desde las tiendas oficiales. No hay app de escritorio confirmada para Linux."
+    },
+    {
+      "question": "¿Necesito cuenta para usar Notion?",
+      "answer": "Sí, se requiere una cuenta para guardar y sincronizar tu espacio de trabajo entre dispositivos."
+    },
+    {
+      "question": "¿Es seguro descargar Notion desde cualquier sitio?",
+      "answer": "Descárgalo solo desde notion.com/desktop o las tiendas oficiales de Android e iOS para evitar instaladores desactualizados de terceros."
+    }
+  ],
+  "spanishSupport": "yes"
+}

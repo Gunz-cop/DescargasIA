@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Corrector de gramática y estilo con IA, enfocado principalmente en textos en inglés, con apps y extensiones oficiales.",
+  "longDescription": "Grammarly es un asistente de escritura que revisa gramática, ortografía, claridad y tono, integrándose como extensión de navegador, aplicación de escritorio, complemento de Microsoft Word y teclado móvil. Es una de las herramientas de corrección de texto más usadas del mundo, aunque su motor está construido principalmente para el idioma inglés. Esta ficha enlaza solo a los canales oficiales de Grammarly.",
+  "bestFor": [
+    "Corregir gramática, ortografía y claridad en textos escritos en inglés",
+    "Recibir sugerencias de tono y estilo mientras escribes en cualquier campo de texto del navegador",
+    "Revisar documentos largos en Microsoft Word con el complemento oficial",
+    "Escribir con corrección en tiempo real desde el teclado móvil en inglés"
+  ],
+  "limitations": [
+    "Grammarly está diseñado principalmente para el idioma inglés; no ofrece corrección gramatical completa para español. Si necesitas corregir textos en español, herramientas como LanguageTool están mejor preparadas para ese idioma.",
+    "Las funciones más avanzadas de reescritura y tono con IA generativa suelen requerir el plan Grammarly Pro.",
+    "El teclado de Grammarly en móvil funciona junto a tu teclado habitual (Gboard, SwiftKey), no lo reemplaza por completo."
+  ],
+  "safetyNotes": [
+    "Descarga Grammarly únicamente desde grammarly.com, las tiendas oficiales de extensiones (Chrome Web Store, Edge Add-ons) o Google Play y App Store. Evita instaladores de portales genéricos de software.",
+    "Grammarly no requiere pago para la versión básica; desconfía de sitios que pidan pago anticipado para \"activar\" funciones que en realidad son gratuitas."
+  ],
+  "editorialSummary": "Grammarly es, para millones de personas que escriben en inglés a diario, la corrección ortográfica y gramatical de fondo que ya ni notan que está activa. Su punto débil para el público hispanohablante es justamente ese: no es una herramienta pensada para corregir español. En FuenteAI lo incluimos aclarando esa limitación desde el principio, para que decidas con información real si te sirve o si conviene mirar una alternativa mejor preparada para tu idioma.",
+  "editorialSections": [
+    {
+      "heading": "Por qué Grammarly es tan buscado (y por qué puede no ser lo que necesitas)",
+      "body": "Grammarly es probablemente el corrector de texto con IA más conocido del mundo, con una base de usuarios enorme entre estudiantes, profesionales y equipos que escriben en inglés todos los días. Esa fama hace que muchos hispanohablantes lo busquen esperando un corrector de español equivalente.\n\nAquí está el punto importante: Grammarly fue construido y entrenado principalmente para el idioma inglés. No ofrece una corrección gramatical completa y confiable para textos en español. Si tu necesidad principal es corregir gramática en español, herramientas como LanguageTool están diseñadas específicamente para cubrir ese caso mejor que Grammarly."
+    },
+    {
+      "heading": "Dónde sí tiene sentido usar Grammarly",
+      "body": "Si escribes en inglés con frecuencia —correos de trabajo, tesis, artículos, mensajes profesionales— Grammarly puede ser muy útil como capa de revisión constante. Se integra en el navegador, revisando lo que escribes en Gmail, LinkedIn, Google Docs o casi cualquier campo de texto, y también ofrece un complemento directo para Microsoft Word.\n\nPara quien estudia o trabaja en inglés como segundo idioma, Grammarly puede servir como apoyo adicional para detectar errores gramaticales comunes, aunque no reemplaza aprender el idioma ni verificar con criterio propio, especialmente en textos formales importantes."
+    },
+    {
+      "heading": "Instalación: extensión, escritorio y móvil",
+      "body": "Grammarly se instala principalmente como extensión de navegador (Chrome, Edge, Safari, Firefox) desde sus tiendas oficiales, lo que permite que funcione dentro de cualquier página donde escribas. También existe una app de escritorio para Windows y macOS que amplía la corrección a aplicaciones fuera del navegador, y un complemento directo para Microsoft Word.\n\nEn móvil, el \"teclado Grammarly\" se instala junto al teclado habitual del sistema (Gboard en Android, el teclado nativo en iOS) y ofrece sugerencias mientras escribes en cualquier app, desde mensajes hasta redes sociales."
+    },
+    {
+      "heading": "Alternativas si tu idioma principal es el español",
+      "body": "Si tu prioridad es corregir textos en español, LanguageTool ofrece soporte real para gramática y estilo en ese idioma, y DeepL puede ayudarte con traducción de alta calidad entre español e inglés. QuillBot, por su parte, ofrece funciones de parafraseo y corrección con soporte para varios idiomas, incluido el español, aunque con distinto enfoque al de Grammarly.\n\nUsar Grammarly no está mal si además escribes en inglés regularmente, pero conviene tener expectativas realistas: para el trabajo diario en español, no es la herramienta más adecuada de esta lista."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Grammarly corrige textos en español?",
+      "answer": "No de forma completa. Grammarly está diseñado principalmente para inglés. Para español, LanguageTool es una alternativa mejor preparada."
+    },
+    {
+      "question": "¿Grammarly es gratis?",
+      "answer": "Tiene un plan gratuito con corrección básica de gramática y ortografía. Las funciones avanzadas de reescritura con IA requieren el plan Pro."
+    },
+    {
+      "question": "¿Grammarly tiene app para Windows y Mac?",
+      "answer": "Sí, apps de escritorio oficiales descargables desde grammarly.com/desktop, además de extensiones de navegador y un complemento para Word."
+    },
+    {
+      "question": "¿Es seguro instalar la extensión de Grammarly?",
+      "answer": "Sí, si se instala desde las tiendas oficiales de extensiones del navegador o desde grammarly.com directamente, no desde sitios de terceros."
+    }
+  ],
+  "spanishSupport": "no"
+}
