@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Plataforma de chat con personajes de IA generados por la comunidad o por ti, disponible en web, Android e iOS.",
+  "longDescription": "Character.AI es una plataforma que permite conversar con personajes de inteligencia artificial: figuras históricas, personajes de ficción, asistentes personalizados o creaciones propias con una personalidad y un estilo de conversación definidos por quien los crea. A diferencia de un chatbot genérico como ChatGPT, el foco de Character.AI está en la conversación sostenida con un personaje concreto, con memoria de la charla y un tono que intenta mantenerse coherente con esa personalidad. Esta ficha enlaza únicamente a la web oficial y a las apps publicadas por Character.AI en Google Play y App Store.",
+  "bestFor": [
+    "Conversar con personajes creados por la comunidad o crear los propios con una personalidad definida",
+    "Practicar diálogos, escritura creativa o juegos de rol textual con un personaje consistente",
+    "Usar un asistente conversacional con un tono más personal que un chatbot genérico",
+    "Explorar personajes basados en historia, ficción o cultura popular con fines de entretenimiento"
+  ],
+  "limitations": [
+    "No está pensada como herramienta de trabajo o productividad: su enfoque es conversacional y de entretenimiento, no de tareas como programar o analizar documentos.",
+    "El contenido generado por los personajes puede ser inconsistente o inventar datos, especialmente en personajes basados en figuras reales.",
+    "Algunas funciones (mensajes más rápidos, acceso prioritario) requieren la suscripción de pago c.ai+; el uso gratuito puede tener límites de velocidad en horarios de mucho tráfico."
+  ],
+  "safetyNotes": [
+    "Character.AI no distribuye instaladores de escritorio: usa únicamente character.ai en el navegador o las apps oficiales de Google Play y App Store, no APKs de terceros que digan ser \"Character AI Pro\" o versiones desbloqueadas.",
+    "Los personajes son generados por IA y no reemplazan el criterio propio ni el consejo de un profesional; la plataforma incluye avisos de que las respuestas son ficticias, algo que conviene tener presente especialmente con menores de edad."
+  ],
+  "editorialSummary": "Character.AI es una de las plataformas más buscadas para chatear con personajes de IA, ya sea creados por otros usuarios o propios, con foco en la conversación sostenida más que en resolver tareas puntuales. En FuenteAI enlazamos solo su web oficial y sus apps verificadas de Android e iOS, sin instaladores de escritorio porque la marca no distribuye ninguno.",
+  "editorialSections": [
+    {
+      "heading": "Qué la diferencia de un chatbot como ChatGPT",
+      "body": "La mayoría de los asistentes de IA generalistas están diseñados para resolver tareas: responder preguntas, redactar textos, programar. Character.AI apunta a otra necesidad: sostener una conversación con un personaje que mantiene una personalidad reconocible a lo largo del tiempo. Puedes hablar con un personaje creado por otro usuario o diseñar el propio, definiendo su forma de hablar, su trasfondo y el tono general de la charla.\n\nEsa diferencia de enfoque explica por qué tantas búsquedas relacionadas con la herramienta tienen que ver con \"crear personaje IA\" o \"chatear con personajes\" en lugar de \"resolver una tarea con IA\". No es mejor ni peor que un asistente generalista, es una herramienta con un objetivo distinto."
+    },
+    {
+      "heading": "Web, Android e iOS: no hay versión de escritorio",
+      "body": "Character.AI funciona desde character.ai en cualquier navegador, y tiene apps nativas oficiales tanto en Google Play como en App Store, publicadas por el mismo desarrollador. No existe, al momento de esta revisión, una aplicación de escritorio oficial para Windows o Mac: quien quiera usarla en una computadora debe hacerlo a través del navegador.\n\nSi encuentras un \"instalador de Character AI para PC\" en un sitio que no sea character.ai, no es oficial. La forma más segura de usar la herramienta en una computadora sigue siendo la web."
+    },
+    {
+      "heading": "Cómo evitar clones y apps falsas",
+      "body": "El nombre \"Character AI\" es genérico y eso hace que en las tiendas de apps aparezcan decenas de aplicaciones de terceros con nombres parecidos (\"AI Character Chat\", \"AI Character Generator\") que no tienen relación con la plataforma original. Antes de instalar, conviene verificar que el desarrollador que figura en la ficha de la tienda sea Character.AI y no una app genérica de \"personajes con IA\".\n\nEn Google Play, la app oficial se identifica como \"Character AI: Chat, Talk, Text\"; en App Store aparece bajo el mismo nombre publicado por el desarrollador Character.AI. Cualquier variante que prometa desbloquear la suscripción c.ai+ de forma gratuita es sospechosa por definición."
+    },
+    {
+      "heading": "Cuándo conviene mirar otras opciones",
+      "body": "Si lo que buscas es resolver tareas de trabajo, estudio o programación, un asistente generalista como ChatGPT, Claude o Gemini va a ser más útil que Character.AI, que no está pensado para ese uso. Character.AI tiene sentido específicamente cuando el objetivo es la conversación sostenida con una personalidad definida, ya sea por entretenimiento, escritura creativa o práctica de diálogos.\n\nSi buscas algo intermedio, algunos asistentes generalistas también permiten personalizar un tono o rol dentro de la conversación, aunque sin el ecosistema de personajes creados por la comunidad que caracteriza a Character.AI."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Character.AI tiene aplicación oficial para Windows o Mac?",
+      "answer": "No hay una app de escritorio oficial confirmada al momento de esta revisión. En una computadora, el acceso recomendado es la versión web en character.ai."
+    },
+    {
+      "question": "¿Es seguro descargar Character.AI desde Google Play o App Store?",
+      "answer": "Sí, siempre que verifiques que el desarrollador listado sea Character.AI y no una app de terceros con un nombre similar."
+    },
+    {
+      "question": "¿Character.AI es gratis?",
+      "answer": "El uso básico es gratuito. La suscripción c.ai+ agrega mensajes más rápidos y acceso prioritario, pero no es necesaria para usar la plataforma."
+    },
+    {
+      "question": "¿Necesito cuenta para usar Character.AI?",
+      "answer": "Sí, se requiere crear una cuenta para conversar con personajes y guardar el historial de chats."
+    }
+  ],
+  "spanishSupport": "yes"
+}

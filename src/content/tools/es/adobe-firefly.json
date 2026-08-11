@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Suite de generación de imágenes, video y audio con IA de Adobe, disponible como web app y dentro de Creative Cloud.",
+  "longDescription": "Adobe Firefly es la familia de modelos y herramientas de IA generativa de Adobe, pensada para generar y editar imágenes, video, audio y efectos de texto, entrenada con un enfoque declarado en contenido con licencia comercial. Funciona como aplicación web independiente en firefly.adobe.com y también está integrada dentro de apps de Creative Cloud como Photoshop e Illustrator, sin necesidad de tener esas apps instaladas para usar la versión web. Esta ficha enlaza a la web app oficial de Firefly.",
+  "bestFor": [
+    "Generar imágenes a partir de texto con un modelo pensado para uso comercial dentro del ecosistema Adobe",
+    "Editar imágenes con funciones como relleno generativo o recolor generativo sin abrir Photoshop",
+    "Generar y traducir audio o video con IA dentro de la misma plataforma",
+    "Complementar un flujo de trabajo ya existente en Photoshop o Illustrator con generación de IA integrada"
+  ],
+  "limitations": [
+    "No tiene aplicación de escritorio ni móvil independiente: la web app en firefly.adobe.com es el acceso directo, aunque también se integra dentro de apps de Creative Cloud que sí requieren instalación aparte.",
+    "El plan gratuito incluye una cantidad limitada de créditos generativos mensuales; el uso frecuente, sobre todo de video, suele requerir un plan Standard, Pro o Premium de pago.",
+    "Algunas funciones avanzadas (video, traducción de audio) consumen más créditos que la generación estándar de imágenes, lo que puede agotar el límite mensual más rápido de lo esperado."
+  ],
+  "safetyNotes": [
+    "Usa exclusivamente firefly.adobe.com para acceder a la web app; no existe una app oficial de escritorio independiente de Firefly, por lo que cualquier instalador que prometa serlo no es de Adobe.",
+    "El acceso a Firefly requiere una cuenta Adobe; no ingreses tus credenciales de Adobe en ningún sitio que no sea un dominio oficial adobe.com."
+  ],
+  "editorialSummary": "Adobe Firefly llevó la generación de imágenes y video con IA al ecosistema de Creative Cloud, con un modelo entrenado con un enfoque declarado en contenido apto para uso comercial. En FuenteAI aclaramos que se usa desde la web o integrado en apps de Adobe que se instalan por separado, sin una app de escritorio independiente de Firefly.",
+  "editorialSections": [
+    {
+      "heading": "Web app independiente e integración en Creative Cloud",
+      "body": "Firefly puede usarse de dos formas distintas: como aplicación web independiente en firefly.adobe.com, sin necesidad de instalar nada, o integrado directamente dentro de apps de Creative Cloud como Photoshop e Illustrator, donde funciones como el relleno generativo aparecen como parte del flujo de edición habitual. Ambas vías comparten el mismo motor y la misma cuenta de Adobe.\n\nEsto genera cierta confusión frecuente: alguien que ya tiene Photoshop puede no saber que también existe una versión web de Firefly independiente, y viceversa. Para probar Firefly sin instalar Photoshop, la web app es el camino más directo."
+    },
+    {
+      "heading": "El enfoque de Adobe en contenido con licencia comercial",
+      "body": "Un diferencial que Adobe destaca activamente es que sus modelos de Firefly están entrenados con contenido con licencia (como el banco de imágenes de Adobe Stock) o de dominio público, con el objetivo declarado de que las imágenes generadas sean más seguras de usar en proyectos comerciales que otras herramientas entrenadas con datos de origen menos claro.\n\nEsto no elimina la necesidad de revisar los términos de uso específicos según el plan contratado, pero es una diferencia real en el posicionamiento de Firefly frente a otros generadores de imágenes, especialmente para equipos de diseño o marketing que necesitan justificar el origen del contenido que usan."
+    },
+    {
+      "heading": "Más allá de imágenes: video, audio y efectos de texto",
+      "body": "Firefly dejó de ser solo un generador de imágenes: la plataforma incorporó generación y edición de video, generación de audio y traducción de audio o video entre idiomas, además de efectos de texto generativos. Todo esto vive dentro del mismo sistema de créditos, por lo que el consumo varía según el tipo de contenido que generes.\n\nPara quien ya trabaja en un flujo de producción audiovisual con herramientas Adobe, tener generación de video y traducción de audio en la misma plataforma que la edición de imágenes reduce la cantidad de herramientas distintas que hay que aprender y pagar por separado."
+    },
+    {
+      "heading": "Cuándo elegir Firefly frente a otras opciones",
+      "body": "Firefly tiene más sentido si ya trabajas dentro del ecosistema Adobe o necesitas poder justificar que el contenido generado tiene una base de licencia comercial clara. Si tu prioridad es un estilo artístico muy particular o máxima calidad en un aspecto puntual, herramientas especializadas como Midjourney para imágenes o Flux en modo local pueden dar mejores resultados en ese caso específico.\n\nPara quien busca una suite todo-en-uno con muchos modelos de distintos orígenes en una sola interfaz, Krea AI es una alternativa a considerar, aunque sin el mismo respaldo de licencia comercial explícita que ofrece Adobe."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Adobe Firefly tiene app de escritorio propia?",
+      "answer": "No existe una app de escritorio independiente de Firefly. Se usa como web app en firefly.adobe.com o integrado dentro de apps de Creative Cloud como Photoshop, que sí se instalan por separado."
+    },
+    {
+      "question": "¿Necesito Photoshop para usar Firefly?",
+      "answer": "No. La web app de Firefly funciona de forma independiente sin necesidad de tener Photoshop ni ninguna otra app de Creative Cloud instalada."
+    },
+    {
+      "question": "¿Adobe Firefly es gratis?",
+      "answer": "Tiene un plan gratuito con créditos generativos mensuales limitados. Los planes Standard, Pro y Premium amplían esos límites."
+    },
+    {
+      "question": "¿Las imágenes de Firefly son seguras para uso comercial?",
+      "answer": "Adobe declara que sus modelos se entrenan con contenido con licencia o de dominio público con ese objetivo, pero conviene revisar los términos específicos del plan contratado antes de un uso comercial."
+    }
+  ],
+  "spanishSupport": "yes"
+}

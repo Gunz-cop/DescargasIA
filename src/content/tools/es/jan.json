@@ -4,11 +4,13 @@
   "bestFor": [
     "Usuarios que desean una interfaz de chat local sencilla de usar y que no requiera conocimientos técnicos de terminal.",
     "Empresas y profesionales que buscan soluciones de IA local basadas en software 100% libre e integrable.",
-    "Conectar tanto modelos locales offline como modelos remotos comerciales (mediante APIs de OpenAI, Anthropic, etc.) en un solo panel."
+    "Conectar tanto modelos locales offline como modelos remotos comerciales (mediante APIs de OpenAI, Anthropic, etc.) en un solo panel.",
+    "Auditar el código fuente completo antes de confiar en él con datos sensibles, al ser 100% de código abierto."
   ],
   "limitations": [
     "El rendimiento del chat y la velocidad de respuesta dependen por completo de la potencia de la CPU y GPU de tu ordenador.",
-    "Requiere descargar modelos de gran tamaño (varios gigabytes) para iniciar su uso por primera vez."
+    "Requiere descargar modelos de gran tamaño (varios gigabytes) para iniciar su uso por primera vez.",
+    "Sus filtros de búsqueda de modelos son menos granulares que los de LM Studio, aunque compensa con menor consumo de memoria en segundo plano."
   ],
   "safetyNotes": [
     "Jan es un proyecto transparente de código abierto. Descárgalo únicamente desde su dominio oficial jan.ai o directamente desde su repositorio de lanzamientos en GitHub (github.com/janhq/jan)."

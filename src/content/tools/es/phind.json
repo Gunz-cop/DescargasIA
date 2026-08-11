@@ -4,11 +4,13 @@
   "bestFor": [
     "Desarrolladores que necesitan resolver errores (bugs) o excepciones complejas buscando soluciones en tiempo real.",
     "Aprender a usar nuevas APIs, frameworks o librerías consultando documentación oficial sintetizada.",
-    "Escribir fragmentos de código limpios basados en especificaciones actualizadas, reduciendo el tiempo de búsqueda manual."
+    "Escribir fragmentos de código limpios basados en especificaciones actualizadas, reduciendo el tiempo de búsqueda manual.",
+    "Consultar dudas de programación sin salir del editor gracias a su extensión oficial para VS Code."
   ],
   "limitations": [
     "El número de consultas diarias de alta velocidad con modelos Pro de última generación está restringido en la versión gratuita.",
-    "Puede alucinar sintaxis en lenguajes o tecnologías muy minoritarias o de lanzamiento extremadamente reciente."
+    "Puede alucinar sintaxis en lenguajes o tecnologías muy minoritarias o de lanzamiento extremadamente reciente.",
+    "No tiene aplicación de escritorio oficial: el acceso es exclusivamente web en phind.com (más la extensión de VS Code)."
   ],
   "safetyNotes": [
     "Phind es un servicio en la nube que se ejecuta a través de su sitio oficial www.phind.com. No tiene aplicaciones de escritorio oficiales. Evita descargar instaladores sospechosos de internet."

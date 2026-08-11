@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Suite creativa de IA en la nube para generar y editar imágenes, video y modelos 3D en tiempo real, sin instalación.",
+  "longDescription": "Krea AI es una plataforma web que reúne más de sesenta modelos de generación y edición de imágenes, video y objetos 3D en una sola interfaz, con un enfoque particular en la edición en tiempo real: los cambios de un boceto o un prompt se reflejan casi al instante mientras se sigue ajustando. Funciona íntegramente desde el navegador, sin instalador de escritorio ni app móvil oficial. Esta ficha enlaza únicamente a la web oficial de Krea AI.",
+  "bestFor": [
+    "Generar y editar imágenes o video con distintos modelos de IA desde una sola interfaz web",
+    "Iterar en tiempo real sobre un boceto o una imagen mientras se ajusta el prompt",
+    "Probar varios modelos de imagen (incluyendo Flux) y video sin instalar nada ni configurar hardware propio",
+    "Mejorar o escalar (upscale) imágenes existentes con herramientas de edición avanzada"
+  ],
+  "limitations": [
+    "No tiene aplicación de escritorio ni app móvil oficial confirmada: todo el uso ocurre a través del navegador en krea.ai.",
+    "El plan gratuito ofrece una cantidad limitada de unidades diarias; el uso intensivo, sobre todo con modelos de video, suele requerir un plan pago.",
+    "Al combinar modelos de distintos proveedores dentro de su plataforma, los términos de uso y límites de cada modelo pueden variar; conviene revisar la licencia antes de un uso comercial."
+  ],
+  "safetyNotes": [
+    "Usa exclusivamente krea.ai o www.krea.ai/app para acceder a la plataforma; al no existir apps móviles ni instaladores oficiales, cualquier \"app de Krea AI\" para Android o iOS que encuentres en una tienda no es de la marca.",
+    "Krea AI requiere cuenta para generar contenido; no ingreses tus credenciales en ningún sitio que no sea el dominio oficial krea.ai."
+  ],
+  "editorialSummary": "Krea AI se ganó un lugar entre las herramientas de generación de imágenes y video más comentadas de 2026 gracias a su enfoque en tiempo real y a reunir decenas de modelos en una sola interfaz web. En FuenteAI aclaramos desde el inicio que es una herramienta exclusivamente web, sin instalador ni app móvil oficial, para evitar que alguien busque algo que no existe.",
+  "editorialSections": [
+    {
+      "heading": "Una plataforma, muchos modelos",
+      "body": "En lugar de construir un único modelo propio, Krea AI funciona como una capa que reúne modelos de distintos orígenes —incluyendo Flux para imágenes y varios modelos de video de terceros— dentro de una misma interfaz y un mismo sistema de créditos. Esto le permite ofrecer una variedad de estilos y capacidades sin que el usuario tenga que buscar y aprender cada herramienta por separado.\n\nLa contracara es que, al depender de modelos externos, las capacidades disponibles pueden cambiar con el tiempo según qué modelos integre la plataforma en cada momento, algo que vale la pena tener en cuenta si eliges Krea AI específicamente por un modelo puntual."
+    },
+    {
+      "heading": "Edición en tiempo real, la característica que la distingue",
+      "body": "El diferencial más comentado de Krea AI es su modo de edición en tiempo real: mientras dibujas un boceto simple o modificas un prompt, la imagen generada se actualiza casi instantáneamente, permitiendo iterar de una forma mucho más fluida que el ciclo tradicional de \"escribir prompt, esperar, ajustar, repetir\" de otras herramientas de generación de imágenes.\n\nEsta función resulta especialmente útil para quien viene de herramientas de diseño tradicionales y quiere una transición más natural hacia trabajar con IA generativa, en lugar de depender exclusivamente de describir todo en texto."
+    },
+    {
+      "heading": "Por qué no hay app ni instalador",
+      "body": "Krea AI corre los modelos en sus propios servidores, no en el equipo del usuario, por lo que no hay razón técnica para un instalador de escritorio: todo el procesamiento ocurre en la nube y se accede mediante el navegador. Esto la diferencia de herramientas como Stable Diffusion o ComfyUI, pensadas para correr localmente.\n\nSi buscas \"Krea AI para PC\" o \"Krea AI APK\", no vas a encontrar nada oficial: la única forma de usar la herramienta es desde krea.ai en cualquier navegador actualizado, en computadora o celular."
+    },
+    {
+      "heading": "Cuándo elegirla frente a otras opciones",
+      "body": "Krea AI tiene sentido cuando priorizas la iteración rápida y en tiempo real, o cuando quieres probar varios modelos de imagen y video sin instalar nada ni pagar por separado cada herramienta. Si tu prioridad es un control técnico más profundo con nodos y flujos personalizados, ComfyUI (autoalojado) puede ofrecer más flexibilidad a cambio de más complejidad.\n\nPara generación de imágenes con un estilo artístico muy marcado, Midjourney sigue siendo una referencia distinta; para trabajar con Flux de forma abierta y local, existe la opción de instalarlo directamente sin pasar por la interfaz de Krea AI."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Krea AI tiene aplicación para Android o iOS?",
+      "answer": "No hay una app móvil oficial confirmada. El acceso es exclusivamente a través del navegador en krea.ai."
+    },
+    {
+      "question": "¿Krea AI es gratis?",
+      "answer": "Tiene un plan gratuito con una cantidad limitada de unidades diarias. Los planes pagos amplían el límite y desbloquean funciones como los modelos de video."
+    },
+    {
+      "question": "¿Necesito cuenta para usar Krea AI?",
+      "answer": "Sí, se requiere una cuenta para generar y guardar contenido en la plataforma."
+    },
+    {
+      "question": "¿Qué modelos incluye Krea AI?",
+      "answer": "Combina más de sesenta modelos de imagen, video y 3D de distintos orígenes, incluyendo Flux, dentro de una misma interfaz."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

@@ -36,6 +36,8 @@ El schema del catálogo puede cambiar. **Siempre leé `src/content.config.ts` al
 - **Verificá antes de escribir, no después.** Usá `WebSearch`/`WebFetch` para cada URL de plataforma antes de ponerla en el JSON. Si una marca cambió de nombre recientemente (pasó con Windsurf → Devin Desktop, y con Le Chat → Vibe by Mistral), usá el nombre y dominio vigentes, y mencioná el nombre anterior en el contenido editorial porque la gente todavía lo busca así.
 - **Si algo no tiene instalador real, decilo.** No fuerces una app de escritorio o móvil que no existe. Aclarálo en `limitations`, `editorialSummary`, al menos una sección editorial, el FAQ y `safetyNotes` — es el mismo patrón que ya usa el catálogo para Midjourney o GitHub Copilot.
 - **`alternatives` debe apuntar a slugs que existen de verdad.** Cruzá contra los slugs actuales (`ls src/content/tools-base`) antes de cerrar el lote, no confíes en la memoria de qué existía en una sesión anterior.
+- **`bestFor` nunca va vacío.** Si queda `[]`, el sitio renderiza automáticamente bullets de keywords crudos ("Usuarios que buscan X") — es la señal de contenido basura más visible que puede tener una ficha. Ver `references/editorial-writing.md`.
+- **Todo el contenido en español va en tú neutro, nunca voseo.** "Puedes", no "podés". El catálogo tenía los dos registros mezclados (incluso dentro de la misma ficha) antes de que se detectara esto — no repitas el error, y si ves voseo en una ficha que estás tocando, corregilo de paso. Ver `references/editorial-writing.md`.
 
 ## Flujo resumido (el detalle está en `references/workflow.md`)
 

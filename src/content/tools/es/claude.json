@@ -1,8 +1,17 @@
 {
   "shortDescription": "La inteligencia artificial conversacional de Anthropic enfocada en redacción avanzada, código y razonamiento lógico.",
   "longDescription": "Claude es una IA conversacional desarrollada por Anthropic. Es reconocida internacionalmente por sus capacidades excepcionales en comprensión lectora, redacción de textos creativos y técnicos, y análisis avanzado de código de programación. Cuenta con versión web y aplicaciones de escritorio oficiales.",
-  "bestFor": [],
-  "limitations": [],
+  "bestFor": [
+    "Redactar y editar textos extensos con precisión y coherencia",
+    "Analizar documentos largos, PDFs o contratos sin perder contexto",
+    "Explicar, revisar y generar código a partir de descripciones en lenguaje natural",
+    "Trabajar en sesiones extendidas donde el contexto acumulado importa"
+  ],
+  "limitations": [
+    "La disponibilidad de la app para Android ha variado según región y momento; conviene verificar en Google Play o usar la versión web como alternativa.",
+    "No se integra directamente en un editor de código como Cursor; para programar dentro del IDE, otras herramientas ofrecen una integración más directa.",
+    "El plan gratuito tiene límites de mensajes, aunque no de tiempo de acceso."
+  ],
   "safetyNotes": [
     "Anthropic solo distribuye ejecutables oficiales de escritorio a través de claude.ai/download. No instales archivos procedentes de repositorios alternativos."
   ],
@@ -13,7 +22,7 @@
     },
     {
       "heading": "Cómo acceder a Claude de forma segura",
-      "body": "El acceso más directo es a través de claude.ai desde cualquier navegador moderno. No requiere instalar nada y la cuenta gratuita permite usar el modelo base sin límites de tiempo aunque sí con límites de mensajes. Para escritorio, Anthropic distribuye aplicaciones nativas para Windows y macOS desde claude.ai/download, que es el único dominio oficial donde debés buscar los instaladores.\n\nPara móvil, la situación varía según el sistema: en iPhone e iPad la app oficial está en App Store; en Android la disponibilidad ha sido más limitada y ha cambiado según la región y el momento. Si al momento de leer esto no encontrás la app de Claude en Google Play, la alternativa correcta es usar claude.ai desde el navegador móvil, no descargar un APK de un sitio externo. Anthropic no distribuye APKs fuera de las tiendas oficiales."
+      "body": "El acceso más directo es a través de claude.ai desde cualquier navegador moderno. No requiere instalar nada y la cuenta gratuita permite usar el modelo base sin límites de tiempo aunque sí con límites de mensajes. Para escritorio, Anthropic distribuye aplicaciones nativas para Windows y macOS desde claude.ai/download, que es el único dominio oficial donde debes buscar los instaladores.\n\nPara móvil, la situación varía según el sistema: en iPhone e iPad la app oficial está en App Store; en Android la disponibilidad ha sido más limitada y ha cambiado según la región y el momento. Si al momento de leer esto no encuentras la app de Claude en Google Play, la alternativa correcta es usar claude.ai desde el navegador móvil, no descargar un APK de un sitio externo. Anthropic no distribuye APKs fuera de las tiendas oficiales."
     },
     {
       "heading": "Para qué destaca Claude en el trabajo real",
@@ -25,7 +34,7 @@
     },
     {
       "heading": "Cuándo tiene sentido mirar otras opciones",
-      "body": "Claude es una herramienta fuerte para redacción, análisis y razonamiento, pero hay contextos donde otras opciones pueden encajar mejor. Si tu flujo de trabajo está centrado en programación dentro de un IDE, Cursor ofrece una integración más directa con el entorno de desarrollo. Si necesitás acceso a información en tiempo real o búsqueda web como parte de la respuesta, Gemini o Perplexity pueden ser más convenientes. Si preferís trabajar con modelos completamente locales y sin enviar datos a servidores externos, Ollama o LM Studio son el camino.\n\nLa elección entre Claude y ChatGPT suele depender del tipo de tarea y del estilo de interacción que cada persona prefiere. No hay una respuesta universal. Lo que sí es universal es la recomendación de acceder siempre desde los canales oficiales que se muestran en esta ficha, independientemente de cuál herramienta elijas."
+      "body": "Claude es una herramienta fuerte para redacción, análisis y razonamiento, pero hay contextos donde otras opciones pueden encajar mejor. Si tu flujo de trabajo está centrado en programación dentro de un IDE, Cursor ofrece una integración más directa con el entorno de desarrollo. Si necesitas acceso a información en tiempo real o búsqueda web como parte de la respuesta, Gemini o Perplexity pueden ser más convenientes. Si prefieres trabajar con modelos completamente locales y sin enviar datos a servidores externos, Ollama o LM Studio son el camino.\n\nLa elección entre Claude y ChatGPT suele depender del tipo de tarea y del estilo de interacción que cada persona prefiere. No hay una respuesta universal. Lo que sí es universal es la recomendación de acceder siempre desde los canales oficiales que se muestran en esta ficha, independientemente de cuál herramienta elijas."
     }
   ],
   "faq": [

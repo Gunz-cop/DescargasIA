@@ -4,11 +4,13 @@
   "bestFor": [
     "Profesionales y estudiantes que necesitan estructurar y diseñar diapositivas urgentes sin tener que formatear manualmente.",
     "Crear páginas web o portafolios interactivos en segundos listos para compartir mediante un enlace web.",
-    "Transformar textos largos o resúmenes de reuniones directamente en materiales de presentación visuales organizados."
+    "Transformar textos largos o resúmenes de reuniones directamente en materiales de presentación visuales organizados.",
+    "Compartir presentaciones como páginas web interactivas, con video o formularios embebidos, en lugar de un archivo estático."
   ],
   "limitations": [
     "La versión gratuita utiliza créditos que se consumen por cada generación de diapositiva o edición con IA.",
-    "La exportación de presentaciones en PDF o PowerPoint en el plan gratuito incluye una marca de agua de Gamma."
+    "La exportación de presentaciones en PDF o PowerPoint en el plan gratuito incluye una marca de agua de Gamma.",
+    "No existe aplicación de escritorio oficial para Windows o Mac: el acceso es únicamente vía gamma.app."
   ],
   "safetyNotes": [
     "Gamma App funciona exclusivamente a través de su sitio web oficial gamma.app. No tiene aplicación de escritorio oficial para Windows o Mac. Evita descargar instaladores de fuentes desconocidas."

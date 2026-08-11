@@ -1,0 +1,49 @@
+{
+  "name": "Character.AI",
+  "officialWebsite": "https://character.ai",
+  "categories": [
+    "asistentes-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://character.ai",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=ai.character.app",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/character-ai-chat-talk-text/id1671705818",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "character-ai",
+    "chatbot",
+    "companero-ia",
+    "personajes-ia",
+    "roleplay"
+  ],
+  "alternatives": [
+    "chatgpt",
+    "claude",
+    "gemini"
+  ],
+  "screenshotUrl": null,
+  "initials": "CAI",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": [
+    "https://character.ai",
+    "https://blog.character.ai/character-ai-launches-mobile-app-for-ios-and-android/"
+  ]
+}

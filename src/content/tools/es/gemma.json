@@ -4,11 +4,13 @@
   "bestFor": [
     "Desarrolladores e investigadores que necesitan ejecutar modelos de lenguaje potentes de forma local y privada.",
     "Procesar textos y datos sumamente confidenciales que no pueden enviarse a servidores externos en la nube.",
-    "Aprender a ajustar (fine-tuning) y personalizar modelos de IA de Google para tareas específicas sin costo de APIs."
+    "Aprender a ajustar (fine-tuning) y personalizar modelos de IA de Google para tareas específicas sin costo de APIs.",
+    "Usar tecnología de Gemini en equipos de consumo habitual, sin necesidad de superordenadores ni suscripción."
   ],
   "limitations": [
     "Al ser modelos ligeros (como Gemma 2 2B/9B/27B), no cuentan con la base de conocimiento enciclopédica de Gemini Pro en la nube.",
-    "Requiere gestores de terceros (como Ollama, LM Studio o Llama.cpp) para chatear de forma visual e interactiva."
+    "Requiere gestores de terceros (como Ollama, LM Studio o Llama.cpp) para chatear de forma visual e interactiva.",
+    "No se distribuye como una aplicación ejecutable (.exe o .msi) con interfaz propia lista para usar."
   ],
   "safetyNotes": [
     "Los modelos de Gemma se descargan principalmente mediante gestores locales como Ollama o desde repositorios seguros y oficiales de Google en GitHub y Hugging Face. Evita descargar archivos .exe o instaladores de páginas no oficiales."

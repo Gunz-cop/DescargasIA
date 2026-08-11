@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Plataforma de automatización de flujos de trabajo de código abierto, con lienzo visual y soporte para agentes de IA.",
+  "longDescription": "n8n es una plataforma de automatización de flujos de trabajo que combina un lienzo visual de nodos con la posibilidad de escribir código propio cuando algo no está cubierto por una integración lista. Permite conectar aplicaciones, APIs y modelos de IA para automatizar procesos, y en los últimos años sumó soporte específico para construir agentes de IA con cada paso de razonamiento visible en el flujo. n8n no tiene un instalador de escritorio de un clic: se usa mediante n8n Cloud (versión hospedada) o autoalojado con Docker en tu propia infraestructura.",
+  "bestFor": [
+    "Automatizar flujos de trabajo que conectan varias apps, APIs o modelos de IA sin escribir todo el código a mano",
+    "Construir agentes de IA con lógica visible paso a paso, en lugar de una caja negra",
+    "Autoalojar la automatización en tu propio servidor para mantener control total de los datos",
+    "Reemplazar automatizaciones simples de otras plataformas cuando se necesita más flexibilidad o lógica personalizada"
+  ],
+  "limitations": [
+    "No existe una app de escritorio de instalación directa mantenida oficialmente al momento de esta revisión: el proyecto de app de escritorio publicado por n8n fue archivado, por lo que la vía recomendada es la nube (n8n Cloud) o el autoalojamiento con Docker.",
+    "El autoalojamiento requiere conocimientos básicos de Docker o de administración de servidores; no es la opción más simple para quien nunca desplegó una aplicación por su cuenta.",
+    "Los planes de n8n Cloud se cobran según la cantidad de ejecuciones mensuales, por lo que automatizaciones de alto volumen pueden requerir un plan superior o directamente autoalojar la herramienta."
+  ],
+  "safetyNotes": [
+    "Instala n8n únicamente desde la imagen oficial de Docker documentada en docs.n8n.io o el repositorio verificado n8n-io/n8n en GitHub, no desde scripts de terceros no verificados.",
+    "Si autoalojas n8n y lo expones a internet, configura autenticación y actualizaciones de seguridad: una instancia sin protección puede quedar accesible para cualquiera, igual que con cualquier herramienta autoalojada con acceso a tus credenciales de otras apps."
+  ],
+  "editorialSummary": "n8n se volvió una referencia entre las herramientas de automatización con IA gracias a su combinación de lienzo visual, flexibilidad de código y soporte específico para agentes. No es una app tradicional: se usa vía n8n Cloud o autoalojada con Docker, algo que conviene tener claro antes de buscar un \"instalador\" que no existe.",
+  "editorialSections": [
+    {
+      "heading": "Por qué n8n no es una app que se \"descarga e instala\"",
+      "body": "A diferencia de un chatbot o un editor de imágenes, n8n es una plataforma de automatización que se ejecuta como un servicio: ya sea en la nube gestionada por n8n (n8n Cloud) o en tu propio servidor mediante Docker. n8n publicó en algún momento una app de escritorio experimental, pero ese repositorio está archivado y ya no se mantiene, así que no es una vía confiable en 2026.\n\nEsto significa que quien busca \"descargar n8n para Windows\" probablemente necesite reformular la pregunta: la opción real es correr el contenedor de Docker en la computadora (que sí funciona en Windows, Mac y Linux) o usar la versión en la nube sin instalar nada."
+    },
+    {
+      "heading": "n8n Cloud vs. autoalojado: qué elegir",
+      "body": "n8n Cloud es la vía más rápida: te registras, obtienes un entorno funcionando en minutos y no tienes que administrar servidores. A cambio, pagas según el volumen de ejecuciones mensuales, con planes que escalan desde un uso moderado hasta necesidades empresariales con soporte y controles adicionales.\n\nAutoalojar n8n con Docker es gratuito y te da control total sobre los datos y ejecuciones ilimitadas, pero exige tener (o levantar) un servidor propio, actualizarlo y mantenerlo seguro. Es la opción más elegida por equipos técnicos que ya administran su propia infraestructura."
+    },
+    {
+      "heading": "Agentes de IA dentro del flujo",
+      "body": "Una de las razones por las que n8n ganó tracción en 2026 es su soporte para construir agentes de IA directamente en el lienzo: puedes conectar un modelo de lenguaje, darle herramientas (buscar en la web, consultar una base de datos, llamar a una API) y ver cada decisión del agente representada como un paso visible en el flujo, en lugar de una caja negra.\n\nEsto lo diferencia de plataformas de agentes cerradas: la lógica queda documentada visualmente y es más fácil de auditar o modificar, algo valioso para quien necesita entender exactamente qué está haciendo un agente automatizado antes de darle acceso a sistemas reales."
+    },
+    {
+      "heading": "Para quién tiene sentido n8n",
+      "body": "n8n tiene sentido para equipos técnicos o personas con algo de experiencia en Docker que necesitan automatizar procesos con más flexibilidad de la que ofrecen plataformas de automatización más cerradas. Si nunca desplegaste una aplicación con Docker ni administraste un servidor, la curva inicial puede sentirse más alta que la de una herramienta con instalador tradicional.\n\nPara quien busca algo más simple sin necesidad de infraestructura propia, n8n Cloud reduce buena parte de esa fricción a cambio de una suscripción, manteniendo el mismo lienzo visual y las mismas integraciones que la versión autoalojada."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿n8n tiene una app de escritorio oficial para Windows o Mac?",
+      "answer": "No hay una app de escritorio mantenida activamente al momento de esta revisión; el proyecto anterior fue archivado. La vía recomendada es n8n Cloud o autoalojarlo con Docker."
+    },
+    {
+      "question": "¿n8n es gratis?",
+      "answer": "La versión autoalojada es gratuita y de código abierto, con ejecuciones ilimitadas. n8n Cloud es un servicio de pago que se cobra según el volumen mensual de ejecuciones, con una prueba gratuita disponible."
+    },
+    {
+      "question": "¿Necesito saber programar para usar n8n?",
+      "answer": "No es obligatorio: el lienzo visual permite armar automatizaciones sin código, aunque poder escribir funciones propias amplía mucho lo que se puede hacer."
+    },
+    {
+      "question": "¿Es seguro autoalojar n8n?",
+      "answer": "Sí, siempre que sigas las instrucciones oficiales de instalación con Docker y configures autenticación adecuada si expones la instancia a internet."
+    }
+  ],
+  "spanishSupport": "yes"
+}

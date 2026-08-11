@@ -4,11 +4,13 @@
   "bestFor": [
     "Traducir documentos completos (.pdf, .docx, .pptx) manteniendo la maquetación y tipografías originales.",
     "Traductores, redactores y profesionales que requieren un vocabulario técnico preciso y un tono formal.",
-    "Escribir correos y mensajes rápidos en otros idiomas integrando atajos de teclado en el escritorio."
+    "Escribir correos y mensajes rápidos en otros idiomas integrando atajos de teclado en el escritorio.",
+    "Traducir con matices de tono y contexto que un traductor literal palabra por palabra no logra captar."
   ],
   "limitations": [
     "La versión gratuita limita el tamaño y cantidad de documentos traducidos al mes.",
-    "El glosario personalizado está limitado a un número reducido de términos en la versión sin costo."
+    "El glosario personalizado está limitado a un número reducido de términos en la versión sin costo.",
+    "En el plan gratuito, los textos pueden usarse para entrenar el modelo; para datos confidenciales conviene DeepL Pro, que garantiza por contrato el borrado inmediato tras traducir."
   ],
   "safetyNotes": [
     "Descarga las aplicaciones oficiales de DeepL exclusivamente desde deepl.com. Ten cuidado con páginas piratas que ofrecen versiones 'Pro desbloqueadas' que contienen virus."

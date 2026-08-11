@@ -1,0 +1,38 @@
+{
+  "name": "Krea AI",
+  "officialWebsite": "https://www.krea.ai",
+  "categories": [
+    "generacion-imagenes",
+    "video-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://www.krea.ai/app",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-11"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "krea",
+    "generacion-imagenes",
+    "video-ia",
+    "edicion-de-imagenes",
+    "tiempo-real"
+  ],
+  "alternatives": [
+    "midjourney",
+    "stable-diffusion",
+    "flux",
+    "runway"
+  ],
+  "screenshotUrl": null,
+  "initials": "KRE",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": [
+    "https://www.krea.ai"
+  ]
+}

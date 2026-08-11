@@ -4,11 +4,13 @@
   "bestFor": [
     "Creadores de contenido y editores que necesitan música de fondo original libre de regalías (copyright).",
     "Componer canciones personalizadas y divertidas con letras y ritmos específicos para eventos o regalos.",
-    "Producir maquetas musicales rápidas en géneros como pop, rock, rap o música electrónica."
+    "Producir maquetas musicales rápidas en géneros como pop, rock, rap o música electrónica.",
+    "Elegir entre generación automática (modo estándar) o letra y estructura propias (modo personalizado)."
   ],
   "limitations": [
     "La versión gratuita no permite monetizar comercialmente las canciones generadas.",
-    "El plan gratuito limita la generación diaria a un número fijo de créditos no acumulables."
+    "El plan gratuito limita la generación diaria a un número fijo de créditos no acumulables.",
+    "No existe aplicación oficial de escritorio ni móvil: el único canal seguro es suno.com desde el navegador."
   ],
   "safetyNotes": [
     "Suno AI funciona de manera oficial y exclusiva de forma web mediante suno.com. No existen aplicaciones nativas de escritorio. Ten cuidado con las apps no oficiales de las tiendas móviles."

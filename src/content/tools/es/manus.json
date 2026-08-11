@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Agente de IA autónomo que planifica, investiga, programa y entrega resultados terminados desde web, escritorio o móvil.",
+  "longDescription": "Manus es un agente de inteligencia artificial desarrollado por Butterfly Effect, orientado a ejecutar tareas completas de forma autónoma en lugar de solo responder preguntas: puede investigar un tema, escribir y ejecutar código, generar un sitio web funcional, armar una presentación o automatizar un flujo de trabajo, usando su propio entorno de \"computadora virtual\" para hacerlo. Meta anunció la adquisición de Manus a fines de 2025. Esta ficha enlaza a la web oficial, la app de escritorio para Windows y Mac, y las apps móviles publicadas por el desarrollador.",
+  "bestFor": [
+    "Delegar tareas completas de investigación, redacción o desarrollo que requieren varios pasos encadenados",
+    "Generar sitios web, presentaciones o prototipos funcionales a partir de una instrucción en lenguaje natural",
+    "Automatizar flujos de trabajo repetitivos sin programar cada paso manualmente",
+    "Usar la app de escritorio para que el agente interactúe directamente con archivos locales y comandos del equipo"
+  ],
+  "limitations": [
+    "Al ejecutar tareas de forma autónoma (incluyendo comandos y archivos locales en la app de escritorio), conviene revisar los resultados antes de darlos por definitivos, sobre todo en tareas con consecuencias reales.",
+    "Las tareas más complejas o de mayor duración consumen créditos según el plan contratado; el uso intensivo probablemente requiera una suscripción de pago.",
+    "Es una herramienta relativamente nueva y en evolución rápida tras la adquisición por Meta, por lo que sus funciones y límites pueden cambiar con frecuencia."
+  ],
+  "safetyNotes": [
+    "Descarga la app de escritorio únicamente desde manus.im/desktop; al darle acceso a archivos y comandos de tu equipo, un instalador falso representa un riesgo mayor que con una app puramente web.",
+    "En Android e iOS, usa solo las fichas oficiales publicadas por el desarrollador de Manus en Google Play y App Store, no clones que reutilicen el nombre."
+  ],
+  "editorialSummary": "Manus se posicionó como uno de los agentes de IA más comentados de 2026: no es un chatbot que solo conversa, sino un sistema que ejecuta tareas completas por su cuenta, desde investigar y programar hasta construir un sitio web o automatizar un proceso. En FuenteAI enlazamos su web, la app de escritorio y las apps móviles oficiales, con la advertencia de que un agente con acceso a tu computadora exige más cuidado al elegir el canal de descarga.",
+  "editorialSections": [
+    {
+      "heading": "Un agente, no solo un chat",
+      "body": "La diferencia central entre Manus y un asistente conversacional tradicional es que Manus está pensado para completar tareas de principio a fin, no solo para responder. Con una instrucción en lenguaje natural, puede planificar los pasos necesarios, investigar información, escribir y ejecutar código, y entregar un resultado terminado, como un sitio web funcional o un documento con datos verificados dentro de la propia herramienta.\n\nEsa autonomía es también lo que genera más dudas al usarlo por primera vez: cuánto control tiene el agente, qué puede hacer sin supervisión y qué conviene revisar antes de aceptar un resultado. Manus expone el proceso paso a paso mientras trabaja, lo que ayuda a seguir qué está haciendo en cada momento."
+    },
+    {
+      "heading": "La app de escritorio: más capacidad, más responsabilidad",
+      "body": "Además de la versión web, Manus lanzó una aplicación de escritorio para Windows y macOS que le permite operar directamente sobre el equipo del usuario: gestionar archivos locales, ejecutar comandos y automatizar flujos de trabajo sin depender solo de un entorno en la nube. Esa capacidad adicional es justamente lo que la hace más potente que la versión web, pero también lo que exige más cuidado al instalarla.\n\nPor esa razón, el canal de descarga importa más de lo habitual: un instalador de escritorio falso que se haga pasar por Manus no solo roba una cuenta, potencialmente puede operar sobre archivos reales del equipo. El único canal confiable es manus.im/desktop."
+    },
+    {
+      "heading": "Web, escritorio y móvil: qué usar según el caso",
+      "body": "Para probar Manus rápido o usarlo desde cualquier dispositivo sin instalar nada, la versión web en manus.im es el punto de partida más simple. Para tareas que requieren interactuar con archivos y programas del propio equipo, la app de escritorio agrega esa capacidad. Las apps de Android e iOS están pensadas para seguir el progreso de tareas y usar el agente desde el celular, aunque con menos capacidad de interacción con el sistema que la versión de escritorio.\n\nEn cualquiera de los tres casos, el acceso pasa por una cuenta de Manus, y el modelo de precios combina un nivel gratuito con planes pagos según el volumen de tareas y créditos consumidos."
+    },
+    {
+      "heading": "Cuándo tiene sentido y cuándo mirar alternativas",
+      "body": "Manus tiene sentido cuando la tarea es lo suficientemente compleja como para beneficiarse de un agente que planifique varios pasos en lugar de responder una sola pregunta: investigación con múltiples fuentes, construcción de un prototipo, automatización de un proceso repetitivo. Para conversaciones puntuales o tareas simples, un asistente conversacional tradicional suele ser más rápido y directo.\n\nSi el foco es específicamente programar dentro de un editor de código, Devin Desktop o Cursor están más orientados a ese flujo. Si el objetivo es un entorno de desarrollo completo en la nube, Replit es otra alternativa a considerar según el tipo de proyecto."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Manus tiene aplicación oficial de escritorio?",
+      "answer": "Sí, para Windows y macOS, descargable exclusivamente desde manus.im/desktop."
+    },
+    {
+      "question": "¿Es seguro que Manus acceda a archivos de mi computadora?",
+      "answer": "La app de escritorio está diseñada para eso, pero conviene instalarla solo desde el canal oficial y revisar los resultados de tareas que modifiquen archivos o ejecuten comandos antes de confiar en ellos ciegamente."
+    },
+    {
+      "question": "¿Manus es gratis?",
+      "answer": "Tiene un nivel de uso gratuito con créditos limitados; las tareas más largas o frecuentes suelen requerir un plan de pago."
+    },
+    {
+      "question": "¿Manus tiene app para Android e iOS?",
+      "answer": "Sí, ambas están disponibles en las tiendas oficiales, publicadas por el desarrollador de Manus."
+    }
+  ],
+  "spanishSupport": "partial"
+}

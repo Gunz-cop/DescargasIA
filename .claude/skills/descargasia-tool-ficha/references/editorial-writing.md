@@ -11,6 +11,12 @@ Tono:
 - honesto sobre la incertidumbre (si algo no existe, decilo; si algo cambió de nombre, explicalo);
 - específico de esa herramienta — nunca un párrafo que podría pegarse tal cual en otra ficha.
 
+## Registro: tú neutro, siempre
+
+Todo el contenido de usuario (`shortDescription`, `longDescription`, `bestFor`, `limitations`, `safetyNotes`, `editorialSummary`, `editorialSections`, `faq`) va en **tú neutro** — "puedes descargarlo", "necesitas cuenta", "si quieres compararlo con...". Nunca voseo ("podés", "tenés", "necesitás").
+
+Esto no es una preferencia estética: se decidió así después de encontrar que el catálogo tenía los dos registros mezclados, a veces dentro del mismo archivo (`chatgpt.json`, la ficha más madura del sitio, usaba "puedes" y "sos" en el mismo párrafo). Un sitio que vende confianza y verificación no puede sonar como una traducción automática. Antes de dar una ficha por terminada, releé el texto buscando "podés/tenés/necesitás/querés/usás/sos" y cambialo a la forma con tú — no importa si la ficha de ejemplo que estás mirando como referencia todavía tiene el registro viejo, no la imites en eso.
+
 ## Estructura
 
 Cada ficha debería responder, en algún punto del contenido:
@@ -77,6 +83,12 @@ No lo escondas ni lo minimices. Aclarálo en:
 - `safetyNotes` (si el vacío de plataforma genera riesgo de apps falsas — suele pasar).
 
 Ejemplos reales de la primera tanda de fichas: Ideogram no tiene app oficial de Android (solo iOS + web); Udio no tiene apps móviles oficiales y en un momento pausó las descargas de audio; Open WebUI no es "instalable con un clic", requiere Docker o Python.
+
+## `bestFor` nunca puede quedar vacío
+
+Este es un caso donde un campo vacío no es "neutral", es activamente dañino. En `src/pages/[lang]/[slug].astro` hay un fallback: si `tool.bestFor` está vacío, el template genera automáticamente bullets del tipo "Usuarios que buscan lm studio · Usuarios que buscan local · Usuarios que buscan offline" a partir de los `tags`. Son keywords crudos renderizados como si fueran casos de uso, y es la señal más visible de contenido auto-generado que puede tener una ficha — exactamente lo que este catálogo existe para evitar.
+
+Escribí siempre los 4 `bestFor` con casos de uso reales y específicos de la herramienta (ver `references/schema-contract.md`). Si en algún momento estás editando una ficha existente y notás que `bestFor` está vacío (le pasa a algunas fichas anteriores a esta skill: `claude`, `cursor`, `lm-studio`, `ollama` al momento de escribir esto), completalo aunque no sea el pedido original — es una corrección de bajo riesgo y alto impacto.
 
 ## Herramientas técnicas / self-hosted (Docker, CLI, pip)
 
