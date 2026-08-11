@@ -1,0 +1,50 @@
+{
+  "skill_name": "descargasia-tool-ficha",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "musica-ia-discovery",
+      "prompt": "Investigá tendencias y creá 3 fichas nuevas de herramientas de generación de música con IA para el catálogo, en español.",
+      "expected_output": "3 pares nuevos de archivos (src/content/tools-base/<slug>.json + src/content/tools/es/<slug>.json) para herramientas reales de música con IA, con canales oficiales verificados (no inventados), categorizadas correctamente, con alternatives válidas y contenido editorial único por herramienta.",
+      "files": [],
+      "expectations": [
+        "Se crearon exactamente 3 pares de archivos nuevos (mismo slug) en src/content/tools-base/ y src/content/tools/es/.",
+        "Cada tools-base/<slug>.json tiene 'musica-ia' en su array categories.",
+        "Cada officialWebsite es una URL http(s) del dominio real de la marca, no un portal de descargas de terceros (softonic, uptodown, apkpure, apkmirror, etc.).",
+        "Ningún alternatives apunta a un slug que no existe en el directorio final de tools-base.",
+        "Cada ficha editorial en tools/es tiene al menos 3 editorialSections y al menos 4 preguntas en faq, con texto distinto entre las 3 fichas (no plantilla repetida).",
+        "El agente documentó (o intentó) una verificación de integridad de slugs/alternatives antes de terminar.",
+        "El contenido editorial no parece copiado o parafraseado muy de cerca de una model card de Hugging Face u otra fuente externa."
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "perplexity-comet-add",
+      "prompt": "Agregá al catálogo la ficha de Perplexity Comet (su navegador con IA), verificando bien sus canales oficiales.",
+      "expected_output": "Un par nuevo de archivos (tools-base + tools/es) para Perplexity Comet, con officialWebsite en un dominio de Perplexity, sin IDs de tienda inventados, categorizada con una categoría existente del catálogo.",
+      "files": [],
+      "expectations": [
+        "Se creó un par de archivos (mismo slug) en src/content/tools-base/ y src/content/tools/es/ para Perplexity Comet.",
+        "officialWebsite apunta a un dominio de Perplexity (perplexity.ai o subdominio), no a un agregador de terceros.",
+        "Si el agente no pudo confirmar con evidencia un ID exacto de App Store o paquete de Google Play, omitió esa plataforma o usó una URL de página oficial de descargas en su lugar, en vez de inventar un ID.",
+        "categories usa una categoría que ya existe en src/content/categories/, no crea una categoría nueva sin que se le pida.",
+        "Cualquier alternatives declarado apunta a un slug válido.",
+        "El contenido editorial explica qué es Comet sin afirmar cosas no verificables (precios inventados, claims de seguridad no confirmados, disponibilidad de plataforma no confirmada)."
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "ollama-swedish-localization",
+      "prompt": "Quiero la ficha de Ollama traducida al sueco para el catálogo.",
+      "expected_output": "Un nuevo archivo src/content/tools/sv/ollama.json con contenido editorial en sueco, sin duplicar ni modificar src/content/tools-base/ollama.json (que ya existe y es compartido entre idiomas).",
+      "files": [],
+      "expectations": [
+        "src/content/tools-base/ollama.json no fue modificado ni duplicado (mismo contenido que antes de la tarea).",
+        "Se creó src/content/tools/sv/ollama.json (no un slug nuevo tipo 'ollama-sv' ni un archivo en otra carpeta).",
+        "El contenido de tools/sv/ollama.json está redactado en sueco (no es español sin traducir, ni una traducción palabra-por-palabra obviamente mecánica).",
+        "shortDescription, editorialSections y faq están presentes y en sueco en el archivo nuevo.",
+        "El agente no creó un tools-base/ollama.json duplicado en ninguna otra ubicación ni cambió el slug de la herramienta."
+      ]
+    }
+  ]
+}

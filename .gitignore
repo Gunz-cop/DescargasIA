@@ -22,3 +22,6 @@ pnpm-debug.log*
 # OS files
 .DS_Store
 Thumbs.db
+
+# Salidas descartables de corridas de eval de skills (transcripts, grading, benchmarks)
+.claude/skills/*-workspace/
