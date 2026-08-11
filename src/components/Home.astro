@@ -2,6 +2,7 @@
 // src/components/Home.astro — §6, home por necesidad (dirección 1a)
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Directory from './Directory.astro';
+import AdSlot from './AdSlot.astro';
 import { getTranslatedTools } from '../utils/tools';
 import { getDomain, type Lang } from '../utils/brand';
 import { useTranslations, languages } from '../i18n/ui';
@@ -110,6 +111,8 @@ const eyebrow = lang === 'sv'
       <span class="whitespace-nowrap">0 {t('home.stat.hosted')}</span>
     </p>
   </section>
+
+  <AdSlot slotId="ad-home-top" format="bar" network="native-banner" eager class="mx-auto mt-8 max-w-[640px]" />
 
   <Directory lang={lang} tools={sortedTools} />
 </BaseLayout>

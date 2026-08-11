@@ -4,6 +4,7 @@
 // viewport, alternativas inmediatamente después, y sólo entonces el detalle.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ToolCard from '../../components/ToolCard.astro';
+import AdSlot from '../../components/AdSlot.astro';
 import { getTranslatedTools, getTranslatedTool } from '../../utils/tools';
 import { useTranslations, languages } from '../../i18n/ui';
 import {
@@ -104,8 +105,8 @@ const platforms = PLATFORM_ORDER
 
 const primaryPlatform = platforms.find((item) => item.id === 'web') ?? platforms[0];
 const primaryCta = primaryPlatform
-  ? `/r/?t=${tool.slug}&p=${primaryPlatform.id}&l=${lang}`
-  : `/r/?t=${tool.slug}&l=${lang}`;
+  ? `/r?t=${tool.slug}&p=${primaryPlatform.id}&l=${lang}`
+  : `/r?t=${tool.slug}&l=${lang}`;
 
 const officialDomain = getDomain(tool.officialWebsite);
 const initials = getInitials(tool.name, tool.initials);
@@ -115,11 +116,20 @@ const categoryLabel = getCategoryLabel(primaryCategorySlug, lang);
 const reviewDateLong = formatDate(tool.lastReviewed, lang, true);
 
 // El repositorio oficial se deriva del catálogo, no se declara aparte.
-const repoEntry = Object.values(tool.platforms).find(
-  (details: any) => details && details.type === 'github-repo'
-) as any;
+const repoPlatformEntry = Object.entries(tool.platforms).find(
+  ([, details]: [string, any]) => details && details.type === 'github-repo'
+) as [string, any] | undefined;
 const repoUrl: string | undefined =
-  repoEntry?.url ?? tool.officialSources.find((source: string) => /github\.com/i.test(source));
+  repoPlatformEntry?.[1]?.url ?? tool.officialSources.find((source: string) => /github\.com/i.test(source));
+// Igual que cualquier otro botón de descarga: pasa por /r (verificación +
+// linkzip.uk) en vez de saltar directo a GitHub. Solo es posible cuando el
+// repo está declarado como plataforma (tiene una key de PLATFORM_ORDER); si
+// viene de officialSources como respaldo, no hay `p` con el que enrutarlo.
+const repoKey = repoPlatformEntry?.[0];
+const repoCta = repoKey ? `/r?t=${tool.slug}&p=${repoKey}&l=${lang}` : repoUrl;
+// Si el repo es la misma plataforma que ya ofrece el CTA principal, no
+// dupliques el botón.
+const showRepoLink = Boolean(repoUrl) && repoKey !== primaryPlatform?.id;
 
 // §6 Alternatives — 6 como máximo, en 3 columnas, con fuente oficial.
 // Se completan con herramientas verificadas de la misma categoría si la ficha
@@ -276,14 +286,14 @@ const metaChips = [
         </a>
       </div>
 
-      {repoUrl && (
+      {showRepoLink && (
         <a
-          href={repoUrl}
+          href={repoCta}
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-2.5 flex items-center justify-between gap-3 rounded-[10px] border border-fai-line bg-[#04120e]/40 p-3 transition-colors hover:border-[rgba(15,191,143,.5)]"
+          class="mt-2.5 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-[10px] border border-fai-line bg-[#04120e]/40 p-3 transition-colors hover:border-[rgba(15,191,143,.5)]"
         >
-          <span class="fai-domain min-w-0 truncate">{getDomain(repoUrl)}{new URL(repoUrl).pathname}</span>
+          <span class="fai-domain min-w-0 truncate">{getDomain(repoUrl!)}{new URL(repoUrl!).pathname}</span>
           <span class="fai-mono-sm shrink-0 text-fai-muted-2">{t('official.repo')} ↗</span>
         </a>
       )}
@@ -295,6 +305,10 @@ const metaChips = [
       </p>
     </aside>
   </header>
+
+  <!-- Above the fold en móvil: misma garantía de exposición que el CTA de cabecera,
+       en vez de depender de que el usuario baje hasta la lista de plataformas. -->
+  <AdSlot slotId={`ad-tool-top-${tool.slug}`} format="bar" network="native-banner" eager class="mt-8" />
 
   <!-- §6 Alternatives — inmediatamente después del encabezado -->
   {alternatives.length > 0 && (
@@ -335,7 +349,7 @@ const metaChips = [
                 </p>
               </div>
               <a
-                href={`/r/?t=${tool.slug}&p=${id}&l=${lang}`}
+                href={`/r?t=${tool.slug}&p=${id}&l=${lang}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-[8px] border border-[rgba(15,191,143,.4)] px-4 text-[13px] font-medium text-fai-signal transition-colors hover:bg-[rgba(15,191,143,.12)]"
@@ -347,6 +361,8 @@ const metaChips = [
           ))}
         </ul>
       </section>
+
+      <AdSlot slotId={`ad-tool-native-${tool.slug}`} format="native" network="banner-320x50" />
 
       <section aria-labelledby="mejor-para-title">
         <h2 id="mejor-para-title" class="fai-section-title border-b border-fai-line pb-4 text-fai-ink">
@@ -381,15 +397,20 @@ const metaChips = [
               : `Guía completa para usar ${tool.name} sin caer en descargas falsas`}
           </h2>
           <div class="mt-6 flex flex-col gap-9">
-            {tool.editorialSections.map((section: { heading: string; body: string }) => (
-              <section aria-labelledby={`${tool.slug}-${slugify(section.heading)}`}>
-                <h3 id={`${tool.slug}-${slugify(section.heading)}`} class="text-[19px] font-bold tracking-[-0.02em] text-fai-ink">
-                  {section.heading}
-                </h3>
-                <div class="mt-3 flex max-w-[68ch] flex-col gap-3 text-[15px] leading-[1.6] text-fai-muted">
-                  {section.body.split('\n\n').map((paragraph: string) => <p>{paragraph}</p>)}
-                </div>
-              </section>
+            {tool.editorialSections.map((section: { heading: string; body: string }, index: number) => (
+              <>
+                <section aria-labelledby={`${tool.slug}-${slugify(section.heading)}`}>
+                  <h3 id={`${tool.slug}-${slugify(section.heading)}`} class="text-[19px] font-bold tracking-[-0.02em] text-fai-ink">
+                    {section.heading}
+                  </h3>
+                  <div class="mt-3 flex max-w-[68ch] flex-col gap-3 text-[15px] leading-[1.6] text-fai-muted">
+                    {section.body.split('\n\n').map((paragraph: string) => <p>{paragraph}</p>)}
+                  </div>
+                </section>
+                {index === Math.ceil(tool.editorialSections.length / 2) - 1 && (
+                  <AdSlot slotId={`ad-tool-mid-${tool.slug}`} format="banner-300x250" network="banner-300x250" class="mx-auto" />
+                )}
+              </>
             ))}
           </div>
         </section>
