@@ -15,7 +15,7 @@
 //   banda ni bloquean el hilo principal durante la carga inicial.
 interface Props {
   /** Determina alto/ancho reservado. */
-  format?: 'native' | 'banner-300x250' | 'bar';
+  format?: 'native' | 'banner-300x250' | 'bar' | 'card';
   /** Qué creativo de Adsterra cargar en este hueco. Omitir = placeholder. */
   network?: 'native-banner' | 'banner-300x250' | 'banner-320x50';
   /** Identificador estable del contenedor visual (no del script de Adsterra). */
@@ -36,7 +36,13 @@ const { format = 'native', network, slotId, eager = false, class: className = ''
 const dims: Record<string, string> = {
   native: 'h-[66px] overflow-hidden',
   'banner-300x250': 'h-[266px] sm:max-w-[316px] sm:mx-auto overflow-hidden',
-  bar: 'h-[70px] overflow-hidden'
+  bar: 'h-[70px] overflow-hidden',
+  // Para el Magic Banner (grid de bloques cuadrados, configurado 1 fila x 2
+  // que en móvil cae a 1 columna de 2). No conocemos su alto exacto de
+  // antemano, así que se reserva generoso pero con un tope duro: si algún
+  // día sirve un creativo más alto de lo esperado, se recorta en vez de
+  // volver a romper el layout de la página.
+  card: 'max-h-[440px] overflow-hidden'
 };
 
 // Native Banner — una sola instancia por carga de página (recomendación de Adsterra).

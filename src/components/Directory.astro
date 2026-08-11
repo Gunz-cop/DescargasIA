@@ -3,6 +3,7 @@
 // §6 SearchBar + NeedChips + CountHeadline + ResultGrid.
 // Todos los conteos se derivan del catálogo; ninguno está escrito a mano.
 import ToolCard from './ToolCard.astro';
+import AdSlot from './AdSlot.astro';
 import { CATEGORIES, PLATFORM_ORDER, type Lang } from '../utils/brand';
 import { useTranslations } from '../i18n/ui';
 
@@ -82,6 +83,10 @@ const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necess
       </svg>
     </button>
   </div>
+
+  <!-- El buscador va primero; la publicidad no debe ser lo primero que la
+       persona vea al entrar. -->
+  <AdSlot slotId="ad-home-top" format="bar" network="banner-320x50" eager class="mx-auto mt-6 max-w-[720px]" />
 
   <!-- §6 NeedChips -->
   <div class="mt-7 flex flex-wrap justify-center gap-2.5" id="need-chips" role="group" aria-label={t('filters.category')}>

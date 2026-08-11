@@ -73,10 +73,19 @@ const toolsDb = baseTools.reduce((acc, tool) => {
           Destino:
         </p>
 
-        <AdSlot slotId="ad-redirect-native" format="native" network="banner-320x50" eager class="mt-4" />
+        <!-- Arriba del anuncio y bien visible: que quede claro que la persona
+             va a llegar a su destino sí o sí, para que no sienta que la
+             desviamos a una pantalla de publicidad y abandone el sitio. -->
+        <p id="redirect-countdown-line" class="mt-4 flex items-center justify-center gap-2 text-[15px] text-brand-text">
+          <span id="redirect-countdown-text">Redirigiendo en</span>
+          <span id="redirect-countdown" class="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-brand-primary px-2 text-[15px] font-bold text-brand-on-primary">{REDIRECT_DELAY_SECONDS}</span>
+          <span aria-hidden="true">s</span>
+        </p>
+
+        <AdSlot slotId="ad-redirect-native" format="card" network="native-banner" eager class="mt-4" />
 
         <p id="redirect-fallback" class="mt-3 text-[12px] leading-5 text-brand-text-subtle">
-          Si la redirección no se completa automáticamente en unos segundos, usa el botón. (<span id="redirect-countdown">{REDIRECT_DELAY_SECONDS}</span>s)
+          Si la redirección no se completa automáticamente, usa el botón.
         </p>
         <a
           href=""
@@ -119,7 +128,8 @@ const toolsDb = baseTools.reduce((acc, tool) => {
             heading: "Redirección segura en curso",
             connecting: "Te estamos conectando de forma transparente con la web oficial de ",
             destination: "Destino verificado:",
-            fallback: "Si la redirección no se completa automáticamente en unos segundos, haz clic en el botón inferior.",
+            countdown: "Redirigiendo en",
+            fallback: "Si la redirección no se completa automáticamente, haz clic en el botón inferior.",
             btn: "Continuar a",
             errorTitle: "Enlace no verificado",
             errorDesc: "La combinación de herramienta y plataforma solicitada no existe o no es un canal oficial verificado.",
@@ -130,7 +140,8 @@ const toolsDb = baseTools.reduce((acc, tool) => {
             heading: "Säker omdirigering pågår",
             connecting: "Vi ansluter dig nu till den officiella webbplatsen för ",
             destination: "Verifierad destination:",
-            fallback: "Klicka på knappen nedan om du inte omdirigeras automatiskt inom några sekunder.",
+            countdown: "Omdirigerar om",
+            fallback: "Klicka på knappen nedan om du inte omdirigeras automatiskt.",
             btn: "Fortsätt till",
             errorTitle: "Länk ej verifierad",
             errorDesc: "Den begärda kombinationen av verktyg och plattform finns inte eller är inte en verifierad officiell kanal.",
@@ -141,7 +152,8 @@ const toolsDb = baseTools.reduce((acc, tool) => {
             heading: "Reindirizzamento sicuro in corso",
             connecting: "Ti stiamo connettendo in modo trasparente con il sito ufficiale di ",
             destination: "Destinazione verificata:",
-            fallback: "Se il reindirizzamento non avviene automaticamente entro pochi secondi, fai clic sul pulsante in basso.",
+            countdown: "Reindirizzamento tra",
+            fallback: "Se il reindirizzamento non avviene automaticamente, fai clic sul pulsante in basso.",
             btn: "Continua su",
             errorTitle: "Link non verificato",
             errorDesc: "La combinazione di strumento e piattaforma richiesta non esiste o non è un canale ufficiale verificato.",
@@ -159,6 +171,8 @@ const toolsDb = baseTools.reduce((acc, tool) => {
         const heading = document.getElementById('redirect-heading');
         const connecting = document.getElementById('redirect-connecting');
         const destination = document.getElementById('redirect-destination');
+        const countdownText = document.getElementById('redirect-countdown-text');
+        const countdownEl = document.getElementById('redirect-countdown');
         const fallback = document.getElementById('redirect-fallback');
         const btn = document.getElementById('redirect-btn');
 
@@ -198,7 +212,8 @@ const toolsDb = baseTools.reduce((acc, tool) => {
           }
           
           destination.textContent = `${t.destination} ${hostname}`;
-          fallback.innerHTML = `${t.fallback} (<span id="redirect-countdown">${REDIRECT_DELAY_SECONDS}</span>s)`;
+          countdownText.textContent = t.countdown;
+          fallback.textContent = t.fallback;
           btn.textContent = `${t.btn} ${hostname}`;
           btn.href = targetUrl;
 
@@ -208,13 +223,13 @@ const toolsDb = baseTools.reduce((acc, tool) => {
 
           // Auto redirect: se mantiene la pantalla el tiempo suficiente para
           // registrar una impresión publicitaria válida antes de continuar.
-          // fallback.innerHTML reemplazó el nodo #redirect-countdown, así que
-          // se vuelve a buscar aquí en vez de reusar la referencia anterior.
+          // El contador va arriba del anuncio, bien visible, para que quede
+          // claro desde el primer momento que esto es una redirección con
+          // tiempo fijo y no una pantalla de publicidad disfrazada.
           let remaining = REDIRECT_DELAY_SECONDS;
           const tick = setInterval(() => {
             remaining -= 1;
-            const el = document.getElementById('redirect-countdown');
-            if (el) el.textContent = String(Math.max(remaining, 0));
+            countdownEl.textContent = String(Math.max(remaining, 0));
             if (remaining <= 0) clearInterval(tick);
           }, 1000);
 
