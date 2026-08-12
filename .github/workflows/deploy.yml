@@ -54,6 +54,19 @@ jobs:
           restore-keys: |
             sdi-state-fuenteai-
 
+      # actions/cache solo pone cache-hit=true en un match EXACTO de key. Como
+      # la key siempre incluye run_id, nunca hay match exacto en runs futuros
+      # y cache-hit da false aunque restore-keys sí haya restaurado el estado
+      # real. Por eso se chequea el archivo en disco en vez de cache-hit.
+      - name: Check for existing SDI state
+        id: check-sdi-state
+        run: |
+          if [ -f .sdi/state.json ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build site
         run: npm run build
 
@@ -74,16 +87,16 @@ jobs:
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
 
-      # Solo corre si de verdad se restauró un estado previo (cache-hit real),
-      # sin importar por qué trigger llegamos acá. Esto evita notificar todas
-      # las URLs de golpe si alguien re-ejecuta un run viejo sin querer.
+      # Solo corre si de verdad hay un state.json restaurado en disco, sin
+      # importar por qué trigger llegamos acá. Esto evita notificar todas las
+      # URLs de golpe si alguien re-ejecuta un run viejo sin querer.
       - name: SDI run (live)
-        if: "!(github.event_name == 'workflow_dispatch' && github.event.inputs.sdi_mode == 'baseline') && steps.restore-sdi-state.outputs.cache-hit == 'true'"
+        if: "!(github.event_name == 'workflow_dispatch' && github.event.inputs.sdi_mode == 'baseline') && steps.check-sdi-state.outputs.exists == 'true'"
         run: node ./node_modules/sdi-cli/dist/cli.js run
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
 
       - name: Warn if no baseline exists yet
-        if: "!(github.event_name == 'workflow_dispatch' && github.event.inputs.sdi_mode == 'baseline') && steps.restore-sdi-state.outputs.cache-hit != 'true'"
+        if: "!(github.event_name == 'workflow_dispatch' && github.event.inputs.sdi_mode == 'baseline') && steps.check-sdi-state.outputs.exists != 'true'"
         run: |
-          echo "::warning::No se encontró un baseline previo (cache-hit=false). Se salteó 'sdi run' para no notificar todas las URLs de golpe. Disparar el workflow manualmente con sdi_mode=baseline."
+          echo "::warning::No se encontró .sdi/state.json restaurado. Se salteó 'sdi run' para no notificar todas las URLs de golpe. Disparar el workflow manualmente con sdi_mode=baseline."
