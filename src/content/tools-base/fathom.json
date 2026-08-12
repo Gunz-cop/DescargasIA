@@ -1,0 +1,17 @@
+{
+  "name": "Fathom",
+  "officialWebsite": "https://www.fathom.ai",
+  "categories": ["productividad-presentaciones-ia"],
+  "platforms": {
+    "web": { "url": "https://www.fathom.ai", "type": "web-app", "isOfficial": true, "lastChecked": "2026-08-11" }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": ["riunioni", "trascrizione", "verbali", "produttivita"],
+  "alternatives": ["fireflies", "macwhisper"],
+  "screenshotUrl": null,
+  "initials": "FA",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": ["https://www.fathom.ai"]
+}

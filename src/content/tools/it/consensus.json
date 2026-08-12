@@ -1,0 +1,20 @@
+{
+  "shortDescription": "Motore di ricerca accademico con IA che sintetizza risultati della letteratura scientifica mantenendo i riferimenti ai paper.",
+  "longDescription": "Consensus è un motore di ricerca per studenti, docenti e ricercatori. Interpreta domande in linguaggio naturale, cerca nella letteratura scientifica e costruisce sintesi collegate ai lavori trovati.",
+  "bestFor": ["Trovare paper su una domanda precisa", "Avviare una revisione della letteratura", "Confrontare risultati di studi diversi", "Individuare le fonti da leggere per prime"],
+  "limitations": ["È un servizio web: non esiste un installer ufficiale per Windows o Mac da scaricare.", "La sintesi non sostituisce la lettura del paper originale.", "L'accesso e i limiti delle funzioni dipendono dal piano e dall'account."],
+  "safetyNotes": ["Apri sempre il paper collegato prima di citare un risultato.", "Non confondere una sintesi IA con una revisione sistematica completa.", "Usa solo consensus.app per accedere al servizio."],
+  "editorialSummary": "Per chi cerca in italiano “strumenti IA per la ricerca accademica”, Consensus copre un bisogno più specifico di un chatbot: partire da una domanda e arrivare a studi citabili. La sua forza editoriale è proprio la verifica delle fonti, non la promessa di una risposta definitiva.",
+  "editorialSections": [
+    {"heading": "Ricerca scientifica, non chatbot generico", "body": "Consensus è costruito attorno ai paper e alle domande di ricerca. Può aiutarti a capire quali studi sono pertinenti e a leggere una sintesi con riferimenti, invece di produrre una risposta scollegata dalla letteratura.\n\nLa sintesi è un punto di partenza. Per una tesi, un articolo o una decisione professionale devi aprire gli studi, controllare metodologia, campione e limiti."},
+    {"heading": "Si usa dal browser", "body": "Consensus non richiede un programma da installare: il canale ufficiale è consensus.app. Non cercare un “Consensus desktop” o un APK, perché il percorso corretto è l'applicazione web.\n\nPuoi formulare la domanda in italiano, ma controlla come il sistema interpreta termini tecnici e sinonimi. Una domanda più precisa produce una ricerca più utile."},
+    {"heading": "Consensus, SciSpace o ChatPDF", "body": "Consensus è adatto a trovare e confrontare studi; SciSpace aiuta a esplorare e capire i paper; ChatPDF lavora meglio quando hai già un documento. Sono percorsi diversi dentro la stessa area di ricerca.\n\nScegli prima il punto di partenza: domanda aperta, paper da capire o PDF da interrogare. Questa distinzione evita di usare lo strumento sbagliato e poi giudicare male il risultato."}
+  ],
+  "faq": [
+    {"question": "Consensus è un database di paper?", "answer": "È un motore di ricerca accademico assistito dall'IA che trova e sintetizza letteratura scientifica con collegamenti alle fonti."},
+    {"question": "Consensus funziona in italiano?", "answer": "Puoi formulare le ricerche in italiano, ma verifica sempre termini, paper trovati e sintesi direttamente nelle fonti originali."},
+    {"question": "Esiste un programma Consensus per Windows?", "answer": "Il canale ufficiale è il servizio web su consensus.app. Non serve scaricare un installer per usarlo."},
+    {"question": "Posso citare direttamente una risposta di Consensus?", "answer": "No. Usa la risposta per orientarti, apri il paper collegato e cita la pubblicazione originale secondo le regole del tuo corso o della tua rivista."}
+  ],
+  "italianSupport": "partial"
+}

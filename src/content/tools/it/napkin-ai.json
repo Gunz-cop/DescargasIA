@@ -1,0 +1,20 @@
+{
+  "shortDescription": "Strumento web che trasforma testo e idee in diagrammi, schemi e visual per documenti e presentazioni.",
+  "longDescription": "Napkin AI aiuta a trasformare un testo in una rappresentazione visiva: diagrammi, mappe, schemi e infografiche che puoi modificare e usare per spiegare meglio un'idea.",
+  "bestFor": ["Visualizzare processi e concetti", "Creare schemi per una presentazione", "Trasformare note in diagrammi", "Preparare materiali chiari per un team"],
+  "limitations": ["È un'applicazione web: non richiede un installer desktop ufficiale.", "Il risultato automatico va impaginato e controllato prima della pubblicazione.", "Piani, esportazioni e limiti d'uso possono cambiare."],
+  "safetyNotes": ["Usa napkin.ai per accedere al servizio e non scaricare copie non ufficiali.", "Controlla numeri, etichette e relazioni nei diagrammi generati.", "Non inserire dati riservati in un progetto senza verificare le condizioni del servizio."],
+  "editorialSummary": "La ricerca italiana sulle presentazioni non riguarda solo “generare slide”: spesso il problema è spiegare un processo o rendere visibile un'idea. Napkin AI apre una nicchia più precisa — testo in diagramma — con una ficha che può differenziarsi da Gamma e Canva.",
+  "editorialSections": [
+    {"heading": "Dal testo alla spiegazione visiva", "body": "Napkin AI parte da un testo o da un'idea e propone una rappresentazione visiva. È utile per trasformare appunti, procedure e concetti astratti in schemi che un'altra persona può capire più rapidamente.\n\nIl primo risultato è una bozza, non un'infografica definitiva. Correggi gerarchie, frecce, numeri e parole prima di esportare o presentare il visual."},
+    {"heading": "Si usa dal browser", "body": "Il canale ufficiale è napkin.ai. Non serve un programma “Napkin per Windows” e non c'è motivo di scaricare un installer da un sito terzo.\n\nPer iniziare puoi creare un progetto web e verificare quali esportazioni sono disponibili nel tuo piano. Se il visual contiene dati aziendali, controlla prima dove vengono elaborati e conservati."},
+    {"heading": "Napkin, Gamma o Canva", "body": "Napkin è focalizzato sulla visualizzazione di idee e relazioni; Gamma lavora più direttamente su documenti e presentazioni; Canva offre un ambiente di design molto più ampio.\n\nUsa Napkin quando hai già il contenuto ma fai fatica a renderlo visibile. Se ti serve una presentazione completa con brand, immagini e pagine, confronta le alternative."}
+  ],
+  "faq": [
+    {"question": "Napkin AI crea presentazioni complete?", "answer": "Il suo punto forte sono diagrammi, schemi e visual generati dal testo. Può aiutare a preparare una presentazione, ma non va confuso con un editor completo di slide."},
+    {"question": "Napkin AI funziona in italiano?", "answer": "Puoi provare a inserire testo e istruzioni in italiano, ma interfaccia, modelli e qualità possono variare. Controlla sempre le etichette generate."},
+    {"question": "Esiste un'app Napkin AI per Windows?", "answer": "Il canale ufficiale è web su napkin.ai. Non scaricare installer distribuiti da portali esterni."},
+    {"question": "Napkin AI è gratis?", "answer": "Il servizio offre un accesso gratuito con limiti e piani a pagamento. Verifica esportazioni e quote aggiornate sul sito ufficiale."}
+  ],
+  "italianSupport": "unknown"
+}

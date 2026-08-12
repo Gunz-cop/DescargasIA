@@ -1,0 +1,20 @@
+{
+  "shortDescription": "Assistente IA per cercare, leggere e organizzare paper, con chat sui documenti e strumenti per la scrittura accademica.",
+  "longDescription": "SciSpace riunisce ricerca di articoli, spiegazioni di testo e tabelle, chat con PDF e strumenti per la scrittura. È pensato per studenti e ricercatori che devono passare dalla scoperta di una fonte alla sua comprensione.",
+  "bestFor": ["Capire paper complessi e tabelle", "Cercare letteratura correlata", "Interrogare articoli PDF", "Organizzare una prima revisione bibliografica"],
+  "limitations": ["Le funzioni più avanzate possono richiedere un account o un piano a pagamento.", "È principalmente un servizio web, non un'app desktop indipendente.", "Le spiegazioni IA vanno confrontate con il testo e con la metodologia del paper."],
+  "safetyNotes": ["Scarica eventuali estensioni solo dai collegamenti ufficiali di SciSpace.", "Non usare una spiegazione automatica come prova della correttezza di un risultato.", "Controlla le citazioni prima di inserirle in un elaborato."],
+  "editorialSummary": "SciSpace intercetta una ricerca italiana molto concreta: capire un paper senza perdersi tra formule, tabelle e termini inglesi. La pagina ufficiale riunisce ricerca, chat sui documenti e scrittura; la ficha va quindi posizionata sulla comprensione, non sul generico “scrivere con l'IA”.",
+  "editorialSections": [
+    {"heading": "Per leggere meglio un paper", "body": "SciSpace può spiegare passaggi, formule e tabelle con un linguaggio più semplice. Questo riduce il tempo necessario per orientarsi, soprattutto quando devi decidere se un articolo è davvero utile alla tua ricerca.\n\nSemplificare non significa tradurre fedelmente ogni dettaglio. Se un risultato è importante, torna al testo originale e controlla contesto, dati e conclusioni."},
+    {"heading": "Nessun installer desktop necessario", "body": "Il canale principale è scispace.com, con eventuali estensioni o app raggiungibili dai collegamenti interni ufficiali. Non occorre cercare un eseguibile “SciSpace per Windows” su portali di download.\n\nUn account può essere richiesto per salvare conversazioni, importare librerie o usare funzioni avanzate. Verifica cosa è disponibile prima di caricare il tuo archivio di ricerca."},
+    {"heading": "Differenza rispetto a Consensus", "body": "Consensus è più centrato sulla domanda e sulla sintesi della letteratura; SciSpace accompagna di più la lettura e l'elaborazione del singolo paper. ChatPDF è invece una soluzione più semplice quando hai già il file.\n\nPer una revisione seria puoi usarli in sequenza, ma non delegare a tre strumenti la valutazione delle fonti. La responsabilità della selezione resta tua."}
+  ],
+  "faq": [
+    {"question": "A cosa serve SciSpace?", "answer": "Serve a cercare e comprendere articoli scientifici, chattare con PDF e supportare alcune fasi della scrittura e della revisione bibliografica."},
+    {"question": "SciSpace traduce i paper in italiano?", "answer": "Puoi chiedere spiegazioni o traduzioni in italiano, ma la disponibilità e la qualità possono variare. Per i passaggi importanti verifica sempre l'originale."},
+    {"question": "SciSpace ha un'app per Windows?", "answer": "Il canale principale è web. Eventuali estensioni o app vanno installate solo dai collegamenti ufficiali presenti su scispace.com."},
+    {"question": "SciSpace è gratis?", "answer": "Offre accesso gratuito e funzioni che possono essere limitate o incluse nei piani a pagamento. Controlla i dettagli aggiornati sul sito ufficiale."}
+  ],
+  "italianSupport": "partial"
+}

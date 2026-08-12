@@ -1,0 +1,20 @@
+{
+  "shortDescription": "Editor PDF gratuito con IA, OCR, conversione e chat sui documenti per Windows, Mac e browser.",
+  "longDescription": "PDFgear riunisce strumenti per leggere, modificare, convertire e organizzare PDF. Il suo assistente IA può riassumere documenti, rispondere a domande e lavorare con contenuti in più lingue, incluso l'italiano.",
+  "bestFor": ["Riassumere e interrogare PDF", "Modificare e convertire documenti", "Estrarre testo da scansioni con OCR", "Lavorare su PDF da Windows o Mac"],
+  "limitations": ["Le funzioni Chatbot richiedono una connessione a internet anche se l'editor può lavorare offline.", "L'IA non rende automaticamente affidabile un PDF o una scansione.", "Controlla sempre le condizioni aggiornate del servizio gratuito."],
+  "safetyNotes": ["Scarica PDFgear solo dal sito ufficiale o dagli store indicati dal produttore.", "Evita versioni “Pro sbloccate”, APK e installer modificati.", "Non caricare documenti riservati nel Chatbot senza valutare il trattamento dei dati."],
+  "editorialSummary": "“Riassumere PDF gratis” e “modificare PDF in italiano” sono query con un'intenzione molto concreta. PDFgear è una ficha italiana forte perché unisce download desktop, strumenti online e funzioni IA, ma va spiegato bene il confine tra editor locale e Chatbot che richiede connessione.",
+  "editorialSections": [
+    {"heading": "Più di una chat con il PDF", "body": "PDFgear può servire per leggere, modificare, convertire e fare OCR, oltre a porre domande a un documento. È quindi una soluzione più ampia di ChatPDF quando devi anche sistemare il file o trasformarlo in un altro formato.\n\nLa funzione IA è un aiuto alla navigazione, non una certificazione del contenuto. Per contratti, fatture o documenti amministrativi confronta sempre il risultato con il file originale."},
+    {"heading": "Windows, Mac e browser", "body": "Il sito italiano di PDFgear indica i canali per Windows, Mac e strumenti online. Per scaricare un'app, parti dalla pagina ufficiale e verifica che il dominio resti pdfgear.com.\n\nL'editor desktop può essere utile anche offline, mentre il Chatbot richiede internet. Questa differenza va tenuta presente quando lavori con documenti che non vuoi inviare a un servizio cloud."},
+    {"heading": "PDFgear o ChatPDF", "body": "Scegli PDFgear se devi modificare, convertire, firmare o fare OCR oltre a fare domande al PDF. ChatPDF è più concentrato sulla conversazione; SciSpace e Consensus sono più adatti alla ricerca accademica.\n\nLa scelta dipende dalla prima azione che vuoi compiere. Se devi solo capire un articolo, un editor completo può essere più di quanto ti serve; se devi correggere il file, una chat non basta."}
+  ],
+  "faq": [
+    {"question": "PDFgear supporta l'italiano?", "answer": "La pagina ufficiale del Chatbot indica l'italiano tra le lingue supportate. Controlla comunque i risultati quando lavori con termini tecnici o PDF scansionati."},
+    {"question": "PDFgear ha un programma per Windows?", "answer": "Sì. Il sito ufficiale pubblica una pagina dedicata a PDFgear per Windows e indica anche canali per Mac e strumenti online."},
+    {"question": "PDFgear è davvero gratis?", "answer": "Il produttore presenta l'editor e molte funzioni come gratuite. Limiti e disponibilità possono cambiare, quindi verifica sempre la pagina ufficiale prima di installare."},
+    {"question": "PDFgear Chatbot funziona offline?", "answer": "No. La funzione Chatbot richiede una connessione; l'editor PDF desktop può offrire funzioni offline diverse dall'assistente IA."}
+  ],
+  "italianSupport": "yes"
+}

@@ -1,4 +1,4 @@
 interface:
   display_name: "DescargasIA Tool Ficha"
-  short_description: "Crea fichas editoriales verificadas"
-  default_prompt: "Use $descargasia-tool-ficha to create verified editorial fichas for new AI tools in DescargasIA."
+  short_description: "Investiga y crea fichas locales fiables"
+  default_prompt: "Use $descargasia-tool-ficha to research and plan native AI-tool fichas for a defined language and country market."

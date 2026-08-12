@@ -1,0 +1,20 @@
+{
+  "shortDescription": "Piattaforma di studio con flashcard, test e funzioni IA per trasformare appunti e PDF in materiale di ripasso.",
+  "longDescription": "Quizlet aiuta a studiare creando flashcard, esercizi e guide a partire da contenuti già disponibili. Le sue funzioni IA possono trasformare note, slide o PDF in domande e materiale per il ripasso.",
+  "bestFor": ["Preparare interrogazioni ed esami", "Creare flashcard da appunti e slide", "Ripassare con test generati dall'IA", "Usare lo stesso materiale su web e mobile"],
+  "limitations": ["Le funzioni IA più avanzate possono richiedere un piano a pagamento.", "La qualità delle domande dipende dal materiale caricato.", "L'app non sostituisce la verifica di formule, date o fonti scolastiche."],
+  "safetyNotes": ["Scarica le app solo dagli store ufficiali indicati da Quizlet.", "Non caricare dati personali di compagni o studenti senza autorizzazione.", "Rivedi sempre le risposte prima di usarle per preparare un esame."],
+  "editorialSummary": "Per il pubblico italiano la ricerca “AI per studiare” ha un'intenzione diversa da “chatbot gratis”: servono quiz, schede e ripetizione. Quizlet è interessante perché porta l'IA dentro un flusso di studio già riconoscibile, con accesso web e app ufficiali.",
+  "editorialSections": [
+    {"heading": "Da appunti a materiale di ripasso", "body": "Quizlet non è soltanto una raccolta di flashcard. Le funzioni di studio assistite possono partire da note, slide o PDF e proporre guide, domande e schede che poi puoi correggere.\n\nQuesto è utile quando il problema non è trovare una spiegazione, ma trasformare materiale disordinato in esercizi. Il controllo umano resta indispensabile: una domanda generata male può farti ripassare un concetto in modo scorretto."},
+    {"heading": "Web, Android e iPhone", "body": "Puoi usare Quizlet dal sito ufficiale oppure dalle app pubblicate negli store ufficiali. Il canale giusto è quello collegato dalla pagina di Quizlet, non un APK trovato cercando “Quizlet premium gratis”.\n\nPrima di pagare, controlla quali funzioni del tuo piano includono effettivamente l'IA. La disponibilità può cambiare tra account, piattaforme e periodi promozionali."},
+    {"heading": "Quando scegliere un'alternativa", "body": "Per interrogare un PDF lungo, ChatPDF è più focalizzato sul documento; per appunti e fonti in un quaderno di ricerca, NotebookLM può essere più adatto. Quizlet resta più interessante quando vuoi allenarti con domande e recupero attivo.\n\nNon usarlo come generatore di risposte da consegnare. Il valore sta nel ripasso: prova a rispondere, correggi gli errori e torna alle fonti del corso."}
+  ],
+  "faq": [
+    {"question": "Quizlet ha funzioni di intelligenza artificiale?", "answer": "Sì. Quizlet presenta strumenti IA per generare test, guide di studio, flashcard e aiuto sui compiti, con disponibilità che può dipendere dal piano."},
+    {"question": "Quizlet funziona in italiano?", "answer": "Puoi inserire materiale e domande in italiano, ma la lingua dell'interfaccia e la qualità delle funzioni possono variare. Verifica il risultato prima di studiarlo."},
+    {"question": "Esiste un'app ufficiale Quizlet per Android?", "answer": "Sì. Usa il collegamento a Google Play dal sito ufficiale o verifica che il publisher dello store sia Quizlet."},
+    {"question": "Quizlet è gratis?", "answer": "Esiste un accesso gratuito e ci sono funzioni e piani a pagamento. Controlla i limiti aggiornati direttamente su quizlet.com."}
+  ],
+  "italianSupport": "partial"
+}

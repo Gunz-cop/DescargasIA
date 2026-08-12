@@ -1,0 +1,19 @@
+{
+  "name": "PDFgear",
+  "officialWebsite": "https://www.pdfgear.com",
+  "categories": ["productividad-presentaciones-ia"],
+  "platforms": {
+    "web": { "url": "https://www.pdfgear.com/it/", "type": "web-app", "isOfficial": true, "lastChecked": "2026-08-11" },
+    "windows": { "url": "https://www.pdfgear.com/it/pdfgear-per-windows/", "type": "official-installer", "isOfficial": true, "lastChecked": "2026-08-11" },
+    "mac": { "url": "https://www.pdfgear.com/it/", "type": "official-site", "isOfficial": true, "lastChecked": "2026-08-11" }
+  },
+  "pricingModel": "free",
+  "requiresAccount": false,
+  "tags": ["pdf", "ocr", "editor", "documenti"],
+  "alternatives": ["chatpdf", "scispace"],
+  "screenshotUrl": null,
+  "initials": "PG",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": ["https://www.pdfgear.com/it/", "https://www.pdfgear.com/it/chatta-con-pdf/"]
+}

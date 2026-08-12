@@ -1,53 +1,38 @@
 ---
 name: descargasia-tool-ficha
-description: Create, research, write, validate, and maintain DescargasIA AI tool fichas in Astro content JSON. Use when the user asks to add new AI tools, find missing tools, create or improve product/tool pages, write SEO/editorial ficha content, verify official download links, generate FAQ structured data, classify platforms/categories, avoid fake installers/mirrors/APKs, or prepare DescargasIA fichas for SEO, AdSense, E-E-A-T, and mobile-first UX.
+description: Research, select, create, validate, and maintain localized DescargasIA AI tool fichas and intent-led guides. Use for country-specific multilingual SEO research, market opportunity matrices, official download-link verification, native editorial writing, or ficha planning/authoring without translating or copying another locale's tool selection.
 ---
 
 # DescargasIA Tool Ficha
 
-Use this skill to create or improve tool fichas for DescargasIA.
+Create trustworthy, market-specific content that routes people to official AI-tool channels. Treat each language-country pair as an independent editorial market.
 
-## First Steps
+## Start With Scope
 
-1. Work inside the DescargasIA Astro repo.
-2. Read `AGENTS.md`, `docs/ux-tool-pages.md`, and `docs/ux-home-cards.md` when present.
-3. Read the local examples in `src/content/tools/`, especially `chatgpt.json` and any mature ficha in the same category.
-4. Read the relevant reference files in this skill:
-   - `references/workflow.md` for the end-to-end process.
-   - `references/schema-contract.md` for JSON fields.
-   - `references/editorial-writing.md` for content quality.
-   - `references/source-policy.md` for official-link rules.
-   - `references/validation.md` before build/commit.
+1. Read `AGENTS.md`, `docs/ux-tool-pages.md`, `docs/ux-home-cards.md`, and local mature examples.
+2. Read `references/workflow.md` and `references/localized-research.md` before researching or selecting candidates.
+3. Define and state a market brief: language, target country or countries, language variant, predominant platforms, editorial register, and research date. Ask for the missing market definition before making a selection when it cannot be inferred safely from the request.
+4. Read `references/schema-contract.md`, `references/editorial-writing.md`, `references/source-policy.md`, and `references/validation.md` before editing fichas.
 
-## Non-Negotiables
+## Core Rules
 
-- Do not invent tools, platforms, claims, app availability, prices, official status, or security guarantees.
-- Do not link to mirrors, APK aggregators, unofficial installers, cracked apps, reuploads, or “premium unlocked” pages.
-- Prefer primary sources: official site, official docs, official GitHub org/repo, Microsoft Store, Google Play, App Store, VS Code/JB marketplaces when relevant.
-- If users search for a nonexistent desktop app, say so clearly in the ficha and route them to the actual official channel.
-- Use monograms/brand-inspired colors only. Do not add logos/screenshots unless usage rights or official asset policy is documented.
-- Keep CTA and platform decision near the top; place longer SEO/editorial content below.
-- Always run `npm run build` and fix collection/schema errors before finalizing.
+- Research demand, search wording, SERPs, competition, and candidate tools separately for every market. Never translate a Spanish ficha, query list, FAQ, or tool selection into another locale by default.
+- Make native queries, grouped by download/access, installation, use, alternatives, privacy, offline use, and platform intent. Do not use literal translations as research evidence.
+- Separate confirmed volume, trend data, search suggestions, and qualitative evidence. Do not present one type as another.
+- Prioritize demonstrated demand plus weak, confusing, stale, unsafe, or incomplete results. Do not choose a query only because it is novel or low competition, and do not treat low competition without demand as an opportunity.
+- Audit first-page results for intent, official sources, target-language fit, freshness, destination confusion, clone/APK risk, and observable editorial competition.
+- Classify the deliverable before writing: a tool ficha serves an identifiable tool; a guide serves an intent that spans tools or needs decision support. Record why important candidates were rejected.
+- Use only official product domains, official documentation, official stores, official upstream repositories, or official marketplaces. State plainly when no official installer exists.
+- Do not invent tools, platforms, availability, pricing, privacy/legal/security claims, volume, trends, or endorsements. Never link to mirrors, APK portals, modified installers, or reuploads.
 
-## Output Standard
+## Deliverables
 
-For each tool, create or update `src/content/tools/<slug>.json` with:
+For research or planning, return the market brief, inventory findings, SERP audit, opportunity matrix, selection/rejection rationale, evidence type, confidence, and sources.
 
-- clear `shortDescription` and `longDescription`;
-- real platforms only;
-- `bestFor`, `limitations`, `editorialSummary`, `editorialSections`, `faq`, and `safetyNotes`;
-- official sources and internal alternatives that exist;
-- category and visual initials;
-- `lastReviewed` using the current date.
+For a ficha session, keep verified product data in `src/content/tools-base/<slug>.json` and create native editorial content only in `src/content/tools/<lang>/<slug>.json`. Keep the existing JSON contract unchanged unless the user explicitly authorizes a necessary contract change.
 
-If categories are missing, add category JSON only when it improves navigation and matches the existing taxonomy.
+Before finalizing a ficha session, perform the checks in `references/validation.md`, including `npm run build`. Report no-installer clarifications and unresolved regional availability or evidence gaps.
 
 ## Handoff
 
-In the final response, summarize:
-
-- fichas added/updated;
-- important “no installer” clarifications;
-- build result;
-- broken or unverified links, if any;
-- remaining risks such as external shortener/API failures.
+Summarize the target market, selected and rejected candidates, evidence quality, official-link findings, files changed, build result, and remaining risks.
