@@ -29,8 +29,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Se invoca el archivo real en vez de "npx sdi" (que pasa por el symlink
+      # de node_modules/.bin en Linux). isDirectInvocation() en sdi-cli
+      # compara process.argv[1] contra import.meta.url; a través del symlink
+      # esa comparación puede no matchear y el CLI queda mudo (exit 0, sin
+      # imprimir ni ejecutar nada). Invocar el archivo real evita eso.
       - name: Verify SDI CLI is resolvable
-        run: npx sdi --version
+        run: node ./node_modules/sdi-cli/dist/cli.js --version
 
       # Restaura el estado de SDI de la corrida anterior. La key incluye run_id
       # para que siempre se guarde algo nuevo al final; restore-keys busca por
@@ -60,7 +65,7 @@ jobs:
       # la primera vez, antes de habilitar sdi run.
       - name: SDI baseline (solo primera corrida manual)
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.sdi_mode == 'baseline'
-        run: npx sdi baseline --confirm
+        run: node ./node_modules/sdi-cli/dist/cli.js baseline --confirm
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
 
@@ -69,7 +74,7 @@ jobs:
       # las URLs de golpe si alguien re-ejecuta un run viejo sin querer.
       - name: SDI run (live)
         if: "!(github.event_name == 'workflow_dispatch' && github.event.inputs.sdi_mode == 'baseline') && steps.restore-sdi-state.outputs.cache-hit == 'true'"
-        run: npx sdi run
+        run: node ./node_modules/sdi-cli/dist/cli.js run
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
 
