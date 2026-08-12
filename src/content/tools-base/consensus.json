@@ -3,7 +3,7 @@
   "officialWebsite": "https://consensus.app",
   "categories": ["productividad-presentaciones-ia"],
   "platforms": {
-    "web": { "url": "https://consensus.app", "type": "web-app", "isOfficial": true, "lastChecked": "2026-08-11" }
+    "web": { "url": "https://consensus.app", "type": "web-app", "isOfficial": true, "lastChecked": "2026-08-12" }
   },
   "pricingModel": "freemium",
   "requiresAccount": "unknown",
@@ -12,6 +12,6 @@
   "screenshotUrl": null,
   "initials": "CO",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-11",
+  "lastReviewed": "2026-08-12",
   "officialSources": ["https://consensus.app", "https://consensus.app/home/resources/consensus-libguide-for-academic-research/"]
 }

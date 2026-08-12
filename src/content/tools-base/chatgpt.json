@@ -9,31 +9,31 @@
       "url": "https://chatgpt.com",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "windows": {
-      "url": "https://openai.com/chatgpt/desktop",
+      "url": "https://chatgpt.com/download/",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "mac": {
-      "url": "https://openai.com/chatgpt/desktop",
+      "url": "https://chatgpt.com/download/",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "android": {
       "url": "https://play.google.com/store/apps/details?id=com.openai.chatgpt",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "ios": {
       "url": "https://apps.apple.com/us/app/chatgpt/id6448311069",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "freemium",
@@ -53,7 +53,7 @@
   "screenshotUrl": null,
   "initials": "GPT",
   "trustLevel": "official",
-  "lastReviewed": "2026-06-18",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://openai.com/chatgpt"
   ]

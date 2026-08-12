@@ -9,25 +9,25 @@
       "url": "https://lmstudio.ai",
       "type": "official-site",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "windows": {
       "url": "https://lmstudio.ai",
       "type": "official-site",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "mac": {
       "url": "https://lmstudio.ai",
       "type": "official-site",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "linux": {
       "url": "https://lmstudio.ai",
       "type": "official-site",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "free",
@@ -44,7 +44,7 @@
   ],
   "initials": "LMS",
   "trustLevel": "verified",
-  "lastReviewed": "2026-06-18",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://lmstudio.ai"
   ]

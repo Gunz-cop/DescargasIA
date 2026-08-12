@@ -10,25 +10,25 @@
       "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
       "type": "github-repo",
       "isOfficial": true,
-      "lastChecked": "2026-06-19"
+      "lastChecked": "2026-08-12"
     },
     "windows": {
       "url": "https://github.com/LykosAI/StabilityMatrix",
       "type": "github-repo",
       "isOfficial": true,
-      "lastChecked": "2026-06-19"
+      "lastChecked": "2026-08-12"
     },
     "mac": {
       "url": "https://github.com/comfy-org/ComfyUI",
       "type": "github-repo",
       "isOfficial": true,
-      "lastChecked": "2026-06-19"
+      "lastChecked": "2026-08-12"
     },
     "linux": {
       "url": "https://github.com/comfy-org/ComfyUI",
       "type": "github-repo",
       "isOfficial": true,
-      "lastChecked": "2026-06-19"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "free",
@@ -49,7 +49,7 @@
   "screenshotUrl": null,
   "initials": "SD",
   "trustLevel": "verified",
-  "lastReviewed": "2026-06-19",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
     "https://github.com/comfy-org/ComfyUI",

@@ -9,19 +9,19 @@
       "url": "https://klingai.com",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     "android": {
       "url": "https://play.google.com/store/apps/details?id=kling.ai.video.chat",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     "ios": {
       "url": "https://apps.apple.com/us/app/kling-ai-ai-image-video-maker/id6738049229",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "freemium",
@@ -40,7 +40,7 @@
   "screenshotUrl": null,
   "initials": "KLA",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-11",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://klingai.com"
   ]

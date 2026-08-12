@@ -9,13 +9,13 @@
       "url": "https://ideogram.ai",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     "ios": {
       "url": "https://apps.apple.com/us/app/ideogram-ai-image-generator/id6476790495",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "freemium",
@@ -35,7 +35,7 @@
   "screenshotUrl": null,
   "initials": "IDG",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-11",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://ideogram.ai",
     "https://docs.ideogram.ai"

@@ -9,19 +9,19 @@
       "url": "https://wan.video",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     "android": {
       "url": "https://play.google.com/store/apps/details?id=com.aliyun.wan.android",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     "ios": {
       "url": "https://apps.apple.com/us/app/wan/id6753616942",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "freemium",
@@ -42,7 +42,7 @@
   "screenshotUrl": null,
   "initials": "WAN",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-11",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://wan.video"
   ]

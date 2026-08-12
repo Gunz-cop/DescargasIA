@@ -9,19 +9,19 @@
       "url": "https://chat.qwen.ai",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     "android": {
       "url": "https://play.google.com/store/apps/details?id=com.tongyi.intl",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     "ios": {
       "url": "https://apps.apple.com/us/app/qwen-studio-ask-qwen-know-more/id6743778442",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "freemium",
@@ -43,7 +43,7 @@
   "screenshotUrl": null,
   "initials": "QWN",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-11",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://chat.qwen.ai",
     "https://github.com/QwenLM/Qwen"

@@ -9,31 +9,31 @@
       "url": "https://quillbot.com",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     "windows": {
       "url": "https://quillbot.com/app/windows",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     "mac": {
       "url": "https://quillbot.com/app/mac",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     "android": {
       "url": "https://play.google.com/store/apps/details?id=com.quillbot.mobile",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     },
     "ios": {
       "url": "https://apps.apple.com/us/app/quillbot-ai-writing-assistant/id6738683741",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-11"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "freemium",
@@ -53,7 +53,7 @@
   "screenshotUrl": null,
   "initials": "QLB",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-11",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://quillbot.com",
     "https://quillbot.com/app"

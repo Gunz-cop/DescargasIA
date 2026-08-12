@@ -9,19 +9,19 @@
       "url": "https://www.canva.com/canva-ai/",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-06-19"
+      "lastChecked": "2026-08-12"
     },
     "android": {
       "url": "https://play.google.com/store/apps/details?id=com.canva.editor",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-06-19"
+      "lastChecked": "2026-08-12"
     },
     "ios": {
       "url": "https://apps.apple.com/us/app/canva-design-photo-video/id897446215",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-06-19"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "freemium",
@@ -41,7 +41,7 @@
   "screenshotUrl": null,
   "initials": "CV",
   "trustLevel": "official",
-  "lastReviewed": "2026-06-19",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://www.canva.com/canva-ai/",
     "https://www.canva.com/magic-design/",

@@ -9,25 +9,25 @@
       "url": "https://jan.ai",
       "type": "official-site",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "windows": {
       "url": "https://jan.ai",
       "type": "official-site",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "mac": {
       "url": "https://jan.ai",
       "type": "official-site",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "linux": {
       "url": "https://jan.ai",
       "type": "official-site",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "free",
@@ -46,7 +46,7 @@
   ],
   "initials": "JN",
   "trustLevel": "verified",
-  "lastReviewed": "2026-06-18",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://jan.ai",
     "https://github.com/janhq/jan"

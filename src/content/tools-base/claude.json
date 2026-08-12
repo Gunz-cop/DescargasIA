@@ -9,31 +9,31 @@
       "url": "https://claude.ai",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "windows": {
       "url": "https://claude.ai/download",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "mac": {
       "url": "https://claude.ai/download",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "ios": {
       "url": "https://apps.apple.com/us/app/claude-by-anthropic/id6476686121",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "android": {
       "url": "https://play.google.com/store/apps/details?id=com.anthropic.claude",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "freemium",
@@ -51,7 +51,7 @@
   ],
   "initials": "CL",
   "trustLevel": "official",
-  "lastReviewed": "2026-06-18",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://anthropic.com/claude"
   ]

@@ -9,25 +9,25 @@
       "url": "https://languagetool.org/es",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "windows": {
       "url": "https://languagetool.org/es/insights/windows",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "mac": {
       "url": "https://apps.apple.com/es/app/languagetool-para-safari/id1534275765",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     },
     "ios": {
       "url": "https://apps.apple.com/es/app/languagetool-grammar-checker/id1625345759",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-06-18"
+      "lastChecked": "2026-08-12"
     }
   },
   "pricingModel": "freemium",
@@ -45,7 +45,7 @@
   ],
   "initials": "LT",
   "trustLevel": "verified",
-  "lastReviewed": "2026-06-18",
+  "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://languagetool.org"
   ]
