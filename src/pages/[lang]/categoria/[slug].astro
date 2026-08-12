@@ -79,7 +79,7 @@ const schemaItemList = sortedTools.length > 0 ? {
 } : null;
 
 const alternates = Object.keys(languages)
-  .filter((l) => l !== 'it')
+  .filter((l) => l !== lang)
   .map((l) => ({ lang: l, url: `${Astro.url.origin}/${l}/categoria/${cat.data.slug}` }));
 ---
 
