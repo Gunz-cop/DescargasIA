@@ -21,6 +21,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Debug dispatch inputs
+        run: |
+          echo "event_name=[${{ github.event_name }}]"
+          echo "sdi_mode=[${{ github.event.inputs.sdi_mode }}]"
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
