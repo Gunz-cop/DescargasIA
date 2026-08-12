@@ -1,3 +1,6 @@
+// Integrado el 2026-08-12. Ver .github/workflows/deploy.yml para el flujo
+// build -> wrangler deploy -> sdi run, y docs/guides/ASTRO_CLOUDFLARE.md en
+// el repo de SDI para el contrato completo.
 export default {
   siteId: "fuenteai",
   siteUrl: "https://fuenteai.com",
