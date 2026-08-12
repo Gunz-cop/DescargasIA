@@ -1,0 +1,20 @@
+{
+  "shortDescription": "Servizio web per parlare con PDF, riassumere documenti e verificare le risposte citando le pagine di origine.",
+  "longDescription": "ChatPDF trasforma un PDF in una conversazione: puoi fare domande, ottenere un riassunto e cercare informazioni senza leggere ogni pagina dall'inizio. È pensato per studenti, ricercatori e professionisti che lavorano con documenti lunghi.",
+  "bestFor": ["Riassumere dispense, manuali e articoli", "Fare domande a un PDF in italiano", "Orientarsi tra più documenti di ricerca", "Controllare da quale parte del documento arriva una risposta"],
+  "limitations": ["Il piano gratuito ha limiti di utilizzo e di documenti.", "La versione principale funziona nel browser: non serve un installer Windows per iniziare.", "Le risposte vanno confrontate con il PDF, soprattutto per contratti, esami o dati tecnici."],
+  "safetyNotes": ["Carica solo documenti che puoi trattare su un servizio online.", "Evita copie che promettono ChatPDF Plus gratis o APK modificati.", "Controlla le citazioni prima di usare una risposta come fonte."],
+  "editorialSummary": "In Italia la ricerca non è solo “scaricare ChatGPT”: spesso il bisogno concreto è capire un PDF universitario, un bando o un manuale. ChatPDF risponde a quella intenzione con un canale web ufficiale e una pagina dedicata al download desktop; non è necessario cercare installer su portali esterni.",
+  "editorialSections": [
+    {"heading": "A cosa serve ChatPDF", "body": "ChatPDF è utile quando hai un documento preciso e vuoi interrogarlo invece di aprire una chat generica. Puoi chiedere un riassunto, cercare un passaggio o confrontare più file nella stessa conversazione.\n\nIl vantaggio è la relazione con il documento caricato: le risposte possono rimandare alle parti da cui sono state ricavate. Non significa che siano automaticamente corrette; significa che hai un punto di controllo più concreto."},
+    {"heading": "Web e app desktop: quale canale scegliere", "body": "Per la maggior parte delle persone basta chatpdf.com: apri il sito, carichi il file e inizi. Il collegamento desktop ufficiale parte dal sito di ChatPDF e usa il dominio di download del servizio.\n\nSe trovi un file .exe, un APK o una versione “premium sbloccata” su un sito diverso, non è il percorso necessario. Per un PDF sensibile, valuta prima se preferisci un programma locale come MacWhisper per l'audio o un editor PDF offline."},
+    {"heading": "Quando confrontarlo con alternative", "body": "ChatPDF è una scelta diretta per domande su documenti. PDFgear è più adatto se vuoi anche modificare, convertire o fare OCR; SciSpace e Consensus sono più orientati alla ricerca accademica.\n\nScegli in base al lavoro da fare, non al nome più famoso. Per una tesi, verifica sempre il paper originale e non usare il riassunto generato come sostituto della fonte."}
+  ],
+  "faq": [
+    {"question": "ChatPDF funziona in italiano?", "answer": "Sì. Il servizio dichiara di poter gestire documenti e conversazioni in più lingue; puoi fare la domanda in italiano e controllare le citazioni nel file."},
+    {"question": "Esiste un'app ufficiale di ChatPDF per Windows?", "answer": "Il sito ufficiale mostra un collegamento al download desktop. Per iniziare, però, puoi usare direttamente la versione web senza installare nulla."},
+    {"question": "ChatPDF è gratis?", "answer": "Esiste un accesso gratuito con limiti. Funzioni e quantità disponibili possono cambiare, quindi controlla il piano mostrato sul sito ufficiale."},
+    {"question": "È sicuro caricare un documento su ChatPDF?", "answer": "Usa solo documenti che puoi affidare a un servizio online e leggi l'informativa del servizio. Per dati molto sensibili, preferisci un flusso locale quando possibile."}
+  ],
+  "italianSupport": "yes"
+}

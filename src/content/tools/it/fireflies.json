@@ -1,0 +1,20 @@
+{
+  "shortDescription": "Assistente IA per trascrivere, riassumere e analizzare riunioni e file audio, con supporto dichiarato per l'italiano.",
+  "longDescription": "Fireflies.ai registra o importa conversazioni, produce trascrizioni e genera riepiloghi ricercabili. Il servizio pubblica anche una guida specifica alla trascrizione di audio e meeting in italiano.",
+  "bestFor": ["Trascrivere meeting in italiano", "Riassumere interviste e chiamate", "Cercare parole in una trascrizione", "Condividere punti d'azione con il team"],
+  "limitations": ["È un servizio cloud e richiede un account.", "La precisione dipende da audio, accenti, sovrapposizione delle voci e termini specialistici.", "Le funzioni e i minuti gratuiti possono cambiare tra piani."],
+  "safetyNotes": ["Informa i partecipanti prima di registrare o caricare audio.", "Usa solo fireflies.ai e i collegamenti ufficiali per accedere al servizio.", "Non trattare il riepilogo come trascrizione legale senza revisione umana."],
+  "editorialSummary": "La query italiana “trascrivere audio in italiano” ha un intento molto più concreto di “miglior AI”: si cerca una soluzione che riconosca la lingua e faccia risparmiare tempo. Fireflies è un candidato forte perché documenta esplicitamente il flusso per l'italiano, ma la ficha deve mettere privacy e revisione al centro.",
+  "editorialSections": [
+    {"heading": "Trascrivere meeting e file audio", "body": "Fireflies può entrare in una riunione online oppure lavorare su file caricati. Dopo la trascrizione crea riepiloghi e punti d'azione, utili quando devi trasformare una conversazione in lavoro concreto.\n\nL'italiano non elimina gli errori: nomi propri, dialetti e persone che parlano insieme richiedono sempre un controllo. La promessa corretta è ridurre il lavoro, non consegnare un verbale perfetto senza revisione."},
+    {"heading": "Il canale ufficiale è web", "body": "Fireflies si usa dal suo servizio web e dai collegamenti ufficiali verso integrazioni e strumenti compatibili. Non serve cercare un APK o un installer “premium” per trascrivere un file.\n\nValuta bene i permessi richiesti quando colleghi calendario, videoconferenza o archivi. Dai accesso solo a ciò che il tuo flusso di lavoro richiede davvero."},
+    {"heading": "Fireflies rispetto a Fathom e MacWhisper", "body": "Fireflies è interessante per riunioni, upload e ricerca nelle conversazioni; Fathom punta soprattutto al meeting workflow; MacWhisper offre un percorso locale su macOS.\n\nSe lavori con dati riservati, la differenza tra cloud e locale conta più di una percentuale di accuratezza pubblicizzata. Scegli prima il livello di controllo che ti serve."}
+  ],
+  "faq": [
+    {"question": "Fireflies trascrive l'audio in italiano?", "answer": "Sì. Fireflies pubblica una guida ufficiale alla trascrizione di audio e riunioni in italiano. La precisione concreta dipende dalla qualità della registrazione."},
+    {"question": "Fireflies è un programma da scaricare?", "answer": "Il canale principale è web, con integrazioni raggiungibili dal servizio. Evita installer o APK distribuiti da siti non ufficiali."},
+    {"question": "Fireflies è gratis?", "answer": "Esiste un piano gratuito con limiti e ci sono piani a pagamento. Controlla minuti, archiviazione e funzioni aggiornate sul sito ufficiale."},
+    {"question": "Fireflies può sostituire un verbale umano?", "answer": "No. Genera una base utile, ma nomi, decisioni e responsabilità devono essere controllati prima di condividere il verbale."}
+  ],
+  "italianSupport": "yes"
+}

@@ -1,61 +1,55 @@
 # Schema Contract
 
-Tool fichas live in `src/content/tools/<slug>.json`.
+Do not change the JSON contract during ordinary localized ficha work. Keep factual product data and native editorial copy separate.
 
-Required core fields:
+## Files
+
+- `src/content/tools-base/<slug>.json`: shared, verified product data.
+- `src/content/tools/<lang>/<slug>.json`: editorial content written natively for that language route.
+
+The current contract does not store country, variant, demand, SERP, or opportunity-matrix fields in the ficha JSON. Keep that research in the task evidence/handoff unless the user explicitly requests a contract change.
+
+## Shared Base Fields
 
 ```json
 {
   "name": "Tool Name",
-  "slug": "tool-slug",
-  "shortDescription": "Max 180 chars.",
-  "longDescription": "Plain description.",
   "officialWebsite": "https://official.example",
   "categories": ["asistentes-ia"],
   "platforms": {},
   "pricingModel": "free|freemium|paid|enterprise|unknown",
   "requiresAccount": true,
-  "spanishSupport": "yes|partial|no|unknown",
   "tags": [],
   "alternatives": [],
   "initials": "TN",
   "screenshotUrl": null,
-  "bestFor": [],
-  "limitations": [],
-  "editorialSummary": "",
-  "editorialSections": [],
-  "faq": [],
-  "safetyNotes": [],
   "trustLevel": "official|verified|pending-review",
   "lastReviewed": "YYYY-MM-DD",
   "officialSources": []
 }
 ```
 
-Platform keys:
+Supported platform keys: `web`, `windows`, `mac`, `linux`, `android`, `ios`.
 
-- `web`
-- `windows`
-- `mac`
-- `linux`
-- `android`
-- `ios`
+Supported platform types: `official-site`, `app-store`, `web-app`, `documentation`, `official-installer`, `github-repo`, `package-manager`.
 
-Platform `type` values:
+Include a platform only when an official or useful verified access route really exists. `alternatives` must reference existing base slugs.
 
-- `official-site`
-- `app-store`
-- `web-app`
-- `documentation`
-- `official-installer`
-- `github-repo`
-- `package-manager`
+## Localized Editorial Fields
 
-Rules:
+Each `src/content/tools/<lang>/<slug>.json` can include:
 
-- Include only platforms that truly exist or have a useful official access/install page.
-- Use `web` for official web apps, official landing pages, official docs, or official GitHub entry points.
-- Use `documentation` when the correct “download” route is an installation guide.
-- Use `github-repo` only for the official repo or recognized upstream project repo.
-- `alternatives` must reference existing slugs. If the alternative is not in the repo, either omit it or create that ficha too.
-- `officialSources` should include the official website and proof pages used for platform decisions.
+```json
+{
+  "shortDescription": "Max 180 chars.",
+  "longDescription": "Native description.",
+  "bestFor": [],
+  "limitations": [],
+  "safetyNotes": [],
+  "editorialSummary": "",
+  "editorialSections": [],
+  "faq": []
+}
+```
+
+The currently supported optional support fields are `spanishSupport`, `italianSupport`, and `swedishSupport`; use only the field that the existing collection supports and only with verified information. Do not add a generic localization field without explicit authorization.

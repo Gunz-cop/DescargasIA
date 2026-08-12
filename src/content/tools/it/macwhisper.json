@@ -1,0 +1,20 @@
+{
+  "shortDescription": "App per macOS che trascrive audio e video con modelli Whisper, anche localmente per mantenere i file sul Mac.",
+  "longDescription": "MacWhisper è un'app per trascrivere registrazioni, podcast, lezioni e interviste su Mac. Il progetto offre modelli locali e opzioni cloud, così puoi scegliere tra privacy, velocità e qualità in base al lavoro.",
+  "bestFor": ["Trascrivere lezioni e interviste su Mac", "Creare sottotitoli da audio e video", "Lavorare offline su file sensibili", "Convertire registrazioni lunghe in testo ricercabile"],
+  "limitations": ["È un'app per macOS: non esiste un installer ufficiale equivalente per Windows.", "I modelli locali possono richiedere spazio e tempo di elaborazione.", "La trascrizione va riletta quando l'audio è rumoroso o contiene termini specialistici."],
+  "safetyNotes": ["Scarica l'app dal sito ufficiale MacWhisper o dal suo collegamento di acquisto.", "Controlla quale modello e quale modalità stanno elaborando il file.", "Non attribuire alla trascrizione locale una precisione automatica del 100%."],
+  "editorialSummary": "Per l'Italia esiste un'intenzione interessante dietro “trascrivere audio offline”: non tutti vogliono caricare una lezione, un'intervista o un colloquio su un servizio cloud. MacWhisper porta quella promessa su macOS, con un canale ufficiale chiaro e una differenza reale rispetto ai notetaker online.",
+  "editorialSections": [
+    {"heading": "Trascrizione locale su Mac", "body": "MacWhisper permette di trascinare un file audio o video e ottenere testo, sottotitoli e una trascrizione ricercabile. Con i modelli locali, l'elaborazione può avvenire sul computer senza inviare il file a un servizio remoto.\n\nIl vantaggio dipende dal Mac e dal modello scelto. Un modello più grande può offrire risultati migliori ma richiede più risorse; fai una prova prima di processare ore di materiale."},
+    {"heading": "Non è per Windows", "body": "MacWhisper è un'app macOS. Il canale ufficiale è macwhisper.com, da cui puoi scaricare la versione gratuita o acquistare la licenza Pro. Non cercare una versione Windows su portali che riutilizzano il nome.\n\nSe hai Windows o vuoi trascrivere meeting online, Fireflies e Fathom seguono un modello diverso. Non sono equivalenti sul piano della privacy, quindi la piattaforma conta."},
+    {"heading": "Italiano, Whisper e revisione", "body": "I modelli Whisper sono utilizzati per la trascrizione multilingue e possono lavorare con l'italiano. Accenti, rumore, più voci e nomi propri possono comunque produrre errori.\n\nUsa la trascrizione come prima bozza. Per sottotitoli pubblici, interviste da citare o documenti ufficiali, ascolta il punto originale e correggi il testo."}
+  ],
+  "faq": [
+    {"question": "MacWhisper trascrive in italiano?", "answer": "Sì, i modelli multilingue disponibili nell'app possono lavorare con l'italiano. La precisione varia in base a modello e registrazione."},
+    {"question": "MacWhisper funziona su Windows?", "answer": "No. MacWhisper è un'app per macOS. Per Windows devi scegliere un altro strumento con un installer ufficiale per quella piattaforma."},
+    {"question": "MacWhisper è offline?", "answer": "Può usare modelli locali per elaborare i file senza inviarli al cloud. Alcune funzioni o modelli collegati a servizi esterni possono seguire un percorso diverso."},
+    {"question": "MacWhisper è gratis?", "answer": "Esiste una versione gratuita e una licenza Pro con funzioni aggiuntive. Controlla prezzi e differenze aggiornate sul sito ufficiale."}
+  ],
+  "italianSupport": "yes"
+}

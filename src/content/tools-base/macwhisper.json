@@ -1,0 +1,17 @@
+{
+  "name": "MacWhisper",
+  "officialWebsite": "https://macwhisper.com",
+  "categories": ["traduccion-redaccion-ia", "modelos-locales"],
+  "platforms": {
+    "mac": { "url": "https://macwhisper.com", "type": "official-installer", "isOfficial": true, "lastChecked": "2026-08-11" }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": false,
+  "tags": ["trascrizione", "whisper", "offline", "macos"],
+  "alternatives": ["fireflies", "fathom"],
+  "screenshotUrl": null,
+  "initials": "MW",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-11",
+  "officialSources": ["https://macwhisper.com"]
+}

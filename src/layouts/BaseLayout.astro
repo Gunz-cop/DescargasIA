@@ -43,11 +43,11 @@ const home = `/${lang}`;
 
 // URLs reales calculadas en build: si la página no existe en el idioma destino
 // se enlaza su portada en vez de provocar un 404.
-const switcherLangs = (['es', 'sv'] as const).map((code) => {
+const switcherLangs = (['es', 'sv', 'it'] as const).map((code) => {
   const alt = alternates.find((entry) => entry.lang === code);
   return {
     code,
-    label: code === 'es' ? 'Español' : 'Svenska',
+    label: code === 'es' ? 'Español' : code === 'sv' ? 'Svenska' : 'Italiano',
     url: alt?.url ?? `/${code}`
   };
 });
@@ -82,7 +82,7 @@ const rightsLine = lang === 'sv'
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
-    {(noindex || lang === 'it') && <meta name="robots" content="noindex" />}
+    {noindex && <meta name="robots" content="noindex" />}
 
     <meta name="theme-color" content="#04120e" />
     <meta name="color-scheme" content="dark" />
@@ -194,9 +194,6 @@ const rightsLine = lang === 'sv'
                   class="flex min-h-11 items-center rounded-md px-3 text-[14px] text-fai-ink transition-colors hover:bg-fai-card aria-[current]:text-fai-find"
                 >{option.label}</a>
               ))}
-              <span class="block px-3 py-2 text-[14px] text-fai-muted-2">
-                Italiano <span class="fai-mono-sm">({t('lang.soon')})</span>
-              </span>
             </div>
           </details>
 

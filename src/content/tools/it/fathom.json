@@ -1,0 +1,20 @@
+{
+  "shortDescription": "Assistente per riunioni che registra, trascrive e riassume le conversazioni per trasformarle in attività e decisioni.",
+  "longDescription": "Fathom è un AI notetaker per riunioni e conversazioni di lavoro. Crea trascrizioni, riepiloghi e punti d'azione così puoi restare concentrato sulla chiamata invece di prendere appunti manualmente.",
+  "bestFor": ["Riassumere meeting di lavoro", "Recuperare decisioni e attività", "Cercare passaggi nelle conversazioni", "Ridurre il tempo speso sui verbali"],
+  "limitations": ["È un servizio collegato alle riunioni online e richiede un account.", "La trascrizione può sbagliare nomi, accenti o termini tecnici.", "Prima di registrare devi informare i partecipanti e rispettare le regole della tua organizzazione."],
+  "safetyNotes": ["Non installare bot o estensioni Fathom da fonti non ufficiali.", "Verifica consenso, privacy e conservazione delle registrazioni.", "Controlla il verbale prima di usarlo come documento di lavoro."],
+  "editorialSummary": "“Trascrivere riunioni in italiano” è una ricerca con un risultato pratico: ottenere un verbale senza riascoltare un'ora di call. Fathom merita una ficha italiana perché intercetta questo caso d'uso, ma va presentato come servizio per meeting, non come registratore universale senza conseguenze privacy.",
+  "editorialSections": [
+    {"heading": "Da call a riepilogo operativo", "body": "Fathom cerca di togliere il lavoro manuale dopo una riunione: trascrive la conversazione, crea un riepilogo e mette in evidenza i prossimi passi. È utile per vendite, progetti e allineamenti interni.\n\nUn riepilogo automatico non è il verbale definitivo. Nomi, numeri e responsabilità assegnate devono essere controllati da chi ha partecipato alla riunione."},
+    {"heading": "Non è un installer da scaricare", "body": "Il percorso ufficiale parte da fathom.ai e dal flusso di registrazione del servizio. Non cercare un generico file “Fathom per Windows” su un aggregatore: eventuali componenti o modalità di acquisizione devono arrivare dal sito ufficiale.\n\nPrima dell'uso chiarisci se la registrazione è permessa. Una soluzione tecnica non sostituisce il consenso delle persone né le procedure aziendali."},
+    {"heading": "Fathom o trascrizione locale", "body": "Fathom è pensato per il contesto delle riunioni online e dei follow-up. MacWhisper è più interessante se devi trascrivere file localmente su Mac; Fireflies è un'alternativa orientata a meeting e caricamenti audio.\n\nLa scelta dipende dalla sensibilità dell'audio e dal flusso di lavoro. Per conversazioni mediche, legali o riservate valuta con attenzione dove vengono elaborati i dati."}
+  ],
+  "faq": [
+    {"question": "Fathom trascrive le riunioni in italiano?", "answer": "Il servizio è pensato per trascrivere e riassumere meeting multilingue, ma disponibilità e qualità possono cambiare. Fai una prova su un breve estratto prima di affidargli una riunione importante."},
+    {"question": "Fathom è gratis?", "answer": "Fathom offre un piano gratuito e piani per esigenze più avanzate; limiti e funzioni vanno verificati sul sito ufficiale."},
+    {"question": "Fathom ha un'app desktop ufficiale?", "answer": "Il canale ufficiale è fathom.ai. Non scaricare installer da portali esterni e usa solo eventuali collegamenti forniti dal servizio."},
+    {"question": "Posso registrare una riunione senza avvisare?", "answer": "Non dare per scontato che sia consentito. Informa i partecipanti e segui legge, policy aziendale e regole della piattaforma usata per la chiamata."}
+  ],
+  "italianSupport": "unknown"
+}

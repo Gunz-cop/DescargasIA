@@ -1,0 +1,20 @@
+{
+  "shortDescription": "Strumento web di Adobe per pulire la voce, ridurre il rumore e migliorare registrazioni di podcast, interviste e video.",
+  "longDescription": "Adobe Podcast offre funzioni online per registrare e lavorare sull'audio. Enhance Speech usa l'IA per rendere più chiara la voce e ridurre rumore, riverbero e suoni di fondo.",
+  "bestFor": ["Pulire una registrazione fatta in casa", "Migliorare voce per podcast e video", "Ridurre rumore e riverbero", "Preparare un'intervista prima del montaggio"],
+  "limitations": ["Enhance Speech funziona nel browser: non è un editor audio desktop tradizionale.", "I risultati possono diventare innaturali con un'intensità troppo alta.", "Limiti di durata, formato e funzioni dipendono dal piano Adobe Podcast."],
+  "safetyNotes": ["Carica solo registrazioni che puoi elaborare su un servizio cloud.", "Non confondere la pulizia del suono con una trascrizione verificata.", "Usa podcast.adobe.com, non copie che offrono preset premium modificati."],
+  "editorialSummary": "“Migliorare la voce” e “togliere rumore dall'audio” sono ricerche italiane con un bisogno immediato. Adobe Podcast permette di intercettarle con una ficha diversa dai generatori musicali: qui il valore è recuperare una registrazione, non creare una canzone.",
+  "editorialSections": [
+    {"heading": "Una soluzione per audio imperfetto", "body": "Enhance Speech può rendere più leggibile una voce registrata in una stanza rumorosa, durante un'intervista o con un microfono non ideale. L'elaborazione è pensata per chi vuole un risultato più pulito senza imparare subito equalizzazione e compressione.\n\nLa regolazione va ascoltata, non solo applicata. Se l'IA elimina troppo ambiente o altera la voce, riduci l'intensità oppure torna al file originale."},
+    {"heading": "È tutto online", "body": "Adobe Podcast si usa dal browser su podcast.adobe.com. Non c'è un installer desktop da cercare per Enhance Speech, e una pagina che offre un “Adobe Podcast crack” non è un canale ufficiale.\n\nLa modalità web è comoda, ma significa caricare il file sui server del servizio. Per materiale riservato, valuta questo aspetto prima di iniziare."},
+    {"heading": "Quando serve un altro strumento", "body": "Adobe Podcast è adatto alla voce e all'audio parlato. Se devi trascrivere una riunione, Fireflies offre un flusso più specifico; se vuoi trascrivere file in locale su Mac, MacWhisper segue un'altra strada.\n\nScegli la funzione principale: pulizia audio, trascrizione o montaggio. Un tool semplice per il compito giusto è spesso migliore di una suite usata solo in parte."}
+  ],
+  "faq": [
+    {"question": "Adobe Podcast funziona in italiano?", "answer": "Puoi caricare una registrazione parlata in italiano per migliorarne il suono. La funzione di pulizia audio non equivale però a una garanzia sulla trascrizione."},
+    {"question": "Adobe Podcast ha un programma per Windows?", "answer": "Enhance Speech è uno strumento web. Usa podcast.adobe.com dal browser e non scaricare installer da siti di terze parti."},
+    {"question": "Adobe Podcast è gratis?", "answer": "Adobe offre un accesso gratuito e funzioni aggiuntive nel piano Premium. Limiti e formati supportati possono cambiare."},
+    {"question": "Adobe Podcast elimina tutto il rumore?", "answer": "Può ridurre rumore, riverbero e suoni di fondo, ma il risultato dipende dalla registrazione. Ascolta sempre il file elaborato prima di pubblicarlo."}
+  ],
+  "italianSupport": "unknown"
+}
