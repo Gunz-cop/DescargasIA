@@ -23,7 +23,7 @@ const descs = {
   it: 'Informazioni su come gestiamo e proteggiamo la privacy dei nostri utenti su FuenteAI.'
 };
 const alternates = Object.keys(languages)
-  .filter((l) => l !== 'it')
+  .filter((l) => l !== lang)
   .map((l) => ({
     lang: l,
     url: l === 'es' ? `${Astro.url.origin}/es/privacidad` : `${Astro.url.origin}/${l}/privacidad`

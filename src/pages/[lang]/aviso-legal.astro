@@ -23,7 +23,7 @@ const descs = {
   it: 'Termini di utilizzo, note legali e limitazione di responsabilità di FuenteAI.'
 };
 const alternates = Object.keys(languages)
-  .filter((l) => l !== 'it')
+  .filter((l) => l !== lang)
   .map((l) => ({
     lang: l,
     url: l === 'es' ? `${Astro.url.origin}/es/aviso-legal` : `${Astro.url.origin}/${l}/aviso-legal`

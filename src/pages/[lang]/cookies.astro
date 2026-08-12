@@ -23,7 +23,7 @@ const descs = {
   it: 'Informazioni sull\'uso minimo di cookie tecnici su FuenteAI.'
 };
 const alternates = Object.keys(languages)
-  .filter((l) => l !== 'it')
+  .filter((l) => l !== lang)
   .map((l) => ({
     lang: l,
     url: l === 'es' ? `${Astro.url.origin}/es/cookies` : `${Astro.url.origin}/${l}/cookies`
