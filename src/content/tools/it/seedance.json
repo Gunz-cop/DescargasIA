@@ -1,0 +1,57 @@
+{
+  "shortDescription": "Il modello di generazione video di ByteDance, disponibile al pubblico tramite l'app Dreamina (web, Android e iOS).",
+  "longDescription": "Seedance è il modello di generazione video sviluppato dal team Doubao di ByteDance, capace di creare clip a partire da testo, immagini o riferimenti combinati, con sincronizzazione audio e narrazione multi-scena nelle versioni più recenti. Non è un'app indipendente: si utilizza attraverso Dreamina, la piattaforma creativa internazionale di ByteDance (nota come Jimeng all'interno della Cina), disponibile via web e con app ufficiali per Android e iOS. Questa scheda rimanda esclusivamente ai canali ufficiali di Dreamina, dove Seedance funziona come motore video.",
+  "bestFor": [
+    "Generare video brevi da testo o immagini con uno dei modelli video più avanzati del 2026",
+    "Creare clip con sincronizzazione audio e più scene narrative senza montare manualmente ogni parte",
+    "Combinare generazione di immagini (Seedream) e video (Seedance) nella stessa app, Dreamina",
+    "Produrre materiale grezzo da rifinire poi in CapCut, all'interno dello stesso ecosistema ByteDance"
+  ],
+  "limitations": [
+    "Seedance non ha un'app propria indipendente: si accede esclusivamente tramite Dreamina, il che può confondere chi cerca un'app separata da \"scaricare\".",
+    "Non risulta un'applicazione desktop ufficiale al momento di questa verifica: su computer l'accesso avviene solo via browser su dreamina.capcut.com.",
+    "Il livello gratuito offre crediti giornalieri limitati; video più lunghi o le versioni più recenti del modello consumano crediti rapidamente e in genere richiedono un piano a pagamento."
+  ],
+  "safetyNotes": [
+    "Il sito ufficiale di Dreamina avverte esplicitamente che domini come seedance2.ai, seedance2.app o seedance.tv non appartengono a ByteDance. Usa solo dreamina.capcut.com.",
+    "Negli store di app esistono diverse applicazioni di terze parti con nomi molto simili (\"AI Image to Video Generator\", \"AI Generator with Dreamina\") pubblicate da sviluppatori senza alcun legame con ByteDance. L'app ufficiale su Android e iOS è pubblicata da Bytedance Pte. Ltd.: verifica sempre il nome dello sviluppatore prima di installare."
+  ],
+  "editorialSummary": "Seedance è diventato uno dei modelli video con IA più discussi del 2026, ma genera spesso confusione: non è un'app scaricabile a sé, bensì il motore video dietro Dreamina, la piattaforma creativa di ByteDance. Chiariamo subito questo legame e colleghiamo solo ai canali ufficiali di Dreamina, segnalando i domini falsi che sfruttano il nome Seedance.",
+  "editorialSections": [
+    {
+      "heading": "Seedance è un modello, Dreamina è l'app",
+      "body": "Un equivoco comune è trattare Seedance come un'applicazione a sé stante. In realtà è un modello di generazione video sviluppato dal team Doubao di ByteDance, la stessa azienda dietro TikTok e CapCut. Per usarlo come utente comune, il canale è Dreamina: la piattaforma dove Seedance gestisce la parte video e Seedream quella delle immagini.\n\nQuesto spiega perché cercare \"scaricare Seedance\" non porta a nessun installer: il prodotto reale per il pubblico, con web app e app mobili, si chiama Dreamina, mentre Seedance è la tecnologia che gira al suo interno."
+    },
+    {
+      "heading": "Dreamina a livello internazionale, Jimeng in Cina",
+      "body": "ByteDance distribuisce lo stesso prodotto sotto due nomi diversi a seconda della regione: Dreamina per gli utenti internazionali, accessibile su dreamina.capcut.com, e Jimeng (即梦) per gli utenti all'interno della Cina continentale, che richiede un numero di telefono cinese o un account Douyin per la registrazione. Per la stragrande maggioranza degli utenti italiani, Dreamina è il canale corretto.\n\nEntrambe le versioni condividono la stessa base tecnologica di Seedance, anche se le funzioni disponibili possono variare in base alla regione e alle normative locali sull'IA generativa."
+    },
+    {
+      "heading": "Come evitare i cloni che usano il nome Seedance",
+      "body": "La rapida popolarità di Seedance nel 2026 ha generato un'ondata di siti di terze parti come seedance2.ai o seedance.tv, che promettono accesso gratuito o illimitato al modello — e che la stessa Dreamina avverte non essere ufficiali. Nessuno di quei domini appartiene a ByteDance.\n\nLo stesso vale negli store di app: esistono diverse applicazioni con nomi simili a \"Dreamina\" pubblicate da sviluppatori indipendenti senza alcun legame con ByteDance. Il modo più semplice per verificare di installare l'app corretta è controllare che lo sviluppatore indicato sia Bytedance Pte. Ltd."
+    },
+    {
+      "heading": "Quando scegliere Seedance/Dreamina rispetto ad altre opzioni",
+      "body": "Dreamina con Seedance ha senso quando cerchi una generazione video con inquadrature più lunghe, sincronizzazione audio e la possibilità di combinare più riferimenti nello stesso clip, il tutto in un ecosistema che si integra naturalmente con CapCut per il montaggio successivo. È una scelta solida per chi già usa strumenti ByteDance o vuole provare uno dei modelli video più recenti sul mercato.\n\nSe preferisci una piattaforma con sede fuori dalla Cina, o cerchi funzioni specifiche come la generazione video da una singola immagine con molto controllo creativo, Kling AI, Hailuo AI, Runway o Luma Dream Machine sono alternative dirette da confrontare."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Dove si scarica Seedance?",
+      "answer": "Seedance non ha un'app propria: si usa all'interno di Dreamina, disponibile su dreamina.capcut.com e nelle app ufficiali per Android e iOS pubblicate da Bytedance Pte. Ltd."
+    },
+    {
+      "question": "Seedance ha un'applicazione desktop?",
+      "answer": "Non risulta un'app desktop ufficiale confermata. Su computer l'accesso avviene tramite browser su dreamina.capcut.com."
+    },
+    {
+      "question": "Seedance e Jimeng sono la stessa cosa?",
+      "answer": "Sono lo stesso prodotto ByteDance sotto nomi diversi a seconda della regione: Dreamina a livello internazionale e Jimeng per gli utenti all'interno della Cina."
+    },
+    {
+      "question": "È sicuro usare siti come seedance2.ai o seedance.tv?",
+      "answer": "No, non sono ufficiali. La stessa Dreamina avverte che quei domini non appartengono a ByteDance. Usa solo dreamina.capcut.com."
+    }
+  ],
+  "italianSupport": "unknown"
+}

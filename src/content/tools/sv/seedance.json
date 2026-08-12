@@ -1,0 +1,57 @@
+{
+  "shortDescription": "ByteDances AI-videomodell, tillgänglig för allmänheten via appen Dreamina (webb, Android och iOS).",
+  "longDescription": "Seedance är videogenereringsmodellen från ByteDances Doubao-team, som skapar videoklipp utifrån text, bilder eller en kombination av referenser, med ljudsynkronisering och flerscenberättande i de senaste versionerna. Seedance är ingen fristående app — den används genom Dreamina, ByteDances internationella kreativa plattform (som kallas Jimeng inom Kina), tillgänglig på webben samt i Android- och iOS-appar. Den här sidan länkar uteslutande till Dreaminas officiella kanaler, där Seedance driver videofunktionen.",
+  "bestFor": [
+    "Generera korta videoklipp från text eller bilder med en av de mest avancerade videomodellerna 2026",
+    "Skapa klipp med ljudsynk och flera sammanhängande scener utan att redigera varje del manuellt",
+    "Kombinera bildgenerering (Seedream) och videogenerering (Seedance) i samma app, Dreamina",
+    "Ta fram råmaterial som sedan klipps vidare i CapCut, inom samma ByteDance-ekosystem"
+  ],
+  "limitations": [
+    "Seedance har ingen egen fristående app — allt sker via Dreamina, vilket kan förvirra den som söker efter en separat \"Seedance-app\" att ladda ner.",
+    "Ingen officiell datorapp är bekräftad vid den här granskningen: på dator sker allt via webbläsaren på dreamina.capcut.com.",
+    "Gratisnivån ger begränsade dagliga krediter; längre klipp eller de senaste modellversionerna förbrukar krediter snabbt och kräver oftast ett betalplan."
+  ],
+  "safetyNotes": [
+    "Dreaminas egen webbplats varnar uttryckligen för att domäner som seedance2.ai, seedance2.app eller seedance.tv inte tillhör ByteDance. Använd bara dreamina.capcut.com.",
+    "I appbutikerna finns flera tredjepartsappar med snarlika namn (\"AI Image to Video Generator\", \"AI Generator with Dreamina\") från utvecklare utan koppling till ByteDance. Den officiella appen i Android och iOS publiceras av Bytedance Pte. Ltd. — kontrollera alltid utvecklarnamnet innan du installerar."
+  ],
+  "editorialSummary": "Seedance blev en av de mest omtalade AI-videomodellerna 2026, men skapar ofta missförstånd: det är ingen egen nedladdningsbar app utan videomotorn bakom Dreamina, ByteDances kreativa plattform. Vi förklarar den kopplingen direkt och länkar bara till Dreaminas officiella kanaler, samtidigt som vi flaggar de falska domäner som kapar Seedance-namnet.",
+  "editorialSections": [
+    {
+      "heading": "Seedance är en modell — Dreamina är appen",
+      "body": "Ett vanligt missförstånd är att behandla Seedance som en fristående applikation. I själva verket är det en videogenereringsmodell från ByteDances Doubao-team, samma företag bakom TikTok och CapCut. För att använda den som privatperson går vägen via Dreamina — plattformen där Seedance driver videodelen och Seedream driver bildgenereringen.\n\nDärför leder sökningar som \"ladda ner Seedance\" ingenstans: den faktiska konsumentprodukten, med webbapp och mobilappar, heter Dreamina, medan Seedance är tekniken som körs under ytan."
+    },
+    {
+      "heading": "Dreamina internationellt, Jimeng i Kina",
+      "body": "ByteDance distribuerar samma produkt under två namn beroende på region: Dreamina för internationella användare via dreamina.capcut.com, och Jimeng (即梦) för användare i Kina, som kräver ett kinesiskt telefonnummer eller ett Douyin-konto för registrering. För de allra flesta svenska användare är Dreamina den rätta kanalen.\n\nBåda versionerna delar samma tekniska grund i Seedance, men funktionsutbudet kan skilja sig åt beroende på region och lokala regler kring generativ AI."
+    },
+    {
+      "heading": "Så undviker du imitationer av Seedance",
+      "body": "Seedance snabba popularitet under 2026 ledde till en våg av tredjepartssajter som seedance2.ai eller seedance.tv, som lovar gratis eller obegränsad åtkomst till modellen — och som Dreamina själva varnar för att de inte är officiella. Ingen av de domänerna tillhör ByteDance.\n\nSamma sak gäller i appbutikerna: flera appar med Dreamina-liknande namn kommer från fristående utvecklare utan koppling till ByteDance. Det enklaste sättet att kontrollera att du installerar rätt app är att bekräfta att utvecklaren som anges är Bytedance Pte. Ltd."
+    },
+    {
+      "heading": "När Seedance/Dreamina passar — och när du bör jämföra andra alternativ",
+      "body": "Dreamina med Seedance passar bra när du vill generera video med längre tagningar, ljudsynk och möjlighet att kombinera flera referenser i samma klipp, allt inom ett ekosystem som naturligt kopplar samman med CapCut för vidare redigering. Det är ett solitt val för den som redan använder ByteDance-verktyg eller vill testa en av marknadens senaste videomodeller.\n\nOm du föredrar en plattform baserad utanför Kina, eller letar efter specifika funktioner som videogenerering från en enda bild med stor kreativ kontroll, är Kling AI, Hailuo AI, Runway eller Luma Dream Machine direkta alternativ att jämföra med."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Var laddar man ner Seedance?",
+      "answer": "Seedance har ingen egen app — det används inom Dreamina, tillgängligt på dreamina.capcut.com och i de officiella Android- och iOS-apparna från Bytedance Pte. Ltd."
+    },
+    {
+      "question": "Finns det en officiell datorapp för Seedance?",
+      "answer": "Nej, ingen officiell datorapp är bekräftad. På dator sker allt via webbläsaren på dreamina.capcut.com."
+    },
+    {
+      "question": "Är Seedance samma sak som Jimeng?",
+      "answer": "Det är samma ByteDance-produkt under olika namn beroende på region: Dreamina internationellt och Jimeng för användare i Kina."
+    },
+    {
+      "question": "Är sidor som seedance2.ai eller seedance.tv säkra att använda?",
+      "answer": "Nej, de är inte officiella. Dreamina varnar själva för att de domänerna inte tillhör ByteDance. Använd bara dreamina.capcut.com."
+    }
+  ],
+  "swedishSupport": "unknown"
+}

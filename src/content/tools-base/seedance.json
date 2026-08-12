@@ -1,0 +1,54 @@
+{
+  "name": "Seedance",
+  "officialWebsite": "https://dreamina.capcut.com",
+  "categories": [
+    "video-ia",
+    "generacion-imagenes"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://dreamina.capcut.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-12"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.lemon.dreamina",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-12"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/au/app/dreamina-ai-image-video-maker/id6749606485",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-12"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "seedance",
+    "bytedance",
+    "dreamina",
+    "capcut",
+    "video-ia",
+    "texto-a-video",
+    "china"
+  ],
+  "alternatives": [
+    "kling-ai",
+    "hailuo-ai",
+    "runway",
+    "luma-dream-machine",
+    "wan"
+  ],
+  "screenshotUrl": null,
+  "initials": "SDN",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-12",
+  "officialSources": [
+    "https://dreamina.capcut.com",
+    "https://seed.bytedance.com/en/seedance2_0"
+  ]
+}
