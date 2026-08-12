@@ -1,5 +1,5 @@
 {
-  "shortDescription": "AI-sökmotor och kodassistent för utvecklare, med fokus på tekniska svar och källor.",
+  "shortDescription": "AI-sökmotor och kodassistent för utvecklare, med fokus på tekniska svar och källor vid felsökning och dokumentationsfrågor.",
   "longDescription": "Phind är en AI-baserad sök- och svarstjänst för programmering och tekniska frågor. Den används via officiell webbtjänst och relaterade kanaler.",
   "bestFor": [
     "Söka tekniska svar med utvecklarfokus",

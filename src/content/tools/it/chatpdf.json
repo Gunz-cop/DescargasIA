@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Servizio web per parlare con PDF, riassumere documenti e verificare le risposte citando le pagine di origine.",
+  "shortDescription": "Servizio web per parlare con PDF, riassumere documenti e verificare le risposte citando le pagine di origine, in italiano.",
   "longDescription": "ChatPDF trasforma un PDF in una conversazione: puoi fare domande, ottenere un riassunto e cercare informazioni senza leggere ogni pagina dall'inizio. È pensato per studenti, ricercatori e professionisti che lavorano con documenti lunghi.",
   "bestFor": ["Riassumere dispense, manuali e articoli", "Fare domande a un PDF in italiano", "Orientarsi tra più documenti di ricerca", "Controllare da quale parte del documento arriva una risposta"],
   "limitations": ["Il piano gratuito ha limiti di utilizzo e di documenti.", "La versione principale funziona nel browser: non serve un installer Windows per iniziare.", "Le risposte vanno confrontate con il PDF, soprattutto per contratti, esami o dati tecnici."],

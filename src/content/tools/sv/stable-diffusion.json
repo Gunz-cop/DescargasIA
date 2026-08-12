@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Öppen modellfamilj för AI-bilder, ofta använd lokalt via appar, gränssnitt och communityverktyg.",
+  "shortDescription": "Öppen modellfamilj för AI-bilder, ofta använd lokalt via appar, gränssnitt och communityverktyg för den som vill ha full kontroll.",
   "longDescription": "Stable Diffusion är en modellfamilj för bildgenerering. Den används via olika officiella, öppna eller communitybaserade verktyg snarare än en enda konsumentapp.",
   "bestFor": [
     "Generera bilder med hög kontroll och egna workflows",

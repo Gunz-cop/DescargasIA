@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Plataforma de automatización de flujos de trabajo de código abierto, con lienzo visual y soporte para agentes de IA.",
+  "shortDescription": "Plataforma de automatización de flujos de trabajo de código abierto, con lienzo visual y agentes de IA, en la nube o autoalojada.",
   "longDescription": "n8n es una plataforma de automatización de flujos de trabajo que combina un lienzo visual de nodos con la posibilidad de escribir código propio cuando algo no está cubierto por una integración lista. Permite conectar aplicaciones, APIs y modelos de IA para automatizar procesos, y en los últimos años sumó soporte específico para construir agentes de IA con cada paso de razonamiento visible en el flujo. n8n no tiene un instalador de escritorio de un clic: se usa mediante n8n Cloud (versión hospedada) o autoalojado con Docker en tu propia infraestructura.",
   "bestFor": [
     "Automatizar flujos de trabajo que conectan varias apps, APIs o modelos de IA sin escribir todo el código a mano",

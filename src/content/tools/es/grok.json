@@ -1,5 +1,5 @@
 {
-  "shortDescription": "El asistente conversacional de xAI, integrado con X y disponible en web, iOS y Android.",
+  "shortDescription": "El asistente conversacional de xAI, integrado con X y disponible en web, iOS y Android, con generación de imágenes incluida.",
   "longDescription": "Grok es el modelo de lenguaje desarrollado por xAI, la compañía de inteligencia artificial fundada por Elon Musk. Se distingue por su acceso a información en tiempo real a través de X (antes Twitter), un tono más directo y menos filtrado que otros asistentes, y funciones de generación de imágenes integradas. Este directorio enlaza únicamente a los canales oficiales de xAI: la web grok.com y las apps verificadas de Google Play y App Store.",
   "bestFor": [
     "Consultar temas de actualidad con contexto de conversaciones recientes en X",

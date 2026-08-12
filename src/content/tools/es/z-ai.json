@@ -1,5 +1,5 @@
 {
-  "shortDescription": "El chatbot de la china Zhipu AI (antes ChatGLM), potenciado por sus modelos abiertos GLM, con acceso web gratuito.",
+  "shortDescription": "El chatbot de Zhipu AI (antes ChatGLM), potenciado por sus modelos abiertos GLM, con acceso web gratuito y plan para programadores.",
   "longDescription": "Z.ai es el asistente conversacional de Zhipu AI, un laboratorio de inteligencia artificial nacido como spin-off de la Universidad de Tsinghua que se listó en la bolsa de Hong Kong en 2026. Está construido sobre la familia de modelos GLM, publicados con licencia abierta (MIT en su versión más reciente), lo que lo convirtió en una referencia dentro del ecosistema de modelos abiertos. Además del chat, ofrece un plan específico para desarrolladores que integra los modelos GLM en editores de código como Claude Code o Cline. Esta ficha enlaza solo al canal oficial en chat.z.ai.",
   "bestFor": [
     "Chatear de forma gratuita con uno de los modelos abiertos más potentes del momento (GLM)",

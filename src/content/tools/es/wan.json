@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Generador de video e imagen de Alibaba Cloud (Tongyi Wanxiang), con narrativa multi-escena y apps oficiales.",
+  "shortDescription": "Generador de video e imagen de Alibaba Cloud (Tongyi Wanxiang), con narrativa multi-escena, audio nativo y apps oficiales para móvil.",
   "longDescription": "Wan, también conocido como Tongyi Wanxiang, es el modelo de generación visual de Alibaba Cloud desarrollado por Tongyi Lab. Convierte descripciones de texto o imágenes de referencia en video, con funciones orientadas a narrativa de varias escenas, generación de audio nativo y transferencia de estilo. Además de sus modelos abiertos, muy presentes en comunidades de investigación, Alibaba ofrece un sitio y apps propias para usarlo sin configuración técnica. Esta ficha enlaza solo a los canales oficiales de Wan.",
   "bestFor": [
     "Generar video a partir de texto o imagen con control cinematográfico del resultado",

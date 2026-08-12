@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Entorno de programación en la nube con IA integrada para crear apps completas desde el navegador o el móvil.",
+  "shortDescription": "Entorno de programación en la nube con IA integrada para crear apps completas desde el navegador o el móvil, sin instalar nada.",
   "longDescription": "Replit es un entorno de desarrollo que corre completamente en el navegador, sin instalación local, y que integra Replit Agent para generar aplicaciones completas a partir de una descripción en lenguaje natural (lo que suele llamarse \"vibe coding\"). Permite escribir, ejecutar y publicar proyectos en decenas de lenguajes sin configurar un entorno local. Esta ficha enlaza solo a los canales oficiales: la web replit.com y las apps verificadas de Google Play y App Store.",
   "bestFor": [
     "Crear un prototipo funcional describiendo la idea en lenguaje natural",

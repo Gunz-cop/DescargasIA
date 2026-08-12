@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Ett lokalt verktyg för att köra och hantera språkmodeller på din egen dator.",
+  "shortDescription": "Ett lokalt verktyg för att köra och hantera språkmodeller på din egen dator, med stöd för macOS, Windows, Linux och ett lokalt API.",
   "longDescription": "Ollama gör det möjligt att ladda ner och köra stora språkmodeller lokalt, utan att varje fråga skickas till en extern AI-tjänst. Det används ofta av utvecklare och tekniska användare.",
   "bestFor": [
     "Köra AI-modeller lokalt på egen dator",

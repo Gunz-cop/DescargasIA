@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Webbaserat AI-videoverktyg från Luma för att skapa klipp från text, bild och kreativa instruktioner.",
+  "shortDescription": "Webbaserat AI-videoverktyg från Luma för att skapa videoklipp från text, bild och kreativa prompts i webbläsaren.",
   "longDescription": "Luma Dream Machine är ett AI-verktyg för videogenerering och kreativa visuella klipp. Det används via officiella Luma-kanaler, inte via fristående nedladdningspaket.",
   "bestFor": [
     "Skapa korta AI-videoklipp från prompts",

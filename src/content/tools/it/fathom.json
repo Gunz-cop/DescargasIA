@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Assistente per riunioni che registra, trascrive e riassume le conversazioni per trasformarle in attività e decisioni.",
+  "shortDescription": "Assistente per riunioni che registra, trascrive e riassume le conversazioni per trasformarle in attività e decisioni concrete.",
   "longDescription": "Fathom è un AI notetaker per riunioni e conversazioni di lavoro. Crea trascrizioni, riepiloghi e punti d'azione così puoi restare concentrato sulla chiamata invece di prendere appunti manualmente.",
   "bestFor": ["Riassumere meeting di lavoro", "Recuperare decisioni e attività", "Cercare passaggi nelle conversazioni", "Ridurre il tempo speso sui verbali"],
   "limitations": ["È un servizio collegato alle riunioni online e richiede un account.", "La trascrizione può sbagliare nomi, accenti o termini tecnici.", "Prima di registrare devi informare i partecipanti e rispettare le regole della tua organizzazione."],

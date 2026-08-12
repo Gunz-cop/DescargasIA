@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Lokal AI-arbetsyta för dokument, RAG och privata assistenter, med officiella appar och källkod.",
+  "shortDescription": "Lokal AI-arbetsyta för dokument, RAG och privata assistenter, med officiella appar och källkod på GitHub för team med datakrav.",
   "longDescription": "AnythingLLM är ett verktyg för att bygga lokala eller självhostade AI-arbetsytor med egna dokument, modeller och teamflöden. FuenteAI pekar till de officiella kanalerna, inte till ompackade installerare.",
   "bestFor": [
     "Bygga en privat assistent med egna dokument",

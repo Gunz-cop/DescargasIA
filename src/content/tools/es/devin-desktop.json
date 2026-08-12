@@ -1,5 +1,5 @@
 {
-  "shortDescription": "El editor de código agéntico antes llamado Windsurf, ahora integrado en la marca Devin de Cognition.",
+  "shortDescription": "El editor de código agéntico antes llamado Windsurf, ahora integrado en la marca Devin de Cognition, con el agente Cascade incorporado.",
   "longDescription": "Devin Desktop es el editor de código con inteligencia artificial que hasta mediados de 2026 se llamaba Windsurf. Tras la adquisición de Windsurf por parte de Cognition (la empresa detrás del agente de programación Devin), el producto se renombró y se integró junto con Devin Cloud, Devin CLI y Devin Review bajo una sola marca. Sigue siendo un editor basado en el mismo motor que VS Code, con el agente Cascade capaz de entender un repositorio completo y ejecutar tareas de varios pasos. Esta ficha enlaza solo a los canales oficiales de Cognition en devin.ai.",
   "bestFor": [
     "Programar con un agente que entiende el repositorio completo, no solo el archivo abierto",

@@ -51,10 +51,10 @@ const pageTitle = lang === 'sv'
     : `${sortedTools.length} herramientas de IA oficiales para ${localizedCatName} | FuenteAI`;
 
 const pageDesc = lang === 'sv'
-  ? `Officiella nedladdningslänkar för ${localizedCatName}. Verifierade och säkra källor.`
+  ? `${localizedCatDescription} Officiella och verifierade nedladdningslänkar på FuenteAI.`
   : lang === 'it'
-    ? `Collegamenti ufficiali di download per ${localizedCatName}. Fonti verificate e sicure.`
-    : `${cat.data.description} Enlaces de descarga oficiales y verificados en FuenteAI.`;
+    ? `${localizedCatDescription} Collegamenti di download ufficiali e verificati su FuenteAI.`
+    : `${localizedCatDescription} Enlaces de descarga oficiales y verificados en FuenteAI.`;
 
 const schemaBreadcrumb = {
   '@context': 'https://schema.org',

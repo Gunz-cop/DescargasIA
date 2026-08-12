@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Assistente IA per trascrivere, riassumere e analizzare riunioni e file audio, con supporto dichiarato per l'italiano.",
+  "shortDescription": "Assistente IA per trascrivere, riassumere e analizzare riunioni e audio, con supporto dichiarato per l'italiano e ricerca nei testi.",
   "longDescription": "Fireflies.ai registra o importa conversazioni, produce trascrizioni e genera riepiloghi ricercabili. Il servizio pubblica anche una guida specifica alla trascrizione di audio e meeting in italiano.",
   "bestFor": ["Trascrivere meeting in italiano", "Riassumere interviste e chiamate", "Cercare parole in una trascrizione", "Condividere punti d'azione con il team"],
   "limitations": ["È un servizio cloud e richiede un account.", "La precisione dipende da audio, accenti, sovrapposizione delle voci e termini specialistici.", "Le funzioni e i minuti gratuiti possono cambiare tra piani."],

@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Googles öppna modellfamilj för lokala och utvecklarorienterade AI-experiment.",
+  "shortDescription": "Googles öppna modellfamilj för lokala och utvecklarorienterade AI-experiment, riktad till utvecklare snarare än vanliga användare.",
   "longDescription": "Gemma är en familj öppna AI-modeller från Google för utvecklare, forskning och lokala experiment. Den laddas inte ner som en vanlig konsumentapp.",
   "bestFor": [
     "Testa öppna språkmodeller från Google",

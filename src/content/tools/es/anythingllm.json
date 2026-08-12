@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Aplicación de escritorio y self-hosted para chatear con documentos, modelos locales y flujos RAG.",
+  "shortDescription": "Aplicación de escritorio y self-hosted para chatear con documentos, modelos locales y flujos RAG sin depender de la nube.",
   "longDescription": "AnythingLLM es una aplicación de IA para escritorio y despliegues self-hosted. Permite conectar modelos, documentos, agentes y bases de conocimiento con enfoque local o privado.",
   "bestFor": [
     "Crear bases de conocimiento con documentos propios",

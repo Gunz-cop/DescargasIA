@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Herramienta de consola para ejecutar y gestionar modelos de lenguaje grandes de forma local y privada en tu ordenador.",
+  "shortDescription": "Herramienta de consola para ejecutar y gestionar modelos de lenguaje grandes de forma local y privada, con API compatible OpenAI.",
   "longDescription": "Ollama es una herramienta ligera y open-source para ejecutar modelos de inteligencia artificial (como Llama 3, Mistral o Phi 3) directamente en tu ordenador. Funciona mediante línea de comandos o levantando un servidor local API compatible, garantizando privacidad total y funcionamiento offline.",
   "bestFor": [
     "Ejecutar modelos de lenguaje grandes de forma local y privada desde la terminal",

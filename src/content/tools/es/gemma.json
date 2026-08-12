@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Modelos de inteligencia artificial de código abierto desarrollados por Google para ejecución local y privada.",
+  "shortDescription": "Modelos de IA de código abierto desarrollados por Google para ejecución local y privada, compatibles con Ollama y LM Studio.",
   "longDescription": "Gemma es una familia de modelos de lenguaje ligeros y de última generación creados por Google a partir de la misma tecnología utilizada en Gemini. A diferencia de este último, Gemma se distribuye con pesos abiertos (open-weights), permitiendo a desarrolladores e investigadores descargar, ejecutar e integrar la IA de forma local y 100% privada en sus propios ordenadores.",
   "bestFor": [
     "Desarrolladores e investigadores que necesitan ejecutar modelos de lenguaje potentes de forma local y privada.",

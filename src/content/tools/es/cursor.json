@@ -1,5 +1,5 @@
 {
-  "shortDescription": "El editor de código integrado con inteligencia artificial basado en VS Code para programación asistida de alta velocidad.",
+  "shortDescription": "El editor de código integrado con inteligencia artificial basado en VS Code para programación asistida, con chat integrado.",
   "longDescription": "Cursor es un entorno de desarrollo integrado (IDE) nacido como fork de VS Code. Está diseñado específicamente para programar con asistencia fluida de modelos de lenguaje como GPT-4, Claude y modelos propios. Ofrece autocompletado avanzado, chat integrado y refactorización inteligente directa en el espacio de trabajo.",
   "bestFor": [
     "Programar con autocompletado de IA que entiende el contexto completo del proyecto",

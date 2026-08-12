@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Anthropics AI-assistent för längre texter, analys, kod och resonemang, med länkar till officiella kanaler.",
+  "shortDescription": "Anthropics AI-assistent för längre texter, analys, kod och resonemang, med länkar till officiella kanaler som claude.ai/download.",
   "longDescription": "Claude är en konversations-AI från Anthropic. Den används ofta för textarbete, dokumentanalys, kodförklaringar och uppgifter där sammanhang och tydliga instruktioner spelar stor roll.",
   "bestFor": [
     "Analysera och sammanfatta långa dokument",

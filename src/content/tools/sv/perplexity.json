@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Konversationsbaserad AI-sökmotor med källor, tillgänglig via webb, mobil och officiella butiker.",
+  "shortDescription": "Konversationsbaserad AI-sökmotor med källhänvisningar, tillgänglig via webb, mobil och officiella butiker som Microsoft Store.",
   "longDescription": "Perplexity är en AI-söktjänst som kombinerar svar, följdfrågor och citerade källor. Den används främst via webben och officiella appar.",
   "bestFor": [
     "Söka svar med synliga källor",

@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Asistente de programación de GitHub para VS Code, Visual Studio, JetBrains y otros entornos compatibles.",
+  "shortDescription": "Asistente de programación de GitHub para VS Code, Visual Studio, JetBrains y otros entornos compatibles, con chat integrado.",
   "longDescription": "GitHub Copilot es un asistente de programación con IA que se instala principalmente como extensión o integración dentro del editor, no como un editor independiente.",
   "bestFor": [
     "Autocompletar código dentro del editor",

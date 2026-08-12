@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Buscador y asistente conversacional asistido por IA optimizado específicamente para programadores y desarrolladores.",
+  "shortDescription": "Buscador y asistente conversacional asistido por IA optimizado específicamente para programadores, con extensión para VS Code.",
   "longDescription": "Phind es un motor de respuestas conversacional especializado en desarrollo de software y programación. Combina modelos de lenguaje de gran tamaño con una capacidad avanzada de rastreo e indexación web en tiempo real, permitiendo resolver dudas técnicas, explicar código y buscar en documentación técnica oficial con precisión. Se accede de forma web.",
   "bestFor": [
     "Desarrolladores que necesitan resolver errores (bugs) o excepciones complejas buscando soluciones en tiempo real.",

@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Chatbot local y gratuito de Nomic AI para ejecutar modelos de lenguaje open source sin conexión a internet.",
+  "shortDescription": "Chatbot local y gratuito de Nomic AI para ejecutar modelos de lenguaje open source sin conexión, con LocalDocs para tus archivos.",
   "longDescription": "GPT4All es una aplicación de escritorio desarrollada por Nomic AI que permite descargar y ejecutar modelos de lenguaje de código abierto directamente en tu computadora, sin enviar datos a servidores externos. Incluye una interfaz simple para elegir modelos, chatear con ellos y, con la función LocalDocs, hacerles preguntas sobre tus propios documentos en PDF, texto o Word. Todo el procesamiento ocurre en el equipo local. Esta ficha enlaza solo a los canales oficiales de Nomic AI y a su repositorio en GitHub.",
   "bestFor": [
     "Ejecutar modelos de IA en tu propia computadora sin conexión ni cuenta",

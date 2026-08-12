@@ -1,5 +1,5 @@
 {
-  "shortDescription": "La plataforma y comunidad donde se publican, comparten y descargan modelos, datasets y demos de IA de código abierto.",
+  "shortDescription": "La plataforma y comunidad donde se publican, comparten y descargan modelos, datasets y demos (Spaces) de IA de código abierto.",
   "longDescription": "Hugging Face es una plataforma web y una comunidad donde investigadores, empresas y desarrolladores publican modelos de inteligencia artificial, conjuntos de datos y aplicaciones de demostración (llamadas Spaces). Alberga más de dos millones de modelos, muchos de ellos de código abierto y descargables gratis, junto con la librería Transformers, ampliamente usada para ejecutar esos modelos desde Python. No es una aplicación que se instale como tal, sino un centro de acceso y distribución: su función en FuenteAI es servir como fuente confiable para encontrar modelos y proyectos de IA legítimos antes de instalarlos con otras herramientas.",
   "bestFor": [
     "Buscar y descargar modelos de IA de código abierto directamente desde su fuente oficial",

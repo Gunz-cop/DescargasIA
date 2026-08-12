@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Agente de IA autónomo que planifica, investiga, programa y entrega resultados terminados desde web, escritorio o móvil.",
+  "shortDescription": "Agente de IA autónomo que planifica, investiga, programa y entrega resultados terminados desde web, escritorio o móvil, hoy parte de Meta.",
   "longDescription": "Manus es un agente de inteligencia artificial desarrollado por Butterfly Effect, orientado a ejecutar tareas completas de forma autónoma en lugar de solo responder preguntas: puede investigar un tema, escribir y ejecutar código, generar un sitio web funcional, armar una presentación o automatizar un flujo de trabajo, usando su propio entorno de \"computadora virtual\" para hacerlo. Meta anunció la adquisición de Manus a fines de 2025. Esta ficha enlaza a la web oficial, la app de escritorio para Windows y Mac, y las apps móviles publicadas por el desarrollador.",
   "bestFor": [
     "Delegar tareas completas de investigación, redacción o desarrollo que requieren varios pasos encadenados",

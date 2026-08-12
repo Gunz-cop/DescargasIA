@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Interfaces locales como AUTOMATIC1111 y ComfyUI para generar imágenes con modelos Stable Diffusion.",
+  "shortDescription": "Interfaces locales como AUTOMATIC1111 y ComfyUI para generar imágenes con modelos Stable Diffusion, LoRA y checkpoints personalizados.",
   "longDescription": "Stable Diffusion no es una app única de escritorio, sino un ecosistema de modelos e interfaces locales. Las rutas más conocidas son AUTOMATIC1111, ComfyUI y gestores como Stability Matrix.",
   "bestFor": [
     "Generar imágenes localmente con modelos de difusión",

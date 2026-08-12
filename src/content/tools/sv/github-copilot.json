@@ -1,5 +1,5 @@
 {
-  "shortDescription": "AI-assistent för kod i editorer och GitHub, installerad via officiella tillägg och integrationer.",
+  "shortDescription": "AI-assistent för kod i editorer och GitHub, installerad via officiella tillägg och integrationer i VS Code och JetBrains.",
   "longDescription": "GitHub Copilot är en AI-kodassistent för autokomplettering, chatt och kodhjälp i utvecklingsmiljöer. Den används via officiella editor-tillägg och GitHub-kanaler.",
   "bestFor": [
     "Få kodförslag direkt i editorn",

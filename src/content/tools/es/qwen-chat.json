@@ -1,5 +1,5 @@
 {
-  "shortDescription": "El asistente conversacional de Alibaba basado en los modelos abiertos Qwen, con soporte para más de 100 idiomas.",
+  "shortDescription": "El asistente conversacional de Alibaba basado en los modelos abiertos Qwen, con soporte para más de 100 idiomas y generación de código.",
   "longDescription": "Qwen Chat es la interfaz conversacional oficial de Alibaba Cloud para su familia de modelos Qwen, uno de los proyectos de IA de código abierto más activos del momento. Permite chatear, analizar imágenes y PDFs, generar código, buscar en la web en tiempo real y construir flujos de trabajo con agentes, todo con una de las coberturas de idiomas más amplias entre los asistentes conversacionales. Esta ficha enlaza solo a los canales oficiales verificados de Qwen.",
   "bestFor": [
     "Chatear con un asistente que reconoce y responde en más de 100 idiomas",

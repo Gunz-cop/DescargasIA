@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Una interfaz gráfica intuitiva y completa para descubrir, descargar y chatear con modelos LLM locales de forma offline.",
+  "shortDescription": "Una interfaz gráfica intuitiva y completa para descubrir, descargar y chatear con modelos LLM locales, con API compatible OpenAI.",
   "longDescription": "LM Studio es una aplicación de escritorio diseñada para facilitar la ejecución de modelos de IA locales con una interfaz similar a la de ChatGPT. Permite descargar modelos directamente desde Hugging Face, configurar los parámetros de carga en GPU/CPU y levantar un servidor API local compatible con OpenAI de forma extremadamente sencilla.",
   "bestFor": [
     "Descargar y chatear con modelos de lenguaje locales sin usar la línea de comandos",

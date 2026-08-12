@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Strumento web che trasforma testo e idee in diagrammi, schemi e visual per documenti e presentazioni.",
+  "shortDescription": "Strumento web che trasforma testo e idee in diagrammi, schemi e visual per documenti e presentazioni, senza installer da scaricare.",
   "longDescription": "Napkin AI aiuta a trasformare un testo in una rappresentazione visiva: diagrammi, mappe, schemi e infografiche che puoi modificare e usare per spiegare meglio un'idea.",
   "bestFor": ["Visualizzare processi e concetti", "Creare schemi per una presentazione", "Trasformare note in diagrammi", "Preparare materiali chiari per un team"],
   "limitations": ["È un'applicazione web: non richiede un installer desktop ufficiale.", "Il risultato automatico va impaginato e controllato prima della pubblicazione.", "Piani, esportazioni e limiti d'uso possono cambiare."],

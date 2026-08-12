@@ -1,5 +1,5 @@
 {
-  "shortDescription": "App per macOS che trascrive audio e video con modelli Whisper, anche localmente per mantenere i file sul Mac.",
+  "shortDescription": "App per macOS che trascrive audio e video con modelli Whisper, anche localmente per mantenere i file sul Mac senza cloud.",
   "longDescription": "MacWhisper è un'app per trascrivere registrazioni, podcast, lezioni e interviste su Mac. Il progetto offre modelli locali e opzioni cloud, così puoi scegliere tra privacy, velocità e qualità in base al lavoro.",
   "bestFor": ["Trascrivere lezioni e interviste su Mac", "Creare sottotitoli da audio e video", "Lavorare offline su file sensibili", "Convertire registrazioni lunghe in testo ricercabile"],
   "limitations": ["È un'app per macOS: non esiste un installer ufficiale equivalente per Windows.", "I modelli locali possono richiedere spazio e tempo di elaborazione.", "La trascrizione va riletta quando l'audio è rumoroso o contiene termini specialistici."],

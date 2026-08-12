@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Genera videos con avatares de IA que hablan a partir de un guion de texto, con traducción automática a varios idiomas.",
+  "shortDescription": "Genera videos con avatares de IA que hablan a partir de un guion de texto, con traducción automática y sincronización de labios.",
   "longDescription": "HeyGen es una plataforma de video con inteligencia artificial especializada en avatares digitales: a partir de un guion de texto o una grabación propia, genera un video de una persona (real o generada) hablando de forma natural, con sincronización de labios y voz. También ofrece traducción de video a más de cien idiomas manteniendo el movimiento de labios ajustado al nuevo audio. Está disponible en web, Android e iOS. Esta ficha enlaza solo a los canales oficiales de HeyGen.",
   "bestFor": [
     "Crear videos explicativos o corporativos con un presentador de IA, sin cámara ni estudio",

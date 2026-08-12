@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Generador de video con IA de MiniMax, con apps móviles oficiales y modelos que combinan video con audio sincronizado.",
+  "shortDescription": "Generador de video con IA de MiniMax, con apps oficiales para Android e iOS y modelos que combinan video con audio sincronizado.",
   "longDescription": "Hailuo AI es la plataforma de generación de video con inteligencia artificial de MiniMax, una compañía china de IA que se convirtió en una de las más comentadas dentro de la comunidad de código abierto por sus modelos multimodales. Permite generar clips a partir de texto o imágenes, con funciones como referencia de personaje para mantener consistencia entre escenas y, en sus versiones más recientes, generación de audio sincronizado junto con el video. Esta ficha enlaza solo a los canales oficiales de MiniMax.",
   "bestFor": [
     "Generar videos cortos a partir de texto o una imagen de referencia",

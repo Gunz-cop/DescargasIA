@@ -1,5 +1,5 @@
 {
-  "shortDescription": "En grafisk desktopapp för att hitta, ladda ner och köra lokala AI-modeller utan terminal.",
+  "shortDescription": "En grafisk desktopapp för att hitta, ladda ner och köra lokala AI-modeller utan terminal, med officiell nedladdning från lmstudio.ai.",
   "longDescription": "LM Studio är en desktopapp för lokala språkmodeller. Den erbjuder modellbibliotek, chattgränssnitt, inställningar och lokal server i en mer visuell miljö än terminalbaserade verktyg.",
   "bestFor": [
     "Använda lokala AI-modeller via ett grafiskt gränssnitt",

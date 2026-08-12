@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Agente de programación de código abierto que vive en la terminal, desarrollado por el equipo de Qwen (Alibaba).",
+  "shortDescription": "Agente de programación de código abierto que vive en la terminal, desarrollado por el equipo de Qwen (Alibaba), compatible con Ollama.",
   "longDescription": "Qwen Code es un agente de programación de código abierto que se ejecuta desde la línea de comandos, desarrollado por el equipo de QwenLM en Alibaba. Permite delegar tareas de programación —explorar un repositorio, escribir código, corregir errores— describiendo el objetivo en lenguaje natural, sin salir de la terminal. Es compatible con distintos proveedores de modelos, incluidos los propios modelos Qwen, OpenAI, Anthropic, Gemini o modelos locales ejecutados con Ollama. Esta ficha enlaza solo al repositorio oficial en GitHub.",
   "bestFor": [
     "Programar desde la terminal delegando tareas a un agente de código en lenguaje natural",

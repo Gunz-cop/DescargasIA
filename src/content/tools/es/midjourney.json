@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Generador de imágenes por IA disponible desde la web oficial de Midjourney y su flujo con Discord.",
+  "shortDescription": "Generador de imágenes por IA disponible desde la web oficial de Midjourney y su flujo con Discord, sin instalador de escritorio.",
   "longDescription": "Midjourney es un servicio de generación de imágenes por IA. No se distribuye como instalador de escritorio independiente para Windows o macOS.",
   "bestFor": [
     "Crear imágenes de alta calidad desde prompts",

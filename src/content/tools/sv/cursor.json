@@ -1,5 +1,5 @@
 {
-  "shortDescription": "AI-kodeditorn baserad på VS Code, med officiella nedladdningar för Windows, macOS och Linux.",
+  "shortDescription": "AI-kodeditorn baserad på VS Code, med officiella nedladdningar för Windows, macOS och Linux samt stöd för många VS Code-tillägg.",
   "longDescription": "Cursor är en kodeditor byggd för programmering med AI direkt i arbetsflödet. Den bygger på VS Code-grunden och kombinerar editor, chatt, kodförståelse och refaktorering.",
   "bestFor": [
     "Utvecklare som vill ha AI direkt i kodeditorn",

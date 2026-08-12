@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Piattaforma di studio con flashcard, test e funzioni IA per trasformare appunti e PDF in materiale di ripasso.",
+  "shortDescription": "Piattaforma di studio con flashcard, test e funzioni IA per trasformare appunti e PDF in materiale di ripasso, su web e mobile.",
   "longDescription": "Quizlet aiuta a studiare creando flashcard, esercizi e guide a partire da contenuti già disponibili. Le sue funzioni IA possono trasformare note, slide o PDF in domande e materiale per il ripasso.",
   "bestFor": ["Preparare interrogazioni ed esami", "Creare flashcard da appunti e slide", "Ripassare con test generati dall'IA", "Usare lo stesso materiale su web e mobile"],
   "limitations": ["Le funzioni IA più avanzate possono richiedere un piano a pagamento.", "La qualità delle domande dipende dal materiale caricato.", "L'app non sostituisce la verifica di formule, date o fonti scolastiche."],

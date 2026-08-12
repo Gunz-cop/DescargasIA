@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Öppen desktopapp för att köra och chatta med lokala AI-modeller på egen dator.",
+  "shortDescription": "Öppen desktopapp för att köra och chatta med lokala AI-modeller på egen dator, laddas ner från officiell webbplats eller GitHub.",
   "longDescription": "Jan är en öppen AI-app för lokal modellkörning och chatt på datorn. Den passar användare som vill testa lokala modeller via en grafisk app.",
   "bestFor": [
     "Köra lokala modeller via ett desktopgränssnitt",

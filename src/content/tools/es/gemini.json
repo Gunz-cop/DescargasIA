@@ -1,5 +1,5 @@
 {
-  "shortDescription": "El modelo de inteligencia artificial multimodal desarrollado por Google para web, escritorio y móviles.",
+  "shortDescription": "El modelo de inteligencia artificial multimodal desarrollado por Google para web, escritorio y móviles, integrado con Gmail.",
   "longDescription": "Gemini es la inteligencia artificial desarrollada por Google, integrada de forma nativa en su ecosistema. Permite resolver tareas lógicas, analizar imágenes, programar y conectarse con herramientas como Google Docs, Gmail y YouTube. Cuenta con versión web, aplicación oficial para macOS y aplicaciones móviles.",
   "bestFor": [
     "Usuarios integrados en el ecosistema de Google (Workspace, Gmail, Docs)",

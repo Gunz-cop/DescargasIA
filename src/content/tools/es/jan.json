@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Cliente de inteligencia artificial local y 100% de código abierto para ejecutar modelos LLM de forma privada en tu PC.",
+  "shortDescription": "Cliente de inteligencia artificial local y 100% de código abierto para ejecutar modelos LLM de forma privada en Windows, macOS y Linux.",
   "longDescription": "Jan AI es una aplicación de escritorio que convierte tu ordenador en un servidor de inteligencia artificial local. Con una interfaz limpia inspirada en ChatGPT, permite descargar, configurar y chatear con modelos de código abierto (como Llama 3, Gemma o Mistral) de manera offline, garantizando privacidad absoluta de los datos. Funciona en Windows, macOS y Linux.",
   "bestFor": [
     "Usuarios que desean una interfaz de chat local sencilla de usar y que no requiera conocimientos técnicos de terminal.",

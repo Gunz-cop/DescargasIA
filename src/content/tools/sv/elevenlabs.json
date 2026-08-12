@@ -1,5 +1,5 @@
 {
-  "shortDescription": "AI-röstverktyg för text-till-tal, dubbning och röstgenerering via officiell webbtjänst.",
+  "shortDescription": "AI-röstverktyg för text-till-tal, dubbning och röstgenerering via officiell webbtjänst, med stöd för flera språk och röststilar.",
   "longDescription": "ElevenLabs är en AI-plattform för röst, text-till-tal och ljudproduktion. Den används främst via webben och officiella API- eller produktkanaler.",
   "bestFor": [
     "Skapa naturligt tal från text",
