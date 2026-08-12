@@ -1,0 +1,67 @@
+name: Deploy and run SDI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      sdi_mode:
+        description: "Modo de SDI: run (default) o baseline (solo primera vez)"
+        required: false
+        default: "run"
+
+concurrency:
+  group: sdi-fuenteai-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Restaura el estado de SDI de la corrida anterior. La key incluye run_id
+      # para que siempre se guarde algo nuevo al final; restore-keys busca por
+      # prefijo la entrada más reciente que matchee.
+      - name: Restore SDI state
+        uses: actions/cache@v4
+        with:
+          path: .sdi
+          key: sdi-state-fuenteai-${{ github.run_id }}
+          restore-keys: |
+            sdi-state-fuenteai-
+
+      - name: Build site
+        run: npm run build
+
+      # El mismo dist/ que se genera acá es el que se deploya y el que SDI
+      # va a leer después: no hay un segundo build en el medio.
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+
+      # Solo se usa disparando el workflow manualmente con sdi_mode=baseline,
+      # la primera vez, antes de habilitar sdi run.
+      - name: SDI baseline (solo primera corrida manual)
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.sdi_mode == 'baseline'
+        run: npx sdi baseline --confirm
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
+      - name: SDI run (live)
+        if: "!(github.event_name == 'workflow_dispatch' && github.event.inputs.sdi_mode == 'baseline')"
+        run: npx sdi run
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}

@@ -25,6 +25,7 @@
     "vite": "7.3.5"
   },
   "devDependencies": {
-    "sdi-cli": "^0.1.0"
+    "sdi-cli": "^0.1.0",
+    "wrangler": "^4.121.0"
   }
 }
