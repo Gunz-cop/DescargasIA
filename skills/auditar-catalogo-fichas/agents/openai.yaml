@@ -1,0 +1,4 @@
+interface:
+  display_name: "Auditar catálogo de fichas"
+  short_description: "Verifica fichas y enlaces oficiales con cambios mínimos."
+  default_prompt: "Usa $auditar-catalogo-fichas para revisar el catálogo y actualizar solo los datos confirmados."

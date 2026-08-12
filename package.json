@@ -23,5 +23,8 @@
   },
   "overrides": {
     "vite": "7.3.5"
+  },
+  "devDependencies": {
+    "sdi-cli": "^0.1.0"
   }
 }
