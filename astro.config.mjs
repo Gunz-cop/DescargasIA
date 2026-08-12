@@ -25,10 +25,9 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const isEsHome = page.replace(/\/$/, '') === `${SITE_URL}/es`;
-        const isIt = /\/it(\/|$)/.test(page);
         const isIr = page.includes('/ir/');
         const isR = /\/r(\/|$)/.test(page);
-        return !isEsHome && !isIt && !isIr && !isR;
+        return !isEsHome && !isIr && !isR;
       },
       serialize(item) {
         const cleanUrl = item.url.replace(/\/$/, ''); // Remover slash final para la coincidencia de clave
