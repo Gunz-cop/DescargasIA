@@ -29,10 +29,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify SDI CLI is resolvable
+        run: npx sdi --version
+
       # Restaura el estado de SDI de la corrida anterior. La key incluye run_id
       # para que siempre se guarde algo nuevo al final; restore-keys busca por
       # prefijo la entrada más reciente que matchee.
       - name: Restore SDI state
+        id: restore-sdi-state
         uses: actions/cache@v4
         with:
           path: .sdi
@@ -60,8 +64,16 @@ jobs:
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
 
+      # Solo corre si de verdad se restauró un estado previo (cache-hit real),
+      # sin importar por qué trigger llegamos acá. Esto evita notificar todas
+      # las URLs de golpe si alguien re-ejecuta un run viejo sin querer.
       - name: SDI run (live)
-        if: "!(github.event_name == 'workflow_dispatch' && github.event.inputs.sdi_mode == 'baseline')"
+        if: "!(github.event_name == 'workflow_dispatch' && github.event.inputs.sdi_mode == 'baseline') && steps.restore-sdi-state.outputs.cache-hit == 'true'"
         run: npx sdi run
         env:
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+
+      - name: Warn if no baseline exists yet
+        if: "!(github.event_name == 'workflow_dispatch' && github.event.inputs.sdi_mode == 'baseline') && steps.restore-sdi-state.outputs.cache-hit != 'true'"
+        run: |
+          echo "::warning::No se encontró un baseline previo (cache-hit=false). Se salteó 'sdi run' para no notificar todas las URLs de golpe. Disparar el workflow manualmente con sdi_mode=baseline."
