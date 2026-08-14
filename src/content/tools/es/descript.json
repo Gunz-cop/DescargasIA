@@ -1,0 +1,66 @@
+{
+  "shortDescription": "Editor de video y podcast basado en IA que funciona editando el texto de la transcripción, con apps oficiales para Windows y Mac.",
+  "longDescription": "Descript es un editor de audio y video que convierte la transcripción automática en la línea de tiempo: borras una palabra del texto y el clip correspondiente desaparece del video. Combina transcripción, edición, eliminación de muletillas, mejora de audio y un asistente de IA (Underlord) capaz de generar voces, imágenes o cortes automáticos según instrucciones. Este directorio enlaza únicamente a los canales oficiales de descarga y acceso web provistos por Descript.",
+  "bestFor": [
+    "Editar podcasts o videos cortando directamente el texto de la transcripción, sin manejar una línea de tiempo tradicional",
+    "Eliminar muletillas, silencios largos y errores de dicción de forma automática en contenido grabado en inglés, alemán, francés, portugués o italiano",
+    "Transcribir entrevistas o reuniones grabadas en español y exportar el texto como subtítulos",
+    "Mejorar la calidad de audio de grabaciones caseras con las herramientas de limpieza de ruido y voz"
+  ],
+  "limitations": [
+    "El plan gratuito limita el uso a una hora de material por mes, con marca de agua en las exportaciones de video y sin acceso a la mayoría de las funciones de IA.",
+    "Las funciones de IA (eliminar muletillas, Studio Sound, Underlord) se cobran mediante un sistema de créditos separado, no están incluidas de forma ilimitada ni siquiera en los planes pagos.",
+    "No existe una app oficial para Linux, Android ni iOS: el uso fuera de Windows y Mac queda limitado a la versión web, que además funciona mejor en navegadores basados en Chromium.",
+    "La eliminación automática de muletillas solo detecta inglés, alemán, francés, portugués e italiano; en español hay que revisar y cortar las muletillas a mano desde la transcripción."
+  ],
+  "safetyNotes": [
+    "Descarga el instalador únicamente desde descript.com; evita ejecutables de portales de terceros que prometan la versión de pago desbloqueada.",
+    "Descript requiere iniciar sesión con una cuenta para usar cualquiera de sus versiones, incluida la web; desconfía de sitios que pidan credenciales fuera del dominio oficial."
+  ],
+  "editorialSummary": "Descript se hizo conocido por una idea simple: editar video y audio como si fuera un documento de texto. Esa propuesta lo convirtió en una herramienta habitual para podcasters, creadores de contenido y equipos que necesitan cortar entrevistas rápido sin dominar software de edición tradicional. En FuenteAI reunimos sus accesos oficiales para que llegues a la app o la web real, sin pasar por instaladores modificados.",
+  "editorialSections": [
+    {
+      "heading": "Editar borrando texto, no arrastrando clips",
+      "body": "La particularidad de Descript es que la transcripción automática se convierte en la interfaz principal de edición. En vez de buscar el punto exacto en una línea de tiempo, seleccionas la palabra o la frase que sobra en el texto y el software recorta el fragmento de audio o video correspondiente. Para alguien que nunca usó un editor de video, esto reduce mucho la curva de aprendizaje inicial.\n\nEsa misma lógica de texto se extiende a funciones como \"eliminar muletillas\" (quita automáticamente \"eh\", silencios largos y repeticiones) o Studio Sound, que limpia ruido de fondo y mejora la voz grabada con micrófonos caseros. Ninguna de estas funciones es mágica al cien por ciento: conviene revisar el resultado antes de publicar, porque los cortes automáticos a veces eliminan pausas que en realidad aportaban al ritmo del video."
+    },
+    {
+      "heading": "Web, Windows y Mac: qué versión conviene según tu equipo",
+      "body": "Descript ofrece tres puntos de entrada oficiales: la app de escritorio para Windows, la app de escritorio para Mac y la versión web en web.descript.com. La app de escritorio suele rendir mejor con archivos grandes porque cachea el material localmente; la versión web es más cómoda si trabajas desde varias computadoras o un equipo que no es tuyo, aunque Descript aclara que funciona mejor en navegadores basados en Chromium (Chrome, Edge) y puede fallar en Safari.\n\nSi usas Linux, Android o iOS, no hay una app nativa oficial: la única vía documentada por Descript en esos casos es entrar a la versión web desde el navegador del dispositivo. No existe hoy un instalador oficial fuera de Windows y Mac, así que cualquier APK o paquete que se presente como \"Descript para Android\" no proviene de la marca."
+    },
+    {
+      "heading": "El sistema de créditos de IA, la parte que más confunde",
+      "body": "Descript separó el uso básico de edición (gratis dentro del límite mensual de horas) de las funciones que corren modelos de IA, como Underlord, la generación de voces o Studio Sound avanzado, que consumen créditos de IA propios. Esto significa que agotar el plan no siempre es cuestión de minutos de video editados: también puede ser que se acaben los créditos de IA antes que las horas de material.\n\nAntes de elegir un plan pago, conviene simular el flujo de trabajo real (cuántas veces se usará la limpieza de audio o el generador de voz) en vez de mirar solo el límite de horas anunciado, porque el costo efectivo depende de ambos topes por separado."
+    },
+    {
+      "heading": "Cuándo elegir Descript y cuándo mirar alternativas",
+      "body": "Descript tiene sentido para quien edita podcasts, entrevistas o videos hablados con guion claro, donde cortar por texto ahorra tiempo real. Es menos indicado como editor principal para trabajos audiovisuales muy técnicos (corrección de color avanzada, animación, efectos complejos), donde un editor tradicional sigue siendo más flexible.\n\nSi lo que necesitas es solo limpiar o generar voz sin editar un video completo, herramientas más chicas como Adobe Podcast (mejora de voz en el navegador) o ElevenLabs (texto a voz y clonación de voz) pueden alcanzar sin pagar por un editor completo. Si en cambio buscas generar video con avatares o clips desde cero en vez de editar material grabado, esa es una categoría distinta a la que Descript no apunta."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En una reseña verificada publicada en G2 en junio de 2026, una usuaria relató que las generaciones de avatar con IA (la función ligada a Underlord) le consumieron créditos de IA en intentos que nunca llegaron a completarse, y que el soporte técnico solo pagó una parte del reembolso que había ofrecido por escrito. No es representativo de la experiencia general del producto, pero conviene revisar el consumo de créditos con atención antes de apoyarte en Underlord para un proyecto con plazo ajustado, en vez de asumir que cada generación fallida se descuenta automáticamente del total facturado.",
+      "source": "https://www.g2.com/products/descript/reviews",
+      "sourceLabel": "Reseña verificada en G2",
+      "date": "2026-06-15"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Descript tiene aplicación oficial para Windows y Mac?",
+      "answer": "Sí. Descript ofrece instaladores oficiales de escritorio para Windows y macOS descargables desde descript.com/download, además de una versión web en web.descript.com."
+    },
+    {
+      "question": "¿Existe una app oficial de Descript para Android o iOS?",
+      "answer": "No hay una app móvil nativa oficial confirmada. En dispositivos Android o iOS, la vía documentada por Descript es usar la versión web desde el navegador."
+    },
+    {
+      "question": "¿Descript funciona en español?",
+      "answer": "La transcripción automática admite español. Sin embargo, la eliminación automática de muletillas solo funciona en inglés, alemán, francés, portugués e italiano, y la interfaz del producto está principalmente en inglés."
+    },
+    {
+      "question": "¿Necesito pagar para usar Descript?",
+      "answer": "Tiene un plan gratuito con un límite de una hora de material por mes y exportaciones de video con marca de agua. Las funciones de IA más avanzadas dependen además de un sistema de créditos separado que se agota antes en los planes bajos."
+    }
+  ],
+  "spanishSupport": "partial"
+}

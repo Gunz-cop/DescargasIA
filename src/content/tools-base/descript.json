@@ -1,0 +1,52 @@
+{
+  "name": "Descript",
+  "officialWebsite": "https://www.descript.com",
+  "categories": [
+    "video-ia",
+    "musica-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://web.descript.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-14"
+    },
+    "windows": {
+      "url": "https://www.descript.com/download/windows",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-14"
+    },
+    "mac": {
+      "url": "https://www.descript.com/download/mac",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-14"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "edicion-de-video",
+    "edicion-de-audio",
+    "transcripcion",
+    "podcast",
+    "underlord"
+  ],
+  "alternatives": [
+    "runway",
+    "elevenlabs",
+    "adobe-podcast"
+  ],
+  "screenshotUrl": null,
+  "initials": "DSC",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-14",
+  "officialSources": [
+    "https://www.descript.com",
+    "https://www.descript.com/download",
+    "https://help.descript.com/hc/en-us/articles/16987605355277-Descript-for-Web",
+    "https://help.descript.com/hc/en-us/articles/10164806394509-Filler-words"
+  ]
+}
