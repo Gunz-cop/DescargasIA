@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Constructor de aplicaciones con IA: describes lo que quieres en lenguaje natural y Lovable genera una app web funcional, con hosting incluido.",
+  "longDescription": "Lovable es una plataforma que genera aplicaciones web completas a partir de instrucciones en lenguaje natural (lo que suele llamarse \"vibe coding\"). En vez de escribir código línea por línea, describes qué quieres construir y Lovable genera el frontend, conecta base de datos, maneja autenticación y publica el resultado, todo desde el navegador.",
+  "bestFor": [
+    "Crear un prototipo funcional de una app o sitio web sin escribir código desde cero",
+    "Validar una idea de producto rápido, con hosting y base de datos ya incluidos",
+    "Iterar un diseño o una función describiendo el cambio en lenguaje natural en vez de editar código",
+    "Construir herramientas internas simples sin depender de un equipo de desarrollo"
+  ],
+  "limitations": [
+    "El plan gratuito da 5 créditos diarios (hasta unos 30 al mes); construir algo con varias funciones consume créditos rápido y puede requerir pasar a un plan pago.",
+    "El código que genera puede tener errores de seguridad si no revisas la configuración de la base de datos antes de publicar (más detalle en \"Qué dice la comunidad\", más arriba en esta ficha).",
+    "No tiene interfaz nativa en español: la plataforma funciona en inglés, aunque entiende instrucciones escritas en español."
+  ],
+  "safetyNotes": [
+    "Antes de publicar cualquier app hecha con Lovable, corre el escaneo de seguridad gratuito que ofrece la plataforma y revisa los permisos de la base de datos (Row Level Security): en 2026 se documentaron casos reales de apps publicadas con bases de datos completamente expuestas.",
+    "Si tu app maneja datos de usuarios reales (emails, pagos, información personal), no asumas que la configuración por defecto es segura solo porque el código lo generó una IA — hace falta revisión humana antes de publicar."
+  ],
+  "editorialSummary": "Lovable convierte una descripción en lenguaje natural en una aplicación web funcional, con hosting y base de datos incluidos. Es una de las herramientas más usadas para \"vibe coding\": construir software sin escribir código a mano. En FuenteAI reunimos su canal oficial y el hallazgo más relevante que encontramos investigando la herramienta: un problema de seguridad real y documentado que conviene conocer antes de publicar algo con datos de usuarios.",
+  "editorialSections": [
+    {
+      "heading": "Qué significa \"describir\" una app en vez de programarla",
+      "body": "Lovable funciona con un chat: escribes lo que quieres construir (\"una app para gestionar turnos de una peluquería, con calendario y pagos\") y la plataforma genera el frontend, conecta una base de datos (usa Supabase por debajo) y publica una versión funcional en minutos. Puedes seguir iterando con instrucciones nuevas — \"agrega un login\", \"cambia el color del botón principal\" — sin tocar código directamente, aunque el código generado queda accesible si quieres editarlo a mano o exportarlo.\n\nEsto lo diferencia de un editor como Cursor, que sigue siendo un IDE pensado para programadores. Lovable apunta a alguien que quiere un resultado funcional sin necesariamente saber programar, o a un equipo que quiere prototipar rápido sin abrir un ticket de desarrollo."
+    },
+    {
+      "heading": "El problema de seguridad que conviene conocer antes de publicar",
+      "body": "En febrero de 2026 un investigador de seguridad encontró 16 vulnerabilidades, seis de ellas críticas, en una sola app construida con Lovable, exponiendo más de 18.000 registros de usuarios (incluyendo estudiantes y personal de universidades). La causa de fondo fue la falta de reglas de seguridad a nivel de fila (Row Level Security) en la base de datos generada automáticamente, y un análisis más amplio encontró más de 170 apps con bases de datos completamente expuestas. El detalle completo, con fuente, está en \"Qué dice la comunidad\" en esta ficha.\n\nLa causa no es exclusiva de Lovable: es un riesgo estructural de generar backend automáticamente sin revisión humana. Lovable ofrece un escaneo de seguridad gratuito antes de publicar — conviene usarlo siempre, sobre todo si la app va a manejar datos reales de personas."
+    },
+    {
+      "heading": "Créditos y cuándo conviene pagar",
+      "body": "El plan gratuito da 5 créditos por día (hasta unos 30 al mes), sin pedir tarjeta. Cada acción consume una cantidad distinta de créditos: un cambio simple cuesta poco, pero una función completa (como un sistema de login) o una landing page completa puede consumir varios créditos de una sola vez. Para probar la herramienta o construir algo chico, el plan gratuito alcanza; para iterar seguido en un proyecto real, el plan Pro (créditos mensuales adicionales) suele ser necesario.\n\nUna app publicada en Lovable queda alojada en un subdominio lovable.app en el plan gratuito; usar un dominio propio requiere plan pago."
+    },
+    {
+      "heading": "Cuándo conviene mirar otras opciones",
+      "body": "Lovable tiene sentido cuando el objetivo es un resultado funcional rápido y no te importa depender de su infraestructura de hosting. Si en cambio ya tienes un flujo de desarrollo propio y quieres IA integrada en tu propio editor y control de código, herramientas como Cursor encajan mejor. Si buscas algo más orientado a ejecutar y desplegar proyectos existentes (no solo generarlos desde cero), vale la pena comparar con Replit."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En febrero de 2026, el investigador de seguridad Taimur Khan encontró 16 vulnerabilidades (6 críticas) en una sola app construida con Lovable, una plataforma de preguntas de examen usada por estudiantes y docentes de UC Berkeley, UC Davis y varias instituciones K-12. La app tenía más de 100.000 vistas y expuso 18.697 registros de usuarios, incluyendo 870 con información personal completa. La causa fue una falla de lógica en los controles de acceso: el sistema bloqueaba a usuarios autenticados y permitía acceso sin autenticar, lo opuesto a lo esperado. Khan lo describió como \"una inversión de lógica clásica que un revisor de seguridad humano detectaría en segundos\". El CISO de Lovable respondió que la plataforma ofrece un escaneo de seguridad gratuito antes de publicar; Khan respondió que eso no alcanza si Lovable aloja la app en su propia infraestructura y la muestra a cientos de miles de personas. La lección práctica: corre siempre el escaneo de seguridad antes de publicar, y si tu app maneja datos reales, no confíes en que la configuración por defecto de la base de datos ya es segura.",
+      "source": "https://www.theregister.com/2026/02/27/lovable_app_vulnerabilities/",
+      "sourceLabel": "The Register — investigación de Taimur Khan sobre la vulnerabilidad de apps hechas con Lovable",
+      "date": "2026-02-27"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Lovable es gratis?",
+      "answer": "Tiene un plan gratuito con 5 créditos diarios (hasta unos 30 al mes), sin pedir tarjeta. Los planes Pro (25 USD/mes) y Business (50 USD/mes) agregan créditos mensuales y funciones adicionales."
+    },
+    {
+      "question": "¿Necesito saber programar para usar Lovable?",
+      "answer": "No es obligatorio: puedes construir una app describiéndola en lenguaje natural. Saber leer código ayuda para revisar lo que Lovable genera, especialmente en temas de seguridad, pero no es un requisito para empezar."
+    },
+    {
+      "question": "¿Es seguro publicar una app hecha con Lovable?",
+      "answer": "No por defecto. En 2026 se documentaron casos de apps con bases de datos completamente expuestas por falta de configuración de seguridad. Lovable ofrece un escaneo de seguridad gratuito antes de publicar — conviene usarlo siempre, sobre todo si la app maneja datos reales de personas."
+    },
+    {
+      "question": "¿Lovable tiene interfaz en español?",
+      "answer": "No de forma nativa: la interfaz está en inglés. Puedes escribir tus instrucciones en español y Lovable las entiende, pero no hay traducción completa de la plataforma. Hay un pedido abierto de la comunidad para agregarla."
+    }
+  ],
+  "spanishSupport": "partial"
+}

@@ -90,6 +90,40 @@ Este es un caso donde un campo vacío no es "neutral", es activamente dañino. E
 
 Escribí siempre los 4 `bestFor` con casos de uso reales y específicos de la herramienta (ver `references/schema-contract.md`). Si en algún momento estás editando una ficha existente y notás que `bestFor` está vacío (le pasa a algunas fichas anteriores a esta skill: `claude`, `cursor`, `lm-studio`, `ollama` al momento de escribir esto), completalo aunque no sea el pedido original — es una corrección de bajo riesgo y alto impacto.
 
+## Investigación de comunidad (`communityInsights`)
+
+Este campo existe para la "E" de Experiencia de E-E-A-T: como no probamos cada herramienta de primera mano, salimos a buscar evidencia real de gente que sí la usó, en vez de fingir experiencia propia.
+
+Cómo buscarla:
+
+- `WebSearch` dirigido, no genérico: `"<herramienta> reddit bug"`, `"<herramienta> reddit límite"`, `"<herramienta> discord problema"`, `"<herramienta> issues github"`, o el subreddit/foro oficial de la herramienta si existe uno conocido.
+- Buscá algo concreto y verificable: un límite real (cuota, censura, rendimiento), un bug reportado, un truco de uso no obvio, una comparación que la propia comunidad hace con una alternativa. No busques opiniones genéricas tipo "es buena/mala".
+
+Qué cuenta como fuente válida (mismo criterio que `references/source-policy.md` aplica a los canales de descarga: primaria, real, verificable):
+
+- un hilo de Reddit, un post de Discord (si es público/indexado), un issue de GitHub, un foro oficial de la herramienta — con URL que se pueda abrir y confirmar.
+- **no** cuenta: memoria propia sin fuente, foros de spam/SEO, respuestas generadas por IA dentro del propio hilo, generalizaciones tipo "muchos usuarios dicen que..." sin un link puntual detrás.
+
+Regla no negociable: **si no encontrás una fuente real y verificable para una herramienta dada, no completes `communityInsights`.** Dejalo como `[]` (el default del schema) y seguí con el resto de la ficha. No generalices, no inventes un hilo plausible, no parafrasees sin link. Una ficha sin esta sección es mejor que una con un dato fabricado — es exactamente el tipo de "confianza fabricada" que Google penaliza en E-E-A-T.
+
+Formato de cada insight: `text` en prosa propia (no pegado literal del foro), `source` con la URL real, `sourceLabel` opcional para dar contexto legible ("Hilo en r/ChatGPT", "Issue en GitHub"), `date` opcional con la fecha del post citado (no la fecha de hoy).
+
+### `WebFetch` el cuerpo real antes de citar un dato específico — no confíes en el resumen de `WebSearch`
+
+Esto pasó en la práctica y produjo un P0 real: se citó un artículo cuya URL sí era correcta, pero el **resumen que devolvió `WebSearch` incluía datos (una cifra, una mención a Reddit) que el artículo mismo no contenía** — probablemente agregados o parafraseados de otras fuentes en el proceso de resumen. La ficha terminó afirmando algo con un link que, al abrirlo, no lo sustentaba. Un revisor humano que abre el link para verificar encuentra exactamente eso, y es peor que no citar nada.
+
+Regla: antes de escribir cualquier `text` de `communityInsights` que incluya un dato específico (una cifra, un nombre, una fecha, una cita textual), hacé `WebFetch` sobre la URL exacta que vas a usar como `source` y pedile al modelo que confirme con una cita textual que el dato está ahí. Si `WebFetch` devuelve contenido truncado o solo navegación/paywall (pasa seguido con sitios que bloquean bots, ej. TechRadar), **no uses esa URL** — buscá una fuente alternativa que sí se pueda leer completa (foros oficiales tipo `community.openai.com`, GitHub issues, BleepingComputer y medios similares suelen ser fetcheables; sitios con muro de suscripción agresivo no).
+
+Si el dato numérico específico no se puede confirmar así, no lo incluyas — quedate con la parte del insight que sí está confirmada (ver ejemplo real: se pudo confirmar "OpenAI subió el límite a 3.000 mensajes semanales", pero no "el límite anterior era de 200" ni "la reacción fue en Reddit", así que esas dos afirmaciones se sacaron del texto en vez de dejarlas sin verificar).
+
+### La conclusión del insight no debería caducar
+
+Si el `text` termina con una instrucción atada al valor exacto citado (ej. "revisá que tu límite sea de 3.000 mensajes"), se vuelve falso en cuanto la cifra cambie de nuevo — y en herramientas de IA los límites/precios cambian seguido. Preferí cerrar con una conclusión que siga siendo cierta aunque el número puntual quede desactualizado (ej. "estos límites cambian con cierta frecuencia, así que no asumas que un tope es fijo"). El dato puntual va en el cuerpo con su fecha (`date`); la conclusión no debería depender de que ese dato siga vigente.
+
+### No hagas afirmaciones espaciales sobre la propia página sin verificar el render
+
+Si el texto editorial dice algo como "revisá las alternativas enlazadas arriba/abajo/al comienzo de esta página", verificá contra el orden real de secciones en `src/pages/[lang]/[slug].astro` (o abrí la página renderizada) antes de asumir dónde queda eso — el orden de secciones puede cambiar entre sesiones. Mismo cuidado aplica a nombrar herramientas específicas como alternativas en el texto: solo mencionés por nombre las que estén en el array `alternatives` de `tools-base/<slug>.json` (las que se autocompletan por categoría pueden variar), para no prometerle al lector un enlace que la página no tiene.
+
 ## Herramientas técnicas / self-hosted (Docker, CLI, pip)
 
 Cuando la herramienta no es una app tradicional (agentes de terminal como Qwen Code, interfaces self-hosted como Open WebUI, motores locales como ComfyUI en Linux), no finjas que hay un instalador de un clic. Explicá honestamente el nivel de fricción técnica real y para quién tiene sentido — esto evita generar expectativas falsas y es exactamente el tipo de "confusión real del usuario" que la voz editorial de este catálogo busca resolver.

@@ -1,0 +1,67 @@
+{
+  "shortDescription": "Genera videos con presentadores virtuales de IA a partir de texto, sin cámara ni estudio, pensado para video corporativo y de formación.",
+  "longDescription": "Synthesia es una plataforma que convierte texto en video con un presentador humano generado por IA: eliges un avatar, escribes el guion y la plataforma genera un video con voz sincronizada y movimiento de labios realista. Se usa principalmente para video corporativo, formación interna y contenido de marketing que necesita actualizarse seguido.",
+  "bestFor": [
+    "Producir videos de formación corporativa sin contratar actores ni alquilar un estudio",
+    "Actualizar contenido en video rápido cuando el guion cambia, sin volver a grabar",
+    "Generar videos en varios idiomas a partir de un mismo guion con voces sintéticas",
+    "Crear contenido de onboarding o comunicación interna a escala para equipos grandes"
+  ],
+  "limitations": [
+    "El resultado sigue siendo reconocible como generado por IA en primeros planos largos, aunque la calidad mejoró mucho en los últimos años.",
+    "Los avatares personalizados creados a partir de una persona real tienen restricciones de uso definidas por contrato; no todos se pueden usar para cualquier tipo de contenido.",
+    "El plan de entrada tiene límites de minutos de video generado por mes; producir contenido en volumen requiere un plan superior."
+  ],
+  "safetyNotes": [
+    "La tecnología de avatares realistas se ha usado indebidamente más de una vez para desinformación, con años de diferencia entre un caso y otro (el detalle está en \"Qué dice la comunidad\", más arriba en esta ficha). Verifica siempre la fuente de un video con presentador de IA antes de confiar en su contenido.",
+    "Si vas a crear un avatar personalizado a partir de tu propia imagen y voz, revisa con cuidado los términos de licencia antes de aceptar — definen qué puede hacer la empresa con esa réplica digital."
+  ],
+  "editorialSummary": "Synthesia genera videos con presentadores de IA a partir de texto, sin cámara ni estudio. Es una de las herramientas más usadas para video corporativo a escala. En FuenteAI reunimos su canal oficial y dos antecedentes reales, separados por más de un año, de uso indebido de la tecnología que conviene conocer antes de confiar ciegamente en un video con avatar de IA.",
+  "editorialSections": [
+    {
+      "heading": "De guion a video sin cámara",
+      "body": "El flujo de Synthesia es directo: eliges un avatar de una biblioteca (o creas uno personalizado con tu propia imagen), escribes o pegas un guion, y la plataforma genera un video con ese avatar hablando el texto, con sincronización de labios y voz generada. Es especialmente útil para contenido que se actualiza seguido — cursos de formación, anuncios internos, videos de producto — donde volver a grabar con un actor cada vez que cambia el guion no es práctico.\n\nLa plataforma soporta generar el mismo guion en varios idiomas sin volver a grabar nada, lo que la hace atractiva para empresas con operaciones en distintos países."
+    },
+    {
+      "heading": "Dos casos reales, un mismo problema de fondo",
+      "body": "La preocupación de que un avatar de Synthesia se use para engañar en vez de informar no es hipotética: hay al menos dos casos documentados y separados en el tiempo, con protagonistas y circunstancias distintas. Uno involucró avatares de stock usados en una campaña de propaganda estatal; el otro, el propio rostro y voz de una periodista convertidos en un avatar hiperrealista como parte de una investigación sobre los límites de la tecnología. Tratarlos como si fueran el mismo hecho sería impreciso — son dos episodios distintos que ilustran el mismo riesgo estructural desde ángulos diferentes. El detalle de cada uno, con su fuente propia, está en \"Qué dice la comunidad\".\n\nSynthesia modera el contenido que se puede generar con sus avatares y ha confirmado y sancionado casos de uso indebido cuando los detecta, pero ningún sistema de moderación posterior evita que el contenido ya haya circulado antes de ser detectado."
+    },
+    {
+      "heading": "Cuándo el resultado se nota generado por IA",
+      "body": "La calidad de los avatares mejoró mucho en los últimos años, pero en primeros planos largos o gestos muy específicos todavía se puede notar que no es una grabación real. Para video corporativo estándar (formación, anuncios) esto rara vez es un problema; para contenido donde la autenticidad percibida importa mucho, conviene probar antes de comprometerse a un plan superior."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En febrero de 2023, investigadores de la firma de análisis Graphika documentaron que los avatares de stock \"Anna\" y \"Jason\" de Synthesia habían sido usados para crear presentadores de noticias falsos en una campaña de propaganda alineada con el gobierno chino, conocida como \"Spamouflage\". Los videos, con guiones sobre política exterior, tuvieron un alcance limitado (menos de 300 vistas cada uno), pero el caso se volvió un ejemplo citado seguido sobre lo fácil que es reutilizar avatares de stock para desinformación estatal. Synthesia confirmó que el uso violaba sus términos de servicio.",
+      "source": "https://therecord.media/deepfake-news-anchors-spread-chinese-propaganda-on-social-media",
+      "sourceLabel": "The Record — investigación de Graphika sobre avatares de Synthesia en propaganda estatal china",
+      "date": "2023-02-09"
+    },
+    {
+      "text": "En abril de 2024, la periodista de MIT Technology Review Melissa Heikkilä se sometió a una sesión de captura en un estudio de Synthesia en Londres para que la empresa generara un avatar hiperrealista de su propio rostro, voz y gestos, como parte de una investigación sobre los límites de la tecnología. El resultado, según su propio reporte, era casi indistinguible de una grabación real. Para ese momento, Synthesia ya estaba valuada en más de 1.000 millones de dólares y el 56% de las empresas del Fortune 100 usaban la plataforma, principalmente para comunicación interna. El caso ilustra un riesgo distinto al de 2023: no hace falta robar la imagen de nadie para generar contenido perturbadoramente realista, alcanza con una sesión de grabación consentida.",
+      "source": "https://www.technologyreview.com/2024/04/25/1091772/new-generative-ai-avatar-deepfake-synthesia/",
+      "sourceLabel": "MIT Technology Review — investigación sobre avatares hiperrealistas de Synthesia y sus riesgos",
+      "date": "2024-04-25"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Synthesia es gratis?",
+      "answer": "Tiene un plan de entrada con minutos de video limitados por mes. Los planes superiores agregan más minutos, más avatares y funciones de equipo."
+    },
+    {
+      "question": "¿Se nota que el video está generado por IA?",
+      "answer": "En condiciones estándar (formación, anuncios cortos) la calidad es alta y muchas veces no se nota a simple vista. En primeros planos largos o gestos muy específicos, un ojo entrenado puede notar la diferencia."
+    },
+    {
+      "question": "¿Es seguro confiar en un video con presentador de Synthesia?",
+      "answer": "El video en sí no es más o menos confiable que cualquier otro contenido: la tecnología se ha usado indebidamente para desinformación en más de un caso documentado. Verifica siempre la fuente antes de confiar en el contenido, no solo en la calidad visual."
+    },
+    {
+      "question": "¿Puedo crear un avatar con mi propia imagen?",
+      "answer": "Sí, Synthesia ofrece avatares personalizados a partir de una sesión de grabación propia. Revisa los términos de licencia antes de aceptar, ya que definen qué usos se permiten sobre esa réplica digital."
+    }
+  ],
+  "spanishSupport": "yes"
+}

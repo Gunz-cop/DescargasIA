@@ -1,0 +1,25 @@
+{
+  "name": "Lovable",
+  "officialWebsite": "https://lovable.dev",
+  "categories": ["programacion"],
+  "platforms": {
+    "web": {
+      "url": "https://lovable.dev",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-13"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": ["vibe coding", "constructor de apps con ia", "no-code", "prompt a app", "desarrollo web"],
+  "alternatives": ["replit", "cursor"],
+  "screenshotUrl": null,
+  "initials": "LV",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-13",
+  "officialSources": [
+    "https://lovable.dev",
+    "https://lovable.dev/pricing"
+  ]
+}

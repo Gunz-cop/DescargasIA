@@ -37,6 +37,14 @@
       "body": "Si tu trabajo principal es escribir código y quieres que la IA esté integrada en ese proceso sin salir del editor, Cursor es actualmente una de las opciones más maduras disponibles. La comparación más directa es con GitHub Copilot como plugin de VS Code: Cursor va más allá al ofrecer edición con instrucciones y chat con contexto de múltiples archivos, algo que Copilot no hace de la misma manera.\n\nSi en cambio programas ocasionalmente y tu flujo de trabajo mezcla código con redacción, análisis y otras tareas, puede ser más práctico usar un asistente general como Claude o ChatGPT con capacidades de código, sin necesidad de cambiar de editor. La decisión depende de cuánto del día pasas dentro de un editor de código y cuánta fricción estás dispuesto a reducir a cambio de adoptar una nueva herramienta."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "En junio de 2025 Cursor cambió su plan Pro: en vez de 500 respuestas rápidas al mes más respuestas lentas ilimitadas, pasó a un esquema de 20 dólares en créditos de uso mensual facturados a tarifas de API. Muchos usuarios reportaron quedarse sin créditos mucho antes de lo esperado, sobre todo usando modelos de Anthropic para tareas de código largas, y algunos recibieron cargos extra que no anticipaban por no haber configurado un límite de gasto. El CEO de Anysphere (la empresa detrás de Cursor), Michael Truell, pidió disculpas públicamente: \"No manejamos bien este cambio de precios y lo lamentamos. Nuestra comunicación no fue lo suficientemente clara.\" La empresa se comprometió a reembolsar los cargos inesperados. La lección práctica: si usas modelos de razonamiento largo o refactors grandes, revisa tu consumo de créditos y configura un límite de gasto antes de que te sorprenda una factura.",
+      "source": "https://finance.yahoo.com/news/cursor-apologizes-unclear-pricing-changes-225709399.html",
+      "sourceLabel": "Yahoo Finance — cobertura del cambio de precios y disculpa del CEO de Cursor",
+      "date": "2025-07-07"
+    }
+  ],
   "faq": [
     {
       "question": "¿Cursor es gratuito?",

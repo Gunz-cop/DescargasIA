@@ -1,0 +1,26 @@
+{
+  "name": "Sora",
+  "officialWebsite": "https://openai.com/sora/",
+  "categories": ["video-ia"],
+  "platforms": {
+    "web": {
+      "url": "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-08-13"
+    }
+  },
+  "pricingModel": "unknown",
+  "requiresAccount": "unknown",
+  "tags": ["video ia", "generación de video", "openai", "descontinuado"],
+  "alternatives": ["chatgpt", "runway", "kling-ai", "luma-dream-machine"],
+  "screenshotUrl": null,
+  "initials": "SO",
+  "trustLevel": "official",
+  "status": "discontinued",
+  "lastReviewed": "2026-08-13",
+  "officialSources": [
+    "https://help.openai.com/en/articles/20001152-what-to-know-about-the-sora-discontinuation",
+    "https://openai.com/sora/"
+  ]
+}

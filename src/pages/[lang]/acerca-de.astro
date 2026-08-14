@@ -2,6 +2,7 @@
 // src/pages/[lang]/acerca-de.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { languages } from '../../i18n/ui';
+import { EDITORIAL_TEAM } from '../../data/editorial-team';
 
 export async function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({
@@ -69,9 +70,24 @@ const alternates = Object.keys(languages)
           </div>
         </section>
 
+        <section id="metodologia" class="scroll-mt-24 rounded-2xl border border-brand-card-border bg-brand-card-bg/50 p-5 sm:p-6">
+          <h2 class="text-[22px] text-brand-text display">
+            {lang === 'sv' ? 'Vår metodik' : lang === 'it' ? 'La nostra metodologia' : 'Nuestra metodología'}
+          </h2>
+          <p class="mt-3 text-sm leading-7 text-brand-text-muted">{EDITORIAL_TEAM.summary[lang]}</p>
+          <div class="mt-4 space-y-5">
+            {EDITORIAL_TEAM.methodology.map((point) => (
+              <div>
+                <h3 class="text-[15px] font-semibold text-brand-text">{point.heading[lang]}</h3>
+                <p class="mt-1.5 text-sm leading-7 text-brand-text-muted">{point.body[lang]}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section class="rounded-2xl border border-brand-warning-border bg-brand-warning-bg p-5 sm:p-6">
           <h2 class="text-[22px] text-brand-text display">
-            {lang === 'sv' ? 'Vad we inte gör' : lang === 'it' ? 'Cosa non facciamo' : 'Lo que no hacemos'}
+            {lang === 'sv' ? 'Vad vi inte gör' : lang === 'it' ? 'Cosa non facciamo' : 'Lo que no hacemos'}
           </h2>
           <ul class="mt-4 grid gap-3 text-sm leading-7 text-brand-warning-text">
             <li class="rounded-lg border border-brand-warning-border bg-brand-bg/20 p-3">

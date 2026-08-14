@@ -34,6 +34,10 @@ Si se modifica el contrato de fichas, actualizar en conjunto:
 
 - `docs/ux-tool-pages.md`
 - `docs/tool-ficha-authoring.md`
-- `skills/descargasia-tool-ficha/SKILL.md`
-- `skills/descargasia-tool-ficha/references/*`
+- `src/content.config.ts` (schema real, fuente de verdad)
+- `src/data/editorial-team.ts` (identidad/metodologia del equipo editorial, entidad unica y global, no por ficha)
+- `.claude/skills/descargasia-tool-ficha/SKILL.md`
+- `.claude/skills/descargasia-tool-ficha/references/*`
 - la skill activa en `C:\Users\grcx1\.codex\skills\descargasia-tool-ficha`
+
+Nota: existe tambien una copia en `skills/descargasia-tool-ficha/` (raiz del repo) con prosa distinta (ingles, enfoque de research localizado por pais). Esa copia quedo desincronizada del flujo real y no se actualizo junto con el campo `communityInsights` — es deuda conocida, no asumir que esta al dia.

@@ -1,0 +1,25 @@
+{
+  "name": "Synthesia",
+  "officialWebsite": "https://www.synthesia.io",
+  "categories": ["video-ia"],
+  "platforms": {
+    "web": {
+      "url": "https://www.synthesia.io",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-14"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": ["avatares de ia", "video corporativo", "texto a video", "presentador virtual"],
+  "alternatives": ["heygen"],
+  "screenshotUrl": null,
+  "initials": "SY",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-14",
+  "officialSources": [
+    "https://www.synthesia.io",
+    "https://www.synthesia.io/post/nist-red-team-test-content-deepfakes"
+  ]
+}

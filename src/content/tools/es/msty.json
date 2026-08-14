@@ -1,0 +1,57 @@
+{
+  "shortDescription": "App de escritorio gratuita para chatear con modelos de IA locales (Ollama, llama.cpp) y en la nube desde una sola interfaz privada.",
+  "longDescription": "Msty Studio es una aplicación de escritorio que unifica el acceso a modelos de IA locales (a través de Ollama, llama.cpp o MLX) y modelos en la nube (OpenAI, Anthropic, Google, DeepSeek) en una sola interfaz. Está pensada para quien ya usa un motor de inferencia local y quiere un cliente de chat más cómodo que la terminal o el navegador, con funciones como comparar respuestas de varios modelos en paralelo y armar bases de conocimiento propias a partir de archivos.",
+  "bestFor": [
+    "Tener una interfaz de chat unificada sobre modelos que ya corres localmente con Ollama o llama.cpp",
+    "Comparar respuestas de varios modelos distintos en paralelo, en la misma pantalla",
+    "Armar una base de conocimiento propia a partir de archivos, notas o transcripciones de YouTube para consultarla con IA",
+    "Usar modelos locales y en la nube desde la misma app sin depender de la terminal"
+  ],
+  "limitations": [
+    "No es un motor de inferencia en sí mismo: necesitas tener Ollama, llama.cpp o similar instalado (o usar modelos en la nube) para que Msty tenga algo con qué conversar.",
+    "Es una herramienta con muy poca cobertura pública: no hay reseñas en tiendas de aplicaciones ni notas de prensa que permitan contrastar la experiencia de otros usuarios más allá de la documentación oficial y su repositorio de soporte en GitHub.",
+    "Las funciones avanzadas (Studio Web, proveedores Azure/Bedrock, modo Forge) requieren la licencia Aurum de pago; el plan gratuito cubre el uso individual básico."
+  ],
+  "safetyNotes": [
+    "Descarga Msty Studio únicamente desde msty.ai; no hay instaladores oficiales de terceros ni versión en tiendas de aplicaciones convencionales.",
+    "Al ser una app cerrada (no es de código abierto), no puedes auditar tú mismo qué hace el instalador; si te preocupa eso, revisa primero la documentación oficial sobre qué datos procesa localmente y cuáles pasan por servicios en la nube que configures."
+  ],
+  "editorialSummary": "Msty Studio es un cliente de escritorio para modelos de IA locales y en la nube, gratuito en su plan básico. Es una herramienta genuinamente de nicho: no tiene reseñas públicas ni cobertura de prensa que permitan contrastar la experiencia de otros usuarios, así que en FuenteAI verificamos sus canales oficiales directamente y señalamos ese vacío de información en vez de simularlo.",
+  "editorialSections": [
+    {
+      "heading": "Un cliente, no un motor de inferencia",
+      "body": "Msty Studio no ejecuta modelos por su cuenta: es una interfaz que se conecta a motores de inferencia que ya tienes instalados (Ollama, llama.cpp, MLX en Mac) o a proveedores en la nube con tu propia clave de API. Si nunca instalaste algo como Ollama, Msty solo con el plan gratuito no te da un modelo con el que hablar — necesitas esa pieza aparte.\n\nPara quien ya tiene ese motor corriendo, el valor de Msty está en no depender de la terminal ni de una interfaz web genérica: da un cliente de escritorio con historial, comparación de modelos en paralelo y organización de contexto propio (archivos, notas, transcripciones)."
+    },
+    {
+      "heading": "Por qué esta ficha tiene poco para citar",
+      "body": "A diferencia de herramientas más conocidas del catálogo, Msty Studio no tiene reseñas en tiendas de aplicaciones, cobertura de prensa especializada ni hilos de Reddit indexados sobre su uso — la búsqueda específica no devolvió ninguno. En G2 figura con cero calificaciones. Lo único público y verificable que encontramos con detalle real es su propio repositorio de soporte en GitHub, donde los propios usuarios reportan bugs directamente al equipo.\n\nEsto no significa que la herramienta no funcione: significa que es de nicho, sin la base de usuarios que genera reseñas espontáneas. Preferimos decir esto explícitamente antes que inventar una reacción de comunidad que no existe."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En el repositorio de soporte de Msty Studio en GitHub, un usuario reportó en agosto de 2025 un bug reproducible en Linux: al crear un nuevo workspace en la versión AppImage sobre Ubuntu 24.04 LTS, la aplicación muestra el error \"Failed to Create Workspace\", aunque el workspace en realidad se crea igual en segundo plano y aparece recién después de reiniciar la app. El propio reportante sugirió agregar el problema a la sección de solución de problemas para usuarios de Linux mientras el equipo lo resuelve de fondo. Si usas Msty en Linux y ves ese mensaje, no asumas que falló: prueba reiniciar la aplicación antes de reportarlo como un error nuevo.",
+      "source": "https://github.com/cloudstack-llc/msty-studio-docs/issues/74",
+      "sourceLabel": "GitHub — issue de soporte sobre un error de creación de workspace en Linux",
+      "date": "2025-08-03"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Msty Studio es gratis?",
+      "answer": "Tiene un plan gratuito con las funciones principales de chat, personas y bases de conocimiento. La licencia Aurum (149 USD/año o 349 USD pago único de por vida) agrega Studio Web y funciones avanzadas."
+    },
+    {
+      "question": "¿Necesito instalar algo más para usar Msty?",
+      "answer": "Si quieres usar modelos locales, sí: Msty se conecta a motores como Ollama o llama.cpp que tienes que instalar aparte. Si solo vas a usar modelos en la nube con tu propia clave de API, no hace falta nada adicional."
+    },
+    {
+      "question": "¿Msty Studio es de código abierto?",
+      "answer": "No, es una aplicación cerrada y gratuita en su plan básico, pero no publican el código fuente de la app en sí."
+    },
+    {
+      "question": "¿Por qué esta ficha tiene tan pocas reseñas de otros usuarios para citar?",
+      "answer": "Porque no existen públicamente: Msty Studio no tiene cobertura de prensa ni hilos de comunidad indexados al momento de esta revisión. Lo señalamos explícitamente en vez de simular una reacción de comunidad que no encontramos."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

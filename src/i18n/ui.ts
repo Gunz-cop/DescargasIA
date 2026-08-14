@@ -94,6 +94,10 @@ export const ui = {
     'section.alternatives': 'Alternativas recomendadas',
     'section.faq': 'Preguntas frecuentes sobre la descarga',
     'section.editorial-summary': 'Criterio editorial de verificación',
+    'section.community': 'Qué dice la comunidad',
+    'section.community.source': 'Fuente',
+    'editorial.byline': 'Escrito y verificado por',
+    'editorial.methodology.link': 'Ver metodología completa',
 
     // Category specific
     'category.title': 'Herramientas de IA para',
@@ -175,6 +179,9 @@ export const ui = {
     'official.repo': 'Código',
     'official.mirrors': 'Cualquier otro sitio que ofrezca este programa es un espejo no autorizado.',
     'official.reviewed': 'Revisado el',
+    'official.title.discontinued': 'Producto descontinuado',
+    'official.download.discontinued': 'Ver aviso oficial',
+    'official.mirrors.discontinued': 'Este producto fue discontinuado por quien lo creó. Ningún sitio ofrece hoy un canal oficial vigente para descargarlo o usarlo.',
     'alt.title': 'Si te sirve {name}, también existen',
     'alt.count': 'alternativas reales',
     'alt.all-official': 'Todas con fuente oficial',
@@ -306,6 +313,10 @@ export const ui = {
     'section.alternatives': 'Rekommenderade alternativ',
     'section.faq': 'Vanliga frågor om nedladdning',
     'section.editorial-summary': 'Redaktionella granskningskriterier',
+    'section.community': 'Vad communityn säger',
+    'section.community.source': 'Källa',
+    'editorial.byline': 'Skrivet och verifierat av',
+    'editorial.methodology.link': 'Se hela metodiken',
 
     // Category specific
     'category.title': 'AI-verktyg för',
@@ -387,6 +398,9 @@ export const ui = {
     'official.repo': 'Källkod',
     'official.mirrors': 'Varje annan sida som erbjuder programmet är en obehörig spegel.',
     'official.reviewed': 'Granskad den',
+    'official.title.discontinued': 'Produkten har lagts ner',
+    'official.download.discontinued': 'Se officiellt meddelande',
+    'official.mirrors.discontinued': 'Den här produkten har lagts ner av utvecklaren. Ingen webbplats erbjuder idag en giltig officiell kanal för att ladda ner eller använda den.',
     'alt.title': 'Om {name} passar dig finns också',
     'alt.count': 'riktiga alternativ',
     'alt.all-official': 'Alla med officiell källa',
@@ -518,6 +532,10 @@ export const ui = {
     'section.alternatives': 'Alternative consigliate',
     'section.faq': 'Domande frequenti sul download',
     'section.editorial-summary': 'Criterio editoriale di verifica',
+    'section.community': 'Cosa dice la community',
+    'section.community.source': 'Fonte',
+    'editorial.byline': 'Scritto e verificato da',
+    'editorial.methodology.link': 'Vedi la metodologia completa',
 
     // Category specific
     'category.title': 'Strumenti IA per',
@@ -599,6 +617,9 @@ export const ui = {
     'official.repo': 'Codice',
     'official.mirrors': 'Qualsiasi altro sito che offra questo programma è uno specchio non autorizzato.',
     'official.reviewed': 'Revisionato il',
+    'official.title.discontinued': 'Prodotto discontinuato',
+    'official.download.discontinued': 'Vedi l\'avviso ufficiale',
+    'official.mirrors.discontinued': 'Questo prodotto è stato discontinuato da chi lo ha creato. Nessun sito offre oggi un canale ufficiale valido per scaricarlo o usarlo.',
     'alt.title': 'Se ti serve {name}, esistono anche',
     'alt.count': 'alternative reali',
     'alt.all-official': 'Tutte con fonte ufficiale',

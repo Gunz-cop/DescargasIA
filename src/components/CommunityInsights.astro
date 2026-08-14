@@ -1,0 +1,50 @@
+---
+// src/components/CommunityInsights.astro
+// Sección condicional: solo se renderiza si hay insights con fuente real y
+// verificable. Si `insights` está vacío, el padre no debe montar este
+// componente (mismo patrón que faq/limitations en [slug].astro).
+import { getDomain } from '../utils/brand';
+import { useTranslations } from '../i18n/ui';
+import { formatDate } from '../utils/brand';
+import type { Lang } from '../utils/brand';
+
+interface CommunityInsight {
+  text: string;
+  source: string;
+  sourceLabel?: string;
+  date?: string;
+}
+
+interface Props {
+  insights: CommunityInsight[];
+  lang: Lang;
+}
+
+const { insights, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section aria-labelledby="comunidad-title">
+  <h2 id="comunidad-title" class="fai-section-title border-b border-fai-line pb-4 text-fai-ink">
+    {t('section.community')}
+  </h2>
+  <ul class="mt-6 flex flex-col gap-3" role="list">
+    {insights.map((insight) => (
+      <li class="rounded-[14px] border border-fai-line bg-fai-card p-4">
+        <p class="text-[14px] leading-[1.55] text-fai-ink-2">{insight.text}</p>
+        <p class="fai-mono-sm mt-2.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-fai-muted-2">
+          <span>{t('section.community.source')}:</span>
+          <a href={insight.source} target="_blank" rel="noopener noreferrer" class="fai-domain transition-colors hover:text-fai-find">
+            {insight.sourceLabel ?? getDomain(insight.source)}
+          </a>
+          {insight.date && formatDate(insight.date, lang) && (
+            <>
+              <span aria-hidden="true">·</span>
+              <span>{formatDate(insight.date, lang)}</span>
+            </>
+          )}
+        </p>
+      </li>
+    ))}
+  </ul>
+</section>

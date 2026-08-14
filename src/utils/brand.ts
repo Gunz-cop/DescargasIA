@@ -198,8 +198,13 @@ export function formatDate(value: string | undefined, lang: Lang, long = false):
   const locale = lang === 'es' ? 'es-ES' : lang === 'sv' ? 'sv-SE' : 'it-IT';
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return null;
+  // `value` es "YYYY-MM-DD" y se parsea como medianoche UTC — forzar
+  // timeZone: 'UTC' al formatear evita que timezones al oeste de Greenwich
+  // muestren el día anterior.
   return date.toLocaleDateString(
     locale,
-    long ? { day: 'numeric', month: 'long', year: 'numeric' } : { month: 'short', year: 'numeric' }
+    long
+      ? { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }
+      : { month: 'short', year: 'numeric', timeZone: 'UTC' }
   );
 }

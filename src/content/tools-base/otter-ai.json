@@ -1,0 +1,40 @@
+{
+  "name": "Otter.ai",
+  "officialWebsite": "https://otter.ai",
+  "categories": ["productividad-presentaciones-ia"],
+  "platforms": {
+    "web": {
+      "url": "https://otter.ai",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-13"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.aisense.otter",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-13"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/otter-transcribe-voice-notes/id1276437113",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-13"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": ["transcripción", "notas de reuniones", "productividad", "reuniones"],
+  "alternatives": ["fireflies", "fathom"],
+  "screenshotUrl": null,
+  "initials": "OT",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-13",
+  "officialSources": [
+    "https://otter.ai/pricing",
+    "https://apps.apple.com/us/app/otter-transcribe-voice-notes/id1276437113",
+    "https://play.google.com/store/apps/details?id=com.aisense.otter",
+    "https://help.otter.ai/hc/en-us/articles/12906714508823-Stop-Otter-Notetaker-from-automatically-joining-your-meetings",
+    "https://help.otter.ai/hc/en-us/articles/360047247414-Supported-languages"
+  ]
+}

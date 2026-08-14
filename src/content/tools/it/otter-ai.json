@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Trascrizione e appunti di riunioni con IA in tempo reale per Zoom, Google Meet e Microsoft Teams, con piano gratuito di 300 minuti al mese.",
+  "longDescription": "Otter.ai è uno strumento di trascrizione e appunti di riunioni con intelligenza artificiale. Si collega a Zoom, Google Meet e Microsoft Teams per trascrivere in tempo reale, generare riepiloghi, riconoscere chi parla e creare liste di attività a partire dalla conversazione.",
+  "bestFor": [
+    "Trascrivere automaticamente riunioni di Zoom, Google Meet o Microsoft Teams in tempo reale",
+    "Generare riepiloghi e liste di attività senza prendere appunti a mano",
+    "Cercare per parola chiave nello storico delle riunioni passate",
+    "Usare il piano gratuito per trascrivere fino a 300 minuti al mese senza pagare nulla"
+  ],
+  "limitations": [
+    "Otter.ai non supporta la trascrizione in italiano: le lingue disponibili sono inglese, spagnolo, francese, tedesco, giapponese e cinese semplificato. Con audio in italiano il risultato non è affidabile.",
+    "La precisione cala molto con accenti marcati, gergo tecnico o più persone che parlano insieme; conviene sempre rivedere e correggere la trascrizione, non considerarla definitiva.",
+    "Il piano gratuito Basic ha un limite di 300 minuti di trascrizione al mese; superarlo richiede un piano a pagamento."
+  ],
+  "safetyNotes": [
+    "La funzione di partecipazione automatica (oggi chiamata Otter Notetaker; prima si chiamava OtterPilot) può unirsi da sola alle riunioni rilevate nel tuo calendario e inviare la trascrizione a tutti i partecipanti, anche se non l'hai attivata di proposito. Controlla \"Default auto-join settings\" in Account → Integrations → Meetings prima di collegare il calendario a un account nuovo.",
+    "Non installare versioni di Otter.ai al di fuori di otter.ai, App Store o Google Play: non esistono installer ufficiali di terze parti."
+  ],
+  "editorialSummary": "Otter.ai è uno strumento di trascrizione e appunti di riunioni con IA che si collega a Zoom, Google Meet e Microsoft Teams. Su FuenteAI raccogliamo i suoi canali ufficiali e segnaliamo due cose che chi cerca \"Otter.ai in italiano\" deve sapere subito: la trascrizione non supporta l'italiano, e il suo assistente può unirsi alle riunioni da solo se non controlli le impostazioni.",
+  "editorialSections": [
+    {
+      "heading": "Perché conviene sapere subito che l'italiano non è supportato",
+      "body": "Chi cerca \"Otter.ai italiano\" di solito vuole sapere se può trascrivere riunioni in italiano. La risposta, verificata sulla documentazione ufficiale di Otter, è no: le lingue di trascrizione supportate sono inglese, spagnolo, francese, tedesco, giapponese e cinese semplificato. Caricare audio in italiano produce un testo inaffidabile, non una vera trascrizione italiana.\n\nC'è una sfumatura utile: Otter Chat, la funzione di domande sulla riunione già trascritta, può rispondere e tradurre in altre lingue, italiano incluso. Quindi puoi farti riassumere in italiano una riunione già trascritta in inglese, ma non puoi registrare direttamente in italiano e aspettarti una trascrizione accurata. Se il tuo obiettivo è trascrivere riunioni in italiano, oggi conviene guardare altrove."
+    },
+    {
+      "heading": "L'assistente che si unisce da solo alle tue riunioni",
+      "body": "Se colleghi il calendario Google o Outlook durante la configurazione iniziale, Otter.ai può attivare per default una funzione oggi chiamata Otter Notetaker (rinominata da Otter; prima si chiamava OtterPilot, nome che trovi ancora in recensioni e lamentele meno recenti) che manda un assistente a ogni videochiamata rilevata in agenda, spesso senza che l'utente se ne accorga. L'assistente si unisce come un partecipante in più, registra la riunione e poi invia la trascrizione via email a tutti i presenti.\n\nQuesto ha generato lamentele concrete, anche se di qualche anno fa: alcuni utenti hanno segnalato che l'assistente si è unito a riunioni riservate nonostante avessero provato a disattivare la funzione, e che il riepilogo automatico è arrivato comunque a tutti i partecipanti, incluse persone esterne all'organizzazione. Il meccanismo di fondo (unione automatica tramite calendario) esiste ancora oggi secondo la documentazione ufficiale di Otter, anche se nome e schermate di configurazione sono cambiati nel frattempo. Per disattivarlo: in Account → Integrations → scheda Meetings → \"Default auto-join settings\", scegli \"Meetings I manually select\"."
+    },
+    {
+      "heading": "Dove la trascrizione va in difficoltà",
+      "body": "Otter.ai funziona meglio con audio in inglese, senza accenti marcati e con le persone che parlano una alla volta. In riunioni con gergo tecnico specifico, accenti diversi o sovrapposizioni di voci, la qualità della trascrizione peggiora e compaiono errori di riconoscimento di chi ha detto cosa (\"Speaker 1\", \"Speaker 2\" assegnati male).\n\nQuesto non lo rende inutile, ma significa che non conviene inviare la trascrizione o il riepilogo così com'è come verbale ufficiale di una riunione importante: vale sempre la pena rivederlo prima."
+    },
+    {
+      "heading": "Quando basta il piano gratuito e quando conviene pagare",
+      "body": "Il piano Basic (gratuito) include 300 minuti di trascrizione al mese, sufficienti per chi partecipa a poche riunioni regolari. Se trascrivi riunioni ogni giorno o hai bisogno di esportare in volume, i piani Pro e Business aggiungono minuti e funzioni di ricerca avanzata.\n\nLa raccomandazione pratica è iniziare sempre dal piano gratuito: 300 minuti bastano per verificare se la precisione della trascrizione funziona bene per il tuo tipo di riunioni, prima di pagare per più capacità."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "In una discussione su Hacker News del 2022, un utente ha raccontato che il bot di Otter.ai (allora chiamato OtterPilot; oggi Otter Notetaker) si è unito da solo a due riunioni riservate, le ha registrate per intero e poi ha inviato via email un riepilogo automatico a tutti i partecipanti, nonostante l'utente avesse disattivato con attenzione quella funzione. Altri utenti hanno risposto nella stessa discussione con lamentele simili, incluso qualcuno che ha eliminato l'account perché il bot condivideva le conversazioni con tutti i presenti per default. Il nome della funzione è cambiato da allora, ma secondo la documentazione attuale di Otter il meccanismo di unione automatica tramite calendario esiste ancora: se colleghi il calendario, non dare per scontato che sia disattivato, controllalo prima di ogni riunione riservata.",
+      "source": "https://news.ycombinator.com/item?id=32751071",
+      "sourceLabel": "Hacker News — discussione sul bot di Otter.ai che si univa alle riunioni senza consenso",
+      "date": "2022-09-07"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Otter.ai è gratis?",
+      "answer": "Ha un piano gratuito (Basic) con 300 minuti di trascrizione al mese. I piani Pro, Business ed Enterprise aggiungono minuti e funzioni extra a pagamento."
+    },
+    {
+      "question": "Otter.ai trascrive le riunioni in italiano?",
+      "answer": "No. Le lingue di trascrizione ufficialmente supportate sono inglese, spagnolo, francese, tedesco, giapponese e cinese semplificato. Otter Chat può però rispondere o tradurre in italiano il contenuto di una riunione già trascritta in un'altra lingua."
+    },
+    {
+      "question": "Otter.ai si unisce alle mie riunioni senza che lo chieda?",
+      "answer": "Può succedere se hai attivato la funzione di unione automatica (Otter Notetaker, prima chiamata OtterPilot) collegando il calendario, oppure se un altro partecipante usa il proprio account Otter. Puoi disattivarla in Account → Integrations → Meetings → \"Default auto-join settings\"."
+    },
+    {
+      "question": "Ha un'app desktop per Windows o macOS?",
+      "answer": "No, non esiste un'app desktop ufficiale. Otter.ai funziona dal browser, come integrazione diretta nelle riunioni, e come app mobile per iOS e Android."
+    }
+  ],
+  "italianSupport": "partial"
+}

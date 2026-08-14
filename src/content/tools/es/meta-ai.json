@@ -1,0 +1,65 @@
+{
+  "shortDescription": "El asistente de IA gratuito de Meta, integrado en WhatsApp, Instagram y Messenger, con app propia para web, Android e iOS.",
+  "longDescription": "Meta AI es el asistente conversacional de Meta Platforms, disponible como app independiente (web, Android e iOS) y también integrado directamente dentro de WhatsApp, Instagram y Messenger. Permite conversar, generar imágenes, buscar información y completar tareas sin salir de las apps de Meta que ya usas.",
+  "bestFor": [
+    "Usar un asistente de IA integrado directamente en WhatsApp, Instagram o Messenger sin instalar nada nuevo",
+    "Generar imágenes o responder preguntas rápidas desde apps que ya tienes abiertas",
+    "Buscar información conectada a la web sin cambiar de aplicación",
+    "Probar un asistente conversacional gratuito sin necesidad de plan de pago"
+  ],
+  "limitations": [
+    "Compartir una conversación desde la app no genera un enlace privado por defecto: puede publicarla en el feed público Discover (más detalle en \"Qué dice la comunidad\", más arriba en esta ficha).",
+    "No existe una aplicación de escritorio oficial para Windows, macOS o Linux: fuera de las apps de Meta, el acceso es solo vía web.",
+    "Meta está probando planes pagos (Meta AI Plus/Premium) en algunos países; la disponibilidad de esos planes varía por región y no es global."
+  ],
+  "safetyNotes": [
+    "Antes de tocar \"Compartir\" en la app de Meta AI, fíjate si la pantalla de confirmación avisa que el contenido va a quedar visible públicamente en el feed Discover, no solo para la persona a la que se lo querías enviar.",
+    "No instales versiones de \"Meta AI\" fuera de App Store, Google Play o ai.meta.com: Meta no distribuye la app por canales de terceros."
+  ],
+  "editorialSummary": "Meta AI es el asistente conversacional gratuito de Meta, integrado en WhatsApp, Instagram y Messenger además de tener su propia app y sitio web. En FuenteAI reunimos sus canales oficiales y te avisamos sobre el punto más delicado de la herramienta: su función de compartir no es privada por defecto.",
+  "editorialSections": [
+    {
+      "heading": "Un asistente que ya usas sin darte cuenta",
+      "body": "A diferencia de ChatGPT o Claude, Meta AI no depende de que instales una app para empezar a usarlo: si tienes WhatsApp, Instagram o Messenger, probablemente ya tengas acceso a él dentro de esas apps, como un contacto o un ícono más. La app independiente y el sitio ai.meta.com existen aparte, para quien prefiere un espacio dedicado en vez de mezclarlo con sus redes sociales.\n\nEsta doble naturaleza explica por qué mucha gente busca \"descargar Meta AI\" sin saber que ya lo tiene activo en otra app que usa todos los días."
+    },
+    {
+      "heading": "El botón \"Compartir\" no es privado por defecto",
+      "body": "Si le contaste algo personal a Meta AI y después tocas \"Compartir\" para enviárselo a alguien puntual, presta atención a la pantalla que aparece: por defecto puede publicar la conversación en el feed público Discover en vez de generar un enlace privado solo para esa persona. El detalle de por qué esto generó un problema real en 2025 está en la sección \"Qué dice la comunidad\" de esta ficha.\n\nSi ya compartiste algo por error, puedes borrar la publicación desde tu actividad en Meta AI. Y si lo que querías era enviarle algo a una persona específica, usa la opción de compartir dentro de WhatsApp o Messenger directamente, en vez del botón \"Compartir\" general de la app de Meta AI."
+    },
+    {
+      "heading": "Cuenta de Meta, no necesariamente de Facebook",
+      "body": "Para usar Meta AI necesitas una cuenta de Meta, pero no hace falta tener un perfil de Facebook activo: se puede crear una cuenta nueva con email y contraseña específicamente para esto. Si ya usas WhatsApp, Instagram o Messenger con tu cuenta de Meta, el asistente aparece integrado ahí directamente, sin pasos adicionales.\n\nLa disponibilidad de funciones (como generación de imágenes o planes pagos en prueba) puede variar según el país desde el que accedas."
+    },
+    {
+      "heading": "Cuándo conviene mirar otras opciones",
+      "body": "Meta AI tiene la ventaja de estar ya integrado en apps que probablemente uses a diario, pero eso mismo hace más fácil compartir algo sin darte cuenta del alcance real. Si tu prioridad es tener control granular sobre qué se comparte y con quién, o necesitas funciones más avanzadas de productividad, vale la pena revisar cómo maneja el compartir cada alternativa antes de asumir que funciona igual — no todas usan el mismo mecanismo por defecto."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En junio de 2025 se reportó que el feed \"Discover\" de la app de Meta AI exponía públicamente conversaciones que muchos usuarios creían privadas: consultas sobre temas médicos, legales y hasta un caso concreto de una persona compartiendo por error un intercambio de correos sobre el arbitraje de su despido laboral. Según la investigación, no se trataba de un fallo técnico sino de un problema de diseño: el botón \"Compartir\" llevaba a una pantalla de confirmación con poca advertencia visible. Meta confirmó que hace falta pasar por varios pasos para compartir, pero reconoció que no había ofrecido una guía clara y accesible en el momento de hacerlo; después de la cobertura, agregó una advertencia más visible en esa pantalla.",
+      "source": "https://www.malwarebytes.com/blog/news/2025/06/your-meta-ai-chats-might-be-public-and-its-not-a-bug",
+      "sourceLabel": "Malwarebytes — investigación de la exposición de chats en el feed Discover",
+      "date": "2025-06-13"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Es gratis usar Meta AI?",
+      "answer": "Sí. Meta AI es gratuito y no requiere un plan de pago para las funciones principales. Meta está probando planes pagos (Meta AI Plus/Premium) en algunos países, pero no están disponibles de forma global."
+    },
+    {
+      "question": "¿Necesito cuenta de Facebook para usar Meta AI?",
+      "answer": "Necesitas una cuenta de Meta, pero no un perfil de Facebook activo: puedes crear una cuenta nueva con email y contraseña específicamente para esto."
+    },
+    {
+      "question": "¿Meta AI hace públicas mis conversaciones?",
+      "answer": "Por defecto tus conversaciones son privadas, pero si usas el botón \"Compartir\" dentro de la app, tu conversación puede publicarse en el feed Discover. Revisa siempre la pantalla de confirmación antes de compartir algo."
+    },
+    {
+      "question": "¿Existe una app de escritorio de Meta AI?",
+      "answer": "No. Meta AI está disponible como app web (ai.meta.com), app móvil para iOS y Android, y dentro de WhatsApp, Instagram y Messenger, pero no como aplicación de escritorio para Windows, macOS o Linux."
+    }
+  ],
+  "spanishSupport": "yes"
+}

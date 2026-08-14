@@ -5,6 +5,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ToolCard from '../../components/ToolCard.astro';
 import AdSlot from '../../components/AdSlot.astro';
+import EditorialByline from '../../components/EditorialByline.astro';
+import CommunityInsights from '../../components/CommunityInsights.astro';
+import { EDITORIAL_TEAM } from '../../data/editorial-team';
 import { getTranslatedTools, getTranslatedTool } from '../../utils/tools';
 import { useTranslations, languages } from '../../i18n/ui';
 import {
@@ -156,6 +159,13 @@ const bestFor = tool.bestFor.length > 0
 
 const toolImage: string | undefined = tool.screenshotUrl ?? undefined;
 
+// Autoría de equipo, no persona física — ver decisión en docs/tool-ficha-authoring.md.
+const editorialOrg = {
+  '@type': 'Organization',
+  name: EDITORIAL_TEAM.name[lang],
+  url: `${Astro.url.origin}/${lang}/acerca-de`
+};
+
 const schemaApp = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -168,6 +178,8 @@ const schemaApp = {
   dateModified: tool.lastReviewed,
   ...(toolImage ? { image: toolImage } : {}),
   sameAs: repoUrl ? [...new Set([...tool.officialSources, repoUrl])] : tool.officialSources,
+  author: editorialOrg,
+  publisher: editorialOrg,
   offers: {
     '@type': 'Offer',
     price: tool.pricingModel === 'free' ? '0' : undefined,
@@ -205,15 +217,27 @@ const alternatePromises = Object.keys(languages).map(async (l) => {
 });
 const resolvedAlternates = (await Promise.all(alternatePromises)).filter(Boolean) as Array<{ lang: string; url: string }>;
 
-// §7 — <title>{Nombre} — sitio oficial y {n} alternativas verificadas
-const docTitle = lang === 'sv'
-  ? `${tool.name} — officiell webbplats och ${alternatives.length} verifierade alternativ | FuenteAI`
-  : lang === 'it'
-    ? `${tool.name} — sito ufficiale e ${alternatives.length} alternative verificate | FuenteAI`
-    : `${tool.name} — sitio oficial y ${alternatives.length} alternativas verificadas | FuenteAI`;
+const isDiscontinued = tool.status === 'discontinued';
 
-// §7 — description con el one-liner + dominio oficial
-const docDesc = `${tool.shortDescription} ${lang === 'sv' ? 'Officiell källa' : lang === 'it' ? 'Fonte ufficiale' : 'Fuente oficial'}: ${officialDomain}.`;
+// §7 — <title>{Nombre} — sitio oficial y {n} alternativas verificadas
+// Si el producto fue discontinuado, el título no promete un "sitio oficial"
+// de descarga que ya no existe.
+const docTitle = isDiscontinued
+  ? (lang === 'sv'
+      ? `${tool.name} — nedlagd: vad hände och alternativ | FuenteAI`
+      : lang === 'it'
+        ? `${tool.name} — discontinuato: cosa è successo e alternative | FuenteAI`
+        : `${tool.name} — descontinuado: qué pasó y alternativas | FuenteAI`)
+  : lang === 'sv'
+    ? `${tool.name} — officiell webbplats och ${alternatives.length} verifierade alternativ | FuenteAI`
+    : lang === 'it'
+      ? `${tool.name} — sito ufficiale e ${alternatives.length} alternative verificate | FuenteAI`
+      : `${tool.name} — sitio oficial y ${alternatives.length} alternativas verificadas | FuenteAI`;
+
+// §7 — description con el one-liner + dominio oficial (o el aviso de cierre)
+const docDesc = isDiscontinued
+  ? `${tool.shortDescription}`
+  : `${tool.shortDescription} ${lang === 'sv' ? 'Officiell källa' : lang === 'it' ? 'Fonte ufficiale' : 'Fuente oficial'}: ${officialDomain}.`;
 
 const slugify = (value: string) =>
   value.toLowerCase().replace(new RegExp('[^a-z0-9]+', 'g'), '-').replace(new RegExp('(^-|-$)', 'g'), '');
@@ -271,12 +295,19 @@ const metaChips = [
       <AdSlot slotId={`ad-tool-top-${tool.slug}`} format="bar" network="banner-320x50" eager class="mt-5" />
     </div>
 
-    <!-- §6 OfficialSource — siempre above the fold -->
+    <!-- §6 OfficialSource — siempre above the fold. Si el producto está
+         discontinuado, usa el mismo tono de aviso que safetyNotes (no el
+         verde de "todo verificado") y el CTA no promete una descarga que
+         ya no existe. -->
     <aside
-      class="rounded-[14px] border border-[rgba(15,191,143,.28)] bg-[linear-gradient(150deg,rgba(15,191,143,.12),rgba(15,191,143,.03))] p-5"
+      class={isDiscontinued
+        ? "rounded-[14px] border border-[rgba(198,242,78,.28)] bg-[rgba(198,242,78,.05)] p-5"
+        : "rounded-[14px] border border-[rgba(15,191,143,.28)] bg-[linear-gradient(150deg,rgba(15,191,143,.12),rgba(15,191,143,.03))] p-5"}
       aria-labelledby="fuente-oficial-title"
     >
-      <h2 id="fuente-oficial-title" class="fai-mono-sm text-fai-signal">{t('official.title')}</h2>
+      <h2 id="fuente-oficial-title" class={isDiscontinued ? "fai-mono-sm text-fai-find" : "fai-mono-sm text-fai-signal"}>
+        {isDiscontinued ? t('official.title.discontinued') : t('official.title')}
+      </h2>
 
       <div class="mt-3.5 flex flex-wrap items-center gap-3 rounded-[10px] border border-fai-line bg-[#04120e]/60 p-3">
         <span class="fai-domain min-w-0 flex-1 !text-[14px] overflow-x-auto">{officialDomain}</span>
@@ -286,7 +317,7 @@ const metaChips = [
           rel="noopener noreferrer"
           class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-[8px] bg-fai-find px-4 text-[13px] font-semibold !text-[#06231c] transition-opacity hover:opacity-90"
         >
-          {t('official.download')}
+          {isDiscontinued ? t('official.download.discontinued') : t('official.download')}
           <span class="sr-only">— {tool.name}</span>
         </a>
       </div>
@@ -305,8 +336,8 @@ const metaChips = [
 
       <p class="mt-3.5 text-[13px] leading-[1.5] text-fai-muted-2 sm:text-[12px]">
         {reviewDateLong
-          ? `${t('official.mirrors')} ${t('official.reviewed')} ${reviewDateLong}.`
-          : t('official.mirrors')}
+          ? `${isDiscontinued ? t('official.mirrors.discontinued') : t('official.mirrors')} ${t('official.reviewed')} ${reviewDateLong}.`
+          : (isDiscontinued ? t('official.mirrors.discontinued') : t('official.mirrors'))}
       </p>
     </aside>
   </header>
@@ -388,7 +419,12 @@ const metaChips = [
             : `Qué debes saber antes de usar ${tool.name}`}
         </h2>
         <p class="mt-6 max-w-[68ch] text-[15px] leading-[1.6] text-fai-muted">{editorialSummary}</p>
+        <EditorialByline lang={lang} />
       </section>
+
+      {tool.communityInsights.length > 0 && (
+        <CommunityInsights insights={tool.communityInsights} lang={lang} />
+      )}
 
       {tool.editorialSections.length > 0 && (
         <section aria-labelledby="guia-title">

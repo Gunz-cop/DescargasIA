@@ -179,6 +179,18 @@ El schema actual ya tiene base suficiente. Para enriquecer futuras fichas, consi
 
 No agregar capturas o logos oficiales sin revisar condiciones de uso de marca. Si no hay permiso claro, usar identificadores editoriales propios.
 
+## Autoria Y Comunidad (E-E-A-T)
+
+Ya implementado, no pendiente:
+
+- `communityInsights` (en `tools/<lang>/<slug>.json`): array de `{ text, source, sourceLabel?, date? }`. Cada insight resume algo real reportado por la comunidad (bug, limite, truco de uso) con fuente citada y verificable. **Si no hay una fuente real encontrada por `WebSearch`, no se agrega el campo ni se rellena con generalidades** — la seccion completa se omite del render cuando el array esta vacio (mismo patron que `faq`/`limitations`).
+- `src/data/editorial-team.ts`: identidad y metodologia del equipo editorial ("Redaccion FuenteAI"), como entidad unica y global (no por ficha). Se usa para:
+  - El JSON-LD de `SoftwareApplication` (`author`/`publisher` como `Organization`, nunca como `Person` — no se fabrica una identidad de persona fisica).
+  - El bloque `EditorialByline` en cada ficha (nombre + resumen corto + link a la metodologia completa).
+  - La seccion `#metodologia` en `acerca-de.astro` (unico lugar con el texto completo).
+
+Orden de secciones actualizado en `src/pages/[lang]/[slug].astro`: header+CTA oficial → alternativas → plataformas → "mejor para" → resumen editorial + `EditorialByline` → `editorialSections` (guia larga) → `CommunityInsights` (si hay) → `safetyNotes` → `limitations` → `faq`.
+
 ## Checklist Para Nuevas Fichas
 
 1. El usuario entiende para que sirve la herramienta antes del primer scroll.
@@ -190,3 +202,4 @@ No agregar capturas o logos oficiales sin revisar condiciones de uso de marca. S
 7. La pagina funciona bien en mobile.
 8. `editorialSections` son especificas de la herramienta y no texto duplicado.
 9. `npm run build` pasa antes de publicar.
+10. Si hay `communityInsights`, cada uno tiene una fuente real y verificable — nunca generalizar sin link.

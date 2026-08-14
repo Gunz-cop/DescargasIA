@@ -1,0 +1,38 @@
+{
+  "name": "Meta AI",
+  "officialWebsite": "https://ai.meta.com",
+  "categories": ["asistentes-ia"],
+  "platforms": {
+    "web": {
+      "url": "https://ai.meta.com/get-meta-ai/",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-13"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=com.facebook.stella",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-13"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/meta-ai/id1558240027",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-13"
+    }
+  },
+  "pricingModel": "free",
+  "requiresAccount": true,
+  "tags": ["asistente conversacional", "meta", "whatsapp", "instagram", "ia generativa"],
+  "alternatives": ["chatgpt", "gemini", "grok"],
+  "screenshotUrl": null,
+  "initials": "MA",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-13",
+  "officialSources": [
+    "https://ai.meta.com/get-meta-ai/",
+    "https://apps.apple.com/us/app/meta-ai/id1558240027",
+    "https://play.google.com/store/apps/details?id=com.facebook.stella"
+  ]
+}

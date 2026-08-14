@@ -1,0 +1,69 @@
+{
+  "shortDescription": "Transcripción y notas de reuniones con IA en tiempo real para Zoom, Google Meet y Microsoft Teams, con plan gratuito de 300 minutos mensuales.",
+  "longDescription": "Otter.ai es una herramienta de transcripción y notas de reuniones con inteligencia artificial. Se conecta a Zoom, Google Meet y Microsoft Teams para transcribir en tiempo real, generar resúmenes, identificar quién habla y armar listas de tareas a partir de lo conversado.",
+  "bestFor": [
+    "Transcribir reuniones de Zoom, Google Meet o Microsoft Teams automáticamente en tiempo real",
+    "Generar resúmenes y listas de acciones a partir de una reunión sin tomar notas a mano",
+    "Buscar dentro del historial de reuniones pasadas por palabra clave",
+    "Usar el plan gratuito para transcribir hasta 300 minutos mensuales sin pagar nada"
+  ],
+  "limitations": [
+    "La precisión baja notablemente con acentos marcados, jerga técnica o varias personas hablando a la vez; conviene revisar y corregir la transcripción, no darla por definitiva.",
+    "La identificación de quién habla (speaker ID) puede fallar y mezclar intervenciones de distintas personas en el mismo resumen.",
+    "El plan gratuito Basic tiene un tope de 300 minutos de transcripción por mes; superarlo requiere pasar a un plan pago."
+  ],
+  "safetyNotes": [
+    "La función de unión automática (hoy llamada Otter Notetaker; antes OtterPilot) puede unirse a reuniones detectadas en tu calendario y enviar la transcripción a todos los participantes, incluso si no fuiste tú quien la activó a propósito. Revisa la configuración \"Default auto-join settings\" en Cuenta → Integrations → Meetings antes de conectar tu calendario a una cuenta nueva.",
+    "No instales versiones de Otter.ai fuera de otter.ai, App Store o Google Play: no hay instaladores oficiales de terceros."
+  ],
+  "editorialSummary": "Otter.ai es una herramienta de transcripción y notas de reuniones con IA que se conecta a Zoom, Google Meet y Microsoft Teams. En FuenteAI reunimos sus canales oficiales y señalamos el punto que más quejas genera entre sus usuarios: su asistente puede unirse a reuniones automáticamente si no revisas la configuración del calendario.",
+  "editorialSections": [
+    {
+      "heading": "Qué hace Otter.ai en la práctica",
+      "body": "A diferencia de un asistente conversacional general como ChatGPT, Otter.ai está construido alrededor de un solo trabajo: escuchar una reunión y convertirla en texto útil. Se conecta a Zoom, Google Meet o Microsoft Teams, transcribe en tiempo real mientras hablas, y después genera un resumen con los puntos principales y las tareas que quedaron pendientes.\n\nTambién permite hacerle preguntas al historial de una reunión después de que terminó (\"¿qué se decidió sobre el presupuesto?\"), lo que lo acerca más a una base de datos conversacional de tus reuniones que a un chatbot genérico."
+    },
+    {
+      "heading": "El asistente que se une solo a tus reuniones",
+      "body": "Si conectas tu calendario de Google o Outlook durante la configuración inicial, Otter.ai puede activar por defecto una función que hoy se llama Otter Notetaker (Otter la rebautizó; antes se conocía como OtterPilot, nombre que todavía aparece en reseñas y quejas antiguas) y que despacha un asistente a cada videollamada detectada en tu agenda, muchas veces sin que el usuario note que quedó activada. Se suma como un participante más, graba la reunión y después envía la transcripción por correo a todos los presentes.\n\nEsto generó quejas documentadas, aunque de hace unos años: usuarios reportaron que el asistente se unió a reuniones confidenciales pese a haber intentado desactivar la función, y que el resumen automático llegó igual a todos los participantes, incluyendo gente ajena a la organización. El mecanismo de fondo (unión automática vía calendario) sigue existiendo hoy según la propia documentación de Otter, aunque el nombre y las pantallas de configuración cambiaron desde entonces. Para desactivarlo: en Cuenta → Integrations → pestaña Meetings → \"Default auto-join settings\", elige \"Meetings I manually select\"."
+    },
+    {
+      "heading": "Dónde falla la transcripción",
+      "body": "Otter.ai funciona mejor con audio en inglés, sin acentos marcados y con las personas hablando de a una por vez. En reuniones con jerga técnica específica, varios acentos distintos o cruces de voces, la calidad de la transcripción baja y aparecen errores de reconocimiento de quién dijo qué (\"Speaker 1\", \"Speaker 2\" mal asignados).\n\nEsto no lo hace inútil, pero sí significa que no conviene enviar la transcripción o el resumen tal cual salió como registro oficial de una reunión importante: siempre vale la pena revisarla antes."
+    },
+    {
+      "heading": "Cuándo alcanza el plan gratis y cuándo conviene pagar",
+      "body": "El plan Basic (gratis) incluye 300 minutos de transcripción por mes, suficiente para alguien que asiste a pocas reuniones regulares. Si transcribes reuniones a diario o necesitas exportar en volumen, los planes Pro y Business agregan minutos y funciones de búsqueda avanzada.\n\nLa recomendación práctica es empezar siempre con el plan gratuito: 300 minutos alcanzan para probar si la precisión de transcripción funciona bien para tu tipo de reuniones antes de pagar por más capacidad."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En un hilo de Hacker News de 2022, un usuario relató que el bot de Otter.ai (entonces llamado OtterPilot; hoy Otter Notetaker) se unió por su cuenta a dos reuniones confidenciales, las grabó completas y después envió por correo un resumen automático a todos los participantes, pese a asegurar que había desactivado esa función con cuidado. Otros usuarios respondieron en el mismo hilo con quejas similares, incluyendo a alguien que directamente eliminó su cuenta porque el bot compartía las conversaciones con todos los presentes por defecto. El nombre de la función cambió desde entonces, pero según la documentación actual de Otter el mecanismo de unión automática por calendario sigue existiendo: si conectas tu calendario, no des por hecho que quedó desactivado: revísalo antes de cada reunión confidencial.",
+      "source": "https://news.ycombinator.com/item?id=32751071",
+      "sourceLabel": "Hacker News — hilo sobre el bot de Otter.ai uniéndose a reuniones sin consentimiento",
+      "date": "2022-09-07"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Otter.ai es gratis?",
+      "answer": "Tiene un plan gratuito (Basic) con 300 minutos de transcripción por mes. Los planes Pro, Business y Enterprise agregan minutos y funciones adicionales mediante pago."
+    },
+    {
+      "question": "¿Otter.ai se une a mis reuniones sin que yo lo pida?",
+      "answer": "Puede hacerlo si activaste la función de unión automática (Otter Notetaker, antes llamada OtterPilot) al conectar tu calendario, o si otro participante de la reunión usa su propia cuenta de Otter. Puedes desactivarla en Cuenta → Integrations → Meetings → \"Default auto-join settings\"."
+    },
+    {
+      "question": "¿Qué tan precisa es la transcripción?",
+      "answer": "Funciona bien en inglés con audio claro, pero baja su precisión con acentos marcados, jerga técnica o cuando varias personas hablan al mismo tiempo. Conviene revisar el texto antes de compartirlo como definitivo."
+    },
+    {
+      "question": "¿Tiene aplicación para Windows o macOS?",
+      "answer": "No hay una aplicación de escritorio oficial. Otter.ai funciona desde la web, como integración directa en reuniones, y como app móvil para iOS y Android."
+    },
+    {
+      "question": "¿Otter.ai transcribe reuniones en español?",
+      "answer": "Sí, desde octubre de 2024 Otter.ai transcribe en español en tiempo real. Según la documentación oficial de Otter, los idiomas de transcripción soportados hoy son inglés, español, francés, alemán, japonés y chino simplificado. Puedes elegir el idioma desde la configuración. Transcribe lo que se habla, no traduce: si la reunión es en español, la transcripción sale en español."
+    }
+  ],
+  "spanishSupport": "yes"
+}

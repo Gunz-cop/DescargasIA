@@ -29,13 +29,15 @@ Un solo archivo por herramienta, independiente del idioma. Si mañana agregás l
   "initials": "ABC",
   "trustLevel": "official | verified | pending-review",
   "lastReviewed": "YYYY-MM-DD",
-  "officialSources": ["https://..."]
+  "officialSources": ["https://..."],
+  "status": "active | discontinued"
 }
 ```
 
 Notas de campo:
 
-- `platforms`: incluí solo las que existen de verdad. Cada plataforma es opcional independientemente.
+- `status`: **opcional, default `"active"`.** Poné `"discontinued"` solo cuando el desarrollador cerró el producto de verdad (no cuando simplemente no tiene instalador para una plataforma — eso es `limitations`, no `status`). El flag cambia automáticamente el `<title>`, el botón CTA principal y el aviso de "espejo no autorizado" en `[slug].astro`, para no prometer una descarga que no existe. Ver el caso real: `src/content/tools-base/sora.json`.
+- `platforms`: incluí solo las que existen de verdad. Cada plataforma es opcional independientemente. Si el producto está discontinuado, `platforms.web` puede apuntar al aviso oficial de discontinuación con `type: "documentation"` en vez de a un canal de descarga real.
 - `platforms.*.type` enum válido: `official-site`, `app-store`, `web-app`, `documentation`, `official-installer`, `github-repo`, `package-manager`. Usá `documentation` cuando la ruta correcta de "descarga" es una guía de instalación (típico en herramientas que se instalan por pip/Docker/git clone, ej. Open WebUI, o parte del catálogo de Hugging Face). Usá `official-site` cuando no tenés el ID exacto de una app store pero sí una página oficial que enlaza a las tiendas correctas (evita inventar un ID de app que no pudiste confirmar).
 - `requiresAccount`: es `boolean | "unknown"`, no solo boolean.
 - `trustLevel`: `official` = fuente/tienda oficial directa; `verified` = proyecto open source de confianza sin un único vendor claro; `pending-review` = existe pero falta verificar mejor.
@@ -56,6 +58,9 @@ Notas de campo:
   "editorialSections": [
     { "heading": "Título específico de la sección", "body": "Dos párrafos separados por \\n\\n." }
   ],
+  "communityInsights": [
+    { "text": "Insight redactado, no copiado literal del foro.", "source": "https://...", "sourceLabel": "Hilo en r/Ejemplo", "date": "YYYY-MM-DD" }
+  ],
   "faq": [
     { "question": "¿...?", "answer": "Respuesta concisa." }
   ],
@@ -69,7 +74,12 @@ Notas de campo:
 
 - Los tres campos `*Support` son sobre si **la herramienta en sí** soporta ese idioma humano (ej. si Grammarly corrige texto en español), no sobre en qué idioma está escrita la ficha — eso lo determina la carpeta (`tools/es/`, `tools/sv/`, `tools/it/`). Completá el que corresponda al idioma de esa ficha específica; los otros dos son opcionales.
 - `editorialSections`: 3-5 secciones, cada una con encabezado específico de la herramienta (no genérico) y dos párrafos con al menos una decisión o advertencia concreta.
+- `communityInsights`: **opcional, default `[]`**. Cada entrada necesita `source` real y verificable (URL de un hilo/post encontrado con `WebSearch`, no memoria). Si no hay fuente real para la herramienta, dejá el array vacío — no rellenes con generalidades sin link. La sección se omite del render cuando está vacío. Ver `references/editorial-writing.md`.
 - `faq`: 4 preguntas apuntando a intención de búsqueda real (ver `references/editorial-writing.md`).
+
+## Autoría del equipo editorial (no es parte del contrato JSON por ficha)
+
+La identidad y metodología del equipo editorial ("Redacción FuenteAI") vive en `src/data/editorial-team.ts`, no en cada ficha — es una entidad única y global. Se refleja como `author`/`publisher` de tipo `Organization` (nunca `Person`) en el JSON-LD de `src/pages/[lang]/[slug].astro`, y como bloque compacto (`EditorialByline`) en cada ficha con link a la metodología completa en `acerca-de.astro#metodologia`. No hace falta ni se debe tocar esto al crear una ficha nueva — ya está resuelto a nivel de sitio.
 
 ## Categorías vigentes
 

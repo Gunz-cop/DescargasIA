@@ -30,7 +30,8 @@ export interface ToolMerged {
   trustLevel: 'official' | 'verified' | 'pending-review';
   lastReviewed: string;
   officialSources: string[];
-  
+  status: 'active' | 'discontinued';
+
   // Editorial local
   shortDescription: string;
   longDescription: string;
@@ -39,6 +40,7 @@ export interface ToolMerged {
   safetyNotes: string[];
   editorialSummary?: string;
   editorialSections: Array<{ heading: string; body: string }>;
+  communityInsights: Array<{ text: string; source: string; sourceLabel?: string; date?: string }>;
   faq: Array<{ question: string; answer: string }>;
   spanishSupport?: 'yes' | 'partial' | 'no' | 'unknown';
   swedishSupport?: 'yes' | 'partial' | 'no' | 'unknown';
@@ -80,6 +82,7 @@ export async function getTranslatedTools(lang: string): Promise<ToolMerged[]> {
         trustLevel: base.data.trustLevel,
         lastReviewed: base.data.lastReviewed,
         officialSources: base.data.officialSources,
+        status: base.data.status,
         
         // Datos localizados
         shortDescription: localized.data.shortDescription,
@@ -89,6 +92,7 @@ export async function getTranslatedTools(lang: string): Promise<ToolMerged[]> {
         safetyNotes: localized.data.safetyNotes,
         editorialSummary: localized.data.editorialSummary,
         editorialSections: localized.data.editorialSections,
+        communityInsights: localized.data.communityInsights,
         faq: localized.data.faq,
         spanishSupport: localized.data.spanishSupport,
         swedishSupport: localized.data.swedishSupport,
@@ -125,7 +129,8 @@ export async function getTranslatedTool(lang: string, slug: string): Promise<Too
     trustLevel: base.data.trustLevel,
     lastReviewed: base.data.lastReviewed,
     officialSources: base.data.officialSources,
-    
+    status: base.data.status,
+
     // Datos localizados
     shortDescription: localized.data.shortDescription,
     longDescription: localized.data.longDescription,
@@ -134,6 +139,7 @@ export async function getTranslatedTool(lang: string, slug: string): Promise<Too
     safetyNotes: localized.data.safetyNotes,
     editorialSummary: localized.data.editorialSummary,
     editorialSections: localized.data.editorialSections,
+    communityInsights: localized.data.communityInsights,
     faq: localized.data.faq,
     spanishSupport: localized.data.spanishSupport,
     swedishSupport: localized.data.swedishSupport,

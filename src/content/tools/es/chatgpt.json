@@ -36,7 +36,15 @@
     },
     {
       "heading": "Cuándo mirar alternativas",
-      "body": "ChatGPT es una excelente puerta de entrada, pero no siempre será la mejor opción para todo. Claude puede sentirse más cómodo para ciertos trabajos de redacción extensa; Gemini puede integrarse mejor con servicios de Google; Cursor está pensado para programación dentro de un editor; Ollama y LM Studio apuntan a modelos locales para quienes quieren experimentar en su propio equipo.\n\nLa decisión depende menos de cuál IA \"gana\" y más de tu flujo de trabajo. Si necesitas conversar, redactar, estudiar o resolver tareas variadas, ChatGPT sigue siendo una opción muy fuerte. Si tu prioridad es programar dentro del IDE, trabajar sin conexión o comparar fuentes en la web, puede valer la pena revisar las alternativas enlazadas desde esta ficha."
+      "body": "ChatGPT es una excelente puerta de entrada, pero no siempre será la mejor opción para todo. Claude puede sentirse más cómodo para ciertos trabajos de redacción extensa; Gemini puede integrarse mejor con servicios de Google; Perplexity prioriza buscar y citar fuentes en vez de solo conversar.\n\nLa decisión depende menos de cuál IA \"gana\" y más de tu flujo de trabajo. Si necesitas conversar, redactar, estudiar o resolver tareas variadas, ChatGPT sigue siendo una opción muy fuerte. Si tu prioridad es investigar con fuentes citadas o probar otro estilo de asistente conversacional, puede valer la pena revisar las alternativas enlazadas al comienzo de esta página."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Tras el lanzamiento de GPT-5 en agosto de 2025, los suscriptores de ChatGPT Plus criticaron los límites de uso semanales del modo de razonamiento (GPT-5 Thinking). En respuesta, Sam Altman confirmó que OpenAI estaba trabajando en subir ese límite a 3.000 mensajes por semana. Si tu cuota de mensajes cambia de una semana a otra sin que hayas cambiado de plan, no es un error de tu cuenta: OpenAI ajusta estos topes con cierta frecuencia según el modelo y la demanda.",
+      "source": "https://www.bleepingcomputer.com/news/artificial-intelligence/openai-is-testing-3-000-per-week-limit-for-gpt-5-thinking/",
+      "sourceLabel": "BleepingComputer — confirmación del aumento del límite semanal",
+      "date": "2025-08-11"
     }
   ],
   "faq": [

@@ -1,0 +1,27 @@
+---
+// src/components/EditorialByline.astro
+// Bloque compacto de autoría editorial (equipo, no persona física).
+// El texto completo de metodología vive solo en acerca-de.astro#metodologia;
+// este bloque nunca lo repite, solo enlaza.
+import { EDITORIAL_TEAM } from '../data/editorial-team';
+import { useTranslations } from '../i18n/ui';
+import type { Lang } from '../utils/brand';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="mt-4">
+  <p class="fai-mono-sm text-fai-muted-2">
+    {t('editorial.byline')} <strong class="font-medium text-fai-muted">{EDITORIAL_TEAM.name[lang]}</strong>
+    <span aria-hidden="true">·</span>
+    <a href={`/${lang}/acerca-de#metodologia`} class="transition-colors hover:text-fai-signal">
+      {t('editorial.methodology.link')}
+    </a>
+  </p>
+  <p class="mt-1.5 max-w-[62ch] text-[13px] leading-[1.5] text-fai-muted-2">{EDITORIAL_TEAM.summary[lang]}</p>
+</div>

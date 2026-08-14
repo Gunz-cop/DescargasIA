@@ -58,6 +58,14 @@ Contenido mínimo por ficha editorial:
 
 Si la herramienta no tiene instalador de escritorio o app móvil real para alguna plataforma que la gente suele buscar, aclarálo explícitamente (ver `references/source-policy.md`, sección "No-Installer Clarifications").
 
+## 5.5. Investigación de comunidad (opcional, solo si hay fuente real)
+
+Buscá con `WebSearch` algo concreto y verificable reportado por usuarios reales (Reddit, Discord público, issues de GitHub, foros oficiales): un límite, un bug, un truco de uso. Ver `references/editorial-writing.md` para cómo buscarlo y qué cuenta como fuente válida.
+
+Si encontrás algo con fuente real, agregalo a `communityInsights` con el link. **Si no encontrás nada verificable, dejá `communityInsights` como `[]` y seguí** — nunca completes este campo con una generalización sin fuente citable.
+
+Antes de escribir el `text` final, hacé `WebFetch` sobre la URL exacta que vas a citar y confirmá con una cita textual que el dato específico (cifra, nombre, cita) está realmente ahí — no te quedes con el resumen que dio `WebSearch`. Ver `references/editorial-writing.md` para el caso real donde esto falló.
+
 ## 6. Validación
 
 Ver `references/validation.md` para el detalle completo. En resumen:

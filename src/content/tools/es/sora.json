@@ -1,0 +1,66 @@
+{
+  "shortDescription": "Herramienta de generación de video con IA de OpenAI, discontinuada como app independiente en abril de 2026. Su tecnología sigue dentro de ChatGPT.",
+  "longDescription": "Sora fue la aplicación de generación de video con inteligencia artificial de OpenAI, lanzada como app independiente con un feed social de clips generados por IA. OpenAI discontinuó la app y la web el 26 de abril de 2026, y cerrará el acceso por API el 24 de septiembre de 2026. El modelo Sora 2 sigue disponible, pero integrado dentro de ChatGPT en vez de como producto independiente.",
+  "bestFor": [
+    "Entender qué pasó con la app de Sora si dejó de funcionarte de un día para el otro",
+    "Confirmar la fecha oficial de cierre antes de perder tiempo buscando cómo descargarla",
+    "Saber dónde sigue disponible hoy la tecnología de Sora",
+    "Encontrar alternativas activas de generación de video con IA"
+  ],
+  "limitations": [
+    "La app y el sitio web de Sora dejaron de funcionar el 26 de abril de 2026: no hay ninguna versión activa para descargar ni usar hoy.",
+    "El acceso por API se mantiene solo hasta el 24 de septiembre de 2026; después de esa fecha también deja de funcionar para desarrolladores.",
+    "No existe ninguna app oficial de Sora vigente para Windows, macOS, Linux, Android ni iOS: cualquier resultado que ofrezca \"descargar Sora\" hoy no proviene de OpenAI."
+  ],
+  "safetyNotes": [
+    "Desconfía de cualquier sitio o APK que ofrezca \"descargar Sora\" o una supuesta versión alternativa: OpenAI discontinuó el producto y no lo distribuye por ningún canal, oficial ni de terceros.",
+    "Si generaste contenido en Sora y todavía no lo exportaste, hazlo cuanto antes desde sora.chatgpt.com/sunset: una vez que termine la ventana de exportación final, OpenAI borra ese contenido de forma permanente.",
+    "Si buscas generar video con IA hoy, la tecnología de Sora 2 sigue disponible dentro de ChatGPT (con cuenta y plan compatible), no como app separada."
+  ],
+  "editorialSummary": "Sora fue el proyecto de generación de video con IA de OpenAI, lanzado como app social independiente. OpenAI lo discontinuó en 2026 tras una caída sostenida de uso. Esta ficha existe para responder con claridad a quienes todavía buscan descargarla: no hay ninguna versión activa, y la tecnología subyacente ahora vive dentro de ChatGPT.",
+  "editorialSections": [
+    {
+      "heading": "Por qué el botón de arriba no dice \"Descargar\"",
+      "body": "Todavía llegan búsquedas como \"descargar Sora\" o \"Sora app\" todos los días, aunque el producto ya no existe como tal. OpenAI cerró la app y la web de Sora el 26 de abril de 2026 y va a cerrar el acceso por API el 24 de septiembre de 2026. No escondemos esa información detrás de un botón que prometa algo que no existe: el enlace de esta ficha lleva directo al aviso oficial de discontinuación que publicó la propia OpenAI, no a una descarga.\n\nLos números públicos ya anticipaban el cierre antes del anuncio — el detalle de cuánto cayó el uso está en \"Qué dice la comunidad\", más arriba en esta misma ficha."
+    },
+    {
+      "heading": "Qué pasa con los videos que ya generaste en Sora",
+      "body": "Según el propio aviso de OpenAI, todavía puedes exportar tu contenido: hay que entrar a sora.chatgpt.com/sunset y hacer clic en \"Export\"; el sistema avisa por correo cuando el archivo está listo. La ventana para exportar no es indefinida — una vez que se cierra, OpenAI borra de forma permanente cualquier dato asociado al uso de Sora. Si todavía no exportaste tu contenido, conviene hacerlo cuanto antes en vez de asumir que va a seguir disponible."
+    },
+    {
+      "heading": "Dónde sigue viva la tecnología de Sora",
+      "body": "El modelo de generación de video Sora 2 no desapareció: sigue funcionando, pero integrado dentro de ChatGPT en vez de como app independiente. Es parte de un giro más amplio de OpenAI hacia concentrar productos alrededor de ChatGPT y Codex en lugar de mantener aplicaciones separadas para cada función.\n\nSi tu objetivo era generar video con IA y no te importa que sea dentro de otra app, esa es la ruta más directa hoy — con cuenta y plan de ChatGPT compatibles con generación de video."
+    },
+    {
+      "heading": "Qué usar en su lugar si buscabas generar video con IA",
+      "body": "Si prefieres una herramienta dedicada a generación de video en vez de una función dentro de un asistente conversacional, hay varias alternativas activas y con canal oficial verificado: Runway, Kling AI y Luma Dream Machine son las más comparables en enfoque al Sora original. Cada una tiene su propio modelo de precios y limitaciones — vale la pena revisar la ficha de cada una antes de decidir, en vez de asumir que funcionan igual."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Antes del cierre, los propios números de uso ya anticipaban el final: la app de Sora llegó a 3,3 millones de descargas en noviembre de 2025, pero había caído a 1,1 millones en febrero de 2026, una baja de más del 65% en tres meses. OpenAI no dio una razón oficial única para el cierre, pero esa caída de interés sostenido coincide con el argumento que más se repitió en la cobertura del anuncio: el modelo de generación de video era técnicamente impresionante, pero un feed social hecho solo de clips generados por IA no retuvo audiencia a largo plazo.",
+      "source": "https://techcrunch.com/2026/03/24/openais-sora-was-the-creepiest-app-on-your-phone-now-its-shutting-down/",
+      "sourceLabel": "TechCrunch — cobertura del cierre y caída de uso de Sora",
+      "date": "2026-03-24"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Sora sigue funcionando?",
+      "answer": "No como app independiente. OpenAI cerró la app y la web de Sora el 26 de abril de 2026. El acceso por API para desarrolladores se mantiene solo hasta el 24 de septiembre de 2026."
+    },
+    {
+      "question": "¿Por qué OpenAI cerró Sora?",
+      "answer": "OpenAI no dio una razón oficial única, pero los datos públicos muestran una caída fuerte de uso: la app pasó de 3,3 millones de descargas en noviembre de 2025 a 1,1 millones en febrero de 2026. La compañía también reorientó recursos hacia ChatGPT y Codex."
+    },
+    {
+      "question": "¿Puedo recuperar los videos que generé en Sora?",
+      "answer": "Sí, todavía puedes exportar tu contenido desde sora.chatgpt.com/sunset haciendo clic en \"Export\". Pero la ventana de exportación no es indefinida: una vez que se cierra, OpenAI borra los datos de forma permanente, así que conviene hacerlo cuanto antes."
+    },
+    {
+      "question": "¿Dónde puedo generar video con IA como hacía Sora?",
+      "answer": "El modelo Sora 2 sigue disponible dentro de ChatGPT, detrás de un plan compatible. Como alternativas independientes activas también puedes revisar Runway, Kling AI o Luma Dream Machine."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

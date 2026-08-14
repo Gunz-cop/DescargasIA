@@ -8,7 +8,7 @@
     "Trabajar sincronizado entre escritorio, navegador y móvil"
   ],
   "limitations": [
-    "Notion AI no viene incluido gratis de forma ilimitada: se puede agregar a cualquier plan pagando un costo adicional por miembro, aunque el plan gratuito de Notion incluye un uso básico limitado.",
+    "Desde el 13 de mayo de 2025, Notion AI completo ya no se puede agregar como complemento pago a cualquier plan: quedó incluido solo en los planes Business y Enterprise. Los planes Free y Plus dan acceso de prueba limitado, sin renovación (más detalle en \"Qué dice la comunidad\", más arriba en esta ficha).",
     "La curva de aprendizaje puede ser mayor que la de un editor de notas simple, dado que Notion es una herramienta muy flexible con muchas formas de estructurar la información.",
     "No existe una app de escritorio oficial confirmada para Linux; en ese sistema el acceso recomendado es la versión web."
   ],
@@ -33,6 +33,14 @@
     {
       "heading": "Cuándo conviene Notion frente a herramientas más específicas",
       "body": "Si necesitas un espacio único donde centralizar notas, documentos y gestión de proyectos de equipo, Notion tiene sentido por esa combinación. Si tu necesidad es más puntual —crear una presentación de diapositivas, por ejemplo— Gamma puede ser más directo; si buscas resumir y consultar documentos extensos con IA, NotebookLM está más enfocado en ese caso específico.\n\nAlgunos equipos usan Notion como \"hub\" central y complementan con herramientas más especializadas para tareas puntuales, en lugar de intentar que Notion resuelva absolutamente todo por sí solo."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "El 13 de mayo de 2025 Notion eliminó el complemento de IA independiente (que costaba entre 8 y 10 dólares mensuales por miembro y se podía sumar a cualquier plan) y trasladó las funciones completas de Notion AI —incluyendo Agentes y el asistente \"Ask Notion\"— exclusivamente al plan Business, de 20 dólares por miembro al mes. Quienes ya tenían el complemento contratado antes de esa fecha lo mantuvieron sin cambios inmediatos, pero el complemento dejó de estar disponible para clientes nuevos. Si administras un espacio de trabajo en el plan Free o Plus y buscas el complemento de IA que existía antes, ya no lo vas a encontrar: la única vía hoy es pasar a Business.",
+      "source": "https://www.usecarly.com/blog/notion-ai-pricing-change/",
+      "sourceLabel": "usecarly.com — cobertura de la eliminación del complemento de IA de Notion",
+      "date": "2026-06-30"
     }
   ],
   "faq": [

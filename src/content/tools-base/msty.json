@@ -1,0 +1,38 @@
+{
+  "name": "Msty Studio",
+  "officialWebsite": "https://msty.ai",
+  "categories": ["modelos-locales"],
+  "platforms": {
+    "windows": {
+      "url": "https://msty.ai/studio/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-14"
+    },
+    "mac": {
+      "url": "https://msty.ai/studio/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-14"
+    },
+    "linux": {
+      "url": "https://msty.ai/studio/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-14"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": false,
+  "tags": ["modelos locales", "ollama", "llama.cpp", "escritorio", "privacidad"],
+  "alternatives": ["lm-studio", "jan", "open-webui", "ollama"],
+  "screenshotUrl": null,
+  "initials": "MS",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-14",
+  "officialSources": [
+    "https://msty.ai",
+    "https://msty.ai/pricing",
+    "https://docs.msty.studio/"
+  ]
+}

@@ -8,14 +8,14 @@
     "Arbeta med dubbning och flerspråkigt ljud där det stöds"
   ],
   "limitations": [
-    "Röstkloning och kommersiell användning kräver tydlig rättighetskontroll.",
-    "Vissa funktioner och högre gränser kräver betalplan.",
-    "Det är inte en traditionell desktopapp med fristående installerare."
+    "Röstkloning kräver tydligt samtycke från personen vars röst klonas — plattformen blockerar kloning av kända offentliga personers röster specifikt för att minska risken för missbruk.",
+    "Gratisnivån ger begränsat antal tecken per månad; för regelbunden dubbning eller berättarröst i större volym krävs en betalplan.",
+    "Det är inte en traditionell desktopapp med fristående installerare — huvudvägen är webbtjänsten eller API:et."
   ],
   "safetyNotes": [
-    "Använd ElevenLabs officiella webbplats och dokumentation.",
+    "AI-röstkloning har använts i verkliga bedrägerier, bland annat samtal där brottslingar imiterar en anhörigs röst för att lura fram pengar. Lita inte enbart på en röst i telefon, även om den låter exakt som någon du känner — bekräfta identiteten på ett annat sätt.",
     "Undvik verktyg som erbjuder piratkopierade röster eller kringgång av begränsningar.",
-    "Klona inte röster utan samtycke och kontrollera regler för publicering."
+    "Klona aldrig någon annans röst utan uttryckligt samtycke och kontrollera reglerna för publicering innan du sprider klonat ljud."
   ],
   "editorialSummary": "ElevenLabs är ett av de mest kända verktygen för AI-röster. Det bör användas via officiella webben eller API-dokumentationen, inte via nedladdade paket från tredje part. Var extra noggrann med samtycke och rättigheter vid röstkloning.",
   "editorialSections": [
@@ -30,6 +30,14 @@
     {
       "heading": "När alternativ kan passa bättre",
       "body": "ElevenLabs är starkt för röst och ljud, men inte för allt innehållsarbete. Om du behöver skriva manus kan ChatGPT eller Claude vara bättre i första steget. Om du behöver musik kan Suno vara mer relevant.\n\nEtt bra arbetsflöde kan därför kombinera flera verktyg: skriv texten i en assistent, granska den, och använd ElevenLabs när du är redo att producera röst."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Den 16 april 2026 skickade den amerikanska senatorn Maggie Hassan formella brev till fyra AI-röstkloningsföretag, inklusive ElevenLabs, med krav på svar om hur de förhindrar bedrägerimissbruk. Bakgrunden var en rapport från FBI:s Internet Crime Complaint Center som visade att AI-relaterade bedrägerier orsakade förluster på 893 miljoner dollar under 2025, fördelat på över 22 000 anmälningar. Hassan frågade specifikt hur företagen övervakar bedrägerimissbruk, bekräftar samtycke före kloning, upptäcker försök att imitera offentliga personer eller minderåriga, samt om de vattenmärker ljud och sparar ursprungsdata. ElevenLabs svarade att man använder \"ett omfattande spektrum av skyddsåtgärder\", inklusive att blockera kloning av kända offentliga personers röster och både automatisk och mänsklig granskning. Slutsatsen för en vanlig användare är enkel: rösten i telefonen kan vara syntetisk även när den låter helt äkta, oavsett hur bra skyddsåtgärder ett enskilt företag har.",
+      "source": "https://www.forbes.com/sites/larsdaniel/2026/04/19/senator-hassan-demands-answers-from-elevenlabs-after-fbi-reports-893-million-in-ai-voice-scams/",
+      "sourceLabel": "Forbes — senator Hassans krav på svar från ElevenLabs efter FBI-rapport om röstbedrägerier",
+      "date": "2026-04-19"
     }
   ],
   "faq": [

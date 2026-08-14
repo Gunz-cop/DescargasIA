@@ -28,6 +28,15 @@ const editorialSection = z.object({
   body: z.string()
 });
 
+const communityInsight = z.object({
+  text: z.string(),
+  source: z.string().url(),
+  sourceLabel: z.string().optional(),
+  // Fecha del post/artículo citado (no la de hoy). Acepta YYYY-MM-DD o
+  // YYYY-MM cuando no se pudo confirmar el día exacto.
+  date: z.string().regex(/^\d{4}-\d{2}(-\d{2})?$/, 'date debe ser YYYY-MM-DD o YYYY-MM').optional()
+});
+
 const toolsBase = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/content/tools-base' }),
   schema: z.object({
@@ -56,6 +65,11 @@ const toolsBase = defineCollection({
     trustLevel: z.enum(['official', 'verified', 'pending-review']),
     lastReviewed: z.string(), // Formato YYYY-MM-DD
     officialSources: z.array(z.string().url()).default([]),
+
+    // 'discontinued' = el desarrollador cerró el producto; no hay canal de
+    // descarga/uso vigente. Cambia el CTA principal, el título y el aviso de
+    // mirrors en la ficha en vez de prometer una descarga que no existe.
+    status: z.enum(['active', 'discontinued']).default('active'),
   })
 });
 
@@ -69,6 +83,7 @@ const tools = defineCollection({
     safetyNotes: z.array(z.string()).default([]),
     editorialSummary: z.string().optional(),
     editorialSections: z.array(editorialSection).default([]),
+    communityInsights: z.array(communityInsight).default([]),
     faq: z.array(faqItem).default([]),
     spanishSupport: z.enum(['yes', 'partial', 'no', 'unknown']).optional(),
     swedishSupport: z.enum(['yes', 'partial', 'no', 'unknown']).optional(),
