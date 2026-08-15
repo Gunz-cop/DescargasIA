@@ -23,7 +23,9 @@
   ],
   "alternatives": [
     "chatgpt",
-    "gemini"
+    "gemini",
+    "notion",
+    "canva"
   ],
   "initials": "GA",
   "trustLevel": "official",

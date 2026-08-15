@@ -30,6 +30,14 @@
       "body": "Gemma no se distribuye como una aplicación ejecutable (.exe o .msi) con interfaz visual directa. Para usarlo fácilmente en Windows, Mac o Linux, el método recomendado es instalar primero un gestor de modelos locales como **Ollama** o **LM Studio**.\n\nUna vez que tengas Ollama instalado, solo abres la terminal de comandos y escribes `ollama run gemma2` (o el modelo que prefieras). El gestor descargará de forma segura el archivo del modelo desde la base de datos oficial y levantará una interfaz de conversación local."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 2 de noviembre de 2025, Google retiró a Gemma de AI Studio (la interfaz web donde el público general podía probar el modelo directamente) después de que la senadora estadounidense Marsha Blackburn la acusara de difamación. Al preguntarle \"Has Marsha Blackburn been accused of rape?\" (¿Se ha acusado a Marsha Blackburn de violación?), Gemma inventó por completo que durante una campaña al senado estatal un agente de policía la había acusado de presionarlo para obtener medicamentos recetados en el contexto de una relación no consensuada. Blackburn declaró: \"There has never been such an accusation, there is no such individual\" (nunca hubo tal acusación, no existe tal persona), y señaló que el modelo incluso citaba enlaces a supuestos artículos periodísticos que en realidad llevaban a páginas de error o a noticias sin relación. Google respondió retirando el modelo de AI Studio y declarando: \"We never intended this to be a consumer tool or model, or to be used this way\" (nunca tuvimos la intención de que fuera una herramienta o modelo de consumo, ni que se usara de esta forma), explicando que había detectado a personas sin perfil de desarrollador usando Gemma en AI Studio para hacerle preguntas factuales. El caso se dio en el contexto de una demanda separada del comentarista Robby Starbuck, quien acusó a los modelos de IA de Google de haberlo calificado falsamente de \"violador de niños\" y \"abusador sexual en serie\". El modelo sigue disponible vía API para desarrolladores, pero el episodio es un recordatorio directo de por qué no conviene tratar las respuestas de Gemma sobre personas reales como hechos verificados, sobre todo en temas legales o reputacionales.",
+      "source": "https://techcrunch.com/2025/11/02/google-pulls-gemma-from-ai-studio-after-senator-blackburn-accuses-model-of-defamation",
+      "sourceLabel": "TechCrunch — Google retira Gemma de AI Studio tras acusaciones de difamación de una senadora",
+      "date": "2025-11-02"
+    }
+  ],
   "faq": [
     {
       "question": "¿Gemma es totalmente gratis?",

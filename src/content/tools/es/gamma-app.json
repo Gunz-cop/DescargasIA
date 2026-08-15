@@ -30,6 +30,14 @@
       "body": "Gamma App funciona exclusivamente bajo un modelo de software en la nube. Toda la generación, edición colaborativa en tiempo real y almacenamiento se realiza en sus propios servidores.\n\nNo descargues ningún instalador que prometa ofrecer 'Gamma App gratis para PC'. Este tipo de ejecutables falsos son distribuidos en foros piratas y son virus informáticos diseñados para robar cookies de sesión de tus navegadores."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 15 de abril de 2025, la firma de seguridad Abnormal AI documentó una campaña de phishing en varias etapas que usaba presentaciones alojadas en Gamma para robar credenciales de Microsoft SharePoint. El ataque comenzaba con un correo enviado desde una cuenta legítima ya comprometida, con un enlace a un supuesto PDF; ese enlace llevaba a una presentación real alojada en Gamma con la marca de la víctima suplantada, que a su vez dirigía a una página intermedia con verificación CAPTCHA de Cloudflare Turnstile (para bloquear escáneres automáticos de seguridad) y finalmente a un portal falso de inicio de sesión de SharePoint que capturaba el correo y la contraseña en tiempo real mediante un framework de tipo \"adversary-in-the-middle\", capaz de robar también las cookies de sesión y evadir la autenticación en dos pasos. Según Abnormal AI, los atacantes aprovecharon la \"clean domain reputation\" (reputación de dominio limpio) de Gamma, que al no tener historial de actividad maliciosa permitía que el contenido de phishing \"evade legacy security tools\" (evadiera las herramientas de seguridad tradicionales) que normalmente marcan dominios sospechosos. El problema no está en Gamma en sí, sino en que cualquier plataforma de confianza puede usarse como fachada: conviene desconfiar de enlaces a portales de inicio de sesión de Microsoft, Google u otros servicios que lleguen incrustados dentro de una presentación, sin importar en qué sitio esté alojada.",
+      "source": "https://abnormal.ai/blog/multi-stage-phishing-attack-gamma-presentation",
+      "sourceLabel": "Abnormal AI — ataque de phishing en varias etapas que usó presentaciones de Gamma",
+      "date": "2025-04-15"
+    }
+  ],
   "faq": [
     {
       "question": "¿Gamma App es gratis?",

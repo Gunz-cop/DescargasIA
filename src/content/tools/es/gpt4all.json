@@ -35,6 +35,14 @@
       "body": "Dentro del ecosistema de IA local, GPT4All destaca por su simplicidad: la interfaz está pensada para quien no quiere lidiar con líneas de comando. Si prefieres una experiencia más técnica con más control sobre parámetros, Ollama o LM Studio pueden ofrecer más flexibilidad; si buscas gestionar documentos y flujos más complejos, AnythingLLM va un paso más allá.\n\nLa elección depende de cuánto control técnico quieras. Para alguien que solo quiere probar un modelo local por primera vez sin fricción, GPT4All suele ser el punto de entrada más amigable."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "En las versiones 3.5.0 y 3.5.1 de GPT4All, el servidor de API interno usaba por error el ChatModel completo para generar cada respuesta, lo que hacía que mensajes de sesiones de chat previas y no relacionadas quedaran expuestos en respuestas de otras conversaciones. Un primer intento de solución en la versión 3.5.2 rompió la función LocalDocs (la que permite consultar documentos propios) porque copiaba los mensajes antes de que se agregaran las fuentes al prompt. La corrección definitiva, enviada por el desarrollador principal del proyecto (Jared Van Bortel, usuario cebtenzzre) y fusionada el 16 de diciembre de 2024, reemplazó esa copia temprana por una selección de mensajes por índice, preservando el aislamiento entre sesiones sin volver a romper LocalDocs. Es un recordatorio útil de que, incluso en una herramienta que corre completamente en tu propio equipo sin enviar datos a servidores externos, pueden existir errores de software que mezclen información entre conversaciones distintas si usás el servidor de API local; conviene mantener GPT4All actualizado a la versión estable más reciente.",
+      "source": "https://github.com/nomic-ai/gpt4all/pull/3302",
+      "sourceLabel": "GitHub — corrección de una filtración de datos entre sesiones de chat en el servidor de API de GPT4All",
+      "date": "2024-12-16"
+    }
+  ],
   "faq": [
     {
       "question": "¿GPT4All es realmente gratis?",

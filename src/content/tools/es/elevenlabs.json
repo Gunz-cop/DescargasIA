@@ -32,6 +32,14 @@
       "body": "La voz tiene una dimensión personal que no existe del mismo modo en una imagen o un texto. Clonar una voz sin permiso puede causar daño, fraude o suplantación. Aunque la tecnología sea potente, el criterio editorial debe ser claro: usa voces propias, autorizadas o provistas por la plataforma.\n\nElevenLabs puede ser una gran herramienta para accesibilidad, educación, audiolibros, videos y productos interactivos. Pero si una web promete clonar voces famosas o desbloquear funciones de pago, no es una ruta confiable."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 16 de abril de 2026, la senadora estadounidense Maggie Hassan envió cartas formales a cuatro empresas de clonación de voz con IA, incluida ElevenLabs, exigiendo respuestas sobre cómo previenen el abuso fraudulento. El contexto fue un informe del Internet Crime Complaint Center del FBI que mostró que los fraudes relacionados con IA causaron pérdidas de 893 millones de dólares durante 2025, repartidas en más de 22.000 denuncias. Hassan preguntó específicamente cómo las empresas monitorean el uso fraudulento, confirman el consentimiento antes de clonar una voz, detectan intentos de imitar a figuras públicas o menores de edad, y si marcan el audio con marca de agua o conservan los datos de origen. ElevenLabs respondió que utiliza \"un amplio espectro de medidas de protección\", incluyendo el bloqueo de la clonación de voces de figuras públicas conocidas y revisión tanto automática como humana. La conclusión práctica para cualquier usuario es simple: la voz que escuchás por teléfono puede ser sintética incluso cuando suena completamente real, sin importar qué tan buenas sean las medidas de protección de una empresa en particular.",
+      "source": "https://www.forbes.com/sites/larsdaniel/2026/04/19/senator-hassan-demands-answers-from-elevenlabs-after-fbi-reports-893-million-in-ai-voice-scams/",
+      "sourceLabel": "Forbes — la senadora Hassan exige respuestas a ElevenLabs tras un informe del FBI sobre fraudes de voz con IA",
+      "date": "2026-04-19"
+    }
+  ],
   "faq": [
     {
       "question": "¿ElevenLabs tiene app oficial?",

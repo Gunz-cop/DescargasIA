@@ -32,6 +32,20 @@
       "body": "GitHub Copilot tiene sentido si ya estás cómodo con tu editor y quieres sumar autocompletado, chat y ayuda contextual sin cambiar de entorno. Cursor puede ser mejor si quieres un editor construido alrededor de IA desde el inicio. ChatGPT o Claude pueden apoyar diseño, explicación y revisión fuera del IDE.\n\nPara desarrolladores, la elección depende del flujo: si tu equipo usa GitHub y editores estándar, Copilot encaja naturalmente. Si quieres una experiencia más integrada y agresiva de IA en el editor, compara con Cursor."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 3 de noviembre de 2022, un grupo de programadores de código abierto (representados por el estudio Saveri Law Firm y el abogado Matthew Butterick) demandó a GitHub, Microsoft y OpenAI ante el tribunal federal del Distrito Norte de California, alegando que Copilot se entrenó con miles de millones de líneas de código público sin respetar las licencias de código abierto que exigen atribución al autor original. En mayo de 2023 el tribunal rechazó parcialmente los pedidos de desestimación, permitiendo que avanzaran los reclamos por incumplimiento de licencia y por infracción de la sección 1202(b) de la DMCA (que prohíbe eliminar la información de autoría y copyright de una obra). En octubre de 2024 los demandantes apelaron ante la Cámara de Apelaciones del Noveno Circuito, sobre si esa sección de la DMCA exige que el código copiado sea idéntico al original para que aplique.",
+      "source": "https://www.saverilawfirm.com/our-cases/github-copilot-intellectual-property-litigation",
+      "sourceLabel": "Saveri Law Firm — demanda de programadores de código abierto contra GitHub, Microsoft y OpenAI por Copilot",
+      "date": "2024-10-01"
+    },
+    {
+      "text": "El 11 de febrero de 2026, un panel de tres jueces de la Cámara de Apelaciones del Noveno Circuito realizó la audiencia oral sobre esa apelación, centrada en si la Digital Millennium Copyright Act de 1998 aplica a sistemas de IA generativa entrenados con material con derechos de autor. Al momento de esta revisión el fallo definitivo todavía no se había emitido. El reclamo central sobre si Copilot viola las condiciones de las licencias de código abierto —el asunto de fondo del caso— sigue sin resolverse en la práctica. Quien reutilice sugerencias de Copilot en un proyecto con licencia estricta debería tener presente que esta es una zona legal todavía en disputa, no un terreno ya resuelto.",
+      "source": "https://news.bloomberglaw.com/litigation/copyright-suit-over-github-ai-coding-tool-vexes-ninth-circuit",
+      "sourceLabel": "Bloomberg Law — audiencia en el Noveno Circuito sobre la demanda de copyright contra GitHub Copilot",
+      "date": "2026-02-11"
+    }
+  ],
   "faq": [
     {
       "question": "¿GitHub Copilot tiene instalador para Windows?",
