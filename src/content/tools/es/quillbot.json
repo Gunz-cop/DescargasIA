@@ -35,6 +35,14 @@
       "body": "La diferencia más práctica frente a Grammarly es el idioma: QuillBot ofrece soporte más amplio para idiomas distintos al inglés, incluido el español, mientras que Grammarly está enfocado casi exclusivamente en inglés. Si tu prioridad es reformular texto o resumir, QuillBot tiene ventaja; si buscas la corrección gramatical más completa en español, LanguageTool sigue siendo una opción más especializada en ese punto concreto.\n\nMuchos usuarios combinan herramientas: QuillBot para reformular y resumir, LanguageTool para revisión gramatical fina en español, y DeepL cuando el trabajo implica traducción entre idiomas."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "Un informe publicado el 28 de enero de 2026 por Incogni, que analizó 442 extensiones de Chrome basadas en IA, clasificó la extensión de QuillBot —junto con la de Grammarly— como una de las más potencialmente dañinas para la privacidad entre las extensiones con millones de descargas. Según el informe, este tipo de extensiones recopila \"website content, personal communications, and user activity data\" (contenido de sitios web, comunicaciones personales y datos de actividad del usuario), incluyendo patrones de interacción como pulsaciones de teclado, desplazamiento y navegación, y requiere permisos de tipo \"scripting\" y \"activeTab\" que permiten inyectar código en las páginas y acceder temporalmente a la pestaña activa. El informe aclara que el riesgo de uso malicioso se considera bajo para ambas herramientas, pero las ubica en el primer lugar de la lista por \"the breadth of access and the scale of their installed base\" (la amplitud del acceso y la escala de su base de usuarios instalada). Antes de instalar la extensión de QuillBot en un dispositivo donde escribís información sensible, vale la pena evaluar cuánto acceso al texto de las páginas estás dispuesto a conceder.",
+      "source": "https://www.helpnetsecurity.com/2026/01/28/incogni-chrome-extensions-privacy-risks-report/",
+      "sourceLabel": "Help Net Security — informe de Incogni sobre riesgos de privacidad en extensiones de Chrome basadas en IA",
+      "date": "2026-01-28"
+    }
+  ],
   "faq": [
     {
       "question": "¿QuillBot funciona en español?",

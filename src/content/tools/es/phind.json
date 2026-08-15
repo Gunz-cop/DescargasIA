@@ -1,48 +1,60 @@
 {
-  "shortDescription": "Buscador y asistente conversacional asistido por IA optimizado específicamente para programadores, con extensión para VS Code.",
-  "longDescription": "Phind es un motor de respuestas conversacional especializado en desarrollo de software y programación. Combina modelos de lenguaje de gran tamaño con una capacidad avanzada de rastreo e indexación web en tiempo real, permitiendo resolver dudas técnicas, explicar código y buscar en documentación técnica oficial con precisión. Se accede de forma web.",
+  "shortDescription": "Buscador conversacional con IA para programadores, discontinuado el 16 de enero de 2026 tras apenas un mes de haber recaudado fondos.",
+  "longDescription": "Phind fue un motor de respuestas conversacional especializado en desarrollo de software, que combinaba modelos de lenguaje propios con rastreo web en tiempo real para resolver dudas técnicas citando documentación oficial. La empresa cerró operaciones el 16 de enero de 2026, aproximadamente un mes después de cerrar una ronda de financiación de 10 millones de dólares. El sitio web ya no existe: phind.com devuelve un error 404.",
   "bestFor": [
-    "Desarrolladores que necesitan resolver errores (bugs) o excepciones complejas buscando soluciones en tiempo real.",
-    "Aprender a usar nuevas APIs, frameworks o librerías consultando documentación oficial sintetizada.",
-    "Escribir fragmentos de código limpios basados en especificaciones actualizadas, reduciendo el tiempo de búsqueda manual.",
-    "Consultar dudas de programación sin salir del editor gracias a su extensión oficial para VS Code."
+    "Entender qué pasó con Phind si dejó de funcionarte de un día para el otro",
+    "Confirmar que el cierre es real antes de perder tiempo buscando cómo acceder a phind.com",
+    "Encontrar alternativas activas para resolver dudas de programación con IA"
   ],
   "limitations": [
-    "El número de consultas diarias de alta velocidad con modelos Pro de última generación está restringido en la versión gratuita.",
-    "Puede alucinar sintaxis en lenguajes o tecnologías muy minoritarias o de lanzamiento extremadamente reciente.",
-    "No tiene aplicación de escritorio oficial: el acceso es exclusivamente web en phind.com (más la extensión de VS Code)."
+    "Phind cerró operaciones el 16 de enero de 2026: no hay ninguna versión activa del sitio ni de la extensión para usar hoy.",
+    "El sitio web phind.com ya no existe y devuelve un error 404; cualquier resultado que ofrezca \"acceder a Phind\" o \"descargar Phind\" hoy no es un canal oficial vigente.",
+    "No existe ninguna vía oficial para recuperar el historial de conversaciones: la ventana para exportar datos, según la cobertura del cierre, se cerró el 30 de enero de 2026."
   ],
   "safetyNotes": [
-    "Phind es un servicio en la nube que se ejecuta a través de su sitio oficial www.phind.com. No tiene aplicaciones de escritorio oficiales. Evita descargar instaladores sospechosos de internet."
+    "Desconfía de cualquier sitio que ofrezca una supuesta versión alternativa o clon de Phind: la empresa cerró y no distribuye el servicio por ningún canal, oficial ni de terceros.",
+    "Si buscas un asistente de código con búsqueda web en tiempo real hoy, revisa las alternativas activas enlazadas en esta ficha en vez de buscar formas de acceder a Phind."
   ],
-  "editorialSummary": "Phind funciona como un buscador semántico de alto rendimiento para programación que sintetiza hilos de foros y manuales de código. En FuenteAI te facilitamos el acceso directo a su web oficial y segura para prevenir estafas.",
+  "editorialSummary": "Phind fue un buscador semántico especializado en programación que sintetizaba documentación oficial y foros técnicos. Cerró operaciones a comienzos de 2026 tras perder relevancia frente a la búsqueda web integrada en los asistentes de IA generales. Esta ficha existe para responder con claridad a quienes todavía buscan acceder a Phind: no hay ninguna versión activa.",
   "editorialSections": [
     {
-      "heading": "El problema de los foros de programación frente a las búsquedas asistidas de Phind",
-      "body": "Tradicionalmente, cuando un desarrollador se topa con un error de código, busca el mensaje en Google. Esto le obliga a abrir cinco o diez pestañas de StackOverflow, leer hilos antiguos con respuestas contradictorias o desactualizadas, y probar parches a ciegas.\n\nPhind agiliza esto por completo. En lugar de devolver enlaces, Phind lee simultáneamente las páginas web más relevantes, la documentación oficial actualizada y las discusiones comunitarias, y redacta una respuesta coherente explicando la causa del error y proporcionando una solución de código corregida lista para copiar y pegar."
+      "heading": "Por qué el botón de arriba no dice \"Usar ahora\"",
+      "body": "Todavía llegan búsquedas de \"Phind\" y \"phind.com\" con cierta frecuencia, aunque el producto ya no existe. La empresa cerró operaciones el 16 de enero de 2026, apenas un mes después de haber cerrado una ronda de financiación de 10 millones de dólares liderada por Bessemer Venture Partners. El sitio phind.com devuelve hoy un error 404: no hay ningún acceso activo, gratuito ni pago.\n\nNo escondemos esa información detrás de un botón que prometa algo que ya no existe: el enlace de esta ficha lleva a cobertura verificada sobre el cierre, no a una versión activa del producto. El detalle de por qué cerró está en \"Qué dice la comunidad\", más arriba en esta misma ficha."
     },
     {
-      "heading": "Por qué usar Phind en lugar de ChatGPT para resolver dudas de código",
-      "body": "Aunque ChatGPT es un excelente programador, su mayor debilidad es la alucinación sobre librerías modernas o cambios de sintaxis recientes (debido a su límite de conocimiento estático). Si le preguntas a ChatGPT por una actualización de framework lanzada hace un mes, probablemente invente la sintaxis o te devuelva un código obsoleto.\n\nPhind está conectado permanentemente a internet y prioriza los sitios web oficiales de documentación técnica (como MDN, documentación de React, Python, etc.) para formular sus respuestas. Además, incluye referencias directas de enlaces para que puedas comprobar que la solución se adhiere a los estándares oficiales de desarrollo."
+      "heading": "Qué pasó con las cuentas y el historial de conversaciones",
+      "body": "Según la cobertura del cierre, los usuarios tuvieron hasta el 30 de enero de 2026 —dos semanas después del cierre del servicio— para descargar su historial de chats antes de que los servidores se borraran. Esa ventana ya pasó: a la fecha de esta revisión no existe ninguna vía oficial para recuperar conversaciones o datos guardados en Phind."
     },
     {
-      "heading": "Integración y uso seguro en el navegador",
-      "body": "Al igual que otros servicios web potentes, Phind ejecuta sus modelos en la nube. No requiere que instales programas en tu ordenador. Se accede de forma gratuita registrándote en phind.com. Para mayor comodidad de los programadores, la plataforma cuenta con una extensión oficial para VS Code que te permite realizar consultas sin salir de tu editor, instalada desde el marketplace oficial de Microsoft."
+      "heading": "Qué usar en su lugar si buscabas un asistente de código con búsqueda web",
+      "body": "La razón de fondo detrás del cierre, según la cobertura especializada, fue que los asistentes generales de IA (ChatGPT, Claude, Gemini) fueron incorporando búsqueda web propia, lo que erosionó la ventaja diferencial de un buscador dedicado exclusivamente a programación. Para resolver dudas técnicas con búsqueda en tiempo real hoy, Claude y ChatGPT son las alternativas más directas y activas; para trabajar directamente dentro del editor de código, Cursor es otra opción con canal oficial verificado. Cada una tiene su propio modelo de precios — vale la pena revisar la ficha de cada una antes de decidir."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Phind cerró operaciones el 16 de enero de 2026, aproximadamente un mes después de haber cerrado una ronda de financiación Serie A de 10 millones de dólares liderada por Bessemer Venture Partners. Según la cobertura del cierre, la causa de fondo fue la presión competitiva: \"When OpenAI, Google, and Anthropic add web search to their foundation models, a dedicated developer search engine becomes redundant\" (cuando OpenAI, Google y Anthropic agregan búsqueda web a sus modelos base, un buscador dedicado para desarrolladores se vuelve redundante). El interés de búsqueda por la herramienta había caído un 91% respecto a su pico de abril de 2024 para el momento del cierre. Los usuarios tuvieron hasta el 30 de enero de 2026 para descargar su historial de conversaciones antes de que los servidores se borraran por completo. Phind había lanzado en 2023 como parte de Y Combinator y llegó a combinar sus propios modelos (Phind-70B y Phind-405B, ajustados específicamente para programación) con acceso a GPT-4 y Claude en sus planes pagos.",
+      "source": "https://intelligenttools.co/blog/improved-phind-shutdown-post",
+      "sourceLabel": "intelligenttools.co — cobertura del cierre de Phind y sus causas",
+      "date": "2026-01-18"
     }
   ],
   "faq": [
     {
-      "question": "¿Phind es de pago?",
-      "answer": "Phind cuenta con un plan gratuito robusto que permite realizar búsquedas rápidas ilimitadas basadas en su propio modelo optimizado para código. Su suscripción de pago desbloquea el acceso prioritario a modelos más potentes (como GPT-4o o Claude 3.5 Sonnet) y funciones avanzadas."
+      "question": "¿Phind sigue funcionando?",
+      "answer": "No. Phind cerró operaciones el 16 de enero de 2026. El sitio phind.com devuelve un error 404 y no existe ninguna versión activa del servicio."
     },
     {
-      "question": "¿Es necesario crear una cuenta para usar Phind?",
-      "answer": "No. Puedes ingresar a phind.com y formular tus preguntas de código directamente sin registrarte. Sin embargo, crear una cuenta gratuita te permite conservar tu historial de conversaciones e integrar la extensión de VS Code."
+      "question": "¿Por qué cerró Phind?",
+      "answer": "Según la cobertura del cierre, la presión competitiva de asistentes generales como ChatGPT, Gemini y Claude —que fueron incorporando búsqueda web propia— erosionó la ventaja diferencial de un buscador dedicado exclusivamente a programación. El interés de búsqueda había caído más del 90% respecto a su pico en 2024."
     },
     {
-      "question": "¿Phind entiende y responde en idioma español?",
-      "answer": "Sí. Puedes escribir tus preguntas e instrucciones en español, y Phind analizará la información técnica en inglés (donde está la mayoría de la documentación) y te devolverá la respuesta explicada en español."
+      "question": "¿Puedo recuperar mi historial de conversaciones de Phind?",
+      "answer": "No hay ninguna vía oficial vigente. Según la cobertura del cierre, la ventana para exportar el historial se cerró el 30 de enero de 2026, dos semanas después del cierre del servicio."
+    },
+    {
+      "question": "¿Qué puedo usar en lugar de Phind?",
+      "answer": "Para resolver dudas de programación con búsqueda en tiempo real, ChatGPT y Claude son alternativas activas y directas. Para trabajar dentro del editor de código, Cursor es otra opción con canal oficial verificado."
     }
   ],
-  "spanishSupport": "yes"
+  "spanishSupport": "unknown"
 }

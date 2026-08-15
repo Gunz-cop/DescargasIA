@@ -35,6 +35,14 @@
       "body": "Si ya usas Ollama desde la terminal y sientes que te falta una interfaz visual más cómoda, con historial y gestión de modelos, Open WebUI es un paso natural. También tiene sentido si quieres montar un chat de IA privado para que varias personas de un equipo pequeño lo usen desde el navegador, sin depender de un servicio en la nube.\n\nSi todavía no instalaste ninguna herramienta de IA local, es más razonable empezar por GPT4All, LM Studio o Jan, que no requieren Docker ni línea de comandos, y considerar Open WebUI más adelante como una mejora de interfaz una vez que ya tengas modelos locales funcionando."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 10 de enero de 2025, el equipo de Open WebUI anunció en una discusión pública de su repositorio de GitHub el cambio de licencia de MIT a BSD de 3 cláusulas, sumando una cláusula específica contra el uso indebido de la marca: \"Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission\" (ni el nombre del titular de los derechos de autor ni los nombres de sus colaboradores pueden usarse para respaldar o promocionar productos derivados de este software sin autorización previa por escrito). Según explicaron los mantenedores, el motivo fue combatir a actores maliciosos que venían afirmando falsamente que Open WebUI respaldaba esquemas de criptomonedas y servicios fraudulentos, dañando la reputación del proyecto. El equipo insistió en que la funcionalidad no cambia: los usuarios conservan todos los derechos de usar, modificar y distribuir el software libremente. Aun así, el cambio de licencia generó debate en la comunidad de código abierto sobre hasta qué punto las restricciones de marca son compatibles con el espíritu de un proyecto abierto, un tipo de fricción que se repite en varios proyectos populares cuando crecen lo suficiente como para atraer intentos de suplantación. Si vas a redistribuir o hacer un fork de Open WebUI, conviene revisar los términos de licencia vigentes, no asumir que sigue siendo MIT sin restricciones.",
+      "source": "https://github.com/open-webui/open-webui/discussions/8467",
+      "sourceLabel": "GitHub — anuncio del cambio de licencia de Open WebUI, de MIT a BSD-3 con cláusula de marca",
+      "date": "2025-01-10"
+    }
+  ],
   "faq": [
     {
       "question": "¿Open WebUI es gratis?",

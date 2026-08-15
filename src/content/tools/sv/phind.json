@@ -1,54 +1,60 @@
 {
-  "shortDescription": "AI-sökmotor och kodassistent för utvecklare, med fokus på tekniska svar och källor vid felsökning och dokumentationsfrågor.",
-  "longDescription": "Phind är en AI-baserad sök- och svarstjänst för programmering och tekniska frågor. Den används via officiell webbtjänst och relaterade kanaler.",
+  "shortDescription": "AI-sökmotor för utvecklare, nedlagd den 16 januari 2026 bara en dryg månad efter en ny finansieringsrunda.",
+  "longDescription": "Phind var en AI-baserad sök- och svarstjänst specialiserad på programmering, som kombinerade egna språkmodeller med sökning i realtid för att besvara tekniska frågor med källhänvisningar. Företaget lade ner verksamheten den 16 januari 2026, ungefär en månad efter att ha stängt en finansieringsrunda på 10 miljoner dollar. Webbplatsen finns inte längre kvar: phind.com ger idag ett 404-fel.",
   "bestFor": [
-    "Söka tekniska svar med utvecklarfokus",
-    "Felsöka kod och förstå dokumentation",
-    "Jämföra lösningar med källhänvisningar",
-    "Utvecklare som vill kombinera sökning och AI-svar"
+    "Förstå vad som hände med Phind om tjänsten slutade fungera från en dag till en annan",
+    "Bekräfta att nedläggningen är verklig innan du letar efter sätt att komma åt phind.com",
+    "Hitta aktiva alternativ för att lösa programmeringsfrågor med AI"
   ],
   "limitations": [
-    "Svar kan vara fel eller bygga på föråldrad dokumentation.",
-    "Kräver granskning och test i ditt eget projekt.",
-    "Det är främst en webbtjänst, inte en lokal IDE."
+    "Phind lade ner verksamheten den 16 januari 2026: det finns ingen aktiv version av tjänsten att använda idag.",
+    "Webbplatsen phind.com finns inte längre och ger ett 404-fel; alla resultat som erbjuder \"åtkomst till Phind\" idag är inte en giltig officiell kanal.",
+    "Det finns ingen officiell väg att återfå sin konversationshistorik: fönstret för att exportera data stängde enligt rapporteringen om nedläggningen den 30 januari 2026."
   ],
   "safetyNotes": [
-    "Använd Phinds officiella webbplats.",
-    "Kör inte kommandon eller kod från AI-svar utan att förstå dem.",
-    "Undvik inofficiella appar som ber om kodbasåtkomst eller kontouppgifter."
+    "Lita inte på sajter som erbjuder en påstådd alternativ version eller klon av Phind: företaget har lagt ner och distribuerar inte tjänsten via någon kanal, varken officiell eller från tredje part.",
+    "Om du letar efter en kodassistent med sökning i realtid idag, se de aktiva alternativen som länkas i den här sidan istället för att leta efter sätt att komma åt Phind."
   ],
-  "editorialSummary": "Phind är användbart för utvecklare som vill ha AI-stödd teknisk sökning. Det kan spara tid vid felsökning och dokumentationsfrågor, men alla kodförslag bör testas och läsas kritiskt.",
+  "editorialSummary": "Phind var en sökmotor specialiserad på programmering som sammanfattade officiell dokumentation och tekniska forum. Tjänsten lades ner i början av 2026 efter att ha tappat relevans mot den inbyggda webbsökningen i generella AI-assistenter. Den här sidan finns för att tydligt svara den som fortfarande letar efter att komma åt Phind: det finns ingen aktiv version.",
   "editorialSections": [
     {
-      "heading": "AI-sökning för programmerare",
-      "body": "Phind är byggt för tekniska frågor där vanliga sökresultat ofta kräver många flikar. Du kan fråga om felmeddelanden, bibliotek, API:er eller arkitekturval och få ett svar som försöker sammanfatta relevanta källor.\n\nDet är praktiskt, men inte magiskt. Tekniska ekosystem ändras snabbt, och ett svar kan blanda versioner eller anta fel kontext. Använd det som startpunkt, inte som slutgiltig auktoritet."
+      "heading": "Varför knappen ovan inte länkar till tjänsten",
+      "body": "Sökningar på \"Phind\" och \"phind.com\" förekommer fortfarande, trots att tjänsten inte längre finns. Företaget lade ner verksamheten den 16 januari 2026, bara en dryg månad efter att ha stängt en finansieringsrunda på 10 miljoner dollar ledd av Bessemer Venture Partners. Webbplatsen phind.com ger idag ett 404-fel: det finns ingen aktiv åtkomst, varken gratis eller betald.\n\nVi döljer inte den informationen bakom en knapp som lovar något som inte längre finns: länken på den här sidan går till verifierad rapportering om nedläggningen, inte till en aktiv version av tjänsten. Detaljerna om varför tjänsten lades ner finns i \"Vad communityn säger\" ovan på den här sidan."
     },
     {
-      "heading": "Ingen lokal kodassistent att ladda ner",
-      "body": "För de flesta användare är Phind en webbtjänst. Om du söker efter en desktopapp eller upplåst version bör du vara försiktig. Rätt start är Phinds officiella webbplats.\n\nVar extra skeptisk mot verktyg som ber om åtkomst till hela kodbasen och säger sig vara Phind utan tydlig officiell koppling. Kod och tokens är känsliga tillgångar."
+      "heading": "Vad hände med konton och konversationshistorik",
+      "body": "Enligt rapporteringen om nedläggningen hade användare fram till den 30 januari 2026 — två veckor efter att tjänsten stängde — på sig att ladda ner sin chatthistorik innan servrarna raderades. Det fönstret har redan passerat: vid den här granskningen finns ingen officiell väg att återfå konversationer eller sparad data från Phind."
     },
     {
-      "heading": "Phind jämfört med Copilot och Cursor",
-      "body": "Phind passar bäst för research och tekniska frågor i webbläsaren. GitHub Copilot och Cursor arbetar närmare editorn och kan föreslå ändringar i en aktiv kodbas.\n\nOm du behöver förstå ett fel eller jämföra bibliotek kan Phind vara effektivt. Om du vill att AI ska arbeta direkt i projektfilerna passar en editorintegration bättre."
+      "heading": "Vad man kan använda istället om man sökte en kodassistent med webbsökning",
+      "body": "Enligt branschbevakningen var den bakomliggande orsaken till nedläggningen att generella AI-assistenter (ChatGPT, Claude, Gemini) allt mer byggde in egen webbsökning, vilket urholkade fördelen med en sökmotor specifikt dedikerad åt programmering. För tekniska frågor med sökning i realtid idag är Claude och ChatGPT de mest direkta och aktiva alternativen; för att arbeta direkt i kodredigeraren är Cursor ett annat alternativ med verifierad officiell kanal. Varje verktyg har sin egen prismodell — det är värt att jämföra innan du bestämmer dig."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Phind lade ner verksamheten den 16 januari 2026, ungefär en månad efter att ha stängt en finansieringsrunda (Serie A) på 10 miljoner dollar ledd av Bessemer Venture Partners. Enligt rapporteringen om nedläggningen var den bakomliggande orsaken konkurrenstrycket: \"When OpenAI, Google, and Anthropic add web search to their foundation models, a dedicated developer search engine becomes redundant\" (när OpenAI, Google och Anthropic lägger till webbsökning i sina grundmodeller blir en dedikerad sökmotor för utvecklare överflödig). Söktrycket för verktyget hade fallit med 91 % jämfört med toppen i april 2024 vid tidpunkten för nedläggningen. Användare hade fram till den 30 januari 2026 på sig att ladda ner sin konversationshistorik innan servrarna raderades helt. Phind lanserades 2023 som en del av Y Combinator och kombinerade egna modeller (Phind-70B och Phind-405B, finjusterade specifikt för programmering) med åtkomst till GPT-4 och Claude i betalplanerna.",
+      "source": "https://intelligenttools.co/blog/improved-phind-shutdown-post",
+      "sourceLabel": "intelligenttools.co — rapportering om Phinds nedläggning och orsakerna bakom den",
+      "date": "2026-01-18"
     }
   ],
   "faq": [
     {
-      "question": "Är Phind gratis?",
-      "answer": "Phind kan ha gratis användning och betalalternativ. Kontrollera aktuell planinformation på den officiella webbplatsen."
+      "question": "Fungerar Phind fortfarande?",
+      "answer": "Nej. Phind lade ner verksamheten den 16 januari 2026. Webbplatsen phind.com ger ett 404-fel och det finns ingen aktiv version av tjänsten."
     },
     {
-      "question": "Kan Phind skriva kod åt mig?",
-      "answer": "Phind kan föreslå kod och förklara tekniska lösningar, men du måste granska och testa allt i ditt projekt."
+      "question": "Varför lade Phind ner?",
+      "answer": "Enligt rapporteringen om nedläggningen urholkade konkurrenstrycket från generella assistenter som ChatGPT, Gemini och Claude — som byggde in egen webbsökning — fördelen med en sökmotor dedikerad enbart åt programmering. Söktrycket hade fallit med över 90 % jämfört med toppen 2024."
     },
     {
-      "question": "Finns Phind som app?",
-      "answer": "Phind används främst via webben. Undvik inofficiella appar eller installerare."
+      "question": "Kan jag återfå min konversationshistorik från Phind?",
+      "answer": "Det finns ingen officiell väg längre. Enligt rapporteringen om nedläggningen stängde exportfönstret den 30 januari 2026, två veckor efter att tjänsten lades ner."
     },
     {
-      "question": "Fungerar Phind på svenska?",
-      "answer": "Du kan ställa frågor på svenska, men teknisk dokumentation och svar fungerar ofta bäst på engelska."
+      "question": "Vad kan jag använda istället för Phind?",
+      "answer": "För programmeringsfrågor med sökning i realtid är ChatGPT och Claude direkta, aktiva alternativ. För att arbeta direkt i kodredigeraren är Cursor ett annat alternativ med verifierad officiell kanal."
     }
   ],
-  "swedishSupport": "partial"
+  "swedishSupport": "unknown"
 }

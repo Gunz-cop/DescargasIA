@@ -40,7 +40,10 @@
     "modelos-locales"
   ],
   "alternatives": [
-    "lm-studio"
+    "lm-studio",
+    "jan",
+    "gpt4all",
+    "open-webui"
   ],
   "initials": "OL",
   "trustLevel": "official",

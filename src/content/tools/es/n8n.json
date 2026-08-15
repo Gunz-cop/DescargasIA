@@ -35,6 +35,14 @@
       "body": "n8n tiene sentido para equipos técnicos o personas con algo de experiencia en Docker que necesitan automatizar procesos con más flexibilidad de la que ofrecen plataformas de automatización más cerradas. Si nunca desplegaste una aplicación con Docker ni administraste un servidor, la curva inicial puede sentirse más alta que la de una herramienta con instalador tradicional.\n\nPara quien busca algo más simple sin necesidad de infraestructura propia, n8n Cloud reduce buena parte de esa fricción a cambio de una suscripción, manteniendo el mismo lienzo visual y las mismas integraciones que la versión autoalojada."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 7 de enero de 2026 se hizo pública CVE-2026-21858 (apodada \"Ni8mare\"), una vulnerabilidad crítica en n8n con la puntuación máxima de gravedad posible: 10.0 sobre 10. A diferencia de muchos fallos que requieren una cuenta válida, este no necesitaba autenticación: explotaba una confusión en el encabezado Content-Type del manejo de webhooks y archivos, de forma que la función interna que procesa archivos no verificaba correctamente que la petición usara el formato \"multipart/form-data\" esperado. Esto permitía a un atacante remoto leer archivos arbitrarios del sistema, extraer credenciales de base de datos y claves de cifrado, falsificar cookies de sesión de administrador y ejecutar código de forma remota, comprometiendo toda la instancia —incluidas todas las credenciales centralizadas: claves de API, tokens OAuth y conexiones a bases de datos. El fallo afectaba a todas las versiones anteriores e incluyendo la 1.65.0, y fue reportado responsablemente el 9 de noviembre de 2025 por el investigador Dor Attias (Cyera Research Labs); se corrigió en la versión 1.121.0, publicada el 18 de noviembre de 2025, y también en versiones posteriores. Es un motivo concreto para mantener siempre n8n actualizado a la última versión estable, especialmente si se aloja una instancia propia expuesta a internet, ya que este tipo de plataformas centraliza credenciales sensibles de muchos servicios conectados.",
+      "source": "https://thehackernews.com/2026/01/critical-n8n-vulnerability-cvss-100.html",
+      "sourceLabel": "The Hacker News — vulnerabilidad crítica sin autenticación en n8n (CVE-2026-21858, CVSS 10.0)",
+      "date": "2026-01-07"
+    }
+  ],
   "faq": [
     {
       "question": "¿n8n tiene una app de escritorio oficial para Windows o Mac?",

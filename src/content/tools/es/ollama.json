@@ -13,7 +13,17 @@
     "No incluye interfaz gráfica propia; para eso se combina con herramientas como Open WebUI."
   ],
   "safetyNotes": [
-    "Ollama no requiere registrarse para descargar o usar. No uses ejecutables no oficiales procedentes de repositorios no listados en su web oficial."
+    "Ollama no requiere registrarse para descargar o usar. No uses ejecutables no oficiales procedentes de repositorios no listados en su web oficial.",
+    "Ollama escucha por defecto solo en localhost (127.0.0.1), pero un cambio de configuración habitual para acceder desde otro dispositivo en la red (vincularlo a 0.0.0.0 o a una interfaz pública) puede dejar el servidor expuesto a internet sin autenticación (más detalle en \"Qué dice la comunidad\", más arriba en esta ficha). Si necesitas exponer Ollama fuera de tu propia máquina, agrega autenticación mediante un proxy inverso o gateway de API."
+  ],
+  "editorialSummary": "Ollama se convirtió en una de las formas más simples de ejecutar modelos de lenguaje en la propia computadora, gracias a un flujo de instalación y descarga de modelos reducido a un puñado de comandos. En FuenteAI enlazamos solo al canal oficial en ollama.com.",
+  "communityInsights": [
+    {
+      "text": "El 29 de enero de 2026, investigadores de SentinelOne SentinelLABS y Censys, con hallazgos adicionales de Pillar Security, reportaron haber encontrado 175.000 servidores de Ollama expuestos públicamente en internet, distribuidos en 130 países (China concentraba más del 30% de las instancias, seguida por Estados Unidos, Alemania, Francia, Corea del Sur, India, Rusia, Singapur, Brasil y Reino Unido). Casi el 48% de esos servidores expuestos tenían habilitada la función de \"tool-calling\" (llamado de herramientas), que permite ejecución de código y acceso a APIs — según los investigadores, \"Tool-calling capabilities fundamentally alter the threat model...this creates what we assess to be the highest-severity risk in the ecosystem\" (las capacidades de llamado de herramientas alteran fundamentalmente el modelo de amenaza... esto crea lo que consideramos el riesgo de mayor severidad en el ecosistema). Ollama escucha por defecto solo en localhost (127.0.0.1:11434), pero se vuelve accesible desde internet con un cambio de configuración trivial, como vincularlo a 0.0.0.0 o a una interfaz pública — algo que muchos usuarios hacen sin darse cuenta del riesgo, por ejemplo para acceder desde otro dispositivo de su red doméstica. Campañas activas de \"LLMjacking\" ya explotan estos servidores expuestos para minería de criptomonedas, generación de spam y reventa de acceso en mercados criminales. Si expones Ollama más allá de tu propia máquina, es indispensable agregar autenticación mediante un proxy inverso o gateway de API, en vez de dejarlo accesible directamente.",
+      "source": "https://thehackernews.com/2026/01/researchers-find-175000-publicly.html",
+      "sourceLabel": "The Hacker News — investigadores encuentran 175.000 servidores de Ollama expuestos públicamente",
+      "date": "2026-01-29"
+    }
   ],
   "editorialSections": [
     {

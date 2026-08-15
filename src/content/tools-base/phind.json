@@ -6,20 +6,21 @@
   ],
   "platforms": {
     "web": {
-      "url": "https://www.phind.com",
-      "type": "web-app",
-      "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "url": "https://intelligenttools.co/blog/improved-phind-shutdown-post",
+      "type": "documentation",
+      "isOfficial": false,
+      "lastChecked": "2026-08-15"
     }
   },
-  "pricingModel": "freemium",
-  "requiresAccount": false,
+  "pricingModel": "unknown",
+  "requiresAccount": "unknown",
   "tags": [
     "phind",
     "programacion",
     "buscador-ia",
     "desarrollo",
-    "codigo"
+    "codigo",
+    "descontinuado"
   ],
   "alternatives": [
     "cursor",
@@ -28,8 +29,9 @@
   ],
   "initials": "PH",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-12",
+  "status": "discontinued",
+  "lastReviewed": "2026-08-15",
   "officialSources": [
-    "https://www.phind.com"
+    "https://intelligenttools.co/blog/improved-phind-shutdown-post"
   ]
 }
