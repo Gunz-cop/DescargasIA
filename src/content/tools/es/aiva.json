@@ -35,6 +35,14 @@
       "body": "Si necesitas una canción pop con voz para redes sociales o un proyecto creativo con letra, Suno o Udio son más adecuados. Si en cambio necesitas música de fondo instrumental para un video, un juego o una presentación —sin voz, con estructura orquestal o ambiental— AIVA está más orientada a resolver exactamente ese caso.\n\nAlgunos creadores usan ambas herramientas según el proyecto: AIVA para bandas sonoras instrumentales y Suno o Udio cuando el proyecto necesita una canción con voz protagonista."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "Un análisis publicado por The Sociological Review detalla que en los planes Free y Standard de AIVA, los derechos de autor de las composiciones generadas quedan asignados automáticamente a AIVA, no al usuario que las creó; solo el plan de nivel más alto permite conservar la titularidad plena. El artículo también contrasta la afirmación de marketing de la empresa de que en 2017 la sociedad francesa de derechos de autor SACEM le otorgó a AIVA el estatus de \"artista musical\": según SACEM, las 1.885 obras registradas bajo ese sistema en realidad fueron registradas por un integrante humano del equipo usando el seudónimo AIVA, no por el sistema de IA en sí. Verificado contra la página de precios vigente de AIVA, la estructura de niveles se mantiene igual en 2026: los planes Free y Standard conservan la titularidad de los derechos en AIVA, y solo el plan Pro (con facturación anual) transfiere el copyright completo al usuario para uso comercial sin restricciones. Antes de usar una composición gratuita o del plan Standard en un proyecto comercial, conviene revisar con cuidado quién es realmente el titular de esos derechos.",
+      "source": "https://thesociologicalreview.org/magazine/june-2023/artificial-intelligence/alien-power-chords/",
+      "sourceLabel": "The Sociological Review — análisis del modelo de propiedad intelectual de AIVA",
+      "date": "2023-06-06"
+    }
+  ],
   "faq": [
     {
       "question": "¿AIVA sirve para generar canciones con voz?",

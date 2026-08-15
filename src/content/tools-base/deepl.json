@@ -24,7 +24,7 @@
       "lastChecked": "2026-08-12"
     },
     "ios": {
-      "url": "https://apps.apple.com/us/app/deepl-translate/id1550536061",
+      "url": "https://apps.apple.com/us/app/deepl-translate/id1552407475",
       "type": "app-store",
       "isOfficial": true,
       "lastChecked": "2026-08-12"
@@ -47,7 +47,9 @@
   ],
   "alternatives": [
     "chatgpt",
-    "gemini"
+    "gemini",
+    "languagetool",
+    "grammarly"
   ],
   "initials": "DL",
   "trustLevel": "official",

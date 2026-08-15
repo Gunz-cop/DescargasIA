@@ -13,7 +13,8 @@
     "En el plan gratuito, los textos pueden usarse para entrenar el modelo; para datos confidenciales conviene DeepL Pro, que garantiza por contrato el borrado inmediato tras traducir."
   ],
   "safetyNotes": [
-    "Descarga las aplicaciones oficiales de DeepL exclusivamente desde deepl.com. Ten cuidado con páginas piratas que ofrecen versiones 'Pro desbloqueadas' que contienen virus."
+    "Descarga las aplicaciones oficiales de DeepL exclusivamente desde deepl.com. Ten cuidado con páginas piratas que ofrecen versiones 'Pro desbloqueadas' que contienen virus.",
+    "No pegues contratos, historiales médicos ni ningún documento con datos confidenciales en el plan gratuito de DeepL: sus propios términos de uso lo prohíben, porque ese texto puede almacenarse y ser revisado por personas para mejorar el servicio (más detalle en \"Qué dice la comunidad\", más arriba en esta ficha)."
   ],
   "editorialSummary": "DeepL es la herramienta de referencia para traducciones de alta precisión, especialmente valorada por su capacidad para entender contextos complejos y modismos. En FuenteAI recopilamos únicamente los instaladores oficiales de DeepL y accesos a sus tiendas para evitar malware.",
   "editorialSections": [
@@ -28,6 +29,14 @@
     {
       "heading": "La ventaja de instalar su aplicación oficial de escritorio",
       "body": "Usar DeepL desde el navegador es cómodo, pero instalar su app nativa para Windows o macOS agiliza enormemente el trabajo. La app se integra en el sistema operativo y te permite traducir cualquier texto que tengas seleccionado en pantalla (en Word, Outlook, PDFs o webs) simplemente pulsando un atajo de teclado rápido (Ctrl+C+C en Windows o Cmd+C+C en Mac), mostrando la traducción en una pequeña ventana flotante sin tener que cambiar de pestaña."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Según un análisis publicado el 17 de junio de 2026, existe una diferencia importante entre el plan gratuito y el plan Pro de DeepL que muchos usuarios pasan por alto: en el plan gratuito, el texto que traducís puede almacenarse temporalmente y usarse para mejorar la calidad de traducción, lo que significa que \"a human reviewer could, in principle, see it\" (en principio, un revisor humano podría llegar a verlo). Los propios términos de uso aceptable de DeepL prohíben explícitamente \"processing content containing confidential or personal data\" (procesar contenido que contenga datos confidenciales o personales) en el plan gratuito. En cambio, el plan de pago (DeepL Pro) mantiene el texto solo temporalmente hasta completar la traducción, no lo usa para entrenar modelos fuera de tu cuenta, y cuenta con certificaciones ISO 27001 y SOC 2 Type II. La distinción práctica es clara: si vas a traducir contratos, historiales médicos o cualquier documento con información sensible, el plan gratuito no es la herramienta indicada según las propias políticas de DeepL, más allá de que la interfaz no lo advierta de forma visible al momento de pegar el texto.",
+      "source": "https://www.bluente.com/blog/is-deepl-safe-for-confidential-documents",
+      "sourceLabel": "Bluente — diferencias de manejo de datos entre el plan gratuito y el plan Pro de DeepL",
+      "date": "2026-06-17"
     }
   ],
   "faq": [

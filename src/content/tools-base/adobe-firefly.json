@@ -25,7 +25,8 @@
     "midjourney",
     "stable-diffusion",
     "canva",
-    "flux"
+    "flux",
+    "krea-ai"
   ],
   "screenshotUrl": null,
   "initials": "AF",
@@ -33,6 +34,6 @@
   "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://firefly.adobe.com",
-    "https://helpx.adobe.com/firefly/using/pricing-and-billing.html"
+    "https://helpx.adobe.com/firefly/using/generative-credits-faq.html"
   ]
 }

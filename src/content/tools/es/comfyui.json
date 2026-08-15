@@ -35,6 +35,14 @@
       "body": "Si buscas máximo control y no te importa invertir tiempo en aprender el sistema de nodos, ComfyUI es probablemente la herramienta local más potente y flexible disponible hoy. Si en cambio prefieres una interfaz más guiada sin sacrificar del todo la ejecución local, InvokeAI ofrece un balance distinto, más cercano a una app tradicional.\n\nPara generación de imágenes en la nube sin instalar nada, herramientas como Leonardo AI, Midjourney o Flux (en su versión alojada) siguen siendo más directas para quien no necesita ese nivel de control técnico."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 9 de junio de 2024, vpnMentor reportó un nodo personalizado malicioso llamado \"ComfyUI_LLMVISION\", subido por un usuario de Reddit identificado como \"u/AppleBotzz\", que robaba contraseñas guardadas en el navegador, datos de tarjetas de crédito, historial de navegación, billeteras de criptomonedas, capturas de pantalla, información del dispositivo, datos del portapapeles y archivos con palabras clave o extensiones específicas. El ataque operaba en tres etapas: primero instalaba paquetes falsos de Python que imitaban a OpenAI y Anthropic; esos paquetes falsos contenían comandos de PowerShell codificados que descargaban una segunda carga maliciosa; finalmente, esa carga ejecutaba el robo de datos propiamente dicho, enviando todo a un servidor de Discord controlado por el atacante. Es importante aclarar que ComfyUI en sí mismo no estaba comprometido: el problema estaba en un nodo de terceros instalado voluntariamente por el usuario, no en el software oficial. Esto confirma en la práctica por qué conviene inspeccionar el código de cualquier nodo personalizado antes de instalarlo y evitar fuentes no verificadas, tal como recomienda esta ficha más abajo en la sección de seguridad.",
+      "source": "https://www.vpnmentor.com/news/comfyui-malicious-custom-node/",
+      "sourceLabel": "vpnMentor — nodo personalizado malicioso en ComfyUI que robaba datos de usuarios",
+      "date": "2024-06-09"
+    }
+  ],
   "faq": [
     {
       "question": "¿ComfyUI es gratis?",
