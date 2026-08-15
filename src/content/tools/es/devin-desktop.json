@@ -35,6 +35,14 @@
       "body": "Si ya usas Cursor o GitHub Copilot y estás conforme, cambiar de editor completo puede no valer la pena solo por probar Cascade. Devin Desktop tiene más sentido para quien busca un editor pensado desde cero para trabajar con agentes, o para quien ya usa Devin en la nube y quiere una experiencia unificada entre lo local y lo remoto.\n\nSi tu flujo depende de un IDE específico como JetBrains, revisa primero si existe una integración equivalente antes de migrar todo el entorno de trabajo a un nuevo editor."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "En julio de 2025 ocurrió un episodio empresarial poco habitual detrás del cambio de nombre: Google realizó una \"reverse acquihire\" valorada en 2.400 millones de dólares por la que el CEO de Windsurf, Varun Mohan, el cofundador Douglas Chen y varios líderes de investigación se incorporaron a Google DeepMind, apenas horas después de que expirara una oferta rival de OpenAI por 3.000 millones de dólares (esa oferta habría fracasado porque Windsurf quería impedir que Microsoft, inversor importante de OpenAI, accediera a su tecnología). Esto dejó al resto del equipo, de unas 250 personas, sin liderazgo. Solo días después, el 14 de julio de 2025, Cognition —la empresa detrás del agente de programación Devin— adquirió lo que quedaba de Windsurf: el producto, la marca y el equipo. Según el presidente de Cognition, Russell Kaplan, la negociación fue inusualmente rápida: \"first call after 5pm on Friday to a signed definitive agreement this morning\" (primera llamada después de las 5pm del viernes a un acuerdo definitivo firmado esa misma mañana). A diferencia del trato de Google, donde los recién contratados no recibieron ningún pago, todo el personal restante de Windsurf participó del valor económico de la adquisición, con condiciones de consolidación (vesting) perdonadas por el trabajo previo. Al momento de la adquisición, Windsurf tenía ingresos recurrentes anuales (ARR) de 82 millones de dólares, más de 350 clientes empresariales y cientos de miles de usuarios diarios. El acuerdo también restableció el acceso de Windsurf a los modelos Claude de Anthropic, que había estado restringido temporalmente durante el proceso.",
+      "source": "https://www.techcrunch.com/2025/07/14/cognition-maker-of-the-ai-coding-agent-devin-acquires-windsurf/",
+      "sourceLabel": "TechCrunch — Cognition adquiere Windsurf tras la contratación de su CEO por parte de Google",
+      "date": "2025-07-14"
+    }
+  ],
   "faq": [
     {
       "question": "¿Windsurf y Devin Desktop son la misma herramienta?",

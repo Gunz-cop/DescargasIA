@@ -15,6 +15,15 @@
   "safetyNotes": [
     "Anthropic solo distribuye ejecutables oficiales de escritorio a través de claude.ai/download. No instales archivos procedentes de repositorios alternativos."
   ],
+  "editorialSummary": "Claude se ha consolidado como uno de los asistentes de IA más valorados para escritura de calidad y manejo de documentos extensos, con un enfoque declarado en la seguridad de las respuestas. En FuenteAI enlazamos solo a los canales oficiales de Anthropic para web, escritorio y móvil, evitando mirrors o instaladores no verificados.",
+  "communityInsights": [
+    {
+      "text": "A partir del 23 de marzo de 2026, numerosos usuarios de Claude Code informaron en Reddit (r/ClaudeCode y r/Anthropic) que los límites de uso de las sesiones de 5 horas se agotaban mucho más rápido de lo habitual: algunos suscriptores del plan Max vieron cómo sesiones que normalmente les alcanzaban por horas se agotaban en 90 minutos, y un suscriptor del plan Max 20x pasó del 21% al 100% de uso con un solo mensaje. Anthropic (a través de un integrante del equipo, Thariq Shihipar) respondió que no se trataba de un error sino de una decisión deliberada para gestionar la demanda creciente: los límites de sesión de 5 horas para las cuentas gratuitas, Pro y Max se redujeron en las horas pico de los días hábiles (5-11 hora del Pacífico / 13-19 GMT), mientras que los límites semanales se mantuvieron sin cambios. Anthropic estimó que el cambio afectaría a alrededor del 7% de los usuarios. Si notas una caída repentina en tu cuota sin haber cambiado de plan, conviene revisar si coincide con un horario de alta demanda antes de asumir que se trata de un error de tu cuenta.",
+      "source": "https://www.macrumors.com/2026/03/26/claude-code-users-rapid-rate-limit-drain-bug/",
+      "sourceLabel": "MacRumors — usuarios de Claude Code reportan agotamiento rápido de los límites de uso",
+      "date": "2026-03-26"
+    }
+  ],
   "editorialSections": [
     {
       "heading": "Por qué tanta gente busca descargar Claude",

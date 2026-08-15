@@ -47,7 +47,10 @@
   "alternatives": [
     "chatgpt",
     "gemini",
-    "perplexity"
+    "perplexity",
+    "cursor",
+    "ollama",
+    "lm-studio"
   ],
   "initials": "CL",
   "trustLevel": "official",

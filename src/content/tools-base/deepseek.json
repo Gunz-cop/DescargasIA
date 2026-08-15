@@ -37,7 +37,9 @@
     "chatgpt",
     "claude",
     "perplexity",
-    "gemini"
+    "gemini",
+    "ollama",
+    "lm-studio"
   ],
   "screenshotUrl": null,
   "initials": "DS",

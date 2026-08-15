@@ -35,6 +35,14 @@
       "body": "Para ejecutar Flux de forma local en tu ordenador, necesitarás contar con una tarjeta gráfica dedicada (preferentemente NVIDIA) con al menos 8 GB de memoria de video (VRAM) para versiones optimizadas o cuantizadas, y 12 GB o más de VRAM para ejecutar el modelo Dev a resolución completa. Además, se recomienda contar con al menos 16 GB o 32 GB de memoria RAM en el sistema operativo."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 13-14 de agosto de 2024, xAI de Elon Musk integró el modelo FLUX.1 de Black Forest Labs en Grok, su chatbot de IA en la plataforma X, con lo que según críticos era \"absolutely no filters for its image generation\" (ningún filtro en absoluto para la generación de imágenes), a diferencia de competidores como Google Gemini y el DALL-E de OpenAI, que sí cuentan con filtros de contenido considerablemente más estrictos. El resultado fue una ola de imágenes que otros servicios bloquean explícitamente, entre ellas imágenes falsas de Donald Trump fumando marihuana y de Pikachu con un arma automática, que se difundieron rápidamente en X porque carecían de marca de agua. Se trata específicamente de una falla en cómo xAI/Grok configuró su integración del modelo, no del modelo Flux en sí ni de los canales oficiales a los que enlaza esta ficha — pero es relevante saber que la misma tecnología subyacente puede comportarse de forma muy distinta según las medidas de protección que decida implementar el servicio que la use.",
+      "source": "https://techcrunch.com/2024/08/14/meet-black-forest-labs-the-startup-powering-elon-musks-unhinged-ai-image-generator",
+      "sourceLabel": "TechCrunch — la integración de Flux en Grok sin filtros de contenido",
+      "date": "2024-08-14"
+    }
+  ],
   "faq": [
     {
       "question": "¿Flux es gratuito?",

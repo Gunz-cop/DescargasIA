@@ -32,6 +32,14 @@
       "body": "Si tu prioridad es arte generativo avanzado, control de modelos o flujos técnicos, Stable Diffusion puede ser más potente. Si buscas resultados visuales muy estilizados desde prompts, Midjourney puede ser mejor para exploración creativa. Canva destaca cuando el objetivo final es una pieza práctica: presentación, anuncio, post, flyer, documento o recurso de marketing.\n\nLa decisión depende del resultado que necesitas. Para diseñar y publicar rápido, Canva IA es una ruta segura. Para experimentar con modelos o estilos extremos, conviene comparar con herramientas más especializadas."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "En Trustpilot, una reseña con fecha del 29 de julio de 2026 cuenta una experiencia distinta al límite de créditos de IA descrito en la documentación oficial: según la usuaria, después de un número limitado de usos incluso funciones básicas como insertar texto simple dejan de ser gratuitas y se muestran como disponibles solo temporalmente por uso individual, no como función base siempre accesible. No es el mismo límite que los créditos de Magic Studio (ese cubre las funciones de IA generativa), sino una experiencia de muro de pago percibido en funciones que la usuaria esperaba gratuitas. No está confirmado en la documentación oficial de Canva consultada para esta ficha: quien note el mismo comportamiento debería verificarlo en su propia cuenta, dado que los límites gratuitos pueden variar según plan o región.",
+      "source": "https://www.trustpilot.com/review/canva.com?search=Magic%20AI%20credits",
+      "sourceLabel": "Trustpilot — reseña de Sarah Ward sobre funciones básicas que dejan de ser gratuitas",
+      "date": "2026-07-29"
+    }
+  ],
   "faq": [
     {
       "question": "¿Canva IA se descarga aparte?",

@@ -35,6 +35,14 @@
       "body": "Debido a que DeepSeek publica sus pesos de forma abierta, han aparecido múltiples aplicaciones y wrappers creados por terceros que envuelven su API. Aunque algunas herramientas legítimas de desarrollo (como extensiones de VS Code) integran DeepSeek, existen apps móviles y sitios web que intentan suplantar la marca cobrando por servicios que son gratuitos en la web oficial.\n\nRecuerda: DeepSeek no distribuye archivos de instalación APK independientes fuera de Google Play, ni archivos ejecutables (.exe) de escritorio. Si necesitas ejecutar DeepSeek de forma local en tu ordenador sin usar sus servidores, hazlo siempre a través de gestores de modelos reputados como Ollama, y nunca ejecutando instaladores desconocidos que prometan ser la \"app oficial de DeepSeek para PC\"."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 29 de enero de 2025, la firma de seguridad Wiz Research reveló que una base de datos en la nube vinculada a DeepSeek estaba completamente expuesta en internet, sin autenticación. A través de dos puertos abiertos poco habituales (8123 y 9000) en los hosts oauth2callback.deepseek.com y dev.deepseek.com, cualquiera podía ejecutar consultas SQL arbitrarias directamente desde el navegador contra una base de datos ClickHouse que contenía más de un millón de líneas de registro, incluyendo historial de chats de usuarios, claves de API y detalles internos de operación. Según Wiz, un atacante podría haber obtenido control total sobre la base de datos y potencialmente escalar privilegios dentro del entorno de DeepSeek. Wiz reportó el problema directamente a DeepSeek, que según Wiz \"promptly secured the exposure\" (aseguró rápidamente la exposición), aunque el artículo no precisa una fecha exacta de resolución completa. Esto confirma en la práctica por qué conviene ser cauteloso con la información sensible que compartes en DeepSeek, tal como ya señala esta ficha más abajo en la sección de seguridad.",
+      "source": "https://www.wiz.io/blog/wiz-research-uncovers-exposed-deepseek-database-leak",
+      "sourceLabel": "Wiz Research — hallazgo de una base de datos de DeepSeek expuesta con historial de chats y claves de API",
+      "date": "2025-01-29"
+    }
+  ],
   "faq": [
     {
       "question": "¿DeepSeek es gratuito?",
