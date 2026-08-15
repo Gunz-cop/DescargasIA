@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Plataforma de investigación académica con IA para leer, resumir y hacer preguntas sobre papers científicos, con búsqueda de literatura relacionada.",
+  "longDescription": "SciSpace ayuda a estudiantes e investigadores a explorar y entender papers científicos: permite subir un artículo y hacerle preguntas, resumir secciones complejas y encontrar literatura relacionada dentro de la misma plataforma.",
+  "bestFor": [
+    "Entender en profundidad un paper académico puntual",
+    "Resumir secciones técnicas o metodológicas complejas de un artículo",
+    "Encontrar literatura relacionada a partir de un paper que ya tienes",
+    "Explorar un campo de investigación específico dentro de ciencias duras"
+  ],
+  "limitations": [
+    "SciSpace se usa desde el navegador y no publica un instalador de escritorio propio para Windows o Mac.",
+    "El sistema de créditos por consulta puede ser difícil de predecir: varios usuarios reportaron consultas que consumieron muchos créditos sin devolver un resultado útil.",
+    "La precisión de las respuestas no es perfecta: hay reportes de que la herramienta no encontró información que sí estaba presente en el artículo consultado."
+  ],
+  "safetyNotes": [
+    "Revisa con atención las condiciones de facturación antes de suscribirte: hay reportes de usuarios a quienes se les cobró de forma anual esperando un cargo mensual.",
+    "No confundas una síntesis generada por SciSpace con una lectura completa del paper original.",
+    "Usa únicamente scispace.com para acceder al servicio."
+  ],
+  "editorialSummary": "SciSpace cubre una necesidad de investigación más profunda que un buscador general: entender un paper específico, no solo encontrarlo. Esta ficha incluye también las quejas más repetidas de usuarios reales sobre el sistema de créditos y la facturación, porque son un factor real a evaluar antes de suscribirse.",
+  "editorialSections": [
+    {
+      "heading": "Leer un paper con ayuda de IA, no solo buscarlo",
+      "body": "SciSpace está pensado para el momento en que ya tienes un paper específico y necesitas entenderlo: puedes hacerle preguntas puntuales, pedir un resumen de una sección técnica o buscar literatura relacionada sin salir de la plataforma.\n\nEsto lo distingue de un buscador académico general, que te ayuda a encontrar papers pero no a interrogarlos directamente. La síntesis que genera SciSpace es un punto de partida para entender el artículo más rápido, no un reemplazo de la lectura completa cuando el paper es central para tu investigación."
+    },
+    {
+      "heading": "El sistema de créditos, un punto a evaluar antes de pagar",
+      "body": "SciSpace funciona con un sistema de créditos que se consumen según el uso de sus funciones de IA. Varios usuarios han reportado dificultad para predecir cuántos créditos consumirá una consulta antes de hacerla, y casos en los que una consulta costosa en créditos no devolvió un resultado útil.\n\nAntes de suscribirte a un plan pago, conviene probar el uso gratuito con el tipo de consulta real que necesitas hacer, para tener una idea más concreta de cuánto rinden los créditos en tu caso particular."
+    },
+    {
+      "heading": "SciSpace, Consensus o ChatPDF",
+      "body": "SciSpace es más fuerte para explorar y entender un paper puntual en profundidad; Consensus está más orientado a encontrar y comparar estudios a partir de una pregunta abierta; ChatPDF es una opción más general para interrogar cualquier documento, no solo papers académicos.\n\nElige según la tarea: si ya tienes el paper y necesitas entenderlo a fondo, SciSpace encaja bien. Si estás empezando una búsqueda desde una pregunta de investigación, Consensus suele ser el mejor punto de partida."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Reseñas verificadas publicadas en Capterra documentan quejas recurrentes sobre el sistema de créditos y la facturación de SciSpace. Un profesor universitario (Efthimios P., agosto de 2025) reportó un consumo \"opaque\" (opaco) de créditos sin herramienta de predicción de costo: una sola tarea consumió más de 300 créditos sin llegar a entregar una respuesta, y su pedido de reembolso dentro de las 24 horas de haberse registrado fue rechazado por el uso de créditos ya realizado. Otro profesor (Saud K., enero de 2026) reportó haber gastado 5.500 créditos en un agente de IA que no entregó resultados útiles para una investigación de ciencias duras. Sobre facturación, un estudiante (Bentley P., septiembre de 2025) señaló que el servicio \"will charge your card without providing advance notice\" (cobra a la tarjeta sin dar aviso previo) de forma recurrente hasta que cancelas manualmente, mientras que una asistente de cátedra (Nikolina Š., junio de 2025) descubrió un cobro anual inesperado cuando esperaba un cobro mensual, sin ninguna advertencia clara durante la confirmación del pago. Sobre precisión, una estudiante (Sedi B., septiembre de 2025) reportó que la herramienta \"sometimes couldn't find something in articles...while it was there\" (a veces no encontraba algo en los artículos... aunque sí estaba ahí), lo que la volvía poco confiable para usar sin supervisión. Es relevante para quien evalúe pagar un plan de SciSpace: conviene revisar con atención el ciclo de facturación antes de confirmar la suscripción, y probar el uso gratuito primero para entender cómo se consumen los créditos en tu caso concreto.",
+      "source": "https://www.capterra.com/p/178127/Scispace/reviews/",
+      "sourceLabel": "Capterra — reseñas verificadas de usuarios de SciSpace sobre créditos y facturación",
+      "date": "2026-01-01"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿SciSpace es un buscador de papers como Consensus?",
+      "answer": "No exactamente. SciSpace está más enfocado en ayudarte a entender un paper puntual que ya tienes, mientras que Consensus está más orientado a encontrar y comparar estudios a partir de una pregunta abierta."
+    },
+    {
+      "question": "¿SciSpace funciona en español?",
+      "answer": "Puedes formular preguntas en español, pero la mayoría de la literatura científica indexada está en inglés. Verifica siempre la respuesta contra el paper original."
+    },
+    {
+      "question": "¿Existe un programa de SciSpace para Windows?",
+      "answer": "No. El canal oficial es el servicio web en scispace.com. No hace falta descargar ningún instalador."
+    },
+    {
+      "question": "¿SciSpace cobra automáticamente cada año?",
+      "answer": "Depende del ciclo de facturación que elijas al suscribirte. Hay reportes de usuarios que esperaban un cobro mensual y recibieron uno anual, así que revisa con cuidado el plan antes de confirmar el pago."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

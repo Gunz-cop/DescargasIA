@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Plataforma de estudio con tarjetas didácticas (flashcards) y herramientas de IA para convertir apuntes en material de práctica y cuestionarios.",
+  "longDescription": "Quizlet es una plataforma de estudio centrada en tarjetas didácticas, usada por estudiantes y docentes para memorizar y repasar contenido. Sus funciones con IA permiten convertir apuntes, textos o enlaces en tarjetas y cuestionarios de práctica generados automáticamente.",
+  "bestFor": [
+    "Crear tarjetas didácticas a partir de apuntes de clase",
+    "Repasar vocabulario, definiciones o conceptos con cuestionarios generados automáticamente",
+    "Estudiar con sets de tarjetas ya creados por otros usuarios sobre el mismo tema",
+    "Practicar antes de un examen con distintos modos de estudio (tarjetas, escritura, prueba)"
+  ],
+  "limitations": [
+    "Las funciones de IA más avanzadas, como convertir notas completas en tarjetas automáticamente, suelen requerir el plan de pago Quizlet Plus.",
+    "Los límites del plan gratuito se han vuelto más estrictos con el tiempo; revisa las condiciones vigentes antes de depender de la versión gratuita para un curso completo.",
+    "Q-Chat, el tutor conversacional con IA que Quizlet lanzó en 2023, fue discontinuado en junio de 2025 y ya no está disponible."
+  ],
+  "safetyNotes": [
+    "Usa únicamente quizlet.com o las apps oficiales en Google Play y App Store para acceder al servicio.",
+    "Revisa la exactitud de las tarjetas creadas por otros usuarios antes de estudiar con ellas: no todo el contenido generado por la comunidad está verificado.",
+    "Si usas Quizlet con estudiantes menores de edad, revisa las políticas de privacidad y protección de datos vigentes del servicio."
+  ],
+  "editorialSummary": "Quizlet lleva años siendo una referencia para estudiar con tarjetas didácticas, y sumó funciones de IA para generar material de estudio automáticamente. Esta ficha aclara qué sigue vigente y qué función con IA discontinuó recientemente, para que no busques algo que ya no existe.",
+  "editorialSections": [
+    {
+      "heading": "De las tarjetas clásicas a la generación automática",
+      "body": "Quizlet nació como una plataforma de tarjetas didácticas (flashcards) para memorizar vocabulario, fechas o definiciones. Con el tiempo sumó funciones de IA que permiten convertir un apunte de clase, un texto o un enlace en un set de tarjetas o un cuestionario de práctica sin armarlo manualmente.\n\nEsto reduce el trabajo de preparación, pero no reemplaza la revisión del contenido generado. Antes de un examen importante, conviene repasar que las tarjetas o preguntas generadas automáticamente reflejen correctamente lo que necesitas estudiar."
+    },
+    {
+      "heading": "Qué pasó con Q-Chat",
+      "body": "En 2023, Quizlet lanzó Q-Chat, un tutor conversacional construido sobre la API de ChatGPT de OpenAI, que permitía hacerle preguntas sobre el material de estudio y recibir explicaciones interactivas. En junio de 2025, Quizlet discontinuó Q-Chat por completo, tanto en iOS como en la versión web.\n\nSi buscas \"Q-Chat de Quizlet\" y no lo encuentras, no es un error tuyo: la función ya no existe. Quizlet mantiene otras herramientas de IA activas, como la generación automática de tarjetas a partir de apuntes, pero el tutor conversacional específico se retiró."
+    },
+    {
+      "heading": "Quizlet frente a NotebookLM y ChatPDF",
+      "body": "Quizlet está enfocado específicamente en tarjetas didácticas y modos de repaso pensados para memorización activa, algo que NotebookLM y ChatPDF no ofrecen de la misma forma. NotebookLM es más fuerte para hacerle preguntas a un conjunto de documentos propios con respuestas citadas; ChatPDF rinde mejor cuando ya tienes un PDF puntual para interrogar.\n\nSi tu objetivo es memorizar contenido con repetición espaciada y distintos modos de práctica, Quizlet sigue siendo la opción más directa. Si necesitas entender o resumir un documento extenso, las otras herramientas pueden ajustarse mejor a esa tarea específica."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Quizlet lanzó Q-Chat en febrero de 2023 como, según su propio anuncio, el primer tutor de IA completamente adaptativo construido sobre la API de ChatGPT de OpenAI. En junio de 2025, la empresa lo discontinuó por completo para todos los usuarios, incluidos quienes lo usaban en iOS y en la versión web. Según cobertura especializada actualizada el 7 de agosto de 2026, el propio anuncio oficial de Quizlet \"does not give a detailed technical or commercial explanation\" (no da una explicación técnica o comercial detallada) sobre el motivo del cierre, por lo que cualquier teoría sobre la causa exacta es especulación. La cobertura señala que la retirada coincidió, días antes, con el lanzamiento de \"ChatGPT Study Mode\" de OpenAI el 29 de julio, un modo de estudio dirigido a estudiantes universitarios que compite directamente con lo que ofrecía Q-Chat, aunque Quizlet no confirmó una relación causal entre ambos hechos. Es útil saber esto si llegaste a esta ficha buscando \"Q-Chat\": la función ya no existe y no hay indicios de que vaya a reactivarse, así que conviene explorar otras herramientas de esta lista si buscabas específicamente un tutor conversacional con IA para repasar tu material de estudio.",
+      "source": "https://quizgecko.com/blog/best-q-chat-alternative",
+      "sourceLabel": "Quizgecko — cobertura sobre la discontinuación de Q-Chat de Quizlet y alternativas",
+      "date": "2026-08-07"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Quizlet tiene un tutor de IA conversacional como Q-Chat?",
+      "answer": "No. Q-Chat, el tutor conversacional con IA que Quizlet lanzó en 2023, fue discontinuado en junio de 2025 y ya no está disponible en ninguna plataforma."
+    },
+    {
+      "question": "¿Quizlet es gratis?",
+      "answer": "Tiene un plan gratuito con acceso a tarjetas y modos de estudio básicos, y un plan de pago (Quizlet Plus) con funciones de IA más avanzadas. Los límites del plan gratuito pueden cambiar."
+    },
+    {
+      "question": "¿Quizlet tiene app oficial para Android e iOS?",
+      "answer": "Sí, publicada por Quizlet, disponible en Google Play y App Store con los enlaces verificados de esta ficha."
+    },
+    {
+      "question": "¿Puedo confiar en las tarjetas creadas por otros usuarios?",
+      "answer": "No sin revisarlas antes. El contenido generado por la comunidad no siempre está verificado, así que conviene comprobar la exactitud antes de estudiar con un set creado por otra persona."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

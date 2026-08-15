@@ -1,0 +1,62 @@
+{
+  "shortDescription": "App de macOS para transcribir audio y video de forma local usando Whisper, sin subir archivos a un servidor ni pagar suscripción mensual.",
+  "longDescription": "MacWhisper es una aplicación nativa de macOS que usa el modelo Whisper de OpenAI para transcribir archivos de audio y video directamente en tu computadora, sin depender de un servicio en la nube. Es una alternativa para quien necesita transcripción con procesamiento local, ya sea por privacidad, por trabajar sin conexión o para evitar cargos recurrentes.",
+  "bestFor": [
+    "Transcribir archivos de audio o video de forma local en Mac, sin subirlos a internet",
+    "Trabajar con material sensible que no quieres enviar a un servidor externo",
+    "Transcribir episodios de podcast o entrevistas ya grabadas",
+    "Evitar suscripciones mensuales pagando una sola vez por la versión Pro"
+  ],
+  "limitations": [
+    "Solo está disponible para macOS: no existe una versión oficial para Windows o Linux.",
+    "La versión gratuita usa modelos más pequeños de Whisper; los modelos grandes y más precisos requieren la versión Pro de pago.",
+    "La precisión baja notablemente con acentos marcados, ruido de fondo fuerte o varias personas hablando al mismo tiempo, una limitación del propio modelo Whisper, no exclusiva de MacWhisper."
+  ],
+  "safetyNotes": [
+    "Descarga MacWhisper únicamente desde macwhisper.com; evita copias pirateadas que prometan la versión Pro gratis.",
+    "Aunque el procesamiento es local, revisa igual qué carpetas y permisos del sistema le das a la aplicación al instalarla.",
+    "No confundas una transcripción automática con una transcripción certificada para uso legal; siempre requiere revisión humana."
+  ],
+  "editorialSummary": "\"Transcribir audio en Mac sin subirlo a internet\" es una búsqueda con una necesidad de privacidad muy concreta. MacWhisper responde a eso mejor que los servicios en la nube de esta misma categoría, porque el procesamiento ocurre en la propia computadora del usuario, no en un servidor de terceros.",
+  "editorialSections": [
+    {
+      "heading": "Transcripción local, no en la nube",
+      "body": "A diferencia de servicios como Fireflies o Fathom, que procesan el audio en sus propios servidores, MacWhisper ejecuta el modelo Whisper directamente en tu Mac. Eso significa que el archivo nunca sale de tu computadora durante la transcripción, algo relevante si trabajas con entrevistas confidenciales, contenido legal o material que no quieres enviar a un tercero.\n\nLa contrapartida es que el rendimiento depende del hardware de tu Mac: modelos más grandes y precisos de Whisper necesitan más potencia de procesamiento y tardan más en transcribir un archivo largo."
+    },
+    {
+      "heading": "Pago único, no suscripción",
+      "body": "MacWhisper ofrece una versión gratuita con modelos más pequeños de Whisper y una versión Pro de pago único (sin cobro mensual) que desbloquea modelos más grandes, procesamiento por lotes y funciones como identificar distintos hablantes en la misma grabación.\n\nEsto la distingue de la mayoría de las alternativas de esta categoría, que suelen cobrar una suscripción mensual o por minuto transcrito. Antes de comprar, conviene probar la versión gratuita con un archivo real para evaluar si la precisión y velocidad son suficientes para tu caso de uso."
+    },
+    {
+      "heading": "MacWhisper frente a Fireflies y Fathom",
+      "body": "MacWhisper tiene sentido cuando priorizas privacidad, trabajo sin conexión o evitar pagos recurrentes, y no necesitas que la transcripción se integre directamente a una videollamada en curso. Fireflies y Fathom, en cambio, están pensados para unirse a reuniones en vivo, generar resúmenes automáticos y compartir puntos de acción con un equipo.\n\nSi tu caso de uso es transcribir archivos ya grabados en tu propia computadora, MacWhisper suele ser más simple. Si necesitas que una IA participe activamente de la reunión y arme un resumen colaborativo, un servicio en la nube como Fireflies o Fathom encaja mejor."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "El 28 de febrero de 2025, el sitio especializado en Apple TidBITS publicó una comparación técnica de precisión de transcripción entre Notas de macOS/iOS, Audio Hijack y MacWhisper, usando como referencia (\"ground truth\") la transcripción oficial de un episodio del podcast Short Wave de NPR. El autor, Adam Engst, midió la Tasa de Error de Palabras (Word Error Rate, WER) con tres métodos distintos (Amberscript, Kensho y ChatGPT) y promedió los resultados para reducir la variabilidad entre calculadoras. Los resultados promedio fueron: MacWhisper Pro con el modelo Large V2 (usando audio capturado por Audio Hijack) obtuvo 3.7% de WER, la mejor cifra de toda la prueba; MacWhisper con el modelo Small (audio de iPhone) obtuvo 4.8%; Audio Hijack solo obtuvo 6.2%; y Notas de macOS (audio de iPhone) obtuvo 6.6%, mientras que Notas de iOS fue la peor de todas con 8.1%. Es decir, MacWhisper Pro con su modelo más grande fue casi el doble de preciso que la función de transcripción nativa de Apple en Notas para macOS en esta prueba puntual. El propio autor advierte una limitación importante de su metodología: ni siquiera la transcripción oficial de NPR usada como referencia era perfecta, ya que omitía al menos cuatro palabras relevantes y varias repeticiones. Es útil saber esto antes de asumir que estas cifras se replican igual en cualquier grabación: los resultados dependen fuertemente de la calidad del audio de entrada y pueden variar según el acento, el ruido de fondo y el modelo específico de Whisper usado.",
+      "source": "https://tidbits.com/2025/02/28/comparing-audio-transcription-in-notes-audio-hijack-and-macwhisper/",
+      "sourceLabel": "TidBITS — comparación de precisión de transcripción entre Notas, Audio Hijack y MacWhisper",
+      "date": "2025-02-28"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿MacWhisper funciona en español?",
+      "answer": "Sí, Whisper es un modelo multilingüe y puede transcribir audio en español. La precisión exacta depende de la calidad de la grabación y del modelo elegido dentro de la app."
+    },
+    {
+      "question": "¿MacWhisper tiene versión para Windows?",
+      "answer": "No. MacWhisper es una aplicación exclusiva de macOS. Si necesitas una alternativa para Windows, revisa otras opciones de transcripción de esta misma categoría."
+    },
+    {
+      "question": "¿MacWhisper es gratis?",
+      "answer": "Tiene una versión gratuita con modelos más pequeños y una versión Pro de pago único que desbloquea modelos más grandes y funciones adicionales. No cobra suscripción mensual."
+    },
+    {
+      "question": "¿MacWhisper sube mis archivos a internet?",
+      "answer": "No. El procesamiento de transcripción ocurre de forma local en tu Mac, sin enviar el audio a un servidor externo."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

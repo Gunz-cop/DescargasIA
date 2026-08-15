@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Asistente de reuniones que graba, transcribe y resume conversaciones de trabajo para convertirlas en tareas y decisiones concretas.",
+  "longDescription": "Fathom es un notetaker con IA para reuniones y llamadas de trabajo. Genera transcripciones, resúmenes y puntos de acción automáticamente, para que puedas concentrarte en la conversación en vez de tomar notas a mano durante la llamada.",
+  "bestFor": [
+    "Resumir reuniones de trabajo sin tomar notas manuales",
+    "Recuperar decisiones y tareas asignadas después de una llamada",
+    "Buscar un pasaje puntual dentro de una conversación grabada",
+    "Reducir el tiempo dedicado a redactar minutas o actas"
+  ],
+  "limitations": [
+    "Es un servicio conectado a reuniones en línea y requiere una cuenta.",
+    "La transcripción puede equivocarse con nombres propios, acentos marcados o términos técnicos específicos de tu industria.",
+    "Antes de grabar hay que avisar a los participantes y respetar las políticas de privacidad de tu organización y de la plataforma de videollamada que uses."
+  ],
+  "safetyNotes": [
+    "No instales bots ni extensiones de Fathom que no vengan de canales oficiales.",
+    "Verifica el consentimiento de los participantes, la política de privacidad y cuánto tiempo se conservan las grabaciones.",
+    "Revisa la minuta generada antes de tratarla como documento de trabajo definitivo."
+  ],
+  "editorialSummary": "\"Transcribir reuniones\" es una búsqueda con un resultado práctico muy claro: conseguir una minuta sin tener que reescuchar una hora de llamada. Fathom responde a ese caso de uso, pero conviene presentarlo como un servicio para reuniones, no como un grabador universal sin implicaciones de privacidad.",
+  "editorialSections": [
+    {
+      "heading": "De la llamada al resumen operativo",
+      "body": "Fathom busca sacarte el trabajo manual de después de una reunión: transcribe la conversación, arma un resumen y marca los próximos pasos. Es útil para ventas, seguimiento de proyectos y alineación interna de equipos.\n\nUn resumen automático no es la minuta definitiva. Nombres, cifras y responsabilidades asignadas siempre deben ser revisados por alguien que haya participado de la reunión antes de compartirlos como oficiales."
+    },
+    {
+      "heading": "No es un instalador para descargar",
+      "body": "El camino oficial parte de fathom.ai y del flujo de grabación propio del servicio. No busques un archivo genérico \"Fathom para Windows\" en un agregador externo: cualquier componente o modo de captura debe venir del sitio oficial.\n\nAntes de usarlo, aclara si la grabación está permitida en tu contexto. Una solución técnica no reemplaza el consentimiento de las personas ni los procedimientos internos de tu empresa."
+    },
+    {
+      "heading": "Fathom o transcripción local",
+      "body": "Fathom está pensado para el contexto de reuniones en línea y su seguimiento posterior. MacWhisper es más interesante si necesitas transcribir archivos de forma local en Mac; Fireflies es una alternativa orientada también a reuniones y a la carga de archivos de audio ya grabados.\n\nLa elección depende de qué tan sensible sea el audio y de tu flujo de trabajo. Para conversaciones médicas, legales o confidenciales, conviene evaluar con cuidado dónde se procesan los datos antes de elegir el servicio."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Según el perfil de Fathom en Latka, actualizado a agosto de 2026, la empresa pasó de 1 millón de dólares de ingreso anual recurrente (ARR) en agosto de 2023, a 10 millones en junio de 2024, y a 30 millones en junio de 2025. Sin embargo, en el mismo período la plantilla de la empresa se redujo de forma marcada: de 171 empleados en noviembre de 2025 a 100 empleados en abril de 2026, una baja de aproximadamente el 42% en cinco meses, mientras los ingresos seguían creciendo. El CEO, Richard White, describió a la empresa como que se mantiene \"under the radar\" (fuera del radar público), y la posicionó como \"one of the top three people by usage in the space, but not even in the top five or 10 by fundraising amount\" (una de las tres primeras por uso dentro de su categoría, pero ni siquiera entre las diez primeras por monto de financiamiento recaudado). Según Latka, la empresa mantiene entre 1 y 2 millones de dólares en caja y se describe como rentable en el flujo de caja, en torno a 1 millón de dólares anuales, lo que sugiere que la reducción de personal respondería más a eficiencia operativa que a dificultades financieras, aunque el reporte no da una explicación oficial de la empresa sobre la baja de plantilla. Es útil saber esto si evalúas Fathom para un uso a largo plazo en tu equipo: un cambio de plantilla tan marcado en pocos meses es una señal a monitorear, aunque no implique por sí sola un riesgo de continuidad del servicio.",
+      "source": "https://getlatka.com/companies/fathom.ai",
+      "sourceLabel": "Latka — perfil de ingresos y plantilla de Fathom AI",
+      "date": "2026-08-13"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Fathom transcribe reuniones en español?",
+      "answer": "El servicio está pensado para transcribir y resumir reuniones en varios idiomas, pero la disponibilidad y calidad exacta pueden variar. Conviene hacer una prueba con un fragmento corto antes de confiarle una reunión importante."
+    },
+    {
+      "question": "¿Fathom es gratis?",
+      "answer": "Fathom ofrece un plan gratuito y planes de pago para necesidades más avanzadas; los límites y funciones exactas hay que verificarlos en el sitio oficial."
+    },
+    {
+      "question": "¿Fathom tiene una app de escritorio oficial?",
+      "answer": "El canal oficial es fathom.ai. No descargues instaladores desde portales externos; usa solo los enlaces que ofrece el propio servicio."
+    },
+    {
+      "question": "¿Puedo grabar una reunión sin avisar a los participantes?",
+      "answer": "No des por sentado que está permitido. Informa a los participantes y sigue la legislación local, la política de tu empresa y las reglas de la plataforma de videollamada que estés usando."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

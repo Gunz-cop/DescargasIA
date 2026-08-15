@@ -3,9 +3,9 @@
   "officialWebsite": "https://www.pdfgear.com",
   "categories": ["productividad-presentaciones-ia"],
   "platforms": {
-    "web": { "url": "https://www.pdfgear.com/it/", "type": "web-app", "isOfficial": true, "lastChecked": "2026-08-12" },
-    "windows": { "url": "https://www.pdfgear.com/it/pdfgear-per-windows/", "type": "official-installer", "isOfficial": true, "lastChecked": "2026-08-12" },
-    "mac": { "url": "https://www.pdfgear.com/it/", "type": "official-site", "isOfficial": true, "lastChecked": "2026-08-12" }
+    "web": { "url": "https://www.pdfgear.com", "type": "web-app", "isOfficial": true, "lastChecked": "2026-08-15" },
+    "windows": { "url": "https://www.pdfgear.com/pdfgear-for-windows/", "type": "official-installer", "isOfficial": true, "lastChecked": "2026-08-15" },
+    "mac": { "url": "https://www.pdfgear.com", "type": "official-site", "isOfficial": true, "lastChecked": "2026-08-15" }
   },
   "pricingModel": "free",
   "requiresAccount": false,
@@ -15,5 +15,5 @@
   "initials": "PG",
   "trustLevel": "official",
   "lastReviewed": "2026-08-12",
-  "officialSources": ["https://www.pdfgear.com/it/", "https://www.pdfgear.com/it/chatta-con-pdf/"]
+  "officialSources": ["https://www.pdfgear.com", "https://www.pdfgear.com/chat-pdf/", "https://www.pdfgear.com/reddit-disinformation-statement/"]
 }

@@ -1,0 +1,63 @@
+{
+  "shortDescription": "Convierte texto en diagramas, infografías y visuales explicativos de forma automática, ideal para transformar notas o guiones en material visual.",
+  "longDescription": "Napkin AI toma texto plano (una idea, un guion, una serie de puntos) y lo convierte en diagramas, esquemas e infografías visuales sin necesidad de diseñar desde cero. Está pensado para quien necesita comunicar una idea de forma visual rápidamente, sin dominar herramientas de diseño.",
+  "bestFor": [
+    "Convertir notas o guiones en diagramas visuales en segundos",
+    "Preparar material de apoyo visual para una presentación sin diseñar a mano",
+    "Explicar procesos o estructuras jerárquicas con un esquema claro",
+    "Organizar ideas dispersas en un formato visual comprensible"
+  ],
+  "limitations": [
+    "Está pensado para diagramas y esquemas estructurados, no para gráficos decorativos o banners sin estructura clara.",
+    "El plan gratuito tiene un límite semanal de créditos (aproximadamente un crédito por palabra), que puede agotarse rápido si pruebas textos largos o varias versiones.",
+    "Solo funciona desde escritorio: no tiene una versión adaptada para uso desde el celular, ni siquiera en modo de escritorio del navegador móvil.",
+    "Si el texto de entrada no tiene una estructura clara (títulos, listas), a Napkin AI le cuesta generar un visual útil."
+  ],
+  "safetyNotes": [
+    "Usa únicamente napkin.ai para acceder al servicio; desconfía de copias que ofrezcan créditos ilimitados gratis.",
+    "No subas información confidencial de tu empresa sin revisar antes la política de privacidad del servicio.",
+    "Revisa el resultado visual antes de usarlo en una presentación importante: los diseños pueden repetirse o sentirse formulaicos con textos similares."
+  ],
+  "editorialSummary": "\"Convertir texto en diagrama automáticamente\" es una búsqueda con una necesidad visual muy específica, distinta de pedirle un diseño libre a un editor gráfico. Napkin AI responde bien a esa necesidad puntual, aunque conviene aclarar desde el principio para qué tipo de contenido rinde mejor y para cuál no.",
+  "editorialSections": [
+    {
+      "heading": "De texto a diagrama, no de idea a diseño libre",
+      "body": "Napkin AI entiende lenguaje natural sin necesidad de prompts complejos: pegas un texto y la herramienta identifica su estructura para proponer un visual. Funciona especialmente bien con contenido que ya tiene una organización clara, como una lista de pasos, una comparación o una jerarquía de conceptos.\n\nSi el texto no tiene esa estructura interna, el resultado puede sentirse forzado o poco útil. Napkin AI no reemplaza a un editor de diseño libre: su fuerza está en tomar una idea ya ordenada y darle forma visual rápido, no en crear una pieza gráfica decorativa desde cero."
+    },
+    {
+      "heading": "Créditos y límites del plan gratuito",
+      "body": "El plan gratuito de Napkin AI otorga una cantidad de créditos semanales que se consumen aproximadamente en proporción a la cantidad de palabras del texto de entrada. Para pruebas cortas o un uso ocasional puede alcanzar sin problema, pero si trabajas con textos largos o generas varias versiones del mismo visual, los créditos pueden agotarse antes de terminar la semana.\n\nAntes de depender de Napkin AI para un proyecto con plazo ajustado, conviene hacer una prueba con el tipo de contenido real que vas a usar, para calcular si el plan gratuito te alcanza o si necesitas pasar a un plan pago."
+    },
+    {
+      "heading": "Napkin AI frente a Gamma y Canva",
+      "body": "Napkin AI está enfocado en un tipo de resultado muy específico: diagramas y esquemas explicativos generados a partir de texto. Gamma apunta más a presentaciones completas con texto, imágenes y diseño narrativo; Canva ofrece control de diseño mucho más amplio, pero requiere más trabajo manual del usuario.\n\nSi tu necesidad es explicar visualmente un proceso o una idea a partir de un texto ya escrito, Napkin AI suele ser la opción más rápida. Si necesitas una presentación completa o un diseño más personalizado, Gamma o Canva encajan mejor."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Una reseña independiente publicada el 21 de agosto de 2025 tras probar Napkin AI documentó tanto sus puntos fuertes como límites concretos. La autora destacó que el texto se convertía en visuales \"in seconds\" (en segundos) con poco esfuerzo, pero identificó una limitación de diseño importante: al pedirle \"a banner image with just the article title\" (una imagen de banner con solo el título del artículo), la herramienta igualmente produjo \"another diagram-style design\" (otro diseño con estilo de diagrama), revelando que su propósito está enfocado en diagramas estructurados, no en piezas gráficas decorativas de uso libre. Sobre los límites del plan gratuito, la reseña detalla \"500 AI credits per week (about one credit per word)\" (500 créditos de IA por semana, aproximadamente un crédito por palabra), describiéndolo como \"generous but can run dry quickly\" (generoso, pero que puede agotarse rápido) al probar textos más largos. También señaló que \"if your content lacks clear structure, like headings or bullet lists, Napkin struggles to generate meaningful visuals\" (si tu contenido no tiene una estructura clara, como títulos o listas, Napkin tiene dificultades para generar visuales útiles), además de \"repetitive layout styles\" (estilos de diseño repetitivos) percibidos como formulaicos, y la falta total de una versión funcional para celular. Es útil saber esto antes de depender de Napkin AI para un tipo de contenido que no sea texto ya estructurado: la herramienta no es un generador de imágenes decorativas de uso general, sino una herramienta específica para diagramas y esquemas.",
+      "source": "https://techpoint.africa/guide/napkin-ai-review/",
+      "sourceLabel": "Techpoint Africa — reseña de Napkin AI tras probarlo en la práctica",
+      "date": "2025-08-21"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Napkin AI funciona en español?",
+      "answer": "Puedes pegar texto en español y la herramienta intentará generar un visual a partir de esa estructura. La calidad del resultado depende de qué tan ordenado esté el texto de entrada."
+    },
+    {
+      "question": "¿Napkin AI es gratis?",
+      "answer": "Tiene un plan gratuito con un límite semanal de créditos, y planes de pago para uso más intensivo. Revisa las condiciones vigentes en el sitio oficial antes de decidir."
+    },
+    {
+      "question": "¿Napkin AI tiene app para celular?",
+      "answer": "No. Al momento de esta revisión, Napkin AI solo funciona desde escritorio, incluso si intentas acceder desde el navegador de un teléfono."
+    },
+    {
+      "question": "¿Napkin AI sirve para crear imágenes decorativas o banners?",
+      "answer": "No es su punto fuerte. Está diseñado para convertir texto estructurado en diagramas y esquemas explicativos, no para generar piezas gráficas libres o decorativas."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

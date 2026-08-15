@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Editor de PDF gratuito con IA, OCR, conversión y chat con documentos para Windows, Mac y navegador. Descárgalo solo desde el sitio oficial.",
+  "longDescription": "PDFgear reúne herramientas para leer, editar, convertir y organizar archivos PDF. Su asistente con IA puede resumir documentos, responder preguntas sobre su contenido y trabajar con texto en varios idiomas, incluido el español.",
+  "bestFor": [
+    "Resumir e interrogar un PDF con preguntas directas",
+    "Editar y convertir documentos entre distintos formatos",
+    "Extraer texto de documentos escaneados con OCR",
+    "Trabajar con archivos PDF desde Windows o Mac sin pagar por un editor completo"
+  ],
+  "limitations": [
+    "Las funciones de chatbot requieren conexión a internet, aunque el editor pueda funcionar sin conexión en otras tareas.",
+    "La IA no vuelve automáticamente confiable un PDF ni una copia escaneada: siempre conviene revisar el resultado.",
+    "Revisa siempre las condiciones vigentes del servicio gratuito, ya que pueden cambiar."
+  ],
+  "safetyNotes": [
+    "Descarga PDFgear únicamente desde el sitio oficial o las tiendas indicadas por el fabricante.",
+    "Evita versiones \"Pro desbloqueadas\", APK o instaladores modificados fuera de pdfgear.com.",
+    "No subas documentos confidenciales al chatbot sin evaluar antes cómo se procesan esos datos."
+  ],
+  "editorialSummary": "\"Resumir PDF gratis\" y \"editar PDF\" son búsquedas con una intención muy concreta. PDFgear responde a eso combinando descarga de escritorio, herramientas en línea y funciones con IA, pero conviene explicar bien el límite entre el editor local y el chatbot, que sí necesita conexión.",
+  "editorialSections": [
+    {
+      "heading": "Más que un chat con el PDF",
+      "body": "PDFgear puede usarse para leer, editar, convertir y hacer OCR, además de hacerle preguntas a un documento. Es una solución más amplia que ChatPDF cuando también necesitas corregir el archivo o transformarlo a otro formato.\n\nLa función con IA es una ayuda para navegar el documento, no una certificación de su contenido. Para contratos, facturas o documentos administrativos, compara siempre el resultado con el archivo original antes de tomar una decisión."
+    },
+    {
+      "heading": "Windows, Mac y navegador",
+      "body": "El sitio oficial de PDFgear indica los canales disponibles para Windows, Mac y herramientas en línea. Para descargar la app, parte siempre de la página oficial y verifica que el dominio sea pdfgear.com.\n\nEl editor de escritorio puede funcionar incluso sin conexión, mientras que el chatbot necesita internet. Esta diferencia conviene tenerla presente cuando trabajas con documentos que no quieres enviar a un servicio en la nube."
+    },
+    {
+      "heading": "PDFgear o ChatPDF",
+      "body": "Elige PDFgear si necesitas editar, convertir, firmar o hacer OCR además de hacerle preguntas al PDF. ChatPDF está más enfocado en la conversación con el documento; SciSpace y Consensus están más orientados a investigación académica y búsqueda de papers.\n\nLa elección depende de la primera acción que necesitas realizar. Si solo quieres entender un artículo, un editor completo puede ser más de lo que necesitas; si tienes que corregir el archivo, un simple chat no alcanza."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "El 8 de diciembre de 2025, un usuario del foro Linus Tech Tips (stl_condor) publicó un hilo advirtiendo sobre PDFgear después de encontrar debate en Reddit sobre si el programa era software malicioso. El usuario, que había usado la herramienta para combinar, dividir, convertir y proteger con contraseña archivos PDF, decidió desinstalarla por precaución dada \"the sometimes sensitive nature of documents that can be viewed/edited\" (la naturaleza a veces sensible de los documentos que se pueden ver o editar con este tipo de software). Entre sus preocupaciones principales enumeró que el desarrollador parecía ocultar su identidad real, que el software se promocionaba de forma sutil a través de recomendaciones en Reddit, y la sospecha de que PDFgear fuera una versión reempaquetada de otro software. El propio hilo enlaza tanto a las publicaciones originales de Reddit que hicieron las acusaciones (inyección de código, certificados raíz instalados en silencio, registro de teclado) como a la respuesta pública de PDFgear en su propio subreddit. Como seguimiento a esa controversia, PDFgear encargó una auditoría de seguridad independiente a la firma Cure53, que examinó el cliente de Windows durante nueve días entre febrero y marzo de 2026 y concluyó, en un informe publicado el 19 de marzo de 2026, que \"no malicious functionality was identified within the analyzed components of the PDFgear Windows client\" (no se identificó funcionalidad maliciosa en los componentes analizados del cliente de Windows de PDFgear). Es relevante para quien dude en instalar PDFgear por haber visto ese debate: la preocupación de la comunidad fue real y llevó a una auditoría externa verificable que no encontró funcionalidad maliciosa, pero como con cualquier software gratuito de un desarrollador poco conocido, la cautela inicial del usuario de este hilo es una postura razonable, y conviene descargarlo siempre desde el dominio oficial pdfgear.com.",
+      "source": "https://linustechtips.com/topic/1628220-potentially-malicious-software-pdfgear-dangers-of-reddit-recommended-software/",
+      "sourceLabel": "Linus Tech Tips — hilo del foro sobre las dudas de seguridad alrededor de PDFgear",
+      "date": "2025-12-08"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿PDFgear admite español?",
+      "answer": "La página oficial del chatbot incluye el español entre los idiomas admitidos. De todas formas, revisa los resultados cuando trabajes con términos técnicos o documentos escaneados."
+    },
+    {
+      "question": "¿PDFgear tiene un programa para Windows?",
+      "answer": "Sí. El sitio oficial publica una página dedicada a PDFgear para Windows, además de canales para Mac y herramientas en línea."
+    },
+    {
+      "question": "¿PDFgear es realmente gratis?",
+      "answer": "El fabricante presenta el editor y buena parte de sus funciones como gratuitas. Los límites y la disponibilidad pueden cambiar, así que conviene revisar siempre la página oficial antes de instalarlo."
+    },
+    {
+      "question": "¿Es seguro instalar PDFgear después de las acusaciones que circularon en Reddit?",
+      "answer": "Una auditoría independiente de la firma de seguridad Cure53, publicada en marzo de 2026, no encontró funcionalidad maliciosa en el cliente de Windows analizado. Aun así, descárgalo siempre desde pdfgear.com, nunca desde un sitio de terceros."
+    }
+  ],
+  "spanishSupport": "yes"
+}

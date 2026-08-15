@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Herramienta web de Adobe para limpiar la voz, reducir ruido y mejorar grabaciones de podcasts, entrevistas y video con Enhance Speech.",
+  "longDescription": "Adobe Podcast reúne funciones en línea para grabar y mejorar audio. Su función principal, Enhance Speech, usa IA para volver más clara una voz grabada y reducir ruido de fondo, reverberación y sonidos ambientales, sin necesidad de un editor de audio tradicional.",
+  "bestFor": [
+    "Limpiar una grabación casera hecha con un micrófono básico",
+    "Mejorar la voz para podcasts, videos y entrevistas antes de publicar",
+    "Reducir ruido de fondo y reverberación de una sala",
+    "Preparar audio previo al montaje sin instalar un editor completo"
+  ],
+  "limitations": [
+    "Enhance Speech funciona desde el navegador: no es un editor de audio de escritorio tradicional.",
+    "En grabaciones muy dañadas o con varias voces superpuestas en la misma pista, el resultado puede sonar artificial o distorsionado.",
+    "Los límites de duración, formato y funciones disponibles dependen del plan de Adobe Podcast."
+  ],
+  "safetyNotes": [
+    "Sube solo grabaciones que puedas procesar en un servicio en la nube: el archivo se envía a los servidores de Adobe para mejorarlo.",
+    "No confundas la limpieza de audio con una transcripción verificada: son funciones distintas.",
+    "Usa únicamente podcast.adobe.com; desconfía de copias que ofrezcan ajustes premium desbloqueados fuera del sitio oficial."
+  ],
+  "editorialSummary": "\"Mejorar la voz\" o \"quitar el ruido de un audio\" son búsquedas con una necesidad inmediata y muy concreta. Adobe Podcast responde a eso con una ficha distinta a la de los generadores musicales: acá el valor está en rescatar una grabación existente, no en crear una canción desde cero.",
+  "editorialSections": [
+    {
+      "heading": "Una solución para audio imperfecto",
+      "body": "Enhance Speech puede volver más entendible una voz grabada en una habitación ruidosa, durante una entrevista improvisada o con un micrófono que no es ideal. El procesamiento está pensado para quien quiere un resultado más limpio sin aprender de entrada ecualización y compresión.\n\nEl ajuste conviene escucharlo, no solo aplicarlo. Si la IA elimina demasiado ambiente o altera la voz de forma notoria, conviene reducir la intensidad o volver al archivo original antes de publicar."
+    },
+    {
+      "heading": "Todo funciona desde el navegador",
+      "body": "Adobe Podcast se usa desde podcast.adobe.com. No existe un instalador de escritorio independiente para Enhance Speech, y cualquier sitio que ofrezca un \"Adobe Podcast\" para descargar fuera de ese dominio no es un canal oficial.\n\nEl modo web es cómodo, pero implica subir el archivo a los servidores del servicio. Para material sensible o confidencial, conviene tener eso en cuenta antes de empezar."
+    },
+    {
+      "heading": "Cuándo conviene otra herramienta",
+      "body": "Adobe Podcast está pensado para voz y audio hablado, no para transcribir reuniones ni generar texto a partir del audio. Si necesitas transcribir una reunión de trabajo, Fireflies o Fathom ofrecen un flujo más específico para eso; si quieres trascribir archivos de forma local en Mac, MacWhisper sigue otro camino.\n\nConviene elegir primero la función principal que necesitas: limpieza de audio, transcripción o montaje completo. Una herramienta simple para la tarea correcta suele rendir mejor que una suite usada solo a medias."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En un hilo de la comunidad oficial de Adobe abierto el 8 de octubre de 2024, un usuario reportó que la función Enhance de Adobe Audition, al intentar quitar ruido de obra de una grabación de podcast, distorsionó la voz y la dejó sonando \"choppy\" (entrecortada) y robótica. Un experto de la comunidad (SteveG_AudioMasters_) respondió que la herramienta \"doesn't cope with very well\" (no maneja muy bien) el ruido de fondo excesivo, y planteó como teoría que el motor de procesamiento prioriza velocidad por sobre precisión en esos casos. El 22 de noviembre de 2024, otro experto de la comunidad (EuanWilliamson) señaló que ya estaba disponible la \"Version 2\", descrita como \"much faster and significantly improved\" (mucho más rápida y significativamente mejorada), con un enlace a podcast.adobe.com/Enhance. El hilo quedó marcado como respondido, pero el usuario original expresó dudas sobre si esa v2 realmente resolvía el problema. Es útil saber esto antes de confiar en Enhance Speech para una grabación con ruido de fondo fuerte o múltiples voces superpuestas: conviene probar primero con un fragmento corto y comparar contra el original antes de aplicarlo a todo un episodio.",
+      "source": "https://community.adobe.com/t5/audition-discussions/enhance-causing-robotic-voice/m-p/14996896",
+      "sourceLabel": "Comunidad oficial de Adobe — hilo sobre voz robótica al usar Enhance",
+      "date": "2024-10-08"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Adobe Podcast funciona en español?",
+      "answer": "Puedes subir una grabación hablada en español para mejorar su sonido. La función de limpieza de audio no equivale a una garantía sobre una transcripción, ya que Enhance Speech no transcribe: solo mejora el audio."
+    },
+    {
+      "question": "¿Adobe Podcast tiene un programa para Windows?",
+      "answer": "Enhance Speech es una herramienta web. Se usa desde podcast.adobe.com en el navegador; no existe un instalador oficial de escritorio para descargar."
+    },
+    {
+      "question": "¿Adobe Podcast es gratis?",
+      "answer": "Adobe ofrece acceso gratuito con funciones adicionales en el plan Premium. Los límites y formatos admitidos pueden cambiar; conviene revisar las condiciones vigentes en el sitio oficial."
+    },
+    {
+      "question": "¿Adobe Podcast elimina todo el ruido de una grabación?",
+      "answer": "Puede reducir ruido, reverberación y sonidos de fondo, pero el resultado depende de la calidad y el tipo de la grabación original. Escucha siempre el archivo procesado antes de publicarlo, especialmente si tenía mucho ruido de fondo."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

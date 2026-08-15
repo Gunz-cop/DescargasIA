@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Asistente con IA para transcribir, resumir y analizar reuniones y audio, con función de reconocimiento de quién habla y búsqueda dentro del texto.",
+  "longDescription": "Fireflies.ai graba o importa conversaciones, genera transcripciones y produce resúmenes con búsqueda dentro del texto. El servicio se conecta a plataformas de videollamada como Zoom, Microsoft Teams y Google Meet, o permite subir archivos de audio ya grabados.",
+  "bestFor": [
+    "Transcribir reuniones de trabajo automáticamente",
+    "Resumir entrevistas y llamadas largas",
+    "Buscar una palabra o frase puntual dentro de una transcripción",
+    "Compartir puntos de acción con el equipo después de una reunión"
+  ],
+  "limitations": [
+    "Es un servicio en la nube y requiere una cuenta para usarlo.",
+    "La precisión depende de la calidad del audio, los acentos, la superposición de voces y los términos técnicos específicos de cada tema.",
+    "Las funciones y los minutos incluidos gratis pueden cambiar entre planes."
+  ],
+  "safetyNotes": [
+    "Informa a los participantes antes de grabar o subir audio de una reunión a Fireflies.",
+    "Usa únicamente fireflies.ai y los enlaces oficiales para acceder al servicio.",
+    "No trates el resumen generado como una transcripción legal sin revisión humana previa."
+  ],
+  "editorialSections": [
+    {
+      "heading": "Transcribir reuniones y archivos de audio",
+      "body": "Fireflies puede unirse a una reunión en línea o trabajar sobre archivos ya cargados. Después de transcribir, genera resúmenes y puntos de acción, útiles cuando necesitas convertir una conversación en trabajo concreto para el equipo.\n\nQue el audio esté en español no elimina los errores: nombres propios, acentos regionales y personas que hablan al mismo tiempo siempre requieren revisión. La promesa realista es reducir el trabajo manual, no entregar una minuta perfecta sin ningún control humano."
+    },
+    {
+      "heading": "El canal oficial es la web",
+      "body": "Fireflies se usa desde su servicio web y desde los enlaces oficiales hacia integraciones y herramientas compatibles. No hace falta buscar un APK ni un instalador \"premium\" para transcribir un archivo.\n\nRevisa con atención los permisos que pide cuando conectas calendario, videollamadas o archivos guardados. Da acceso solo a lo que tu flujo de trabajo realmente necesita, no a todo lo que el servicio ofrece por defecto."
+    },
+    {
+      "heading": "Fireflies frente a Fathom y MacWhisper",
+      "body": "Fireflies es interesante para reuniones, carga de archivos y búsqueda dentro de conversaciones; Fathom apunta sobre todo al flujo de trabajo alrededor de la reunión en sí; MacWhisper ofrece un camino local en macOS, sin depender de un servidor externo.\n\nSi trabajas con datos confidenciales, la diferencia entre procesamiento en la nube y procesamiento local pesa más que un porcentaje de precisión publicitado. Elige primero el nivel de control que necesitas sobre esos datos."
+    }
+  ],
+  "editorialSummary": "Buscar \"transcribir audio en español\" tiene una intención mucho más concreta que \"mejor IA\": se busca una solución que reconozca el idioma y ahorre tiempo real. Fireflies es un candidato fuerte para esa búsqueda, pero esta ficha pone el foco en privacidad y revisión humana, no solo en la promesa de ahorro de tiempo.",
+  "communityInsights": [
+    {
+      "text": "El 18 de diciembre de 2025 se presentó Cruz v. Fireflies.AI Corp. (Caso N.º 3:25-cv-03399) ante el Tribunal de Distrito de Estados Unidos para el Distrito Central de Illinois, una demanda colectiva que acusa a Fireflies.AI de violar la Ley de Privacidad de Información Biométrica de Illinois (BIPA) al recolectar y almacenar huellas de voz (voiceprints) sin consentimiento. La demandante, Katelin Cruz, nunca tuvo una cuenta de Fireflies, pero participó en una videollamada organizada por una ONG de Illinois que tenía la herramienta activada. Según cobertura legal especializada, la demanda alega que Fireflies violó la BIPA en tres aspectos: no mantener ni publicar un cronograma de retención y destrucción de datos biométricos, no informar por escrito a los participantes que se estaban recolectando sus huellas de voz ni con qué propósito o por cuánto tiempo, y recolectar esas huellas de voz sin obtener una autorización escrita de los participantes, incluidas personas sin cuenta propia que simplemente estaban presentes en la reunión grabada. El problema de fondo señalado es que la función \"Speaker Recognition\" de Fireflies, publicitada como capaz de identificar a los distintos participantes de una reunión, genera necesariamente huellas de voz: identificadores biométricos que la BIPA regula de forma explícita. Días después, el 19 de marzo de 2026, se presentó una segunda demanda similar, Fricker v. Fireflies.AI Corp. (Caso N.º 1:26-cv-02675), ante el Tribunal de Distrito de Estados Unidos para el Distrito Norte de Illinois, con alegaciones equivalentes. Es relevante para quien use Fireflies en reuniones con participantes de Illinois: aunque un participante sepa que la reunión se está grabando, puede no saber que su voz se está convirtiendo en un identificador biométrico que se conserva de forma indefinida.",
+      "source": "https://topclassactions.com/lawsuit-settlements/lawsuit-news/fireflies-ai-sued-over-alleged-unlawful-data-collection-from-meeting-participants/",
+      "sourceLabel": "Top Class Actions — demanda colectiva contra Fireflies.AI por recolección de datos biométricos",
+      "date": "2026-03-19"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Fireflies transcribe audio en español?",
+      "answer": "Sí, el servicio admite transcripción en varios idiomas, incluido el español. La precisión concreta depende de la calidad de la grabación y de la claridad del audio."
+    },
+    {
+      "question": "¿Fireflies es un programa para descargar?",
+      "answer": "El canal principal es web, con integraciones a las que accedes desde el propio servicio. Evita instaladores o APK distribuidos por sitios no oficiales."
+    },
+    {
+      "question": "¿Fireflies es gratis?",
+      "answer": "Existe un plan gratuito con límites y hay planes de pago con más funciones. Revisa minutos incluidos, almacenamiento y funciones actualizadas en el sitio oficial."
+    },
+    {
+      "question": "¿Fireflies puede reemplazar una minuta hecha por una persona?",
+      "answer": "No. Genera una base útil de trabajo, pero nombres, decisiones y responsabilidades deben revisarse antes de compartir la minuta como documento definitivo."
+    }
+  ],
+  "spanishSupport": "yes"
+}

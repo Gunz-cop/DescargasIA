@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Buscador académico con IA que sintetiza resultados de literatura científica real, manteniendo siempre el enlace al paper original citado.",
+  "longDescription": "Consensus es un motor de búsqueda pensado para estudiantes, docentes e investigadores. Interpreta preguntas en lenguaje natural, busca dentro de la literatura científica publicada y arma una síntesis conectada a los trabajos encontrados, en vez de generar una respuesta libre sin respaldo.",
+  "bestFor": [
+    "Encontrar papers sobre una pregunta de investigación precisa",
+    "Arrancar una revisión de literatura antes de escribir una tesis o artículo",
+    "Comparar resultados de distintos estudios sobre un mismo tema",
+    "Identificar qué fuentes conviene leer primero dentro de un campo"
+  ],
+  "limitations": [
+    "Es un servicio web: no existe un instalador oficial para Windows o Mac.",
+    "La síntesis generada no reemplaza la lectura del paper original, especialmente para decisiones importantes.",
+    "El acceso y los límites de las funciones dependen del plan y la cuenta que uses."
+  ],
+  "safetyNotes": [
+    "Abre siempre el paper enlazado antes de citar un resultado en un trabajo propio.",
+    "No confundas una síntesis generada por IA con una revisión sistemática completa de la literatura.",
+    "Usa únicamente consensus.app para acceder al servicio; desconfía de copias o clones que pidan datos de pago fuera de ese dominio."
+  ],
+  "editorialSummary": "Para quien busca herramientas de IA para investigación académica, Consensus cubre una necesidad más específica que un chatbot genérico: partir de una pregunta concreta y llegar a estudios citables. Su valor editorial está justamente en la verificación de fuentes, no en prometer una respuesta definitiva y cerrada.",
+  "editorialSections": [
+    {
+      "heading": "Búsqueda científica, no un chatbot genérico",
+      "body": "Consensus está construido alrededor de papers y preguntas de investigación. Puede ayudarte a identificar qué estudios son relevantes y a leer una síntesis con referencias, en vez de producir una respuesta desconectada de la literatura publicada.\n\nLa síntesis funciona como punto de partida, no como conclusión final. Para una tesis, un artículo o una decisión profesional, siempre hay que abrir los estudios citados y revisar metodología, tamaño de muestra y limitaciones declaradas por los propios autores."
+    },
+    {
+      "heading": "Se usa desde el navegador",
+      "body": "Consensus no requiere instalar ningún programa: el canal oficial es consensus.app. No existe un \"Consensus de escritorio\" ni un APK oficial; el camino correcto es siempre la aplicación web.\n\nPuedes formular la pregunta en español, pero conviene revisar cómo el sistema interpreta términos técnicos y sinónimos propios de tu campo. Una pregunta más precisa suele producir una búsqueda más útil y resultados más relevantes."
+    },
+    {
+      "heading": "Consensus, SciSpace o ChatPDF",
+      "body": "Consensus es más adecuado para encontrar y comparar estudios a partir de una pregunta abierta; SciSpace ayuda a explorar y entender papers puntuales en profundidad; ChatPDF rinde mejor cuando ya tienes un documento específico para interrogar.\n\nConviene elegir primero el punto de partida: una pregunta abierta, un paper que necesitas entender, o un PDF que ya tienes en la mano. Esa distinción evita usar la herramienta equivocada y después juzgar mal el resultado obtenido."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Un artículo de la biblioteca de la Universidad de Virginia publicado en 2026 explicó por qué Consensus reduce el riesgo de citas inventadas frente a un chatbot genérico, citando dos incidentes reales de 2025 en los que informes oficiales incluyeron citas a papers que no existían: un informe de la comisión presidencial \"Make America Healthy Again\" y un informe sobre salud encargado por el gobierno de Canadá a Deloitte. Según el artículo, Consensus reduce ese riesgo mediante tres mecanismos: es un sistema cerrado entrenado exclusivamente con papers académicos, cada afirmación queda enlazada a un paper real y verificable, y usa un enfoque de \"buscar primero\": \"it is not possible for Consensus to make up fake sources or cite wrong facts\" (no es posible que Consensus invente fuentes falsas o cite datos incorrectos). Aun así, el mismo artículo aclara que las alucinaciones \"will be very rare\" (serán muy poco frecuentes), pero no imposibles: sigue siendo técnicamente posible que Consensus resuma mal un paper real que sí existe, aunque no invente uno que no existe. El artículo también señala que Consensus funciona mejor en ciencias y ciencias sociales con fuerte cultura de publicación en acceso abierto, y peor en humanidades y artes, donde predominan los libros y la producción académica no indexada de la misma forma. Es relevante para quien use Consensus en una tesis: la garantía es que la fuente citada existe, no que el resumen que Consensus hace de esa fuente sea siempre exacto.",
+      "source": "https://library.virginia.edu/news/2026/avoid-ai-hallucinations-try-consensus",
+      "sourceLabel": "Biblioteca de la Universidad de Virginia — por qué Consensus reduce las alucinaciones de citas frente a un chatbot genérico",
+      "date": "2026-04-15"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Consensus es una base de datos de papers?",
+      "answer": "No exactamente: es un motor de búsqueda académico asistido por IA que encuentra y sintetiza literatura científica real, siempre con enlaces directos a las fuentes originales."
+    },
+    {
+      "question": "¿Consensus funciona en español?",
+      "answer": "Puedes formular las búsquedas en español, pero conviene verificar siempre términos técnicos, los papers encontrados y la síntesis directamente en las fuentes originales."
+    },
+    {
+      "question": "¿Existe un programa de Consensus para Windows?",
+      "answer": "El canal oficial es el servicio web en consensus.app. No hace falta descargar ningún instalador para usarlo."
+    },
+    {
+      "question": "¿Puedo citar directamente una respuesta de Consensus?",
+      "answer": "No. Usa la respuesta para orientarte, abre el paper enlazado y cita la publicación original siguiendo las normas de tu curso, institución o revista."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

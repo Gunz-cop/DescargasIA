@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Servicio web para conversar con archivos PDF, resumir documentos largos y verificar cada respuesta señalando la página de origen.",
+  "longDescription": "ChatPDF convierte un PDF en una conversación: puedes hacerle preguntas, pedir un resumen y buscar información puntual sin leer el documento entero de punta a punta. Está pensado para estudiantes, investigadores y profesionales que trabajan con documentos extensos.",
+  "bestFor": [
+    "Resumir apuntes, manuales o artículos largos",
+    "Hacerle preguntas directas a un PDF en español",
+    "Orientarte entre varios documentos de investigación a la vez",
+    "Verificar de qué parte del documento sale una respuesta antes de citarla"
+  ],
+  "limitations": [
+    "El plan gratuito tiene límites de uso y de cantidad de documentos por día.",
+    "La versión principal funciona desde el navegador: no necesitas un instalador para empezar a usarla.",
+    "En documentos muy largos (más de 100-120 páginas) la precisión de las respuestas puede bajar; conviene contrastar siempre con el PDF original, sobre todo en contratos, exámenes o datos técnicos."
+  ],
+  "safetyNotes": [
+    "Sube solo documentos que puedas tratar en un servicio en línea.",
+    "Evita copias que prometan ChatPDF Plus gratis o archivos APK modificados fuera de las tiendas oficiales.",
+    "Revisa las citas de página antes de usar una respuesta como fuente en un trabajo o informe."
+  ],
+  "editorialSummary": "Buscar \"chatear con un PDF\" suele responder a una necesidad muy puntual: entender un apunte universitario, un contrato o un manual sin leerlo entero. ChatPDF cubre esa intención con un canal web oficial y una página propia de descarga para Windows; no hace falta buscar instaladores en portales externos.",
+  "editorialSections": [
+    {
+      "heading": "Para qué sirve ChatPDF",
+      "body": "ChatPDF es útil cuando tienes un documento concreto y quieres interrogarlo en vez de abrir un chat genérico. Puedes pedir un resumen, buscar un pasaje puntual o comparar varios archivos dentro de la misma conversación.\n\nLa ventaja frente a un chatbot general es la relación directa con el documento cargado: las respuestas pueden señalar de qué parte del PDF salieron. Eso no las vuelve automáticamente correctas, pero da un punto de verificación mucho más concreto que una respuesta sin fuente."
+    },
+    {
+      "heading": "Web y descarga para Windows: qué canal usar",
+      "body": "Para la mayoría de los casos basta con chatpdf.com: abres el sitio, subes el archivo y empiezas a preguntar. El enlace de descarga para Windows oficial parte del propio sitio de ChatPDF, en download.chatpdf.com.\n\nSi encuentras un instalador .exe, un APK o una versión \"premium desbloqueada\" en un sitio distinto, no es el canal necesario ni verificado. Para un documento sensible, conviene evaluar antes si prefieres una alternativa que procese el archivo de forma local."
+    },
+    {
+      "heading": "Cuándo conviene comparar con otras alternativas",
+      "body": "ChatPDF es una opción directa para hacer preguntas sobre un documento puntual. PDFgear es más adecuado si además necesitas editar, convertir o hacer OCR sobre el archivo; SciSpace y Consensus están más orientados a investigación académica y búsqueda de papers.\n\nElige según la tarea que necesitas resolver, no según el nombre más conocido. Para una tesis o un trabajo académico, verifica siempre el documento original y no uses el resumen generado como reemplazo de la fuente."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Una reseña independiente publicada por AI Detect Plus tras usar ChatPDF durante una semana identificó varios problemas concretos más allá de la precisión de las respuestas. Sobre exactitud, el propio servicio a veces \"sometimes needs extra prompting to get the real information (and misses information that is clearly stated in the PDF)\" (a veces necesita que insistas con otra pregunta para conseguir la información real, y pasa por alto datos que están claramente escritos en el PDF). Un usuario citado en la reseña describió un problema con el límite de páginas del plan gratuito: tras intentar subir un PDF de 365 páginas, recibió el aviso de que el máximo era 120 páginas; al reducirlo a 120 páginas volvió a fallar, y al intentar con 119 páginas el servicio le informó que ya había usado sus dos subidas diarias, pese a que ningún archivo se había subido con éxito. La reseña también señala que los créditos mensuales no usados no se acumulan de un mes a otro, lo que puede sentirse como un pago desperdiciado si no se usa el servicio con regularidad. Es útil saber esto antes de depender de ChatPDF para un documento urgente: conviene probar con un archivo corto primero y no dejar la verificación de un documento importante para el último momento, sobre todo cerca del límite diario de uso.",
+      "source": "https://aidetectplus.com/blog/chatpdf-review",
+      "sourceLabel": "AI Detect Plus — reseña de ChatPDF tras una semana de uso",
+      "date": "2026-01-23"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿ChatPDF funciona en español?",
+      "answer": "Sí. El servicio declara poder trabajar con documentos y conversaciones en varios idiomas; puedes hacer la pregunta en español y verificar la cita dentro del archivo."
+    },
+    {
+      "question": "¿Existe una app oficial de ChatPDF para Windows?",
+      "answer": "El sitio oficial ofrece un enlace de descarga para escritorio en download.chatpdf.com. Para empezar, sin embargo, puedes usar directamente la versión web sin instalar nada."
+    },
+    {
+      "question": "¿ChatPDF es gratis?",
+      "answer": "Existe un acceso gratuito con límites de documentos y preguntas por día. Las funciones y cantidades disponibles pueden cambiar, así que conviene revisar el plan vigente en el sitio oficial."
+    },
+    {
+      "question": "¿Es seguro subir un documento a ChatPDF?",
+      "answer": "Sube solo documentos que puedas confiarle a un servicio en línea y revisa la política de privacidad del servicio. Para datos muy sensibles, preferí un flujo local cuando sea posible."
+    }
+  ],
+  "spanishSupport": "unknown"
+}
