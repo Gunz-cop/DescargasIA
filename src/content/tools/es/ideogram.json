@@ -35,6 +35,14 @@
       "body": "Si tu prioridad es texto legible dentro de la imagen, Ideogram suele superar a competidores generales como Midjourney o Stable Diffusion en esa tarea específica. Si en cambio buscas máximo fotorrealismo o control técnico total sobre el proceso de generación, Flux o Stable Diffusion pueden ofrecer más flexibilidad.\n\nLeonardo AI es otra alternativa a considerar si además del texto necesitas herramientas de edición más completas o apps nativas también para Android, algo que Ideogram todavía no ofrece de forma oficial."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "En Trustpilot, una reseña fechada el 27 de julio de 2026 (usuario \"Raman\") denuncia un cargo inesperado: \"I selected a custom top-up amount of $10, but they charged me $30 instead\" (elegí un monto de recarga personalizado de 10 dólares, pero me cobraron 30 en su lugar), calificando la práctica de \"deceptive and completely unacceptable\" (engañosa y completamente inaceptable). Es un único reporte, no evidencia de un patrón sistemático — el perfil de Ideogram en Trustpilot tiene una calificación general de 4,1 sobre 5 con mayoría de reseñas positivas sobre atención al cliente y reembolsos ágiles — pero es un recordatorio concreto de revisar con cuidado el monto exacto que se cobra al recargar créditos o cambiar de plan, y guardar captura del monto seleccionado antes de confirmar cualquier pago.",
+      "source": "https://www.trustpilot.com/review/ideogram.ai",
+      "sourceLabel": "Trustpilot — reseña sobre un cargo de recarga de créditos distinto al monto seleccionado",
+      "date": "2026-07-27"
+    }
+  ],
   "faq": [
     {
       "question": "¿Ideogram tiene app oficial para Android?",

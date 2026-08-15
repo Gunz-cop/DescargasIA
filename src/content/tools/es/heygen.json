@@ -36,6 +36,14 @@
       "body": "Si tu objetivo es un presentador hablando a cámara —tutoriales, videos corporativos, contenido educativo— HeyGen está más especializado en ese caso que Runway o Kling AI, que se orientan más a video cinematográfico o animación de escenas. Si además necesitas voces realistas para narración sin avatar visual, ElevenLabs puede complementar el flujo.\n\nPara animación creativa, efectos visuales o transformación de imágenes en video con movimiento de cámara, Runway o Kling AI siguen siendo más adecuados que HeyGen, que está pensado específicamente alrededor del formato \"persona hablando a cámara\"."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 23 de octubre de 2024, se conoció que un video deepfake del propio CEO de HeyGen circulaba en YouTube como parte de un anuncio de estafa de criptomonedas: el video se disfrazaba de tutorial de ChatGPT pero en realidad dirigía a las víctimas a descargar malware diseñado para robar criptomonedas de sus billeteras digitales. Un vocero de HeyGen confirmó a Boing Boing: \"We can confirm that the video in question was not created using HeyGen's platform\" (podemos confirmar que el video en cuestión no fue creado usando la plataforma de HeyGen), y detalló que la empresa reportó el contenido a YouTube (que lo eliminó), retiró avatares específicos de su biblioteca pública como medida de precaución, y describió sus protocolos de seguridad: revisión automática y manual del contenido, verificación de usuarios mediante consentimiento en video en vivo, códigos verbales dinámicos y revisión humana rápida de cada verificación de avatar. El artículo también menciona un caso previo en el que, según el lector que reportó la historia, una estudiante ucraniana fue clonada sin su consentimiento y su rostro apareció en miles de videos de propaganda rusa y china. Es un recordatorio de que, incluso con las medidas de verificación de HeyGen, los deepfakes de figuras reconocibles pueden crearse fuera de la plataforma o filtrarse pese a los controles, y conviene desconfiar de cualquier video que use una figura conocida para pedir una acción financiera urgente.",
+      "source": "https://boingboing.net/2024/10/23/ceo-who-sells-fake-faces-gets-his-own-stolen-for-crypto-scam.html",
+      "sourceLabel": "Boing Boing — un deepfake del CEO de HeyGen se usó en una estafa de criptomonedas",
+      "date": "2024-10-23"
+    }
+  ],
   "faq": [
     {
       "question": "¿HeyGen es gratis?",

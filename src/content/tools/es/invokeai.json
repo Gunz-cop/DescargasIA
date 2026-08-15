@@ -35,6 +35,14 @@
       "body": "Si prefieres control técnico total sobre cada paso del proceso de generación, ComfyUI sigue siendo la opción más flexible, aunque con más curva de aprendizaje. InvokeAI apunta a un público que quiere generación local seria pero con una interfaz que se sienta más como una herramienta de edición terminada que como un editor de flujos técnico.\n\nPara quien no quiere lidiar con instalación local en absoluto, herramientas en la nube como Leonardo AI o el propio Flux alojado siguen siendo más directas, a costa de perder la privacidad y el control que ofrece ejecutar todo en tu propio equipo."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 21 de marzo de 2025 se publicó CVE-2024-12029, una vulnerabilidad crítica (puntaje de gravedad 9,8 sobre 10) que afectaba a InvokeAI entre las versiones 5.3.1 y 5.4.2. El fallo estaba en el endpoint `/api/v2/models/install`: la aplicación deserializaba archivos de modelo con `torch.load` sin validar su contenido, lo que permitía a un atacante incrustar código malicioso dentro de un archivo de modelo especialmente diseñado y ejecutarlo de forma remota apenas InvokeAI intentaba instalarlo. El problema se corrigió en la versión 5.4.3rc2. Es un motivo concreto para mantener InvokeAI siempre actualizado a una versión posterior a la 5.4.2, y para no instalar modelos descargados de fuentes no verificadas, ya que la vulnerabilidad se activaba con solo intentar instalar un archivo de modelo manipulado, sin necesidad de ejecutarlo manualmente después.",
+      "source": "https://github.com/advisories/GHSA-mcrp-whpw-jp68",
+      "sourceLabel": "GitHub Advisory Database — vulnerabilidad crítica de ejecución remota de código en InvokeAI (CVE-2024-12029)",
+      "date": "2025-03-21"
+    }
+  ],
   "faq": [
     {
       "question": "¿InvokeAI es gratis?",

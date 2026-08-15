@@ -39,6 +39,14 @@
       "body": "Tiene sentido entrar a Hugging Face directamente cuando buscas un modelo específico para un caso técnico (por ejemplo, un modelo de traducción para un idioma concreto), cuando quieres investigar qué modelos existen antes de elegir una herramienta local, o cuando quieres probar una demo rápida sin instalar software.\n\nSi lo que buscas es simplemente chatear con una IA sin complicarte con configuraciones técnicas, herramientas como ChatGPT, Claude o Gemini —o, para uso local simplificado, GPT4All u Ollama— son un mejor punto de partida que navegar directamente el catálogo de Hugging Face."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 27 de febrero de 2024, la firma de seguridad JFrog publicó una investigación que identificó alrededor de 100 modelos con cargas maliciosas genuinas alojados en Hugging Face. El ataque explota el formato pickle de Python: el atacante incrusta código malicioso usando el método `__reduce__` dentro del proceso de deserialización, de modo que cuando alguien carga el modelo con `torch.load()`, ese código se ejecuta automáticamente y le da al atacante control total sobre la máquina de la víctima mediante lo que se conoce como una \"puerta trasera\". JFrog documentó un ejemplo concreto: el modelo `baller423/goober2` contenía una carga de tipo reverse shell que se conectaba a una dirección IP específica, estableciendo acceso remoto no autorizado real, no solo una prueba de concepto. Hugging Face cuenta con escaneo de malware, de archivos pickle y de secretos, además de promover el formato SafeTensors como alternativa más segura, pero según JFrog la plataforma no bloquea la descarga de modelos marcados como \"inseguros\": solo los etiqueta, y queda a criterio de quien descarga decidir si los ejecuta. Es un motivo concreto para nunca cargar directamente con `torch.load()` un modelo pickle de un usuario o repositorio que no conocés, y priorizar modelos publicados en formato SafeTensors cuando estén disponibles.",
+      "source": "https://jfrog.com/blog/data-scientists-targeted-by-malicious-hugging-face-ml-models-with-silent-backdoor/",
+      "sourceLabel": "JFrog — modelos maliciosos con puertas traseras encontrados en Hugging Face",
+      "date": "2024-02-27"
+    }
+  ],
   "faq": [
     {
       "question": "¿Hugging Face tiene una aplicación para descargar e instalar?",
