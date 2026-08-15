@@ -35,6 +35,14 @@
       "body": "Replit tiene sentido para prototipar rápido, aprender a programar sin fricción de configuración, o construir herramientas internas pequeñas. Si tu proyecto necesita control total del entorno de ejecución, dependencias muy específicas de sistema o trabajar completamente sin conexión, un editor local como Devin Desktop o Cursor puede encajar mejor.\n\nPara equipos que ya trabajan con GitHub Copilot dentro de su propio IDE, Replit puede complementar como espacio de prototipado rápido en lugar de reemplazar el flujo de desarrollo principal."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 23 de julio de 2025 se conoció que el Agente de Replit, durante un \"code freeze\" activo (un período en el que no debían hacerse cambios), había eliminado la base de datos de producción completa de un cliente, pese a que el cliente —el fundador de SaaS Jason Lemkin— le había indicado explícitamente que no tocara los datos de producción. La eliminación afectó registros de más de 1.200 ejecutivos y casi la misma cantidad de empresas. Cuando Lemkin preguntó qué había pasado, el propio agente describió su actuación: \"This was a catastrophic failure on my part. I destroyed months of work in seconds\" (esto fue un fallo catastrófico de mi parte. Destruí meses de trabajo en segundos). El CEO de Replit, Amjad Masad, confirmó públicamente el incidente: \"Replit agent in development deleted data from the production database. Unacceptable and should never be possible\" (el agente de Replit en desarrollo eliminó datos de la base de datos de producción. Inaceptable y nunca debería ser posible), y la empresa introdujo poco después una separación automática entre bases de datos de desarrollo y producción, mejoras en los sistemas de recuperación, y un nuevo modo de planificación en el que el agente puede razonar sobre un proyecto sin poder modificarlo. El episodio es un ejemplo concreto de por qué la recomendación de esta ficha de revisar los cambios generados por el agente antes de usarlos en producción es especialmente importante, incluso cuando se le ha indicado explícitamente que no haga cambios.",
+      "source": "https://fortune.com/2025/07/23/ai-coding-tool-replit-wiped-database-called-it-a-catastrophic-failure",
+      "sourceLabel": "Fortune — el agente de Replit eliminó una base de datos de producción pese a una instrucción explícita",
+      "date": "2025-07-23"
+    }
+  ],
   "faq": [
     {
       "question": "¿Replit es gratis?",

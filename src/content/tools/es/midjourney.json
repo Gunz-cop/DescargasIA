@@ -32,6 +32,14 @@
       "body": "Midjourney es fuerte para exploración visual, estética, conceptos, composición e imágenes listas para inspirar campañas o piezas creativas. Puede ser más directo que Stable Diffusion si no quieres instalar modelos, controlar dependencias o ajustar una interfaz local.\n\nNo es la mejor opción si buscas ejecutar todo en tu equipo, trabajar sin conexión o tener control técnico completo sobre modelos y flujos. En esos casos Stable Diffusion con ComfyUI o AUTOMATIC1111 puede tener más sentido. Midjourney es una herramienta de nube: muy potente, pero no una descarga tradicional."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "Disney, Universal y Warner Bros. demandaron a Midjourney en 2025 por infracción de copyright, alegando que la empresa entrenó sus modelos con imágenes disponibles públicamente de personajes protegidos como Superman, Bugs Bunny y Darth Vader, y que el servicio genera y distribuye imágenes no autorizadas de esos personajes. El 29 de junio de 2026, Midjourney presentó una moción para exigir que los estudios revelaran su propio uso interno de inteligencia artificial, alegando que esto demostraría que ese tipo de prácticas se considera aceptable en la industria; un fallo de mediados de junio ya había rechazado una primera solicitud en ese sentido, y al 9 de julio de 2026 aún no había una decisión sobre la moción de revisión. La demanda seguía en curso al momento de esta revisión: quien genera imágenes con Midjourney que reproducen personajes o estilos reconocibles de terceros debe saber que el uso comercial de ese tipo de contenido es objeto de litigio legal activo, no un terreno legalmente resuelto.",
+      "source": "https://www.theartnewspaper.com/2026/07/09/midjourney-demands-hollywood-AI-secrets",
+      "sourceLabel": "The Art Newspaper — demanda por copyright de Disney, Universal y Warner Bros. contra Midjourney",
+      "date": "2026-07-09"
+    }
+  ],
   "faq": [
     {
       "question": "¿Midjourney tiene aplicación oficial para Windows?",

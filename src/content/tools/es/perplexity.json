@@ -32,6 +32,14 @@
       "body": "Perplexity destaca cuando la pregunta depende de información reciente o cuando quieres una respuesta acompañada por fuentes. ChatGPT y Claude pueden ser mejores para redactar, razonar o trabajar sobre documentos largos; Gemini puede integrarse mejor con servicios de Google; Copilot puede encajar si ya estás dentro del ecosistema Microsoft.\n\nLa elección práctica es simple: si necesitas investigar con referencias, prueba Perplexity. Si necesitas construir un texto, analizar una idea o programar, compara con asistentes más conversacionales."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 5 de diciembre de 2025, The New York Times demandó a Perplexity ante el tribunal federal del Distrito Sur de Nueva York, acusándolo de \"large-scale, unlawful copying and distribution\" (copia y distribución ilegal a gran escala) de millones de artículos. La demanda sostiene que los rastreadores de Perplexity hicieron más de 175.000 intentos de acceso a nytimes.com solo en agosto de 2025, ignorando el protocolo robots.txt y evadiendo un bloqueo técnico activo, y que las respuestas generadas a veces resultan \"identical or substantially similar\" (idénticas o sustancialmente similares) al contenido original del Times, eliminando la necesidad de visitar el artículo original. La demanda incluye también acusaciones de infracción de marca, alegando que Perplexity muestra la marca del Times junto a información a veces inventada, generando confusión sobre el origen real del contenido. El caso, con pedido de daños y una orden judicial permanente, seguía en curso al momento de esta revisión. Es un recordatorio directo de por qué conviene siempre revisar la fuente citada en lugar de confiar automáticamente en el resumen generado por Perplexity, especialmente en noticias recientes.",
+      "source": "https://ipwatchdog.com/2025/12/08/new-york-times-sues-perplexity-ai-latest-ip-case-genai-companies/",
+      "sourceLabel": "IPWatchdog — demanda del New York Times contra Perplexity por infracción de copyright",
+      "date": "2025-12-08"
+    }
+  ],
   "faq": [
     {
       "question": "¿Perplexity tiene app oficial para Windows?",

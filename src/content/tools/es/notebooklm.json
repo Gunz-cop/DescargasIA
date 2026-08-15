@@ -35,6 +35,14 @@
       "body": "Al tratarse de una herramienta web, NotebookLM funciona en cualquier sistema operativo (Windows, macOS, Linux, iPadOS, Android) que disponga de un navegador moderno como Google Chrome, Safari, Firefox o Edge. Dado que el procesamiento se realiza en los servidores en la nube de Google, no necesitas un ordenador con especificaciones técnicas elevadas ni tarjeta gráfica dedicada para utilizarlo."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "Un estudio académico publicado el 29 de septiembre de 2025 (\"Not Wrong, But Untrue: LLM Overconfidence in Document-Based Queries\") evaluó ChatGPT, Gemini y NotebookLM contra un corpus de 300 documentos sobre un litigio estadounidense de TikTok, con preguntas de especificidad variable. NotebookLM tuvo la tasa de error más baja de los tres: 13% de las respuestas (2 de 15) contenían errores, frente a 40% tanto en ChatGPT como en Gemini, y los investigadores señalaron que \"NotebookLM's citation-focused RAG system handles more reliably than the other approaches\" (el sistema RAG de NotebookLM, centrado en citas, maneja la información de forma más confiable que los otros enfoques). Pero el estudio también concluye que incluso ese mejor resultado es \"a rate that remains concerning for journalists\" (una tasa que sigue siendo preocupante para periodistas). Más que inventar hechos por completo, los errores consistían principalmente en lo que los investigadores llaman \"overconfidence through interpretive overreach\": interpretaciones no respaldadas sobre el propósito y la audiencia de un documento, o transformar una opinión atribuida a una fuente puntual en una afirmación general. Es relevante porque NotebookLM se comercializa específicamente como una herramienta que se ciñe estrictamente a las fuentes que subes — aunque efectivamente rinde mejor que un chatbot común, un 13% sigue siendo un margen de error a tener en cuenta, especialmente en tareas con consecuencias reales como documentos legales o financieros.",
+      "source": "https://arxiv.org/html/2509.25498v1",
+      "sourceLabel": "arXiv — estudio académico sobre exceso de confianza en respuestas de IA basadas en documentos",
+      "date": "2025-09-29"
+    }
+  ],
   "faq": [
     {
       "question": "¿NotebookLM es gratuito?",
