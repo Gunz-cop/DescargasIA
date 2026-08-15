@@ -1,0 +1,65 @@
+{
+  "shortDescription": "L'assistente IA di Anthropic focalizzato su scrittura avanzata, codice e ragionamento, disponibile su web, desktop e mobile.",
+  "longDescription": "Claude è il modello linguistico sviluppato da Anthropic, noto per la qualità della scrittura, la gestione di documenti lunghi e un approccio dichiarato alla sicurezza nelle risposte. È disponibile come web app su claude.ai, come applicazione desktop ufficiale per Windows e macOS, e come app mobile per iOS e Android. Questa scheda rimanda esclusivamente ai canali ufficiali pubblicati da Anthropic.",
+  "bestFor": [
+    "Scrivere testi lunghi e complessi che richiedono coerenza su più pagine",
+    "Analizzare e riassumere documenti estesi caricati direttamente nella conversazione",
+    "Programmare e ricevere spiegazioni dettagliate del codice generato",
+    "Ragionare passo dopo passo su problemi complessi con richieste articolate"
+  ],
+  "limitations": [
+    "Alcune funzioni avanzate e i limiti d'uso più alti richiedono un piano a pagamento.",
+    "La disponibilità di alcune funzioni può variare in base alla regione al momento di questa revisione.",
+    "Come qualsiasi IA generativa, le risposte su temi legali, medici o finanziari andrebbero verificate con fonti primarie."
+  ],
+  "safetyNotes": [
+    "Scarica Claude solo da claude.ai o dagli store ufficiali di Android e iOS; diffida di installer di terze parti che promettono versioni \"Pro gratis\".",
+    "Anthropic pubblica le proprie applicazioni direttamente dal proprio dominio ufficiale, senza intermediari."
+  ],
+  "editorialSummary": "Claude si è affermato come uno degli assistenti IA più apprezzati per la scrittura di qualità e la gestione di documenti lunghi, con un'attenzione dichiarata alla sicurezza delle risposte. In FuenteAI colleghiamo solo ai canali ufficiali di Anthropic per web, desktop e mobile, evitando mirror o installer non verificati.",
+  "editorialSections": [
+    {
+      "heading": "Cosa distingue Claude dagli altri assistenti",
+      "body": "Claude si è costruito una reputazione specifica nella scrittura estesa e nell'analisi di documenti lunghi, capacità particolarmente utili per chi lavora con report, contratti o testi accademici. Anthropic, l'azienda che lo sviluppa, dichiara un approccio orientato alla sicurezza e alla riduzione di risposte dannose come principio guida nello sviluppo del modello.\n\nQuesta combinazione di qualità di scrittura e attenzione dichiarata alla sicurezza ha reso Claude una scelta frequente tra professionisti che lavorano con testi lunghi o codice complesso, spesso citato come alternativa diretta a ChatGPT."
+    },
+    {
+      "heading": "Web, desktop e mobile: come scegliere",
+      "body": "Per iniziare rapidamente senza installare nulla, la versione web su claude.ai è il punto di accesso più immediato. Per chi preferisce un'applicazione dedicata, Anthropic pubblica installer ufficiali per Windows e macOS direttamente da claude.ai/download, mentre le app mobile sono disponibili negli store ufficiali di Android e iOS.\n\nQualunque installer di Claude che non provenga da claude.ai o dagli store ufficiali non è affidabile: Anthropic non distribuisce le proprie applicazioni tramite portali di terze parti."
+    },
+    {
+      "heading": "Documenti lunghi e codice: i punti di forza pratici",
+      "body": "Claude è spesso scelto per analizzare documenti estesi caricati direttamente nella conversazione, mantenendo coerenza anche su testi molto lunghi, un compito dove alcuni assistenti generalisti perdono qualità. Lo stesso vale per la programmazione: molti sviluppatori lo usano per generare e spiegare codice con un livello di dettaglio elevato.\n\nQuesta forza specifica non lo rende automaticamente migliore in ogni scenario: per compiti più brevi o conversazionali, la differenza percepita rispetto ad altri assistenti è spesso minima."
+    },
+    {
+      "heading": "Quando scegliere Claude rispetto ad altre opzioni",
+      "body": "Claude ha senso specialmente per chi lavora con testi lunghi, documentazione tecnica o codice che richiede spiegazioni dettagliate. Se il tuo uso principale è la conversazione quotidiana o compiti generici, ChatGPT o Gemini possono risultare altrettanto validi.\n\nPer chi cerca invece un assistente con forte integrazione nei servizi Google, Gemini resta un'alternativa diretta da valutare, così come Perplexity per ricerche con citazioni verificate."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "A partire dal 23 marzo 2026, molti utenti di Claude Code hanno segnalato su Reddit (r/ClaudeCode e r/Anthropic) che i limiti d'uso delle sessioni di 5 ore si esaurivano molto più in fretta del solito — alcuni abbonati Max hanno visto sessioni normalmente sufficienti per ore esaurirsi in 90 minuti, e un abbonato Max 20x è passato dal 21% al 100% di utilizzo con un solo prompt. Anthropic (tramite un membro dello staff, Thariq Shihipar) ha risposto che non si trattava di un bug ma di una scelta deliberata per gestire la domanda crescente: i limiti di sessione di 5 ore per gli abbonati free, Pro e Max sono stati ridotti nelle ore di punta nei giorni feriali (5-11 PT / 13-19 GMT), mentre i limiti settimanali sono rimasti invariati. Anthropic ha stimato che la modifica avrebbe interessato circa il 7% degli utenti. Se noti un calo improvviso della tua quota senza aver cambiato piano, è utile controllare se rientra in una fascia oraria di punta prima di presumere un errore del tuo account.",
+      "source": "https://www.macrumors.com/2026/03/26/claude-code-users-rapid-rate-limit-drain-bug/",
+      "sourceLabel": "MacRumors — utenti di Claude Code segnalano un esaurimento rapido dei limiti d'uso",
+      "date": "2026-03-26"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Claude ha un'app desktop ufficiale?",
+      "answer": "Sì, per Windows e macOS, scaricabile direttamente da claude.ai/download."
+    },
+    {
+      "question": "È sicuro scaricare Claude da store di terze parti?",
+      "answer": "No, l'unico canale sicuro è claude.ai o gli store ufficiali Google Play e App Store per il mobile."
+    },
+    {
+      "question": "Claude è gratuito?",
+      "answer": "Esiste un livello gratuito con limiti d'uso. I piani a pagamento sbloccano limiti più alti e funzioni aggiuntive."
+    },
+    {
+      "question": "Claude funziona bene in italiano?",
+      "answer": "Sì, supporta la lingua italiana sia per la conversazione che per l'analisi di documenti caricati in italiano."
+    }
+  ],
+  "italianSupport": "yes"
+}

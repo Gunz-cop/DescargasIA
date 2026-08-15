@@ -1,0 +1,65 @@
+{
+  "shortDescription": "L'assistente IA multimodale di Google, integrato con i servizi Google e disponibile su web, macOS e mobile.",
+  "longDescription": "Gemini è il modello di intelligenza artificiale di Google, capace di gestire testo, immagini e altri formati in un'unica conversazione, con integrazione diretta in servizi come Gmail, Documenti e Ricerca Google. È disponibile come web app su gemini.google.com, come app ufficiale per Android e iOS, e come applicazione per macOS. Questa scheda rimanda esclusivamente ai canali ufficiali pubblicati da Google.",
+  "bestFor": [
+    "Usare un assistente IA integrato direttamente con Gmail, Documenti e altri servizi Google",
+    "Lavorare con contenuti multimodali, combinando testo e immagini nella stessa richiesta",
+    "Cercare informazioni con un assistente che sfrutta l'infrastruttura di ricerca di Google",
+    "Accedere all'IA di Google da web, macOS o app mobile senza configurazioni aggiuntive"
+  ],
+  "limitations": [
+    "Alcune funzioni avanzate e i limiti d'uso più alti richiedono un abbonamento Google One AI Premium o equivalente.",
+    "Non risulta un'applicazione ufficiale per Windows al momento di questa revisione: su PC l'accesso è tramite browser.",
+    "L'integrazione profonda con i servizi Google può richiedere la condivisione di più dati personali rispetto ad assistenti indipendenti dall'ecosistema Google."
+  ],
+  "safetyNotes": [
+    "Accedi a Gemini solo tramite gemini.google.com o gli store ufficiali di Android e iOS; diffida di app di terze parti che si spacciano per client ufficiali di Gemini.",
+    "Verifica le impostazioni di privacy relative alla condivisione dati tra Gemini e gli altri servizi Google prima di collegare account sensibili."
+  ],
+  "editorialSummary": "Gemini si distingue per la sua integrazione profonda nell'ecosistema Google, rendendolo una scelta naturale per chi già usa Gmail, Documenti o Ricerca quotidianamente. In FuenteAI colleghiamo solo ai canali ufficiali di Google per web, macOS e mobile.",
+  "editorialSections": [
+    {
+      "heading": "Un assistente pensato per l'ecosistema Google",
+      "body": "La caratteristica più distintiva di Gemini è la sua integrazione diretta con i servizi che milioni di persone già usano ogni giorno: può leggere e riassumere email in Gmail, aiutare a scrivere in Documenti Google, o rispondere a domande sfruttando l'infrastruttura di ricerca di Google. Questo lo differenzia da assistenti che vivono come strumenti isolati.\n\nPer chi già lavora dentro l'ecosistema Google, questa integrazione riduce l'attrito di dover copiare e incollare contenuti tra applicazioni diverse, un vantaggio pratico concreto rispetto a un assistente completamente separato."
+    },
+    {
+      "heading": "Web, macOS e mobile: dove manca il Windows nativo",
+      "body": "Gemini è accessibile senza installazione tramite gemini.google.com, e Google pubblica un'app ufficiale per macOS oltre alle app mobile per Android e iOS. Al momento di questa revisione, però, non risulta un'applicazione desktop nativa per Windows: gli utenti Windows possono comunque accedere pienamente tramite il browser.\n\nQuesta assenza specifica su Windows è utile da sapere per chi cerca esplicitamente un \"installer Gemini per PC\": la via corretta resta il browser, non un file eseguibile di terze parti."
+    },
+    {
+      "heading": "Multimodalità: testo, immagini e oltre",
+      "body": "Gemini è stato progettato fin dall'inizio per gestire più tipi di contenuto nella stessa conversazione, permettendo ad esempio di caricare un'immagine e chiedere spiegazioni, o combinare testo e riferimenti visivi in un'unica richiesta. Questa capacità multimodale nativa lo rende utile per compiti che vanno oltre la semplice conversazione testuale.\n\nQuesta funzionalità è particolarmente comoda per chi lavora con materiali visivi o documenti misti, senza dover passare a uno strumento separato per analizzare immagini."
+    },
+    {
+      "heading": "Quando scegliere Gemini rispetto ad altre opzioni",
+      "body": "Gemini ha più senso per chi già usa attivamente i servizi Google e vuole un assistente che si integri senza attrito in quel flusso di lavoro quotidiano. È anche una buona scelta per compiti multimodali che combinano testo e immagini.\n\nSe preferisci un assistente indipendente da un ecosistema specifico, o dai priorità alla scrittura estesa e all'analisi di documenti lunghi, Claude o ChatGPT possono essere alternative più adatte da valutare."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "A novembre 2025 è stata depositata una class action contro Google in un tribunale federale di San Jose, California, che accusa l'azienda di aver attivato Gemini per impostazione predefinita su Gmail, Google Chat e Meet a ottobre 2025, senza avvisare gli utenti né chiedere consenso esplicito, dando così al sistema accesso a \"l'intera cronologia registrata\" delle comunicazioni degli utenti. La causa sostiene che questo violi la legge californiana sulla privacy delle comunicazioni (California's Invasion of Privacy Act) e cerca lo status di azione collettiva. Google offre un'opzione per disattivare la funzione, ma secondo la denuncia richiede di scavare tra più livelli di impostazioni sulla privacy che la maggior parte degli utenti non vede mai. Al momento di questa revisione la causa è in corso e Google non ha ancora commentato pubblicamente la vicenda: chi non vuole che Gemini analizzi il contenuto di Gmail, Chat o Meet dovrebbe controllare attivamente le proprie impostazioni di privacy di Workspace, non dare per scontato che sia disattivato di default.",
+      "source": "https://qz.com/google-lawsuit-gemini-ai-read-private-emails",
+      "sourceLabel": "Quartz — class action contro Google per l'attivazione automatica di Gemini su Gmail, Chat e Meet",
+      "date": "2025-11-12"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Gemini ha un'applicazione per Windows?",
+      "answer": "Non risulta un'app desktop nativa per Windows al momento di questa revisione. Su PC l'accesso avviene tramite browser su gemini.google.com."
+    },
+    {
+      "question": "Gemini è gratuito?",
+      "answer": "Esiste un livello gratuito con funzioni di base. Le funzioni avanzate e i limiti più alti richiedono un abbonamento Google One AI Premium."
+    },
+    {
+      "question": "Serve un account Google per usare Gemini?",
+      "answer": "Sì, l'accesso richiede un account Google, lo stesso usato per Gmail e gli altri servizi."
+    },
+    {
+      "question": "Gemini può analizzare immagini?",
+      "answer": "Sì, è un modello multimodale capace di gestire testo e immagini nella stessa conversazione."
+    }
+  ],
+  "italianSupport": "yes"
+}

@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Strumenti di IA di Canva per progettare, generare immagini, scrivere testi e creare contenuti visivi rapidamente.",
+  "longDescription": "Canva IA riunisce le funzioni di intelligenza artificiale integrate nella piattaforma di design Canva, inclusa la suite Magic Studio per generare immagini, rimuovere sfondi, riscrivere testi e creare design completi a partire da una semplice descrizione. È disponibile come web app su canva.com, oltre alle app ufficiali per Android e iOS. Questa scheda rimanda esclusivamente ai canali ufficiali pubblicati da Canva.",
+  "bestFor": [
+    "Creare design, presentazioni e materiali visivi con l'aiuto di strumenti di IA integrati",
+    "Generare immagini o rimuovere sfondi direttamente dentro l'editor di design, senza strumenti separati",
+    "Riscrivere o migliorare testi all'interno dei propri progetti grafici con suggerimenti IA",
+    "Lavorare da mobile con le stesse funzioni disponibili sulla versione web"
+  ],
+  "limitations": [
+    "Le funzioni di IA più avanzate della suite Magic Studio hanno un numero limitato di utilizzi gratuiti al mese; l'uso intensivo richiede un piano Pro a pagamento.",
+    "Non risulta un'applicazione desktop nativa indipendente al momento di questa revisione: su computer l'accesso principale è tramite browser.",
+    "La qualità delle immagini generate con IA può variare rispetto a strumenti specializzati esclusivamente nella generazione di immagini, essendo Canva prima di tutto una piattaforma di design."
+  ],
+  "safetyNotes": [
+    "Scarica Canva solo da canva.com o dagli store ufficiali Google Play e App Store; diffida di app di terze parti che promettono funzioni Pro sbloccate gratuitamente.",
+    "Verifica sempre di essere sul dominio canva.com prima di inserire le credenziali del tuo account, per evitare pagine di phishing che imitano l'aspetto della piattaforma."
+  ],
+  "editorialSummary": "Canva IA porta la generazione di immagini e la scrittura assistita direttamente dentro uno degli strumenti di design più usati al mondo, riducendo la necessità di passare tra app diverse. In FuenteAI colleghiamo solo ai canali ufficiali per web, Android e iOS.",
+  "communityInsights": [
+    {
+      "text": "Su Trustpilot, una recensione datata 29 luglio 2026 racconta un'esperienza diversa dal limite di crediti IA descritto nella documentazione ufficiale: secondo l'utente, dopo un numero limitato di utilizzi anche funzioni di base come l'inserimento di testo semplice smettono di essere gratuite e vengono mostrate come disponibili solo temporaneamente per singolo utilizzo, non come funzione base sempre accessibile. Non è lo stesso limite dei crediti Magic Studio (quello riguarda le funzioni IA generative), ma un'esperienza di paywall percepito su funzioni che l'utente si aspettava gratuite. Non risulta confermato nella documentazione ufficiale di Canva consultata per questa scheda: chi nota lo stesso comportamento dovrebbe verificarlo nel proprio account, dato che i limiti gratuiti possono variare per piano o regione.",
+      "source": "https://www.trustpilot.com/review/canva.com?search=Magic%20AI%20credits",
+      "sourceLabel": "Trustpilot — recensione di Sarah Ward su funzioni di base non gratuite oltre un certo uso",
+      "date": "2026-07-29"
+    }
+  ],
+  "editorialSections": [
+    {
+      "heading": "IA integrata nel flusso di design, non a parte",
+      "body": "A differenza di molti strumenti di IA generativa pensati come applicazioni indipendenti, Canva integra le sue funzioni di intelligenza artificiale direttamente dentro l'editor di design che milioni di persone già usano per creare presentazioni, post social o materiali di marketing. Questo evita di dover copiare e incollare contenuti tra strumenti diversi.\n\nLa suite Magic Studio raggruppa queste funzioni: generazione di immagini da testo, rimozione automatica dello sfondo, riscrittura di testi e creazione di design completi a partire da una breve descrizione, tutto senza uscire dall'editor principale."
+    },
+    {
+      "heading": "Per chi già lavora con Canva",
+      "body": "Chi già usa Canva per creare contenuti visivi trova naturale sfruttare le funzioni di IA senza dover imparare un nuovo strumento: la generazione di immagini o la rimozione dello sfondo si attivano direttamente dai menu esistenti dell'editor, mantenendo lo stesso flusso di lavoro familiare.\n\nQuesta integrazione è probabilmente il maggiore punto di forza di Canva IA rispetto a strumenti di generazione di immagini indipendenti: non sostituisce un flusso di lavoro esistente, lo arricchisce."
+    },
+    {
+      "heading": "Web e mobile: dov'è il desktop nativo",
+      "body": "Canva è accessibile tramite browser su canva.com e tramite app ufficiali per Android e iOS, ma non risulta un'applicazione desktop nativa indipendente al momento di questa revisione. Su computer, la versione web copre comunque tutte le funzionalità principali, incluse quelle di IA.\n\nChi cerca specificamente un \"installer Canva per Windows\" al di fuori del browser dovrebbe sapere che il percorso ufficiale resta l'accesso via web, non un file eseguibile separato."
+    },
+    {
+      "heading": "Quando scegliere Canva IA rispetto ad altre opzioni",
+      "body": "Canva IA ha senso per chi ha bisogno di creare materiali visivi completi — presentazioni, post social, poster — e vuole funzioni di IA integrate nello stesso strumento, senza passare tra app diverse per generare immagini e poi assemblarle.\n\nSe la priorità è la massima qualità o un controllo artistico più profondo nella generazione di immagini pure, Midjourney o Flux possono dare risultati più specializzati, anche se richiedono poi di importare le immagini in uno strumento di design separato."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Canva ha un'applicazione desktop per Windows o Mac?",
+      "answer": "Non risulta un'app desktop nativa indipendente al momento di questa revisione. L'accesso su computer avviene tramite browser su canva.com."
+    },
+    {
+      "question": "Canva IA è gratuito?",
+      "answer": "Esiste un livello gratuito con un numero limitato di utilizzi mensili delle funzioni IA. Il piano Pro sblocca un uso più ampio."
+    },
+    {
+      "question": "Canva ha app ufficiali per Android e iOS?",
+      "answer": "Sì, entrambe disponibili nei rispettivi store ufficiali, pubblicate direttamente da Canva."
+    },
+    {
+      "question": "Serve un account per usare le funzioni IA di Canva?",
+      "answer": "Sì, è necessario un account Canva per accedere alle funzioni di generazione e modifica con intelligenza artificiale."
+    }
+  ],
+  "italianSupport": "yes"
+}

@@ -1,0 +1,66 @@
+{
+  "shortDescription": "Chatbot IA cinese con modelli di ragionamento aperti (R1), completamente gratuito tramite web, Android e iOS.",
+  "longDescription": "DeepSeek è un chatbot di intelligenza artificiale sviluppato dall'omonima azienda cinese, noto per i suoi modelli di ragionamento (serie R1) che mostrano il processo di pensiero passo dopo passo prima di presentare la risposta finale. I modelli vengono inoltre rilasciati con pesi aperti, il che ha reso DeepSeek popolare tra gli sviluppatori che vogliono eseguirlo localmente o integrarlo nei propri progetti. Questa scheda rimanda esclusivamente ai canali ufficiali: la web app su chat.deepseek.com e le app ufficiali su Google Play e App Store.",
+  "bestFor": [
+    "Usare un chatbot IA gratuito senza paywall per la maggior parte delle funzioni",
+    "Vedere il ragionamento del modello passo dopo passo prima della risposta finale, utile per matematica o logica",
+    "Provare modelli aperti (R1) che possono anche essere scaricati ed eseguiti localmente dagli sviluppatori",
+    "Confrontare la qualità delle risposte con ChatGPT o Claude su compiti che richiedono ragionamento"
+  ],
+  "limitations": [
+    "Essendo un servizio cinese, DeepSeek può essere soggetto a regole diverse su dati e contenuti rispetto alle alternative occidentali, un aspetto che ha generato discussioni su conservazione dei dati e privacy.",
+    "Le risposte possono risultare più lente nei momenti di alto traffico sui server ufficiali, in particolare per i modelli di ragionamento più avanzati.",
+    "Non risulta un'applicazione desktop ufficiale al momento di questa revisione: su computer l'accesso avviene tramite browser su chat.deepseek.com.",
+    "L'app DeepSeek non risulta scaricabile dall'App Store italiano al momento di questa revisione, in seguito al provvedimento del Garante per la protezione dei dati personali del 30 gennaio 2025 che ha limitato il trattamento dei dati degli utenti italiani da parte di DeepSeek; chi l'aveva già installata prima di allora può continuare a usarla, e la versione web su chat.deepseek.com resta comunque raggiungibile dall'Italia."
+  ],
+  "safetyNotes": [
+    "Installa l'app DeepSeek solo da Google Play o App Store, mai da siti di terze parti che offrono \"DeepSeek Pro gratis\" o file APK simili.",
+    "Se prevedi di eseguire i modelli R1 localmente, scarica i pesi solo dal sito ufficiale di DeepSeek o da repository verificati come Hugging Face, non da mirror non identificati."
+  ],
+  "editorialSummary": "DeepSeek è passato da relativamente sconosciuto a notizia globale a inizio 2025 grazie ai suoi modelli di ragionamento aperti e all'accesso gratuito, e resta una delle alternative IA più cercate nel 2026. Colleghiamo solo ai canali ufficiali — la web app e le app mobile verificate — segnalando le trappole comuni dei file APK falsi.",
+  "editorialSections": [
+    {
+      "heading": "Perché DeepSeek è diventato notizia rapidamente",
+      "body": "Il modello R1 di DeepSeek ha attirato grande attenzione per aver mostrato prestazioni comparabili a modelli molto più costosi di laboratori più grandi, pur essendo aperto e gratuito da usare. Questo ha generato un'ondata di interesse, non solo tra gli utenti comuni ma anche tra gli sviluppatori che volevano testare il modello localmente o costruirci sopra.\n\nQuesta combinazione di apertura e prestazioni resta il tratto distintivo più chiaro di DeepSeek: puoi usarlo come qualsiasi altro chatbot tramite l'app, ma puoi anche scaricare i pesi del modello ed eseguirli tu stesso se hai l'hardware adeguato."
+    },
+    {
+      "heading": "Ragionamento visibile, non solo una risposta",
+      "body": "Parte di ciò che rende DeepSeek utile per matematica, programmazione e problemi logici è la capacità del modello di mostrare il proprio processo di pensiero prima di dare la risposta finale. Questo rende più facile individuare dove nel ragionamento qualcosa potrebbe essere andato storto, a differenza di un modello che fornisce solo una risposta finita senza passaggi intermedi.\n\nCiò non significa che le risposte siano sempre corrette — come con qualsiasi modello IA, i risultati con conseguenze reali andrebbero verificati — ma il processo di pensiero visibile rende più facile valutare quanto affidabile sia effettivamente una determinata risposta."
+    },
+    {
+      "heading": "Cosa considerare su privacy e provenienza",
+      "body": "Come servizio con sede in Cina, DeepSeek è soggetto a regole diverse su conservazione dei dati e moderazione dei contenuti rispetto alle alternative statunitensi o europee, il che ha generato discussioni in diversi paesi su dove vengono conservati i dati degli utenti e come vengono gestiti. Non è di per sé una ragione per evitare il servizio, ma vale la pena saperlo prima di condividere informazioni sensibili.\n\nPer chi vuole la stessa capacità tecnica senza inviare dati a un server esterno, esiste la possibilità di eseguire localmente i modelli R1 aperti, se si dispone di hardware sufficiente — un'opzione che non esiste con la maggior parte dei servizi IA chiusi."
+    },
+    {
+      "heading": "Quando scegliere DeepSeek e quando valutare alternative",
+      "body": "DeepSeek è adatto a chi vuole un chatbot potente e gratuito con forte attenzione a ragionamento, matematica e programmazione, e non ha obiezioni sul fatto che il servizio sia gestito dalla Cina. È anche una scelta naturale per sviluppatori che vogliono sperimentare con pesi di modelli aperti.\n\nSe privacy, regione dei dati o policy sui contenuti sono fattori decisivi, ChatGPT, Claude o Gemini possono essere alternative migliori da confrontare, essendo gestiti da aziende con sede negli Stati Uniti sotto diverse normative."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Il 30 gennaio 2025 il Garante per la protezione dei dati personali italiano ha imposto con effetto immediato la limitazione del trattamento dei dati degli utenti italiani da parte delle società cinesi Hangzhou DeepSeek Artificial Intelligence e Beijing DeepSeek Artificial Intelligence, dopo aver giudicato \"del tutto insoddisfacenti\" le risposte fornite dalle aziende, che sostenevano di non operare in Italia e di non essere soggette al GDPR. Di conseguenza l'app è stata rimossa dall'App Store e da Google Play in Italia. Nei giorni successivi diversi utenti italiani hanno segnalato online, con una certa sorpresa, che il blocco non impediva l'uso quotidiano del servizio: chi aveva già installato l'app poteva continuare a usarla normalmente, e la versione web restava comunque accessibile senza VPN. Il provvedimento riguarda quindi la disponibilità nei negozi di app in Italia, non un blocco totale del servizio.",
+      "source": "https://www.garanteprivacy.it/home/docweb/-/docweb-display/docweb/10097450",
+      "sourceLabel": "Garante per la protezione dei dati personali — comunicato ufficiale sul blocco di DeepSeek",
+      "date": "2025-01-30"
+    }
+  ],
+  "faq": [
+    {
+      "question": "DeepSeek è gratuito?",
+      "answer": "Sì, DeepSeek offre accesso gratuito al chatbot tramite web e app mobile, senza paywall per la maggior parte delle funzioni."
+    },
+    {
+      "question": "DeepSeek ha un'app ufficiale per Android e iOS?",
+      "answer": "Esiste un'app ufficiale per entrambi i sistemi, ma al momento di questa revisione non è scaricabile dall'App Store né da Google Play in Italia, in seguito al provvedimento del Garante privacy del 30 gennaio 2025. Chi l'aveva già installata può continuare a usarla; in alternativa resta sempre disponibile la versione web su chat.deepseek.com. Non installare mai file APK da siti di terze parti che si spacciano per DeepSeek."
+    },
+    {
+      "question": "Posso eseguire DeepSeek localmente sul mio computer?",
+      "answer": "Sì, i modelli R1 vengono rilasciati con pesi aperti e possono essere scaricati ed eseguiti localmente se disponi di hardware sufficiente, tramite fonti ufficiali come Hugging Face."
+    },
+    {
+      "question": "È sicuro condividere informazioni sensibili con DeepSeek?",
+      "answer": "Come con qualsiasi servizio IA, conviene essere cauti con dati sensibili. Tieni presente che DeepSeek, essendo un servizio cinese, è soggetto a regole diverse rispetto alle alternative occidentali."
+    }
+  ],
+  "italianSupport": "unknown"
+}

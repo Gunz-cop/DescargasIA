@@ -18,7 +18,7 @@
       "lastChecked": "2026-08-12"
     },
     "ios": {
-      "url": "https://apps.apple.com/us/app/deepseek-ai-assistant/id6475255479",
+      "url": "https://apps.apple.com/us/app/deepseek-ai-assistant/id6737597349",
       "type": "app-store",
       "isOfficial": true,
       "lastChecked": "2026-08-12"
@@ -36,7 +36,8 @@
   "alternatives": [
     "chatgpt",
     "claude",
-    "perplexity"
+    "perplexity",
+    "gemini"
   ],
   "screenshotUrl": null,
   "initials": "DS",

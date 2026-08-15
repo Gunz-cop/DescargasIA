@@ -36,12 +36,13 @@
   "alternatives": [
     "midjourney",
     "stable-diffusion",
-    "runway"
+    "runway",
+    "flux"
   ],
   "screenshotUrl": null,
   "initials": "CV",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-12",
+  "lastReviewed": "2026-08-14",
   "officialSources": [
     "https://www.canva.com/canva-ai/",
     "https://www.canva.com/magic-design/",
