@@ -37,7 +37,8 @@
     "chatgpt",
     "claude",
     "gemini",
-    "mistral-vibe"
+    "mistral-vibe",
+    "cursor"
   ],
   "screenshotUrl": null,
   "initials": "GRK",

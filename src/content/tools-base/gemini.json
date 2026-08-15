@@ -41,7 +41,10 @@
   "alternatives": [
     "chatgpt",
     "claude",
-    "perplexity"
+    "perplexity",
+    "cursor",
+    "ollama",
+    "lm-studio"
   ],
   "initials": "GM",
   "trustLevel": "official",

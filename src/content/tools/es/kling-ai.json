@@ -35,6 +35,14 @@
       "body": "Frente a Runway o Luma Dream Machine, Kling AI compite principalmente en duración y resolución máxima de los videos generados. Si tu prioridad es la integración con flujos de edición profesional, Runway suele tener más herramientas complementarias. Si necesitas avatares humanos hablando con guion, HeyGen está más especializado en ese caso de uso específico.\n\nLa elección entre estas herramientas suele depender del tipo de contenido: animación de imágenes y clips creativos favorecen a Kling AI o Luma; videos con presentador virtual favorecen a HeyGen; y proyectos que requieren integración con software de edición favorecen a Runway."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "Check Point Research publicó el 20 de mayo de 2025 un informe sobre una campaña de malvertising que explotó la popularidad de Kling AI (la plataforma tenía entonces alrededor de 6 millones de usuarios). Los atacantes crearon cerca de 70 publicaciones patrocinadas desde páginas falsas en redes sociales que se hacían pasar por Kling AI, las cuales enlazaban a copias muy convincentes del sitio web oficial. Cuando un usuario subía una imagen o escribía una instrucción de texto y \"descargaba\" el supuesto archivo generado, en realidad se trataba de un ejecutable disfrazado con doble extensión y caracteres Hangul Filler para ocultar que no era un archivo de video o imagen normal. El archivo instalaba en varias etapas primero un cargador escrito en .NET que verificaba si se ejecutaba en un entorno virtual, y luego un troyano de acceso remoto (PureHVNC RAT) con funciones de robo de datos dirigidas a más de 50 billeteras de criptomonedas y 80 plataformas bancarias, además de un módulo que monitoreaba las ventanas activas y tomaba capturas de pantalla. Es un ejemplo concreto del tipo de fraude que advierte la sección de seguridad de esta ficha: los atacantes no usaron el servicio real de Kling AI, sino una imitación difundida mediante anuncios, no a través de klingai.com ni de las apps oficiales.",
+      "source": "https://research.checkpoint.com/2025/impersonated-kling-ai-site-installs-malware/",
+      "sourceLabel": "Check Point Research — anuncios falsos de Kling AI que distribuían malware",
+      "date": "2025-05-20"
+    }
+  ],
   "faq": [
     {
       "question": "¿Kling AI es gratis?",

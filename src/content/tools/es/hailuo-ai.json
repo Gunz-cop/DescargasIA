@@ -35,6 +35,14 @@
       "body": "Hailuo AI compite de cerca con Kling AI (Kuaishou) y Wan (Alibaba), otros dos generadores de video respaldados por grandes tecnológicas chinas. La elección entre ellos suele depender de matices: Hailuo destaca por su generación de audio sincronizado, Kling AI por la duración máxima de sus videos, y Wan por su integración con el ecosistema más amplio de Alibaba Cloud.\n\nPara quien prioriza la integración con flujos de edición profesional en Occidente, Runway sigue siendo una referencia distinta, con más herramientas complementarias pensadas para producción audiovisual tradicional."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 16 de septiembre de 2025, Disney, Universal Studios y Warner Bros. Discovery demandaron conjuntamente a MiniMax (y a Shanghai Xiyu Jizhi Technology Co. Ltd) ante un tribunal federal del distrito central de California, acusando a la empresa de \"pirates and plunders Plaintiffs' copyrighted works on a massive scale\" (piratear y saquear las obras protegidas por derechos de autor de las demandantes a gran escala). La demanda señala en particular que MiniMax comercializa Hailuo AI como un \"Hollywood Studio in Your Pocket\" (un estudio de Hollywood en tu bolsillo) — una expresión que los estudios califican de audaz considerando que, según ellos, el servicio se construyó a partir de material de Hollywood robado. Las demandantes exigen una compensación de hasta 150.000 dólares por cada obra infringida, lo que podría sumar montos considerables dado el gran número de ejemplos citados, además de una orden judicial permanente. El caso seguía en curso al momento de esta revisión. Es relevante para quien genera videos con personajes o marcas reconocibles en Hailuo AI: la cuestión de qué puede producir legítimamente el servicio es objeto de litigio activo, no un asunto ya resuelto.",
+      "source": "https://coingeek.com/disney-universal-warner-bros-hit-china-minimax-ai-with-suit/",
+      "sourceLabel": "CoinGeek — Disney, Universal y Warner Bros. Discovery demandan a MiniMax por infracción de copyright",
+      "date": "2025-09-16"
+    }
+  ],
   "faq": [
     {
       "question": "¿Hailuo AI es gratis?",

@@ -15,6 +15,15 @@
   "safetyNotes": [
     "Google distribuye una aplicación de escritorio oficial únicamente para macOS. No descargues instaladores que prometen 'Gemini para Windows PC' ya que son falsos y peligrosos."
   ],
+  "editorialSummary": "Gemini se distingue por su integración profunda con el ecosistema de Google, lo que lo vuelve una opción natural para quien ya usa Gmail, Docs o la Búsqueda de Google a diario. En FuenteAI enlazamos solo a los canales oficiales de Google para web, macOS y móvil.",
+  "communityInsights": [
+    {
+      "text": "En noviembre de 2025 se presentó una demanda colectiva contra Google en un tribunal federal de San José, California, que acusa a la empresa de haber activado Gemini de forma predeterminada en Gmail, Google Chat y Meet en octubre de 2025, sin avisar a los usuarios ni pedir consentimiento explícito, dándole así al sistema acceso a \"the entire recorded history\" (el historial completo registrado) de las comunicaciones de los usuarios. La demanda sostiene que esto viola la ley californiana de privacidad de las comunicaciones (California's Invasion of Privacy Act) y busca el estatus de acción colectiva. Google ofrece una opción para desactivar la función, pero según la denuncia requiere revisar varios niveles de configuración de privacidad que la mayoría de los usuarios nunca ve. Al momento de esta revisión la demanda sigue en curso y Google no ha comentado públicamente al respecto: quien no quiera que Gemini analice el contenido de Gmail, Chat o Meet debería revisar activamente su configuración de privacidad de Workspace, sin asumir que viene desactivada por defecto.",
+      "source": "https://qz.com/google-lawsuit-gemini-ai-read-private-emails",
+      "sourceLabel": "Quartz — demanda colectiva contra Google por la activación automática de Gemini en Gmail, Chat y Meet",
+      "date": "2025-11-12"
+    }
+  ],
   "editorialSections": [
     {
       "heading": "Por qué tanta gente busca descargar Gemini",
