@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Generatore di immagini IA disponibile dal sito ufficiale di Midjourney e dal suo flusso di lavoro su Discord.",
+  "longDescription": "Midjourney è uno dei generatori di immagini con intelligenza artificiale più riconosciuti per la qualità artistica dei risultati, storicamente accessibile tramite comandi su Discord e oggi anche tramite un'interfaccia web propria su midjourney.com. Non esiste un'applicazione desktop o mobile indipendente: l'accesso avviene esclusivamente tramite web o Discord, entrambi collegati allo stesso account Midjourney. Questa scheda rimanda solo al sito ufficiale.",
+  "bestFor": [
+    "Generare immagini con uno stile artistico distintivo, spesso citato come riferimento nel settore",
+    "Lavorare con un'interfaccia web dedicata senza dover configurare Discord",
+    "Usare comandi Discord per chi preferisce quel flusso di lavoro collaborativo e comunitario",
+    "Iterare rapidamente su variazioni di una stessa immagine con parametri specifici"
+  ],
+  "limitations": [
+    "Non esiste un'applicazione desktop o mobile indipendente: l'accesso è solo tramite browser web o Discord.",
+    "Midjourney non offre un piano gratuito permanente al momento di questa revisione: è richiesto un abbonamento a pagamento per generare immagini.",
+    "La qualità e lo stile dei risultati possono variare tra le diverse versioni del modello, quindi conviene verificare quale versione si sta usando per un progetto specifico."
+  ],
+  "safetyNotes": [
+    "Usa esclusivamente midjourney.com o il server Discord ufficiale collegato dal sito; diffida di siti di terze parti che promettono \"Midjourney gratis\" o generazioni illimitate senza abbonamento.",
+    "Non condividere le credenziali del tuo account Midjourney o Discord con servizi non ufficiali che offrono di generare immagini per tuo conto."
+  ],
+  "editorialSummary": "Midjourney resta un riferimento per la qualità artistica delle immagini generate con IA, pur non avendo un'applicazione desktop o mobile tradizionale: tutto avviene tramite web o Discord. In FuenteAI chiariamo questa particolarità fin da subito e colleghiamo solo al sito ufficiale.",
+  "editorialSections": [
+    {
+      "heading": "Nessuna app da scaricare: solo web e Discord",
+      "body": "A differenza di molti altri generatori di immagini, Midjourney non ha mai pubblicato un'applicazione desktop o mobile indipendente. Storicamente, l'unico modo per generarle era attraverso comandi testuali in un server Discord dedicato, un approccio insolito che ha comunque contribuito alla sua popolarità nella comunità creativa.\n\nOggi Midjourney offre anche un'interfaccia web propria su midjourney.com, che semplifica notevolmente l'esperienza per chi non ha familiarità con Discord, pur mantenendo lo stesso motore di generazione e lo stesso account sottostante."
+    },
+    {
+      "heading": "Perché tante ricerche cercano un'app che non esiste",
+      "body": "È comune cercare \"Midjourney per Windows\" o \"app Midjourney Android\" aspettandosi un installer tradizionale. Non esiste, e qualsiasi sito che offra un simile file non è ufficiale: l'unico modo legittimo di accedere a Midjourney è tramite il browser web su midjourney.com o tramite Discord.\n\nQuesta particolarità vale la pena chiarirla subito per evitare che qualcuno scarichi per errore un file non verificato pensando di installare l'app ufficiale."
+    },
+    {
+      "heading": "Uno stile riconoscibile nel panorama della generazione di immagini",
+      "body": "Midjourney si è costruito una reputazione specifica per uno stile visivo spesso descritto come più \"artistico\" o \"cinematografico\" rispetto ad altri generatori, un fattore che lo ha reso una scelta popolare tra illustratori, designer e creatori di contenuti visivi.\n\nQuesta identità stilistica distintiva è probabilmente la ragione principale per cui molti utenti continuano a scegliere Midjourney nonostante l'assenza di un piano gratuito e la necessità di familiarizzare con Discord o la nuova interfaccia web."
+    },
+    {
+      "heading": "Quando scegliere Midjourney rispetto ad altre opzioni",
+      "body": "Midjourney ha senso per chi cerca specificamente il suo stile visivo distintivo ed è disposto a pagare un abbonamento senza un livello gratuito permanente. È una scelta comune tra professionisti creativi che già conoscono il flusso di lavoro Discord o preferiscono la nuova interfaccia web dedicata.\n\nSe cerchi un generatore di immagini gratuito o open source da eseguire localmente, Stable Diffusion o Flux sono alternative dirette da considerare. Per un'interfaccia più integrata con strumenti di design tradizionali, Canva è un'altra opzione da valutare."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Disney, Universal e Warner Bros hanno fatto causa a Midjourney nel 2025 per violazione del copyright, sostenendo che l'azienda abbia addestrato i propri modelli su immagini disponibili pubblicamente di personaggi protetti da copyright come Superman, Bugs Bunny e Darth Vader, e che il servizio generi e distribuisca immagini non autorizzate di quei personaggi. Il 29 giugno 2026 Midjourney ha presentato una mozione per chiedere che gli studios rivelassero il proprio uso interno di intelligenza artificiale, sostenendo che questo dimostrerebbe che pratiche simili sono considerate accettabili nel settore; una sentenza di metà giugno aveva già respinto una prima richiesta in tal senso, e al 9 luglio 2026 non risultava ancora una decisione sulla mozione di revisione. La causa è ancora in corso al momento di questa revisione: chi genera immagini con Midjourney che riproducono personaggi o stili riconoscibili di proprietà di terzi dovrebbe essere consapevole che l'uso commerciale di quel tipo di contenuto è oggetto di contenzioso legale attivo, non un terreno legalmente chiarito.",
+      "source": "https://www.theartnewspaper.com/2026/07/09/midjourney-demands-hollywood-AI-secrets",
+      "sourceLabel": "The Art Newspaper — causa per copyright di Disney, Universal e Warner Bros contro Midjourney",
+      "date": "2026-07-09"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Midjourney ha un'app per Windows o Mac?",
+      "answer": "No, non esiste un'applicazione desktop indipendente. L'accesso avviene tramite il sito web midjourney.com o tramite Discord."
+    },
+    {
+      "question": "Midjourney è gratuito?",
+      "answer": "No, al momento di questa revisione non offre un piano gratuito permanente. È richiesto un abbonamento a pagamento per generare immagini."
+    },
+    {
+      "question": "Serve Discord per usare Midjourney?",
+      "answer": "Non più obbligatoriamente: esiste anche un'interfaccia web dedicata su midjourney.com, oltre al flusso di lavoro tradizionale su Discord."
+    },
+    {
+      "question": "Esiste un'app mobile ufficiale di Midjourney?",
+      "answer": "Non risulta un'app mobile nativa al momento di questa revisione. L'accesso da mobile avviene tramite il browser."
+    }
+  ],
+  "italianSupport": "unknown"
+}

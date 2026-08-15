@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Assistente di scrittura con IA per grammatica, ortografia e tono, con estensione browser, app desktop e tastiera mobile.",
+  "longDescription": "Grammarly è un assistente di scrittura che controlla grammatica, ortografia, tono e chiarezza in tempo reale, ovunque tu stia scrivendo — nel browser, in un documento o sulla tastiera del telefono. Lo strumento è pensato principalmente per l'inglese, con suggerimenti che vanno da semplici errori di battitura a riscritture per un tono più professionale o più informale. Questa scheda rimanda esclusivamente ai canali ufficiali di Grammarly: web app, installer desktop per Windows e macOS, e app ufficiali per Android e iOS.",
+  "bestFor": [
+    "Controllare grammatica, ortografia e punteggiatura in tempo reale mentre scrivi in inglese",
+    "Regolare il tono di un messaggio o documento, dal formale al colloquiale, con suggerimenti IA",
+    "Usare l'assistente di scrittura direttamente nel browser tramite l'estensione, su qualsiasi sito",
+    "Scrivere con supporto IA direttamente dalla tastiera del telefono grazie all'app ufficiale"
+  ],
+  "limitations": [
+    "Grammarly è ottimizzato principalmente per l'inglese; il supporto per l'italiano e altre lingue è molto più limitato rispetto alla funzionalità in inglese.",
+    "Le funzioni di scrittura IA più avanzate e un limite più alto di suggerimenti mensili richiedono spesso un abbonamento a pagamento oltre al livello gratuito.",
+    "L'estensione browser richiede il permesso di leggere il testo sulle pagine visitate per funzionare, un aspetto da considerare prima di installarla su dispositivi con informazioni sensibili."
+  ],
+  "safetyNotes": [
+    "Installa Grammarly solo da grammarly.com/desktop per il computer o dagli store ufficiali per mobile ed estensione browser. Evita siti di terze parti che offrono \"Grammarly Premium gratis\".",
+    "Verifica i permessi richiesti dall'estensione browser prima dell'installazione, specialmente se usi Grammarly su dispositivi dove scrivi informazioni sensibili o riservate."
+  ],
+  "editorialSummary": "Grammarly resta uno degli strumenti di scrittura più usati per i testi in inglese, arricchito con funzioni IA per riscrittura e adattamento del tono. In FuenteAI colleghiamo solo ai canali ufficiali per web, desktop e mobile, ricordando che lo strumento resta più forte specificamente per l'inglese.",
+  "editorialSections": [
+    {
+      "heading": "Più di un semplice correttore ortografico",
+      "body": "Grammarly è passato da semplice controllo ortografico e grammaticale a un assistente di scrittura IA completo, capace di suggerire riscritture per chiarezza, frasi più brevi, o un tono diverso a seconda del contesto — un'email a un collega richiede un tono diverso da un documento formale.\n\nQuesta evoluzione rende Grammarly utile lungo tutto il processo di scrittura, dai primi errori di base fino alla rifinitura di come il testo suona effettivamente per il lettore, non solo segnalando errori evidenti."
+    },
+    {
+      "heading": "Funziona dove già scrivi",
+      "body": "Buona parte del valore di Grammarly viene dall'estensione browser, che offre suggerimenti direttamente in email, social media, documenti e praticamente qualsiasi campo di testo online, senza dover copiare il testo in uno strumento separato. La stessa funzionalità è disponibile nell'app desktop ufficiale e nella tastiera mobile.\n\nQuesta integrazione nel flusso di scrittura quotidiano, invece di richiedere un passaggio separato per la correzione, è una delle ragioni principali per cui molte persone scelgono di tenere Grammarly sempre attivo invece di usarlo solo occasionalmente."
+    },
+    {
+      "heading": "L'inglese resta il punto di forza",
+      "body": "Grammarly è stato sviluppato originariamente in modo specifico per l'inglese, e si nota ancora oggi: il supporto per l'italiano e altre lingue è molto più limitato rispetto alla funzionalità in inglese. Chi scrive principalmente in italiano non dovrebbe aspettarsi la stessa profondità di suggerimenti disponibile in inglese.\n\nPer la grammatica e l'ortografia italiana, altri strumenti costruiti specificamente per più lingue, come LanguageTool, possono offrire suggerimenti più precisi, mentre Grammarly resta una scelta forte specificamente per i testi in inglese."
+    },
+    {
+      "heading": "Quando scegliere Grammarly rispetto ad altre opzioni",
+      "body": "Grammarly è ideale per chi scrive regolarmente in inglese — email a colleghi internazionali, testi accademici, o contenuti per un pubblico anglofono — e vuole supporto continuo su grammatica, tono e chiarezza.\n\nSe il tuo scrivere avviene principalmente in italiano, LanguageTool o DeepL Write sono probabilmente più adatti a catturare errori e sfumature specifiche della lingua che Grammarly non è ottimizzato per rilevare."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Un report pubblicato il 28 gennaio 2026 da Incogni, che ha analizzato 442 estensioni Chrome basate su IA, ha classificato l'estensione di Grammarly — insieme a QuillBot — come la più potenzialmente dannosa per la privacy tra le estensioni con milioni di download. Secondo il report, Grammarly raccoglie \"contenuto dei siti web, comunicazioni personali e dati di attività dell'utente\", inclusi pattern di interazione come battute sulla tastiera, scorrimento della pagina e navigazione, e richiede permessi di tipo \"scripting\" e \"activeTab\" che consentono l'iniezione di codice nelle pagine e l'accesso temporaneo alla scheda attiva. Il report precisa che il rischio di uso malevolo è basso per entrambi gli strumenti, ma li colloca comunque in cima alla classifica \"per l'ampiezza dell'accesso e la scala della base di utenti installata\". Questo conferma nella pratica quanto già indicato in questa scheda: prima di installare l'estensione su un dispositivo dove scrivi informazioni sensibili, vale la pena valutare quanto accesso al testo delle pagine sei disposto a concedere.",
+      "source": "https://www.helpnetsecurity.com/2026/01/28/incogni-chrome-extensions-privacy-risks-report/",
+      "sourceLabel": "Help Net Security — report Incogni sui rischi privacy delle estensioni Chrome basate su IA",
+      "date": "2026-01-28"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Grammarly funziona bene per i testi in italiano?",
+      "answer": "Grammarly è pensato principalmente per l'inglese. Il supporto per l'italiano è molto più limitato, quindi per testi italiani uno strumento come LanguageTool può dare risultati migliori."
+    },
+    {
+      "question": "Grammarly ha un'app desktop ufficiale?",
+      "answer": "Sì, per Windows e macOS, scaricabile direttamente da grammarly.com/desktop."
+    },
+    {
+      "question": "Grammarly è gratuito?",
+      "answer": "Le funzioni base di grammatica e ortografia sono gratuite. Le funzioni di scrittura IA più avanzate richiedono un abbonamento a pagamento."
+    },
+    {
+      "question": "È sicuro installare l'estensione browser di Grammarly?",
+      "answer": "Sì, se installata dallo store ufficiale del browser, ma l'estensione richiede il permesso di leggere le pagine visitate per funzionare — un aspetto da valutare se gestisci informazioni sensibili."
+    }
+  ],
+  "italianSupport": "partial"
+}

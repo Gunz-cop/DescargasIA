@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Motore di ricerca con IA che risponde con fonti verificate, disponibile su web, Windows, Android e iOS.",
+  "longDescription": "Perplexity AI è un motore di ricerca basato su intelligenza artificiale che risponde alle domande citando le fonti utilizzate, invece di limitarsi a restituire una lista di link. È pensato per chi vuole risposte dirette con la possibilità di verificare l'origine dell'informazione. La piattaforma è disponibile come web app, come app ufficiale su Microsoft Store per Windows, e come app mobile per Android e iOS. Questa scheda rimanda esclusivamente ai canali ufficiali pubblicati da Perplexity.",
+  "bestFor": [
+    "Cercare informazioni ricevendo risposte dirette con fonti citate e verificabili",
+    "Fare ricerche su argomenti recenti dove serve sapere da dove proviene ogni affermazione",
+    "Confrontare più fonti su uno stesso argomento senza aprire decine di schede del browser",
+    "Usare un motore di ricerca IA da Windows, Android o iOS con la stessa esperienza"
+  ],
+  "limitations": [
+    "Le fonti citate non garantiscono automaticamente l'accuratezza: conviene comunque verificare le informazioni più critiche nella fonte originale.",
+    "Le funzioni più avanzate, come un maggior numero di ricerche approfondite al giorno, richiedono un piano Pro a pagamento.",
+    "Non risulta un'applicazione ufficiale nativa per macOS o Linux al momento di questa revisione: su questi sistemi l'accesso è tramite browser."
+  ],
+  "safetyNotes": [
+    "Scarica Perplexity solo da perplexity.ai, Microsoft Store, Google Play o App Store; diffida di app di terze parti con nomi simili che promettono funzioni Pro gratuite.",
+    "Verifica sempre le fonti citate nelle risposte più importanti prima di prendere decisioni basate su di esse."
+  ],
+  "editorialSummary": "Perplexity si distingue tra gli strumenti di ricerca IA per il suo approccio basato su fonti citate e verificabili, invece di risposte generate senza riferimenti. In FuenteAI colleghiamo solo ai canali ufficiali per web, Windows, Android e iOS.",
+  "editorialSections": [
+    {
+      "heading": "Ricerca con fonti, non solo risposte",
+      "body": "La caratteristica che definisce Perplexity è l'abitudine di citare esplicitamente le fonti usate per costruire ogni risposta, permettendo di verificare rapidamente da dove proviene un'informazione. Questo lo differenzia da un chatbot generico che risponde senza mostrare riferimenti verificabili.\n\nQuesto approccio è particolarmente utile per ricerche accademiche, giornalistiche o professionali dove la tracciabilità dell'informazione è importante quanto la risposta stessa, riducendo il tempo necessario per verificare manualmente ogni affermazione."
+    },
+    {
+      "heading": "Disponibile su Windows tramite Microsoft Store",
+      "body": "A differenza di molti concorrenti che offrono solo un installer diretto dal proprio sito, Perplexity distribuisce la sua app Windows attraverso il Microsoft Store ufficiale, un canale che aggiunge un ulteriore livello di verifica sull'autenticità dell'applicazione.\n\nPer macOS e Linux, invece, non risulta un'app nativa dedicata al momento di questa revisione: la versione web su perplexity.ai copre comunque tutte le funzionalità principali su questi sistemi."
+    },
+    {
+      "heading": "Non solo per ricerche superficiali",
+      "body": "Oltre alle domande rapide, Perplexity offre modalità di ricerca più approfondita pensate per argomenti complessi che richiedono di consultare e sintetizzare più fonti contemporaneamente, un compito che normalmente richiederebbe l'apertura manuale di diverse schede del browser.\n\nQuesta funzione di ricerca approfondita è particolarmente utile per chi lavora su report, articoli o presentazioni che richiedono di raccogliere informazioni aggiornate da più fonti in poco tempo."
+    },
+    {
+      "heading": "Quando scegliere Perplexity rispetto ad altre opzioni",
+      "body": "Perplexity ha senso specialmente per chi cerca informazioni verificabili con fonti chiare, in sostituzione o integrazione a una ricerca tradizionale su Google. È una scelta naturale per ricerca, giornalismo o qualsiasi compito dove la provenienza dell'informazione conta.\n\nSe invece il tuo bisogno principale è la conversazione generica, la scrittura creativa o la programmazione, ChatGPT, Claude o Gemini possono risultare più adatti a quel tipo di compito specifico."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Il 5 dicembre 2025 il New York Times ha fatto causa a Perplexity presso il tribunale federale del Distretto Sud di New York, accusandola di \"copia e distribuzione illecita su larga scala\" di milioni di articoli. La denuncia sostiene che i crawler di Perplexity abbiano effettuato oltre 175.000 tentativi di accesso a nytimes.com nel solo agosto 2025, ignorando il protocollo robots.txt e aggirando un blocco tecnico attivo, e che le risposte generate risultino a volte \"identiche o sostanzialmente simili\" ai contenuti originali del Times, eliminando la necessità di visitare l'articolo di partenza. La causa include anche accuse di violazione del marchio, sostenendo che Perplexity mostri il marchio del Times accanto a informazioni a volte inventate, creando confusione sull'origine reale del contenuto. Il caso, con richiesta di danni e ingiunzione permanente, era ancora in corso al momento di questa revisione. È un promemoria diretto del perché conviene sempre controllare la fonte citata invece di fidarsi automaticamente del riassunto generato da Perplexity, specialmente su notizie recenti.",
+      "source": "https://ipwatchdog.com/2025/12/08/new-york-times-sues-perplexity-ai-latest-ip-case-genai-companies/",
+      "sourceLabel": "IPWatchdog — causa del New York Times contro Perplexity per violazione del copyright",
+      "date": "2025-12-08"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Perplexity ha un'app ufficiale per Windows?",
+      "answer": "Sì, disponibile tramite Microsoft Store, un canale ufficiale verificato."
+    },
+    {
+      "question": "Perplexity è gratuito?",
+      "answer": "Esiste un livello gratuito con funzioni di base. Il piano Pro sblocca un maggior numero di ricerche approfondite e funzioni aggiuntive."
+    },
+    {
+      "question": "Le risposte di Perplexity sono sempre accurate?",
+      "answer": "Le fonti citate aiutano a verificare l'origine dell'informazione, ma conviene comunque controllare le affermazioni più importanti nella fonte originale."
+    },
+    {
+      "question": "Perplexity ha un'app per macOS?",
+      "answer": "Non risulta un'app nativa per macOS al momento di questa revisione. L'accesso su questo sistema avviene tramite browser su perplexity.ai."
+    }
+  ],
+  "italianSupport": "yes"
+}

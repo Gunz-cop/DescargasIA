@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Strumento di note e gestione progetti con IA integrata per riassumere, scrivere e cercare, su web, desktop e mobile.",
+  "longDescription": "Notion è uno spazio di lavoro che combina note, documenti, database e gestione progetti in un unico strumento, con Notion AI integrato per riassumere, riscrivere, generare testo e cercare in modo intelligente nei propri contenuti. La piattaforma è disponibile come web app, come applicazioni desktop ufficiali per Windows e macOS, e come app mobile per Android e iOS. Questa scheda rimanda esclusivamente ai canali ufficiali di Notion.",
+  "bestFor": [
+    "Riunire note, documenti e progetti in un unico spazio di lavoro con supporto IA",
+    "Usare Notion AI per riscrivere, accorciare o espandere testi direttamente nei propri documenti",
+    "Cercare in modo intelligente tra grandi quantità di contenuti propri usando il linguaggio naturale",
+    "Costruire database personalizzati che combinano dati strutturati e contenuto testuale libero"
+  ],
+  "limitations": [
+    "Dal 13 maggio 2025 Notion AI completo non si può più aggiungere come componente a pagamento a qualsiasi piano: è incluso solo nei piani Business ed Enterprise. I piani Free e Plus offrono un accesso di prova limitato, senza rinnovo (maggiori dettagli in \"Cosa dice la comunità\", più sopra in questa scheda).",
+    "Notion è uno strumento ampio più che specializzato in un solo ambito, il che può risultare eccessivo per chi cerca solo una semplice app di note.",
+    "Essendo basato sul cloud, Notion richiede una connessione internet per la maggior parte delle funzioni, anche se esiste un certo accesso offline nelle app desktop e mobile."
+  ],
+  "safetyNotes": [
+    "Scarica Notion solo da notion.com/desktop per il computer o dagli store ufficiali per il mobile. Evita siti di terze parti che offrono \"Notion Pro gratis\" o installer modificati.",
+    "Fai attenzione a condividere informazioni sensibili in pagine Notion condivise pubblicamente; controlla sempre le impostazioni di condivisione prima di pubblicare un documento."
+  ],
+  "editorialSummary": "Notion è diventato uno degli strumenti di produttività più completi con IA integrata, dalle note alla gestione completa di progetti. In FuenteAI colleghiamo solo ai canali ufficiali per web, desktop e mobile, pubblicati direttamente da Notion.",
+  "editorialSections": [
+    {
+      "heading": "Uno strumento, molti usi",
+      "body": "Il punto di forza di Notion è la sua flessibilità: lo stesso strumento può funzionare come semplice app di note, come base di conoscenza condivisa per un team, o come sistema completo di gestione progetti con database, fogli di calcolo e bacheche kanban. Notion AI è integrato in tutto questo, dal riassumere un documento lungo al generare la prima bozza di un testo.\n\nQuesta ampiezza rende Notion una scelta naturale per chi vuole riunire più strumenti in uno solo, ma può anche risultare una curva di apprendimento più ripida rispetto ad app più semplici e specializzate."
+    },
+    {
+      "heading": "Notion AI nel lavoro quotidiano",
+      "body": "Notion AI funziona direttamente dentro i documenti esistenti: puoi selezionare del testo e chiedere all'IA di accorciarlo, allungarlo, correggerlo o cambiarne il tono, oppure usarla per riassumere pagine lunghe in una panoramica rapida. Questo rende le funzioni IA una parte naturale del flusso di scrittura invece di uno strumento separato da aprire.\n\nL'IA può anche cercare in modo intelligente in tutto il tuo spazio di lavoro e rispondere a domande basate sui tuoi stessi contenuti, un modo rapido per trovare informazioni in grandi quantità di note e documenti senza scorrere manualmente tutto."
+    },
+    {
+      "heading": "Web, desktop e mobile: gli stessi contenuti ovunque",
+      "body": "Notion sincronizza automaticamente tra la web app, le applicazioni desktop ufficiali per Windows e macOS, e le app mobile per Android e iOS, così le stesse note e gli stessi progetti sono disponibili su qualsiasi dispositivo. Le app desktop ufficiali si scaricano direttamente da notion.com/desktop.\n\nPer chi vuole solo provare rapidamente senza installare nulla, la web app è completamente funzionale e richiede solo un account per iniziare, con le stesse funzioni delle app desktop."
+    },
+    {
+      "heading": "Quando scegliere Notion rispetto ad altre opzioni",
+      "body": "Notion ha senso per team e privati che vogliono riunire note, documentazione e gestione progetti nello stesso strumento, con supporto IA integrato in tutto il flusso di lavoro. È anche una buona scelta per chi vuole costruire database personalizzati senza imparare uno strumento separato.\n\nSe hai bisogno solo di funzioni più mirate, come presentazioni generate automaticamente o design visivi, Gamma o Canva possono essere alternative più dirette a seconda del bisogno specifico."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Il 13 maggio 2025 Notion ha eliminato il componente aggiuntivo di IA indipendente (che costava circa 8-10 dollari al mese per membro e poteva essere aggiunto a qualsiasi piano) e ha spostato le funzioni complete di Notion AI — inclusi gli Agenti e l'assistente \"Ask Notion\" — esclusivamente nel piano Business, da 20 dollari per membro al mese. Chi aveva già il componente aggiuntivo prima di quella data lo ha mantenuto senza modifiche immediate, ma il componente ha smesso di essere disponibile per i nuovi clienti. Chi gestisce uno spazio di lavoro nel piano Free o Plus e cerca il componente aggiuntivo di IA che esisteva prima non lo troverà più: l'unica via oggi è passare al piano Business.",
+      "source": "https://www.usecarly.com/blog/notion-ai-pricing-change/",
+      "sourceLabel": "usecarly.com — copertura dell'eliminazione del componente aggiuntivo di IA di Notion",
+      "date": "2026-06-30"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Notion ha un'applicazione desktop ufficiale?",
+      "answer": "Sì, per Windows e macOS, scaricabile direttamente da notion.com/desktop."
+    },
+    {
+      "question": "Notion è gratuito?",
+      "answer": "Il piano gratuito di Notion include un accesso di prova limitato a Notion AI, senza rinnovo. Dal 13 maggio 2025 l'accesso completo a Notion AI è incluso solo nei piani Business ed Enterprise; non è più possibile aggiungerlo come componente a pagamento ai piani Free o Plus."
+    },
+    {
+      "question": "Serve internet per usare Notion?",
+      "answer": "La maggior parte delle funzioni richiede una connessione internet essendo Notion basato sul cloud, ma le app desktop e mobile offrono un certo accesso offline ai contenuti già aperti."
+    },
+    {
+      "question": "Notion AI funziona in italiano?",
+      "answer": "Sì, Notion AI supporta diverse lingue incluso l'italiano per la maggior parte delle funzioni di testo e riassunto, anche se la qualità può variare a seconda del compito."
+    }
+  ],
+  "italianSupport": "yes"
+}

@@ -24,7 +24,8 @@
     "stable-diffusion",
     "canva",
     "runway",
-    "luma-dream-machine"
+    "luma-dream-machine",
+    "flux"
   ],
   "screenshotUrl": null,
   "initials": "MJ",
