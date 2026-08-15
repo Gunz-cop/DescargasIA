@@ -35,6 +35,14 @@
       "body": "Krea AI tiene sentido cuando priorizas la iteración rápida y en tiempo real, o cuando quieres probar varios modelos de imagen y video sin instalar nada ni pagar por separado cada herramienta. Si tu prioridad es un control técnico más profundo con nodos y flujos personalizados, ComfyUI (autoalojado) puede ofrecer más flexibilidad a cambio de más complejidad.\n\nPara generación de imágenes con un estilo artístico muy marcado, Midjourney sigue siendo una referencia distinta; para trabajar con Flux de forma abierta y local, existe la opción de instalarlo directamente sin pasar por la interfaz de Krea AI."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "En Trustpilot, una reseña detallada fechada el 9 de junio de 2026 (usuario \"LORD\", con más de 100 reseñas publicadas en la plataforma) denuncia que los modelos Krea 2 Large y Medium consumían significativamente más créditos de cómputo por imagen de lo que la propia empresa anuncia. Según el reporte, contactó al soporte dos veces sin respuesta, notó que se quedaba sin créditos mucho más rápido de lo habitual, y afirma haber visto quejas similares de otros usuarios en redes sociales de la empresa sin que se abordara el problema. Es un único reporte detallado, no evidencia confirmada de un patrón sistemático — el perfil de Krea en Trustpilot tiene calificación general de 3,6 sobre 5, con una combinación amplia de reseñas muy positivas y negativas — pero es una razón concreta para llevar un registro propio de cuántos créditos consume cada generación en la práctica, en lugar de asumir que coincidirá exactamente con lo anunciado, especialmente al usar los modelos más pesados de la plataforma.",
+      "source": "https://www.trustpilot.com/review/krea.ai?stars=1",
+      "sourceLabel": "Trustpilot — reseña sobre consumo de créditos de cómputo mayor al anunciado en los modelos Krea 2",
+      "date": "2026-06-09"
+    }
+  ],
   "faq": [
     {
       "question": "¿Krea AI tiene aplicación para Android o iOS?",

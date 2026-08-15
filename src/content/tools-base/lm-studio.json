@@ -40,7 +40,10 @@
     "modelos-locales"
   ],
   "alternatives": [
-    "ollama"
+    "ollama",
+    "jan",
+    "gpt4all",
+    "hugging-face"
   ],
   "initials": "LMS",
   "trustLevel": "verified",

@@ -30,6 +30,14 @@
       "body": "A diferencia de herramientas propietarias como Grammarly, el motor de LanguageTool es de código abierto. Para empresas o usuarios con requisitos extremos de seguridad de datos que no pueden enviar información sensible a internet, LanguageTool ofrece la posibilidad de descargar y ejecutar su servidor de corrección en local (mediante un contenedor Docker o instalación Java), garantizando que el análisis de textos se realice 100% dentro de la red local del usuario."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "Un issue abierto en el repositorio oficial de LanguageTool en GitHub, presentado el 12 de octubre de 2020 por un miembro del propio equipo de LanguageTool (usuario \"Discostu36\"), señala dos problemas de cumplimiento de privacidad que a la fecha de esta revisión seguían sin resolverse: la transferencia de datos de usuarios de LanguageTool Plus a FastSpring (el procesador de pagos) se apoyaba en el marco Privacy Shield entre EE.UU. y la UE, invalidado por el Tribunal de Justicia de la Unión Europea, sin haber migrado aparentemente a cláusulas contractuales tipo; y el uso de Google Analytics en languagetool.org requeriría consentimiento explícito de \"opt-in\" para cumplir con el RGPD, en vez de estar activado por defecto. En un comentario posterior, otro usuario preguntó si esto se había resuelto y el propio autor del issue respondió que nunca recibió respuesta del equipo. Que el propio equipo haya reportado el problema internamente y siga sin cerrarlo dice más sobre la prioridad relativa de este tema que una queja externa aislada. No es evidencia de una filtración de datos ni de un incumplimiento confirmado por una autoridad de protección de datos, pero es un punto a tener en cuenta para quien valore especialmente el cumplimiento estricto del RGPD antes de contratar el plan Plus.",
+      "source": "https://github.com/languagetool-org/languagetool/issues/3674",
+      "sourceLabel": "GitHub — issue abierto sobre cumplimiento de privacidad en LanguageTool Plus",
+      "date": "2020-10-12"
+    }
+  ],
   "faq": [
     {
       "question": "¿LanguageTool es gratuito?",

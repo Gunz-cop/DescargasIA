@@ -1,33 +1,33 @@
 {
   "name": "LanguageTool",
-  "officialWebsite": "https://languagetool.org/es",
+  "officialWebsite": "https://languagetool.org",
   "categories": [
     "traduccion-redaccion-ia"
   ],
   "platforms": {
     "web": {
-      "url": "https://languagetool.org/es",
+      "url": "https://languagetool.org",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-15"
     },
     "windows": {
-      "url": "https://languagetool.org/es/insights/windows",
+      "url": "https://languagetool.org/windows-desktop",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-15"
     },
     "mac": {
-      "url": "https://apps.apple.com/es/app/languagetool-para-safari/id1534275765",
+      "url": "https://apps.apple.com/us/app/languagetool-grammar-checker/id1534275760",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-15"
     },
     "ios": {
-      "url": "https://apps.apple.com/es/app/languagetool-grammar-checker/id1625345759",
+      "url": "https://apps.apple.com/us/app/languagetool-grammar-checker/id1534275760",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-15"
     }
   },
   "pricingModel": "freemium",
@@ -41,7 +41,9 @@
   ],
   "alternatives": [
     "chatgpt",
-    "deepl"
+    "deepl",
+    "grammarly",
+    "quillbot"
   ],
   "initials": "LT",
   "trustLevel": "verified",

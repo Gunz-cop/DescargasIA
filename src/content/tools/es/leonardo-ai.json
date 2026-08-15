@@ -35,6 +35,14 @@
       "body": "Si buscas el máximo control artístico con modelos de código abierto y ejecución local, Stable Diffusion o Flux ofrecen más flexibilidad técnica. Si priorizas resultados muy pulidos con mínima curva de aprendizaje, Midjourney sigue siendo una referencia. Si necesitas texto legible dentro de la imagen (logos, carteles), Ideogram suele destacar en esa tarea específica.\n\nLeonardo AI encaja mejor para quien quiere una plataforma todo en uno, con apps móviles y herramientas de edición integradas, sin necesidad de configurar nada técnico."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 29 de julio de 2024, Canva anunció la adquisición de Leonardo.ai, la octava adquisición de Canva y la segunda de ese año. En ese momento Leonardo.ai tenía más de 19 millones de usuarios registrados y sus herramientas habían generado más de 1.000 millones de imágenes; los 120 empleados de la empresa australiana se incorporaron a Canva. El cofundador de Canva, Cameron Adams, declaró que \"Leonardo will continue to run independently of Canva with a focus on rapid innovation, research and development\" (Leonardo seguirá operando de forma independiente de Canva, con foco en innovación rápida, investigación y desarrollo), y Canva se comprometió específicamente a que \"We'll keep offering all of Leonardo's existing tools and solutions\" (seguiremos ofreciendo todas las herramientas y soluciones existentes de Leonardo). El plan declarado es integrar el modelo Phoenix de Leonardo dentro de Magic Studio, la suite de IA generativa de Canva, sin que el contenido de los usuarios de Canva se comparta con Leonardo salvo que el usuario decida activarlo. Quien use Leonardo.ai hoy debería saber que, aunque sigue funcionando como producto separado con su propia cuenta y planes, forma parte del mismo grupo empresarial que Canva desde mediados de 2024.",
+      "source": "https://techcrunch.com/2024/07/29/canva-acquires-leonardo-ai-to-boost-its-generative-ai-efforts",
+      "sourceLabel": "TechCrunch — Canva adquiere Leonardo.ai para impulsar sus capacidades de IA generativa",
+      "date": "2024-07-29"
+    }
+  ],
   "faq": [
     {
       "question": "¿Leonardo AI es gratis?",

@@ -10,10 +10,19 @@
   "limitations": [
     "El rendimiento depende directamente del hardware disponible; los modelos grandes requieren bastante RAM o una GPU dedicada.",
     "La versión para Linux está en fase beta según la documentación oficial.",
-    "El uso comercial requiere una licencia de pago, aunque el uso personal es gratuito."
+    "LM Studio es una aplicación propietaria, no de código abierto: funciona como interfaz para ejecutar modelos abiertos, pero el software en sí no puede modificarse ni redistribuirse libremente."
   ],
   "safetyNotes": [
     "LM Studio es 100% gratuito para uso personal. No requiere registrarse. Su web oficial es lmstudio.ai."
+  ],
+  "editorialSummary": "LM Studio se convirtió en una de las puertas de entrada más simples para ejecutar modelos de lenguaje en la propia computadora, gracias a una interfaz gráfica que evita la línea de comandos. En FuenteAI enlazamos solo al canal oficial en lmstudio.ai, el único lugar seguro para descargarlo.",
+  "communityInsights": [
+    {
+      "text": "El 8 de julio de 2025, LM Studio anunció que dejaba de exigir una licencia comercial separada para usar la aplicación en el trabajo, un cambio cubierto de forma independiente al día siguiente. Desde su lanzamiento en mayo de 2023, LM Studio era gratuito para uso personal, pero las empresas debían contactar directamente a la compañía para tramitar una licencia si querían usarlo internamente; según la cobertura del cambio, muchos equipos directamente se autoexcluían de usar LM Studio por esa fricción. Es importante aclarar que este cambio elimina la exigencia de licencia comercial, pero no convierte a LM Studio en código abierto: sigue siendo software propietario que actúa como interfaz para ejecutar modelos de código abierto, no un proyecto abierto en sí mismo. La empresa también anunció planes de introducir niveles pagos adicionales, como un plan Teams para colaboración privada y un plan Enterprise con funciones como inicio de sesión único (SSO), mientras mantiene gratuita la funcionalidad principal.",
+      "source": "https://antoniocortes.com/en/2025/07/09/lm-studio-removes-barriers-now-free-for-work-too/",
+      "sourceLabel": "AntonioCortes.com — cobertura del cambio de licencia de LM Studio, ahora gratuito para uso laboral",
+      "date": "2025-07-09"
+    }
   ],
   "editorialSections": [
     {
@@ -40,7 +49,7 @@
   "faq": [
     {
       "question": "¿LM Studio es gratuito?",
-      "answer": "Sí, LM Studio es gratuito para uso personal y no requiere cuenta ni registro. Para uso comercial existen licencias de pago. El único canal oficial de descarga es lmstudio.ai."
+      "answer": "Sí. Desde el 8 de julio de 2025, LM Studio es gratuito tanto para uso personal como para uso en el trabajo, sin necesidad de contactar a la empresa ni tramitar una licencia comercial (antes de esa fecha sí era necesario). No requiere cuenta ni registro. El único canal oficial de descarga es lmstudio.ai."
     },
     {
       "question": "¿LM Studio funciona sin internet?",

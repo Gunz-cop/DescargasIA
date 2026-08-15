@@ -35,6 +35,14 @@
       "body": "Si tu objetivo es un proyecto con estructura narrativa —un cortometraje conceptual, un storyboard para presentar una idea, una secuencia de escenas coherentes— LTX Studio está más orientado a ese caso que herramientas centradas en clips sueltos como Kling AI o Hailuo AI.\n\nSi en cambio solo necesitas un clip rápido a partir de una imagen o una frase, sin necesidad de planificación previa, un generador más directo puede ser más ágil. La elección depende de si tu proyecto necesita estructura de producción o solo un resultado visual puntual."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 7 de enero de 2026, un usuario de GitHub (rseabra) abrió un issue en el repositorio oficial de LTX-2 —el modelo de video que Lightricks presenta como \"open-source\" y que forma parte de la tecnología detrás de LTX Studio— cuestionando esa etiqueta: \"The license is definitely not an Open Source license. It needs to change to an Open Source license, or (not the desired result) stop calling itself 'open source'\" (la licencia definitivamente no es una licencia de código abierto. Necesita cambiar a una licencia de código abierto o, aunque no sea el resultado deseado, dejar de llamarse 'open source'). El reclamo apunta a que la licencia incluye restricciones —como prohibir usar el modelo para entrenar o mejorar sistemas de IA competidores, o exigir licencia negociada para desplegarlo en productos que compitan con las ofertas de Lightricks— que no cumplirían con la definición de código abierto de la Open Source Initiative. Lightricks cerró el issue como \"not planned\" sin responder al argumento de fondo. Es relevante para quien elija LTX Studio específicamente por su promesa de apertura: los términos reales tienen condiciones comerciales que un proyecto genuinamente de código abierto no impondría, y conviene revisar la licencia completa antes de asumir libertad total de uso.",
+      "source": "https://github.com/Lightricks/LTX-2/issues/13",
+      "sourceLabel": "GitHub — cuestionamiento a que la licencia de LTX-2 no cumple con la definición de código abierto",
+      "date": "2026-01-07"
+    }
+  ],
   "faq": [
     {
       "question": "¿LTX Studio tiene app móvil?",
