@@ -35,6 +35,14 @@
       "body": "Si ya trabajas cómodo en la terminal y quieres un agente de código abierto con libertad para elegir el modelo detrás (incluidos modelos locales), Qwen Code es una opción sólida a considerar junto a alternativas como Kimi Code. Si prefieres un editor completo con interfaz gráfica integrada, Devin Desktop, Cursor o GitHub Copilot dentro de tu IDE habitual pueden sentirse más cómodos.\n\nLa elección depende de tu flujo de trabajo: terminal y scripts favorecen a Qwen Code; un entorno visual integrado favorece a los editores completos de esta lista."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "Una reseña técnica independiente publicada el 26 de agosto de 2025 identificó una limitación concreta de Qwen Code en tareas del mundo real: el modelo Qwen3 Coder que lo impulsa \"lacks the deep reasoning and planning capabilities of top-tier models\" (carece de las capacidades profundas de razonamiento y planificación de los modelos de primer nivel), rindiendo bien en tareas de programación directas pero teniendo dificultades con problemas complejos de varios pasos que requieren inferencia implícita. En una prueba concreta de implementación sobre un repositorio real de GitHub, el autor observó que el agente \"followed the explicit instructions well but failed to infer the implicit dependencies required\" (siguió bien las instrucciones explícitas, pero no logró inferir las dependencias implícitas necesarias) para completar correctamente la tarea. La reseña también señala un detalle heredado de la interfaz de Gemini CLI (de la que deriva Qwen Code): chistes que se muestran durante los tiempos de espera, que el autor describe como una distracción menor. Es útil saber esto antes de delegarle a Qwen Code una tarea que dependa de entender relaciones no explícitas entre partes del código: conviene revisar con más atención el resultado en esos casos, en vez de asumir que infiere el contexto completo del proyecto.",
+      "source": "https://elite-ai-assisted-coding.dev/p/qwen-code-tool-review",
+      "sourceLabel": "Elite AI-Assisted Coding — reseña técnica de Qwen Code y sus límites de razonamiento",
+      "date": "2025-08-26"
+    }
+  ],
   "faq": [
     {
       "question": "¿Qwen Code es gratis?",

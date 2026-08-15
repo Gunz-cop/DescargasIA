@@ -32,6 +32,14 @@
       "body": "Runway y Luma compiten en generación de video, pero pueden sentirse distintos según el tipo de resultado, interfaz y modelos activos. Canva, por su parte, es más fuerte para diseño y piezas listas para publicar, no necesariamente para generación de video avanzada.\n\nSi tu búsqueda es video IA creativo, Runway merece estar en la lista corta. Si solo necesitas adaptar una pieza gráfica o crear contenido rápido, Canva puede ser más simple. Si quieres comparar modelos de video, revisa también Luma Dream Machine."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 27 de febrero de 2026 se presentó Businessing LLC v. Runway AI, Inc., la cuarta demanda por copyright contra Runway en poco más de un mes, según cobertura especializada en litigios de IA publicada el 2 de marzo de 2026. Tres de las cuatro demandas contra Runway (Businessing, Ace Cam y Gardner, presentadas por distintos demandantes en distintos tribunales) alegan violaciones de anti-elusión de la DMCA vinculadas a videos de YouTube que Runway habría usado para entrenar sus modelos de IA. Estas tres demandas se sumaron a un litigio previo y más conocido, Andersen v. Stability AI (iniciado en 2023), donde a Runway se lo acusa específicamente de infracción de copyright inducida por distribuir modelos de Stable Diffusion presuntamente infractores a terceros; ese reclamo contra Runway fue autorizado a avanzar más allá de la etapa de desestimación. Según la cobertura, la demanda de Businessing eleva a 86 el total de demandas por copyright presentadas contra empresas de IA en Estados Unidos. Es relevante para quien use Runway comercialmente: el origen de los datos de entrenamiento del modelo es objeto de litigio activo en múltiples frentes, no un asunto legal ya resuelto.",
+      "source": "https://chatgptiseatingtheworld.com/2026/03/02/runway-ai-sued-yet-again-for-alleged-dmca-violation-in-4th-copyright-case-against-it/",
+      "sourceLabel": "ChatGPT Is Eating The World — cuarta demanda por copyright contra Runway AI en poco más de un mes",
+      "date": "2026-03-02"
+    }
+  ],
   "faq": [
     {
       "question": "¿Runway tiene app oficial para PC?",

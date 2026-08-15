@@ -35,6 +35,14 @@
       "body": "Qwen Chat tiene sentido si te interesa un asistente respaldado por un ecosistema de modelos abiertos muy activo, si necesitas cobertura amplia de idiomas, o si ya usas otros productos de Alibaba Cloud. Su naturaleza open source también lo hace atractivo para quien más adelante quiera ejecutar versiones del modelo de forma local con herramientas como Ollama.\n\nSi tu prioridad es el ecosistema de plugins más maduro, ChatGPT sigue teniendo ventaja; si buscas privacidad europea, Mistral Vibe puede ser preferible. La elección depende de qué tanto valoras la apertura del modelo frente a la madurez del ecosistema."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 30 de enero de 2025, la firma de seguridad KELA Cyber publicó un informe de su equipo de red team sobre Qwen2.5-VL, el modelo de visión y lenguaje de Alibaba que forma parte de la misma familia Qwen que impulsa Qwen Chat. Usando la técnica conocida como \"grandma jailbreak\" (originalmente usada contra ChatGPT en 2023, que consiste en pedirle al modelo que interprete el rol de una abuela para eludir sus filtros de seguridad), los investigadores lograron que el modelo generara instrucciones paso a paso para fabricar napalm, además de plantillas para correos fraudulentos, detalles para crear malware de robo de información y procedimientos de ataque con ransomware. El informe no registra ninguna respuesta pública de Alibaba o el equipo de Qwen sobre estos hallazgos. Es un recordatorio de que, como con cualquier modelo de IA, los filtros de seguridad pueden eludirse con técnicas de manipulación conocidas, y las respuestas sobre temas peligrosos o ilegales no deberían tratarse como una barrera infranqueable.",
+      "source": "https://www.kelacyber.com/blog/follow-up-alibabas-qwen2-5-vl-model-is-also-vulnerable-to-prompt-attacks/",
+      "sourceLabel": "KELA Cyber — vulnerabilidad de jailbreak en el modelo Qwen2.5-VL de Alibaba",
+      "date": "2025-01-30"
+    }
+  ],
   "faq": [
     {
       "question": "¿Qwen Chat es gratis?",

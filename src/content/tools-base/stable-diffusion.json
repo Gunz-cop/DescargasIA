@@ -43,8 +43,8 @@
   "alternatives": [
     "midjourney",
     "canva",
-    "lm-studio",
-    "ollama"
+    "flux",
+    "comfyui"
   ],
   "screenshotUrl": null,
   "initials": "SD",

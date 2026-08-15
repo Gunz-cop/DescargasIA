@@ -35,6 +35,14 @@
       "body": "Dreamina con Seedance tiene sentido cuando buscás generación de video con tomas largas, sincronización de audio y capacidad de combinar varias referencias en un mismo clip, todo dentro de un ecosistema que se integra naturalmente con CapCut para edición posterior. Es una opción sólida para quien ya usa herramientas de ByteDance o quiere probar uno de los modelos de video más recientes del mercado.\n\nSi preferís una plataforma con sede fuera de China o buscás opciones específicas como generación de video a partir de una sola imagen con mucho control creativo, Kling AI, Hailuo AI, Runway o Luma Dream Machine son alternativas directas a comparar."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 16 de febrero de 2026, ByteDance prometió públicamente \"strengthen current safeguards\" (reforzar las salvaguardas actuales) de Seedance 2.0 después de que el modelo desatara una ola de contenido viral que reproducía personajes e imágenes de figuras reales protegidas por derechos de autor. Uno de los clips más virales mostraba a Brad Pitt peleando a golpes con Tom Cruise mientras discutían sobre Jeffrey Epstein, y acumuló más de 3,2 millones de reproducciones en X; según el cineasta irlandés Ruairi Robinson, otra versión de esa pelea se generó con solo dos líneas de prompt. El guionista de \"Deadpool\", Rhett Reese, reaccionó públicamente: \"I hate to say it. It's likely over for us\" (odio decirlo, pero probablemente se terminó para nosotros), agregando que estaba \"terrified\" (aterrado) por el avance de la IA sobre el trabajo creativo. Un creador de contenido también compartió una comparación lado a lado entre una escena de la película \"F1\" (2025) y una recreación casi idéntica generada con Seedance. Algunos usuarios describieron el lanzamiento como el \"momento DeepSeek\" de Hollywood, en referencia al impacto que tuvo DeepSeek en las acciones tecnológicas de Silicon Valley. Si generás contenido con Seedance que reproduce personajes, actores o escenas reconocibles de propiedad de terceros, tené en cuenta que el uso comercial de ese tipo de contenido es un terreno de disputa activa, no algo legalmente resuelto.",
+      "source": "https://www.nbcnews.com/tech/tech-news/seedance-2-bytedance-copyright-infringement-concerns-hollywood-rcna259173",
+      "sourceLabel": "NBC News — ByteDance responde a las preocupaciones de infracción de copyright con Seedance 2.0",
+      "date": "2026-02-16"
+    }
+  ],
   "faq": [
     {
       "question": "¿Dónde se descarga Seedance?",

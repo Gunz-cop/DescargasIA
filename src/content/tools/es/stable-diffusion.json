@@ -32,6 +32,14 @@
       "body": "La señal más importante es el origen. Si el enlace no apunta a GitHub del proyecto, a la web oficial del gestor o a documentación reconocida, conviene desconfiar. También hay que tener cuidado con páginas que prometen modelos premium, versiones portables milagrosas o paquetes que evitan instalar dependencias sin explicar qué contienen.\n\nStable Diffusion puede ser una excelente opción si quieres control local, privacidad y personalización. Pero no es la alternativa más simple para quien solo necesita crear una imagen rápida. En ese caso, servicios como Midjourney o Canva pueden ser más directos. Si eliges la ruta local, empieza por una fuente oficial, lee los requisitos y evita descargar ejecutables anónimos."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 4 de noviembre de 2025, el Tribunal Superior (High Court) de Londres emitió el primer fallo del Reino Unido sobre infracción de copyright vinculada al entrenamiento de modelos de IA generativa: Getty Images v Stability AI. Getty había acusado a Stability AI de entrenar el modelo Stable Diffusion con millones de imágenes de su sitio web sin autorización, y de que las marcas de agua de Getty aparecieran en algunas imágenes generadas por el modelo. La jueza Joanna Smith desestimó el reclamo de infracción secundaria de copyright, determinando que el propio modelo Stable Diffusion no constituye una \"copia infractora\" a los efectos legales del Reino Unido, aunque el desarrollo del modelo haya implicado reproducir obras con derechos de autor durante el entrenamiento. Sin embargo, el reclamo por infracción de marca registrada sí prosperó parcialmente: el tribunal encontró infracción de marca porque la marca de agua de Getty apareció en resultados de muestra generados por versiones tempranas de Stable Diffusion. Un aspecto clave del fallo es que la territorialidad importa: como el entrenamiento del modelo ocurrió fuera del Reino Unido, el tribunal no pudo considerar reclamos de infracción primaria de copyright sobre ese entrenamiento. Es relevante saber que la legalidad del origen de los datos de entrenamiento de Stable Diffusion sigue siendo un terreno legal en disputa según la jurisdicción, no un asunto resuelto de forma universal.",
+      "source": "https://www.pinsentmasons.com/out-law/news/gettys-copyright-case-against-stability-ai-fails",
+      "sourceLabel": "Pinsent Masons — fallo del Tribunal Superior de Londres en Getty Images v Stability AI",
+      "date": "2025-11-04"
+    }
+  ],
   "faq": [
     {
       "question": "¿Stable Diffusion tiene una app oficial para Windows?",
