@@ -12,22 +12,22 @@
       "lastChecked": "2026-08-12"
     },
     "windows": {
-      "url": "https://downloader.cursor.sh/windows/nsis/x64",
+      "url": "https://cursor.com/downloads",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-15"
     },
     "mac": {
-      "url": "https://downloader.cursor.sh/mac/dmg/x64",
+      "url": "https://cursor.com/downloads",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-15"
     },
     "linux": {
-      "url": "https://downloader.cursor.sh/linux/appImage/x64",
+      "url": "https://cursor.com/downloads",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-15"
     }
   },
   "pricingModel": "freemium",

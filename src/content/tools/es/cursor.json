@@ -13,8 +13,9 @@
     "Puede sugerir implementaciones incorrectas con confianza aparente, especialmente en lógica de negocio compleja."
   ],
   "safetyNotes": [
-    "Descarga Cursor únicamente desde cursor.com o su subdominio de descarga seguro downloader.cursor.sh."
+    "Descarga Cursor únicamente desde cursor.com/downloads, la página oficial que detecta tu sistema operativo automáticamente."
   ],
+  "editorialSummary": "Cursor es uno de los editores de código con IA más adoptados por desarrolladores profesionales, construido como fork de VS Code para integrar asistencia de IA directamente en el flujo de trabajo. Esta ficha aclara desde el inicio que no es un asistente de uso general y enlaza solo al canal oficial de descarga, dado el riesgo particular de instalar una versión modificada de una herramienta con acceso directo a tu código.",
   "editorialSections": [
     {
       "heading": "Por qué los programadores buscan descargar Cursor",
@@ -22,7 +23,7 @@
     },
     {
       "heading": "Cómo descargar Cursor desde el canal oficial",
-      "body": "Cursor se distribuye exclusivamente desde cursor.com y el subdominio de descarga downloader.cursor.sh. El instalador está disponible para Windows, macOS y Linux, y el proceso es similar al de instalar VS Code: descargas el instalador desde la web oficial, lo ejecutas y el editor queda listo con tu entorno habitual. Si tienes extensiones de VS Code, muchas son compatibles directamente con Cursor.\n\nEl riesgo específico en este caso no son tanto los APKs falsos sino los repositorios de terceros que redistribuyen versiones modificadas del instalador. Cursor tiene acceso a tu código y a tu entorno de desarrollo, por lo que instalar una versión no oficial implica un riesgo de seguridad más serio que con otras herramientas. El único origen confiable es cursor.com, y eso es lo que esta ficha enlaza."
+      "body": "Cursor se distribuye exclusivamente desde cursor.com/downloads. El instalador está disponible para Windows, macOS y Linux, y el proceso es similar al de instalar VS Code: descargas el instalador desde la web oficial, lo ejecutas y el editor queda listo con tu entorno habitual. Si tienes extensiones de VS Code, muchas son compatibles directamente con Cursor.\n\nEl riesgo específico en este caso no son tanto los APKs falsos sino los repositorios de terceros que redistribuyen versiones modificadas del instalador. Cursor tiene acceso a tu código y a tu entorno de desarrollo, por lo que instalar una versión no oficial implica un riesgo de seguridad más serio que con otras herramientas. El único origen confiable es cursor.com, y eso es lo que esta ficha enlaza."
     },
     {
       "heading": "Qué cambia cuando la IA está dentro del editor",
@@ -56,7 +57,7 @@
     },
     {
       "question": "¿Dónde descargo Cursor de forma segura?",
-      "answer": "El único canal oficial es cursor.com y el subdominio downloader.cursor.sh. No descargues instaladores de repositorios de terceros ni sitios de descarga no oficiales, ya que Cursor tiene acceso a tu entorno de desarrollo."
+      "answer": "El único canal oficial es cursor.com/downloads. No descargues instaladores de repositorios de terceros ni sitios de descarga no oficiales, ya que Cursor tiene acceso a tu entorno de desarrollo."
     },
     {
       "question": "¿Cursor funciona en Linux?",
