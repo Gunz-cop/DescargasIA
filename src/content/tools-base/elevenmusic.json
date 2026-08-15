@@ -1,0 +1,44 @@
+{
+  "name": "ElevenMusic",
+  "officialWebsite": "https://elevenlabs.io/music",
+  "categories": [
+    "musica-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://elevenlabs.io/music",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/elevenmusic-by-elevenlabs/id6755965224",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "generacion-de-musica",
+    "elevenlabs",
+    "musica-ia",
+    "audio"
+  ],
+  "alternatives": [
+    "suno",
+    "udio",
+    "aiva",
+    "elevenlabs"
+  ],
+  "screenshotUrl": null,
+  "initials": "EM",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-15",
+  "officialSources": [
+    "https://elevenlabs.io/music",
+    "https://elevenlabs.io/blog/introducing-music-v2",
+    "https://help.elevenlabs.io/hc/en-us/articles/46215135979537-What-is-ElevenMusic"
+  ]
+}

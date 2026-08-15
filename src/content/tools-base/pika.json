@@ -1,0 +1,36 @@
+{
+  "name": "Pika",
+  "officialWebsite": "https://pika.art",
+  "categories": [
+    "video-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://pika.art",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "generacion-de-video",
+    "efectos-de-video",
+    "pikaffects",
+    "video-social"
+  ],
+  "alternatives": [
+    "runway",
+    "kling-ai",
+    "luma-dream-machine",
+    "hailuo-ai"
+  ],
+  "screenshotUrl": null,
+  "initials": "PKA",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-15",
+  "officialSources": [
+    "https://pika.art"
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Workspace de IA todo en uno con agentes que crean presentaciones, documentos, imágenes y video, además de un navegador propio con IA integrada.",
+  "longDescription": "Genspark es una plataforma que reúne múltiples herramientas de IA bajo un mismo workspace: generación de presentaciones, hojas de cálculo, documentos, imágenes, video y música, un \"Super Agent\" capaz de ejecutar tareas autónomas de varios pasos, y un navegador de escritorio propio (Genspark Browser) con capacidades agentic integradas.",
+  "bestFor": [
+    "Generar presentaciones, documentos o hojas de cálculo a partir de una instrucción en lenguaje natural",
+    "Delegar tareas autónomas de varios pasos a un agente de IA, como investigar un tema y compilar un informe",
+    "Centralizar varias funciones de IA (texto, imagen, video, código) en un mismo workspace en vez de usar herramientas separadas",
+    "Navegar con un asistente de IA integrado directamente en el navegador para comparar precios o completar tareas web"
+  ],
+  "limitations": [
+    "El sistema de créditos puede resultar difícil de predecir: hay reportes de tareas fallidas que igualmente consumieron créditos, y de límites de uso introducidos sin aviso claro después de contratar un plan.",
+    "El navegador propio de Genspark (Genspark Browser) mostró en pruebas independientes de seguridad un desempeño muy por debajo de navegadores tradicionales en la detección de sitios de phishing (ver la sección de comunidad más arriba).",
+    "Al conectar Genspark con proveedores externos de IA (OpenAI, Anthropic, Google, xAI, ElevenLabs) para procesar tus solicitudes, información sensible puede terminar enrutada a esos terceros, algo a tener en cuenta con datos confidenciales."
+  ],
+  "safetyNotes": [
+    "Si usas el navegador Genspark, no asumas que tiene la misma protección contra sitios de phishing que Chrome o Edge: pruebas independientes encontraron una tasa de detección mucho menor.",
+    "Revisa con atención los términos de facturación antes de suscribirte, especialmente si el plan promete uso \"ilimitado\": hubo reportes de límites aplicados después sin aviso claro.",
+    "Usa únicamente genspark.ai y las páginas oficiales de descarga enlazadas en esta ficha para acceder al servicio y al navegador."
+  ],
+  "editorialSummary": "Genspark apuesta por concentrar decenas de herramientas de IA —desde presentaciones hasta un navegador propio— bajo un mismo workspace con agentes autónomos. Esta ficha también documenta un hallazgo de seguridad concreto: una prueba independiente encontró que el navegador de Genspark bloqueó apenas el 7% de sitios de phishing conocidos, muy por debajo de navegadores tradicionales.",
+  "editorialSections": [
+    {
+      "heading": "Un workspace, muchas herramientas",
+      "body": "A diferencia de una herramienta enfocada en una sola tarea, Genspark reúne generación de presentaciones (AI Slides), hojas de cálculo (AI Sheets), documentos (AI Docs), correo (GenMail), y generación de imagen, video, música y código dentro de un mismo espacio de trabajo. El \"Super Agent\" puede encargarse de tareas de varios pasos de forma más autónoma que un chat tradicional.\n\nEsta amplitud es también su principal diferencia frente a herramientas más especializadas de este catálogo: en vez de elegir una herramienta para cada tarea, Genspark apuesta a que uses una sola plataforma para todo, con la contrapartida de que ninguna función individual suele ser tan profunda como la de una herramienta dedicada exclusivamente a esa tarea."
+    },
+    {
+      "heading": "El navegador propio y su desempeño de seguridad",
+      "body": "Además del workspace web, Genspark ofrece un navegador de escritorio descargable para Windows y Mac (Genspark Browser), con capacidades agentic integradas: puede navegar de forma autónoma, comparar precios, bloquear anuncios y ejecutar modelos de IA de código abierto localmente en tu computadora.\n\nSin embargo, una prueba de seguridad independiente encontró que ese navegador tiene una protección contra sitios de phishing muy por debajo de navegadores establecidos como Chrome o Edge (ver el detalle exacto en la sección de comunidad más arriba). Si vas a usar el navegador de Genspark como reemplazo de tu navegador principal, conviene mantener una capa de seguridad adicional (un bloqueador de phishing independiente) hasta que ese desempeño mejore."
+    },
+    {
+      "heading": "Genspark frente a Manus y Gamma",
+      "body": "Genspark compite con Manus en el terreno de agentes autónomos que ejecutan tareas de varios pasos, y con Gamma en la generación de presentaciones. La diferencia es de alcance: Genspark intenta cubrir ambos casos de uso (y varios más) dentro de la misma plataforma, mientras que Manus y Gamma están más enfocados en su función específica.\n\nSi tu prioridad es una sola función hecha muy bien (por ejemplo, presentaciones pulidas), una herramienta especializada como Gamma puede rendir mejor. Si prefieres centralizar varias tareas de IA distintas en un mismo lugar y estás dispuesto a aceptar que ninguna sea la más profunda de su categoría, Genspark tiene sentido."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Un análisis de seguridad independiente publicado por LayerX el 30 de enero de 2026 sometió a prueba el navegador de Genspark contra 100 campañas de phishing activas y encontró que Genspark bloqueó apenas el 7% de esos sitios maliciosos, frente al 54% que bloqueó Microsoft Edge y el 47% que bloqueó Google Chrome en la misma prueba. El artículo señala explícitamente que Genspark \"does not implement Google's Safe Browsing protections, which are standard security features available to Chromium-based browsers\" (no implementa las protecciones Safe Browsing de Google, funciones de seguridad estándar disponibles en navegadores basados en Chromium), y concluye que \"this 93% failure rate places Genspark users at dramatically higher risk compared to traditional browsers\" (esta tasa de fallo del 93% expone a los usuarios de Genspark a un riesgo dramáticamente mayor comparado con navegadores tradicionales). Es información directamente relevante para quien esté evaluando instalar el navegador de escritorio de Genspark, no solo usar el workspace web: si decidís usarlo como navegador principal, conviene mantener una herramienta de seguridad de navegador independiente hasta que esa protección mejore, y evitar usarlo para acceder a sitios sensibles como banca en línea sin una capa de protección adicional.",
+      "source": "https://layerxsecurity.com/generative-ai/genspark-risks-and-vulnerabilities/",
+      "sourceLabel": "LayerX Security — análisis de riesgos y vulnerabilidades del navegador Genspark",
+      "date": "2026-01-30"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Genspark es lo mismo que su navegador?",
+      "answer": "No exactamente. Genspark es primero un workspace web con agentes de IA para presentaciones, documentos, imagen, video y más. Además, ofrece un navegador de escritorio descargable (Genspark Browser) como producto complementario."
+    },
+    {
+      "question": "¿Es seguro usar el navegador de Genspark?",
+      "answer": "Una prueba independiente de LayerX encontró que el navegador bloqueó solo el 7% de sitios de phishing conocidos, muy por debajo de Chrome o Edge. Si lo usas, mantén una capa de seguridad adicional, especialmente para sitios sensibles."
+    },
+    {
+      "question": "¿Genspark es gratis?",
+      "answer": "Ofrece un nivel gratuito con funciones limitadas y planes de pago para uso más avanzado. Revisa con atención los términos de facturación antes de suscribirte, ya que hay reportes de límites aplicados después de la contratación."
+    },
+    {
+      "question": "¿Mis datos quedan seguros al usar Genspark?",
+      "answer": "Genspark puede enrutar tus solicitudes a través de proveedores externos de IA (OpenAI, Anthropic, Google, xAI, ElevenLabs) para procesarlas, lo que significa que información sensible puede terminar compartida con esos terceros."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

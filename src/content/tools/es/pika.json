@@ -1,0 +1,61 @@
+{
+  "shortDescription": "Generador de video con IA conocido por sus efectos creativos (Pikaffects) y herramientas de edición rápida orientadas a contenido para redes sociales.",
+  "longDescription": "Pika es una plataforma de generación de video con IA que convierte texto, imágenes o clips existentes en videos cortos, con un fuerte énfasis en efectos creativos y estilizados (como transformar un objeto o una persona con efectos visuales llamativos) pensados para contenido de redes sociales, más que para producción cinematográfica realista.",
+  "bestFor": [
+    "Aplicar efectos visuales llamativos y estilizados a fotos o clips existentes (Pikaffects)",
+    "Crear video corto para redes sociales con un flujo de trabajo rápido",
+    "Experimentar con estilos anime o ilustrados, donde Pika suele rendir mejor que en fotorrealismo",
+    "Generar contenido de tendencia rápidamente con herramientas asistidas como AI Trendmaker"
+  ],
+  "limitations": [
+    "Los videos generados suelen durar entre 3 y 5 segundos, un límite claro para narrativa más larga o continua.",
+    "La resolución 1080p y otras funciones avanzadas están bloqueadas detrás del plan Pro; el plan gratuito incluye marca de agua visible en los videos generados.",
+    "El costo en créditos por generación puede variar según el modelo usado, y la documentación de ayuda del sitio no siempre refleja las tarifas del modelo más reciente, lo que dificulta calcular de antemano cuántos videos rinde un plan (ver la sección de comunidad más arriba)."
+  ],
+  "safetyNotes": [
+    "Usa únicamente pika.art para acceder al servicio.",
+    "Antes de suscribirte a un plan pago, hacé una generación de prueba con el modelo actual para confirmar el costo real en créditos: la sección de ayuda del sitio puede mostrar tarifas de un modelo anterior."
+  ],
+  "editorialSummary": "Pika fue una de las primeras herramientas en popularizar los efectos de video generados por IA para redes sociales, con capacidades como transformar objetos o personas con efectos visuales llamativos. Frente a competidores más recientes enfocados en fotorrealismo y videos más largos, Pika sigue siendo fuerte en su nicho original, pero esta ficha también documenta vacíos de transparencia verificados en su sistema de créditos y en sus propios términos de servicio.",
+  "editorialSections": [
+    {
+      "heading": "Efectos creativos, no solo generación realista",
+      "body": "La seña de identidad de Pika son sus \"Pikaffects\": efectos visuales estilizados que se aplican sobre una foto o un clip, pensados para contenido llamativo y de tendencia en redes sociales, más que para producción audiovisual realista. Esto la distingue de competidores como Kling AI o Runway, que apuntan más a fotorrealismo y control cinematográfico.\n\nSi tu objetivo es contenido corto, divertido y con estética reconocible para plataformas como TikTok o Instagram, Pika suele encajar bien en ese nicho específico. Para producción con aspiraciones de realismo o narrativa más larga, otras herramientas de este catálogo pueden rendir mejor."
+    },
+    {
+      "heading": "Duración corta y funciones detrás del plan Pro",
+      "body": "La mayoría de los videos generados con Pika duran entre 3 y 5 segundos, lo que limita su uso para narrativa continua o proyectos que necesitan tomas más largas. Los clips llegan sin audio por defecto, así que agregar sonido requiere un paso adicional dentro del flujo de la herramienta.\n\nLa resolución completa en 1080p y otras funciones avanzadas están reservadas al plan Pro; el uso gratuito incluye una marca de agua visible en los resultados, lo que limita su uso profesional o comercial directo sin pagar."
+    },
+    {
+      "heading": "Pika frente a Kling AI, Runway y Luma",
+      "body": "Pika compite con Kling AI, Runway y Luma Dream Machine en generación de video con IA, pero con un enfoque distinto: mientras esas herramientas priorizan fotorrealismo, duración más larga y control cinematográfico, Pika sigue siendo más fuerte en estilización, efectos llamativos y velocidad para contenido corto.\n\nSi necesitas calidad fotorrealista o videos más largos con coherencia narrativa, Kling AI o Runway suelen rendir mejor. Si tu prioridad es un efecto visual creativo y rápido para redes sociales, Pika sigue siendo una opción directa dentro de su nicho."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Un análisis independiente de los precios de Pika, publicado el 10 de agosto de 2026, documentó vacíos de transparencia concretos en el sistema de créditos. Pika publica el costo en créditos de su modelo Pika 2.5 en la página de precios, pero \"the FAQ contains no entry for Pika 2.5\" (las preguntas frecuentes no tienen ninguna entrada para Pika 2.5): la sección de ayuda solo muestra cifras del modelo anterior, 2.2, que cobra 6 créditos por un video de 720p y 5 segundos, frente a los 20 créditos que cobra el modelo actual 2.5 por el mismo tipo de generación, una diferencia sustancial para cualquiera que intente calcular su presupuesto de antemano. El análisis calcula que \"a 700-credit Standard allowance reads as 116 generations against the first number and 35 against the second\" (una asignación de 700 créditos del plan Standard equivale a 116 generaciones según la primera cifra, o a 35 según la segunda), es decir, más del triple de diferencia según qué cifra de la propia documentación de Pika consultes. El artículo también documentó que existen \"two conflicting Terms of Service documents\" (dos documentos de Términos de Servicio contradictorios, fechados en febrero y agosto de 2026), y que la política de vencimiento de créditos tiene \"three different published answers\" (tres respuestas distintas publicadas), sin que quede claro tampoco si los derechos comerciales sobre el contenido generado sobreviven a la cancelación del plan. Es relevante para quien evalúe un plan pago de Pika: antes de suscribirte, hacé el cálculo vos mismo con una generación real al costo actual, y no confíes en las cifras de créditos por generación que aparecen en la sección de ayuda del sitio, porque pueden estar desactualizadas respecto al modelo vigente.",
+      "source": "https://future-stack-reviews.com/pika-labs-review/",
+      "sourceLabel": "Future Stack Reviews — análisis del sistema de precios y créditos de Pika",
+      "date": "2026-08-10"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Cuánto duran los videos generados con Pika?",
+      "answer": "La mayoría de los videos duran entre 3 y 5 segundos. Es una limitación clara frente a herramientas orientadas a clips más largos."
+    },
+    {
+      "question": "¿Pika es gratis?",
+      "answer": "Tiene un nivel gratuito con créditos limitados y marca de agua en los resultados. El plan Pro desbloquea resolución 1080p y otras funciones, pero revisa bien el consumo de créditos antes de suscribirte."
+    },
+    {
+      "question": "¿Cuántos videos rinde un plan pago de Pika?",
+      "answer": "Depende del modelo que uses: un análisis independiente encontró que la propia documentación de ayuda del sitio mostraba tarifas de créditos desactualizadas, lo que puede hacer que un plan rinda menos generaciones de las que esperabas. Confirmá el costo real con una prueba antes de suscribirte."
+    },
+    {
+      "question": "¿Pika es mejor que Kling AI o Runway para video realista?",
+      "answer": "No es su punto fuerte. Pika se destaca más en efectos estilizados y contenido corto para redes sociales; para fotorrealismo y videos más largos, Kling AI o Runway suelen rendir mejor."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

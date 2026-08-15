@@ -1,0 +1,61 @@
+{
+  "shortDescription": "Generador de música con IA de ElevenLabs, entrenado con contenido con licencia desde el inicio, disponible como app de iOS y en la web.",
+  "longDescription": "ElevenMusic es la plataforma de generación musical de ElevenLabs (la empresa detrás de la clonación de voz con IA más conocida del sector). Permite crear, escuchar y remezclar canciones a partir de instrucciones en lenguaje natural, con un catálogo de miles de artistas independientes, y se distingue de competidores como Suno o Udio en un punto clave: sus creadores afirman que el modelo fue entrenado exclusivamente con contenido con licencia desde el principio.",
+  "bestFor": [
+    "Generar canciones completas a partir de una descripción en lenguaje natural",
+    "Remezclar o explorar música ya generada por otros usuarios dentro de la plataforma",
+    "Crear música con licencia comercial clara, gracias a acuerdos de licenciamiento anunciados desde el lanzamiento",
+    "Usar una app dedicada de iOS para generar música sobre la marcha, sin depender solo de la web"
+  ],
+  "limitations": [
+    "El plan gratuito limita la generación a 7 canciones por día; para un uso más intensivo se necesita el plan Pro.",
+    "La versión web funciona dentro del sistema unificado de créditos de ElevenLabs, compartido con las demás herramientas de la empresa (voz, efectos de sonido), lo que puede consumirse más rápido si ya usas otros productos de ElevenLabs.",
+    "Es un producto relativamente nuevo (lanzado en 2026): el catálogo de artistas y las funciones de remezcla todavía están en expansión frente a competidores más establecidos como Suno o Udio."
+  ],
+  "safetyNotes": [
+    "Usa únicamente elevenlabs.io/music o la app oficial de iOS para acceder al servicio.",
+    "Aunque ElevenLabs declara que su modelo fue entrenado solo con contenido licenciado, revisa igual los términos de uso comercial vigentes antes de monetizar una canción generada, ya que las condiciones pueden variar según el plan."
+  ],
+  "editorialSummary": "ElevenMusic entra a competir con Suno y Udio en generación musical con una estrategia distinta: en vez de defenderse de demandas de las discográficas por usar música protegida sin permiso, ElevenLabs anunció acuerdos de licenciamiento desde el lanzamiento. Esta ficha explica esa diferencia y lo que implica para quien busca generar música sin dolores de cabeza legales.",
+  "editorialSections": [
+    {
+      "heading": "De la clonación de voz a la generación musical",
+      "body": "ElevenLabs se hizo conocida principalmente por su tecnología de clonación y síntesis de voz, usada en doblaje, narración y asistentes de voz. ElevenMusic es su expansión hacia la generación musical completa: a partir de una descripción en lenguaje natural, el sistema genera una canción con letra, melodía e instrumentación.\n\nLa plataforma también funciona como un espacio de descubrimiento: incluye un catálogo de miles de artistas independientes cuya música puedes escuchar, y ofrece herramientas para remezclar canciones ya generadas dentro del mismo ecosistema, no solo crear desde cero."
+    },
+    {
+      "heading": "La apuesta por el entrenamiento con licencia",
+      "body": "A diferencia de Suno y Udio, que enfrentaron demandas de las grandes discográficas por presuntamente entrenar sus modelos con música protegida sin autorización, ElevenLabs afirma que su modelo de música \"fue entrenado con contenido con licencia desde el principio\", respaldado por acuerdos anunciados con Merlin Network (el organismo de licenciamiento de sellos independientes) y Kobalt Music Group.\n\nEsta estrategia responde directamente a la controversia legal que atravesó a sus competidores, y puede ser un factor relevante si planeás usar música generada con IA en un contexto comercial donde el origen legal de los datos de entrenamiento te preocupa."
+    },
+    {
+      "heading": "ElevenMusic frente a Suno y Udio",
+      "body": "ElevenMusic, Suno y Udio compiten en el mismo espacio de generación musical con IA a partir de texto, pero con historias de origen distintas: Suno y Udio llegaron primero y todavía litigan o recién llegaron a acuerdos con las discográficas tras demandas; ElevenMusic llegó después con licencias anunciadas desde el lanzamiento.\n\nSi ya usas otras herramientas de ElevenLabs (voz, efectos de sonido), ElevenMusic se integra al mismo sistema de créditos y cuenta, lo que puede ser cómodo. Si buscas el catálogo más maduro o las funciones más probadas en generación musical, Suno y Udio llevan más tiempo en el mercado y tienen una base de usuarios más grande."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En 2026, ElevenLabs relanzó Eleven Music como plataforma de consumo (el producto había aparecido originalmente en agosto de 2025 como herramienta de producción), con un catálogo de más de 4.000 artistas independientes y planes de precio de un nivel gratuito (7 canciones por día) o Pro a 9,99 dólares mensuales (500 pistas al mes). A diferencia de Suno y Udio, que enfrentaron demandas de Sony Music, Universal Music Group y Warner por presuntamente entrenar sus modelos con grabaciones protegidas sin autorización, ElevenLabs sostiene que su modelo \"was trained on cleared content from the start\" (fue entrenado con contenido con licencia desde el principio), respaldado por acuerdos de licenciamiento anunciados con Kobalt y Merlin, dos organismos de derechos musicales independientes, el mismo día del lanzamiento. En paralelo a este lanzamiento, la empresa de gestión de derechos de Taylor Swift, TAS Rights Management, presentó tres solicitudes de marca registrada ante la Oficina de Patentes y Marcas de Estados Unidos: dos que cubren clips de audio de su voz, y una que cubre una fotografía de escenario, con el objetivo declarado de proteger su voz e imagen frente a réplicas de IA no autorizadas y deepfakes. El actor Matthew McConaughey, que presentó solicitudes similares, explicó la motivación detrás de este tipo de medidas: \"create a clear perimeter around ownership with consent and attribution the norm in an AI world\" (crear un perímetro claro de propiedad, donde el consentimiento y la atribución sean la norma en un mundo con IA). Es relevante para quien use ElevenMusic: aunque el modelo esté entrenado con contenido licenciado, la protección legal de voces e imágenes de figuras públicas frente a la IA generativa sigue siendo un terreno activo de disputa a través de otros mecanismos, como el registro de marcas.",
+      "source": "https://www.pymnts.com/artificial-intelligence-2/2026/elevenlabs-opened-a-music-store-while-taylor-swift-lawyered-up/",
+      "sourceLabel": "PYMNTS — ElevenLabs lanza su tienda de música mientras Taylor Swift refuerza la protección legal de su voz",
+      "date": "2026-04-30"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿ElevenMusic tiene app para iPhone?",
+      "answer": "Sí, hay una app oficial de iOS llamada \"ElevenMusic: Create AI Songs\", publicada por ElevenLabs, Inc. También se puede usar desde la web en elevenlabs.io/music."
+    },
+    {
+      "question": "¿ElevenMusic es gratis?",
+      "answer": "Tiene un nivel gratuito con un límite de 7 canciones por día. El plan Pro, de 9,99 dólares mensuales, permite generar hasta 500 pistas al mes."
+    },
+    {
+      "question": "¿Es legal usar música generada con ElevenMusic comercialmente?",
+      "answer": "ElevenLabs afirma que su modelo fue entrenado con contenido licenciado desde el inicio, respaldado por acuerdos con Kobalt y Merlin Network. Aun así, revisa los términos de uso comercial vigentes de tu plan antes de monetizar una canción generada."
+    },
+    {
+      "question": "¿En qué se diferencia ElevenMusic de Suno o Udio?",
+      "answer": "La diferencia principal está en el origen de los datos de entrenamiento: mientras Suno y Udio enfrentaron demandas de discográficas por presunto uso no autorizado de música protegida, ElevenLabs declara haber licenciado el contenido de entrenamiento desde el lanzamiento del producto."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

@@ -1,0 +1,61 @@
+{
+  "shortDescription": "Plataforma de diseño con IA que genera imágenes, vectores editables (SVG reales) y mockups a partir de texto, con fuerte control de estilo.",
+  "longDescription": "Recraft es una herramienta de generación de imágenes con IA enfocada en diseño: además de imágenes fotorrealistas, es una de las pocas que genera vectores SVG reales y editables (no un simple trazado automático), junto con mockups y activos de marca listos para usar. Su modelo V3 llamó la atención por superar a competidores establecidos en un benchmark independiente de calidad de imagen.",
+  "bestFor": [
+    "Generar logos, íconos e ilustraciones como vectores SVG editables, no solo imágenes rasterizadas",
+    "Crear mockups y activos de marca consistentes a partir de una descripción de texto",
+    "Producir imágenes fotorrealistas o en estilos artísticos específicos con buen entendimiento del prompt",
+    "Diseñar piezas visuales sin depender de un editor de vectores tradicional para el resultado inicial"
+  ],
+  "limitations": [
+    "Las apps móviles tienen menos funciones que la versión web: herramientas como el escalado (upscaling), edición avanzada, presets de modelo e inpainting solo están completas en el navegador.",
+    "Recraft prohíbe explícitamente descargar tus propias imágenes de forma masiva con métodos programáticos (scripts o automatización); hacerlo puede derivar en la suspensión permanente de la cuenta, y no ofrece una alternativa oficial para descargar un portfolio grande de una sola vez.",
+    "El sistema de comentarios y reporte de problemas vive en un foro de terceros poco conocido por los usuarios, lo que genera baja participación y demoras en la resolución de fallos reportados."
+  ],
+  "safetyNotes": [
+    "Usa únicamente recraft.ai para acceder al servicio.",
+    "Si administras un portfolio grande de imágenes generadas, planifica descargarlas manualmente de a una: automatizar ese proceso viola los términos del servicio y puede suspender tu cuenta sin previo aviso."
+  ],
+  "editorialSummary": "Recraft se distingue del resto de los generadores de imágenes de este catálogo por una función poco común: vectores SVG reales y editables, no solo imágenes planas. Es una herramienta técnicamente sólida, pero esta ficha también documenta limitaciones reales de soporte y una política de descarga masiva que puede sorprender a quien administra muchas imágenes generadas.",
+  "editorialSections": [
+    {
+      "heading": "Lo que distingue a Recraft: vectores editables de verdad",
+      "body": "La mayoría de los generadores de imágenes con IA producen archivos rasterizados (PNG, JPG). Recraft es una de las pocas herramientas que puede generar directamente archivos SVG editables, con capas organizadas y trazados limpios, lo que resulta útil para logos, íconos e ilustraciones que después necesitas ajustar en un editor de vectores tradicional sin perder calidad al escalar.\n\nSu modelo V3 llamó la atención en octubre de 2024 al superar a Midjourney y DALL-E de OpenAI en un benchmark de calidad de imagen evaluado por la comunidad, según cobertura de TechCrunch, lo que ayudó a posicionar a Recraft como una opción seria dentro de la categoría, no solo un generador más."
+    },
+    {
+      "heading": "La versión móvil no es la versión completa",
+      "body": "Si planeas usar Recraft principalmente desde el celular, conviene saber que las apps móviles no tienen paridad de funciones con la web: herramientas importantes como el escalado de imagen, la edición avanzada, los presets de modelo y el inpainting (rellenar o modificar partes específicas de una imagen) solo están completas en el navegador.\n\nEsto obliga a muchos usuarios a depender de la versión web para el flujo de trabajo completo, y a usar el móvil solo para tareas puntuales o para revisar resultados generados previamente."
+    },
+    {
+      "heading": "Descarga masiva: una limitación que puede sorprender",
+      "body": "Recraft prohíbe explícitamente que los usuarios descarguen sus propias imágenes generadas de forma masiva usando scripts o métodos programáticos, y el personal de soporte confirmó que hacerlo puede derivar en la suspensión permanente de la cuenta. Al momento de esta revisión, la empresa no ofrecía una alternativa oficial para exportar un portfolio grande de una sola vez, lo que obliga a descargar cada imagen manualmente.\n\nSi planeas generar un volumen alto de imágenes y necesitas exportarlas todas periódicamente, conviene tener en cuenta esta limitación antes de comprometerte con un plan anual, ya que puede volverse un trabajo manual considerable con el tiempo."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Una reseña independiente y detallada de Recraft, con una actualización agregada en febrero de 2025 y el cuerpo principal fechado el 29 de julio de 2025, documentó varios problemas concretos reportados por una usuaria que compró una suscripción anual durante una oferta de Black Friday. Sobre la política de descarga: \"the platform explicitly prohibits users from using any programmatic methods to download their created images in bulk, with staff confirming that such actions could result in permanent account suspension\" (la plataforma prohíbe explícitamente que los usuarios usen métodos programáticos para descargar sus imágenes creadas de forma masiva, y el personal confirmó que esas acciones podrían derivar en la suspensión permanente de la cuenta). Al consultar por alternativas para exportar un portfolio grande, \"no solutions were provided\" (no se ofreció ninguna solución), forzando la descarga manual de cada imagen. Sobre soporte y desarrollo, la reseña describe que \"updates are pushed without proper testing or user feedback\" (las actualizaciones se publican sin pruebas adecuadas ni retroalimentación de usuarios), que el sistema de reporte de problemas está \"relegated to a third-party forum many users don't know exists\" (relegado a un foro de terceros que muchos usuarios no saben que existe), y que la plataforma \"lacks clear direction, with no public roadmap\" (carece de dirección clara, sin una hoja de ruta pública). La autora concluyó: \"I regret not thoroughly testing the platform's limitations before committing to a year-long purchase\" (me arrepiento de no haber probado a fondo las limitaciones de la plataforma antes de comprometerme con una compra de un año). Es útil saber esto antes de comprometerte con un plan anual de Recraft: probá el flujo completo de trabajo, incluida la exportación de varias imágenes, antes de pagar por adelantado un año completo.",
+      "source": "https://queencaffeineai.com/post/790379200014073856/recraft-ai-review-powerful-tech-but-is-it-worth",
+      "sourceLabel": "Queen Caffeine AI — reseña de Recraft con actualización sobre la política de descarga masiva",
+      "date": "2025-07-29"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Recraft genera vectores SVG editables de verdad?",
+      "answer": "Sí, es una de sus características distintivas: puede generar archivos SVG con capas y trazados editables, no solo imágenes rasterizadas convertidas después."
+    },
+    {
+      "question": "¿Puedo descargar todas mis imágenes de Recraft de una vez?",
+      "answer": "No hay una función oficial para exportación masiva, y usar scripts o métodos programáticos para automatizar la descarga viola los términos del servicio y puede suspender tu cuenta. La descarga debe hacerse imagen por imagen."
+    },
+    {
+      "question": "¿La app móvil de Recraft tiene las mismas funciones que la web?",
+      "answer": "No. Funciones como el escalado, la edición avanzada, los presets de modelo y el inpainting solo están completas en la versión web."
+    },
+    {
+      "question": "¿Recraft es gratis?",
+      "answer": "Ofrece un plan con créditos gratuitos limitados y planes de pago con más créditos mensuales y funciones adicionales. Revisa las condiciones vigentes en recraft.ai antes de suscribirte, especialmente si evalúas un plan anual."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

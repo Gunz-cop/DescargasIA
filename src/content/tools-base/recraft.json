@@ -1,0 +1,38 @@
+{
+  "name": "Recraft",
+  "officialWebsite": "https://www.recraft.ai",
+  "categories": [
+    "generacion-imagenes"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://www.recraft.ai",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "generacion-de-imagenes",
+    "vectores",
+    "diseno",
+    "svg",
+    "mockups"
+  ],
+  "alternatives": [
+    "midjourney",
+    "ideogram",
+    "leonardo-ai",
+    "krea-ai"
+  ],
+  "screenshotUrl": null,
+  "initials": "RCF",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-15",
+  "officialSources": [
+    "https://www.recraft.ai",
+    "https://www.recraft.ai/about"
+  ]
+}

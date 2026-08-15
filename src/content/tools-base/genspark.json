@@ -1,0 +1,49 @@
+{
+  "name": "Genspark",
+  "officialWebsite": "https://www.genspark.ai",
+  "categories": [
+    "asistentes-ia",
+    "productividad-presentaciones-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://www.genspark.ai",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    },
+    "windows": {
+      "url": "https://www.genspark.ai/browser",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    },
+    "mac": {
+      "url": "https://www.genspark.ai/browser",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "agentes-de-ia",
+    "workspace-todo-en-uno",
+    "presentaciones",
+    "automatizacion"
+  ],
+  "alternatives": [
+    "manus",
+    "gamma-app",
+    "notion",
+    "microsoft-copilot"
+  ],
+  "screenshotUrl": null,
+  "initials": "GSP",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-15",
+  "officialSources": [
+    "https://www.genspark.ai"
+  ]
+}
