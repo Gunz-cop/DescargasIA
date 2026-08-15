@@ -32,6 +32,14 @@
       "body": "Runway y Luma Dream Machine compiten en el espacio de video generativo, pero cada una puede destacar según modelo, interfaz, calidad, velocidad y tipo de control. Para un creador, lo más sensato es probar ambas desde sus canales oficiales y comparar resultados con el mismo prompt o idea.\n\nSi necesitas diseño gráfico rápido, Canva puede ser más simple. Si buscas imagen estática estilizada, Midjourney o Stable Diffusion pueden ser más adecuados. Luma tiene sentido cuando la salida esperada es movimiento, escena o video corto."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 19 de junio de 2024, un tráiler generado con Dream Machine para un proyecto llamado \"Monster Camp\" generó señalamientos públicos porque uno de los personajes se parecía marcadamente a Mike Wazowski, de la película Monsters, Inc. de Disney Pixar. La cobertura del caso señala que esto reavivó las dudas habituales sobre los datos de entrenamiento de los modelos de video con IA: \"whether they were created in the style of Pixar and whether their training data includes works from Disney Studios. The lack of transparency is one of the biggest concerns people have about these models\" (si fueron creados al estilo de Pixar y si sus datos de entrenamiento incluyen obras de Disney Studios; la falta de transparencia es una de las mayores preocupaciones sobre estos modelos). No hubo una demanda formal por parte de Disney contra Luma AI —a diferencia de las demandas que sí presentó Disney contra Midjourney (2025) y MiniMax (2025)—, y según la cobertura del momento, Disney ni siquiera había comentado públicamente sobre el caso. Es relevante saber que, aunque no exista una demanda confirmada específicamente contra Luma AI, el riesgo de que un video generado se parezca demasiado a un personaje protegido por derechos de autor es real y aplica a cualquier herramienta de video con IA: conviene revisar cuidadosamente el resultado antes de usarlo comercialmente si incluye personajes con apariencia reconocible.",
+      "source": "https://www.aibase.com/news/9659",
+      "sourceLabel": "aibase.com — señalamientos sobre un video de Dream Machine similar a un personaje de Disney Pixar",
+      "date": "2024-06-19"
+    }
+  ],
   "faq": [
     {
       "question": "¿Luma Dream Machine tiene app para Windows?",

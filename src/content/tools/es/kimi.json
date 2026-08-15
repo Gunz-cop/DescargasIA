@@ -35,6 +35,14 @@
       "body": "Si tu trabajo implica frecuentemente documentos muy extensos —investigación, análisis legal, revisión de contratos largos— Kimi puede tener una ventaja concreta sobre asistentes con ventanas de contexto más limitadas. Si además programas y quieres una herramienta de terminal, Kimi Code es una opción a considerar junto a Qwen Code o Devin Desktop.\n\nPara uso conversacional general sin necesidad de documentos extremadamente largos, ChatGPT, Claude o Qwen Chat pueden ofrecer una experiencia igual de sólida con ecosistemas de plugins más maduros en algunos casos."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 21 de abril de 2026, Kimi reveló por error el currículum privado de un usuario a otro usuario distinto durante una tarea rutinaria de traducción, exponiendo nombre, teléfono e historial laboral completo. El caso fue documentado y verificado por el OECD AI Incidents Monitor (un registro independiente de incidentes de IA de la OCDE), que lo clasifica como un incidente de IA confirmado —no un riesgo potencial— con violación de los principios de privacidad y gobernanza de datos, y de seguridad digital. Según cobertura periodística del caso, el personal de Kimi lo describió inicialmente como una \"alucinación\" del modelo, pero los datos filtrados eran reales y verificables, lo que apunta más bien a una falla de aislamiento entre sesiones de distintos usuarios que a una invención del modelo. La página del OECD no registra ninguna declaración pública de Moonshot AI (la empresa detrás de Kimi) sobre el incidente ni sus medidas de remediación. Es un motivo concreto para no compartir documentos con información personal sensible —currículums, contratos, historiales médicos— en Kimi hasta tener más claridad sobre cómo se resolvió el problema de aislamiento de datos entre usuarios.",
+      "source": "https://oecd.ai/en/incidents/2026-04-21-8c79",
+      "sourceLabel": "OECD AI Incidents Monitor — filtración del currículum de un usuario a otro usuario en Kimi",
+      "date": "2026-04-21"
+    }
+  ],
   "faq": [
     {
       "question": "¿Kimi es gratis?",

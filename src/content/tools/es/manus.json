@@ -35,6 +35,14 @@
       "body": "Manus tiene sentido cuando la tarea es lo suficientemente compleja como para beneficiarse de un agente que planifique varios pasos en lugar de responder una sola pregunta: investigación con múltiples fuentes, construcción de un prototipo, automatización de un proceso repetitivo. Para conversaciones puntuales o tareas simples, un asistente conversacional tradicional suele ser más rápido y directo.\n\nSi el foco es específicamente programar dentro de un editor de código, Devin Desktop o Cursor están más orientados a ese flujo. Si el objetivo es un entorno de desarrollo completo en la nube, Replit es otra alternativa a considerar según el tipo de proyecto."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 30 de diciembre de 2025, Meta anunció la adquisición de Manus por más de 2.000 millones de dólares, según el Wall Street Journal. Manus nació en 2022 como Butterfly Effect, una startup con oficinas en Pekín y Wuhan, y trasladó su sede a Singapur tras recibir inversión de la firma Benchmark; en abril de 2025 había recaudado 75 millones de dólares a una valuación de 500 millones. Al momento de la adquisición, Manus había servido a millones de usuarios y empresas, procesado más de 147 billones de tokens, generado más de 80 millones de \"computadoras virtuales\", y alcanzado 100 millones de dólares de ingresos recurrentes anuales apenas ocho meses después de su lanzamiento. Xiao Hong, cofundador y CEO de Manus, se incorporó a Meta reportando al director de operaciones Javier Olivan, junto con unos 100 empleados, la mayoría en Singapur. Meta declaró que su intención es \"continue operating and selling the Manus service while integrating the technology into its own suite of products\" (seguir operando y vendiendo el servicio de Manus mientras integra la tecnología en su propia suite de productos). Para quien ya usa Manus, esto significa que la herramienta sigue funcionando igual por ahora, pero forma parte de Meta desde fines de 2025, lo cual puede implicar cambios futuros en su independencia, sus políticas de datos o su integración con productos de Meta AI.",
+      "source": "https://finance.yahoo.com/news/meta-acquire-ai-agent-company-120839836.html",
+      "sourceLabel": "Yahoo Finance — Meta adquiere la empresa de agentes de IA Manus por más de 2.000 millones de dólares",
+      "date": "2025-12-30"
+    }
+  ],
   "faq": [
     {
       "question": "¿Manus tiene aplicación oficial de escritorio?",

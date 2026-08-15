@@ -35,6 +35,14 @@
       "body": "Vibe puede ser una buena opción si te interesa apoyar modelos abiertos, priorizas la privacidad de tus datos o ya usas otras herramientas de Mistral en tu flujo de trabajo. También es una alternativa válida si buscas variedad frente a los asistentes más conocidos.\n\nSi tu prioridad es el ecosistema más maduro de plugins e integraciones, ChatGPT sigue teniendo ventaja; si buscas redacción extensa muy pulida, Claude suele destacar. Compara según el caso de uso, no solo por moda."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 28 de abril de 2026, el OECD AI Incidents Monitor (registro independiente de incidentes de IA de la OCDE) catalogó un estudio de NewsGuard según el cual Le Chat de Mistral \"relayed disinformation in over 50% of cases\" (repitió desinformación en más del 50% de los casos) al ser consultado sobre afirmaciones falsas provenientes de campañas de propaganda estatal rusa, china e iraní. Entre los ejemplos citados, medios franceses reportaron que al preguntarle sobre un supuesto brote de tifus en el portaaviones Charles de Gaulle o sobre un \"avión del apocalipsis\" vinculado a la canciller alemana —ambas historias fabricadas— Le Chat respondió incorrectamente aproximadamente la mitad de las veces. No hay declaración pública de Mistral documentada sobre este estudio específico. Es un recordatorio directo de que, como cualquier chatbot de IA, las respuestas de Le Chat sobre eventos noticiosos recientes o polémicos pueden repetir desinformación circulante en lugar de corregirla, así que conviene verificar afirmaciones sorprendentes en fuentes periodísticas primarias antes de darlas por ciertas.",
+      "source": "https://oecd.ai/en/incidents/2026-04-28-e382",
+      "sourceLabel": "OECD AI Incidents Monitor — estudio de NewsGuard sobre desinformación repetida por Le Chat de Mistral",
+      "date": "2026-04-28"
+    }
+  ],
   "faq": [
     {
       "question": "¿Le Chat de Mistral sigue existiendo?",
