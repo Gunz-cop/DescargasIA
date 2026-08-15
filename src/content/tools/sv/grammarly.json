@@ -1,0 +1,65 @@
+{
+  "shortDescription": "AI-baserad skrivassistent för grammatik, stavning och ton, med webbläsartillägg, datorapp och mobilklaviatur.",
+  "longDescription": "Grammarly är en skrivassistent som kontrollerar grammatik, stavning, ton och tydlighet i realtid, oavsett var du skriver — i webbläsaren, i ett dokument eller på mobilens tangentbord. Verktyget är främst inriktat på engelska texter, med förslag som sträcker sig från enkla stavfel till omskrivningar för en mer professionell eller avslappnad ton. Den här sidan länkar enbart till Grammarlys officiella kanaler: webbapp, datorinstallerare för Windows och macOS, samt de officiella apparna för Android och iOS.",
+  "bestFor": [
+    "Kontrollera grammatik, stavning och interpunktion i realtid medan du skriver på engelska",
+    "Justera tonen i ett meddelande eller dokument, från formellt till avslappnat, med AI-förslag",
+    "Använda skrivhjälpen direkt i webbläsaren via tillägget, oavsett vilken sajt eller app du skriver i",
+    "Skriva med AI-stöd direkt från mobilens tangentbord genom den officiella appen"
+  ],
+  "limitations": [
+    "Grammarly är främst optimerat för engelska; stödet för svenska och andra språk är begränsat jämfört med den engelska funktionaliteten.",
+    "De mest avancerade AI-skrivfunktionerna och en högre gräns för förslag per månad kräver ofta en betald prenumeration utöver gratisnivån.",
+    "Tillägget kräver behörighet att läsa text på sidor du besöker för att fungera, vilket är värt att känna till innan man installerar det på enheter med känslig information."
+  ],
+  "safetyNotes": [
+    "Installera Grammarly enbart från grammarly.com/desktop för dator eller de officiella butikerna för mobil och webbläsartillägg. Undvik tredjepartssajter som erbjuder \"Grammarly Premium gratis\".",
+    "Granska webbläsartilläggets behörigheter innan installation, särskilt om du använder Grammarly på enheter där du skriver känslig eller konfidentiell information."
+  ],
+  "editorialSummary": "Grammarly har länge varit ett av de mest använda skrivverktygen för engelska texter, och har vidareutvecklats med AI-funktioner för omskrivning och tonanpassning. Vi länkar enbart till de officiella kanalerna för webb, dator och mobil, och påminner om att verktyget fortfarande är starkast för engelska.",
+  "editorialSections": [
+    {
+      "heading": "Mer än en vanlig stavningskontroll",
+      "body": "Grammarly gick från att vara en enkel stavnings- och grammatikkontroll till en fullständig AI-skrivassistent som kan föreslå omskrivningar för klarhet, kortare meningar, eller en annan ton beroende på sammanhang — ett mejl till en kollega kräver en annan ton än ett formellt dokument.\n\nDenna utveckling gör Grammarly användbart genom hela skrivprocessen, från de första grundläggande felen till finjustering av hur texten faktiskt låter för läsaren, snarare än att bara flagga rena fel."
+    },
+    {
+      "heading": "Fungerar där du redan skriver",
+      "body": "En stor del av Grammarlys värde kommer från webbläsartillägget, som ger förslag direkt i mejl, sociala medier, dokument och nästan vilken textruta som helst online, utan att du behöver kopiera texten till ett separat verktyg. Samma funktionalitet finns i den officiella datorappen och i mobilens tangentbord.\n\nDenna integrering i det dagliga skrivflödet, snarare än att kräva ett separat steg för korrekturläsning, är en av de största anledningarna till att så många väljer att behålla Grammarly installerat kontinuerligt istället för att bara använda det ibland."
+    },
+    {
+      "heading": "Engelska är fortfarande starkast",
+      "body": "Grammarly utvecklades ursprungligen specifikt för engelska, och det märks fortfarande: stödet för svenska och andra språk är betydligt mer begränsat än den engelska funktionaliteten. Den som huvudsakligen skriver på svenska bör därför inte förvänta sig samma djup i förslagen som på engelska.\n\nFör svensk grammatik och stavning kan andra verktyg som är specifikt byggda för flera språk, som LanguageTool, ge mer träffsäkra förslag, medan Grammarly fortfarande är ett starkt val specifikt för engelska texter."
+    },
+    {
+      "heading": "När Grammarly passar och när man bör jämföra andra alternativ",
+      "body": "Grammarly passar utmärkt för den som regelbundet skriver på engelska — mejl till internationella kollegor, akademiska texter, eller innehåll för en engelskspråkig publik — och vill ha kontinuerlig hjälp med grammatik, ton och tydlighet.\n\nOm ditt huvudsakliga skrivande sker på svenska, är LanguageTool eller DeepL Write troligen bättre anpassade för att fånga språkspecifika fel och nyanser som Grammarly inte är optimerat för."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En rapport publicerad den 28 januari 2026 av Incogni, som analyserade 442 AI-baserade Chrome-tillägg, rankade Grammarlys webbläsartillägg — tillsammans med QuillBot — som det potentiellt mest integritetsskadliga bland tillägg med miljontals nedladdningar. Enligt rapporten samlar Grammarly in \"website content, personal communications, and user activity data\" (webbinnehåll, personlig kommunikation och användaraktivitetsdata), inklusive interaktionsmönster som tangenttryckningar, skrollning och navigering, och kräver behörigheter av typen \"scripting\" och \"activeTab\" som möjliggör kodinjicering på sidor och tillfällig åtkomst till den aktiva fliken. Rapporten preciserar att risken för missbruk bedöms som låg för båda verktygen, men placerar dem ändå högst upp på listan \"due to the breadth of access and the scale of their installed base\" (på grund av åtkomstens omfattning och den installerade användarbasens storlek). Det bekräftar i praktiken varför det, som denna sida också påpekar i säkerhetsavsnittet nedan, är värt att fundera över hur mycket åtkomst till sidans text du är beredd att ge innan du installerar tillägget på en enhet där du skriver känslig information.",
+      "source": "https://www.helpnetsecurity.com/2026/01/28/incogni-chrome-extensions-privacy-risks-report/",
+      "sourceLabel": "Help Net Security — Incognis rapport om integritetsrisker hos AI-baserade Chrome-tillägg",
+      "date": "2026-01-28"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Fungerar Grammarly bra för svenska texter?",
+      "answer": "Grammarly är främst byggt för engelska. Stödet för svenska är betydligt mer begränsat, så för svensk text kan ett verktyg som LanguageTool ge bättre resultat."
+    },
+    {
+      "question": "Har Grammarly en officiell datorapp?",
+      "answer": "Ja, för Windows och macOS, nedladdningsbar direkt från grammarly.com/desktop."
+    },
+    {
+      "question": "Är Grammarly gratis?",
+      "answer": "Grundfunktionerna för grammatik och stavning är gratis. De mest avancerade AI-skrivfunktionerna kräver en betald prenumeration."
+    },
+    {
+      "question": "Är det säkert att installera Grammarlys webbläsartillägg?",
+      "answer": "Ja, om det installeras från den officiella webbläsarbutiken, men tillägget behöver läsbehörighet på sidor du besöker för att fungera — värt att tänka på om du hanterar känslig information."
+    }
+  ],
+  "swedishSupport": "partial"
+}

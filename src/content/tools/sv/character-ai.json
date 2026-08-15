@@ -1,0 +1,66 @@
+{
+  "shortDescription": "Plattform för att chatta med AI-karaktärer skapade av communityn eller dig själv, tillgänglig via webb, Android och iOS.",
+  "longDescription": "Character.AI är en plattform där du kan chatta med AI-karaktärer: historiska personer, fiktiva figurer, egna assistenter eller helt egna skapelser med en personlighet och samtalsstil definierad av den som skapat dem. Till skillnad från en generell chattbot som ChatGPT ligger fokus på den sammanhållna konversationen med en specifik karaktär, med minne av tidigare chatt och en ton som försöker hålla sig konsekvent med den karaktären. Den här sidan länkar enbart till den officiella webbplatsen och apparna publicerade av Character.AI i Google Play och App Store.",
+  "bestFor": [
+    "Chatta med karaktärer skapade av communityn eller skapa egna med en tydligt definierad personlighet",
+    "Öva på dialoger, kreativt skrivande eller textbaserat rollspel med en konsekvent karaktär",
+    "Använda en konversations-AI med en mer personlig ton än en generell chattbot",
+    "Utforska karaktärer baserade på historia, fiktion eller populärkultur i underhållningssyfte"
+  ],
+  "limitations": [
+    "Plattformen är inte tänkt som ett arbetsverktyg: fokus ligger på konversation och underhållning, inte uppgifter som programmering eller dokumentanalys.",
+    "Innehåll som genereras av karaktärerna kan vara inkonsekvent eller hitta på fakta, särskilt för karaktärer baserade på verkliga personer.",
+    "Vissa funktioner (snabbare svar, prioriterad åtkomst) kräver betalprenumerationen c.ai+; gratisanvändning kan ha hastighetsbegränsningar vid hög belastning."
+  ],
+  "safetyNotes": [
+    "Character.AI distribuerar ingen datorapp: använd enbart character.ai i webbläsaren eller de officiella apparna i Google Play och App Store, inte APK-filer från tredje part som utger sig för att vara \"Character AI Pro\" eller upplåsta versioner.",
+    "Karaktärerna genereras av AI och ersätter inte eget omdöme eller professionell rådgivning; plattformen påminner om att svaren är fiktiva, något värt att komma ihåg särskilt kring minderåriga användare.",
+    "Sedan slutet av november 2025 tillåter Character.AI inte längre öppna, fria konversationer för användare under 18 år, till följd av rättegångar kopplade till minderårigas självmord (se \"Vad communityn säger\" ovan för detaljer). Konton för minderåriga hänvisas istället till mer begränsade funktioner som berättarskapande och videogenerering."
+  ],
+  "editorialSummary": "Character.AI är en av de mest använda plattformarna för att chatta med AI-karaktärer, antingen skapade av andra användare eller egna, med fokus på sammanhållen konversation snarare än att lösa specifika uppgifter. Vi länkar enbart till den officiella webbplatsen och de verifierade apparna för Android och iOS, utan datorinstallerare eftersom varumärket inte distribuerar någon.",
+  "editorialSections": [
+    {
+      "heading": "Vad som skiljer den från en chattbot som ChatGPT",
+      "body": "De flesta generella AI-assistenter är byggda för att lösa uppgifter: svara på frågor, skriva text, programmera. Character.AI riktar sig mot ett annat behov — att hålla en konversation med en karaktär som behåller en igenkännbar personlighet över tid. Du kan chatta med en karaktär skapad av en annan användare eller designa din egen, och bestämma dess sätt att prata, bakgrundshistoria och samtalston.\n\nDenna skillnad i fokus förklarar varför så mycket av sökningarna kring verktyget handlar om att \"skapa AI-karaktär\" eller \"chatta med karaktärer\" snarare än att \"lösa en uppgift med AI\". Det är varken bättre eller sämre än en generell assistent, bara byggt för ett annat syfte."
+    },
+    {
+      "heading": "Webb, Android och iOS — ingen datorapp",
+      "body": "Character.AI fungerar via character.ai i vilken webbläsare som helst, och har officiella appar i både Google Play och App Store, publicerade av samma utvecklare. Det finns ingen officiell datorapp för Windows eller Mac vid den här granskningen: den som vill använda tjänsten på en dator gör det via webbläsaren.\n\nOm du hittar en \"Character AI-installerare för PC\" på en sajt som inte är character.ai, är den inte officiell. Det säkraste sättet att använda verktyget på en dator är fortfarande webbversionen."
+    },
+    {
+      "heading": "Så undviker du kopior och falska appar",
+      "body": "Namnet \"Character AI\" är generiskt, vilket gör att appbutikerna fylls med dussintals tredjepartsappar med liknande namn (\"AI Character Chat\", \"AI Character Generator\") som inte har någon koppling till den ursprungliga plattformen. Innan installation lönar det sig att kontrollera att utvecklaren som anges i appbutiken faktiskt är Character.AI, inte en generisk \"AI-karaktär\"-app.\n\nI Google Play heter den officiella appen \"Character AI: Chat, Talk, Text\"; i App Store finns den under samma namn publicerat av utvecklaren Character.AI. Varje variant som lovar att låsa upp c.ai+-prenumerationen gratis bör betraktas som misstänkt per definition."
+    },
+    {
+      "heading": "När man bör jämföra andra alternativ",
+      "body": "Om du behöver lösa uppgifter för jobb, studier eller programmering är en generell assistent som ChatGPT, Claude eller Gemini mer användbar än Character.AI, som inte är byggd för det syftet. Character.AI passar specifikt när målet är sammanhållen konversation med en definierad personlighet, oavsett om det handlar om underhållning, kreativt skrivande eller dialogövning.\n\nFör något mittemellan tillåter flera generella assistenter också viss anpassning av ton eller roll inom konversationen, men utan det community-drivna karaktärsekosystem som utmärker Character.AI."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Efter flera rättegångar och offentligt tryck kopplade till minst två tonåringars självmord efter långvariga chattbotskonversationer på plattformen, meddelade Character.AI att öppna, fria konversationer med AI-karaktärer skulle förbjudas för användare under 18 år. VD Karandeep Anand sa: \"we will remove the ability for under 18 users to engage in any open-ended chats with AI\" (\"vi kommer att ta bort möjligheten för användare under 18 år att delta i öppna chattar med AI\"). Utfasningen skedde stegvis fram till den 25 november 2025, med en daglig gräns på två timmar som gradvis sänktes till noll. Åldersverifieringen sker genom en kombination av beteendeanalys, tredjepartstjänsten Persona och, som sista utväg, ansiktsigenkänning eller ID-kontroll. Anand medgav att bolaget räknade med en betydande minskning av unga användare till följd av förändringen. Istället för öppna konversationer med AI-\"vänner\" hänvisas användare under 18 år till funktioner som berättarskapande, videogenerering och interaktiva scener. Detta är relevant att känna till särskilt för föräldrar eller den som skapar konton åt minderåriga: plattformens tidigare fria konversationsläge finns inte längre tillgängligt för den åldersgruppen.",
+      "source": "https://techcrunch.com/2025/10/29/character-ai-is-killing-the-chatbot-experience-for-minors/",
+      "sourceLabel": "TechCrunch — Character.AI inför chattbegränsningar för användare under 18 år",
+      "date": "2025-10-29"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Har Character.AI en officiell app för Windows eller Mac?",
+      "answer": "Nej, ingen officiell datorapp finns bekräftad vid den här granskningen. På dator rekommenderas webbversionen på character.ai."
+    },
+    {
+      "question": "Är det säkert att ladda ner Character.AI från Google Play eller App Store?",
+      "answer": "Ja, så länge du kontrollerar att den angivna utvecklaren är Character.AI och inte en tredjepartsapp med ett liknande namn."
+    },
+    {
+      "question": "Är Character.AI gratis?",
+      "answer": "Grundanvändningen är gratis. Prenumerationen c.ai+ lägger till snabbare svar och prioriterad åtkomst, men krävs inte för att använda plattformen."
+    },
+    {
+      "question": "Behöver jag ett konto för att använda Character.AI?",
+      "answer": "Ja, ett konto krävs för att chatta med karaktärer och spara konversationshistorik."
+    }
+  ],
+  "swedishSupport": "unknown"
+}

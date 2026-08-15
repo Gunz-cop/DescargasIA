@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Kinesisk AI-chattbot med öppna resoneringsmodeller (R1), helt gratis att använda via webb, Android och iOS.",
+  "longDescription": "DeepSeek är en AI-chattbot utvecklad av det kinesiska bolaget DeepSeek, känd för sina resoneringsmodeller (R1-serien) som visar tankeprocessen steg för steg innan svaret presenteras. Modellerna släpps dessutom som öppna vikter, vilket gjort DeepSeek populärt bland utvecklare som vill köra modellen lokalt eller integrera den i egna projekt. Den här sidan länkar enbart till de officiella kanalerna: webbappen på chat.deepseek.com samt de officiella apparna i Google Play och App Store.",
+  "bestFor": [
+    "Använda en gratis AI-chattbot utan betalvägg för de flesta funktioner",
+    "Se modellens resonemang steg för steg innan svaret presenteras, användbart vid matte eller logik",
+    "Testa öppna modeller (R1) som även kan laddas ner och köras lokalt av utvecklare",
+    "Jämföra svarskvalitet mot ChatGPT eller Claude på uppgifter som kräver resonemang"
+  ],
+  "limitations": [
+    "Som kinesisk tjänst kan DeepSeek omfattas av andra dataregler och innehållsbegränsningar än västerländska alternativ, något som väckt diskussion kring datalagring och integritet.",
+    "Svaren kan periodvis vara långsammare vid hög belastning på de officiella servrarna, särskilt för de mest avancerade resoneringsmodellerna.",
+    "Ingen officiell datorapp finns bekräftad vid den här granskningen: på dator sker allt via webbläsaren på chat.deepseek.com."
+  ],
+  "safetyNotes": [
+    "Installera bara DeepSeek-appen från Google Play eller App Store, aldrig från tredjepartssajter som erbjuder \"DeepSeek Pro gratis\" eller liknande APK-filer.",
+    "Om du planerar att köra R1-modellerna lokalt, ladda ner vikterna endast från DeepSecks officiella sida eller verifierade repon som Hugging Face, inte från oidentifierade speglingar."
+  ],
+  "editorialSummary": "DeepSeek gick från relativt okänt till global nyhet i början av 2025 tack vare sina öppna resoneringsmodeller och gratis tillgång, och fortsätter att vara ett av de mest sökta AI-alternativen 2026. Vi länkar enbart till de officiella kanalerna — webbappen och de verifierade mobilapparna — och flaggar de vanliga fällorna med falska APK-filer.",
+  "editorialSections": [
+    {
+      "heading": "Varför DeepSeek blev en snabb nyhet",
+      "body": "DeepSeeks R1-modell fick stor uppmärksamhet för att den visade jämförbar prestanda med betydligt dyrare modeller från större labb, samtidigt som den är öppen och gratis att använda. Det ledde till en våg av intresse, inte bara bland vanliga användare utan även bland utvecklare som ville testa modellen lokalt eller bygga vidare på den.\n\nDenna kombination av öppenhet och prestanda är fortfarande DeepSecks tydligaste särdrag: du kan använda den precis som vilken annan chattbot som helst via appen, men du kan också ladda ner modellvikterna och köra dem själv om du har rätt hårdvara."
+    },
+    {
+      "heading": "Resonemang synligt, inte bara ett svar",
+      "body": "En del av det som gör DeepSeek användbar för matematik, kodning och logiska problem är att modellen kan visa sin tankeprocess innan den ger det slutgiltiga svaret. Det gör det lättare att följa var i resonemanget något eventuellt gick fel, till skillnad från en modell som bara levererar ett färdigt svar utan mellansteg.\n\nDet innebär inte att svaren alltid är korrekta — som med alla AI-modeller bör resultat med verkliga konsekvenser dubbelkollas — men den synliga tankeprocessen gör det enklare att bedöma hur pålitligt ett visst svar faktiskt är."
+    },
+    {
+      "heading": "Vad man bör tänka på kring integritet och ursprung",
+      "body": "Som en tjänst med huvudkontor i Kina lyder DeepSeek under andra regler för datalagring och innehållsmoderering än amerikanska eller europeiska alternativ, vilket lett till diskussion i flera länder om var användardata lagras och hur den hanteras. Det är inte i sig en anledning att undvika tjänsten, men värt att känna till innan man delar känslig information.\n\nFör den som vill ha samma tekniska kapacitet utan att skicka data till en extern server finns möjligheten att köra de öppna R1-modellerna lokalt, om man har tillräcklig hårdvara — ett alternativ som inte finns hos de flesta stängda AI-tjänster."
+    },
+    {
+      "heading": "När DeepSeek passar och när man bör jämföra andra alternativ",
+      "body": "DeepSeek passar bra för den som vill ha en kraftfull, gratis chattbot med starkt fokus på resonemang, matematik och kodning, och som inte har några invändningar mot att tjänsten drivs från Kina. Det är också ett naturligt val för utvecklare som vill experimentera med öppna modellvikter.\n\nOm integritet, dataregion eller innehållspolicy är avgörande faktorer kan ChatGPT, Claude eller Gemini vara bättre alternativ att jämföra med, eftersom de drivs av bolag baserade i USA under andra regelverk."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Den 29 januari 2025 avslöjade säkerhetsforskningsföretaget Wiz Research att en molndatabas kopplad till DeepSeek stod helt öppen på internet, utan autentisering. Genom två ovanliga öppna portar (8123 och 9000) på värdarna oauth2callback.deepseek.com och dev.deepseek.com kunde vem som helst köra godtyckliga SQL-frågor direkt via webbläsaren mot en ClickHouse-databas som innehöll över en miljon loggrader — inklusive användarnas chatthistorik, API-nycklar och interna driftsdetaljer. Enligt Wiz hade en angripare kunnat få full kontroll över databasen och potentiellt eskalera sina rättigheter i DeepSeeks miljö. Wiz rapporterade problemet direkt till DeepSeek, som enligt Wiz \"promptly secured the exposure\" (snabbt åtgärdade exponeringen), men artikeln anger inget exakt datum för när felet var fullständigt löst. Detta bekräftar i praktiken varför det är klokt att vara försiktig med känslig information i DeepSeek, precis som denna sida påpekar nedan under säkerhet.",
+      "source": "https://www.wiz.io/blog/wiz-research-uncovers-exposed-deepseek-database-leak",
+      "sourceLabel": "Wiz Research — upptäckt av en öppen DeepSeek-databas med chatthistorik och API-nycklar",
+      "date": "2025-01-29"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är DeepSeek gratis?",
+      "answer": "Ja, DeepSeek erbjuder gratis åtkomst till chattbotten via webb och mobilapp, utan betalväggar för de flesta funktioner."
+    },
+    {
+      "question": "Har DeepSeek en officiell app för Android och iOS?",
+      "answer": "Ja, båda apparna finns i respektive officiella butik. Installera aldrig APK-filer från tredjepartssajter som utger sig för att vara DeepSeek."
+    },
+    {
+      "question": "Kan jag köra DeepSeek lokalt på min egen dator?",
+      "answer": "Ja, R1-modellerna släpps med öppna vikter och kan laddas ner och köras lokalt om du har tillräcklig hårdvara, via officiella källor som Hugging Face."
+    },
+    {
+      "question": "Är det säkert att dela känslig information med DeepSeek?",
+      "answer": "Som med alla AI-tjänster bör du vara försiktig med känsliga uppgifter. Tänk på att DeepSeek, som en kinesisk tjänst, lyder under andra dataregler än västerländska alternativ."
+    }
+  ],
+  "swedishSupport": "unknown"
+}

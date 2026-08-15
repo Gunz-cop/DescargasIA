@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Agentisk kodredigerare från Cognition (tidigare Windsurf), med officiell installationsfil för Windows, Mac och Linux.",
+  "longDescription": "Devin Desktop är den agentiska kodredigeraren som tidigare hette Windsurf, nu en del av Cognitions Devin-varumärke efter förvärvet. Redigeraren låter en AI-agent (Cascade) utföra flerstegsuppgifter direkt i kodbasen — skriva, köra och felsöka kod över flera filer — snarare än att bara ge kodförslag rad för rad. Devin Desktop finns som officiell installationsfil för Windows, macOS och Linux, nedladdningsbar direkt från devin.ai.",
+  "bestFor": [
+    "Låta en AI-agent utföra flerstegsuppgifter i kodbasen, som att implementera en funktion över flera filer",
+    "Arbeta i en redigerare byggd specifikt kring agentiskt arbetsflöde snarare än enbart radvisa kodförslag",
+    "Fortsätta använda samma verktyg som tidigare hette Windsurf, nu under namnet Devin Desktop",
+    "Kombinera traditionell kodredigering med en agent som kan köra kommandon och felsöka automatiskt"
+  ],
+  "limitations": [
+    "Namnbytet från Windsurf till Devin Desktop efter Cognitions förvärv kan skapa förvirring för den som letar efter det gamla namnet eller den gamla webbplatsen.",
+    "Full åtkomst till de mest kraftfulla agentfunktionerna kräver oftast en betald prenumeration utöver en begränsad gratisnivå.",
+    "Som med alla agentiska kodverktyg bör resultat granskas innan de committas, särskilt vid uppgifter som rör produktionskod eller känslig infrastruktur."
+  ],
+  "safetyNotes": [
+    "Ladda ner Devin Desktop enbart från devin.ai/download. Sök inte efter \"Windsurf nedladdning\" på tredjepartssajter, eftersom det gamla namnet kan utnyttjas av oseriösa sajter efter namnbytet.",
+    "Granska alltid kodändringar som agenten föreslår innan de körs eller committas, särskilt när agenten ges åtkomst att köra kommandon eller ändra flera filer samtidigt."
+  ],
+  "editorialSummary": "Devin Desktop är den agentiska kodredigeraren som tidigare var känd som Windsurf, nu omdöpt efter att Cognition förvärvade produkten och integrerade den i sitt Devin-varumärke. Vi länkar till den officiella installationsfilen för Windows, Mac och Linux, och förklarar namnbytet för den som fortfarande söker efter Windsurf.",
+  "editorialSections": [
+    {
+      "heading": "Från Windsurf till Devin Desktop",
+      "body": "Redigeraren som idag heter Devin Desktop var tidigare känd som Windsurf, en av de mest omtalade agentiska kodredigerarna innan Cognition — bolaget bakom den autonoma agenten Devin — i juni 2026 slutförde integrationen av Windsurf i sitt eget varumärke. Grundfunktionaliteten och agenten Cascade finns kvar, men under en ny identitet, tillsammans med Devin Cloud, Devin CLI och Devin Review i samma ekosystem.\n\nDen som fortfarande minns eller söker efter \"Windsurf\" bör veta att det är samma verktyg, bara omdöpt — och att den officiella nedladdningen numera sker via devin.ai istället för den tidigare Windsurf-domänen."
+    },
+    {
+      "heading": "En agent, inte bara autokomplettering",
+      "body": "Det som skiljer Devin Desktop från traditionella kodredigerare med AI-stöd är fokuset på agentiskt arbete: istället för att bara föreslå nästa rad kod kan agenten Cascade ta emot en instruktion, planera de nödvändiga stegen, ändra flera filer och köra kommandon för att slutföra en uppgift.\n\nDenna nivå av autonomi gör redigeraren kraftfull för större, flerstegsuppgifter, men innebär också att man som utvecklare behöver vänja sig vid att granska agentens arbete snarare än att skriva varje rad själv."
+    },
+    {
+      "heading": "Installation på Windows, Mac och Linux",
+      "body": "Devin Desktop distribueras som en officiell installationsfil som fungerar på samtliga tre stora skrivbordsplattformar, nedladdningsbar direkt från devin.ai/download, där rätt binär väljs automatiskt: macOS för Apple Silicon eller Intel, Windows i x64 eller ARM64, och Linux med minimikrav på glibc som täcker distributioner som Ubuntu 20+, Debian 10+ eller Fedora 36+.\n\nEftersom redigeraren bygger vidare på samma grund som Windsurf gjorde, känns övergången bekant för den som redan använt den tidigare versionen, med samma kärnfunktioner men under ett nytt namn och varumärke."
+    },
+    {
+      "heading": "När Devin Desktop passar och när man bör jämföra andra alternativ",
+      "body": "Devin Desktop passar bra för utvecklare som vill ha en redigerare byggd specifikt kring agentiskt arbetsflöde, där AI:n kan ta sig an större uppgifter självständigt snarare än att bara ge radvisa förslag. Det är också ett naturligt val för den som redan var van vid Windsurf innan namnbytet.\n\nFör mer traditionell AI-assisterad kodredigering med starkt fokus på förslag rad för rad kan Cursor eller GitHub Copilot vara mer bekanta alternativ. För molnbaserad utveckling utan lokal installation är Replit ett annat alternativ att jämföra med."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "I juli 2025 utspelade sig en ovanlig affärshändelse bakom namnbytet: Google gjorde en \"reverse acquihire\" värd 2,4 miljarder dollar där Windsurfs VD Varun Mohan, medgrundaren Douglas Chen och flera forskningsledare rekryterades till Google DeepMind, bara timmar efter att ett konkurrerande bud från OpenAI på 3 miljarder dollar hade löpt ut (det budet föll enligt uppgift på att Windsurf ville hindra Microsoft, en stor OpenAI-investerare, från att få tillgång till dess teknik). Detta lämnade kvar merparten av det cirka 250 personer stora teamet utan ledning. Bara dagar senare, den 14 juli 2025, gick Cognition — bolaget bakom kodagenten Devin — in och förvärvade det som blev kvar av Windsurf: produkten, varumärket och teamet. Enligt Cognitions president Russell Kaplan gick förhandlingen ovanligt snabbt, \"first call after 5pm on Friday to a signed definitive agreement this morning\" (första samtalet efter klockan 17 på fredagen till ett undertecknat avtal på måndagsmorgonen). Till skillnad från Googles affär, där de nyanställda inte fick någon utbetalning, fick alla kvarvarande Windsurf-anställda enligt Cognition ta del av förvärvets ekonomiska värde, med vesting-villkor efterskänkta för tidigare arbete. Vid förvärvet hade Windsurf en årlig återkommande intäkt (ARR) på 82 miljoner dollar, över 350 företagskunder och hundratusentals dagliga användare. Affären återställde också Windsurfs tillgång till Anthropics Claude-modeller, som tillfälligt varit begränsad under processen.",
+      "source": "https://www.techcrunch.com/2025/07/14/cognition-maker-of-the-ai-coding-agent-devin-acquires-windsurf/",
+      "sourceLabel": "TechCrunch — Cognition förvärvar Windsurf efter Googles rekrytering av VD:n",
+      "date": "2025-07-14"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är Devin Desktop samma sak som Windsurf?",
+      "answer": "Ja, det är samma produkt under ett nytt namn efter att Cognition förvärvade Windsurf och integrerade den i sitt Devin-varumärke."
+    },
+    {
+      "question": "Var laddar man ner Devin Desktop?",
+      "answer": "Enbart från den officiella sidan devin.ai/download, tillgänglig för Windows, macOS och Linux."
+    },
+    {
+      "question": "Är Devin Desktop gratis?",
+      "answer": "Det finns en begränsad gratisnivå. Full åtkomst till de mest avancerade agentfunktionerna kräver oftast en betald prenumeration."
+    },
+    {
+      "question": "Kan agenten i Devin Desktop göra ändringar utan min tillåtelse?",
+      "answer": "Agenten kan föreslå och utföra flerstegsuppgifter, men det är alltid klokt att granska ändringar innan de committas till en produktionskodbas."
+    }
+  ],
+  "swedishSupport": "unknown"
+}

@@ -12,19 +12,19 @@
       "lastChecked": "2026-08-12"
     },
     "windows": {
-      "url": "https://github.com/blackforest-labs/flux",
+      "url": "https://github.com/black-forest-labs/flux",
       "type": "github-repo",
       "isOfficial": true,
       "lastChecked": "2026-08-12"
     },
     "mac": {
-      "url": "https://github.com/blackforest-labs/flux",
+      "url": "https://github.com/black-forest-labs/flux",
       "type": "github-repo",
       "isOfficial": true,
       "lastChecked": "2026-08-12"
     },
     "linux": {
-      "url": "https://github.com/blackforest-labs/flux",
+      "url": "https://github.com/black-forest-labs/flux",
       "type": "github-repo",
       "isOfficial": true,
       "lastChecked": "2026-08-12"
@@ -41,7 +41,8 @@
   ],
   "alternatives": [
     "stable-diffusion",
-    "midjourney"
+    "midjourney",
+    "comfyui"
   ],
   "screenshotUrl": null,
   "initials": "FL",
@@ -49,6 +50,6 @@
   "lastReviewed": "2026-08-12",
   "officialSources": [
     "https://blackforestlabs.ai",
-    "https://huggingface.co/blackforest-labs"
+    "https://huggingface.co/black-forest-labs"
   ]
 }

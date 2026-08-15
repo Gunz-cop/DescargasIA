@@ -46,7 +46,7 @@
     },
     {
       "question": "¿Dónde se descargan los archivos oficiales de Flux?",
-      "answer": "Los pesos oficiales del modelo se encuentran en la plataforma Hugging Face, en el perfil verificado 'blackforest-labs'. El código de desarrollo se encuentra alojado en su repositorio oficial de GitHub."
+      "answer": "Los pesos oficiales del modelo se encuentran en la plataforma Hugging Face, en el perfil verificado 'black-forest-labs'. El código de desarrollo se encuentra alojado en su repositorio oficial de GitHub."
     },
     {
       "question": "¿Cómo se usa Flux gratis online?",

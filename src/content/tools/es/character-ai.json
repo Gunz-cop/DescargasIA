@@ -14,7 +14,8 @@
   ],
   "safetyNotes": [
     "Character.AI no distribuye instaladores de escritorio: usa únicamente character.ai en el navegador o las apps oficiales de Google Play y App Store, no APKs de terceros que digan ser \"Character AI Pro\" o versiones desbloqueadas.",
-    "Los personajes son generados por IA y no reemplazan el criterio propio ni el consejo de un profesional; la plataforma incluye avisos de que las respuestas son ficticias, algo que conviene tener presente especialmente con menores de edad."
+    "Los personajes son generados por IA y no reemplazan el criterio propio ni el consejo de un profesional; la plataforma incluye avisos de que las respuestas son ficticias, algo que conviene tener presente especialmente con menores de edad.",
+    "Desde fines de noviembre de 2025, Character.AI ya no permite conversaciones abiertas y libres a usuarios menores de 18 años, a raíz de demandas vinculadas a suicidios de adolescentes (ver \"Qué dice la comunidad\" más arriba para más detalle). Las cuentas de menores quedan limitadas a funciones más acotadas, como creación de historias y generación de video."
   ],
   "editorialSummary": "Character.AI es una de las plataformas más buscadas para chatear con personajes de IA, ya sea creados por otros usuarios o propios, con foco en la conversación sostenida más que en resolver tareas puntuales. En FuenteAI enlazamos solo su web oficial y sus apps verificadas de Android e iOS, sin instaladores de escritorio porque la marca no distribuye ninguno.",
   "editorialSections": [
@@ -33,6 +34,14 @@
     {
       "heading": "Cuándo conviene mirar otras opciones",
       "body": "Si lo que buscas es resolver tareas de trabajo, estudio o programación, un asistente generalista como ChatGPT, Claude o Gemini va a ser más útil que Character.AI, que no está pensado para ese uso. Character.AI tiene sentido específicamente cuando el objetivo es la conversación sostenida con una personalidad definida, ya sea por entretenimiento, escritura creativa o práctica de diálogos.\n\nSi buscas algo intermedio, algunos asistentes generalistas también permiten personalizar un tono o rol dentro de la conversación, aunque sin el ecosistema de personajes creados por la comunidad que caracteriza a Character.AI."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Tras varias demandas y presión pública vinculadas a al menos dos suicidios de adolescentes tras conversaciones prolongadas con chatbots en la plataforma, Character.AI anunció que prohibiría las conversaciones abiertas y libres con personajes de IA a usuarios menores de 18 años. El CEO Karandeep Anand declaró: \"we will remove the ability for under 18 users to engage in any open-ended chats with AI\" (\"vamos a eliminar la posibilidad de que los usuarios menores de 18 años mantengan conversaciones abiertas con la IA\"). La transición se hizo de forma gradual hasta el 25 de noviembre de 2025, con un límite diario de dos horas que fue bajando hasta llegar a cero. La verificación de edad combina análisis de comportamiento, el servicio de terceros Persona y, como último recurso, reconocimiento facial o verificación de identidad. Anand reconoció que la empresa esperaba una caída significativa de usuarios menores de edad tras el cambio. En lugar de conversaciones abiertas con \"amigos\" de IA, los usuarios menores de 18 años quedan derivados a funciones como creación de historias, generación de video y escenas interactivas. Es un dato relevante especialmente para madres, padres o quien administre cuentas de menores: el modo de conversación libre que existía antes ya no está disponible para ese grupo de edad.",
+      "source": "https://techcrunch.com/2025/10/29/character-ai-is-killing-the-chatbot-experience-for-minors/",
+      "sourceLabel": "TechCrunch — Character.AI introduce restricciones de chat para menores de 18 años",
+      "date": "2025-10-29"
     }
   ],
   "faq": [
