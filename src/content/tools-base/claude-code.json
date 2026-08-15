@@ -1,0 +1,57 @@
+{
+  "name": "Claude Code",
+  "officialWebsite": "https://code.claude.com",
+  "categories": [
+    "programacion"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://claude.ai/code",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    },
+    "windows": {
+      "url": "https://code.claude.com/docs/en/overview",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    },
+    "mac": {
+      "url": "https://code.claude.com/docs/en/overview",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    },
+    "linux": {
+      "url": "https://code.claude.com/docs/en/overview",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "agente-de-codigo",
+    "terminal",
+    "anthropic",
+    "cli",
+    "vibe-coding"
+  ],
+  "alternatives": [
+    "qwen-code",
+    "cursor",
+    "devin-desktop",
+    "github-copilot"
+  ],
+  "screenshotUrl": null,
+  "initials": "CC",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-15",
+  "officialSources": [
+    "https://code.claude.com",
+    "https://code.claude.com/docs/en/overview",
+    "https://claude.com/pricing"
+  ]
+}

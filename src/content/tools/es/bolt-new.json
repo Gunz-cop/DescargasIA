@@ -1,0 +1,61 @@
+{
+  "shortDescription": "Constructor de aplicaciones web completas con IA, todo desde el navegador: describe lo que quieres y Bolt genera, ejecuta y despliega el proyecto.",
+  "longDescription": "Bolt.new es una plataforma de StackBlitz que combina un modelo de lenguaje con WebContainers (tecnología que ejecuta Node.js directamente en el navegador) para generar aplicaciones web completas a partir de una descripción en lenguaje natural. No necesitas instalar nada: describes la app que quieres, Bolt arma el proyecto, y puedes editar el código, ejecutarlo y desplegarlo sin salir del navegador.",
+  "bestFor": [
+    "Prototipar una aplicación web completa a partir de una descripción en texto",
+    "Probar una idea rápido sin configurar un entorno de desarrollo local",
+    "Importar un diseño de Figma o un repositorio de GitHub y convertirlo en una app funcional",
+    "Iterar visualmente sobre un proyecto pequeño o mediano con ida y vuelta conversacional"
+  ],
+  "limitations": [
+    "El consumo de tokens puede dispararse cuando Bolt intenta corregir un error: puede reescribir un archivo completo en vez de hacer un cambio puntual, y si el primer intento falla, cada intento adicional también consume tokens.",
+    "A medida que un proyecto crece, el costo por consulta aumenta porque Bolt suele incluir todo el código existente en cada solicitud, no solo la parte relevante.",
+    "Es una plataforma exclusivamente web: no existe una app de escritorio ni una versión para instalar localmente."
+  ],
+  "safetyNotes": [
+    "Usa únicamente bolt.new para acceder al servicio; no existen versiones de escritorio oficiales, así que cualquier instalador que ofrezca \"Bolt para Windows\" no es legítimo.",
+    "Revisa el código generado antes de desplegarlo en producción, especialmente si maneja datos de usuarios o credenciales."
+  ],
+  "editorialSummary": "Bolt.new es uno de los productos que popularizó el \"vibe coding\": describir una app en lenguaje natural y obtener un proyecto funcional sin escribir código a mano. Es rápido para prototipos, pero el consumo de tokens puede volverse impredecible en proyectos que crecen o cuando la IA entra en un ciclo de intentos fallidos corrigiendo su propio error.",
+  "editorialSections": [
+    {
+      "heading": "Todo pasa en el navegador, sin instalar nada",
+      "body": "A diferencia de un IDE tradicional, Bolt.new no requiere instalar Node.js, un editor ni configurar un entorno local. Gracias a la tecnología WebContainers de StackBlitz, el proyecto completo —servidor, dependencias, base de datos— corre directamente en tu navegador. Esto hace que pasar de una idea a una app funcional sea prácticamente inmediato.\n\nPuedes empezar desde cero con una descripción en texto, o importar un diseño existente desde Figma o un repositorio de GitHub para que Bolt lo convierta en código funcional. El resultado es editable: puedes ver y modificar el código generado, no solo el resultado visual."
+    },
+    {
+      "heading": "El consumo de tokens es el punto a vigilar",
+      "body": "El problema más reportado por usuarios reales de Bolt.new no es la calidad del código inicial, sino qué pasa cuando algo sale mal. Si le pides que corrija un error puntual, es común que reescriba un archivo entero en vez de hacer un cambio quirúrgico, y si esa corrección no resuelve el problema original, el ciclo puede repetirse consumiendo más tokens en cada vuelta.\n\nAdemás, cuantos más componentes tiene un proyecto, más código completo suele incluir Bolt en cada solicitud, lo que encarece consultas que deberían ser simples. Antes de depender de Bolt para un proyecto que va a crecer, conviene tener esto en cuenta y monitorear el consumo desde el principio."
+    },
+    {
+      "heading": "Bolt.new frente a v0 y Replit",
+      "body": "Bolt.new, v0 de Vercel y Replit compiten en el mismo espacio de \"describe una app y obtenla funcionando\", pero con matices: Bolt corre todo en el navegador vía WebContainers; v0 está más integrado con el ecosistema de Vercel y Next.js; Replit ofrece un entorno de desarrollo en la nube más completo, con opciones de colaboración en tiempo real.\n\nSi tu prioridad es velocidad para un prototipo aislado, Bolt suele ser directo. Si ya trabajas con Next.js y planeas desplegar en Vercel, v0 puede integrarse mejor a ese flujo. Para proyectos que necesitan persistencia y colaboración de equipo a largo plazo, Replit tiende a ofrecer más estructura."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Una reseña independiente publicada el 14 de junio de 2026, que reunió comentarios reales de Hacker News, Product Hunt y dev.to (la reseña aclara explícitamente que no pudo incluir datos de Trustpilot porque estaba bloqueado para bots automatizados, ni de Reddit por no poder acceder a su API desde donde se hizo la investigación), identificó el consumo de tokens como la queja dominante entre usuarios de Bolt.new. Un usuario de Product Hunt citado en la reseña estimó que \"50% of mine were spent on this\" (el 50% de mis tokens se gastaron en esto), refiriéndose a tokens consumidos corrigiendo errores que el propio Bolt había introducido. Otro comentario citado describe que \"when you ask Bolt to fix a simple bug...it often rewrites the entire file\" (cuando le pides a Bolt que corrija un error simple, a menudo reescribe el archivo completo) y aun así \"still fails to fix the original problem\" (sigue sin resolver el problema original). Una prueba comparativa separada citada en la reseña encontró que Bolt \"was the only one unable to complete an initial build without running out of tokens, running out after 6-7 minutes\" (fue el único que no pudo completar una compilación inicial sin quedarse sin tokens, agotándolos después de 6-7 minutos). La reseña también menciona \"thin billing-dispute support\" (soporte débil para disputas de facturación) como una debilidad reportada, aunque señala que un caso concreto de un reclamo por consumo no autorizado de 10 millones de tokens fue cuestionado por otros usuarios en Hacker News. Es útil saber esto antes de usar Bolt.new en un proyecto con presupuesto ajustado: conviene fijar límites de gasto y revisar el consumo de tokens desde las primeras consultas, no después de que un ciclo de correcciones fallidas ya se disparó.",
+      "source": "https://superdesign.dev/blog/bolt-review",
+      "sourceLabel": "Superdesign — reseña de Bolt.new basada en comentarios reales de usuarios sobre tokens y facturación",
+      "date": "2026-06-14"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Bolt.new tiene una app de escritorio?",
+      "answer": "No. Bolt.new es una plataforma exclusivamente web. Todo el desarrollo ocurre dentro del navegador gracias a la tecnología WebContainers, sin necesidad de instalar nada localmente."
+    },
+    {
+      "question": "¿Bolt.new es gratis?",
+      "answer": "Tiene un nivel gratuito para empezar a construir, y planes de pago (incluido un nivel \"MaxPro\") para uso más intensivo. Revisa las condiciones vigentes en bolt.new antes de decidir un plan."
+    },
+    {
+      "question": "¿Por qué Bolt.new consume tantos tokens al corregir un error?",
+      "answer": "Es un patrón reportado por usuarios reales: al intentar arreglar un bug, Bolt puede reescribir un archivo completo en vez de hacer un cambio puntual, y si la corrección no funciona, el ciclo de intentos puede repetirse consumiendo más tokens en cada vuelta."
+    },
+    {
+      "question": "¿Necesito saber programar para usar Bolt.new?",
+      "answer": "No es obligatorio para empezar, ya que puedes describir la app que quieres en lenguaje natural. Pero entender el código generado ayuda mucho a la hora de depurar errores o ajustar el resultado con precisión."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

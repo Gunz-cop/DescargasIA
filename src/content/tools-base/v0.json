@@ -1,0 +1,44 @@
+{
+  "name": "v0",
+  "officialWebsite": "https://v0.app",
+  "categories": [
+    "programacion"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://v0.app",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/v0/id6745097949",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "vibe-coding",
+    "vercel",
+    "constructor-de-apps",
+    "next-js",
+    "prototipado"
+  ],
+  "alternatives": [
+    "bolt-new",
+    "replit",
+    "cursor"
+  ],
+  "screenshotUrl": null,
+  "initials": "V0",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-15",
+  "officialSources": [
+    "https://v0.app",
+    "https://v0.app/docs",
+    "https://v0.app/ios"
+  ]
+}

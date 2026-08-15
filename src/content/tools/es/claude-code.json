@@ -1,0 +1,61 @@
+{
+  "shortDescription": "Agente de programación de Anthropic que vive en la terminal, el IDE, una app de escritorio o el navegador, y trabaja directamente sobre tu código.",
+  "longDescription": "Claude Code es el agente de programación de Anthropic: lee tu código, escribe y edita archivos, ejecuta comandos y se integra con tus herramientas de desarrollo. A diferencia del chat de Claude, está diseñado específicamente para trabajar dentro de un proyecto real, ya sea desde la terminal, una extensión de VS Code o JetBrains, una app de escritorio dedicada, o directamente desde el navegador.",
+  "bestFor": [
+    "Delegar tareas de programación completas —escribir tests, corregir errores, refactorizar— describiéndolas en lenguaje natural",
+    "Trabajar sobre un repositorio completo sin salir de la terminal o del editor habitual",
+    "Automatizar tareas repetitivas de desarrollo: actualizar dependencias, resolver conflictos de merge, escribir notas de versión",
+    "Ejecutar sesiones largas en la nube y retomarlas después desde otro dispositivo"
+  ],
+  "limitations": [
+    "No tiene un nivel gratuito real para uso continuo: se necesita como mínimo el plan Pro (u otro plan pago de Claude, o créditos de la API) para usarlo de forma sostenida.",
+    "Desde agosto de 2025, Anthropic aplica límites de uso semanales además de los límites de cinco horas existentes, pensados para frenar el uso continuo las 24 horas y el uso compartido de cuentas.",
+    "El servicio ha sufrido interrupciones y degradaciones de rendimiento repetidas durante 2026, principalmente por demanda que creció más rápido que la infraestructura disponible."
+  ],
+  "safetyNotes": [
+    "Al darle a un agente de código permisos para modificar archivos o ejecutar comandos en tu proyecto, revisa qué acciones propone antes de aprobarlas, especialmente en repositorios sin respaldo en control de versiones.",
+    "Instala Claude Code únicamente desde los canales oficiales listados en esta ficha (código de instalación desde claude.ai, extensiones desde las tiendas oficiales de VS Code/JetBrains, o la app de escritorio desde claude.ai)."
+  ],
+  "editorialSummary": "Claude Code se convirtió rápidamente en uno de los agentes de programación más usados de 2026, disponible en terminal, editor, app de escritorio y navegador con el mismo motor por debajo. Su crecimiento fue tan rápido que la propia Anthropic tuvo que introducir límites de uso semanales para sostener el servicio, y el producto siguió mostrando problemas de disponibilidad durante gran parte del año.",
+  "editorialSections": [
+    {
+      "heading": "El mismo agente en cinco superficies distintas",
+      "body": "Claude Code no es una única aplicación, sino un motor que se puede usar desde varios lugares: la terminal (el modo más completo, instalable con un script oficial, Homebrew, WinGet o gestores de paquetes de Linux), una extensión para VS Code o JetBrains, una app de escritorio dedicada para macOS y Windows, o directamente desde el navegador en claude.ai/code sin instalar nada.\n\nTodas estas superficies comparten la misma configuración de proyecto (archivos CLAUDE.md, memoria automática, conexiones MCP), así que puedes empezar una tarea larga en el navegador y seguirla después desde la terminal, o al revés, sin perder contexto."
+    },
+    {
+      "heading": "Por qué existen límites de uso semanales",
+      "body": "En julio de 2025, Anthropic anunció que introduciría límites de uso semanales para las suscripciones Pro y Max, además de los límites de cinco horas que ya existían, con entrada en vigencia a fines de agosto de 2025. La razón declarada oficialmente fue frenar a un pequeño porcentaje de usuarios que ejecutaban Claude Code de forma continua las 24 horas del día, y también combatir el uso compartido o la reventa de acceso a cuentas, algo que viola las políticas de uso del servicio.\n\nSegún Anthropic, la medida afectaría a menos del 5% de los suscriptores según los patrones de uso vigentes en ese momento. Si usas Claude Code de forma intensiva para tareas largas, conviene revisar los límites vigentes de tu plan antes de planificar un flujo de trabajo que dependa de sesiones extensas sin interrupción."
+    },
+    {
+      "heading": "Claude Code frente a otros agentes de terminal",
+      "body": "Claude Code compite con agentes como Qwen Code o Kimi Code en el mismo espacio de \"agente de programación que vive en la terminal\", pero con una diferencia clave: Claude Code está atado al ecosistema de Anthropic (requiere una suscripción de Claude o créditos de la API de Anthropic), mientras que herramientas como Qwen Code son de código abierto y permiten conectar modelos de distintos proveedores, incluidos modelos locales.\n\nSi ya usas el resto del ecosistema de Claude y valoras la integración entre terminal, editor y app de escritorio con el mismo contexto compartido, Claude Code es una opción sólida. Si prefieres flexibilidad para elegir qué modelo corre por debajo, o quieres evitar depender de una única suscripción paga, un agente abierto como Qwen Code puede ajustarse mejor a ese caso de uso."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "El 28 de julio de 2025, Anthropic anunció que introduciría nuevos límites de uso semanales para las suscripciones Claude Pro y Max, sumados a los límites de cinco horas ya existentes, con entrada en vigencia el 28 de agosto de 2025. La razón declarada fue frenar a suscriptores que ejecutaban Claude Code \"continuously in the background, 24/7\" (de forma continua en segundo plano, las 24 horas), y también combatir el uso compartido de cuentas y la reventa de acceso, prácticas que violan las políticas de uso del servicio. Según cobertura de TechCrunch, una vocera de Anthropic, Amie Rotherham, declaró: \"Claude Code has experienced unprecedented demand since launch. Most users won't notice a difference\" (Claude Code experimentó una demanda sin precedentes desde su lanzamiento. La mayoría de los usuarios no notará una diferencia). Anthropic estimó que la medida afectaría a menos del 5% de los suscriptores según los patrones de uso vigentes en ese momento. Bajo los nuevos límites, el plan Pro (20 dólares al mes) incluye entre 40 y 80 horas de uso del modelo Sonnet por semana; el plan Max de 100 dólares incluye entre 140 y 280 horas de Sonnet más entre 15 y 35 horas de Opus; y el plan Max de 200 dólares incluye entre 240 y 480 horas de Sonnet más entre 24 y 40 horas de Opus. Los suscriptores Max pueden comprar uso adicional a tarifas estándar de API una vez agotado el límite incluido. Es relevante para quien planee usar Claude Code de forma intensiva: los límites semanales existen específicamente para el uso continuo o automatizado a gran escala, no para el uso normal de un desarrollador individual durante su jornada de trabajo.",
+      "source": "https://techcrunch.com/2025/07/28/anthropic-unveils-new-rate-limits-to-curb-claude-code-power-users/",
+      "sourceLabel": "TechCrunch — Anthropic anuncia nuevos límites de uso para frenar a los usuarios más intensivos de Claude Code",
+      "date": "2025-07-28"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Claude Code es gratis?",
+      "answer": "No de forma sostenida. Requiere como mínimo una suscripción Claude Pro (a partir de 20 dólares al mes) o créditos de la API de Anthropic. El plan gratuito de Claude cubre principalmente el chat, no el acceso completo a Claude Code."
+    },
+    {
+      "question": "¿Necesito usar la terminal para usar Claude Code?",
+      "answer": "No necesariamente. Además de la terminal, puedes usarlo desde una extensión de VS Code o JetBrains, una app de escritorio dedicada, o directamente desde el navegador en claude.ai/code."
+    },
+    {
+      "question": "¿Por qué Claude Code tiene límites de uso semanales?",
+      "answer": "Anthropic los introdujo en agosto de 2025 para frenar el uso continuo las 24 horas del día y el uso compartido o reventa de cuentas. Según Anthropic, afectan a menos del 5% de los suscriptores según sus patrones de uso."
+    },
+    {
+      "question": "¿Es seguro dejar que Claude Code modifique archivos de mi proyecto?",
+      "answer": "Revisa siempre los cambios que propone antes de aprobarlos, especialmente en proyectos importantes sin respaldo en control de versiones."
+    }
+  ],
+  "spanishSupport": "yes"
+}

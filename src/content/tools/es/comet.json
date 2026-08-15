@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Navegador con IA agentic de Perplexity que puede resumir páginas, comparar precios y completar tareas dentro del propio navegador, para Windows, Mac y Android.",
+  "longDescription": "Comet es el navegador desarrollado por Perplexity AI, construido alrededor de un asistente de IA integrado que puede resumir páginas, responder preguntas sobre lo que estás viendo y ejecutar tareas de varios pasos (como comparar precios entre pestañas o completar un formulario) usando capacidades \"agentic\" dentro del propio navegador.",
+  "bestFor": [
+    "Resumir el contenido de una página larga sin salir de ella",
+    "Hacerle preguntas a la IA sobre lo que estás navegando en ese momento",
+    "Delegar tareas repetitivas de varios pasos dentro del navegador, como comparar opciones entre pestañas",
+    "Buscar y navegar con un asistente integrado en lugar de abrir pestañas separadas para cada consulta"
+  ],
+  "limitations": [
+    "Al momento de esta revisión no existe una versión oficial para Linux ni para iOS: los canales confirmados son Windows, macOS y Android.",
+    "Las funciones de IA más avanzadas pueden requerir una suscripción a Perplexity Pro.",
+    "Es un navegador relativamente nuevo: cambiar tu navegador principal implica migrar marcadores, extensiones y hábitos, algo a evaluar antes de adoptarlo por completo."
+  ],
+  "safetyNotes": [
+    "Investigadores de seguridad independientes documentaron una vulnerabilidad real de inyección de instrucciones (prompt injection) en Comet, capaz de exponer datos como contraseñas de un solo uso o archivos locales bajo ciertas condiciones (ver la sección de comunidad más arriba). Mantén el navegador actualizado a la última versión.",
+    "Ten especial cuidado al pedirle a la IA de Comet que \"resuma\" o \"actúe sobre\" una página de origen desconocido: ese es justamente el vector que explotaron las pruebas de seguridad documentadas.",
+    "Descarga Comet únicamente desde perplexity.ai/comet o las tiendas oficiales de aplicaciones; evita instaladores de terceros para un software con tanto acceso a tu navegación."
+  ],
+  "editorialSummary": "Comet es uno de los primeros navegadores \"agentic\" con adopción real fuera de un círculo técnico: no solo responde preguntas, sino que puede actuar dentro de las páginas que visitas. Esa misma capacidad es la que generó la controversia de seguridad más seria documentada hasta ahora en un navegador con IA integrada, y esta ficha la explica en detalle porque es información que cualquier usuario debería conocer antes de adoptarlo como navegador principal.",
+  "editorialSections": [
+    {
+      "heading": "Un navegador que además actúa por vos",
+      "body": "La diferencia central de Comet frente a un navegador tradicional con una IA como complemento es que su asistente puede operar directamente sobre las páginas abiertas: resumir contenido, responder preguntas contextuales sobre lo que estás viendo, o ejecutar una serie de acciones (como comparar precios entre varias pestañas) sin que tengas que hacer cada paso manualmente.\n\nEsa capacidad \"agentic\" es también lo que lo distingue de simplemente tener un chatbot en una barra lateral: la IA de Comet puede leer el contenido de la página y, en ciertos casos, interactuar con ella en tu nombre."
+    },
+    {
+      "heading": "La vulnerabilidad de inyección de instrucciones, explicada",
+      "body": "En agosto de 2025, investigadores de seguridad de Brave documentaron una vulnerabilidad seria: cuando le pedís a Comet que \"resuma esta página\", el navegador envía parte del contenido de esa página directamente al modelo de IA sin distinguir entre tus instrucciones y texto que podría contener comandos maliciosos ocultos por un atacante (por ejemplo, en texto blanco sobre fondo blanco, invisible para el ojo humano pero legible por la IA).\n\nEsto significa que una página maliciosa podría, en teoría, \"engañar\" a la IA de Comet para que ejecute acciones no autorizadas usando tus propias credenciales de sesión, como acceder a tu correo o a pestañas de banca abiertas en otro lado del navegador. Perplexity intentó corregirlo, pero las pruebas de seguimiento de los investigadores mostraron que la clase de ataque seguía siendo explotable después de los primeros parches. Antes de usar las funciones de IA de Comet sobre contenido de fuentes desconocidas, conviene tener esto presente."
+    },
+    {
+      "heading": "Comet frente a un navegador tradicional con IA aparte",
+      "body": "Si lo que buscas es un asistente de IA para investigar mientras navegas, sin cambiar de navegador, usar Perplexity o ChatGPT en una pestaña junto a tu navegador habitual (Chrome, Firefox, Edge) sigue siendo una opción más simple y con una superficie de ataque menor, ya que la IA no tiene acceso directo al contenido de todas tus pestañas abiertas.\n\nComet tiene sentido si valorás la integración profunda y la automatización de tareas dentro del navegador, y estás dispuesto a aceptar que esa misma integración es lo que genera el riesgo de seguridad descrito arriba. Es una decisión de compensación entre comodidad y superficie de ataque, no una elección obvia para todos los usuarios."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En agosto de 2025, el equipo de seguridad de Brave publicó una investigación detallada sobre una vulnerabilidad de inyección indirecta de instrucciones (indirect prompt injection) en Comet, el navegador de Perplexity. El mecanismo: cuando un usuario le pide a Comet \"resumir esta página\", el navegador envía contenido de esa página directamente al modelo de lenguaje sin distinguir entre las instrucciones del usuario y contenido no confiable de la web. Un atacante puede ocultar instrucciones maliciosas en elementos invisibles para el usuario (texto blanco sobre fondo blanco, comentarios HTML), y la IA las ejecuta como si fueran comandos legítimos. La prueba de concepto de Brave demostró acceso a direcciones de correo del usuario, códigos de un solo uso (OTP) obtenidos de cuentas de correo autenticadas, y capacidad de apropiación de cuentas mediante robo de credenciales. La cronología documentada: el problema se reportó el 25 de julio de 2025, Perplexity reconoció el aviso e implementó una primera corrección el 27 de julio, esa corrección resultó incompleta el 28 de julio, un parche que parecía completo llegó el 13 de agosto, y la divulgación pública se publicó el 20 de agosto de 2025. Tras la publicación, pruebas adicionales de los investigadores confirmaron que \"Perplexity still hasn't fully mitigated\" (Perplexity aún no había mitigado por completo) esta clase de ataque. Es información que cualquier usuario de Comet debería conocer: las funciones de \"resumir\" o \"actuar sobre\" una página son justamente el vector que se explotó, así que conviene tener especial cuidado al usarlas sobre páginas de origen desconocido o no confiable.",
+      "source": "https://brave.com/blog/comet-prompt-injection/",
+      "sourceLabel": "Brave — investigación de seguridad sobre inyección de instrucciones en el navegador Comet de Perplexity",
+      "date": "2025-08-20"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Comet tiene versión para Linux o iPhone?",
+      "answer": "No, al momento de esta revisión los canales oficiales confirmados son Windows, macOS y Android. No hay versión oficial para Linux ni para iOS."
+    },
+    {
+      "question": "¿Es seguro usar Comet?",
+      "answer": "Perplexity corrigió parcialmente una vulnerabilidad de inyección de instrucciones documentada por investigadores de seguridad en 2025, pero pruebas de seguimiento indicaron que la clase de ataque seguía siendo explotable después de los primeros parches. Mantené el navegador actualizado y ten especial cuidado con las funciones de IA sobre páginas de origen desconocido."
+    },
+    {
+      "question": "¿Comet es gratis?",
+      "answer": "El navegador se puede descargar y usar de forma gratuita; algunas funciones de IA más avanzadas pueden requerir una suscripción a Perplexity Pro."
+    },
+    {
+      "question": "¿Qué hace a Comet diferente de tener un chatbot de IA en una pestaña aparte?",
+      "answer": "Comet integra la IA directamente en el navegador con capacidad de leer y, en ciertos casos, actuar sobre el contenido de las páginas que visitas, no solo responder preguntas en una ventana de chat separada."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

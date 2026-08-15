@@ -1,0 +1,37 @@
+{
+  "name": "Bolt.new",
+  "officialWebsite": "https://bolt.new",
+  "categories": [
+    "programacion"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://bolt.new",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "vibe-coding",
+    "stackblitz",
+    "constructor-de-apps",
+    "prototipado",
+    "webcontainers"
+  ],
+  "alternatives": [
+    "replit",
+    "cursor",
+    "devin-desktop"
+  ],
+  "screenshotUrl": null,
+  "initials": "BLT",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-15",
+  "officialSources": [
+    "https://bolt.new",
+    "https://support.bolt.new/"
+  ]
+}

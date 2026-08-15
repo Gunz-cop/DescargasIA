@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Estudio creativo de Google construido sobre Veo para generar y editar video con IA a partir de texto, imágenes o referencias, con controles cinematográficos.",
+  "longDescription": "Google Flow es la herramienta de creación audiovisual de Google Labs construida alrededor de sus modelos generativos, principalmente Veo para video y Nano Banana e Imagen para imagen. Permite generar y editar clips a partir de texto o de una referencia visual, con controles pensados para narrativa y producción, no solo para generar un video suelto.",
+  "bestFor": [
+    "Generar clips de video a partir de texto o de una imagen de referencia con Veo",
+    "Editar y extender escenas manteniendo coherencia visual entre tomas",
+    "Combinar generación de imagen (Nano Banana, Imagen) y video (Veo) dentro del mismo flujo de trabajo",
+    "Producir material inicial para un proyecto audiovisual que después se termina de editar en otra herramienta"
+  ],
+  "limitations": [
+    "El acceso completo a Flow y a los modelos Veo más recientes requiere una suscripción Google AI Pro o Google AI Ultra; el nivel gratuito da solo un cupo diario limitado de créditos.",
+    "La disponibilidad de funciones varía según el plan, la plataforma (web frente a móvil) y la región; algunos países todavía no tienen acceso completo.",
+    "El servicio requiere que el usuario tenga 18 años o más para usarlo."
+  ],
+  "safetyNotes": [
+    "Usa únicamente labs.google/fx/tools/flow con tu cuenta de Google para acceder al servicio.",
+    "Evita generar contenido con personajes, marcas o material protegido por derechos de autor de terceros para uso comercial: es un terreno de disputa legal activo (ver la sección de comunidad más arriba), no un asunto resuelto.",
+    "Revisa las políticas vigentes de uso y las marcas de agua (watermarks) que Google aplica a los videos generados antes de usarlos fuera de un contexto personal."
+  ],
+  "editorialSummary": "Google Flow reúne los modelos generativos de video e imagen de Google (Veo, Nano Banana, Imagen) en un estudio pensado para producción audiovisual, no solo para generar un clip suelto. Esta ficha también documenta un conflicto real: Disney envió una carta de cese y desistimiento a Google en diciembre de 2025 por videos con sus personajes generados con Veo, un antecedente directo relevante para cualquiera que use la herramienta con personajes o marcas de terceros.",
+  "editorialSections": [
+    {
+      "heading": "Un estudio, no solo un generador de clips",
+      "body": "Flow no se limita a convertir un texto en un video suelto: está diseñado como un estudio de producción, con controles pensados para mantener coherencia entre tomas, editar escenas existentes y combinar distintos modelos generativos de Google (Veo para video, Nano Banana e Imagen para imagen) dentro del mismo flujo de trabajo.\n\nEsto lo acerca más a un espacio de trabajo de preproducción o prototipado visual que a una app de generación rápida de un solo clip, aunque también sirve para eso si es lo único que necesitas."
+    },
+    {
+      "heading": "Créditos, planes y qué desbloquea cada nivel",
+      "body": "El acceso gratuito a Flow da un cupo diario de créditos limitado, suficiente para probar la herramienta pero no para un uso sostenido. Los planes pagos de Google (AI Plus, AI Pro y AI Ultra) desbloquean más créditos mensuales y acceso más temprano a las versiones más nuevas de Veo, incluidas funciones como audio nativo generado junto con el video.\n\nAntes de planificar un proyecto que dependa de Flow, conviene revisar cuántos créditos consume el tipo de generación que necesitas (los videos más largos o de mayor calidad consumen más) y comparar contra el plan que estás dispuesto a pagar."
+    },
+    {
+      "heading": "El conflicto con Disney: qué pasó y qué implica",
+      "body": "En diciembre de 2025, Disney envió una carta de cese y desistimiento a Google acusándola de infracción de copyright a gran escala, señalando videos generados con Veo que mostraban personajes como Mickey Mouse, Deadpool y figuras de \"Los Simpson\" alojados en YouTube. Google removió los videos señalados tras recibir la carta, pero el episodio deja una señal clara: generar contenido con personajes o marcas reconocibles de terceros usando Veo no está exento de riesgo legal, incluso si la generación en sí fue técnicamente posible.\n\nSi planeas usar Flow para contenido comercial, evita personajes, marcas o material protegido por derechos de autor de terceros salvo que tengas una licencia clara para usarlos. La disputa entre grandes estudios y laboratorios de IA por este tipo de contenido sigue activa, no resuelta."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "El 14 de diciembre de 2025, The Walt Disney Company envió una carta de cese y desistimiento a Google acusándola de infracción de derechos de autor a gran escala, dirigida a contenido generado con IA alojado en YouTube. Los videos señalados mostraban personajes de Disney como Mickey Mouse, Deadpool y figuras de \"Los Simpson\", y muchos de ellos habían sido generados con Veo, la herramienta de video con IA de Google. Tras recibir la carta, Google removió el contenido señalado de sus servicios. La empresa declaró públicamente: \"We have a longstanding and mutually beneficial relationship with Disney, and will continue to engage with them\" (tenemos una relación de larga data y mutuamente beneficiosa con Disney, y continuaremos dialogando con ellos), y agregó: \"More generally, we use public data from the open web to build our AI and have built additional innovative copyright controls like Google-extended and Content ID for YouTube, which give sites and copyright holders control over their content\" (en términos más generales, usamos datos públicos de la web abierta para construir nuestra IA, y desarrollamos controles de copyright adicionales como Google-Extended y Content ID para YouTube, que dan a los sitios y a los titulares de derechos control sobre su contenido). El episodio ocurrió apenas un día antes de que Disney anunciara un acuerdo de mil millones de dólares con OpenAI para integrar personajes de Disney en Sora, lo que sugiere una estrategia de la compañía de negociar licencias formales con algunos laboratorios de IA mientras presiona legalmente a otros que generan contenido con sus personajes sin acuerdo. Es relevante para quien use Google Flow: generar contenido con personajes o marcas reconocibles de terceros para publicación pública, incluso en un canal personal de YouTube, puede resultar en la eliminación del contenido si el titular de los derechos lo reclama.",
+      "source": "https://mickeyblog.com/2025/12/14/after-disneys-cease-and-desist-letter-google-has-removed-numerous-ai-videos/",
+      "sourceLabel": "MickeyBlog — Disney envía carta de cese y desistimiento a Google por videos con IA de sus personajes",
+      "date": "2025-12-14"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Google Flow es lo mismo que Veo?",
+      "answer": "No exactamente. Veo es el modelo de generación de video de Google; Flow es el estudio creativo de Google Labs que usa Veo (junto con otros modelos como Nano Banana e Imagen) dentro de una interfaz pensada para producción."
+    },
+    {
+      "question": "¿Google Flow es gratis?",
+      "answer": "Tiene un nivel gratuito con un cupo diario limitado de créditos. El acceso completo a las funciones más avanzadas requiere una suscripción Google AI Plus, Pro o Ultra."
+    },
+    {
+      "question": "¿Puedo usar Google Flow para generar videos con personajes de marcas conocidas?",
+      "answer": "No es recomendable para uso comercial o publicación pública. Disney envió una carta de cese y desistimiento a Google en diciembre de 2025 por videos generados con Veo que usaban sus personajes, y Google los removió tras recibirla."
+    },
+    {
+      "question": "¿Qué edad se necesita para usar Google Flow?",
+      "answer": "El servicio requiere que el usuario tenga 18 años o más."
+    }
+  ],
+  "spanishSupport": "unknown"
+}

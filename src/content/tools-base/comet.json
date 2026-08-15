@@ -1,0 +1,53 @@
+{
+  "name": "Comet",
+  "officialWebsite": "https://www.perplexity.ai/comet",
+  "categories": [
+    "asistentes-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://www.perplexity.ai/comet",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    },
+    "windows": {
+      "url": "https://www.perplexity.ai/comet",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    },
+    "mac": {
+      "url": "https://www.perplexity.ai/comet",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=ai.perplexity.comet",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "navegador-ia",
+    "perplexity",
+    "agente-web",
+    "asistente-de-navegacion"
+  ],
+  "alternatives": [
+    "perplexity",
+    "chatgpt"
+  ],
+  "screenshotUrl": null,
+  "initials": "CMT",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-15",
+  "officialSources": [
+    "https://www.perplexity.ai/comet",
+    "https://www.perplexity.ai/hub/blog/comet-is-now-available-to-everyone-worldwide"
+  ]
+}

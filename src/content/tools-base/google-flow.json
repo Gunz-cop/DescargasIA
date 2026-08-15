@@ -1,0 +1,38 @@
+{
+  "name": "Google Flow",
+  "officialWebsite": "https://labs.google/fx/tools/flow",
+  "categories": [
+    "video-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://labs.google/fx/tools/flow",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-15"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "veo",
+    "google",
+    "generacion-de-video",
+    "google-labs",
+    "cine-con-ia"
+  ],
+  "alternatives": [
+    "kling-ai",
+    "runway",
+    "luma-dream-machine",
+    "hailuo-ai"
+  ],
+  "screenshotUrl": null,
+  "initials": "GFL",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-15",
+  "officialSources": [
+    "https://labs.google/fx/tools/flow",
+    "https://blog.google/technology/ai/google-flow-veo-ai-filmmaking-tool/"
+  ]
+}

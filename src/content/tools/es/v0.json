@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Herramienta de Vercel para generar interfaces y aplicaciones web completas con IA a partir de una descripción, con integración directa a GitHub y despliegue.",
+  "longDescription": "v0 es la plataforma de Vercel (la empresa detrás de Next.js) para construir aplicaciones web con IA a partir de instrucciones en lenguaje natural. Genera el frontend, permite ajustar el diseño visualmente, sincroniza el código con GitHub y despliega directamente en la infraestructura de Vercel. También tiene una app oficial para iOS pensada para diseñar sobre la marcha.",
+  "bestFor": [
+    "Generar interfaces y componentes web a partir de una descripción en texto",
+    "Crear landing pages, dashboards o tiendas con un flujo rápido de prompt a código",
+    "Sincronizar el código generado con un repositorio de GitHub para seguir trabajando localmente",
+    "Desplegar un proyecto directamente en la infraestructura de Vercel con un clic"
+  ],
+  "limitations": [
+    "v0 genera principalmente frontend: la lógica de backend, la conexión a bases de datos y el despliegue final siguen siendo responsabilidad del usuario.",
+    "En flujos con varios pasos, gestión de estado compleja o integraciones de datos, suele quedarse corto y requiere revisión y reescritura manual.",
+    "El código generado por IA no pasa una revisión de seguridad automática: hubo casos documentados de proyectos generados con v0 que exponían credenciales sin que el usuario lo notara (ver la sección de comunidad más arriba)."
+  ],
+  "safetyNotes": [
+    "Revisa siempre qué variables de entorno usa un proyecto generado por v0 antes de desplegarlo: una credencial marcada con el prefijo NEXT_PUBLIC_ queda expuesta en el navegador de cualquier visitante.",
+    "Usa únicamente v0.app o la app oficial de iOS enlazada en esta ficha para acceder al servicio.",
+    "No conectes claves de API de servicios de pago a un proyecto de prueba sin revisar antes cómo v0 las está usando en el código generado."
+  ],
+  "editorialSummary": "v0 es la apuesta de Vercel dentro de la ola de \"vibe coding\": convertir una descripción en texto en una interfaz web funcional, con el plus de integrarse directamente con Next.js y la infraestructura de despliegue de la propia Vercel. Esta ficha también documenta un problema real y verificado: proyectos generados con v0 que expusieron credenciales por errores de configuración que la IA no marcó como riesgo.",
+  "editorialSections": [
+    {
+      "heading": "De un prompt a una app desplegada",
+      "body": "v0 funciona con un flujo simple: describes lo que quieres construir, la herramienta genera el frontend, y puedes ajustar el resultado con controles visuales además de seguir conversando con la IA para pedir cambios. Cuando el resultado te convence, puedes sincronizarlo con un repositorio de GitHub o desplegarlo directamente con un clic en la infraestructura de Vercel.\n\nEsta integración es la diferencia más marcada frente a otras herramientas similares: si ya usas Next.js y Vercel para tus proyectos, v0 encaja directamente en ese flujo sin pasos intermedios."
+    },
+    {
+      "heading": "Genera frontend, no un proyecto completo listo para producción",
+      "body": "v0 está enfocado en la interfaz: diseño, componentes, interactividad visual. La lógica de backend, la conexión real a una base de datos y las integraciones de datos más complejas suelen requerir trabajo adicional del usuario, ya sea escribiendo ese código a mano o guiando a v0 con instrucciones más específicas paso a paso.\n\nEsto es importante para calibrar expectativas: v0 acelera mucho la parte visual de un proyecto, pero no reemplaza el trabajo de un desarrollador para la parte de datos, autenticación real y lógica de negocio compleja."
+    },
+    {
+      "heading": "v0 frente a Bolt.new y Replit",
+      "body": "v0, Bolt.new y Replit compiten en el mismo espacio de generar aplicaciones con IA a partir de texto. v0 se distingue por su integración directa con el ecosistema Vercel/Next.js y por tener una app móvil oficial para iOS. Bolt.new corre todo en el navegador con WebContainers, sin necesidad de una cuenta de hosting externa. Replit ofrece un entorno de desarrollo más completo pensado para proyectos que crecen y se mantienen en el tiempo.\n\nSi tu stack ya es Next.js/Vercel, v0 es la opción más directa. Si buscas algo completamente autocontenido en el navegador sin atarte a un proveedor de hosting específico, Bolt.new puede ajustarse mejor."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Según un análisis publicado el 20 de abril de 2026 sobre los riesgos de seguridad del desarrollo asistido por IA, Vercel bloqueó \"over 17,000 insecure deployments in July 2025 alone\" (más de 17.000 despliegues inseguros solo en julio de 2025) generados a través de v0. Los problemas recurrentes identificados incluyeron claves de API expuestas para servicios como Supabase, OpenAI, Gemini, Claude y xAI, y un patrón específico de v0: la IA colocaba credenciales de base de datos con el prefijo NEXT_PUBLIC_, una convención de Next.js que hace que cualquier variable con ese prefijo se envíe directamente al navegador del visitante por diseño, exponiendo así esas credenciales públicamente sin que el usuario lo notara. El análisis también documentó rutas de API generadas y desplegadas sin ninguna verificación de quién podía llamarlas. El artículo enmarca estos casos como síntoma de un problema más amplio: el desarrollo asistido por IA permite avanzar muy rápido, pero sin las verificaciones de seguridad que normalmente aplicaría un desarrollador experimentado, lo que amplía el radio de impacto de un error si no se refuerzan controles adicionales. Es relevante para quien use v0 en un proyecto real: revisa manualmente cada variable de entorno antes de desplegar, en particular cualquiera que use el prefijo NEXT_PUBLIC_, porque la IA no siempre distingue qué credenciales son sensibles.",
+      "source": "https://dev.to/xmkx/the-vercel-leak-is-a-warning-shot-for-agentic-coders-1ni0",
+      "sourceLabel": "DEV Community — análisis de los riesgos de seguridad expuestos por proyectos generados con v0",
+      "date": "2026-04-20"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿v0 tiene una app móvil oficial?",
+      "answer": "Sí, hay una app oficial para iOS pensada para diseñar sobre la marcha. El uso principal, sin embargo, sigue siendo la plataforma web en v0.app."
+    },
+    {
+      "question": "¿v0 es gratis?",
+      "answer": "Existe un nivel gratuito para empezar, y planes de pago (incluido un nivel \"v0 Max\") para uso más avanzado. Revisa el detalle de precios vigente en el sitio oficial."
+    },
+    {
+      "question": "¿Es seguro desplegar un proyecto generado por v0 directamente?",
+      "answer": "No sin revisarlo primero. Hubo casos documentados de proyectos generados con v0 que expusieron credenciales por errores de configuración de variables de entorno. Revisa siempre qué variables usa el proyecto antes de desplegarlo."
+    },
+    {
+      "question": "¿v0 genera también el backend de una aplicación?",
+      "answer": "Su fuerte es el frontend. Para lógica de backend, bases de datos e integraciones complejas, generalmente necesitas completar o ajustar el código generado por tu cuenta."
+    }
+  ],
+  "spanishSupport": "unknown"
+}
