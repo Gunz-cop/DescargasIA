@@ -35,6 +35,14 @@
       "body": "Udio y Suno compiten de cerca en calidad de generación musical, y la elección entre ambos suele depender de preferencia personal sobre el estilo de las voces y la naturalidad de ciertos géneros. Si tu prioridad es exportar y usar el audio generado sin restricciones, conviene comparar las condiciones vigentes de descarga y licencia de cada plataforma antes de decidir.\n\nPara música instrumental o bandas sonoras con enfoque más orientado a proyectos audiovisuales, AIVA puede ser una alternativa a considerar, con un enfoque distinto centrado en composición instrumental."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 29 de octubre de 2025, Universal Music Group anunció que llegó a un acuerdo para poner fin a la demanda que la RIAA había presentado contra Udio más de un año antes por lo que calificó de \"infracción masiva\" de copyright al entrenar sus modelos con música protegida. El acuerdo incluye una compensación legal y nuevos contratos de licencia de grabaciones y edición musical que generarán ingresos adicionales para los artistas y compositores de UMG, además del lanzamiento previsto para 2026 de una nueva plataforma de creación musical con IA basada en un modelo de suscripción, entrenada exclusivamente con música con licencia. Mientras se prepara ese lanzamiento, la versión actual de Udio seguirá disponible, pero con las creaciones acotadas dentro de un \"jardín amurallado\" y con medidas adicionales de fingerprinting y filtrado. Sir Lucian Grainge, CEO de UMG, declaró: \"These new agreements demonstrate our commitment to do what's right by our artists and songwriters\" (estos nuevos acuerdos demuestran nuestro compromiso de actuar correctamente con nuestros artistas y compositores). Es relevante saber que la Udio actual seguirá cambiando de funcionalidad durante la transición hacia la plataforma con licencia de 2026, así que las funciones disponibles hoy podrían no ser las mismas en unos meses.",
+      "source": "https://www.musicbusinessworldwide.com/universal-music-settles-udio-lawsuit-strikes-deal-for-licensed-ai-music-platform/",
+      "sourceLabel": "Music Business Worldwide — Universal Music llega a un acuerdo con Udio y prepara una plataforma de IA musical con licencia",
+      "date": "2025-10-29"
+    }
+  ],
   "faq": [
     {
       "question": "¿Puedo descargar las canciones que genero en Udio?",

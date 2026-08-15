@@ -35,6 +35,14 @@
       "body": "Wan compite en el mismo espacio que Kling AI (Kuaishou) y Hailuo AI (MiniMax), los tres respaldados por grandes tecnológicas chinas con inversión fuerte en generación de video. La diferencia práctica suele estar en detalles: Wan pone énfasis en narrativa multi-escena y transferencia de estilo, Hailuo AI en audio sincronizado, y Kling AI en la duración máxima del video generado.\n\nSi buscas integración con flujos de edición profesional occidentales, Runway sigue siendo una alternativa distinta y más orientada a producción tradicional que a generación pura desde cero."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 3 de marzo de 2025, Wan 2.1 alcanzó el primer puesto del VBench Leaderboard, un benchmark de referencia para evaluar modelos de generación de video, siendo \"the only open-source model among the top five\" (el único modelo de código abierto entre los cinco primeros) según cobertura del South China Morning Post. El resultado posicionó a Wan con un rendimiento que rivaliza con ofertas propietarias líderes del mercado como Sora, pese a tratarse de un modelo abierto. Alibaba Cloud liberó cuatro variantes de la familia Wan para que investigadores, académicos e instituciones comerciales pudieran usarlas libremente, lo que ayudó a que Wan se convirtiera en \"the most popular model on Hugging Face, the largest open-source AI models community\" (el modelo más popular en Hugging Face, la mayor comunidad de modelos de IA de código abierto) en ese momento. El anuncio coincidió con una inversión de al menos 380.000 millones de yuanes (unos 52.400 millones de dólares) que Alibaba destinó a infraestructura de cómputo e IA a tres años, la mayor inversión de una entidad privada china en ese sector hasta entonces; las acciones de Alibaba en Hong Kong subieron un 3,5% ese día. Es útil saber que este liderazgo corresponde a la versión 2.1 del modelo en ese momento puntual: la familia Wan sigue actualizándose con frecuencia (2.5, 2.6, 2.7), y las posiciones en benchmarks de video generativo cambian rápido a medida que otros modelos lanzan nuevas versiones.",
+      "source": "https://www.scmp.com/tech/big-tech/article/3300834/alibabas-open-source-sora-ai-video-model-tops-third-party-rankings",
+      "sourceLabel": "South China Morning Post — el modelo de video con IA de código abierto de Alibaba lidera rankings de terceros",
+      "date": "2025-03-03"
+    }
+  ],
   "faq": [
     {
       "question": "¿Wan y Tongyi Wanxiang son lo mismo?",

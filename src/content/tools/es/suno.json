@@ -30,6 +30,14 @@
       "body": "Suno se ejecuta directamente en la infraestructura en la nube de la plataforma para procesar el audio y la instrumentación pesada. No requiere instalar ningún programa.\n\nDebido al éxito de Suno, existen aplicaciones en la Play Store y webs piratas que ofrecen descargas de 'Suno AI Pro' o 'Suno Desktop'. Muchas de estas aplicaciones contienen adware molesto o virus diseñados para secuestrar tus credenciales y suscripciones de redes sociales. La única vía segura es usar suno.com desde tu navegador."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "En junio de 2024, la RIAA coordinó una demanda por infracción de copyright contra Suno en nombre de las tres grandes discográficas —Universal Music Group, Sony Music y Warner Music Group—, alegando que la empresa entrenó sus modelos de generación musical usando grabaciones de las discográficas sin autorización. En noviembre de 2025, Warner Music llegó a un acuerdo con Suno y salió del caso: la resolución incluyó un acuerdo de licenciamiento y la adquisición de Songkick por parte de Warner. Sony Music y Universal Music Group, en cambio, no llegaron a un acuerdo y siguen litigando activamente contra Suno en un tribunal de Boston, con una audiencia de juicio sumario prevista para julio de 2026. En paralelo, Suno cerró una ronda de financiamiento de más de 400 millones de dólares en junio de 2026, alcanzando una valuación de 5.400 millones de dólares, y declaró públicamente que \"la transparencia es importante\", respaldando herramientas de marca de agua y huella digital de audio. Es relevante para quien use Suno: el origen de los datos con los que se entrenó el modelo sigue siendo objeto de litigio activo con dos de las tres grandes discográficas, no un asunto legal resuelto.",
+      "source": "https://www.musicbusinessworldwide.com/suno-sued-by-major-labels-says-transparency-is-important-as-record-industry-proposes-ai-labeling-system/",
+      "sourceLabel": "Music Business Worldwide — Suno, demandada por las grandes discográficas, dice que \"la transparencia es importante\"",
+      "date": "2026-07-01"
+    }
+  ],
   "faq": [
     {
       "question": "¿Suno AI es gratuito?",

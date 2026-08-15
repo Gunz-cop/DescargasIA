@@ -35,6 +35,14 @@
       "body": "Z.ai tiene sentido si te interesa un modelo abierto de primer nivel sin costo para uso conversacional básico, o si programas y quieres experimentar con GLM como motor dentro de tu editor habitual mediante el Coding Plan. También es una opción a considerar si sigues de cerca el desarrollo de modelos open source.\n\nSi buscas una aplicación móvil pulida y oficial, hoy Kimi o Qwen Chat ofrecen una cobertura de plataformas más completa. Si tu prioridad es el ecosistema de plugins más maduro para uso diario, ChatGPT o Claude siguen siendo referencias más establecidas."
     }
   ],
+  "communityInsights": [
+    {
+      "text": "El 16 de enero de 2025, el Departamento de Comercio de Estados Unidos agregó a Zhipu AI (la empresa detrás de Z.ai y los modelos GLM) a su lista de entidades restringidas (Entity List), acusándola de \"supporting Beijing's military advance\" (respaldar el avance militar de Pekín) mediante investigación avanzada en inteligencia artificial. La medida entró en vigor ese mismo día y formó parte de un paquete que incluyó a 27 empresas en total: 25 con sede en China y 2 con sede en Singapur. Estar en esa lista implica que las empresas afectadas quedan \"barred from buying technology from US businesses without special government approval\" (impedidas de comprar tecnología de empresas estadounidenses sin aprobación especial del gobierno). Zhipu respondió públicamente que \"strongly disagrees\" (discrepa fuertemente) con la decisión, calificándola de carente de base fáctica (\"lacks a factual basis\"), y sostuvo que la medida \"will not have a substantial impact\" (no tendrá un impacto sustancial) en sus operaciones. Es relevante para quien use Z.ai o los modelos GLM: la empresa detrás del servicio opera bajo restricciones comerciales activas impuestas por Estados Unidos, algo a tener en cuenta especialmente en contextos de uso corporativo o gubernamental sensibles a ese tipo de restricciones.",
+      "source": "https://www.scmp.com/tech/tech-war/article/3295002/tech-war-us-adds-chinese-ai-unicorn-zhipu-trade-blacklist-bidens-exit",
+      "sourceLabel": "South China Morning Post — Estados Unidos agrega a la china Zhipu a la lista negra comercial",
+      "date": "2025-01-16"
+    }
+  ],
   "faq": [
     {
       "question": "¿Z.ai es gratis?",
