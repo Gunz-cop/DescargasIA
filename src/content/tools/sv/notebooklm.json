@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Googles AI-verktyg som förvandlar dina egna dokument till sammanfattningar, poddliknande ljudöversikter och mindmaps.",
+  "longDescription": "NotebookLM är Googles forskningsverktyg som låter dig ladda upp egna källor — PDF:er, Google Docs, länkar, ljudfiler med mera — och sedan använda AI för att sammanfatta, ställa frågor mot och organisera det materialet, med svar som alltid är förankrade i just dina dokument. Verktygets mest omtalade funktion är Audio Overviews, som skapar en poddliknande ljudkonversation mellan två AI-röster baserad på dina källor. NotebookLM finns endast som webbapp på notebooklm.google, utan officiell dator- eller mobilapp vid den här granskningen.",
+  "bestFor": [
+    "Sammanfatta och ställa frågor mot egna dokument, artiklar eller anteckningar utan att modellen \"hittar på\" fakta utanför källorna",
+    "Skapa poddliknande ljudsammanfattningar (Audio Overviews) av eget material för att lyssna på under en promenad eller pendling",
+    "Organisera studiematerial genom mindmaps och strukturerade sammanfattningar baserade på uppladdade källor",
+    "Slå samman flera dokument i samma notebook för att hitta kopplingar mellan olika källor"
+  ],
+  "limitations": [
+    "Ingen officiell dator- eller mobilapp finns bekräftad: NotebookLM används uteslutande via webbläsaren på notebooklm.google.",
+    "Verktyget är byggt för att arbeta med källor du själv laddar upp, inte som en allmän chattbot för öppna frågor utan referensmaterial.",
+    "Antalet källor och notebooks kan vara begränsat på gratisnivån, med utökade gränser för Google-kunder med vissa betalprenumerationer."
+  ],
+  "safetyNotes": [
+    "Använd bara notebooklm.google för att komma åt tjänsten. Det finns ingen fristående app att ladda ner, så alla \"NotebookLM-appar\" i tredjepartsbutiker bör undvikas.",
+    "Ladda bara upp dokument du har rätt att dela med en molntjänst; känsliga eller sekretessbelagda filer bör hanteras enligt din organisations riktlinjer innan de laddas upp."
+  ],
+  "editorialSummary": "NotebookLM sticker ut bland Googles AI-verktyg genom att vara strikt förankrat i de källor du själv laddar upp, snarare än att svara fritt som en vanlig chattbot. Funktionen Audio Overviews, som skapar poddliknande sammanfattningar, gjorde verktyget särskilt populärt under 2025 och 2026. Vi länkar enbart till den officiella webbappen, eftersom ingen annan officiell kanal finns.",
+  "editorialSections": [
+    {
+      "heading": "Svar förankrade i dina egna källor",
+      "body": "Till skillnad från en generell chattbot som ChatGPT eller Gemini, som kan svara på nästan vilken fråga som helst utifrån sin träning, är NotebookLM byggt för att hålla sig till det material du faktiskt laddar upp. Det minskar risken för att modellen \"hittar på\" information som inte finns i dina källor, och gör verktyget särskilt användbart för forskning, studier och sammanställning av dokument.\n\nDenna begränsning är samtidigt en styrka: den som vill ha djupgående, korrekt sammanfattat innehåll baserat på specifika rapporter, artiklar eller anteckningar får ett verktyg som är mer pålitligt för just det syftet än en öppen chattbot."
+    },
+    {
+      "heading": "Audio Overviews: poddar skapade av dina dokument",
+      "body": "Den funktion som gjort NotebookLM mest känt är Audio Overviews, där verktyget skapar en flera minuter lång ljudkonversation mellan två AI-röster som diskuterar innehållet i dina uppladdade källor, ungefär som en podd. Det är ett annat sätt att ta till sig material på, särskilt för den som lär sig bättre genom att lyssna än att läsa.\n\nFunktionen fungerar bäst med tydligt strukturerat källmaterial och är inte tänkt att ersätta originaltexten helt, utan snarare fungera som en introduktion eller repetition av innehållet innan eller efter att man läst källorna själv."
+    },
+    {
+      "heading": "Bara webb — ingen app att ladda ner",
+      "body": "Ett vanligt missförstånd är att leta efter en NotebookLM-app att installera. Vid den här granskningen finns ingen officiell app för dator eller mobil: allt sker via webbläsaren på notebooklm.google, vilket fungerar lika bra på dator som på mobilens webbläsare.\n\nOm du stöter på en app i Google Play eller App Store som kallar sig NotebookLM, är den sannolikt inte officiell — Google har inte publicerat någon sådan app under det namnet vid den här granskningen."
+    },
+    {
+      "heading": "När NotebookLM passar och när man bör jämföra andra alternativ",
+      "body": "NotebookLM passar utmärkt för studenter, forskare och alla som behöver sammanfatta, organisera eller diskutera ett specifikt underlag av dokument, särskilt när noggrannhet mot källorna är viktigare än kreativ frihet i svaren.\n\nOm du istället behöver en allmän assistent för öppna frågor, skrivhjälp eller kodning utan ett specifikt dokumentunderlag, är ChatGPT, Claude eller Gemini bättre lämpade för det syftet."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En akademisk studie publicerad den 29 september 2025 (\"Not Wrong, But Untrue: LLM Overconfidence in Document-Based Queries\") testade ChatGPT, Gemini och NotebookLM mot ett underlag på 300 dokument om en amerikansk TikTok-rättegång, med frågor av varierande specificitet. NotebookLM hade den lägsta felfrekvensen av de tre verktygen — 13 % av svaren (2 av 15) innehöll fel, jämfört med 40 % för både ChatGPT och Gemini — och forskarna noterade att \"NotebookLM's citation-focused RAG system handles more reliably than the other approaches\" (NotebookLMs citatfokuserade RAG-system hanterar uppgifterna mer tillförlitligt än de andra metoderna). Men studien konstaterar också att även den bästa resultatet är \"a rate that remains concerning for journalists\" (en nivå som fortfarande är oroande för journalister). Snarare än att helt hitta på fakta bestod felen ofta av det forskarna kallar \"overconfidence through interpretive overreach\": obekräftade tolkningar av dokumentens syfte och målgrupp, eller att en åsikt som tillskrivs en enskild källa omvandlas till ett generellt påstående. Det är relevant att känna till eftersom NotebookLM marknadsförs specifikt som ett verktyg som håller sig strikt till de källor man laddar upp — även om det stämmer bättre än för en vanlig chattbot, är 13 % fortfarande en felmarginal värd att ha i åtanke, särskilt vid uppgifter med verkliga konsekvenser som juridiska eller ekonomiska dokument.",
+      "source": "https://arxiv.org/html/2509.25498v1",
+      "sourceLabel": "arXiv — akademisk studie om överdriven självsäkerhet i dokumentbaserade AI-svar",
+      "date": "2025-09-29"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Har NotebookLM en app för dator eller mobil?",
+      "answer": "Nej, ingen officiell app finns bekräftad. Tjänsten används uteslutande via webbläsaren på notebooklm.google."
+    },
+    {
+      "question": "Är NotebookLM gratis?",
+      "answer": "Ja, grundfunktionerna är gratis med ett Google-konto, med vissa gränser för antal källor och notebooks som kan utökas via betalda Google-prenumerationer."
+    },
+    {
+      "question": "Vad är Audio Overviews i NotebookLM?",
+      "answer": "En funktion som skapar en poddliknande ljudkonversation mellan två AI-röster baserad på dina uppladdade källor, tänkt som ett alternativt sätt att ta till sig materialet."
+    },
+    {
+      "question": "Kan NotebookLM svara på frågor utan att jag laddar upp något?",
+      "answer": "Verktyget är byggt för att arbeta med dina egna källor snarare än att svara fritt som en generell chattbot, så det fungerar bäst när du faktiskt laddat upp material att utgå från."
+    }
+  ],
+  "swedishSupport": "unknown"
+}

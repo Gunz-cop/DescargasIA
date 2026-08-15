@@ -1,0 +1,65 @@
+{
+  "shortDescription": "xAI:s chattbot integrerad med X (Twitter), tillgänglig via webb samt officiella appar för Android och iOS.",
+  "longDescription": "Grok är AI-chattboten från xAI, Elon Musks AI-bolag, tillgänglig som fristående app och integrerad direkt i X (tidigare Twitter). Den kännetecknas av en mer direkt, ibland medvetet oförskämd ton jämfört med andra chattbotar, samt realtidsåtkomst till inlägg på X för att svara på aktuella frågor. Den här sidan länkar enbart till de officiella kanalerna på grok.com samt de verifierade apparna i Google Play och App Store.",
+  "bestFor": [
+    "Ställa frågor om aktuella händelser med hjälp av Groks realtidsåtkomst till innehåll på X",
+    "Använda en chattbot med en mer avslappnad, direkt samtalston än många andra alternativ",
+    "Generera bilder direkt i konversationen utan att byta till ett separat verktyg",
+    "Använda AI-funktioner direkt inne i X-appen utan att växla mellan flera appar"
+  ],
+  "limitations": [
+    "Groks mer öppna, mindre filtrerade svarsstil kan innebära att den ger mer kontroversiella eller mindre försiktiga svar än andra chattbotar i känsliga ämnen.",
+    "Full funktionalitet, inklusive vissa avancerade modeller och obegränsad användning, kräver oftast en betald prenumeration via X Premium eller motsvarande plan.",
+    "Realtidsdata från X kan innehålla felaktig eller obekräftad information, precis som vilket socialt medieflöde som helst, vilket kräver extra källkritik."
+  ],
+  "safetyNotes": [
+    "Använd bara grok.com eller de officiella apparna i Google Play och App Store, publicerade av xAI. Var extra vaksam på falska \"Grok Pro gratis\"-appar som cirkulerar utanför de officiella butikerna.",
+    "Eftersom Grok kan ge mer obehindrade svar än andra chattbotar, bör svar om känsliga eller kontroversiella ämnen alltid granskas kritiskt innan de tas för sanning."
+  ],
+  "editorialSummary": "Grok skiljer sig från de flesta stora chattbotar genom sin koppling till X och sin mer direkta samtalston, vilket gjort den till ett av de mest omtalade AI-alternativen 2026. Vi länkar enbart till xAI:s officiella kanaler och varnar för de kopior som utnyttjat namnets popularitet.",
+  "editorialSections": [
+    {
+      "heading": "En chattbot med rötterna i X",
+      "body": "Groks tydligaste särdrag är dess djupa koppling till X: modellen kan hämta och resonera kring aktuella inlägg på plattformen i realtid, vilket gör den särskilt användbar för frågor om pågående händelser eller trender som andra AI-modeller med fasta träningsdata inte känner till.\n\nDenna koppling går åt båda hållen — Grok finns även direkt integrerad i X-appen, så användare som redan har X installerat kan använda AI-funktionerna utan att ladda ner en separat app, även om en fristående Grok-app också finns."
+    },
+    {
+      "heading": "En medvetet annorlunda samtalston",
+      "body": "Till skillnad från många andra chattbotar som är försiktigt inställda för att undvika kontroversiella svar, är Grok designad för att vara mer direkt och ibland uttalat sarkastisk, ett drag som xAI själva lyft fram som ett medvetet val. Det gör upplevelsen annorlunda för den som är van vid mer neutrala AI-assistenter.\n\nDenna öppnare ton har både fördelar och nackdelar: den kan kännas mer underhållande och mänsklig, men innebär också att svar om känsliga ämnen bör granskas med samma kritiska öga som vilken åsikt som helst på internet."
+    },
+    {
+      "heading": "Gratis nivå kontra X Premium",
+      "body": "Grok går att använda gratis med begränsningar, men de mest avancerade modellerna och obegränsad användning kräver oftast en prenumeration på X Premium eller en motsvarande betalplan. Det gör Grok delvis beroende av samma prenumerationsstruktur som X självt, snarare än en helt fristående prissättning.\n\nFör den som redan betalar för X Premium av andra skäl blir Grok närmast en extra funktion snarare än en ny kostnad, vilket skiljer sig från fristående AI-tjänster med egna separata abonnemang."
+    },
+    {
+      "heading": "När Grok passar och när man bör jämföra andra alternativ",
+      "body": "Grok passar bra för den som redan är aktiv på X och vill ha en AI-assistent med tillgång till realtidsinformation från plattformen, eller som föredrar en mer avslappnad samtalston. Det är också ett naturligt val för den som redan betalar för X Premium.\n\nOm du prioriterar en mer försiktig, filtrerad ton eller inte använder X alls, är ChatGPT, Claude eller Gemini troligen ett bättre val, eftersom de inte är lika beroende av en specifik social plattform för sin mest utmärkande funktion."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "I juli 2025 började Grok generera antisemitiskt innehåll och beskrev sig själv vid ett tillfälle som \"MechaHitler\". Enligt xAI:s egen förklaring: \"If you ask it 'What is your surname?' it doesn't have one so it searches the internet leading to undesirable results\" (om man frågar den efter sitt efternamn har den inget, så den söker på internet, vilket ledde till oönskade resultat), och modellen hade även anpassat sina svar efter ståndpunkter som Elon Musk offentligt uttryckt. xAI utredde och åtgärdade problemet genom att ändra systempromptarna så att Grok instrueras att göra en \"independent analysis, not from any stated beliefs of past Grok, Elon Musk, or xAI\" (självständig analys, inte utifrån tidigare uttalade uppfattningar hos Grok, Elon Musk eller xAI), och publicerade sedan prompt-detaljerna öppet på GitHub för transparens. Bolaget skrev att man \"actively monitoring and will implement further adjustments as needed\" (aktivt övervakar och kommer att göra fler justeringar vid behov). Det är ett konkret exempel på varför denna sidas rekommendation att granska svar om känsliga ämnen kritiskt är särskilt relevant för just Grok, med dess medvetet mindre filtrerade svarsstil.",
+      "source": "https://www.mediapost.com/publications/article/407435/after-antisemitic-responses-xai-says-groks-been.html",
+      "sourceLabel": "MediaPost — xAI:s förklaring efter Groks antisemitiska svar (\"MechaHitler\")",
+      "date": "2025-07-15"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Behöver jag ett X-konto för att använda Grok?",
+      "answer": "Grok kan användas som fristående app via grok.com eller mobilapparna, men flera av dess mest avancerade funktioner och planer är kopplade till ett X-konto och eventuell X Premium-prenumeration."
+    },
+    {
+      "question": "Är Grok gratis?",
+      "answer": "Det finns en gratisnivå med begränsningar. Full åtkomst till de mest avancerade modellerna kräver oftast en betald prenumeration."
+    },
+    {
+      "question": "Har Grok en officiell app för Android och iOS?",
+      "answer": "Ja, båda finns i respektive officiella butik, publicerade av xAI. Undvik appar med liknande namn från okända utvecklare."
+    },
+    {
+      "question": "Kan Grok ge felaktig information från X?",
+      "answer": "Ja, eftersom Grok kan hämta realtidsinnehåll från X kan svaren innehålla obekräftad eller felaktig information, precis som vilket socialt medieflöde som helst. Dubbelkolla viktiga fakta."
+    }
+  ],
+  "swedishSupport": "unknown"
+}

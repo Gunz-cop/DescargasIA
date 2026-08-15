@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Antecknings- och projektverktyg med inbyggd AI för sammanfattning, skrivhjälp och sökning, för webb, dator och mobil.",
+  "longDescription": "Notion är en arbetsyta som kombinerar anteckningar, dokument, databaser och projekthantering i ett och samma verktyg, med Notion AI inbyggt för att sammanfatta, skriva om, generera text och söka smart genom ditt innehåll. Plattformen finns som webbapp, som officiella datorappar för Windows och macOS, och som mobilappar för Android och iOS. Den här sidan länkar enbart till Notions egna officiella kanaler.",
+  "bestFor": [
+    "Samla anteckningar, dokument och projekt i en och samma arbetsyta med AI-hjälp för sammanfattning och skrivande",
+    "Använda Notion AI för att skriva om, förkorta eller expandera text direkt i dina egna dokument",
+    "Söka smart genom stora mängder eget innehåll med naturligt språk istället för exakta nyckelord",
+    "Bygga anpassade databaser och projektöversikter som kombinerar strukturerad data med fritextinnehåll"
+  ],
+  "limitations": [
+    "Sedan den 13 maj 2025 går det inte längre att lägga till fullständig Notion AI som ett betalt tillägg till valfri plan: funktionen ingår numera bara i planerna Business och Enterprise. Free- och Plus-planerna ger en begränsad provperiod utan förnyelse (mer detaljer i \"Vad communityn säger\" ovan i den här sidan).",
+    "Notion är ett brett verktyg snarare än specialiserat på ett enda område, vilket kan kännas överväldigande för den som bara behöver en enkel anteckningsapp.",
+    "Eftersom Notion är molnbaserat krävs internetanslutning för de flesta funktioner, även om viss offlineåtkomst finns i dator- och mobilapparna."
+  ],
+  "safetyNotes": [
+    "Ladda bara ner Notion från notion.com/desktop för dator eller de officiella butikerna för mobil. Undvik tredjepartssajter som erbjuder \"Notion Pro gratis\" eller modifierade installationsfiler.",
+    "Var försiktig med att dela känslig information i offentligt delade Notion-sidor; kontrollera alltid delningsinställningarna innan du publicerar ett dokument."
+  ],
+  "editorialSummary": "Notion har blivit ett av de mest heltäckande produktivitetsverktygen med AI inbyggt, från anteckningar till hela projektöversikter. Vi länkar enbart till de officiella kanalerna för webb, dator och mobil, publicerade direkt av Notion.",
+  "editorialSections": [
+    {
+      "heading": "Ett verktyg, många användningsområden",
+      "body": "Notions styrka ligger i flexibiliteten: samma verktyg kan användas som enkel anteckningsapp, som delad kunskapsbas för ett team, eller som fullständigt projekthanteringssystem med databaser, kalkylark och kanban-tavlor. Notion AI är inbyggt genomgående, från att sammanfatta ett långt dokument till att generera ett första utkast av en text.\n\nDenna bredd gör Notion till ett naturligt val för den som vill samla flera verktyg i ett enda, men kan också kännas som en högre inlärningströskel jämfört med enklare, mer specialiserade appar."
+    },
+    {
+      "heading": "Notion AI i det dagliga arbetet",
+      "body": "Notion AI fungerar direkt inne i dina befintliga dokument: du kan markera text och be AI:n förkorta, förlänga, korrigera eller ändra tonen, eller använda den för att sammanfatta långa sidor till en snabb översikt. Det gör AI-funktionerna till en naturlig del av skrivflödet snarare än ett separat verktyg man måste växla till.\n\nAI:n kan också söka smart genom hela din arbetsyta och svara på frågor baserat på ditt eget innehåll, ett sätt att snabbt hitta information i stora mängder anteckningar och dokument utan att manuellt bläddra igenom allt."
+    },
+    {
+      "heading": "Webb, dator och mobil: samma innehåll överallt",
+      "body": "Notion synkroniserar automatiskt mellan webbappen, de officiella datorapparna för Windows och macOS, och mobilapparna för Android och iOS, så att samma anteckningar och projekt är tillgängliga oavsett enhet. De officiella datorapparna laddas ner direkt från notion.com/desktop.\n\nFör den som bara vill testa snabbt utan att installera något är webbappen fullt funktionell och kräver bara ett konto för att komma igång, med samma funktioner som datorapparna."
+    },
+    {
+      "heading": "När Notion passar och när man bör jämföra andra alternativ",
+      "body": "Notion passar bra för team och privatpersoner som vill samla anteckningar, dokumentation och projekthantering i samma verktyg, med AI-hjälp inbyggt genom hela arbetsflödet. Det är också ett bra val för den som vill bygga anpassade databaser utan att lära sig ett separat databasverktyg.\n\nOm du bara behöver enklare, mer fokuserade funktioner — till exempel enbart AI-genererade presentationer eller enbart anteckningar — kan Gamma eller Canva vara mer riktade alternativ beroende på specifikt behov."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Den 13 maj 2025 tog Notion bort det fristående AI-tillägget (som kostade omkring 8-10 dollar per medlem och månad och kunde läggas till valfri plan) och flyttade de fullständiga Notion AI-funktionerna — inklusive Agenter och assistenten \"Ask Notion\" — uteslutande till planen Business, från 20 dollar per medlem och månad. De som redan hade tillägget innan dess fick behålla det utan omedelbara förändringar, men tillägget slutade vara tillgängligt för nya kunder. Den som administrerar en arbetsyta i planen Free eller Plus och letar efter AI-tillägget som fanns tidigare kommer inte längre att hitta det: den enda vägen idag är att uppgradera till Business.",
+      "source": "https://www.usecarly.com/blog/notion-ai-pricing-change/",
+      "sourceLabel": "usecarly.com — rapportering om att Notion tog bort sitt AI-tillägg",
+      "date": "2026-06-30"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Har Notion en officiell datorapp?",
+      "answer": "Ja, för både Windows och macOS, nedladdningsbar direkt från notion.com/desktop."
+    },
+    {
+      "question": "Är Notion gratis?",
+      "answer": "Notions gratisplan ger en begränsad provperiod av Notion AI, utan förnyelse. Sedan den 13 maj 2025 ingår full åtkomst till Notion AI bara i planerna Business och Enterprise; det går inte längre att lägga till det som ett betalt tillägg till Free eller Plus."
+    },
+    {
+      "question": "Behöver jag internet för att använda Notion?",
+      "answer": "De flesta funktioner kräver internetanslutning eftersom Notion är molnbaserat, men dator- och mobilapparna erbjuder viss offlineåtkomst till tidigare öppnat innehåll."
+    },
+    {
+      "question": "Kan jag använda Notion AI på svenska?",
+      "answer": "Notion AI fungerar med flera språk inklusive svenska för de flesta text- och sammanfattningsfunktioner, även om kvaliteten kan variera beroende på uppgift."
+    }
+  ],
+  "swedishSupport": "unknown"
+}

@@ -24,7 +24,8 @@
   "alternatives": [
     "chatgpt",
     "claude",
-    "perplexity"
+    "perplexity",
+    "gemini"
   ],
   "screenshotUrl": null,
   "initials": "NL",

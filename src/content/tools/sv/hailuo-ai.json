@@ -1,0 +1,65 @@
+{
+  "shortDescription": "MiniMax videogenereringsapp med synkroniserat ljud, tillgänglig via webb samt officiella appar för Android och iOS.",
+  "longDescription": "Hailuo AI är videogenereringsplattformen från det kinesiska AI-bolaget MiniMax, som skapar videoklipp från text eller bilder med inbyggd, synkroniserad ljudgenerering. Plattformen är känd för att producera klipp med naturlig rörelse och relativt god sammanhållning mellan scener, ett av flera kinesiska videoalternativ som fått stor uppmärksamhet under 2026. Den här sidan länkar enbart till de officiella kanalerna: webbappen på hailuoai.video samt de officiella apparna i Google Play och App Store.",
+  "bestFor": [
+    "Generera videoklipp från text eller bilder med inbyggd, synkroniserad ljudgenerering",
+    "Skapa kortare videosnuttar för sociala medier utan att behöva en separat ljudredigering",
+    "Testa ett av de mer prisvärda alternativen bland AI-videogeneratorer med officiella mobilappar",
+    "Jämföra resultat mot andra videomodeller som Kling AI eller Runway för samma prompt"
+  ],
+  "limitations": [
+    "Ingen officiell datorapp finns bekräftad: på dator sker allt via webbläsaren på hailuoai.video.",
+    "Som kinesisk tjänst kan Hailuo AI omfattas av andra dataregler och innehållsbegränsningar än västerländska videoalternativ.",
+    "Gratisnivån ger ett begränsat antal genereringar; längre eller högre upplösta klipp kräver oftast en betald prenumeration."
+  ],
+  "safetyNotes": [
+    "Installera Hailuo AI enbart från Google Play eller App Store, publicerat av MiniMax. Undvik APK-filer från tredjepartssajter som utger sig för att vara Hailuo.",
+    "Var medveten om att genererat videoinnehåll, precis som med alla AI-videoverktyg, kan användas för att skapa vilseledande material — använd och dela ansvarsfullt."
+  ],
+  "editorialSummary": "Hailuo AI, från MiniMax, är ett av flera kinesiska AI-videoverktyg som blivit populära för sin kombination av bra rörelsekvalitet och inbyggt synkroniserat ljud. Vi länkar enbart till de officiella kanalerna för webb, Android och iOS.",
+  "editorialSections": [
+    {
+      "heading": "Video med synkroniserat ljud direkt",
+      "body": "Ett av Hailuo AI:s tydligaste särdrag är att ljudgenereringen är inbyggd från början, snarare än ett separat steg som måste läggas till efteråt. Det gör att klippen kan innehålla ljudeffekter eller ambiens som känns synkroniserade med det som händer i bild, utan att man behöver använda ett separat ljudverktyg.\n\nDenna kombination av video och ljud i samma flöde sparar tid jämfört med verktyg där videogenerering och ljudredigering sker som helt separata steg i olika appar."
+    },
+    {
+      "heading": "En del av en växande grupp kinesiska videoverktyg",
+      "body": "Hailuo AI konkurrerar direkt med andra kinesiska videomodeller som Kling AI och Wan, samtliga utvecklade av olika stora teknikbolag som satsat hårt på AI-video under 2025 och 2026. Kvaliteten mellan dessa alternativ ligger ofta nära varandra, och vilken som passar bäst kan variera beroende på specifik prompt eller stil.\n\nFör den som vill jämföra resultat lönar det sig att testa samma beskrivning i flera av dessa verktyg, eftersom styrkor och svagheter kan skilja sig åt mellan olika typer av rörelser, kameraeffekter eller visuella stilar."
+    },
+    {
+      "heading": "Bara webb och mobil — ingen datorapp",
+      "body": "Hailuo AI finns som webbapp och som officiella appar för Android och iOS, men ingen datorapp är bekräftad vid den här granskningen. På dator innebär det att webbläsaren på hailuoai.video är den enda vägen in, vilket fungerar fullt ut men saknar en fristående installationsfil.\n\nOm du letar efter en \"Hailuo AI för Windows\"-installer utanför webbläsaren finns det inget officiellt sådant alternativ att ladda ner just nu."
+    },
+    {
+      "heading": "När Hailuo AI passar och när man bör jämföra andra alternativ",
+      "body": "Hailuo AI passar bra för den som vill generera kortare videoklipp med inbyggt ljud utan att behöva flera separata verktyg, och som inte har några invändningar mot att tjänsten drivs från Kina.\n\nOm du prioriterar en plattform baserad utanför Kina, eller behöver mer avancerade redigeringsfunktioner för professionell produktion, är Runway eller Luma Dream Machine värda att jämföra med."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Den 16 september 2025 stämde Disney, Universal Studios och Warner Bros. Discovery gemensamt MiniMax (samt Shanghai Xiyu Jizhi Technology Co. Ltd) vid en federal domstol i Kaliforniens centraldistrikt, med anklagelsen att bolaget \"pirates and plunders Plaintiffs' copyrighted works on a massive scale\" (plundrar och stjäl kärandenas upphovsrättsskyddade verk i massiv skala). Studiornas stämningsansökan pekar särskilt ut att MiniMax marknadsför Hailuo AI som en \"Hollywood Studio in Your Pocket\" (en Hollywoodstudio i fickan) — en formulering studiorna kallar anmärkningsvärd med tanke på att tjänsten enligt dem byggts på stulet Hollywood-material. Kärandena kräver ersättning på upp till 150 000 dollar per intrång i enskilda verk, vilket potentiellt kan uppgå till betydande belopp givet det stora antalet exempel som citeras, samt ett permanent förbudsföreläggande. Målet var fortfarande pågående vid den här granskningen. Det är relevant att känna till för den som genererar videor med kända figurer eller varumärken i Hailuo AI: frågan om vad tjänsten faktiskt har rätt att producera är föremål för aktiv rättslig tvist, inte en fastslagen sak.",
+      "source": "https://coingeek.com/disney-universal-warner-bros-hit-china-minimax-ai-with-suit/",
+      "sourceLabel": "CoinGeek — Disney, Universal och Warner Bros. Discovery stämmer MiniMax för upphovsrättsintrång",
+      "date": "2025-09-16"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Har Hailuo AI en officiell datorapp?",
+      "answer": "Nej, ingen officiell datorapp är bekräftad. På dator används tjänsten via webbläsaren på hailuoai.video."
+    },
+    {
+      "question": "Är Hailuo AI gratis?",
+      "answer": "Det finns en gratisnivå med begränsat antal genereringar. Fler eller högre upplösta klipp kräver oftast en betald prenumeration."
+    },
+    {
+      "question": "Genererar Hailuo AI ljud automatiskt?",
+      "answer": "Ja, en av dess mest utmärkande funktioner är inbyggd, synkroniserad ljudgenerering tillsammans med videon."
+    },
+    {
+      "question": "Har Hailuo AI officiella appar för Android och iOS?",
+      "answer": "Ja, båda finns i respektive officiella butik, publicerade av MiniMax."
+    }
+  ],
+  "swedishSupport": "unknown"
+}
