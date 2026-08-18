@@ -9,6 +9,7 @@ Antes de modificar UX, contenido o estructura editorial, lee estas guias:
 - `docs/ux-tool-pages.md`: estructura recomendada para fichas individuales de herramientas.
 - `docs/enlazado-interno.md`: **mapa de URLs, grafo de enlaces internos, reglas de hreflang/canonical y auditoria automatica.** Leelo antes de tocar rutas, navegacion, hreflang o cualquier bloque de enlaces.
 - `docs/tool-ficha-authoring.md`: como usar la skill `descargasia-tool-ficha` para crear fichas nuevas.
+- `docs/ficha-harness.md`: **arnes de GitHub Actions que encadena crear -> auditar -> corregir hasta 5 veces.** Es la via para generar fichas sin gastar cuota de una sesion interactiva.
 - `skills/descargasia-tool-ficha/`: copia versionada de la skill local para revisar y ajustar el flujo de creacion de fichas.
 
 Principios del proyecto:

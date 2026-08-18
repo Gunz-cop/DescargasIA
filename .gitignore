@@ -26,3 +26,6 @@ Thumbs.db
 
 # Salidas descartables de corridas de eval de skills (transcripts, grading, benchmarks)
 .claude/skills/*-workspace/
+
+# Salidas del arnes de fichas (informes por iteracion, logs, costos)
+harness-out/

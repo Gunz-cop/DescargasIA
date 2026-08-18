@@ -1,0 +1,186 @@
+name: Arnes de fichas (crear -> auditar -> corregir)
+
+# Automatiza el ciclo completo de una ficha nueva fuera de una sesión de Claude
+# Code: crear, auditar y corregir hasta que la auditoría apruebe o se agoten las
+# iteraciones. El resultado llega siempre como pull request, nunca como push a
+# main: deploy.yml deploya en cada push a main y este workflow no puede publicar
+# solo.
+#
+# Requiere el secret CLAUDE_CODE_OAUTH_TOKEN (generado con `claude setup-token`).
+# Ver docs/ficha-harness.md.
+
+on:
+  workflow_dispatch:
+    inputs:
+      herramienta:
+        description: "Herramienta a fichar (nombre, idealmente con su URL oficial)"
+        required: true
+      slug:
+        description: "Slug a usar. Vacío = lo decide la pasada de creación"
+        required: false
+        default: ""
+      lang:
+        description: "Idioma editorial"
+        required: false
+        default: "es"
+        type: choice
+        options: ["es", "sv", "it"]
+      max_loops:
+        description: "Máximo de ciclos auditar/corregir"
+        required: false
+        default: "5"
+      model:
+        description: "Modelo para las tres pasadas"
+        required: false
+        default: "claude-sonnet-5"
+        type: choice
+        options: ["claude-sonnet-5", "claude-opus-5", "claude-haiku-4-5-20251001"]
+      skip_create:
+        description: "Saltear la creación y sólo auditar/corregir un slug existente"
+        required: false
+        default: false
+        type: boolean
+
+# Una corrida por vez: dos arneses en paralelo se pisarían el catálogo y las
+# métricas de originalidad se medirían contra un estado a medio escribir.
+concurrency:
+  group: ficha-harness
+  cancel-in-progress: false
+
+jobs:
+  harness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Claude Code
+        run: |
+          npm install -g @anthropic-ai/claude-code
+          claude --version
+
+      - name: Configurar git
+        run: |
+          git config user.name "fuenteai-harness[bot]"
+          git config user.email "harness@users.noreply.github.com"
+          git checkout -b "${BRANCH}"
+        env:
+          BRANCH: harness/ficha-${{ github.run_id }}
+
+      # Antes de gastar una sola pasada del modelo. Las expresiones de jq que
+      # arman el resumen no se ejecutan hasta el final de una corrida, así que un
+      # error de sintaxis ahí se descubriría después de haber pagado las tres
+      # pasadas. Tarda segundos y no consume cuota.
+      - name: Test de humo del resumen
+        run: bash scripts/harness/test-resumen.sh
+
+      - name: Correr el arnés
+        id: harness
+        continue-on-error: true
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          HERRAMIENTA: ${{ inputs.herramienta }}
+          SLUG: ${{ inputs.slug }}
+          FICHA_LANG: ${{ inputs.lang }}
+          MAX_LOOPS: ${{ inputs.max_loops }}
+          MODEL: ${{ inputs.model }}
+          SKIP_CREATE: ${{ inputs.skip_create }}
+          OUT: harness-out
+        run: bash scripts/harness/run.sh
+
+      # El resumen se publica pase lo que pase: una corrida que agota las 5
+      # iteraciones es tan informativa como una que aprueba, y el informe de cada
+      # vuelta es lo que dice qué ajustar en las skills.
+      - name: Publicar resumen en el run
+        if: always()
+        run: cat harness-out/resumen.md >> "$GITHUB_STEP_SUMMARY" || echo "El arnés no llegó a generar resumen." >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Subir informes como artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: harness-${{ github.run_id }}
+          path: harness-out/
+          retention-days: 30
+
+      - name: Detectar cambios en el catálogo
+        if: always()
+        id: cambios
+        run: |
+          git add -A -- src/content
+          if git diff --cached --quiet; then
+            echo "hay=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "hay=true" >> "$GITHUB_OUTPUT"
+          fi
+          # Cualquier cosa fuera de src/content que haya quedado sucia no entra al
+          # PR, pero sí se reporta: es la señal de que una pasada se salió del
+          # carril que le marcan los prompts.
+          FUERA="$(git status --porcelain -- . ':!src/content' ':!harness-out' ':!dist')"
+          if [ -n "$FUERA" ]; then
+            echo "::warning::El arnés dejó cambios fuera de src/content (no se incluyen en el PR):"
+            echo "$FUERA"
+          fi
+
+      - name: Crear pull request
+        if: always() && steps.cambios.outputs.hay == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: harness/ficha-${{ github.run_id }}
+          RESULTADO: ${{ steps.harness.outcome }}
+        run: |
+          SLUG="$(cat harness-out/slug.txt 2>/dev/null || echo desconocida)"
+          ESTADO="$(jq -r '.resultado' harness-out/estado.json 2>/dev/null || echo desconocido)"
+          VEREDICTO="$(jq -r '.veredicto' harness-out/estado.json 2>/dev/null || echo desconocido)"
+
+          git commit -m "Ficha ${SLUG}: generada por el arnés (${ESTADO})"
+          git push origin "${BRANCH}"
+
+          {
+            echo "Ficha generada automáticamente por el arnés."
+            echo
+            echo "- Slug: \`${SLUG}\`"
+            echo "- Resultado del arnés: **${ESTADO}** (veredicto final: ${VEREDICTO})"
+            echo "- [Run completo con los informes de cada iteración](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID})"
+            echo
+            cat harness-out/resumen.md 2>/dev/null || true
+            echo
+            echo "---"
+            echo
+            echo "**Antes de mergear**, revisá a ojo la ficha renderizada con \`npm run dev\`:"
+            echo "el arnés no tiene navegador, así que el paso 4 de la auditoría"
+            echo "(contradicciones entre plantilla y contenido en el DOM) queda pendiente."
+          } > pr-body.md
+
+          # Aprobado sale como PR normal; agotado o abortado sale como draft, para
+          # que no se mergee de taquito algo que la auditoría nunca dejó pasar.
+          DRAFT=""
+          [ "$ESTADO" = "aprobado" ] || DRAFT="--draft"
+
+          gh pr create \
+            --base main \
+            --head "${BRANCH}" \
+            --title "Ficha ${SLUG} (arnés: ${ESTADO})" \
+            --body-file pr-body.md \
+            $DRAFT
+
+      - name: Fallar si el arnés no aprobó
+        if: always() && steps.harness.outcome != 'success'
+        run: |
+          echo "::error::El arnés terminó sin aprobación. Mirá el resumen del run y el artifact."
+          exit 1

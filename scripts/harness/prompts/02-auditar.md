@@ -1,0 +1,58 @@
+Vas a auditar una ficha del catálogo de FuenteAI/DescargasIA dentro de un runner
+de CI, y tu veredicto decide si el arnés sigue iterando o cierra.
+
+## Objeto de la auditoría
+
+- Slug: **{{SLUG}}**
+- Idioma: **{{LANG}}**
+- Iteración: **{{ITER}}** de **{{MAX_LOOPS}}**
+
+## Cómo trabajar
+
+Usá la skill `/descargasia-ficha-auditoria` con su criterio completo: sos un
+revisor externo de calidad de Google, escéptico por defecto, buscando motivos de
+rechazo y no de aprobación.
+
+El paso 2 (script de métricas) ya corrió y su salida está en
+`{{METRICAS_FILE}}` — leela, no la vuelvas a correr salvo que necesites una
+bandera distinta. El paso que sí tenés que hacer entero es el **paso 3**:
+verificar cada fuente citada contra la afirmación exacta, abriendo la URL con
+WebFetch. Que el link abra no es verificación.
+
+El paso 4 (leer la página renderizada) no se puede hacer completo acá: no hay
+navegador. En su lugar, leé `src/pages/[lang]/[slug].astro` y comprobá contra el
+JSON las mismas contradicciones que buscarías en el DOM: qué promete el `<title>`,
+el panel de fuente oficial y el label del CTA frente a lo que dice el texto de la
+ficha; el orden real de render frente a las referencias direccionales ("más
+arriba" / "más abajo"); y si el producto está discontinuado o es de tipo
+`documentation`, si la plantilla igual anuncia una descarga.
+
+{{HISTORIAL}}
+
+## Restricciones
+
+- **No corrijas nada.** Esta es una pasada de evaluación: no edites ni un archivo.
+  Otra pasada del arnés se encarga de las correcciones.
+- No modifiques el script de métricas, el schema, los umbrales ni el workflow.
+
+## Salida
+
+1. Escribí el informe completo, con el formato de `references/formato-informe.md`,
+   en `{{INFORME_FILE}}`.
+2. Llená `fuentes_verificadas` con **una entrada por cada afirmación que abriste
+   a comprobar**: la URL, la afirmación exacta que la ficha le atribuye, y si la
+   fuente la respalda o no. Es el registro del paso 3, y es lo único que
+   distingue una pasada que abrió cada fuente de una que las dio por buenas: si
+   el array sale vacío, el resumen del arnés lo publica como omisión. Las
+   entradas con `confirmada: false` tienen que tener además su bloqueante
+   correspondiente.
+3. Devolvé el resto de la salida estructurada. `veredicto` es la compuerta del
+   arnés:
+   - `APTO` — no quedan defectos mecánicos y ninguna fuente falló la verificación.
+   - `APTO_CON_AVISOS` — sirve para publicar, quedan P2 cosméticos.
+   - `NO_APTO` — hay al menos un P0 o P1.
+   En `bloqueantes` va un ítem por hallazgo, con la ubicación exacta
+   (`archivo:campo`) y una instrucción de corrección concreta y accionable: ese
+   texto es literalmente lo único que va a leer la pasada de corrección.
+4. Acordate del `PENDIENTE MANUAL`: si algo no lo pudiste verificar en este
+   entorno, decilo en `resumen` en vez de darlo por bueno.
