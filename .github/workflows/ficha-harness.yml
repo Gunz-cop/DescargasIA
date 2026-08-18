@@ -26,9 +26,9 @@ on:
         type: choice
         options: ["es", "sv", "it"]
       max_loops:
-        description: "Máximo de ciclos auditar/corregir"
+        description: "Máximo de ciclos auditar/corregir. Cada ciclo son 2 pasadas de modelo"
         required: false
-        default: "5"
+        default: "2"
       model:
         description: "Modelo para las tres pasadas"
         required: false

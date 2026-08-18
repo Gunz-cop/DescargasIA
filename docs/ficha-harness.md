@@ -40,7 +40,7 @@ Desde la pestaña Actions, workflow **Arnes de fichas**, botón *Run workflow*:
 | `herramienta` | Qué fichar. Poné el nombre y, si la sabés, la URL oficial: ahorra una búsqueda y evita que agarre un clon. |
 | `slug` | Vacío = lo decide la pasada de creación a partir del nombre oficial. |
 | `lang` | `es`, `sv` o `it`. |
-| `max_loops` | Ciclos auditar/corregir. 5 por defecto. |
+| `max_loops` | Ciclos auditar/corregir. **2 por defecto** — cada ciclo son dos pasadas de modelo, y el costo crece lineal. |
 | `model` | `claude-opus-5` por defecto. |
 | `effort` | `medium` por defecto. Ver más abajo por qué no es `high`. |
 | `skip_create` | Saltea la creación: audita y corrige un slug que ya existe. Sirve para pasarle el arnés a fichas viejas del catálogo. |
@@ -135,6 +135,26 @@ Cinco detalles del diseño que conviene conocer antes de tocarlo:
 El resumen se escribe desde un trap de salida, así que una corrida que aborta a
 mitad —una pasada que falló, el guardián que saltó— deja igual su rastro en vez
 de perderse entera.
+
+## Cuándo NO usar el arnés
+
+**Para actualizar una ficha que ya existe, usá una sesión interactiva.** El arnés
+no compite ahí y no va a competir: cada pasada es un `claude -p` nuevo, sin
+contexto compartido, así que recarga la skill, `AGENTS.md`, `content.config.ts` y
+las fichas de ejemplo **en cada pasada**. Una sesión de curación carga todo eso
+una vez y lo reutiliza cacheado. El aislamiento que hace confiable al arnés es lo
+mismo que lo hace caro.
+
+Su caso de uso es una ficha **genuinamente nueva**, donde la alternativa es una
+sesión larga de investigación. Por eso el arnés aborta —antes de gastar una sola
+pasada— si la herramienta pedida ya está en el catálogo, buscándola por slug y
+por dominio oficial. Si de verdad querés actualizarla, `skip_create: true` saltea
+la creación y va derecho al lazo de auditar/corregir.
+
+Esto se aprendió caro: la primera corrida real se pidió sobre `kling-ai`, que ya
+estaba fichada. En vez de crear, reescribió tres archivos en dos idiomas, midió
+originalidad contra material maduro, y se comió el 30% de una cuota de cinco
+horas sin terminar.
 
 ## Lo que el arnés no puede hacer
 

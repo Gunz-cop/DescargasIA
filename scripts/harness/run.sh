@@ -23,7 +23,11 @@ set -euo pipefail
 
 OUT="${OUT:-harness-out}"
 FICHA_LANG="${FICHA_LANG:-es}"
-MAX_LOOPS="${MAX_LOOPS:-5}"
+MAX_LOOPS="${MAX_LOOPS:-2}"
+# Techo por pasada. Sin esto, una auditoría que se traba abriendo fuentes quema
+# cuota hasta que GitHub mata el job — y el arnés muere sin dejar resumen porque
+# el proceso no alcanza a correr su trap de salida.
+PASS_TIMEOUT="${PASS_TIMEOUT:-1200}"
 MODEL="${MODEL:-claude-opus-5}"
 # Opus 5 rinde desproporcionadamente bien en low/medium: calidad alta a una
 # fracción de los tokens. El default de effort heredado de otros modelos casi
@@ -107,6 +111,7 @@ claude_run() {
   local prompt="$1" turns="$2" schema="$3" raw="$4" modo="${5:-escritura}"
   local code=0
   SNAPSHOT_CONTENIDO="$(git status --porcelain -- src/content)"
+  timeout --signal=TERM --kill-after=60 "$PASS_TIMEOUT" \
   claude -p "$prompt" \
     --model "$MODEL" \
     --effort "$EFFORT" \
@@ -116,6 +121,12 @@ claude_run() {
     --output-format json \
     --json-schema "$schema" \
     >"$raw" 2>"${raw%.json}.stderr" || code=$?
+  if [ "$code" -eq 124 ]; then
+    echo "::error::la pasada excedió PASS_TIMEOUT ($PASS_TIMEOUT s) y se cortó." >&2
+    tail -n 20 "${raw%.json}.stderr" >&2
+    RESULTADO="abortado-timeout-de-pasada"
+    return 1
+  fi
   if [ "$code" -ne 0 ]; then
     echo "::error::claude terminó con código $code. stderr:" >&2
     tail -n 30 "${raw%.json}.stderr" >&2
@@ -135,6 +146,53 @@ claude_run() {
   # llamador no llega a usar lo que devolvió.
   guardia "$modo" || return 1
   jq '.structured_output' "$raw"
+}
+
+# Aborta si la herramienta pedida ya está en el catálogo.
+#
+# Existe porque la primera corrida real del arnés se pidió sobre `kling-ai`, que
+# ya estaba fichada: en vez de crear, se puso a reescribir tres archivos en dos
+# idiomas, y la comparación de originalidad y `--cross-lang` corrieron contra
+# material maduro. Es la forma más cara que puede tomar una corrida, y la más
+# fácil de pedir por error. Este chequeo cuesta milisegundos y cero cuota.
+#
+# Crear y actualizar son operaciones distintas: para actualizar una ficha que ya
+# existe está `skip_create: true`, que saltea la creación y va derecho al lazo.
+verificar_duplicado() {
+  local candidatos=() dominio
+  # 1. El slug que saldría del nombre pedido, y el que pasó el usuario.
+  candidatos+=("$(sed 's/(.*//' <<<"$HERRAMIENTA" \
+    | tr '[:upper:]' '[:lower:]' \
+    | sed 's/[^a-z0-9]\+/-/g; s/^-//; s/-$//')")
+  [ -n "${SLUG:-}" ] && candidatos+=("$SLUG")
+
+  local encontrados=()
+  local c
+  for c in "${candidatos[@]}"; do
+    [ -n "$c" ] && [ -f "src/content/tools-base/$c.json" ] && encontrados+=("$c")
+  done
+
+  # 2. El dominio oficial, si el pedido trae una URL. Atrapa los cambios de
+  #    marca: "Kling AI" y "kling.ai" no dan el mismo slug, pero sí la misma ficha.
+  dominio="$(grep -oiE 'https?://[^ )]+' <<<"$HERRAMIENTA" | head -1 \
+    | sed 's|https\?://||; s|^www\.||; s|/.*||' || true)"
+  if [ -n "$dominio" ]; then
+    local hit
+    while IFS= read -r hit; do
+      [ -n "$hit" ] && encontrados+=("$(basename "$hit" .json)")
+    done < <(grep -rlF "$dominio" src/content/tools-base/ 2>/dev/null || true)
+  fi
+
+  if [ "${#encontrados[@]}" -gt 0 ]; then
+    local unicos
+    unicos="$(printf '%s\n' "${encontrados[@]}" | sort -u | tr '\n' ' ')"
+    echo "::error::\"$HERRAMIENTA\" ya está en el catálogo: $unicos" >&2
+    echo "::error::Crear encima de una ficha existente la reescribe entera y mide originalidad contra sí misma." >&2
+    echo "::error::Si querés actualizarla, volvé a disparar el workflow con skip_create=true y slug=<el de arriba>." >&2
+    RESULTADO="abortado-ficha-duplicada"
+    return 1
+  fi
+  return 0
 }
 
 # Corre metricas.mjs sobre la ficha. $1=archivo de salida, resto=banderas extra.
@@ -256,6 +314,12 @@ trap escribir_resumen EXIT
 # ------------------------------------------------------------------- 1. crear
 
 if [ "$SKIP_CREATE" != "true" ]; then
+  verificar_duplicado || exit 3
+  # Se guarda la lista previa para volver a chequear después: la pasada de
+  # creación elige el slug final, y puede aterrizar en uno existente aunque el
+  # nombre pedido no lo sugiriera.
+  SLUGS_PREVIOS="$(ls src/content/tools-base/*.json 2>/dev/null | xargs -n1 basename 2>/dev/null | sed 's/\.json$//' || true)"
+
   log "Creando la ficha de: $HERRAMIENTA"
   mkdir -p "$OUT/crear"
   prompt="$(render "$PROMPTS/01-crear.md" \
@@ -264,6 +328,12 @@ if [ "$SKIP_CREATE" != "true" ]; then
     '{{SLUG}}' "${SLUG:-}")"
   claude_run "$prompt" 90 "$SCHEMA_CREAR" "$OUT/crear/raw.json" >"$OUT/crear/salida.json"
   SLUG="$(jq -r '.slug' "$OUT/crear/salida.json")"
+  if grep -qxF "$SLUG" <<<"$SLUGS_PREVIOS"; then
+    echo "::error::La pasada de creación aterrizó en '$SLUG', que ya existía antes de esta corrida." >&2
+    echo "::error::Revisá el diff: reescribió una ficha del catálogo en vez de crear una nueva." >&2
+    RESULTADO="abortado-ficha-duplicada"
+    exit 3
+  fi
   log "Ficha creada con slug: $SLUG"
   jq -r '.notas' "$OUT/crear/salida.json"
 fi

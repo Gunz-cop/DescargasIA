@@ -29,7 +29,10 @@ rigen la creación rigen la corrección.
 
 ## Restricciones (importantes)
 
-- Tocá únicamente los archivos de esta ficha bajo `src/content/`.
+- Tocá únicamente `src/content/tools-base/{{SLUG}}.json` y
+  `src/content/tools/{{LANG}}/{{SLUG}}.json`. Ningún otro idioma, ninguna otra
+  ficha — aunque el informe mencione una inconsistencia entre idiomas, acá se
+  corrige sólo el idioma de esta corrida y el resto se deja anotado en `notas`.
 - **Está prohibido tocar la compuerta**: no edites
   `.claude/skills/descargasia-ficha-auditoria/scripts/metricas.mjs`, ni sus
   umbrales, ni `scripts/audit-*.mjs`, ni `src/content.config.ts`, ni nada de

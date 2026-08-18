@@ -25,6 +25,11 @@ omitila — es preferible una plataforma de menos que un enlace falso.
   humano después, revisando el pull request.
 - Para el build usá `npm run build:no-shorten`. Nunca `npm run build` a secas: el
   shortener de enlaces necesita credenciales que este runner no tiene.
+- **Escribí sólo el idioma pedido.** Los archivos de esta corrida son
+  `src/content/tools-base/<slug>.json` y `src/content/tools/{{LANG}}/<slug>.json`,
+  y ninguno más. Aunque veas que la ficha existe en otro idioma y notes que está
+  desactualizada, no lo toques: ese es otro trabajo, con su propio pedido y su
+  propia revisión. Anotalo en `notas` y seguí.
 - Tocá únicamente archivos bajo `src/content/`. No modifiques componentes,
   layouts, configuración, scripts, workflows ni las skills.
 - Si algo del encargo es imposible de verificar, escribí la ficha sin ese dato y
