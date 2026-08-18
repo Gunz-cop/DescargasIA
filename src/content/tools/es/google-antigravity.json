@@ -1,0 +1,84 @@
+{
+  "shortDescription": "La plataforma de desarrollo agéntico de Google: un IDE derivado de VS Code, una CLI y un SDK que orquestan agentes de Gemini para escribir, ejecutar y probar código.",
+  "longDescription": "Google Antigravity es la plataforma de desarrollo con agentes que Google presentó el 18 de noviembre de 2025, el mismo día que Gemini 3, y que se descarga desde antigravity.google. No es un chat de programación ni una extensión: es un entorno de escritorio derivado de Visual Studio Code en el que los agentes tienen acceso a un navegador integrado y a una terminal, de modo que pueden leer el proyecto, ejecutar comandos, abrir la aplicación que acaban de modificar y comprobar si funciona. Alrededor de ese entorno, Google distribuye además una CLI para trabajar desde la terminal y un SDK en Python para construir agentes propios. Todo se instala en Windows, macOS y Linux; no existe versión web ni aplicación móvil, y esta ficha enlaza únicamente a los canales oficiales de Google.",
+  "bestFor": [
+    "Delegar tareas de código de varios pasos a un agente que también ejecuta comandos y verifica el resultado antes de devolverlo",
+    "Coordinar varios agentes trabajando en paralelo sobre proyectos distintos desde un mismo panel",
+    "Probar los modelos Gemini aplicados a programación sin contratar una suscripción desde el primer día",
+    "Automatizar tareas repetitivas desde la terminal con la CLI, o prototipar agentes propios en Python con el SDK"
+  ],
+  "limitations": [
+    "Las cuotas de uso son el punto de fricción más reportado: quien no tiene Google AI Pro o Ultra recibe una cuota que se refresca semanalmente, y en marzo de 2026 varios suscriptores de Pro reportaron esperas de días en vez del refresco cada cinco horas que describe la documentación.",
+    "Solo hay versión de escritorio. No existe aplicación web, ni de Android, ni de iOS, y los únicos requisitos mínimos publicados —los de Antigravity 2.0, porque el IDE, la CLI y el SDK no declaran ninguno— dejan fuera equipos antiguos: Windows 10 de 64 bits, macOS 12 (Monterey) con la advertencia literal \"X86 is not supported\", y en Linux glibc 2.28 o superior.",
+    "La página de descargas ofrece cuatro piezas distintas (Antigravity 2.0, el IDE, la CLI y el SDK) con numeración de versión independiente, así que es fácil bajar la que no era si vas directo al primer botón.",
+    "Es un producto joven: nació como preview pública y su estructura de planes y precios ya cambió al menos una vez, en mayo de 2026."
+  ],
+  "safetyNotes": [
+    "Descarga siempre desde antigravity.google/download. Portales como Uptodown o TechSpot, y dominios parecidos al oficial del tipo antigravityide.org, redistribuyen el instalador por su cuenta: no son canales de Google y no hay garantía de que el binario sea el mismo que publicó el fabricante.",
+    "Un agente que puede leer archivos y ejecutar comandos es una superficie de ataque nueva. Investigadores de seguridad demostraron en noviembre de 2025, días después del lanzamiento, que instrucciones ocultas en una página web consultada por el agente pueden llevarlo a leer archivos con credenciales y filtrarlas. Trata cualquier fuente externa que le pases como código no confiable.",
+    "Revisa la lista de dominios permitidos del navegador integrado y qué carpetas puede tocar el agente antes de trabajar con un repositorio que contenga archivos .env, claves de API o datos de clientes.",
+    "Mantén la instalación al día. Al menos una vulnerabilidad de ejecución de código fue corregida en febrero de 2026, y una versión desactualizada conserva el fallo."
+  ],
+  "editorialSummary": "Antigravity es el intento de Google de reemplazar el autocompletado por la delegación: en vez de sugerirte la línea siguiente, le encargas una tarea a un agente que la ejecuta y la prueba. La idea funciona, pero el techo real no es técnico sino de cuota, y el hecho de que el agente ejecute comandos por su cuenta abre riesgos de seguridad que conviene entender antes de apuntarlo a un repositorio de trabajo.",
+  "editorialSections": [
+    {
+      "heading": "Qué cambia cuando el agente puede ejecutar y no solo sugerir",
+      "body": "La diferencia práctica con un autocompletado con IA es qué pasa después de que el modelo escribe el código. En Antigravity, el agente tiene una terminal y un navegador dentro del propio entorno, así que puede levantar la aplicación, hacer clic, leer la respuesta de una API y volver atrás a corregir lo que rompió. El resultado que te devuelve ya pasó por una comprobación, en vez de ser una propuesta que tienes que verificar entera a mano.\n\nEso también invierte la carga de trabajo: dejas de escribir líneas y pasas a redactar encargos y a revisar diffs. Si tu forma de programar es escribir tú y aceptar sugerencias puntuales, este entorno te va a resultar incómodo; si ya trabajas delegando tareas acotadas y revisando el resultado, es donde rinde. Antes de migrar todo tu flujo, prueba una tarea real de tamaño medio —un refactor de varios archivos, un test que falla— y mide cuánto tiempo dedicas a revisar frente a cuánto habrías tardado escribiéndolo."
+    },
+    {
+      "heading": "Antigravity no es un solo programa: son cuatro descargas distintas",
+      "body": "La página oficial de descargas lista cuatro productos con versiones independientes: Antigravity 2.0, que es el panel para gestionar varios agentes locales en paralelo y agruparlos por proyecto; el IDE, que es el entorno completo derivado de VS Code; la CLI, que se instala con un script de shell en macOS y Linux o con PowerShell en Windows y vive en la terminal; y el SDK, un framework en Python para construir agentes propios, que se distribuye por repositorio y no como instalador.\n\nSaber cuál quieres antes de entrar evita una descarga equivocada. Si vienes de Cursor o de VS Code y buscas un editor, lo que quieres es el IDE. Si ya trabajas con agentes de terminal al estilo de Claude Code, la CLI se te va a parecer más. Si tu objetivo es orquestar varios agentes a la vez sobre proyectos separados, ese es el papel de Antigravity 2.0. El SDK solo tiene sentido si vas a programar el agente, no a usarlo."
+    },
+    {
+      "heading": "El techo real de Antigravity son las cuotas, no las capacidades",
+      "body": "La documentación oficial de planes describe tres niveles: Google AI Ultra con la cuota más generosa y refresco cada cinco horas, Google AI Pro con refresco cada cinco horas hasta alcanzar un límite semanal, y el resto de las cuentas con una cuota que se refresca una vez por semana. En mayo de 2026 Google reorganizó los precios: apareció un nivel Ultra de 100 dólares al mes con cinco veces el límite del plan Pro de 20 dólares, el Ultra de 250 bajó a 200 dólares con veinte veces ese límite, y los modelos Flash y Pro pasaron a compartir un mismo cupo de tokens en vez de tener uno separado cada uno.\n\nLa consecuencia práctica es que conviene reservar el agente para lo que de verdad necesita un agente. Compilar, mover archivos, mirar un log o hacer un cambio de tres líneas gasta cuota que después te va a faltar en el refactor grande. Y como la estructura de planes ya cambió una vez, no tomes ninguna cifra concreta de límite o precio como permanente: confírmala en la documentación oficial antes de contratar."
+    },
+    {
+      "heading": "El riesgo específico de un agente con terminal: la inyección de prompt indirecta",
+      "body": "Antigravity concentró atención de la investigación en seguridad desde su lanzamiento —una demostración de exfiltración de datos en noviembre de 2025 y un fallo de ejecución de código parcheado en febrero de 2026—, y el motivo es estructural: un agente que lee páginas web para documentarse y además puede ejecutar comandos puede recibir órdenes de esas páginas. El patrón demostrado consiste en esconder instrucciones en el texto de un artículo aparentemente inocente; el agente las lee como si fueran tuyas y actúa en consecuencia, incluso sorteando restricciones de acceso a archivos.\n\nLa mitigación no es dejar de usarlo, sino tratarlo como tratarías a una dependencia sin auditar. Trabaja sobre repositorios sin secretos en texto plano, usa variables de entorno del sistema en vez de archivos .env dentro del proyecto cuando puedas, revisa qué dominios tiene permitido visitar el navegador integrado y no dejes agentes corriendo en segundo plano sin mirar lo que hacen. La mayoría de los incidentes documentados dependen de que nadie estuviera revisando en ese momento."
+    },
+    {
+      "heading": "Cuándo elegir Antigravity y cuándo quedarte donde estás",
+      "body": "Tiene sentido si ya usas Gemini y quieres el ecosistema de Google integrado, si te interesa concretamente el modelo de trabajo con varios agentes en paralelo, o si quieres evaluar programación agéntica sin comprometer una suscripción desde el día uno. También es una opción razonable si vienes de VS Code, porque el entorno te va a resultar familiar de inmediato.\n\nSi ya estás cómodo con Cursor, con Claude Code o con GitHub Copilot dentro de tu editor actual, cambiar de entorno completo solo por probar agentes probablemente no compense, sobre todo teniendo en cuenta la fricción de cuota. Y si tu trabajo depende de un IDE de JetBrains o de extensiones muy específicas, verifica primero que exista equivalente antes de mover todo tu entorno de trabajo."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En marzo de 2026, varios suscriptores de Google AI Pro abrieron un hilo en el foro oficial de desarrolladores de Google reportando que la cuota de Antigravity no se comportaba como decía la documentación. El reporte inicial describía esperas de entre 4 horas 56 minutos y 18 horas 10 minutos cuando lo esperado eran \"quota buckets that reset roughly every 5 hours\"; en los días siguientes otros usuarios reportaron ventanas de refresco de 5, 6 y hasta 7 días pese a estar pagando el plan Pro. Un moderador de Google respondió en el mismo hilo que se habían establecido límites semanales para todos los modelos, lo que confirma un cambio de política respecto del refresco cada cinco horas anunciado. Antes de contratar cualquier plan por sus límites, conviene verificar la política vigente en la documentación oficial: en esta herramienta ha cambiado más de una vez.",
+      "source": "https://discuss.ai.google.dev/t/google-ai-pro-antigravity-quota-shows-multi-day-lockouts-instead-of-5-hour-reset/130202",
+      "sourceLabel": "Hilo en el Google AI Developers Forum",
+      "date": "2026-03-10"
+    },
+    {
+      "text": "La firma de seguridad PromptArmor publicó una demostración de exfiltración de datos en Antigravity que llegó a la portada de Hacker News. El ataque parte de una inyección de prompt indirecta escondida en cuerpo de letra de 1 punto dentro de una entrada de blog comprometida que el usuario le pide al agente consultar. A partir de ahí, el agente recopila credenciales de AWS y fragmentos de código privado de archivos .env, y los filtra construyendo una URL maliciosa que abre con un subagente de navegador. Dos detalles hacen que funcione: el agente sortea las restricciones de .gitignore usando el comando cat de la terminal en vez de su herramienta de lectura de archivos, y el dominio de destino estaba en la lista de dominios permitidos por defecto. Los propios investigadores señalan que la ejecución de varios agentes en segundo plano hace poco probable que alguien lo detecte mientras ocurre.",
+      "source": "https://www.promptarmor.com/resources/google-antigravity-exfiltrates-data",
+      "sourceLabel": "Investigación de PromptArmor",
+      "date": "2025-11-25"
+    },
+    {
+      "text": "No todos los fallos quedaron sin corregir. Dan Lisichkin, investigador de Pillar Security, reportó a Google el 7 de enero de 2026 una vulnerabilidad que permitía ejecución de código: combinaba la capacidad de Antigravity de crear archivos con una sanitización insuficiente de la entrada en find_by_name, su herramienta interna de búsqueda de archivos, para inyectar el flag -X (exec-batch) a través del parámetro Pattern y sortear el modo estricto. El vector de entrada eran instrucciones ocultas en comentarios de archivos traídos de fuentes no confiables. Google publicó el parche el 28 de febrero de 2026, así que este caso concreto está resuelto en versiones actualizadas, pero ilustra por qué conviene no postergar las actualizaciones de este tipo de herramientas.",
+      "source": "https://thehackernews.com/2026/04/google-patches-antigravity-ide-flaw.html",
+      "sourceLabel": "The Hacker News — Google parchea un fallo de ejecución de código en Antigravity",
+      "date": "2026-04-21"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Google Antigravity es gratis?",
+      "answer": "Puedes descargarlo y usarlo sin pagar: las cuentas sin suscripción reciben una cuota que se refresca semanalmente. Para más capacidad hacen falta los planes Google AI Pro o Ultra. Los importes y los límites ya cambiaron una vez en 2026, así que confírmalos en antigravity.google/docs/plans."
+    },
+    {
+      "question": "¿Hay versión web o app de Antigravity para Android o iOS?",
+      "answer": "No. Antigravity es exclusivamente de escritorio, con instaladores para Windows (x64 y ARM64), macOS (Apple Silicon e Intel) y Linux (x64 y ARM64). Cualquier APK o app móvil que diga ser Antigravity no es oficial."
+    },
+    {
+      "question": "¿Necesito cuenta de Google para usarlo?",
+      "answer": "Sí. El acceso y las cuotas están asociados a una cuenta individual de Google, y los planes de mayor capacidad se contratan como suscripciones Google AI Pro o Ultra."
+    },
+    {
+      "question": "¿Es seguro descargar Antigravity desde Uptodown, TechSpot u otros portales?",
+      "answer": "No es recomendable. El único canal oficial es antigravity.google/download. Los portales de descargas de terceros pueden servir versiones desactualizadas, y en una herramienta con vulnerabilidades ya corregidas quedarte en una versión vieja es un riesgo concreto."
+    }
+  ],
+  "spanishSupport": "partial"
+}
