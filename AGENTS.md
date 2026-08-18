@@ -7,6 +7,7 @@ Antes de modificar UX, contenido o estructura editorial, lee estas guias:
 - `docs/fuenteai-referencia-visual.html`: referencia visual. Opciones 1a (home + ficha) y 2a (busqueda, movil, movimiento); 1b y 1c estan descartadas.
 - `docs/ux-home-cards.md`: reglas para las tarjetas de herramientas en la home.
 - `docs/ux-tool-pages.md`: estructura recomendada para fichas individuales de herramientas.
+- `docs/enlazado-interno.md`: **mapa de URLs, grafo de enlaces internos, reglas de hreflang/canonical y auditoria automatica.** Leelo antes de tocar rutas, navegacion, hreflang o cualquier bloque de enlaces.
 - `docs/tool-ficha-authoring.md`: como usar la skill `descargasia-tool-ficha` para crear fichas nuevas.
 - `skills/descargasia-tool-ficha/`: copia versionada de la skill local para revisar y ajustar el flujo de creacion de fichas.
 
@@ -17,7 +18,8 @@ Principios del proyecto:
 - La UI debe transmitir confianza, rapidez y claridad para usuarios hispanohablantes que buscan descargar herramientas de IA sin caer en clones.
 - No inventar claims de seguridad, auditorias tecnicas, afiliaciones ni endorsements de marcas.
 - Mantener Astro + Tailwind, rendimiento alto y mobile-first.
-- Antes de publicar cambios de UI o contenido, ejecutar `npm run build`.
+- Antes de publicar cambios de UI o contenido, ejecutar `npm run build` (encadena `npm run links:audit`, que falla si el enlazado interno se rompe).
+- Ninguna ruta interna se escribe a mano: todo enlace interno sale de los helpers de `src/utils/links.ts`.
 
 ## Colaboración y Creación de Contenido
 

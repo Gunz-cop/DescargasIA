@@ -1,0 +1,8 @@
+# Cloudflare Workers Assets — redirecciones a nivel de servidor (301 reales).
+#
+# La portada en español es "/" (su canonical siempre lo fue). Astro generaba
+# además "/es" por prefixDefaultLocale y todos los enlaces internos iban ahí,
+# dejando la URL canónica sin enlaces entrantes. Ya no se genera; esta regla
+# recoge el tráfico y los enlaces externos que apunten a la URL antigua.
+/es / 301
+/es/ / 301

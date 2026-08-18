@@ -6,6 +6,7 @@
 import { EDITORIAL_TEAM } from '../data/editorial-team';
 import { useTranslations } from '../i18n/ui';
 import type { Lang } from '../utils/brand';
+import { pageUrl } from '../utils/links';
 
 interface Props {
   lang: Lang;
@@ -19,7 +20,7 @@ const t = useTranslations(lang);
   <p class="fai-mono-sm text-fai-muted-2">
     {t('editorial.byline')} <strong class="font-medium text-fai-muted">{EDITORIAL_TEAM.name[lang]}</strong>
     <span aria-hidden="true">·</span>
-    <a href={`/${lang}/acerca-de#metodologia`} class="transition-colors hover:text-fai-signal">
+    <a href={`${pageUrl(lang, 'acerca-de')}#metodologia`} class="transition-colors hover:text-fai-signal">
       {t('editorial.methodology.link')}
     </a>
   </p>

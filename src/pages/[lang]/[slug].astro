@@ -9,6 +9,8 @@ import EditorialByline from '../../components/EditorialByline.astro';
 import CommunityInsights from '../../components/CommunityInsights.astro';
 import { EDITORIAL_TEAM } from '../../data/editorial-team';
 import { getTranslatedTools, getTranslatedTool } from '../../utils/tools';
+import { getAlternatives, getKeepExploring } from '../../utils/related';
+import { homeUrl, toolUrl, categoryUrl, pageUrl, redirectUrl, absolute, buildAlternates } from '../../utils/links';
 import { useTranslations, languages } from '../../i18n/ui';
 import {
   formatDate,
@@ -38,7 +40,6 @@ const { tool, lang } = Astro.props as { tool: any; lang: Lang };
 const t = useTranslations(lang);
 
 const allTools = await getTranslatedTools(lang);
-const toolsBySlug = new Map(allTools.map((entry) => [entry.slug, entry]));
 
 const pricingLabels = {
   free: t('info.pricing.free'),
@@ -107,9 +108,7 @@ const platforms = PLATFORM_ORDER
   });
 
 const primaryPlatform = platforms.find((item) => item.id === 'web') ?? platforms[0];
-const primaryCta = primaryPlatform
-  ? `/r?t=${tool.slug}&p=${primaryPlatform.id}&l=${lang}`
-  : `/r?t=${tool.slug}&l=${lang}`;
+const primaryCta = redirectUrl(lang, tool.slug, primaryPlatform?.id);
 
 const officialDomain = getDomain(tool.officialWebsite);
 const initials = getInitials(tool.name, tool.initials);
@@ -129,7 +128,7 @@ const repoUrl: string | undefined =
 // repo está declarado como plataforma (tiene una key de PLATFORM_ORDER); si
 // viene de officialSources como respaldo, no hay `p` con el que enrutarlo.
 const repoKey = repoPlatformEntry?.[0];
-const repoCta = repoKey ? `/r?t=${tool.slug}&p=${repoKey}&l=${lang}` : repoUrl;
+const repoCta = repoKey ? redirectUrl(lang, tool.slug, repoKey) : repoUrl;
 // Si el repo es la misma plataforma que ya ofrece el CTA principal, no
 // dupliques el botón.
 const showRepoLink = Boolean(repoUrl) && repoKey !== primaryPlatform?.id;
@@ -137,16 +136,23 @@ const showRepoLink = Boolean(repoUrl) && repoKey !== primaryPlatform?.id;
 // §6 Alternatives — 6 como máximo, en 3 columnas, con fuente oficial.
 // Se completan con herramientas verificadas de la misma categoría si la ficha
 // declara menos de 6; nunca se rellena con algo de otra necesidad.
-const declared = tool.alternatives
-  .map((slug: string) => toolsBySlug.get(slug))
-  .filter(Boolean);
-const sameCategory = allTools.filter(
-  (candidate) =>
-    candidate.slug !== tool.slug &&
-    candidate.categories.includes(primaryCategorySlug) &&
-    !declared.some((entry: any) => entry.slug === candidate.slug)
-);
-const alternatives = [...declared, ...sameCategory].slice(0, 6);
+// El relleno se rota por slug para que los enlaces internos lleguen a toda
+// la categoria y no siempre a las mismas 6 fichas. Ver src/utils/related.ts.
+const alternatives = getAlternatives({
+  tool,
+  allTools,
+  declared: tool.alternatives,
+  limit: 6
+});
+
+// Salida del pie: fichas de las OTRAS categorias de esta herramienta.
+const keepExploring = getKeepExploring(tool, allTools, alternatives, 4);
+
+// Todas las necesidades a las que pertenece la ficha, no solo la primera.
+// La miga de pan solo puede declarar una; estas etiquetas enlazan el resto.
+const toolCategories = tool.categories
+  .map((slug: string) => ({ slug, label: getCategoryLabel(slug, lang), href: categoryUrl(lang, slug) }))
+  .filter((entry: any) => Boolean(getCategory(entry.slug)));
 
 const editorialSummary = tool.editorialSummary ?? tool.longDescription;
 const bestFor = tool.bestFor.length > 0
@@ -163,7 +169,7 @@ const toolImage: string | undefined = tool.screenshotUrl ?? undefined;
 const editorialOrg = {
   '@type': 'Organization',
   name: EDITORIAL_TEAM.name[lang],
-  url: `${Astro.url.origin}/${lang}/acerca-de`
+  url: absolute(Astro.url.origin, pageUrl(lang, 'acerca-de'))
 };
 
 const schemaApp = {
@@ -191,9 +197,9 @@ const schemaBreadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: `${Astro.url.origin}/${lang}` },
+    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: absolute(Astro.url.origin, homeUrl(lang)) },
     ...(primaryCategory
-      ? [{ '@type': 'ListItem', position: 2, name: categoryLabel, item: `${Astro.url.origin}/${lang}/categoria/${primaryCategory.slug}` }]
+      ? [{ '@type': 'ListItem', position: 2, name: categoryLabel, item: absolute(Astro.url.origin, categoryUrl(lang, primaryCategory.slug)) }]
       : []),
     { '@type': 'ListItem', position: primaryCategory ? 3 : 2, name: tool.name, item: Astro.url.href }
   ]
@@ -211,11 +217,15 @@ const schemaFaq = tool.faq.length > 0 ? {
 
 const jsonLd = schemaFaq ? [schemaApp, schemaBreadcrumb, schemaFaq] : [schemaApp, schemaBreadcrumb];
 
-const alternatePromises = Object.keys(languages).map(async (l) => {
-  const exists = await getTranslatedTool(l, tool.slug);
-  return exists ? { lang: l, url: `${Astro.url.origin}/${l}/${tool.slug}` } : null;
-});
-const resolvedAlternates = (await Promise.all(alternatePromises)).filter(Boolean) as Array<{ lang: string; url: string }>;
+// Solo se declara alternativa el idioma que REALMENTE tiene la ficha traducida.
+const translatedLangs = new Set(
+  (await Promise.all(
+    Object.keys(languages).map(async (l) => ((await getTranslatedTool(l, tool.slug)) ? l : null))
+  )).filter(Boolean) as string[]
+);
+const resolvedAlternates = buildAlternates(Astro.url.origin, (l) =>
+  translatedLangs.has(l) ? toolUrl(l, tool.slug) : null
+);
 
 const isDiscontinued = tool.status === 'discontinued';
 
@@ -242,6 +252,30 @@ const docDesc = isDiscontinued
 const slugify = (value: string) =>
   value.toLowerCase().replace(new RegExp('[^a-z0-9]+', 'g'), '-').replace(new RegExp('(^-|-$)', 'g'), '');
 
+const inLabel = lang === 'sv' ? 'Finns i' : lang === 'it' ? 'Presente in' : 'Aparece en';
+// El texto de ancla lleva el nombre de la categoria tal cual (sin
+// minusculizar): es la señal que describe el destino a Google y a quien lee.
+const allInCategory = lang === 'sv'
+  ? `Se alla ${categoryLabel}`
+  : lang === 'it'
+    ? `Vedi tutti gli strumenti: ${categoryLabel}`
+    : `Ver todas las herramientas de ${categoryLabel}`;
+const keepExploringTitle = lang === 'sv'
+  ? 'Fortsätt utforska katalogen'
+  : lang === 'it'
+    ? 'Continua a esplorare il catalogo'
+    : 'Sigue explorando el catálogo';
+const keepExploringIntro = lang === 'sv'
+  ? 'Andra verifierade verktyg med officiell källa, valda utifrån vad denna sida handlar om.'
+  : lang === 'it'
+    ? 'Altri strumenti verificati con fonte ufficiale, scelti in base a ciò di cui parla questa pagina.'
+    : 'Otras herramientas verificadas con fuente oficial, elegidas a partir de lo que trata esta ficha.';
+const backHomeLabel = lang === 'sv'
+  ? 'Tillbaka till katalogen med officiella källor'
+  : lang === 'it'
+    ? 'Torna alla directory delle fonti ufficiali'
+    : 'Volver al directorio de fuentes oficiales';
+
 const metaChips = [
   pricingLabel,
   ...platforms.slice(0, 4).map((platform) => platform.short)
@@ -257,11 +291,11 @@ const metaChips = [
   ogImage={toolImage}
 >
   <nav class="fai-mono-sm flex flex-wrap items-center gap-2 pt-7 text-fai-muted-2" aria-label="Breadcrumb">
-    <a href={`/${lang}`} class="transition-colors hover:text-fai-signal">FuenteAI</a>
+    <a href={homeUrl(lang)} class="transition-colors hover:text-fai-signal">FuenteAI</a>
     <span aria-hidden="true">/</span>
     {primaryCategory && (
       <>
-        <a href={`/${lang}/categoria/${primaryCategory.slug}`} class="transition-colors hover:text-fai-signal">{categoryLabel}</a>
+        <a href={categoryUrl(lang, primaryCategory.slug)} class="transition-colors hover:text-fai-signal">{categoryLabel}</a>
         <span aria-hidden="true">/</span>
       </>
     )}
@@ -289,6 +323,17 @@ const metaChips = [
         {tool.shortDescription}
       </p>
 
+      <!-- Enlazado interno: ficha -> TODAS sus necesidades (la miga de pan solo
+           declara la primera). Ver docs/enlazado-interno.md -->
+      {toolCategories.length > 0 && (
+        <p class="mt-5 flex flex-wrap items-center gap-2.5">
+          <span class="fai-mono-sm text-fai-muted-2">{inLabel}</span>
+          {toolCategories.map((entry: any) => (
+            <a href={entry.href} class="fai-chip !min-h-9 !px-3.5 !text-[13px]">{entry.label}</a>
+          ))}
+        </p>
+      )}
+
       <!-- En móvil cae entre la descripción y el CTA (mismo orden del DOM);
            en desktop queda en la columna izquierda sin desplazar la tarjeta
            de la derecha (lg:items-start). -->
@@ -314,7 +359,7 @@ const metaChips = [
         <a
           href={primaryCta}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="nofollow noopener noreferrer"
           class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-[8px] bg-fai-find px-4 text-[13px] font-semibold !text-[#06231c] transition-opacity hover:opacity-90"
         >
           {isDiscontinued ? t('official.download.discontinued') : t('official.download')}
@@ -326,7 +371,7 @@ const metaChips = [
         <a
           href={repoCta}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="nofollow noopener noreferrer"
           class="mt-2.5 flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-[10px] border border-fai-line bg-[#04120e]/40 p-3 transition-colors hover:border-[rgba(15,191,143,.5)]"
         >
           <span class="fai-domain min-w-0 truncate">{getDomain(repoUrl!)}{new URL(repoUrl!).pathname}</span>
@@ -358,6 +403,15 @@ const metaChips = [
           <ToolCard tool={alt} index={index} />
         ))}
       </div>
+
+      {primaryCategory && (
+        <p class="mt-6">
+          <a
+            href={categoryUrl(lang, primaryCategory.slug)}
+            class="fai-mono-sm inline-flex min-h-11 items-center text-fai-find transition-colors hover:text-fai-signal"
+          >{allInCategory} &rarr;</a>
+        </p>
+      )}
     </section>
   )}
 
@@ -381,9 +435,9 @@ const metaChips = [
                 </p>
               </div>
               <a
-                href={`/r?t=${tool.slug}&p=${id}&l=${lang}`}
+                href={redirectUrl(lang, tool.slug, id)}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="nofollow noopener noreferrer"
                 class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-[8px] border border-[rgba(15,191,143,.4)] px-4 text-[13px] font-medium text-fai-signal transition-colors hover:bg-[rgba(15,191,143,.12)]"
               >
                 {btnLabel}
@@ -529,4 +583,27 @@ const metaChips = [
       )}
     </aside>
   </div>
+
+  <!-- Enlazado interno: reparto hacia la cola larga del catalogo.
+       El relleno rota por slug, asi que no siempre salen las mismas fichas.
+       Ver src/utils/related.ts y docs/enlazado-interno.md -->
+  {keepExploring.length > 0 && (
+    <section class="mt-16 border-t border-fai-line pt-12" aria-labelledby="explorar-title">
+      <h2 id="explorar-title" class="fai-section-title text-fai-ink">{keepExploringTitle}</h2>
+      <p class="mt-2.5 max-w-[62ch] text-[14px] leading-[1.55] text-fai-muted">{keepExploringIntro}</p>
+
+      <div class="fai-grid--3 mt-7">
+        {keepExploring.map((entry: any, index: number) => (
+          <ToolCard tool={entry} index={index} />
+        ))}
+      </div>
+
+      <p class="mt-6">
+        <a
+          href={homeUrl(lang)}
+          class="fai-mono-sm inline-flex min-h-11 items-center text-fai-muted-2 transition-colors hover:text-fai-signal"
+        >{backHomeLabel} &rarr;</a>
+      </p>
+    </section>
+  )}
 </BaseLayout>

@@ -3,7 +3,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Directory from './Directory.astro';
 import { getTranslatedTools } from '../utils/tools';
-import { getDomain, type Lang } from '../utils/brand';
+import { CATEGORIES, getDomain, type Lang } from '../utils/brand';
+import { homeUrl, toolUrl, categoryUrl, absolute, buildAlternates } from '../utils/links';
 import { useTranslations, languages } from '../i18n/ui';
 
 interface Props {
@@ -49,7 +50,7 @@ const schemaItemList = {
   itemListElement: sortedTools.map((tool, index) => ({
     '@type': 'ListItem',
     position: index + 1,
-    url: `${origin}/${lang}/${tool.slug}`,
+    url: absolute(origin, toolUrl(lang, tool.slug)),
     name: tool.name
   }))
 };
@@ -63,14 +64,37 @@ const schemaWebsite = {
   description: pageDesc
 };
 
-const alternates = Object.keys(languages)
-  .filter((l) => l !== lang)
-  .map((l) => ({
-    lang: l,
-    url: l === 'es' ? origin : `${origin}/${l}`
-  }));
+// Autorreferencial: la portada de cada idioma se lista a si misma ademas de
+// a las otras dos (requisito de Google para que el bloque hreflang valga).
+const alternates = buildAlternates(origin, (l) => homeUrl(l));
 
-const canonicalUrl = lang === 'es' ? origin : undefined;
+const canonicalUrl = absolute(origin, homeUrl(lang));
+
+// Enlaces reales (no botones) a las paginas de necesidad. Los chips del
+// directorio filtran en cliente y no son rastreables; este bloque es el que
+// da a cada categoria un enlace en el CUERPO de la portada, con texto de
+// ancla descriptivo, no solo la repeticion de la cabecera.
+const needLinks = CATEGORIES.map((cat) => ({
+  slug: cat.slug,
+  href: categoryUrl(lang, cat.slug),
+  label: cat.label[lang],
+  blurb: cat.blurb[lang],
+  count: tools.filter((tool) => tool.categories.includes(cat.slug)).length
+})).filter((cat) => cat.count > 0);
+
+const needsHeading = lang === 'sv'
+  ? 'Bläddra efter behov'
+  : lang === 'it'
+    ? 'Esplora per necessità'
+    : 'Explora por necesidad';
+
+const needsIntro = lang === 'sv'
+  ? 'Varje sida samlar de verifierade verktygen för ett behov, med den officiella källan för vart och ett.'
+  : lang === 'it'
+    ? 'Ogni pagina raccoglie gli strumenti verificati per una necessità, con la fonte ufficiale di ciascuno.'
+    : 'Cada página reúne las herramientas verificadas para una necesidad, con la fuente oficial de cada una.';
+
+const needsCta = lang === 'sv' ? 'verktyg' : lang === 'it' ? 'strumenti' : 'herramientas';
 
 const eyebrow = lang === 'sv'
   ? 'Katalog över officiella AI-källor'
@@ -112,4 +136,23 @@ const eyebrow = lang === 'sv'
   </section>
 
   <Directory lang={lang} tools={sortedTools} />
+
+  <!-- Enlazado interno: portada -> paginas de necesidad. Ver docs/enlazado-interno.md -->
+  <section class="border-t border-fai-line pt-12" aria-labelledby="necesidades-title">
+    <h2 id="necesidades-title" class="fai-section-title text-fai-ink">{needsHeading}</h2>
+    <p class="mt-2.5 max-w-[62ch] text-[14px] leading-[1.55] text-fai-muted">{needsIntro}</p>
+
+    <div class="mt-7 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+      {needLinks.map((need) => (
+        <a
+          href={need.href}
+          class="fai-live flex h-full flex-col rounded-[14px] p-4 transition-colors hover:border-[rgba(15,191,143,.5)]"
+        >
+          <span class="text-[15px] font-medium text-fai-ink">{need.label}</span>
+          <span class="mt-1.5 text-[13px] leading-[1.5] text-fai-muted">{need.blurb}</span>
+          <span class="fai-mono-sm mt-3 text-fai-find">{need.count} {needsCta} &rarr;</span>
+        </a>
+      ))}
+    </div>
+  </section>
 </BaseLayout>

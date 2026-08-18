@@ -12,6 +12,7 @@ import {
   type PlatformKey
 } from '../utils/brand';
 import { useTranslations } from '../i18n/ui';
+import { toolUrl } from '../utils/links';
 
 interface Props {
   tool: {
@@ -75,7 +76,7 @@ const searchIndex = [tool.name, tool.slug, ...(tool.tags ?? [])]
     <h3 class="fai-card-title min-w-0 text-fai-ink">
       <!-- Enlace estirado: en móvil el objetivo táctil es la tarjeta entera,
            no las 22px de alto que mide el texto del título. -->
-      <a href={`/${lang}/${tool.slug}`} class="fai-card-link transition-colors hover:text-fai-signal">
+      <a href={toolUrl(lang, tool.slug)} class="fai-card-link transition-colors hover:text-fai-signal">
         {tool.name}
       </a>
     </h3>
@@ -90,7 +91,7 @@ const searchIndex = [tool.name, tool.slug, ...(tool.tags ?? [])]
   <!-- Pie: dominio y badge en líneas separadas (columna, gap 9px) -->
   <div class="mt-auto flex flex-col gap-[9px] pt-4">
     <a
-      href={`/${lang}/${tool.slug}`}
+      href={toolUrl(lang, tool.slug)}
       class="fai-domain fai-card-above -mx-1 inline-flex min-h-11 w-fit max-w-full items-center gap-1 rounded-md px-1 transition-colors hover:text-fai-find sm:min-h-0"
     >
       {domain}

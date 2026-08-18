@@ -2,6 +2,7 @@
 // src/pages/[lang]/privacidad.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { languages } from '../../i18n/ui';
+import { pageUrl, buildAlternates } from '../../utils/links';
 
 export async function getStaticPaths() {
   return Object.keys(languages).map((lang) => ({
@@ -22,12 +23,8 @@ const descs = {
   sv: 'Integritetspolicy för FuenteAI: vilka uppgifter vi samlar in, hur vi skyddar din integritet och varför vi inte använder spårningscookies för reklam.',
   it: 'Informativa sulla privacy di FuenteAI: quali dati raccogliamo, come li proteggiamo e perché non usiamo cookie di tracciamento invasivi per la pubblicità.'
 };
-const alternates = Object.keys(languages)
-  .filter((l) => l !== lang)
-  .map((l) => ({
-    lang: l,
-    url: l === 'es' ? `${Astro.url.origin}/es/privacidad` : `${Astro.url.origin}/${l}/privacidad`
-  }));
+// Autorreferencial: incluye el idioma actual, requisito de Google.
+const alternates = buildAlternates(Astro.url.origin, (l) => pageUrl(l, 'privacidad'));
 ---
 
 <BaseLayout title={titles[lang]} description={descs[lang]} lang={lang} alternates={alternates}>

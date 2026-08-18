@@ -2,6 +2,7 @@
 // src/pages/[lang]/acerca-de.astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { languages } from '../../i18n/ui';
+import { pageUrl, buildAlternates } from '../../utils/links';
 import { EDITORIAL_TEAM } from '../../data/editorial-team';
 
 export async function getStaticPaths() {
@@ -23,12 +24,8 @@ const descs = {
   sv: 'Läs om hur FuenteAI verifierar officiella länkar till AI-verktyg, vår redaktionella metodik och vårt engagemang för användarsäkerhet online.',
   it: 'Scopri come FuenteAI verifica i collegamenti ufficiali per gli strumenti IA, la nostra metodologia editoriale e l\'impegno per la sicurezza.'
 };
-const alternates = Object.keys(languages)
-  .filter((l) => l !== lang)
-  .map((l) => ({
-    lang: l,
-    url: l === 'es' ? `${Astro.url.origin}/es/acerca-de` : `${Astro.url.origin}/${l}/acerca-de`
-  }));
+// Autorreferencial: incluye el idioma actual, requisito de Google.
+const alternates = buildAlternates(Astro.url.origin, (l) => pageUrl(l, 'acerca-de'));
 ---
 
 <BaseLayout title={titles[lang]} description={descs[lang]} lang={lang} alternates={alternates}>

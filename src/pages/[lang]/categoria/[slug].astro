@@ -6,6 +6,7 @@ import ToolCard from '../../../components/ToolCard.astro';
 import { getTranslatedTools } from '../../../utils/tools';
 import { useTranslations, languages } from '../../../i18n/ui';
 import { CATEGORIES, getCategoryLabel, getCategory, type Lang } from '../../../utils/brand';
+import { homeUrl, toolUrl, categoryUrl, absolute, buildAlternates } from '../../../utils/links';
 
 export async function getStaticPaths() {
   const locales = Object.keys(languages);
@@ -60,7 +61,7 @@ const schemaBreadcrumb = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: `${Astro.url.origin}/${lang}` },
+    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: absolute(Astro.url.origin, homeUrl(lang)) },
     { '@type': 'ListItem', position: 2, name: localizedCatName, item: Astro.url.href }
   ]
 };
@@ -73,14 +74,14 @@ const schemaItemList = sortedTools.length > 0 ? {
   itemListElement: sortedTools.map((tool, index) => ({
     '@type': 'ListItem',
     position: index + 1,
-    url: `${Astro.url.origin}/${lang}/${tool.slug}`,
+    url: absolute(Astro.url.origin, toolUrl(lang, tool.slug)),
     name: tool.name
   }))
 } : null;
 
-const alternates = Object.keys(languages)
-  .filter((l) => l !== lang)
-  .map((l) => ({ lang: l, url: `${Astro.url.origin}/${l}/categoria/${cat.data.slug}` }));
+// Autorreferencial y bidireccional: la categoría existe en los tres idiomas
+// y el segmento `categoria` no se traduce, así que el mapeo es 1:1.
+const alternates = buildAlternates(Astro.url.origin, (l) => categoryUrl(l, cat.data.slug));
 ---
 
 <BaseLayout
@@ -91,7 +92,7 @@ const alternates = Object.keys(languages)
   alternates={alternates}
 >
   <nav class="fai-mono-sm flex flex-wrap items-center gap-2 pt-7 text-fai-muted-2" aria-label="Breadcrumb">
-    <a href={`/${lang}`} class="transition-colors hover:text-fai-signal">FuenteAI</a>
+    <a href={homeUrl(lang)} class="transition-colors hover:text-fai-signal">FuenteAI</a>
     <span aria-hidden="true">/</span>
     <span class="text-fai-muted" aria-current="page">{localizedCatName}</span>
   </nav>
@@ -100,7 +101,7 @@ const alternates = Object.keys(languages)
   <div class="mt-8 flex flex-wrap gap-2.5">
     {otherNeeds.map((need) => (
       <a
-        href={`/${lang}/categoria/${need.slug}`}
+        href={categoryUrl(lang, need.slug)}
         class="fai-chip"
         aria-current={need.slug === cat.data.slug ? 'page' : undefined}
       >
@@ -134,7 +135,7 @@ const alternates = Object.keys(languages)
     <div class="mt-8 rounded-[14px] border border-dashed border-fai-line px-6 py-16 text-center">
       <p class="fai-section-title text-fai-ink">{t('category.empty.title')}</p>
       <p class="mx-auto mt-2.5 max-w-md text-[14px] leading-[1.55] text-fai-muted">{t('category.empty.body')}</p>
-      <a href={`/${lang}`} class="fai-chip mt-6 !bg-fai-find !border-fai-find !text-[#06231c] font-semibold">
+      <a href={homeUrl(lang)} class="fai-chip mt-6 !bg-fai-find !border-fai-find !text-[#06231c] font-semibold">
         {t('category.back')}
       </a>
     </div>

@@ -1,0 +1,19 @@
+# https://fuenteai.com/robots.txt
+# Ver docs/enlazado-interno.md para el porqué de cada regla.
+
+User-agent: *
+Allow: /
+
+# /r es el interstitial de salida: es noindex y multiplica URLs por
+# querystring (?t=&p=&l=). Enlazarlo es necesario, rastrearlo no aporta nada.
+Disallow: /r
+Disallow: /r?
+
+# Parámetros del filtro del directorio: no crean contenido nuevo, solo
+# variantes de la misma portada ya cubierta por su canonical.
+Disallow: /*?q=
+Disallow: /*?cat=
+Disallow: /*?plat=
+Disallow: /*?precio=
+
+Sitemap: https://fuenteai.com/sitemap-index.xml

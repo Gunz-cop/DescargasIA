@@ -5,6 +5,7 @@ import '../styles/global.css';
 import Motion from '../components/Motion.astro';
 import { useTranslations } from '../i18n/ui';
 import { CATEGORIES, type Lang } from '../utils/brand';
+import { homeUrl, categoryUrl, pageUrl, directoryUrl } from '../utils/links';
 import { getTranslatedTools } from '../utils/tools';
 
 interface Props {
@@ -36,10 +37,13 @@ const t = useTranslations(lang);
 // El contador de la cabecera se deriva del catálogo, nunca se escribe a mano.
 const verifiedCount = (await getTranslatedTools(lang)).length;
 
+const esAlternate = alternates.find((alt) => alt.lang === 'es');
+
 const hreflangMap: Record<string, string> = { es: 'es-ES', sv: 'sv-SE', it: 'it-IT' };
 const ogLocaleMap: Record<string, string> = { es: 'es_ES', sv: 'sv_SE', it: 'it_IT' };
 
-const home = `/${lang}`;
+const home = homeUrl(lang);
+const directory = directoryUrl(lang);
 
 // URLs reales calculadas en build: si la página no existe en el idioma destino
 // se enlaza su portada en vez de provocar un 404.
@@ -48,15 +52,15 @@ const switcherLangs = (['es', 'sv', 'it'] as const).map((code) => {
   return {
     code,
     label: code === 'es' ? 'Español' : code === 'sv' ? 'Svenska' : 'Italiano',
-    url: alt?.url ?? `/${code}`
+    url: alt?.url ?? homeUrl(code)
   };
 });
 
 const legalLinks = [
-  { href: `/${lang}/acerca-de`, label: t('footer.about') },
-  { href: `/${lang}/aviso-legal`, label: t('footer.legal') },
-  { href: `/${lang}/privacidad`, label: t('footer.privacy') },
-  { href: `/${lang}/cookies`, label: t('footer.cookies') }
+  { href: pageUrl(lang, 'acerca-de'), label: t('footer.about') },
+  { href: pageUrl(lang, 'aviso-legal'), label: t('footer.legal') },
+  { href: pageUrl(lang, 'privacidad'), label: t('footer.privacy') },
+  { href: pageUrl(lang, 'cookies'), label: t('footer.cookies') }
 ];
 
 const trustColumns = [
@@ -95,10 +99,10 @@ const rightsLine = lang === 'sv'
     {alternates.map(({ lang: altLang, url }) => (
       <link rel="alternate" hreflang={hreflangMap[altLang] ?? altLang} href={url} />
     ))}
-    {(() => {
-      const defaultAlt = alternates.find((alt) => alt.lang === 'es')?.url || Astro.url.origin;
-      return <link rel="alternate" hreflang="x-default" href={defaultAlt} />;
-    })()}
+    {/* x-default = version ES de ESTA pagina. Si no existe en ES no se
+        inventa un x-default apuntando a la portada: seria una alternativa
+        falsa y Google descarta el bloque hreflang entero. */}
+    {esAlternate && <link rel="alternate" hreflang="x-default" href={esAlternate.url} />}
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
@@ -144,7 +148,7 @@ const rightsLine = lang === 'sv'
         </a>
 
         <nav class="ml-3 hidden items-center gap-1 md:flex" aria-label={t('nav.sections')}>
-          <a href={`${home}#directorio`} class="rounded-md px-3 py-2 text-[14px] text-fai-muted transition-colors hover:text-fai-ink">
+          <a href={directory} class="rounded-md px-3 py-2 text-[14px] text-fai-muted transition-colors hover:text-fai-ink">
             {t('nav.directory')}
           </a>
 
@@ -157,14 +161,14 @@ const rightsLine = lang === 'sv'
             </summary>
             <div class="absolute left-0 top-full z-50 mt-1 w-64 rounded-[14px] border border-fai-line bg-fai-surface p-1.5 shadow-2xl">
               {CATEGORIES.map((cat) => (
-                <a href={`/${lang}/categoria/${cat.slug}`} class="flex min-h-11 items-center rounded-md px-3 text-[14px] text-fai-ink transition-colors hover:bg-fai-card hover:text-fai-signal">
+                <a href={categoryUrl(lang, cat.slug)} class="flex min-h-11 items-center rounded-md px-3 text-[14px] text-fai-ink transition-colors hover:bg-fai-card hover:text-fai-signal">
                   {cat.label[lang]}
                 </a>
               ))}
             </div>
           </details>
 
-          <a href={`/${lang}/acerca-de`} class="rounded-md px-3 py-2 text-[14px] text-fai-muted transition-colors hover:text-fai-ink">
+          <a href={pageUrl(lang, 'acerca-de')} class="rounded-md px-3 py-2 text-[14px] text-fai-muted transition-colors hover:text-fai-ink">
             {t('nav.about')}
           </a>
         </nav>
@@ -172,7 +176,7 @@ const rightsLine = lang === 'sv'
         <div class="ml-auto flex items-center gap-2">
           <!-- Contador derivado del catálogo -->
           <a
-            href={`${home}#directorio`}
+            href={directory}
             class="fai-mono-sm hidden items-center rounded-full border border-[rgba(198,242,78,.4)] bg-[rgba(198,242,78,.12)] px-3 py-1.5 text-fai-find transition-colors hover:bg-[rgba(198,242,78,.2)] sm:inline-flex"
           >
             {verifiedCount} {t('home.verified-sources')}
@@ -210,12 +214,12 @@ const rightsLine = lang === 'sv'
               class="absolute inset-x-0 top-16 z-50 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-fai-line bg-fai-surface p-4 shadow-2xl"
               aria-label={t('nav.menu')}
             >
-              <a href={`${home}#directorio`} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">
+              <a href={directory} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">
                 {t('nav.directory')}
               </a>
               <p class="fai-mono-sm mt-4 px-3 py-1 text-fai-muted-2">{t('nav.categories')}</p>
               {CATEGORIES.map((cat) => (
-                <a href={`/${lang}/categoria/${cat.slug}`} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">
+                <a href={categoryUrl(lang, cat.slug)} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">
                   {cat.label[lang]}
                 </a>
               ))}

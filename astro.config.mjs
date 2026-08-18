@@ -23,6 +23,9 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      // El sitemap solo lista URLs canonicas e indexables. "/es" ya no se
+      // genera (la portada espanola es "/") y "/r" es el interstitial noindex.
+      // Ver docs/enlazado-interno.md.
       filter: (page) => {
         const isEsHome = page.replace(/\/$/, '') === `${SITE_URL}/es`;
         const isIr = page.includes('/ir/');
