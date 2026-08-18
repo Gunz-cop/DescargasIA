@@ -1,27 +1,39 @@
 {
   "name": "Kling AI",
-  "officialWebsite": "https://klingai.com",
+  "officialWebsite": "https://kling.ai",
   "categories": [
     "video-ia"
   ],
   "platforms": {
     "web": {
-      "url": "https://klingai.com",
+      "url": "https://kling.ai/app",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-18"
+    },
+    "windows": {
+      "url": "https://kling.ai",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-08-18"
+    },
+    "mac": {
+      "url": "https://kling.ai",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-08-18"
     },
     "android": {
       "url": "https://play.google.com/store/apps/details?id=kling.ai.video.chat",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-18"
     },
     "ios": {
       "url": "https://apps.apple.com/us/app/kling-ai-ai-image-video-maker/id6738049229",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-18"
     }
   },
   "pricingModel": "freemium",
@@ -30,19 +42,27 @@
     "video-ia",
     "generador-de-video",
     "kuaishou",
-    "texto-a-video"
+    "texto-a-video",
+    "imagen-a-video",
+    "kling-3"
   ],
   "alternatives": [
     "runway",
     "luma-dream-machine",
+    "hailuo-ai",
+    "seedance",
     "heygen",
-    "hailuo-ai"
+    "sora"
   ],
   "screenshotUrl": null,
   "initials": "KLA",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-12",
+  "lastReviewed": "2026-08-18",
   "officialSources": [
-    "https://klingai.com"
+    "https://kling.ai",
+    "https://kling.ai/dev",
+    "https://klingai.com/docs/privacy-policy",
+    "https://kling.ai/docs/user-policy",
+    "https://kling.ai/docs/payment-policy"
   ]
 }

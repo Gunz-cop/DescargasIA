@@ -1,65 +1,82 @@
 {
-  "shortDescription": "Generador de video con IA de Kuaishou: convierte texto e imágenes en clips de hasta varios minutos, con apps para Android e iOS.",
-  "longDescription": "Kling AI es una plataforma de generación de video con inteligencia artificial desarrollada por Kuaishou, la tecnológica china detrás de una de las apps de video corto más grandes del mundo. Permite convertir descripciones de texto o imágenes fijas en clips de video, con opciones de extensión que permiten alargar un video generado hasta varios minutos. Está disponible en web, Android e iOS. Esta ficha enlaza solo a los canales oficiales de Kling AI.",
+  "shortDescription": "Generador de video e imagen con IA de Kuaishou. Se usa desde kling.ai, con apps oficiales para Windows, macOS, Android e iOS.",
+  "longDescription": "Kling AI es la plataforma de generación de video e imagen con inteligencia artificial de Kuaishou, la tecnológica china detrás de una de las apps de video corto más grandes del mundo. Convierte descripciones de texto o imágenes de referencia en clips de video, y desde la generación de modelos 3.0 genera también el audio dentro de la misma pasada, en vez de pegarlo después. Se puede usar desde el navegador, desde una app de escritorio para Windows y macOS, y desde las apps de Android e iOS. Esta ficha enlaza solo a canales oficiales verificados de Kling AI.",
   "bestFor": [
-    "Convertir una imagen fija en un video animado con movimiento de cámara",
-    "Generar clips cortos a partir de una descripción de texto",
-    "Extender un video generado más allá de los primeros segundos",
-    "Crear contenido visual desde el móvil con las apps oficiales de Android e iOS"
+    "Animar una imagen fija y darle movimiento de cámara sin editar fotograma por fotograma",
+    "Generar clips cortos con audio sincronizado a partir de una instrucción de texto",
+    "Trabajar imagen y video dentro de la misma herramienta, usando un fotograma generado como punto de partida",
+    "Crear y revisar material desde el móvil o desde una app de escritorio, sin depender solo del navegador"
   ],
   "limitations": [
-    "El plan gratuito ofrece créditos limitados y marcas de agua o restricciones de resolución en algunos casos; para uso comercial suele necesitarse un plan de pago.",
-    "Al ser un producto de una empresa china con presencia internacional, algunas funciones o formas de pago pueden variar según la región desde la que accedas.",
-    "Como todo generador de video con IA, los clips más largos y complejos pueden requerir varios intentos para lograr el resultado esperado."
+    "El plan gratuito funciona con créditos que se renuevan y no acumulan, y las salidas gratuitas quedan con marca de agua. El uso comercial también está reservado: los términos de servicio de Kling establecen que sin permiso escrito no puedes usar, reproducir ni distribuir el resultado con fines comerciales, y los términos del servicio de pago listan justamente el uso comercial sin restricciones —junto con la eliminación de la marca de agua— como beneficios de la membresía.",
+    "Los clips son cortos por diseño. La generación 3.0 se anuncia con un tope del orden de 15 segundos por generación, así que una pieza más larga se arma encadenando o extendiendo varias generaciones, no pidiendo un video de un minuto de una sola vez.",
+    "Kling mantiene dos dominios: kling.ai para el público internacional y klingai.com para el mercado chino. Desde fuera de China, klingai.com redirige a kling.ai, pero algunos enlaces antiguos, tutoriales y capturas todavía mencionan el dominio viejo y eso confunde a la hora de saber cuál es el sitio bueno.",
+    "La app de escritorio es un cliente de la plataforma en la nube, no un modelo que corra en tu máquina: sigue necesitando cuenta, conexión y créditos. Si buscas generar video sin subir nada a un servidor, esta no es la herramienta."
   ],
   "safetyNotes": [
-    "En tiendas de apps circulan versiones de Kling AI con nombres o paquetes ligeramente distintos, algunos ofrecidos como \"premium desbloqueado\" fuera de las tiendas oficiales. Descarga solo desde Google Play, App Store o klingai.com.",
-    "El soporte oficial de Kling AI se gestiona desde support@klingai.com; desconfía de canales de soporte por redes sociales que pidan datos de pago fuera de la plataforma."
+    "El instalador de escritorio (.exe para Windows, .dmg para macOS) se descarga desde el propio sitio oficial, donde los botones de descarga están en el pie de página. No hay ninguna razón legítima para bajar un instalador de Kling AI desde un sitio de descargas, un acortador o un enlace de redes sociales.",
+    "En 2025 hubo una campaña documentada de anuncios falsos que imitaban a Kling AI para distribuir malware. La regla práctica que se desprende de ese caso: si un sitio que dice ser Kling te entrega un archivo ejecutable como si fuera el video generado, no es Kling.",
+    "En las tiendas móviles circulan apps con nombres parecidos a Kling AI. Las oficiales están publicadas por KLING AI PTE. LTD.; comprueba el nombre del desarrollador antes de instalar, sobre todo si la ficha promete funciones \"premium desbloqueadas\".",
+    "El soporte oficial se gestiona por correo desde el dominio klingai.com (la ficha de App Store indica support@klingai.com). Desconfía de cuentas de redes sociales que ofrezcan \"soporte de Kling\" y pidan datos de pago fuera de la plataforma."
   ],
-  "editorialSummary": "Kling AI llegó al mercado internacional como una de las alternativas más potentes en generación de video con IA, respaldada por la infraestructura de Kuaishou en tecnología de video a gran escala. Su capacidad de generar clips largos y en alta resolución lo puso rápido en el radar de creadores fuera de China. En FuenteAI enlazamos a la web y a las apps oficiales verificadas.",
+  "editorialSummary": "Kling AI pasó de ser \"la alternativa china a Sora\" a uno de los generadores de video con IA más completos del mercado: hoy genera video y audio en la misma pasada, saca 4K nativo y tiene apps oficiales en las cinco plataformas que cubre esta ficha. El detalle que más nos importa acá es de logística, no de calidad: el sitio internacional se mudó a kling.ai, y buena parte del material que circula todavía apunta al dominio anterior. Enlazamos al dominio vigente y a las apps verificadas.",
   "editorialSections": [
     {
-      "heading": "De quién es Kling AI y por qué importa",
-      "body": "Kling AI es un producto de Kuaishou, una de las compañías tecnológicas más grandes de China, con experiencia previa en plataformas de video de gran escala. Esa base técnica se nota en la calidad y duración de los videos que puede generar, comparado con generadores más nuevos o con menos infraestructura detrás.\n\nLa plataforma tiene una versión en chino (klingai.kuaishou.com) y otra en inglés (klingai.com) pensada para el público internacional. Esta ficha enlaza a la versión internacional, que es la relevante para usuarios hispanohablantes."
+      "heading": "De klingai.com a kling.ai: cuál es el sitio oficial hoy",
+      "body": "Durante bastante tiempo, el sitio internacional de Kling AI fue klingai.com, y así quedó registrado en tutoriales, videos y fichas de terceros. Hoy el dominio internacional es kling.ai: al entrar a klingai.com desde fuera de China, el servidor responde con una redirección permanente hacia kling.ai. El propio sitio lo confirma en sus etiquetas de idioma, donde la versión en chino apunta a klingai.com y todas las demás, español incluido, cuelgan de kling.ai.\n\nEsto importa por una razón muy concreta: cuando una marca cambia de dominio, los clones aprovechan la confusión y registran variantes del nombre viejo. Si llegas a un sitio que dice ser Kling AI y no está bajo kling.ai (ni te redirige ahí), no lo uses. El dominio klingai.com sigue siendo de la empresa —de hecho aloja documentos legales y el correo de soporte—, pero el lugar donde vas a crear y descargar es kling.ai."
     },
     {
-      "heading": "Qué puede generar y hasta qué duración",
-      "body": "Kling AI puede generar video a partir de texto o de una imagen de referencia, con salidas en 1080p o 4K según el plan. Una de sus funciones más destacadas es la extensión de video: a partir de un clip inicial de pocos segundos, se puede seguir extendiendo hasta llegar a videos de varios minutos, algo poco común entre generadores de este tipo.\n\nTambién ofrece generación de imágenes con IA dentro de la misma app, útil para crear el fotograma inicial que luego se convierte en video, o para trabajar imagen y video dentro de una sola herramienta."
+      "heading": "Qué trajo la generación Kling 3.0",
+      "body": "Kuaishou anunció la familia Kling 3.0 el 5 de febrero de 2026, con modelos de video e imagen, y desde entonces sumó una variante 3.0 Turbo orientada a generar más rápido y más barato. El cambio de fondo respecto de las versiones anteriores es que el audio deja de ser un paso posterior: el modelo genera imagen y sonido sincronizados en la misma pasada, con diálogo y ambiente. El sitio oficial también publicita generación 4K nativa y guion por planos, es decir varios cortes de cámara dentro de una misma secuencia manteniendo la consistencia del personaje.\n\nConviene leer esas cifras como lo que son: material de la propia empresa. La duración máxima por generación sigue estando en el orden de los segundos, no de los minutos, y las resoluciones más altas se pagan con más créditos y más cola. Si tu proyecto necesita una pieza de dos minutos, el plan realista es generar varios clips y montarlos en un editor de video, no esperar que salga todo de un solo prompt."
     },
     {
-      "heading": "Disponible en web y en apps móviles nativas",
-      "body": "A diferencia de varios generadores de video que solo funcionan desde el navegador, Kling AI ofrece apps nativas para Android e iOS, lo que permite generar y revisar videos directamente desde el móvil sin depender de una computadora.\n\nEsto es útil para creadores de contenido que trabajan principalmente desde el teléfono, aunque para proyectos más elaborados o edición posterior del video, seguir usando la versión web junto con un editor de video tradicional suele dar más control."
+      "heading": "Web, escritorio y móvil: qué canal conviene en cada caso",
+      "body": "El navegador es el canal más completo y el que conviene si vas a iterar mucho sobre un mismo proyecto: se entra al estudio desde kling.ai y no hay nada que instalar. Para quien trabaja seguido, Kling publica además una app de escritorio para Windows y macOS —con versiones separadas para Mac con chip Apple y Mac con Intel— que se descarga desde los botones del pie de página del sitio oficial. Es cómoda para tener el estudio como ventana propia y para gestionar descargas de los clips generados, pero no cambia lo esencial: todo se genera en los servidores de Kling.\n\nEn móvil hay apps nativas en Google Play y App Store, publicadas por KLING AI PTE. LTD. Sirven bien para generar sobre la marcha y revisar resultados, aunque para trabajo fino —ajustar prompts largos, comparar variantes, exportar en alta resolución— la web sigue siendo más práctica. Un detalle a tener en cuenta si vas a suscribirte: los precios que aparecen como compras dentro de la app de iOS incluyen el recargo de la tienda, así que no son necesariamente los mismos que verías contratando desde la web."
     },
     {
-      "heading": "Cómo se compara con otras herramientas de video IA",
-      "body": "Frente a Runway o Luma Dream Machine, Kling AI compite principalmente en duración y resolución máxima de los videos generados. Si tu prioridad es la integración con flujos de edición profesional, Runway suele tener más herramientas complementarias. Si necesitas avatares humanos hablando con guion, HeyGen está más especializado en ese caso de uso específico.\n\nLa elección entre estas herramientas suele depender del tipo de contenido: animación de imágenes y clips creativos favorecen a Kling AI o Luma; videos con presentador virtual favorecen a HeyGen; y proyectos que requieren integración con software de edición favorecen a Runway."
+      "heading": "Frentes no oficiales: el problema específico de Kling",
+      "body": "Kling ofrece una API pública, y eso hizo que aparecieran muchos sitios de terceros que envuelven esa API en su propia interfaz y cobran suscripción aparte. Algunos son honestos y aclaran que no tienen relación con Kuaishou; otros se presentan con nombres y dominios que parecen oficiales. El riesgo no es solo pagar de más: estás entregando tus prompts, tus imágenes de referencia y tus datos de pago a un intermediario del que no sabes nada.\n\nLa comprobación es simple y no lleva ni un minuto. El servicio oficial se paga dentro de kling.ai o dentro de las apps de las tiendas; cualquier otra cosa es un revendedor. Si igual decides usar uno de esos frentes, trátalo como tratarías a cualquier startup desconocida: sin subir material sensible y sin reutilizar contraseñas."
+    },
+    {
+      "heading": "Cuándo elegir Kling AI y cuándo mirar alternativas",
+      "body": "Kling encaja bien si lo tuyo es animar imágenes, conseguir planos cinematográficos y que el clip salga con audio ya sincronizado, sin pasar por una capa extra de sonido. También es de las pocas opciones de este nivel con apps oficiales en escritorio y móvil, lo que la vuelve cómoda si no trabajas siempre desde el mismo equipo.\n\nSi tu prioridad es otra, hay opciones mejores. Runway está más orientado a integrarse en un flujo de edición profesional; Hailuo AI y Seedance juegan en la misma liga de generadores de video con IA y vale la pena compararlos en calidad y precio para tu tipo de plano; Luma Dream Machine sigue siendo una referencia para animación a partir de imagen; y si lo que necesitas es un presentador virtual leyendo un guion, HeyGen resuelve ese caso concreto mucho mejor que un generador generalista."
     }
   ],
   "communityInsights": [
     {
-      "text": "Check Point Research publicó el 20 de mayo de 2025 un informe sobre una campaña de malvertising que explotó la popularidad de Kling AI (la plataforma tenía entonces alrededor de 6 millones de usuarios). Los atacantes crearon cerca de 70 publicaciones patrocinadas desde páginas falsas en redes sociales que se hacían pasar por Kling AI, las cuales enlazaban a copias muy convincentes del sitio web oficial. Cuando un usuario subía una imagen o escribía una instrucción de texto y \"descargaba\" el supuesto archivo generado, en realidad se trataba de un ejecutable disfrazado con doble extensión y caracteres Hangul Filler para ocultar que no era un archivo de video o imagen normal. El archivo instalaba en varias etapas primero un cargador escrito en .NET que verificaba si se ejecutaba en un entorno virtual, y luego un troyano de acceso remoto (PureHVNC RAT) con funciones de robo de datos dirigidas a más de 50 billeteras de criptomonedas y 80 plataformas bancarias, además de un módulo que monitoreaba las ventanas activas y tomaba capturas de pantalla. Es un ejemplo concreto del tipo de fraude que advierte la sección de seguridad de esta ficha: los atacantes no usaron el servicio real de Kling AI, sino una imitación difundida mediante anuncios, no a través de klingai.com ni de las apps oficiales.",
+      "text": "Check Point Research documentó en mayo de 2025 una campaña que suplantaba a Kling AI para distribuir malware. Los atacantes publicaron alrededor de 70 anuncios patrocinados desde páginas falsas en redes sociales que llevaban a copias muy convincentes del sitio oficial. Ahí el usuario subía una imagen o escribía una instrucción y, al \"descargar\" el supuesto resultado, recibía en realidad un ejecutable disfrazado con doble extensión y caracteres invisibles para que pareciera un archivo de imagen o video. Ese archivo instalaba primero un cargador que comprobaba si estaba corriendo en una máquina virtual y después un troyano de acceso remoto con funciones de robo de credenciales. Ninguna parte del ataque tocó el servicio real: todo ocurrió en imitaciones difundidas por publicidad. Es la razón concreta por la que conviene llegar al sitio escribiendo el dominio y no siguiendo un anuncio.",
       "source": "https://research.checkpoint.com/2025/impersonated-kling-ai-site-installs-malware/",
-      "sourceLabel": "Check Point Research — anuncios falsos de Kling AI que distribuían malware",
+      "sourceLabel": "Check Point Research — sitio falso de Kling AI que instalaba malware",
       "date": "2025-05-20"
+    },
+    {
+      "text": "En marzo de 2026 apareció en Hacker News un frontend de terceros para Kling 3.0 cuyo autor aclaraba de entrada que no es oficial ni está afiliado a Kling AI, y que su backend simplemente reenvía las llamadas a la API de Kling; aun así vendía planes propios desde 15,98 dólares al mes. Es un ejemplo transparente de un patrón que se repite con menos honestidad en otros sitios: interfaces envueltas alrededor de la API oficial, con marca propia y cobro aparte. Sirve como recordatorio de que \"funciona con Kling 3.0\" y \"es Kling AI\" no son lo mismo, y de que conviene mirar quién cobra la suscripción antes de poner una tarjeta.",
+      "source": "https://news.ycombinator.com/item?id=47343836",
+      "sourceLabel": "Hacker News — frontend no oficial construido sobre la API de Kling",
+      "date": "2026-03-11"
     }
   ],
   "faq": [
     {
+      "question": "¿Cuál es la web oficial de Kling AI, kling.ai o klingai.com?",
+      "answer": "Para el público internacional, kling.ai. Al entrar a klingai.com desde fuera de China la propia web redirige a kling.ai; klingai.com sigue siendo de la empresa y aloja la versión china, documentos legales y el correo de soporte."
+    },
+    {
+      "question": "¿Kling AI tiene app para Windows y Mac?",
+      "answer": "Sí. Hay una app de escritorio oficial para Windows y para macOS, con instaladores separados para Mac con chip Apple y Mac con Intel. Se descargan desde los botones del pie de página del sitio oficial. No se ha confirmado una versión para Linux."
+    },
+    {
       "question": "¿Kling AI es gratis?",
-      "answer": "Tiene un plan gratuito con créditos limitados. Para resolución más alta, videos más largos o uso sin marca de agua suele requerirse un plan de pago."
+      "answer": "Tiene un plan gratuito con créditos limitados que se renuevan y no se acumulan, y con marca de agua. Los planes de pago (Standard, Pro y Premier, según la ficha oficial de App Store) quitan la marca de agua, habilitan resoluciones y colas mejores y son los que levantan la restricción de uso comercial que los términos aplican al nivel gratuito."
     },
     {
-      "question": "¿Kling AI tiene app oficial para Android e iOS?",
-      "answer": "Sí, ambas están disponibles en Google Play y App Store bajo el nombre \"Kling AI: AI Image&Video Maker\"."
+      "question": "¿Kling AI funciona en español?",
+      "answer": "Sí: el sitio oficial tiene versión en español en kling.ai/es y las instrucciones se pueden escribir en español. Aun así, buena parte de la documentación y las notas de versión salen antes en inglés y chino."
     },
     {
-      "question": "¿Cuánto puede durar un video generado con Kling AI?",
-      "answer": "Los clips iniciales suelen ser de pocos segundos, pero la función de extensión permite alargarlos hasta varios minutos."
-    },
-    {
-      "question": "¿Es seguro descargar Kling AI desde cualquier sitio?",
-      "answer": "Usa siempre klingai.com, Google Play o App Store. Evita versiones \"premium desbloqueado\" ofrecidas fuera de esos canales."
+      "question": "¿Existe un APK oficial de Kling AI?",
+      "answer": "La vía oficial en Android es Google Play, con la app publicada por KLING AI PTE. LTD. No descargues APKs de Kling desde sitios de terceros: es justo el vector que aprovecharon las campañas de suplantación documentadas."
     }
   ],
-  "spanishSupport": "partial"
+  "spanishSupport": "yes"
 }

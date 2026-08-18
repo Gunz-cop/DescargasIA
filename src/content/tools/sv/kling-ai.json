@@ -1,22 +1,23 @@
 {
-  "shortDescription": "Kuaishous AI-videogenerator för text- och bildbaserade klipp, med officiella appar för webb, Android och iOS.",
-  "longDescription": "Kling AI är videogenereringsplattformen från det kinesiska teknikbolaget Kuaishou, som omvandlar text eller bilder till videoklipp med relativt hög rörelsekvalitet och möjlighet till klipp på flera minuter i vissa versioner. Plattformen har blivit ett av de mest omtalade AI-videoverktygen sedan lanseringen, och konkurrerar direkt med Runway, Luma Dream Machine och andra kinesiska alternativ som Hailuo AI. Den här sidan länkar enbart till de officiella kanalerna: webbappen på klingai.com samt de officiella apparna i Google Play och App Store.",
+  "shortDescription": "Kuaishous AI-videogenerator för text- och bildbaserade klipp, med officiella appar för webb, Windows, macOS, Android och iOS.",
+  "longDescription": "Kling AI är videogenereringsplattformen från det kinesiska teknikbolaget Kuaishou, som omvandlar text eller bilder till videoklipp med relativt hög rörelsekvalitet. Klippen är korta i grunden: 3.0-generationen marknadsförs med ett tak i storleksordningen 15 sekunder per generering, så längre sekvenser byggs genom att kedja ihop eller förlänga flera genereringar. Plattformen har blivit ett av de mest omtalade AI-videoverktygen sedan lanseringen, och konkurrerar direkt med Runway, Luma Dream Machine och andra kinesiska alternativ som Hailuo AI. Den här sidan länkar enbart till de officiella kanalerna: webbappen på kling.ai, datorappen för Windows och macOS samt de officiella apparna i Google Play och App Store.",
   "bestFor": [
     "Generera videoklipp från text eller en startbild med relativt naturlig rörelse och kameradynamik",
-    "Skapa längre videosekvenser än vad många andra AI-videoverktyg klarar i en enskild generering",
+    "Animera en stillbild och ge den kamerarörelse utan att redigera bildruta för bildruta",
     "Testa ett av de mest omtalade kinesiska videoalternativen sida vid sida med Runway eller Luma Dream Machine",
     "Generera videoinnehåll direkt från mobilen genom de officiella apparna för Android och iOS"
   ],
   "limitations": [
-    "Ingen officiell datorapp finns bekräftad: på dator sker allt via webbläsaren på klingai.com.",
+    "Datorappen är en klient mot molntjänsten, inte en modell som körs lokalt: den kräver fortfarande konto, uppkoppling och krediter.",
+    "Kling har två domäner: kling.ai för den internationella publiken och klingai.com för den kinesiska marknaden. Utanför Kina omdirigerar klingai.com till kling.ai, men äldre länkar och guider nämner fortfarande den gamla adressen.",
     "Som kinesisk tjänst kan Kling AI omfattas av andra dataregler och innehållsbegränsningar än västerländska videoalternativ.",
     "De längsta och mest avancerade genereringarna kräver oftast en betald prenumeration eller extra krediter utöver gratisnivån."
   ],
   "safetyNotes": [
-    "Installera Kling AI enbart från Google Play eller App Store, publicerat av Kuaishou. Undvik tredjepartssajter som erbjuder \"Kling AI Pro gratis\" eller liknande APK-filer.",
+    "Installera Kling AI enbart från Google Play eller App Store, publicerade av KLING AI PTE. LTD. Undvik tredjepartssajter som erbjuder \"Kling AI Pro gratis\" eller liknande APK-filer.",
     "Precis som med andra AI-videoverktyg bör genererat innehåll användas ansvarsfullt, särskilt vid material som kan förväxlas med verklig video av riktiga personer."
   ],
-  "editorialSummary": "Kling AI, från Kuaishou, är ett av de mest jämförda AI-videoverktygen sedan sin lansering, tack vare relativt naturlig rörelsekvalitet och möjlighet till längre klipp än många konkurrenter. Vi länkar enbart till de officiella kanalerna för webb, Android och iOS.",
+  "editorialSummary": "Kling AI, från Kuaishou, är ett av de mest jämförda AI-videoverktygen sedan sin lansering, tack vare relativt naturlig rörelse- och kameradynamik. Vi länkar enbart till de officiella kanalerna för webb, dator, Android och iOS.",
   "editorialSections": [
     {
       "heading": "Ett av de mest jämförda videoverktygen",
@@ -27,12 +28,12 @@
       "body": "Kling AI stödjer båda de vanligaste sätten att generera video: att beskriva scenen i text från grunden, eller att utgå från en startbild som sedan animeras. Det senare ger ofta mer förutsägbara resultat eftersom kompositionen redan är bestämd av bilden, medan textbaserad generering ger mer kreativ frihet men mindre kontroll.\n\nFör den som redan har en bild att utgå från, till exempel en produktbild eller ett konstverk, kan bild-till-video-läget vara ett snabbare sätt att få ett förutsägbart resultat än att beskriva hela scenen i text."
     },
     {
-      "heading": "Bara webb och mobil — ingen datorapp",
-      "body": "Kling AI erbjuder officiella mobilappar för Android och iOS samt en fullständig webbapp på klingai.com, men saknar vid den här granskningen ett fristående installationsprogram för Windows eller Mac. Vill man använda tjänsten på en dator är webbläsaren alltså den enda officiella vägen, inte en nedladdningsbar klient.\n\nDet påverkar inte vad man kan göra: webbversionen har samma genereringsfunktioner som mobilappen, bara utan en dedikerad app-ikon på skrivbordet."
+      "heading": "Webb, dator och mobil — vilken kanal passar när",
+      "body": "Kling AI erbjuder officiella mobilappar för Android och iOS, en fullständig webbapp på kling.ai och sedan en tid även en datorapp för Windows och macOS, med separata installationsprogram för Mac med Apple-chip och Mac med Intel. Nedladdningsknapparna för datorappen ligger i sidfoten på den officiella webbplatsen — det finns ingen anledning att hämta ett Kling-installationsprogram någon annanstans.\n\nDatorappen ändrar inte hur tjänsten fungerar: allt genereras fortfarande på Kling AI:s servrar, så konto och uppkoppling krävs oavsett kanal. Webbläsaren är fortfarande den bekvämaste vägen för längre arbetspass, medan mobilapparna passar bäst för att generera och granska i farten."
     },
     {
       "heading": "När Kling AI passar och när man bör jämföra andra alternativ",
-      "body": "Kling AI passar bra för den som vill generera relativt långa, kvalitativa videoklipp och inte har några invändningar mot att tjänsten drivs från Kina. Det är ett bra val att testa parallellt med andra videoverktyg för att jämföra resultat på samma prompt.\n\nOm du prioriterar en plattform baserad utanför Kina, eller vill ha djupare integration med professionella redigeringsverktyg, är Runway eller Luma Dream Machine värda att jämföra med."
+      "body": "Kling AI passar bra för den som vill generera korta men kvalitativa videoklipp och inte har några invändningar mot att tjänsten drivs från Kina. Det är ett bra val att testa parallellt med andra videoverktyg för att jämföra resultat på samma prompt.\n\nOm du prioriterar en plattform baserad utanför Kina, eller vill ha djupare integration med professionella redigeringsverktyg, är Runway eller Luma Dream Machine värda att jämföra med."
     }
   ],
   "communityInsights": [
@@ -46,7 +47,7 @@
   "faq": [
     {
       "question": "Har Kling AI en officiell datorapp?",
-      "answer": "Nej, ingen officiell datorapp är bekräftad. På dator används tjänsten via webbläsaren på klingai.com."
+      "answer": "Ja, det finns en officiell datorapp för Windows och macOS, med separata installationsprogram för Mac med Apple-chip och Mac med Intel. Den hämtas från sidfoten på kling.ai. Någon Linux-version är inte bekräftad."
     },
     {
       "question": "Är Kling AI gratis?",
@@ -58,7 +59,7 @@
     },
     {
       "question": "Har Kling AI officiella appar för Android och iOS?",
-      "answer": "Ja, båda finns i respektive officiella butik, publicerade av Kuaishou."
+      "answer": "Ja, båda finns i respektive officiella butik, publicerade av KLING AI PTE. LTD."
     }
   ],
   "swedishSupport": "unknown"
