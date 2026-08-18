@@ -14,6 +14,7 @@
 #   FICHA_LANG   idioma editorial (es | sv | it)
 #   MAX_LOOPS    máximo de ciclos auditar/corregir
 #   MODEL        modelo para las tres pasadas
+#   EFFORT       nivel de esfuerzo (low | medium | high | xhigh | max)
 #   SKIP_CREATE  "true" para auditar/corregir una ficha que ya existe
 #
 # Salidas: $OUT/resumen.md, $OUT/estado.json y un directorio por iteración.
@@ -23,7 +24,11 @@ set -euo pipefail
 OUT="${OUT:-harness-out}"
 FICHA_LANG="${FICHA_LANG:-es}"
 MAX_LOOPS="${MAX_LOOPS:-5}"
-MODEL="${MODEL:-claude-sonnet-5}"
+MODEL="${MODEL:-claude-opus-5}"
+# Opus 5 rinde desproporcionadamente bien en low/medium: calidad alta a una
+# fracción de los tokens. El default de effort heredado de otros modelos casi
+# nunca es el correcto acá, así que se fija explícito en vez de dejarlo implícito.
+EFFORT="${EFFORT:-medium}"
 SKIP_CREATE="${SKIP_CREATE:-false}"
 PROMPTS="scripts/harness/prompts"
 METRICAS=".claude/skills/descargasia-ficha-auditoria/scripts/metricas.mjs"
@@ -104,6 +109,7 @@ claude_run() {
   SNAPSHOT_CONTENIDO="$(git status --porcelain -- src/content)"
   claude -p "$prompt" \
     --model "$MODEL" \
+    --effort "$EFFORT" \
     --max-turns "$turns" \
     --permission-mode acceptEdits \
     --allowedTools "Bash,Read,Edit,Write,Glob,Grep,WebFetch,WebSearch,TodoWrite,Task" \
@@ -208,7 +214,7 @@ escribir_resumen() {
     echo "| Resultado | **$RESULTADO** |"
     echo "| Veredicto final | $VEREDICTO_FINAL |"
     echo "| Iteraciones usadas | $ITER_FINAL de $MAX_LOOPS |"
-    echo "| Modelo | \`$MODEL\` |"
+    echo "| Modelo | \`$MODEL\` (effort \`$EFFORT\`) |"
     echo "| Costo estimado | US\$ $costo |"
     echo
     local d n

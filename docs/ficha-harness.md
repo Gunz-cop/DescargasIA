@@ -41,8 +41,26 @@ Desde la pestaña Actions, workflow **Arnes de fichas**, botón *Run workflow*:
 | `slug` | Vacío = lo decide la pasada de creación a partir del nombre oficial. |
 | `lang` | `es`, `sv` o `it`. |
 | `max_loops` | Ciclos auditar/corregir. 5 por defecto. |
-| `model` | `claude-sonnet-5` por defecto. Opus para fichas difíciles o de cola larga. |
+| `model` | `claude-opus-5` por defecto. |
+| `effort` | `medium` por defecto. Ver más abajo por qué no es `high`. |
 | `skip_create` | Saltea la creación: audita y corrige un slug que ya existe. Sirve para pasarle el arnés a fichas viejas del catálogo. |
+
+### Por qué Opus 5 en `medium` y no Sonnet 5
+
+Por token, Opus 5 cuesta bastante más que Sonnet 5 (US$5/US$25 por millón contra
+US$3/US$15, y Sonnet 5 arrastra un precio introductorio más bajo todavía hasta el
+31/08/2026). La razón para elegirlo igual es que en Opus 5 los niveles `low` y
+`medium` rinden desproporcionadamente bien —calidad alta a una fracción de los
+tokens y la latencia— y el default de esfuerzo heredado de otros modelos casi
+nunca es el correcto. Un arnés que resuelve la ficha en menos vueltas relee menos
+contexto en cada turno, que es donde se va la cuota de verdad.
+
+Eso **no** garantiza que salga más barato en total: para empatar con Sonnet 5 al
+precio de hoy tendría que gastar menos del 40% de los tokens. Es plausible en un
+lazo agéntico y no está medido. Lo que sí es seguro es más calidad por token
+gastado. Si querés comparar, el resumen de cada corrida imprime modelo, esfuerzo
+y costo estimado — corré la misma ficha con las dos combinaciones y mirá esos
+números en vez de discutirlo en abstracto.
 
 También se puede correr entero en local, con `claude` logueado:
 

@@ -32,9 +32,15 @@ on:
       model:
         description: "Modelo para las tres pasadas"
         required: false
-        default: "claude-sonnet-5"
+        default: "claude-opus-5"
         type: choice
-        options: ["claude-sonnet-5", "claude-opus-5", "claude-haiku-4-5-20251001"]
+        options: ["claude-opus-5", "claude-sonnet-5", "claude-haiku-4-5-20251001"]
+      effort:
+        description: "Esfuerzo. En Opus 5, medium rinde muy por encima de lo que sugiere su costo"
+        required: false
+        default: "medium"
+        type: choice
+        options: ["medium", "low", "high", "xhigh", "max"]
       skip_create:
         description: "Saltear la creación y sólo auditar/corregir un slug existente"
         required: false
@@ -99,6 +105,7 @@ jobs:
           FICHA_LANG: ${{ inputs.lang }}
           MAX_LOOPS: ${{ inputs.max_loops }}
           MODEL: ${{ inputs.model }}
+          EFFORT: ${{ inputs.effort }}
           SKIP_CREATE: ${{ inputs.skip_create }}
           OUT: harness-out
         run: bash scripts/harness/run.sh
