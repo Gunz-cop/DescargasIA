@@ -9,11 +9,12 @@
   "scripts": {
     "dev": "astro dev",
     "shorten": "node scripts/shorten-official-links.mjs",
-    "build": "npm run shorten && astro build && npm run links:audit",
-    "build:no-shorten": "astro build && npm run links:audit",
+    "build": "npm run shorten && npm run catalog:audit && astro build && npm run links:audit",
+    "build:no-shorten": "npm run catalog:audit && astro build && npm run links:audit",
     "preview": "astro preview",
     "astro": "astro",
-    "links:audit": "node scripts/audit-internal-links.mjs"
+    "links:audit": "node scripts/audit-internal-links.mjs",
+    "catalog:audit": "node scripts/audit-catalog.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

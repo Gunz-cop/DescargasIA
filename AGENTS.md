@@ -18,7 +18,7 @@ Principios del proyecto:
 - La UI debe transmitir confianza, rapidez y claridad para usuarios hispanohablantes que buscan descargar herramientas de IA sin caer en clones.
 - No inventar claims de seguridad, auditorias tecnicas, afiliaciones ni endorsements de marcas.
 - Mantener Astro + Tailwind, rendimiento alto y mobile-first.
-- Antes de publicar cambios de UI o contenido, ejecutar `npm run build` (encadena `npm run links:audit`, que falla si el enlazado interno se rompe).
+- Antes de publicar cambios de UI o contenido, ejecutar `npm run build`. Encadena `catalog:audit` (integridad del contenido: fichas sin traducir, slugs de `alternatives` inexistentes, categorias fantasma) y `links:audit` (grafo de enlaces, canonical y hreflang). Cualquiera de las dos falla el build, y con el, el deploy.
 - Ninguna ruta interna se escribe a mano: todo enlace interno sale de los helpers de `src/utils/links.ts`.
 
 ## Colaboración y Creación de Contenido

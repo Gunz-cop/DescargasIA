@@ -169,21 +169,37 @@ marcadas con ✋.
 | `public/robots.txt` | Bloqueo de `/r` y de los parámetros del filtro; declaración del sitemap. |
 | `public/_redirects` | `301 /es → /`. |
 | `astro.config.mjs` | Filtro del sitemap (fuera `/es` y `/r`). |
-| `scripts/audit-internal-links.mjs` | Auditoría automática de todo lo anterior. |
+| `scripts/audit-catalog.mjs` | Integridad del contenido fuente: base sin traducir, slugs de `alternatives` inexistentes, categorías fantasma, cobertura por idioma. |
+| `scripts/audit-internal-links.mjs` | Auditoría del grafo de enlaces sobre el build. |
 
 ---
 
-## 5. La auditoría
+## 5. Las dos auditorías
 
 ```bash
-npm run build          # ya encadena links:audit al final
-npm run links:audit    # o suelto, sobre el dist/ existente
+npm run build             # encadena las dos, en orden
+npm run catalog:audit     # integridad del contenido fuente (rapida, sin build)
+npm run links:audit       # grafo de enlaces sobre el dist/ existente
 ```
 
-Sale con **código 1** si hay un error duro, así que rompe el build y el deploy.
-Los **avisos** no rompen nada: son señales de calidad, no de corrección.
+Son dos porque miran cosas distintas, y una no puede ver lo de la otra:
 
-Salida esperada hoy:
+| | `catalog:audit` | `links:audit` |
+| --- | --- | --- |
+| Mira | `src/content/` | `dist/` |
+| Cuándo | antes de compilar | después de compilar |
+| Detecta | contenido que **no llega a existir** | enlaces, canonical y hreflang |
+
+La distinción importa. Si una ficha de `tools-base/` no tiene traducción,
+`getTranslatedTools()` hace `return null` y la ficha no se renderiza **en
+ningún idioma**, sin error de Astro. Como no se genera ninguna página, tampoco
+se rompe ningún enlace: `links:audit` no puede verlo. Lo mismo con un slug mal
+escrito en `alternatives`, que `getAlternatives()` descarta en silencio.
+
+Las dos salen con **código 1** ante un error duro, así que rompen el build y,
+con él, el deploy. Los **avisos** no rompen nada: son señales de calidad.
+
+Salida esperada hoy de `links:audit`:
 
 ```
 --- Auditoria de enlazado interno ---
@@ -198,7 +214,23 @@ AVISOS (1):
 Sin errores de enlazado interno.
 ```
 
-### Qué significa cada error
+### Qué significa cada error de `catalog:audit`
+
+| Mensaje | Qué pasó | Cómo se arregla |
+| --- | --- | --- |
+| `sin ninguna traducción` | Hay `tools-base/<slug>.json` pero ningún `tools/<lang>/<slug>.json`. La ficha no existe en el sitio. | Escribir al menos la versión ES. |
+| `no existe tools-base/<slug>.json` | Hay copy localizado sin datos base. Se ignora entero. | Crear la ficha base, o borrar el JSON localizado. |
+| `alternatives apunta a X` | Slug inexistente. Se descarta al renderizar sin avisar. | Corregir el slug en `tools-base/`. |
+| `la categoría X no está en CATEGORIES` | Categoría que no existe en `brand.ts`. La ficha no sale en ninguna página de categoría. | Usar un slug válido, o dar de alta la categoría. |
+| `se genera pero nadie la enlaza` | Categoría con JSON en `content/categories/` que falta en `CATEGORIES`. | Añadirla a `CATEGORIES` en `brand.ts`. |
+
+Sus avisos van agrupados por clase con un par de ejemplos; `npm run catalog:audit -- --verbose` los lista todos. Los tres grupos:
+
+- **Relaciones editoriales que se pierden por falta de traducción.** La alternativa existe en `tools-base/` pero no en ese idioma. El bloque no queda vacío —el relleno rotado lo completa— pero se pierde la relación que eligió el equipo.
+- **Fichas que nadie cita en `alternatives`.** Dependen solo del relleno rotado. Se arregla citándolas desde fichas afines.
+- **Categorías con poca cobertura.** Menos de `MIN_PER_CATEGORY` fichas traducidas en un idioma: bloques de alternativas cortos y página de categoría pobre. Es la lista de qué traducir a continuación.
+
+### Qué significa cada error de `links:audit`
 
 | Mensaje | Qué pasó | Cómo se arregla |
 | --- | --- | --- |
@@ -217,10 +249,13 @@ El umbral de aviso es `MIN_INLINKS` en `scripts/audit-internal-links.mjs`.
 
 ## 6. Recetas
 
-**Ficha nueva.** No hay que tocar nada del enlazado: entra sola en la portada,
-en su categoría, en el reparto rotado y en el sitemap. Para subirla del mínimo,
-cítala en el campo `alternatives` de 2–3 fichas afines de `tools-base/` — las
-declaradas siempre van primero. Después, `npm run build` y mirar el aviso.
+**Ficha nueva (o 40).** No hay que tocar nada del enlazado, ni volver a este
+documento: el grafo se deriva del catálogo, así que cada ficha entra sola en la
+portada, en su categoría, en el reparto rotado, en el sitemap y en el hreflang.
+Lo único manual que aporta valor es citarla en el campo `alternatives` de 2–3
+fichas afines de `tools-base/` — las declaradas siempre van primero. Después,
+`npm run build`: si algo quedó a medias, las auditorías lo dicen con nombre y
+apellido en vez de publicarse en silencio.
 
 **Traducción nueva de una ficha existente.** Basta con crear
 `src/content/tools/<lang>/<slug>.json`: el hreflang la detecta sola
