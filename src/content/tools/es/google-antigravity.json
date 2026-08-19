@@ -1,0 +1,65 @@
+{
+  "shortDescription": "Plataforma de desarrollo agéntico de Google: IDE gratuito basado en Gemini 3 que orquesta agentes autónomos de código para Windows, Mac y Linux.",
+  "longDescription": "Google Antigravity es la plataforma de desarrollo agéntico de Google, presentada en noviembre de 2025 junto a Gemini 3. Es un editor de código con autocompletado potenciado por IA y un \"Agent Manager\": una vista dedicada para lanzar, supervisar y coordinar varios agentes autónomos en paralelo sobre distintos proyectos. Además del IDE de escritorio incluye una CLI y un SDK en Python, y permite elegir qué modelo ejecuta al agente: Gemini 3 Pro, Claude Sonnet de Anthropic o GPT-OSS de OpenAI.",
+  "bestFor": [
+    "Delegar tareas de programación completas a un agente que planifica, edita archivos y verifica su propio trabajo",
+    "Supervisar varios agentes trabajando en paralelo sobre distintos workspaces desde el Agent Manager",
+    "Elegir el modelo detrás del agente según la tarea: Gemini 3 Pro, Claude Sonnet o GPT-OSS",
+    "Prototipar agentes de código propios con la CLI y el SDK en Python de Antigravity"
+  ],
+  "limitations": [
+    "Antigravity todavía está en vista previa pública: pueden cambiar funciones, límites de uso y aparecer errores no resueltos de una versión a otra.",
+    "El acceso puede rechazarse con el mensaje \"tu cuenta actual no es elegible para Antigravity\" en ciertas cuentas de Google, según reportes en el foro oficial de desarrolladores de Google AI.",
+    "Por defecto, Google registra y almacena datos de interacción y uso del servicio para mejorar sus modelos; pedir la eliminación de esos datos o ajustar esa preferencia requiere un paso manual, no viene desactivado de fábrica."
+  ],
+  "safetyNotes": [
+    "Descarga Antigravity únicamente desde antigravity.google/download. Existen sitios de terceros con nombres muy parecidos (antigravityide.org, antigravity.gr.com, antigravityaiide.com) que no son canales oficiales de Google.",
+    "Al aprobar acciones de un agente que modifica archivos o ejecuta comandos en tu proyecto, revisa los cambios propuestos antes de aceptarlos, sobre todo en repositorios sin respaldo en control de versiones."
+  ],
+  "editorialSummary": "Antigravity es la apuesta de Google por un IDE \"agent-first\": en vez de un asistente en una barra lateral, le da a los agentes autónomos su propio espacio para planificar y ejecutar tareas de código completas, con Gemini 3 como modelo por defecto pero también soporte para Claude y modelos abiertos. Es gratuito en su fase de vista previa pública para Windows, Mac y Linux, aunque todavía muestra la inestabilidad típica de un producto recién lanzado.",
+  "editorialSections": [
+    {
+      "heading": "Un IDE pensado para agentes, no solo para autocompletar",
+      "body": "La mayoría de los editores con IA tratan al agente como un chat lateral que sugiere cambios mientras tú escribes. Antigravity invierte esa lógica: además de la vista clásica de editor con autocompletado inline, agrega un \"Agent Manager\" pensado como centro de control, desde donde puedes lanzar varios agentes en paralelo sobre distintos proyectos, revisar qué está haciendo cada uno y aprobar o rechazar sus cambios.\n\nLos agentes no solo entregan código: generan \"artifacts\" verificables (planes, capturas, resultados de pruebas) para que puedas confirmar que hicieron lo que pedías antes de fusionar los cambios. Es una diferencia de enfoque relevante si vienes de un asistente tipo Copilot, pensado para sugerir línea por línea en vez de ejecutar tareas completas de forma autónoma."
+    },
+    {
+      "heading": "Cómo instalarlo según tu sistema operativo",
+      "body": "Antigravity se descarga como aplicación de escritorio desde antigravity.google/download, con instaladores separados para macOS (Apple Silicon e Intel, macOS 12 o superior), Windows (x64 y ARM64, Windows 10 de 64 bits o superior) y Linux (tarball genérico para x64 y ARM64, con nota de compatibilidad de glibc para distribuciones tipo Ubuntu, Debian, Fedora o RHEL).\n\nNo es una app web: necesitas instalarla en tu equipo y luego iniciar sesión con una cuenta de Google para usarla. Si además quieres automatizar tareas desde la terminal, existe una CLI independiente, y para prototipar agentes propios hay un SDK en Python."
+    },
+    {
+      "heading": "Iniciar sesión no siempre funciona a la primera",
+      "body": "Para usar Antigravity necesitas iniciar sesión con una cuenta de Google personal; el flujo abre el selector de cuentas estándar de Google y pide permisos sobre la API de Gemini, Drive y tu perfil básico. En el foro oficial de desarrolladores de Google AI, un usuario reportó el mensaje \"tu cuenta actual no es elegible para Antigravity\" al intentar entrar, en una cuenta que parecía cumplir los requisitos.\n\nLa respuesta del equipo de Google en ese foro fue probar con otra cuenta de Google personal distinta y revisar las preguntas frecuentes oficiales. Si te encuentras con ese mensaje, no significa necesariamente que tu cuenta esté bloqueada: la elegibilidad para acceder a la vista previa pública puede variar según la cuenta, la región o el momento, así que conviene no asumir que es un error permanente antes de probar otra alternativa."
+    },
+    {
+      "heading": "Cuándo elegir Antigravity y cuándo mirar otro agente de código",
+      "body": "Antigravity tiene sentido si quieres experimentar con el modelo agent-first de Google, ya usas el ecosistema de Gemini, o te interesa poder alternar entre Gemini 3 Pro, Claude Sonnet y GPT-OSS sin cambiar de editor. Al ser gratuito durante la vista previa pública, es una forma de bajo costo de probar agentes de código autónomos con varios modelos a la vez.\n\nSi ya trabajas dentro del ecosistema de Anthropic y prefieres un agente atado a la terminal en vez de un IDE completo, Claude Code puede sentirse más natural. Si tu prioridad es un producto con más tiempo en el mercado y fuera de la etapa de vista previa pública, Cursor o GitHub Copilot son alternativas a considerar. La elección depende más de qué tan cómodo estás con un producto todavía en vista previa que de una diferencia técnica tajante entre ellos."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En el foro oficial de desarrolladores de Google AI, un usuario reportó recibir el mensaje \"Your current account is not eligible for Antigravity. Try signing in with another personal Google account\" al intentar iniciar sesión. Un miembro del equipo de Google respondió sugiriendo probar con otra cuenta personal y revisar las preguntas frecuentes oficiales. Si te topas con este mensaje, conviene no asumir que tu cuenta quedó vetada de forma permanente: la elegibilidad de acceso a productos en vista previa pública de Google suele variar por cuenta, región o simplemente por el momento en el que se reparte el acceso, y ese criterio cambia con el tiempo.",
+      "source": "https://discuss.ai.google.dev/t/google-antigravity-ide-log-in/117362",
+      "sourceLabel": "Foro de desarrolladores de Google AI — problemas de inicio de sesión en Antigravity",
+      "date": "2026-01-22"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Google Antigravity es gratis?",
+      "answer": "Sí, tiene un plan individual gratuito con límites de uso semanales durante la vista previa pública. También existen planes de pago (Google AI Pro y Ultra) con límites más altos, y un plan de organización vía Google Cloud."
+    },
+    {
+      "question": "¿Antigravity tiene versión oficial para Linux?",
+      "answer": "Sí. Google ofrece un tarball genérico para x64 y ARM64, disponible desde antigravity.google/download, con una nota de compatibilidad de glibc para distribuciones tipo Ubuntu, Debian, Fedora o RHEL."
+    },
+    {
+      "question": "¿Puedo usar Claude o modelos de OpenAI dentro de Antigravity?",
+      "answer": "Sí. Además de Gemini 3 Pro como modelo por defecto, Antigravity ofrece soporte para Claude Sonnet de Anthropic y para modelos GPT-OSS de OpenAI."
+    },
+    {
+      "question": "¿Es seguro descargar Antigravity desde sitios como antigravityide.org?",
+      "answer": "No se recomienda. Esos no son dominios oficiales de Google. El único canal oficial de descarga es antigravity.google/download."
+    }
+  ],
+  "spanishSupport": "unknown"
+}
