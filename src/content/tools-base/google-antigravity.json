@@ -1,0 +1,59 @@
+{
+  "name": "Google Antigravity",
+  "officialWebsite": "https://antigravity.google",
+  "categories": [
+    "programacion"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://antigravity.google",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-08-19"
+    },
+    "windows": {
+      "url": "https://antigravity.google/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-19"
+    },
+    "mac": {
+      "url": "https://antigravity.google/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-19"
+    },
+    "linux": {
+      "url": "https://antigravity.google/download",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-08-19"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "google",
+    "gemini",
+    "ide",
+    "agentes-ia",
+    "programacion",
+    "vscode"
+  ],
+  "alternatives": [
+    "cursor",
+    "github-copilot",
+    "claude-code"
+  ],
+  "screenshotUrl": null,
+  "initials": "GA",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-19",
+  "officialSources": [
+    "https://antigravity.google",
+    "https://antigravity.google/docs/home",
+    "https://antigravity.google/docs/plans/",
+    "https://antigravity.google/docs/faq/",
+    "https://antigravity.google/docs/models"
+  ]
+}

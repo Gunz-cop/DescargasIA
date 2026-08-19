@@ -1,0 +1,69 @@
+{
+  "shortDescription": "La plataforma de desarrollo agéntico de Google: un IDE basado en VS Code donde agentes con Gemini 3 planifican, programan y verifican tareas por ti.",
+  "longDescription": "Google Antigravity es la plataforma de desarrollo agéntico que Google presentó en noviembre de 2025, construida como fork de Visual Studio Code. En vez de limitarse a autocompletar código, propone un modelo de trabajo donde defines un objetivo de alto nivel y uno o varios agentes de IA planifican, ejecutan y verifican la tarea en tu editor, tu terminal y hasta en un navegador controlado por el propio agente. Incluye una superficie de administración (\"Antigravity 2.0\") para orquestar varios agentes en paralelo, además de una CLI y un SDK en Python para quienes quieren construir agentes propios. Está disponible en preview público sin costo para cuentas personales, con acceso a Gemini 3.1 Pro, Claude Sonnet 4.6 y GPT-OSS-120b según el modelo que elijas.",
+  "bestFor": [
+    "Delegar tareas de programación completas (implementar, probar y documentar) a un agente en vez de pedir sugerencias línea por línea",
+    "Orquestar varios agentes en paralelo desde la superficie de administración para avanzar distintas tareas del mismo proyecto a la vez",
+    "Migrar desde VS Code u otro fork como Cursor manteniendo extensiones y atajos conocidos",
+    "Automatizar tareas de ingeniería desde la terminal con Antigravity CLI o desde scripts propios con el SDK en Python"
+  ],
+  "limitations": [
+    "Requiere iniciar sesión con una cuenta personal de Google (no todas las cuentas de Workspace funcionan bien) y confirmar que tienes 18 años o más; el acceso además está limitado a regiones aprobadas por Google.",
+    "El plan gratuito reparte una cuota semanal de uso que varios desarrolladores describen como ajustada para trabajo real y constante; para más cuota hace falta un plan Google AI Pro o Ultra, o comprar créditos adicionales.",
+    "Es una plataforma en preview público: la interfaz, los límites de uso y los nombres de sus componentes (2.0, CLI, IDE, SDK) pueden seguir cambiando mientras Google la desarrolla."
+  ],
+  "safetyNotes": [
+    "Descarga Antigravity únicamente desde antigravity.google/download; al ser un fork de VS Code con acceso directo a tu código y tu terminal, un instalador modificado de un tercero implica un riesgo de seguridad serio.",
+    "Si el inicio de sesión te pide \"verificar tu cuenta\" y el problema persiste tras verificarla en el navegador, es un problema conocido de la plataforma y no significa que tu instalación esté comprometida; no ingreses tus credenciales de Google en ninguna página que no sea accounts.google.com o el propio flujo de inicio de sesión de Antigravity."
+  ],
+  "editorialSummary": "Antigravity es la apuesta de Google por un desarrollo \"agente primero\": en vez de completar código mientras escribes, agentes con Gemini 3.1 Pro (o Claude Sonnet 4.6 y GPT-OSS-120b, si los eliges) planifican y ejecutan tareas completas de principio a fin en tu editor, terminal y navegador. Esta ficha reúne solo los canales oficiales de descarga porque, como cualquier IDE con acceso a tu código, el riesgo de instalar una versión modificada de un tercero es real; también deja claro que hoy exige cuenta personal de Google, verificación de edad y disponibilidad por región, algo que no todas las herramientas de esta categoría piden.",
+  "editorialSections": [
+    {
+      "heading": "Qué significa \"desarrollo agéntico\" en la práctica",
+      "body": "La diferencia central con un editor con IA tradicional es el nivel al que le hablas. En vez de pedir \"completa esta función\" o \"corrige este error\", en Antigravity describes un objetivo (\"agrega autenticación con email a este proyecto\", \"corrige los tests que fallan y documenta el cambio\") y el agente arma un plan, escribe el código, corre comandos en la terminal, puede abrir un navegador para revisar cómo se ve el resultado, y entrega \"artefactos\" concretos —listas de tareas, capturas, grabaciones— para que verifiques el trabajo sin tener que leer cada línea de log.\n\nEsto no elimina la revisión humana, la reubica. Sigues siendo responsable de revisar qué hizo el agente antes de aceptarlo, especialmente en lógica de negocio sensible o cambios que tocan producción. La ventaja real aparece en tareas repetitivas o de varios pasos (migrar una dependencia, escribir tests para un módulo entero, refactorizar un patrón repetido en el proyecto) donde delegar el ciclo completo ahorra más tiempo que ir sugerencia por sugerencia."
+    },
+    {
+      "heading": "Web, escritorio y CLI: qué instalar según tu flujo",
+      "body": "Antigravity no tiene una versión web para programar dentro del navegador; antigravity.google es el sitio oficial desde donde se accede a la documentación y a las descargas reales. El IDE de escritorio (fork de VS Code) está disponible para Windows, macOS (Apple Silicon e Intel) y Linux desde antigravity.google/download, que detecta o lista tu sistema operativo. Si prefieres trabajar desde la terminal sin abrir un editor gráfico, existe Antigravity CLI con instaladores separados para Windows, macOS y Linux; y si quieres programar tus propios agentes, el SDK en Python se instala desde su repositorio oficial.\n\nLa recomendación práctica es simple: si vienes de VS Code o Cursor, empieza por el IDE de escritorio, que va a sentirse familiar de inmediato. Si tu interés es automatizar tareas en un pipeline o servidor sin interfaz gráfica, la CLI es la ruta más directa."
+    },
+    {
+      "heading": "Cuenta, edad y región: los requisitos que no siempre se anuncian",
+      "body": "A diferencia de herramientas como Cursor o GitHub Copilot, que piden una cuenta propia del producto, Antigravity exige iniciar sesión con una cuenta personal de Google, confirmar que tienes 18 años o más, y estar en una de las regiones que Google aprobó para el servicio. Las cuentas de Google Workspace (las corporativas o educativas) pueden dar problemas de verificación; si te pasa, probar con una cuenta @gmail.com personal suele resolverlo.\n\nEste requisito importa especialmente si piensas recomendar Antigravity a un equipo: antes de instalarlo en varias máquinas, conviene confirmar que las cuentas de quienes lo van a usar cumplen los tres requisitos (tipo de cuenta, edad, región), porque Antigravity bloquea el acceso justamente cuando alguno de esos tres no se cumple."
+    },
+    {
+      "heading": "Qué tan generoso es realmente el plan gratuito",
+      "body": "Antigravity se anuncia como gratuito para cuentas individuales, y eso es cierto: no hace falta tarjeta para empezar a usarlo. Pero el uso gratuito reparte una cuota semanal de solicitudes que se refresca de forma más limitada que la de los planes pagos (Google AI Pro o Ultra), y varios desarrolladores que lo probaron con proyectos reales reportan quedarse sin cuota antes de terminar tareas largas, sobre todo comparado con herramientas de agentes que ofrecen límites más holgados en su capa gratuita.\n\nSi tu plan es usarlo de forma ocasional para tareas puntuales, la cuota gratuita puede alcanzar sin problema. Si piensas integrarlo a tu flujo diario de trabajo, vale la pena probarlo una semana completa antes de decidir si necesitas pasar a un plan pago o comprar créditos adicionales de uso."
+    },
+    {
+      "heading": "Cuándo elegir Antigravity y cuándo mirar otra opción",
+      "body": "Antigravity tiene sentido si quieres experimentar con un flujo verdaderamente agéntico —delegar tareas completas, no solo autocompletado— y no te molesta iniciar sesión con una cuenta de Google ni que la plataforma siga cambiando por estar en preview público. También es una opción natural si ya usas otros productos de Gemini y quieres acceso directo a Gemini 3.1 Pro con cuotas más generosas que las de otras integraciones.\n\nSi en cambio prefieres un editor con IA más establecido y con menos fricción de cuenta, Cursor o GitHub Copilot llevan más tiempo en el mercado y no exigen verificación de edad ni de región. Y si tu foco es un agente de código que corre principalmente en la terminal dentro de tu flujo habitual, vale la pena comparar con Claude Code antes de decidirte."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "En el foro oficial de desarrolladores de Google AI, varios usuarios reportaron en febrero de 2026 quedar atrapados en un bucle de \"verifica tu cuenta, luego inicia sesión de nuevo\" incluso después de completar la verificación desde el navegador; algunos, además, no pudieron recibir el SMS de verificación por no tener un teléfono Android a mano. Las soluciones que compartió la propia comunidad —revisar los datos de pago en Google Payments, reinstalar la aplicación desde cero, o intentar la verificación por SMS desde otro dispositivo— no funcionaron para todos, y varios usuarios con planes pagos quedaron sin poder usar lo que ya habían contratado. Si te encuentras con este mensaje de verificación al iniciar sesión, no asumas que tu instalación está rota: es un problema reportado por otros usuarios de la plataforma, y conviene revisar el hilo de soporte oficial antes de reinstalar repetidamente.",
+      "source": "https://discuss.ai.google.dev/t/please-verify-your-account/122039",
+      "sourceLabel": "Foro oficial de Google AI Developers — hilo sobre verificación de cuenta",
+      "date": "2026-02-09"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Google Antigravity tiene versión web para programar desde el navegador?",
+      "answer": "No. antigravity.google es el sitio oficial con documentación y descargas, pero para programar necesitas instalar el IDE de escritorio o la CLI en tu equipo."
+    },
+    {
+      "question": "¿Necesito cuenta para usar Antigravity?",
+      "answer": "Sí. Antigravity pide iniciar sesión con una cuenta personal de Google, confirmar que tienes 18 años o más, y estar en una región donde Google habilitó el servicio. Las cuentas de Workspace pueden dar problemas de verificación."
+    },
+    {
+      "question": "¿Antigravity es gratis?",
+      "answer": "Tiene un plan gratuito con una cuota semanal de uso para cuentas individuales. Para más cuota o modelos con límites más altos existen los planes Google AI Pro y Ultra, además de créditos adicionales que se pueden comprar por separado."
+    },
+    {
+      "question": "¿Dónde descargo Antigravity de forma segura?",
+      "answer": "Únicamente desde antigravity.google/download. Al tratarse de un editor con acceso directo a tu código y tu terminal, evita instaladores de sitios de terceros que digan ofrecer Antigravity."
+    }
+  ],
+  "spanishSupport": "unknown"
+}
