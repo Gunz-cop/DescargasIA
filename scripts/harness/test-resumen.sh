@@ -29,8 +29,8 @@ FICHA_LANG="es"
 RESULTADO="aprobado"
 VEREDICTO_FINAL="APTO_CON_AVISOS"
 ITER_FINAL=2
-MAX_LOOPS=5
-MODEL="claude-opus-5"
+MAX_LOOPS=2
+MODEL="claude-sonnet-5"
 EFFORT="medium"
 
 printf '0.42\n1.13\n' >"$OUT/costos.txt"
@@ -107,7 +107,7 @@ jq -e '.slug == "ficha-de-prueba" and .costo_estimado_usd == 1.55' "$OUT/estado.
 echo "resumen.md:"
 comprobar "encabezado con el slug"            'ficha-de-prueba'
 comprobar "fila de resultado"                 'aprobado'
-comprobar "modelo y esfuerzo"                 '`claude-opus-5` (effort `medium`)'
+comprobar "modelo y esfuerzo"                 '`claude-sonnet-5` (effort `medium`)'
 comprobar "bloqueante con prioridad y ruta"   '**P0** `tools/es/ficha-de-prueba.json:communityInsights[0]`'
 comprobar "fuente no confirmada"              'NO https://ejemplo.test/articulo'
 comprobar "observacion entre parentesis"      '(el articulo dice que la cifra no se precisó)'

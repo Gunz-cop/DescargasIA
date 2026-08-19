@@ -1,8 +1,8 @@
 # Arnés de fichas en GitHub Actions
 
 Automatiza el ciclo completo de una ficha nueva: **crear → auditar → corregir →
-auditar**, hasta que la auditoría apruebe o se agoten las iteraciones (5 por
-defecto). Corre en un runner de GitHub, no en una sesión de Claude Code, que es
+auditar**, hasta que la auditoría apruebe o se agoten las iteraciones (2 por
+defecto y máximo). Corre en un runner de GitHub, no en una sesión de Claude Code, que es
 justamente el punto: el ciclo consume mucha cuota y no tiene sentido gastarlo
 mientras trabajás en otra cosa.
 
@@ -40,32 +40,22 @@ Desde la pestaña Actions, workflow **Arnes de fichas**, botón *Run workflow*:
 | `herramienta` | Qué fichar. Poné el nombre y, si la sabés, la URL oficial: ahorra una búsqueda y evita que agarre un clon. |
 | `slug` | Vacío = lo decide la pasada de creación a partir del nombre oficial. |
 | `lang` | `es`, `sv` o `it`. |
-| `max_loops` | Ciclos auditar/corregir. **2 por defecto** — cada ciclo son dos pasadas de modelo, y el costo crece lineal. |
-| `model` | `claude-opus-5` por defecto. |
+| `max_loops` | Ciclos auditar/corregir. **2 por defecto y máximo** — cada ciclo son dos pasadas de modelo. |
+| `model` | `claude-sonnet-5` por defecto; elegí Opus sólo si una ficha especialmente compleja lo justifica. |
 | `effort` | `medium` por defecto. Ver más abajo por qué no es `high`. |
 | `skip_create` | Saltea la creación: audita y corrige un slug que ya existe. Sirve para pasarle el arnés a fichas viejas del catálogo. |
 
-### Por qué Opus 5 en `medium` y no Sonnet 5
+### Por qué Sonnet 5 es el default
 
-Por token, Opus 5 cuesta bastante más que Sonnet 5 (US$5/US$25 por millón contra
-US$3/US$15, y Sonnet 5 arrastra un precio introductorio más bajo todavía hasta el
-31/08/2026). La razón para elegirlo igual es que en Opus 5 los niveles `low` y
-`medium` rinden desproporcionadamente bien —calidad alta a una fracción de los
-tokens y la latencia— y el default de esfuerzo heredado de otros modelos casi
-nunca es el correcto. Un arnés que resuelve la ficha en menos vueltas relee menos
-contexto en cada turno, que es donde se va la cuota de verdad.
-
-Eso **no** garantiza que salga más barato en total: para empatar con Sonnet 5 al
-precio de hoy tendría que gastar menos del 40% de los tokens. Es plausible en un
-lazo agéntico y no está medido. Lo que sí es seguro es más calidad por token
-gastado. Si querés comparar, el resumen de cada corrida imprime modelo, esfuerzo
-y costo estimado — corré la misma ficha con las dos combinaciones y mirá esos
-números en vez de discutirlo en abstracto.
+Cada pasada recarga el repositorio y las skills, y el lazo puede ejecutar varias
+pasadas. Por eso Sonnet `medium` es el punto de partida más predecible en coste y
+latencia. Opus sigue disponible como input explícito para casos complejos. El
+resumen imprime modelo, esfuerzo y costo estimado para comparar corridas reales.
 
 También se puede correr entero en local, con `claude` logueado:
 
 ```bash
-HERRAMIENTA="Kling AI" FICHA_LANG=es MAX_LOOPS=5 bash scripts/harness/run.sh
+HERRAMIENTA="Kling AI" FICHA_LANG=es MAX_LOOPS=2 bash scripts/harness/run.sh
 ```
 
 ## Qué hace exactamente
@@ -174,6 +164,9 @@ generan en el build de `deploy.yml`, después del merge.
 
 ## Ajustar el arnés
 
+- Las pasadas tienen un límite de 10 minutos cada una; el build y las métricas
+  tienen límites separados más cortos. Si una fuente o herramienta externa se
+  atasca, la corrida aborta con resumen en vez de esperar al límite del job.
 - Los prompts de las tres pasadas están en `scripts/harness/prompts/`, uno por
   etapa. Son texto plano con `{{PLACEHOLDERS}}`: si una corrida sale mal por cómo
   se le pidió algo, se arregla ahí.

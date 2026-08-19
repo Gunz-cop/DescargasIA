@@ -27,11 +27,10 @@ MAX_LOOPS="${MAX_LOOPS:-2}"
 # Techo por pasada. Sin esto, una auditoría que se traba abriendo fuentes quema
 # cuota hasta que GitHub mata el job — y el arnés muere sin dejar resumen porque
 # el proceso no alcanza a correr su trap de salida.
-PASS_TIMEOUT="${PASS_TIMEOUT:-1200}"
-MODEL="${MODEL:-claude-opus-5}"
-# Opus 5 rinde desproporcionadamente bien en low/medium: calidad alta a una
-# fracción de los tokens. El default de effort heredado de otros modelos casi
-# nunca es el correcto acá, así que se fija explícito en vez de dejarlo implícito.
+PASS_TIMEOUT="${PASS_TIMEOUT:-600}"
+# Cada pasada recarga el repo y la skill. Sonnet es un default más razonable para
+# este lazo: Opus sigue disponible como input explícito cuando la ficha lo exige.
+MODEL="${MODEL:-claude-sonnet-5}"
 EFFORT="${EFFORT:-medium}"
 SKIP_CREATE="${SKIP_CREATE:-false}"
 PROMPTS="scripts/harness/prompts"
@@ -111,17 +110,19 @@ claude_run() {
   local prompt="$1" turns="$2" schema="$3" raw="$4" modo="${5:-escritura}"
   local code=0
   SNAPSHOT_CONTENIDO="$(git status --porcelain -- src/content)"
-  timeout --signal=TERM --kill-after=60 "$PASS_TIMEOUT" \
+  # Task/TodoWrite no aportan al contrato de una pasada y permitirían abrir
+  # trabajo paralelo que dispara el consumo y vuelve impredecible el tiempo.
+  timeout --signal=TERM --kill-after=30 "$PASS_TIMEOUT" \
   claude -p "$prompt" \
     --model "$MODEL" \
     --effort "$EFFORT" \
     --max-turns "$turns" \
     --permission-mode acceptEdits \
-    --allowedTools "Bash,Read,Edit,Write,Glob,Grep,WebFetch,WebSearch,TodoWrite,Task" \
+    --allowedTools "Bash,Read,Edit,Write,Glob,Grep,WebFetch,WebSearch" \
     --output-format json \
     --json-schema "$schema" \
     >"$raw" 2>"${raw%.json}.stderr" || code=$?
-  if [ "$code" -eq 124 ]; then
+  if [ "$code" -eq 124 ] || [ "$code" -eq 137 ] || [ "$code" -eq 143 ]; then
     echo "::error::la pasada excedió PASS_TIMEOUT ($PASS_TIMEOUT s) y se cortó." >&2
     tail -n 20 "${raw%.json}.stderr" >&2
     RESULTADO="abortado-timeout-de-pasada"
@@ -204,7 +205,10 @@ metricas() {
   local versiones
   versiones="$( (ls src/content/tools/*/"$SLUG".json 2>/dev/null || true) | wc -l )"
   if [ "$versiones" -gt 1 ]; then extra+=(--cross-lang); fi
-  node "$METRICAS" "$SLUG" --lang "$FICHA_LANG" "${extra[@]}" "$@" --strict >"$salida" 2>&1
+  # Incluye el chequeo de URLs: metricas.mjs hace una petición con timeout por
+  # fuente, pero una ficha con muchas fuentes también necesita un techo global.
+  timeout --signal=TERM --kill-after=15 120 \
+    node "$METRICAS" "$SLUG" --lang "$FICHA_LANG" "${extra[@]}" "$@" --strict >"$salida" 2>&1
 }
 
 # ------------------------------------------------------------------ esquemas
@@ -311,6 +315,12 @@ escribir_resumen() {
 }
 trap escribir_resumen EXIT
 
+if ! [[ "$MAX_LOOPS" =~ ^[1-2]$ ]]; then
+  echo "::error::MAX_LOOPS debe ser 1 o 2; el arnés limita el coste total de la corrida." >&2
+  RESULTADO="abortado-max-loops-invalido"
+  exit 1
+fi
+
 # ------------------------------------------------------------------- 1. crear
 
 if [ "$SKIP_CREATE" != "true" ]; then
@@ -326,7 +336,7 @@ if [ "$SKIP_CREATE" != "true" ]; then
     '{{HERRAMIENTA}}' "$HERRAMIENTA" \
     '{{LANG}}' "$FICHA_LANG" \
     '{{SLUG}}' "${SLUG:-}")"
-  claude_run "$prompt" 90 "$SCHEMA_CREAR" "$OUT/crear/raw.json" >"$OUT/crear/salida.json"
+  claude_run "$prompt" 45 "$SCHEMA_CREAR" "$OUT/crear/raw.json" >"$OUT/crear/salida.json"
   SLUG="$(jq -r '.slug' "$OUT/crear/salida.json")"
   if grep -qxF "$SLUG" <<<"$SLUGS_PREVIOS"; then
     echo "::error::La pasada de creación aterrizó en '$SLUG', que ya existía antes de esta corrida." >&2
@@ -374,7 +384,7 @@ for ITER in $(seq 1 "$MAX_LOOPS"); do
     echo '## npm run build:no-shorten'
     echo '```'
   } >"$DIR/gate.md"
-  if npm run build:no-shorten >>"$DIR/gate.md" 2>&1; then
+  if timeout --signal=TERM --kill-after=15 180 npm run build:no-shorten >>"$DIR/gate.md" 2>&1; then
     echo '```' >>"$DIR/gate.md"
   else
     echo '```' >>"$DIR/gate.md"
@@ -388,7 +398,10 @@ for ITER in $(seq 1 "$MAX_LOOPS"); do
     echo '```'
   } >>"$DIR/gate.md"
   METRICAS_OK=true
-  metricas "$DIR/metricas.txt" || METRICAS_OK=false
+  : >"$DIR/metricas.txt"
+  if ! metricas "$DIR/metricas.txt"; then
+    METRICAS_OK=false
+  fi
   cat "$DIR/metricas.txt" >>"$DIR/gate.md"
   echo '```' >>"$DIR/gate.md"
   if [ "$METRICAS_OK" = false ]; then
@@ -428,7 +441,7 @@ $HISTORIAL}"
       '{{METRICAS_FILE}}' "$DIR/metricas.txt" \
       '{{INFORME_FILE}}' "$DIR/informe.md" \
       '{{HISTORIAL}}' "$HISTORIAL")"
-    claude_run "$prompt" 70 "$SCHEMA_AUDITAR" "$DIR/auditoria-raw.json" solo-lectura \
+    claude_run "$prompt" 35 "$SCHEMA_AUDITAR" "$DIR/auditoria-raw.json" solo-lectura \
       >"$DIR/veredicto.json"
 
     VEREDICTO="$(jq -r '.veredicto' "$DIR/veredicto.json")"
@@ -465,6 +478,7 @@ atribuye, y devolvé \`fuentes_verificadas\` con una entrada por cada una."
       cp "$DIR/gate.md" "$DIR/hallazgos.md"
     elif [ "$VEREDICTO" != "NO_APTO" ] && [ "$P0" -eq 0 ]; then
       log "Verificación de cierre — metricas.mjs --check-urls"
+      : >"$DIR/cierre.txt"
       if metricas "$DIR/cierre.txt" --check-urls; then
         RESULTADO="aprobado"
         break
@@ -521,7 +535,7 @@ atribuye, y devolvé \`fuentes_verificadas\` con una entrada por cada una."
     '{{ITER}}' "$ITER" \
     '{{MAX_LOOPS}}' "$MAX_LOOPS" \
     '{{HALLAZGOS_FILE}}' "$DIR/hallazgos.md")"
-  claude_run "$prompt" 60 "$SCHEMA_CORREGIR" "$DIR/correccion-raw.json" >"$DIR/correccion.json"
+  claude_run "$prompt" 35 "$SCHEMA_CORREGIR" "$DIR/correccion-raw.json" >"$DIR/correccion.json"
 done
 
 log "Resultado: $RESULTADO"

@@ -32,11 +32,11 @@ on:
       model:
         description: "Modelo para las tres pasadas"
         required: false
-        default: "claude-opus-5"
+        default: "claude-sonnet-5"
         type: choice
         options: ["claude-opus-5", "claude-sonnet-5", "claude-haiku-4-5-20251001"]
       effort:
-        description: "Esfuerzo. En Opus 5, medium rinde muy por encima de lo que sugiere su costo"
+        description: "Esfuerzo de cada pasada (medium recomendado)"
         required: false
         default: "medium"
         type: choice
@@ -56,7 +56,9 @@ concurrency:
 jobs:
   harness:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    # El arnés tiene límites propios por pasada; este margen evita que GitHub
+    # mate el proceso antes de que el trap publique resumen y artifact.
+    timeout-minutes: 60
     permissions:
       contents: write
       pull-requests: write
@@ -108,9 +110,10 @@ jobs:
           EFFORT: ${{ inputs.effort }}
           SKIP_CREATE: ${{ inputs.skip_create }}
           OUT: harness-out
+          PASS_TIMEOUT: 600
         run: bash scripts/harness/run.sh
 
-      # El resumen se publica pase lo que pase: una corrida que agota las 5
+      # El resumen se publica pase lo que pase: una corrida que agota las 2
       # iteraciones es tan informativa como una que aprueba, y el informe de cada
       # vuelta es lo que dice qué ajustar en las skills.
       - name: Publicar resumen en el run
