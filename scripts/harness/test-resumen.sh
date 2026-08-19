@@ -74,14 +74,36 @@ cat >"$OUT/iter-1/correccion.json" <<'JSON'
 }
 JSON
 
-# Iteración 2: el caso que ahora bloquea la aprobación, array vacío.
+# Iteración 2: verificación diferencial. Cubre los cuatro caminos por los que el
+# cierre puede caerse — un hallazgo sin corregir, una regresión, una fuente
+# agregada que no respalda, y contenido agregado fuera del alcance.
 mkdir -p "$OUT/iter-2"
-cat >"$OUT/iter-2/veredicto.json" <<'JSON'
+cat >"$OUT/iter-2/verificacion.json" <<'JSON'
 {
-  "veredicto": "APTO",
-  "resumen": "Sin defectos mecánicos.",
-  "fuentes_verificadas": [],
-  "bloqueantes": []
+  "verificaciones": [
+    {
+      "ubicacion": "tools/es/ficha-de-prueba.json:communityInsights[0]",
+      "prioridad": "P0",
+      "corregido": true,
+      "evidencia": "El diff borra la cifra sin respaldo; el texto actual ya no la menciona."
+    },
+    {
+      "ubicacion": "tools/es/ficha-de-prueba.json:limitations[1]",
+      "prioridad": "P1",
+      "corregido": false,
+      "evidencia": "La corrección lo declara hecho pero el diff no toca ese campo."
+    }
+  ],
+  "fuentes_nuevas": [
+    { "url": "https://ejemplo.test/docs", "afirmacion": "el plan gratuito exporta", "respalda": true },
+    { "url": "https://ejemplo.test/blog", "afirmacion": "soporta Linux", "respalda": false }
+  ],
+  "entradas_nuevas": [
+    { "campo": "editorialSections", "responde_a_hallazgo": false, "detalle": "sección nueva que ningún hallazgo pidió" }
+  ],
+  "regresiones": ["Se borró la fuente que sostenía la afirmación de precios."],
+  "cierra": false,
+  "resumen": "Queda un P1 sin corregir y la corrección introdujo una regresión."
 }
 JSON
 
@@ -115,7 +137,12 @@ comprobar "fuente confirmada"                 'OK https://ejemplo.test/changelog
 comprobar "sin observacion no deja 'null'"    'el plan gratuito perdió la exportación en marzo'
 comprobar "correccion aplicada"               '- Se borró la cifra sin respaldo'
 comprobar "correccion no aplicada"            '(sin corregir)'
-comprobar "aviso de array vacio"              'no reportó ninguna fuente verificada'
+comprobar "verificacion: resumen"             'Verificación diferencial**'
+comprobar "verificacion: corregido"           '- corregido — P0'
+comprobar "verificacion: sin corregir"        '**SIN CORREGIR** — P1'
+comprobar "verificacion: regresion"           '**regresión** — Se borró la fuente'
+comprobar "verificacion: fuente sin respaldo" '**fuente agregada sin respaldo** — https://ejemplo.test/blog'
+comprobar "verificacion: fuera de alcance"    '**contenido fuera de alcance** — `editorialSections`'
 
 if grep -qF 'null' "$OUT/resumen.md"; then
   echo "  FALLA se filtró un 'null' al resumen"

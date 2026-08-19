@@ -33,6 +33,9 @@ PASS_TIMEOUT="${PASS_TIMEOUT:-600}"
 MODEL="${MODEL:-claude-sonnet-5}"
 EFFORT="${EFFORT:-medium}"
 SKIP_CREATE="${SKIP_CREATE:-false}"
+# Para fichas de alto riesgo: exige una auditoría escéptica completa después de
+# que la verificación diferencial cierre, antes de aprobar. Necesita MAX_LOOPS=3.
+FINAL_AUDIT="${FINAL_AUDIT:-false}"
 PROMPTS="scripts/harness/prompts"
 METRICAS=".claude/skills/descargasia-ficha-auditoria/scripts/metricas.mjs"
 
@@ -248,6 +251,31 @@ SCHEMA_CORREGIR='{"type":"object","properties":{
   "notas":{"type":"string"}
 },"required":["correcciones","no_corregidos","notas"]}'
 
+# La verificación diferencial: acotada a los hallazgos de la única auditoría, al
+# diff de la corrección y a lo que el script de alcance detectó como agregado.
+# No busca hallazgos nuevos — ver scripts/harness/prompts/04-verificar.md.
+SCHEMA_VERIFICAR='{"type":"object","properties":{
+  "verificaciones":{"type":"array","items":{"type":"object","properties":{
+    "ubicacion":{"type":"string"},
+    "prioridad":{"type":"string","enum":["P0","P1","P2"]},
+    "corregido":{"type":"boolean"},
+    "evidencia":{"type":"string"}
+  },"required":["ubicacion","prioridad","corregido","evidencia"]}},
+  "fuentes_nuevas":{"type":"array","items":{"type":"object","properties":{
+    "url":{"type":"string"},
+    "afirmacion":{"type":"string"},
+    "respalda":{"type":"boolean"}
+  },"required":["url","afirmacion","respalda"]}},
+  "entradas_nuevas":{"type":"array","items":{"type":"object","properties":{
+    "campo":{"type":"string"},
+    "responde_a_hallazgo":{"type":"boolean"},
+    "detalle":{"type":"string"}
+  },"required":["campo","responde_a_hallazgo","detalle"]}},
+  "regresiones":{"type":"array","items":{"type":"string"}},
+  "cierra":{"type":"boolean"},
+  "resumen":{"type":"string"}
+},"required":["verificaciones","fuentes_nuevas","entradas_nuevas","regresiones","cierra","resumen"]}'
+
 # ------------------------------------------------------------------- resumen
 
 # Se escribe desde un trap de EXIT para que una corrida que aborta a mitad deje
@@ -299,6 +327,16 @@ escribir_resumen() {
           echo
           echo "</details>"
         fi
+      elif [ -f "$d/verificacion.json" ]; then
+        # Vuelta de verificación diferencial: no re-audita, comprueba que lo que
+        # la auditoría listó haya quedado corregido.
+        echo
+        echo "**Verificación diferencial** — $(jq -r '.resumen' "$d/verificacion.json")"
+        echo
+        jq -r '.verificaciones[]? | "- \(if .corregido then "corregido" else "**SIN CORREGIR**" end) — \(.prioridad) `\(.ubicacion)`"' "$d/verificacion.json"
+        jq -r '.regresiones[]? | "- **regresión** — \(.)"' "$d/verificacion.json"
+        jq -r '.fuentes_nuevas[]? | select(.respalda == false) | "- **fuente agregada sin respaldo** — \(.url)"' "$d/verificacion.json"
+        jq -r '.entradas_nuevas[]? | select(.responde_a_hallazgo == false) | "- **contenido fuera de alcance** — `\(.campo)`: \(.detalle)"' "$d/verificacion.json"
       else
         echo
         echo "La compuerta determinista falló; no hubo auditoría del modelo."
@@ -315,8 +353,8 @@ escribir_resumen() {
 }
 trap escribir_resumen EXIT
 
-if ! [[ "$MAX_LOOPS" =~ ^[1-2]$ ]]; then
-  echo "::error::MAX_LOOPS debe ser 1 o 2; el arnés limita el coste total de la corrida." >&2
+if ! [[ "$MAX_LOOPS" =~ ^[1-3]$ ]]; then
+  echo "::error::MAX_LOOPS debe ser 1, 2 o 3 (3 sólo tiene sentido con FINAL_AUDIT=true)." >&2
   RESULTADO="abortado-max-loops-invalido"
   exit 1
 fi
@@ -363,6 +401,14 @@ VEREDICTO_FINAL="NO_APTO"
 # está en cómo auditó y no en la ficha. Se consume y se limpia al usarlo.
 NOTA_AUDITORIA=""
 SALTEAR_CORRECCION=false
+AUDITORIA_FINAL_HECHA=false
+# La auditoría escéptica completa corre una vez; a partir de ahí el lazo verifica
+# la corrección contra los hallazgos de esa auditoría en vez de re-auditar.
+MODO="auditoria"
+HALLAZGOS_ORIGEN=""
+CORRECCION_ORIGEN=""
+DIFF_ORIGEN=""
+ALCANCE_ORIGEN=""
 
 for ITER in $(seq 1 "$MAX_LOOPS"); do
   ITER_FINAL="$ITER"
@@ -409,7 +455,96 @@ for ITER in $(seq 1 "$MAX_LOOPS"); do
     echo 'Las métricas devolvieron bloqueantes (`--strict` salió con código 1).' >>"$DIR/gate.md"
   fi
 
-  if [ "$GATE_OK" = true ]; then
+  if [ "$GATE_OK" = true ] && [ "$MODO" = "verificacion" ]; then
+    # ------------------------------------------------- verificación diferencial
+    #
+    # La auditoría escéptica completa corre UNA sola vez. Repetirla después de
+    # cada corrección es lo que impedía converger: un auditor instruido para
+    # buscar motivos de rechazo siempre encuentra algo nuevo, así que "el auditor
+    # no tiene nada que decir" no es un estado alcanzable. Medido en una corrida
+    # real: la segunda auditoría costó casi lo mismo que la primera ($1.00 contra
+    # $1.10) y lo único que el lazo necesitaba de ella era saber si las tres
+    # correcciones habían entrado.
+    log "Iteración $ITER/$MAX_LOOPS — verificación diferencial"
+
+    prompt="$(render "$PROMPTS/04-verificar.md" \
+      '{{SLUG}}' "$SLUG" \
+      '{{LANG}}' "$FICHA_LANG" \
+      '{{ITER}}' "$ITER" \
+      '{{MAX_LOOPS}}' "$MAX_LOOPS" \
+      '{{HALLAZGOS_FILE}}' "$HALLAZGOS_ORIGEN" \
+      '{{CORRECCION_FILE}}' "$CORRECCION_ORIGEN" \
+      '{{DIFF_FILE}}' "$DIFF_ORIGEN" \
+      '{{ALCANCE_FILE}}' "$ALCANCE_ORIGEN")"
+    claude_run "$prompt" 25 "$SCHEMA_VERIFICAR" "$DIR/verificacion-raw.json" solo-lectura \
+      >"$DIR/verificacion.json"
+
+    PEND="$(jq '[.verificaciones[] | select(.prioridad != "P2") | select(.corregido == false)] | length' "$DIR/verificacion.json")"
+    FUENTES_MAL="$(jq '[.fuentes_nuevas[] | select(.respalda == false)] | length' "$DIR/verificacion.json")"
+    ENTRADAS_MAL="$(jq '[.entradas_nuevas[] | select(.responde_a_hallazgo == false)] | length' "$DIR/verificacion.json")"
+    REGRESIONES="$(jq '.regresiones | length' "$DIR/verificacion.json")"
+    CIERRA="$(jq -r '.cierra' "$DIR/verificacion.json")"
+    log "Verificación: pendientes=$PEND fuentes_sin_respaldo=$FUENTES_MAL entradas_fuera_de_alcance=$ENTRADAS_MAL regresiones=$REGRESIONES cierra=$CIERRA"
+
+    # Las cuatro condiciones se comprueban acá y no se delegan en `cierra`: el
+    # verificador podría decir que cierra habiendo dejado un P1 sin corregir.
+    if [ "$CIERRA" = "true" ] && [ "$PEND" -eq 0 ] && [ "$FUENTES_MAL" -eq 0 ] \
+       && [ "$ENTRADAS_MAL" -eq 0 ] && [ "$REGRESIONES" -eq 0 ] \
+       && [ "$FINAL_AUDIT" = "true" ] && [ "$AUDITORIA_FINAL_HECHA" = "false" ]; then
+      # La verificación diferencial es acotada por diseño: comprueba lo que la
+      # auditoría listó, no busca lo que no listó. Para fichas donde eso no
+      # alcanza, FINAL_AUDIT paga una auditoría escéptica más antes de aprobar.
+      log "Cierre alcanzado — FINAL_AUDIT exige una auditoría completa antes de aprobar"
+      VEREDICTO_FINAL="CERRADO — pendiente auditoría final"
+      AUDITORIA_FINAL_HECHA=true
+      MODO="auditoria"
+      SALTEAR_CORRECCION=true
+      cp "$DIR/hallazgos.md" "$DIR/hallazgos.md" 2>/dev/null || true
+    elif [ "$CIERRA" = "true" ] && [ "$PEND" -eq 0 ] && [ "$FUENTES_MAL" -eq 0 ] \
+       && [ "$ENTRADAS_MAL" -eq 0 ] && [ "$REGRESIONES" -eq 0 ]; then
+      VEREDICTO_FINAL="CERRADO (verificación diferencial)"
+      log "Verificación de cierre — metricas.mjs --check-urls"
+      : >"$DIR/cierre.txt"
+      if metricas "$DIR/cierre.txt" --check-urls; then
+        RESULTADO="aprobado"
+        break
+      fi
+      log "El cierre por red encontró bloqueantes; sigue el lazo"
+      VEREDICTO_FINAL="NO_APTO (verificación de cierre)"
+      {
+        echo '# Verificación de cierre de fuentes'
+        echo
+        echo 'La verificación diferencial cerró, pero `metricas.mjs --check-urls`'
+        echo 'encontró bloqueantes al comprobar por red cada fuente citada.'
+        echo
+        echo '```'
+        cat "$DIR/cierre.txt"
+        echo '```'
+      } >"$DIR/hallazgos.md"
+    else
+      VEREDICTO_FINAL="NO_APTO ($PEND pendiente(s), $REGRESIONES regresión(es))"
+      {
+        echo '# Lo que quedó pendiente de la corrección anterior'
+        echo
+        jq -r '.resumen' "$DIR/verificacion.json"
+        echo
+        echo '## Hallazgos todavía sin corregir'
+        echo
+        jq -r '.verificaciones[] | select(.corregido == false) | "### \(.prioridad) — \(.ubicacion)\n\n\(.evidencia)\n"' "$DIR/verificacion.json"
+        echo '## Fuentes agregadas que no respaldan su afirmación'
+        echo
+        jq -r '.fuentes_nuevas[]? | select(.respalda == false) | "- \(.url) — no respalda: \(.afirmacion)"' "$DIR/verificacion.json"
+        echo
+        echo '## Contenido agregado fuera del alcance de los hallazgos'
+        echo
+        jq -r '.entradas_nuevas[]? | select(.responde_a_hallazgo == false) | "- `\(.campo)` — \(.detalle)"' "$DIR/verificacion.json"
+        echo
+        echo '## Regresiones introducidas por la corrección'
+        echo
+        jq -r '.regresiones[]? | "- \(.)"' "$DIR/verificacion.json"
+      } >"$DIR/hallazgos.md"
+    fi
+  elif [ "$GATE_OK" = true ]; then
     log "Iteración $ITER/$MAX_LOOPS — auditoría"
     # El historial evita que la auditoría redescubra lo mismo cada vuelta y, sobre
     # todo, sirve para detectar que una corrección anterior rompió algo que ya
@@ -499,6 +634,8 @@ atribuye, y devolvé \`fuentes_verificadas\` con una entrada por cada una."
         cat "$DIR/cierre.txt"
         echo '```'
       } >"$DIR/hallazgos.md"
+      HALLAZGOS_ORIGEN="$DIR/hallazgos.md"
+      MODO="verificacion"
     else
       # Hallazgos para la pasada de corrección: el informe completo, más la lista
       # estructurada por si el informe quedó difuso.
@@ -509,6 +646,10 @@ atribuye, y devolvé \`fuentes_verificadas\` con una entrada por cada una."
         echo
         jq -r '.bloqueantes[] | "### \(.prioridad) — \(.ubicacion)\n\n\(.problema)\n\n**Cómo corregir:** \(.como_corregir)\n"' "$DIR/veredicto.json"
       } >"$DIR/hallazgos.md"
+      # A partir de acá el lazo verifica contra ESTOS hallazgos en vez de volver a
+      # auditar. Es la única auditoría escéptica de la corrida.
+      HALLAZGOS_ORIGEN="$DIR/hallazgos.md"
+      MODO="verificacion"
     fi
   else
     log "Iteración $ITER/$MAX_LOOPS — falló la compuerta determinista, se saltea la auditoría"
@@ -529,6 +670,15 @@ atribuye, y devolvé \`fuentes_verificadas\` con una entrada por cada una."
   fi
 
   log "Iteración $ITER/$MAX_LOOPS — corrección"
+
+  # Copia de la ficha antes de tocarla. Es lo que después permite medir con un
+  # script qué agregó la corrección, sin preguntárselo al modelo que la hizo.
+  BASE_JSON="src/content/tools-base/$SLUG.json"
+  EDIT_JSON="src/content/tools/$FICHA_LANG/$SLUG.json"
+  mkdir -p "$DIR/antes" "$DIR/despues"
+  cp "$BASE_JSON" "$DIR/antes/base.json" 2>/dev/null || true
+  cp "$EDIT_JSON" "$DIR/antes/editorial.json" 2>/dev/null || true
+
   prompt="$(render "$PROMPTS/03-corregir.md" \
     '{{SLUG}}' "$SLUG" \
     '{{LANG}}' "$FICHA_LANG" \
@@ -536,6 +686,23 @@ atribuye, y devolvé \`fuentes_verificadas\` con una entrada por cada una."
     '{{MAX_LOOPS}}' "$MAX_LOOPS" \
     '{{HALLAZGOS_FILE}}' "$DIR/hallazgos.md")"
   claude_run "$prompt" 35 "$SCHEMA_CORREGIR" "$DIR/correccion-raw.json" >"$DIR/correccion.json"
+
+  cp "$BASE_JSON" "$DIR/despues/base.json" 2>/dev/null || true
+  cp "$EDIT_JSON" "$DIR/despues/editorial.json" 2>/dev/null || true
+
+  # El diff se saca de las copias y no de git: durante la corrida no hay commits,
+  # así que `git diff` mezclaría la creación con la corrección y el verificador
+  # terminaría revisando la ficha entera en vez del cambio.
+  { diff -u "$DIR/antes/base.json" "$DIR/despues/base.json" || true
+    diff -u "$DIR/antes/editorial.json" "$DIR/despues/editorial.json" || true
+  } >"$DIR/correccion.diff"
+  node scripts/harness/alcance.mjs "$DIR/antes" "$DIR/despues" >"$DIR/alcance.json" 2>&1 \
+    || echo '{"urls_nuevas":[],"entradas_nuevas":[],"hay_afirmaciones_nuevas":false}' >"$DIR/alcance.json"
+
+  CORRECCION_ORIGEN="$DIR/correccion.json"
+  DIFF_ORIGEN="$DIR/correccion.diff"
+  ALCANCE_ORIGEN="$DIR/alcance.json"
+  log "Alcance de la corrección: $(jq -c '{urls_nuevas:(.urls_nuevas|length), entradas_nuevas:(.entradas_nuevas|length)}' "$DIR/alcance.json")"
 done
 
 log "Resultado: $RESULTADO"

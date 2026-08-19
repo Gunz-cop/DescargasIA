@@ -29,6 +29,23 @@ arriba" / "más abajo"); y si el producto está discontinuado o es de tipo
 
 {{HISTORIAL}}
 
+## Reportá todo: esta es la única auditoría completa
+
+Después de vos no viene otro auditor escéptico. Viene una verificación acotada
+que sólo comprueba si **tus** hallazgos quedaron corregidos. Lo que no anotes acá
+no lo anota nadie: llega al pull request sin marcar.
+
+Así que **reportá cada hallazgo, incluidos los que dudás y los que te parecen
+menores**. No filtres por importancia ni por confianza en este paso — para eso
+está la prioridad. Un P2 que después se descarta cuesta una línea; un P1 que no
+reportaste por parecerte discutible es una afirmación falsa publicada.
+
+Concretamente: si abriste una fuente y el respaldo te resultó parcial, es un
+hallazgo aunque no estés seguro. Si una cifra no tiene camino a ninguna fuente,
+es un hallazgo aunque suene plausible. Si el registro se te mezcla en un solo
+párrafo, es un P2, no un "detalle". Poné la prioridad honesta y dejá que el
+arnés decida qué bloquea.
+
 ## Restricciones
 
 - **No corrijas nada.** Esta es una pasada de evaluación: no edites ni un archivo.

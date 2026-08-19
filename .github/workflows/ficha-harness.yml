@@ -26,7 +26,7 @@ on:
         type: choice
         options: ["es", "sv", "it"]
       max_loops:
-        description: "Máximo de ciclos auditar/corregir. Cada ciclo son 2 pasadas de modelo"
+        description: "Ciclos. Con 2 alcanza: auditar+corregir, y verificar. Usá 3 sólo con final_audit"
         required: false
         default: "2"
       model:
@@ -43,6 +43,11 @@ on:
         options: ["medium", "low", "high", "xhigh", "max"]
       skip_create:
         description: "Saltear la creación y sólo auditar/corregir un slug existente"
+        required: false
+        default: false
+        type: boolean
+      final_audit:
+        description: "Auditoría escéptica completa antes de aprobar (ficha de alto riesgo). Requiere max_loops=3"
         required: false
         default: false
         type: boolean
@@ -97,6 +102,12 @@ jobs:
       - name: Test de humo del resumen
         run: bash scripts/harness/test-resumen.sh
 
+      # Ejercita el lazo entero con un `claude` falso: cero cuota, ~1 minuto.
+      # Atrapa un defecto de flujo antes de que cueste una corrida real, que es
+      # exactamente como se perdieron las dos primeras.
+      - name: Test del lazo
+        run: bash scripts/harness/test-lazo.sh
+
       - name: Correr el arnés
         id: harness
         continue-on-error: true
@@ -109,6 +120,7 @@ jobs:
           MODEL: ${{ inputs.model }}
           EFFORT: ${{ inputs.effort }}
           SKIP_CREATE: ${{ inputs.skip_create }}
+          FINAL_AUDIT: ${{ inputs.final_audit }}
           OUT: harness-out
           PASS_TIMEOUT: 600
         run: bash scripts/harness/run.sh

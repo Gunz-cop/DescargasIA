@@ -63,21 +63,79 @@ HERRAMIENTA="Kling AI" FICHA_LANG=es MAX_LOOPS=2 bash scripts/harness/run.sh
 ```
 crear ficha  (skill descargasia-tool-ficha)
    │
-   ├─► compuerta determinista: npm run build:no-shorten + metricas.mjs --strict
-   │      │
-   │      ├─ falla ──► los hallazgos son la salida del build/script, sin gastar
-   │      │            una pasada de auditoría del modelo
-   │      │
-   │      └─ pasa ───► auditoría (skill descargasia-ficha-auditoria)
-   │                      └─► veredicto estructurado: APTO / APTO_CON_AVISOS / NO_APTO
-   │                             └─ si aprueba ──► verificación de cierre:
-   │                                               metricas.mjs --check-urls
+   ├─► compuerta determinista: build + metricas.mjs --strict         gratis
+   │      ├─ falla ──► los hallazgos son la salida del script, sin gastar
+   │      │            una pasada del modelo
+   │      └─ pasa ───►
    │
-   ├─ aprueba y el cierre pasa ──► fin, pull request listo para revisar
-   └─ no aprueba ──► corrección con los hallazgos ──► vuelve arriba (hasta max_loops)
+   ├─► AUDITORÍA ESCÉPTICA COMPLETA — una sola vez en la corrida     ~$1.10
+   │      skill descargasia-ficha-auditoria, con instrucción de reportar
+   │      todo (no filtrar por severidad ni por confianza)
+   │      └─ si aprueba de una ──► cierre por red ──► fin
+   │
+   ├─► corrección dirigida: sólo los hallazgos listados              ~$0.90
+   │
+   ├─► alcance de la corrección, medido por script                   gratis
+   │      qué URLs se agregaron (citas) y qué arrays crecieron (afirmaciones)
+   │
+   └─► VERIFICACIÓN DIFERENCIAL                                      ~$0.20
+          ¿quedó corregido cada P0/P1?  ¿las fuentes nuevas respaldan
+          su afirmación?  ¿lo agregado responde a algún hallazgo?
+          ¿la corrección rompió algo?   NO busca hallazgos nuevos.
+             │
+             ├─ cierra ──► metricas.mjs --check-urls ──► aprobado, PR
+             └─ no cierra ──► otra corrección, o draft al agotar vueltas
 ```
 
-Cinco detalles del diseño que conviene conocer antes de tocarlo:
+### Por qué la auditoría corre una sola vez
+
+Éste es el corazón del diseño y se aprendió midiendo. La primera versión del
+arnés repetía la auditoría escéptica completa después de cada corrección. No
+converge, y la razón está en la propia skill: le pide al auditor *"sé escéptico
+por defecto, buscá motivos de rechazo, no de aprobación"*. Un auditor así, corrido
+fresco, casi siempre encuentra algo nuevo — está diseñado para eso. **"El auditor
+no tiene nada que decir" no es un estado alcanzable**, así que el lazo se agotaba
+siempre.
+
+Los números de la corrida que lo demostró (ficha nueva, 2 vueltas):
+
+| Pasada | Costo |
+|---|---|
+| Crear | $1.14 |
+| Auditar #1 | $1.10 |
+| Corregir | $0.88 |
+| Auditar #2 | $1.00 |
+
+La segunda auditoría hizo dos cosas: confirmar que las tres correcciones habían
+entrado —acotado, barato, y lo único que el lazo necesitaba— y correr una
+auditoría entera de nuevo, que encontró un hallazgo más y volvió a no aprobar.
+Sólo la primera mitad cierra el ciclo.
+
+La contrapartida es explícita: **el arnés ya no busca defectos nuevos después de
+la primera auditoría.** Los que aparecerían en una segunda pasada quedan para el
+revisor humano, que de todos modos tiene que mirar la ficha renderizada porque el
+paso 4 de la skill no corre en CI. Para fichas donde eso no alcance está
+`final_audit`, que paga una auditoría escéptica más antes de aprobar.
+
+### Citas nuevas vs. afirmaciones nuevas
+
+La verificación diferencial sólo mira lo que la auditoría listó, así que algo que
+la corrección agregue por su cuenta llegaría al PR sin auditar. `alcance.mjs`
+compara la ficha antes y después y distingue dos casos, sin preguntarle al modelo
+que hizo la corrección:
+
+- **Una URL nueva** suele ser la corrección correcta — la skill exige que cada
+  documento mencionado sea trazable desde la ficha. Se verifica esa fuente contra
+  su afirmación y se sigue.
+- **Una entrada nueva** en `editorialSections`, `faq`, `communityInsights`,
+  `platforms` o `alternatives` es contenido que nadie auditó. El verificador tiene
+  que decir si responde a un hallazgo; si no, no cierra.
+
+La distinción no es teórica: en la corrida real la corrección agregó `docs/models`
+a `officialSources` para respaldar el roster de modelos que acababa de arreglar.
+Tratar eso como "fuera de alcance" habría penalizado la corrección correcta.
+
+Cinco detalles más del diseño que conviene conocer antes de tocarlo:
 
 - **La compuerta barata va primero.** El build y `metricas.mjs --strict` cuestan
   segundos y encuentran los defectos mecánicos con más precisión que el modelo.
