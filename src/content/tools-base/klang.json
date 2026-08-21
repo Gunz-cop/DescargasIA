@@ -1,0 +1,55 @@
+{
+  "name": "Klang",
+  "officialWebsite": "https://klang.ai",
+  "categories": [
+    "productividad-presentaciones-ia"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://klang.ai",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-08-21"
+    },
+    "ios": {
+      "url": "https://apps.apple.com/us/app/klang-ai/id6756681693",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-21"
+    },
+    "android": {
+      "url": "https://play.google.com/store/apps/details?id=ai.klang.klangai",
+      "type": "app-store",
+      "isOfficial": true,
+      "lastChecked": "2026-08-21"
+    }
+  },
+  "pricingModel": "freemium",
+  "requiresAccount": true,
+  "tags": [
+    "transcripcion",
+    "reuniones",
+    "gdpr",
+    "suecia",
+    "productividad"
+  ],
+  "alternatives": [
+    "fireflies",
+    "fathom",
+    "otter-ai",
+    "macwhisper"
+  ],
+  "screenshotUrl": null,
+  "initials": "KL",
+  "trustLevel": "official",
+  "lastReviewed": "2026-08-21",
+  "officialSources": [
+    "https://klang.ai",
+    "https://klang.ai/about/",
+    "https://klang.ai/pricing/",
+    "https://klang.ai/app/",
+    "https://trust.klang.ai/",
+    "https://play.google.com/store/apps/details?id=ai.klang.klangai",
+    "https://www.satoriml.se/blog/moten-missade-guldet-klang-transkribering"
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "shortDescription": "Svenskt AI-verktyg för mötes- och intervjutranskribering, byggt i Helsingborg med fokus på GDPR, EU-datalagring och hög precision på svenska.",
+  "longDescription": "Klang är en AI-tjänst från det svenska bolaget Klang AI AB i Helsingborg som spelar in, transkriberar och sammanfattar möten och intervjuer. Den kopplas till Microsoft Teams, Zoom och Google Meet, taggar automatiskt vem som sagt vad, och skapar sökbara sammanfattningar och åtgärdspunkter efter mötet. Till skillnad från globala verktyg som i första hand är byggda för engelska marknadsförs Klang uttryckligen som byggt för svenska (och övriga nordiska språk), med datahantering som är tänkt att uppfylla europeiska dataskyddskrav.",
+  "bestFor": [
+    "Svenska team som vill ha mötestranskribering med högre precision på svenska än generiska globala verktyg",
+    "Organisationer med tydliga GDPR-krav som vill kunna visa var och hur mötesdata lagras",
+    "Journalister, forskare och HR-team som transkriberar intervjuer på svenska och behöver sökbar text i efterhand",
+    "Team som redan bokar möten i Teams, Zoom eller Google Meet och vill slippa skriva mötesanteckningar manuellt"
+  ],
+  "limitations": [
+    "Det finns ingen skrivbordsapp för Windows, macOS eller Linux vid den här granskningen — Klang används via webbläsaren på app.klang.ai eller mobilappen för iOS och Android.",
+    "Gratisplanen är begränsad till en (1) användare utan schemalagd analys eller integrationer; funktioner som telefonsamtalstranskribering, API/MCP-åtkomst och högre hastighet kräver Pro-planen (17,5 EUR per person och månad vid årsfakturering).",
+    "Team-planen — med SSO, privat molndrift och BYOK — har inget publikt pris utan kräver kontakt med säljteamet, så den totala kostnaden för större organisationer är inte transparent i förväg."
+  ],
+  "safetyNotes": [
+    "Klang.ai (mötes- och intervjutranskribering, från Helsingborg) ska inte förväxlas med det tyska bolaget Klangio och tjänsten klang.io, som transkriberar musik till notblad — namnen och domänerna liknar varandra, men det är två olika företag med olika produkter.",
+    "Skapa bara konto via app.klang.ai eller ladda ner mobilappen från officiella App Store- och Google Play-länkar; var skeptisk mot tredjepartssidor som utger sig för att erbjuda en nedladdningsbar 'Klang-installer', eftersom bolaget självt inte publicerar någon sådan."
+  ],
+  "editorialSummary": "Klang är ett av få AI-verktyg för mötestranskribering som är byggt av ett svenskt bolag med svenska som prioriterat språk snarare än ett tillägg till en global produkt. Det talar direkt till två saker svenska köpare ofta efterfrågar av AI-verktyg: bättre precision på svenska och tydligare svar på var mötesdata faktiskt lagras. Samtidigt saknar det en skrivbordsapp och den billigaste betalplanen kräver årsfakturering för att bli prisvärd.",
+  "editorialSections": [
+    {
+      "heading": "Varför ett svenskt verktyg kan slå globala jättar på svenska",
+      "body": "Generiska transkriptionsmotorer från stora amerikanska leverantörer är i första hand tränade och optimerade för engelska, och kvaliteten på svenska brukar märkbart halka efter. Klang positionerar sig specifikt mot det: enligt en genomgång från den svenska AI-konsultfirman Satori (februari 2026), som i sin tur hänvisar till siffror Klang själva delat, ligger Klangs felfrekvens för svenska transkription på 7,8 procent — enligt samma källa märkbart lägre än Microsofts och Googles generella lösningar för just svenska.\n\nDet är värt att vara tydlig med att den siffran ytterst kommer från Klang själva, återgiven av en tredje part snarare än oberoende uppmätt av Satori. Den är ändå relevant som en indikation på var Klang lägger sitt fokus: ett nischat verktyg byggt kring ett språk används ofta som konkurrensargument mot bredare, mer generella plattformar, och det är precis den nisch Klang säger sig fylla."
+    },
+    {
+      "heading": "Webb och mobil, men ingen skrivbordsapp",
+      "body": "Klang används via webbläsaren på app.klang.ai, där du loggar in, kopplar kalendern och ansluter Teams-, Zoom- eller Google Meet-möten. Mobilappen för iOS och Android låter dig spela in fysiska möten och intervjuer direkt från telefonen, vilket är särskilt användbart för journalister eller HR som håller platsmöten utan videolänk.\n\nDet finns däremot ingen officiell skrivbordsapp för Windows, macOS eller Linux vid den här granskningen. Om du specifikt letar efter ett nedladdningsbart skrivbordsprogram snarare än en webbtjänst är det värt att jämföra med alternativ som har det, till exempel MacWhisper på Mac."
+    },
+    {
+      "heading": "GDPR och datahantering: vad Klang faktiskt lovar",
+      "body": "Klang AI AB är ett svenskt aktiebolag, och företaget beskriver på sin webbplats att tjänsten är byggd för att uppfylla europeiska dataskyddskrav, med ett separat 'Trust Center' (trust.klang.ai) för säkerhetsdokumentation. Enligt beskrivningen i Klangs egen Google Play-listning krypteras och lagras inspelningar i Europa, och kunddata används inte för att träna AI-modeller.\n\nDet är löften från leverantören själv, inte en oberoende revision du kan verifiera utan att läsa avtalsvillkoren för din egen organisation. Om GDPR-efterlevnad är avgörande för ditt beslut — till exempel inom offentlig sektor, vård eller juridik — bör du ändå gå igenom Trust Center och det faktiska databehandlingsavtalet innan du ansluter känsliga möten, precis som du skulle göra med vilken molntjänst som helst."
+    },
+    {
+      "heading": "Klang jämfört med Fireflies, Fathom och Otter.ai",
+      "body": "Fireflies, Fathom och Otter.ai är alla etablerade, generella mötesassistenter med bredare funktionsutbud och fler integrationer globalt sett, men de är i första hand byggda för en engelskspråkig marknad. Klang är smalare i sitt fokus — transkribering, sammanfattning och sökbarhet av samtal — men riktar det fokuset specifikt mot svenska och europeisk dataefterlevnad.\n\nOm ditt team huvudsakligen möts på engelska och redan är nöjt med ett globalt verktygs funktionsbredd finns det sällan skäl att byta. Om möten hålls på svenska och du samtidigt behöver kunna svara tydligt på var datan lagras, är Klang värt att testa via den gratis planen innan du binder dig till en betald prenumeration någonstans."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "I en recension på Capterra daterad den 17 oktober 2023 skrev Jonathan N., en 'Executive producer' inom mediaproduktion som gav Klang 5 av 5 i helhetsbetyg, att verktyget var 'easy, fast and an effective tool to review and correct subtitles', men pekade samtidigt ut en konkret brist: 'There are still a bit of development in delivering the optimal formatted subtitles in terms of sentence length' — alltså att den automatiska undertextningen ännu inte alltid bröt meningarna på ett optimalt sätt. Capterra märker själva recensionen 'Vendor Referred – Incentive Offered', det vill säga att Klang bjöd in recensenten och erbjöd ett symboliskt incitament för en 'ärlig recension' — den är alltså inte helt oberoende insamlad, vilket är värt att veta innan du väger in den. Recensionen är dessutom över två år gammal vid den här granskningen och det är den enda tillgängliga användarrecensionen på Capterra, så den bör läsas som en enskild, leverantörsinbjuden datapunkt snarare än ett mönster — och produkten kan ha förändrats sedan 2023. Den är ändå värd att känna till som exempel på vilken typ av finslipning som historiskt varit kvar i gränssnittet, snarare än ett grundläggande fel i själva transkriptionen.",
+      "source": "https://www.capterra.com/p/10014487/Klang/reviews/",
+      "sourceLabel": "Capterra — recension av Jonathan N. om Klang",
+      "date": "2023-10-17"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är Klang gratis?",
+      "answer": "Det finns en gratisplan utan kreditkortskrav, begränsad till en användare med obegränsad transkribering av digitala möten. Pro-planen kostar 17,5 EUR per person och månad vid årsfakturering och lägger till bland annat schemalagd analys och integrationer."
+    },
+    {
+      "question": "Finns Klang som app för Windows eller Mac?",
+      "answer": "Nej, inte som skrivbordsapp vid den här granskningen. Klang används via webbläsaren på app.klang.ai eller via mobilappen för iOS och Android."
+    },
+    {
+      "question": "Är Klang.ai samma sak som Klang.io?",
+      "answer": "Nej. Klang.ai (den här tjänsten) transkriberar möten och intervjuer och drivs av det svenska bolaget Klang AI AB. Klang.io (Klangio) är en separat tysk tjänst för att transkribera musik till notblad — namnen liknar varandra, men det är olika företag och olika produkter."
+    },
+    {
+      "question": "Är Klang säkert att använda för GDPR-känsliga möten?",
+      "answer": "Klang beskriver på sin webbplats och i sitt Trust Center att tjänsten är byggd enligt europeiska dataskyddskrav och att data inte används för att träna AI-modeller. Det är leverantörens egna uppgifter — för verksamhetskritiska eller känsliga möten bör du ändå läsa databehandlingsavtalet själv innan du ansluter dem."
+    },
+    {
+      "question": "Fungerar Klang bra på svenska?",
+      "answer": "Ja, svenska är det språk Klang uttryckligen är byggt och marknadsfört för, snarare än ett tillägg till en primärt engelskspråkig produkt. En extern genomgång från februari 2026 återger en felfrekvens på 7,8 procent för svensk transkription enligt Klangs egna siffror, men det är inte en oberoende uppmätning."
+    }
+  ],
+  "swedishSupport": "yes"
+}
