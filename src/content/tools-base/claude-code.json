@@ -43,7 +43,8 @@
     "qwen-code",
     "cursor",
     "devin-desktop",
-    "github-copilot"
+    "github-copilot",
+    "opencode"
   ],
   "screenshotUrl": null,
   "initials": "CC",
@@ -52,6 +53,8 @@
   "officialSources": [
     "https://code.claude.com",
     "https://code.claude.com/docs/en/overview",
-    "https://claude.com/pricing"
+    "https://claude.com/pricing",
+    "https://computersweden.se/article/4132086/ai-verktyg-tar-over-kodandet-pa-spotify.html",
+    "https://learn.microsoft.com/en-us/answers/questions/5867930/timeline-for-claude-in-microsoft-foundry-to-run-on"
   ]
 }

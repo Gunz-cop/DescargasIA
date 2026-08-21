@@ -1,0 +1,69 @@
+{
+  "shortDescription": "Anthropics agentiska kodningsverktyg för terminal, IDE, skrivbord och webbläsare — samma motor som redan används i produktionsteam på bland annat Spotify.",
+  "longDescription": "Claude Code är Anthropics agent för mjukvaruutveckling: den läser din kod, redigerar filer, kör kommandon och kan kopplas till dina befintliga utvecklarverktyg. Till skillnad från vanlig chatt med Claude är den byggd för att arbeta direkt i ett riktigt projekt — från terminalen, en VS Code- eller JetBrains-extension, en fristående skrivbordsapp, eller direkt i webbläsaren. I Sverige, som redan ligger i den absoluta europeiska toppen när det gäller andelen utvecklare per capita, är det ett av de verktyg som redan används i produktionsmiljöer hos etablerade techbolag.",
+  "bestFor": [
+    "Utvecklarteam som vill delegera hela uppgifter — skriva tester, felsöka, refaktorera — genom att beskriva dem i vanlig text",
+    "Team som redan är djupt inne i Anthropics ekosystem och vill ha samma agent i terminal, redigerare och webbläsare med delat sammanhang",
+    "Organisationer som utvärderar EU-baserad datahantering via Azure eller Google Cloud, men som behöver förstå exakt vad regionvalet faktiskt garanterar",
+    "Utvecklare som kör långa, sammanhängande sessioner i molnet och vill kunna fortsätta dem senare från en annan enhet"
+  ],
+  "limitations": [
+    "Det finns ingen gratisnivå för kontinuerlig användning: det krävs minst en Claude Pro-prenumeration (eller en annan betald Claude-plan, eller API-krediter) för att använda Claude Code regelbundet.",
+    "Sedan augusti 2025 tillämpar Anthropic veckovisa användningsgränser utöver de befintliga femtimmarsgränserna, tänkta att bromsa kontinuerlig dygnet-runt-användning och delade konton — enligt Anthropic påverkar det färre än 5 procent av abonnenterna, men det är värt att känna till innan du planerar ett arbetsflöde kring långa, oavbrutna sessioner.",
+    "Att välja en europeisk molnregion (till exempel Sweden Central på Azure) för Claude-driften garanterar inte automatiskt att all bearbetning sker inom regionens fysiska gränser — se avsnittet om datahantering ovan i denna artikel innan du utgår från det i en efterlevnadsbedömning."
+  ],
+  "safetyNotes": [
+    "När du ger en kodagent behörighet att ändra filer eller köra kommandon i ditt projekt, granska alltid vad den föreslår innan du godkänner det — särskilt i repositorier utan versionshantering som säkerhetsnät.",
+    "Installera Claude Code enbart via de officiella kanalerna som listas i denna artikel (installationsskriptet från claude.ai, tilläggen från VS Code/JetBrains officiella marknadsplatser, eller skrivbordsappen från claude.ai)."
+  ],
+  "editorialSummary": "Claude Code har på kort tid blivit ett av de mest använda agentiska kodningsverktygen i produktionsmiljöer, med ett exempel som fick stor uppmärksamhet i svensk teknikpress: Spotifys vd sa i februari 2026 att bolagets bästa utvecklare inte skrivit en enda rad kod sedan december, via ett internt system som styr Claude Code på distans. Samtidigt tillämpar Anthropic veckovisa användningsgränser sedan hösten 2025, och regionvalet för EU-baserad drift är mer nyanserat än det först verkar.",
+  "editorialSections": [
+    {
+      "heading": "Spotify-exemplet: vad \"Honk\" faktiskt betyder",
+      "body": "I februari 2026 berättade Spotifys vd Gustav Söderström i bolagets kvartalsrapport att företagets bästa utvecklare \"inte skrivit en enda rad kod sedan december\", enligt rapportering i Computer Sweden. Bakgrunden är ett internt system kallat Honk, som gör det möjligt att styra verktyg som Claude Code på distans — en utvecklare kan enligt samma artikel be Claude via Slack att fixa en bugg eller lägga till en funktion i iOS-appen på väg till jobbet, och ha en uppdaterad version redo när de kommer fram.\n\nDet är ett extremt exempel, inte en beskrivning av hur de flesta team använder verktyget idag, och det säger mer om Spotifys interna investering i egen AI-infrastruktur än om vad en genomsnittlig Claude Code-installation gör ur lådan. Men det visar att agentisk kodning redan är i produktionsbruk hos svenska techbolag i stor skala, inte bara ett experiment på sidan av."
+    },
+    {
+      "heading": "Samma agent i fem olika ytor",
+      "body": "Claude Code är inte en enda applikation utan en motor som går att nå från flera håll: terminalen (det mest kompletta läget, installerbart med ett officiellt skript, Homebrew, WinGet eller Linux-pakethanterare), en extension för VS Code eller JetBrains, en fristående skrivbordsapp för macOS och Windows, eller direkt i webbläsaren på claude.ai/code utan installation.\n\nAlla dessa ytor delar samma projektkonfiguration (CLAUDE.md-filer, automatiskt minne, MCP-anslutningar), så du kan börja en lång uppgift i webbläsaren och fortsätta den från terminalen senare, eller tvärtom, utan att förlora sammanhanget."
+    },
+    {
+      "heading": "EU-region betyder inte automatiskt att data stannar i EU",
+      "body": "För team med striktare krav på datahantering finns Claude tillgängligt via Google Vertex AI (med Frankfurt som europeisk region) och Microsoft Azure AI Foundry, där Sweden Central är ett av de tillgängliga regionvalen. Det låter som en enkel lösning för svenska efterlevnadskrav, men är mer nyanserat i praktiken: enligt Microsofts egen dokumentation sker inferensen för Claude-modeller på Azure ännu inte helt och hållet inom regionens egna, Azure-drivna datacentergränser även när Sweden Central är valt som region.\n\nDet betyder inte att regionvalet är meningslöst — det påverkar fortfarande var kontrollplanet och delar av hanteringen sker — men det betyder att ett team som behöver kunna intyga exakt var varje byte av data bearbetas bör verifiera detaljerna direkt mot Microsofts och Anthropics egen dokumentation, inte anta att \"Sweden Central\" i sig räcker som svar i en efterlevnadsgranskning."
+    },
+    {
+      "heading": "Claude Code jämfört med Cursor, GitHub Copilot och OpenCode",
+      "body": "Cursor är i första hand en komplett redigerare med egen autokompletteringsmotor snarare än ett terminalförstahandsverktyg, medan GitHub Copilot är djupast integrerat i just redigeraren och Microsofts ekosystem. OpenCode, som är byggt av ett fristående open source-team, går åt andra hållet: det låter dig koppla vilken modell som helst — inklusive Claude — istället för att låsa dig till en enda leverantör.\n\nOm du redan står i Anthropics ekosystem och värdesätter samma sammanhang mellan terminal, redigerare och skrivbordsapp är Claude Code ett starkt val. Om du hellre vill välja fritt vilken modell som körs bakom kulisserna, eller undvika att binda dig till en enda betald prenumeration, kan ett öppet alternativ som OpenCode passa bättre för det behovet."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Den 20 maj 2026 rapporterade en användare (Pepijn Fijt) på Microsofts officiella supportforum för Azure AI Foundry allvarlig prestandaförsämring vid körning av Anthropics Claude-modeller i regionen Sweden Central: \"Request response times are exceptionally slow, to the point where our application layer routinely hits gateway or client timeouts before Claude can complete its response\" (svarstiderna var extremt långa, till den grad att applikationslagret regelbundet fick timeout innan Claude hann svara), vilket enligt inlägget blockerade både utveckling och produktion. En Microsoft-moderator svarade elva dagar senare att beteendet stämde med \"a temporary backend latency or routing-layer queuing condition\" (ett tillfälligt köproblem i serverbaklänken eller routningslagret) och föreslog strömmande svar, längre timeouts och exponentiell backoff som åtgärder. Användaren bekräftade dagen efter sitt ursprungliga inlägg att problemet hade löst sig av sig självt. Poängen för ett svenskt team som överväger Sweden Central som region: kapacitets- och latensproblem i en specifik EU-region har förekommit i praktiken, så det är värt att bygga in timeout- och återförsöksstrategier redan från start istället för att anta att en europeisk region alltid presterar lika stabilt som de stora globala regionerna.",
+      "source": "https://learn.microsoft.com/en-us/answers/questions/5896701/sweden-central-ai-foundry-doesnt-work",
+      "sourceLabel": "Microsoft Q&A — tråd om prestandaproblem med Claude i Sweden Central",
+      "date": "2026-05-20"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Är Claude Code gratis?",
+      "answer": "Inte för kontinuerlig användning. Det krävs minst en Claude Pro-prenumeration (från ungefär 20 dollar i månaden) eller API-krediter från Anthropic. Den kostnadsfria nivån av Claude täcker i huvudsak chatten, inte full åtkomst till Claude Code."
+    },
+    {
+      "question": "Måste jag använda terminalen för att använda Claude Code?",
+      "answer": "Nej. Förutom terminalen kan du använda en extension för VS Code eller JetBrains, en fristående skrivbordsapp, eller direkt webbläsaren på claude.ai/code."
+    },
+    {
+      "question": "Kan jag använda Claude Code med data som stannar inom EU?",
+      "answer": "Claude finns tillgängligt via Google Vertex AI (Frankfurt) och Microsoft Azure AI Foundry (bland annat Sweden Central), men regionvalet garanterar inte automatiskt att all bearbetning sker inom regionens fysiska gränser. Verifiera detaljerna mot Microsofts och Anthropics egen dokumentation om detta är avgörande för din organisation."
+    },
+    {
+      "question": "Varför har Claude Code veckovisa användningsgränser?",
+      "answer": "Anthropic införde dem i augusti 2025 för att bromsa kontinuerlig dygnet-runt-användning och delade eller vidareförsålda konton. Enligt Anthropic påverkar de färre än 5 procent av abonnenterna utifrån deras användningsmönster."
+    },
+    {
+      "question": "Är det säkert att låta Claude Code ändra filer i mitt projekt?",
+      "answer": "Granska alltid vad agenten föreslår innan du godkänner det, särskilt i viktiga projekt utan versionshantering som säkerhetsnät."
+    }
+  ],
+  "swedishSupport": "partial"
+}
