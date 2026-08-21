@@ -1,0 +1,69 @@
+{
+  "shortDescription": "Genera presentazioni professionali in italiano da un semplice prompt di testo, con esportazione in PDF e PowerPoint e piano gratuito senza carta di credito.",
+  "longDescription": "Gamma è uno strumento di IA generativa che trasforma una descrizione testuale in una presentazione completa — layout, testi, immagini e struttura delle slide — in pochi minuti. A differenza di PowerPoint o Google Slides, non parti da una diapositiva vuota: scrivi cosa vuoi comunicare e Gamma propone un intero deck, che poi puoi modificare o rigenerare sezione per sezione. Supporta l'italiano sia come lingua di input che di output, anche se per testi destinati al pubblico o con terminologia tecnica specifica conviene sempre una rilettura umana.",
+  "bestFor": [
+    "Startup e liberi professionisti italiani che devono preparare pitch deck per bandi pubblici (Smart&Start Italia, Resto al Sud) o investitori in poco tempo",
+    "PMI senza un team grafico dedicato che devono presentare offerte commerciali o report interni con un aspetto professionale",
+    "Chi deve trasformare rapidamente un documento o un'idea in slide navigabili, senza impaginare manualmente ogni diapositiva",
+    "Team distribuiti che collaborano in tempo reale sulla stessa presentazione da dispositivi diversi"
+  ],
+  "limitations": [
+    "Il piano gratuito include 400 crediti \"starter\" una tantum, che non si rinnovano ogni mese: una volta esauriti, le uniche opzioni sono invitare altri utenti (200 crediti a invito, fino a un massimo di 2.000) o passare a un piano a pagamento.",
+    "Non esiste un piano enterprise con crediti davvero illimitati: anche nei piani a pagamento più alti il consumo dipende dal modello di IA scelto per ogni generazione, quindi un uso intensivo può esaurire la quota prima di quanto ci si aspetterebbe dal nome del piano.",
+    "I file esportati in PDF o PowerPoint dal piano gratuito includono il badge \"Gamma AI\" visibile; per rimuoverlo serve passare al piano Pro, un dettaglio da considerare se il documento è destinato a un cliente o a un bando che valuta anche la presentazione formale."
+  ],
+  "safetyNotes": [
+    "Crea il tuo account solo su gamma.app; diffida di siti di terze parti che offrono \"Gamma Pro gratis\" o generatori di presentazioni con nomi simili che chiedono di scaricare un eseguibile — Gamma è un servizio esclusivamente web, senza installer da scaricare.",
+    "Se generi presentazioni con dati aziendali sensibili o riservati (numeri di bando, cifre di investimento, dati di clienti), verifica il piano di trattamento dati prima di caricarli nel piano gratuito, come faresti con qualunque servizio cloud che non hai controllato a fondo."
+  ],
+  "editorialSummary": "Gamma si è ritagliato un uso molto concreto in Italia: generare in pochi minuti i pitch deck che startup e PMI devono presentare per bandi pubblici come Smart&Start Italia o Resto al Sud, o per investitori privati, senza bisogno di competenze di design. Il piano gratuito è generoso all'inizio ma finito, e i file esportati senza abbonamento Pro mantengono un badge visibile con il logo di Gamma.",
+  "editorialSections": [
+    {
+      "heading": "Perché Gamma è diventato popolare tra chi scrive bandi e pitch deck in Italia",
+      "body": "Preparare un pitch deck professionale per un bando come Smart&Start Italia (il finanziamento Invitalia per startup innovative, fino a 1,5 milioni di euro) o Resto al Sud 2.0 richiede tempo che molti founder e consulenti non hanno, soprattutto quando la scadenza è vicina. Gamma affronta esattamente questo problema: da un prompt di poche righe con la descrizione del progetto, restituisce un deck strutturato in pochi minuti, che poi si rifinisce a mano.\n\nQuesto non sostituisce il lavoro di contenuto — i numeri del business plan, la coerenza con i requisiti del bando, la strategia dietro alla presentazione restano responsabilità di chi scrive — ma toglie di mezzo la parte di impaginazione e design, che spesso è quella che fa perdere più tempo a chi non ha un team grafico."
+    },
+    {
+      "heading": "Il sistema di crediti: cosa significa davvero \"piano gratuito\"",
+      "body": "A differenza di un piano freemium con un numero di presentazioni al mese, Gamma funziona a crediti: il piano gratuito ne assegna 400 una tantum, che secondo un'analisi dei prezzi pubblicata a giugno 2026 \"non si rinnovano mai\" automaticamente. Ogni generazione o rigenerazione di slide consuma crediti, e i modelli di IA più avanzati ne consumano di più, quindi 400 crediti possono coprire da poche a diverse presentazioni a seconda di quanto le rigeneri.\n\nUna volta esauriti, restano due strade: invitare altri utenti (200 crediti a invito, fino a un tetto di 2.000 crediti totali guadagnabili così) oppure passare a un piano a pagamento, che secondo la stessa analisi parte da alcuni dollari al mese per il livello base. Vale la pena saperlo prima di affidarsi a Gamma per un bando con scadenza fissa: un progetto complesso con molte rigenerazioni può esaurire il piano gratuito prima del previsto."
+    },
+    {
+      "heading": "Gamma rispetto a Canva e PowerPoint con Copilot",
+      "body": "Canva parte da un approccio più visivo e manuale, con l'IA come assistente dentro un editor più tradizionale; è una scelta solida se hai già un'identità visiva definita e vuoi controllo fine su ogni elemento. PowerPoint con Copilot resta superiore quando l'azienda ha template rigidi, un brand book complesso o serve integrare grafici Excel elaborati — scenari tipici di aziende più strutturate.\n\nGamma si distingue quando la priorità è la velocità di partenza: generare in pochi minuti un intero deck coerente da zero, specialmente utile per chi non ha né il tempo né le competenze grafiche per impaginare manualmente. Sul piano Pro puoi caricare logo, palette colori e font aziendali perché le nuove generazioni rispettino il brand kit, riducendo (senza eliminare del tutto) il lavoro di rifinitura successivo."
+    },
+    {
+      "heading": "Quanto ci si può fidare del testo in italiano generato da Gamma",
+      "body": "Gamma genera testo in italiano sia in input che in output, e la qualità del risultato è generalmente buona per un uso professionale standard — ma per testi destinati al pubblico o con terminologia tecnica specifica di settore, conviene sempre una rilettura umana prima di condividerli con un bando o un investitore. Non è un limite esclusivo di Gamma: vale per la maggior parte degli strumenti di IA generativa applicati a un output finale e non a una bozza di lavoro.\n\nSul fronte del supporto, il centro assistenza ufficiale di Gamma (help.gamma.app) offre oggi un selettore con oltre una decina di lingue, italiano incluso, per la struttura delle categorie e diversi articoli — un miglioramento rispetto a quanto lamentavano alcune recensioni di qualche anno fa sulla scarsità di materiale fuori dall'inglese (vedi \"cosa dice la community\" più in alto in questa scheda). Non tutti gli articoli più tecnici sono necessariamente tradotti con lo stesso livello di dettaglio della versione inglese, quindi per un problema molto specifico può comunque convenire controllare anche la versione in inglese della stessa pagina."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "In una recensione su Capterra datata 23 novembre 2023, Ana Laura C. — descritta come direttrice commerciale nel settore software — indicava tra i punti da migliorare: \"Maybe that there is not much information in other languages like spanish, only in english\" (forse che non c'è molta informazione in altre lingue come lo spagnolo, solo in inglese). La recensione è etichettata da Capterra stessa come \"Incentivized review\", cioè l'autrice fu invitata dal fornitore a lasciare una recensione con un incentivo simbolico in cambio — un dettaglio da tenere presente nel valutarne il peso. È una recensione di oltre due anni, e verificando il centro assistenza ufficiale di Gamma al momento di questa revisione, il reclamo specifico sembra superato: help.gamma.app oggi offre un selettore con più di dieci lingue, italiano e spagnolo inclusi, per la struttura delle categorie e diversi articoli. Resta comunque un promemoria utile su un tipo di limite reale per gli strumenti SaaS in rapida crescita: la localizzazione della documentazione spesso arriva dopo quella del prodotto stesso, quindi vale la pena controllare lo stato attuale invece di dare per scontato che il gap segnalato in una recensione vecchia sia ancora presente, in un senso o nell'altro.",
+      "source": "https://www.capterra.com/p/10015023/Gamma/reviews/",
+      "sourceLabel": "Capterra — recensione di Ana Laura C. su Gamma",
+      "date": "2023-11-23"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Gamma è gratuito?",
+      "answer": "C'è un piano gratuito con 400 crediti una tantum (non mensili), che coprono da poche a diverse presentazioni a seconda del modello di IA usato e di quante volte rigeneri le slide. Esaurito il piano gratuito, servono crediti guadagnati con inviti o un abbonamento a pagamento."
+    },
+    {
+      "question": "Gamma genera bene presentazioni in italiano?",
+      "answer": "Sì, genera testo in italiano sia in input che in output con una qualità generalmente buona per uso professionale, ma per testi pubblici o con terminologia tecnica specifica è comunque consigliata una rilettura umana prima di condividerli."
+    },
+    {
+      "question": "Gamma ha un'app desktop?",
+      "answer": "No, è un servizio esclusivamente web, accessibile da gamma.app. Diffida di qualunque sito che offra un installer da scaricare a nome di Gamma."
+    },
+    {
+      "question": "Si può usare Gamma per un pitch deck di un bando pubblico?",
+      "answer": "Sì, è un uso comune tra startup e consulenti italiani per bandi come Smart&Start Italia o Resto al Sud: genera rapidamente la struttura e il design del deck, ma i contenuti — numeri, requisiti del bando, strategia — restano responsabilità di chi lo scrive."
+    },
+    {
+      "question": "Serve la carta di credito per il piano gratuito?",
+      "answer": "No, il piano gratuito con i 400 crediti iniziali non richiede una carta di credito per essere attivato."
+    }
+  ],
+  "italianSupport": "yes"
+}
