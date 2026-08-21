@@ -1,0 +1,69 @@
+{
+  "shortDescription": "Il traduttore IA più naturale per l'italiano, con app desktop e mobile, traduzione diretta di PDF/Word/PowerPoint e sede in Germania soggetta al GDPR.",
+  "longDescription": "DeepL è un servizio di traduzione automatica basato su reti neurali, sviluppato dall'azienda tedesca DeepL SE con sede a Colonia. Per l'italiano — una lingua con un'economia fortemente orientata all'export e al turismo, dove la qualità della corrispondenza commerciale conta quanto il contenuto — DeepL si è affermato come alternativa a Google Translate grazie a traduzioni che restano naturali su frasi lunghe e testi tecnici, oltre alla possibilità di caricare documenti interi (PDF, Word, PowerPoint) mantenendo la formattazione originale.",
+  "bestFor": [
+    "Aziende italiane che esportano e devono tradurre cataloghi, contratti o comunicazioni commerciali senza stravolgere la terminologia tecnica",
+    "Professionisti che devono tradurre documenti interi (PDF, Word, PowerPoint) mantenendo intatta l'impaginazione originale",
+    "Chi scrive email o messaggi in un'altra lingua direttamente dal proprio computer, usando la scorciatoia da tastiera dell'app desktop",
+    "Chi cerca un'alternativa a Google Translate con un output meno letterale su frasi idiomatiche o tecniche"
+  ],
+  "limitations": [
+    "Nella versione gratuita il testo può essere usato per migliorare il modello: DeepL stessa sconsiglia di incollarvi contratti, dati sanitari o qualunque documento con informazioni riservate.",
+    "Il glossario personalizzato nel piano gratuito è limitato a un numero ridotto di termini; per un glossario ampio serve DeepL Pro.",
+    "La versione gratuita limita la dimensione e il numero di documenti completi traducibili al mese — per volumi aziendali reali serve un piano a pagamento."
+  ],
+  "safetyNotes": [
+    "Scarica le app ufficiali di DeepL solo da deepl.com/windows-app, deepl.com/macos-app o dagli store ufficiali di iOS e Android; diffida di siti che offrono versioni 'Pro sbloccate gratis', spesso usate per distribuire malware.",
+    "Se devi tradurre contratti, cartelle cliniche o qualunque documento con dati personali o riservati, i termini d'uso di DeepL stessa sconsigliano il piano gratuito: valuta DeepL Pro, che per contratto non conserva il testo dopo la traduzione."
+  ],
+  "editorialSummary": "DeepL è oggi lo strumento di riferimento per chi ha bisogno di traduzioni che suonino naturali in italiano, non solo grammaticalmente corrette — un vantaggio concreto per un'economia come quella italiana, molto orientata all'export, dove un contratto o un catalogo tradotto male costa credibilità. Il fatto che l'azienda abbia sede in Germania, sotto giurisdizione GDPR piena, è un argomento che pesa per le aziende italiane sempre più attente a dove finiscono i propri dati dopo l'entrata in vigore graduale dell'AI Act europeo.",
+  "editorialSections": [
+    {
+      "heading": "Perché conta la qualità della traduzione per un'economia export-oriented come quella italiana",
+      "body": "Un errore di traduzione in un catalogo prodotti, in un contratto di fornitura o in una comunicazione con un cliente estero non è solo un problema estetico: per le tante piccole e medie imprese italiane che esportano, una traduzione goffa o troppo letterale può far perdere credibilità in una trattativa. DeepL punta esplicitamente su questo: invece di tradurre parola per parola, cerca di mantenere il tono e l'intenzione del testo originale, cosa che i traduttori tradizionali basati su regole faticano a fare su frasi tecniche o idiomatiche.\n\nQuesto non significa che la traduzione sia perfetta senza revisione umana: per contratti legali o testi tecnici molto specifici resta buona norma far rileggere il risultato a un madrelingua o a un traduttore professionista, specialmente quando la formulazione esatta ha valore legale."
+    },
+    {
+      "heading": "Web, desktop e mobile: dove conviene usarlo",
+      "body": "La versione web su deepl.com/translator è il punto di ingresso più immediato, senza bisogno di installare nulla. Per un uso quotidiano più intenso, le app desktop ufficiali per Windows e macOS (scaricabili da deepl.com/windows-app e deepl.com/macos-app) si integrano nel sistema operativo: selezioni un testo in qualunque programma, premi una scorciatoia da tastiera, e la traduzione appare in una finestra flottante senza dover cambiare applicazione.\n\nLe app mobile ufficiali per iOS e Android coprono l'uso in mobilità, utile ad esempio durante una fiera commerciale o un viaggio di lavoro. In tutti i casi, il caricamento diretto di un documento PDF, Word o PowerPoint per tradurlo mantenendo la formattazione originale è una delle funzioni più concretamente utili per chi lavora con documentazione aziendale, rispetto a copiare e incollare testo a mano."
+    },
+    {
+      "heading": "GDPR, AI Act e perché la sede europea di DeepL non è un dettaglio marginale",
+      "body": "DeepL SE ha sede a Colonia, in Germania, ed è quindi soggetta pienamente al GDPR come qualunque azienda europea — un punto che DeepL stessa mette in evidenza nella propria pagina sulla sicurezza dei dati (deepl.com/pro-data-security), dove dichiara la certificazione SOC 2 Type 2 e afferma che i testi \"non vengono mai memorizzati o usati per addestrare i modelli senza il tuo consenso\" nei piani a pagamento. Con il Regolamento UE sull'IA (AI Act) pienamente applicabile dal 2 agosto 2026 e con l'Italia che ha aggiunto una propria legge nazionale (la 132/2025) su trasparenza e supervisione umana nell'uso dell'IA, molte aziende italiane stanno guardando con più attenzione a dove risiedono i propri fornitori di IA.\n\nQuesto non equivale a un audit indipendente: sono garanzie dichiarate dal fornitore stesso, non verificate da FuenteAI. Se la conformità è un requisito vincolante per la tua organizzazione — ad esempio nella pubblica amministrazione o in settori regolamentati — vale comunque la pena leggere l'accordo sul trattamento dati specifico per il tuo piano, invece di fermarsi alla pagina marketing."
+    },
+    {
+      "heading": "DeepL rispetto a ChatGPT e Google Translate per tradurre",
+      "body": "ChatGPT può tradurre testi se richiesto, ma tende a parafrasare più del necessario — un problema quando la terminologia esatta di un contratto o di un manuale tecnico non può essere alterata — ed è meno pratico per caricare un documento intero mantenendo la formattazione. Google Translate resta gratuito e capillare, ma su frasi lunghe o registri più formali tende a restare più letterale.\n\nDeepL si posiziona nel mezzo: è pensato specificamente per la traduzione (non per la conversazione generica) e gestisce documenti interi in un solo passaggio, ma per volumi aziendali seri o glossari ampi richiede un piano Pro a pagamento. Se il tuo bisogno è tradurre occasionalmente frasi brevi, Google Translate resta comunque un'opzione valida e gratuita senza limiti mensili."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "In una recensione su Capterra datata 22 luglio 2021, Luciano Z. — descritto come consulente di chatbot e automazione nel settore IT, con un voto complessivo di 5 su 5 — scriveva di essere passato a DeepL da Google Translate perché quest'ultimo produceva traduzioni \"troppo meccaniche e letterali\". Tra i punti da migliorare indicava: \"It would be nice to have some additional features (however already included in paid subscriptions) such as being able to use formal or informal tones, or some custom glossary\" (sarebbe utile avere alcune funzioni aggiuntive — per quanto già incluse negli abbonamenti a pagamento — come poter usare toni formali o informali, o un glossario personalizzato). È una recensione di oltre quattro anni fa: da allora DeepL ha reso il glossario personalizzato una funzione stabile anche nel piano gratuito, seppure con un numero di termini limitato rispetto a Pro (vedi \"limitazioni\" più in basso in questa scheda), quindi la richiesta specifica di questo recensore risulta oggi in gran parte superata. Resta comunque un promemoria utile: quando un fornitore introduce una funzione solo nei piani a pagamento, vale la pena controllare periodicamente se è poi scesa anche nel piano gratuito, invece di dare per scontato che i limiti restino fissi nel tempo.",
+      "source": "https://www.capterra.com/p/219412/DeepL-Pro/reviews/",
+      "sourceLabel": "Capterra — recensione di Luciano Z. su DeepL Pro",
+      "date": "2021-07-22"
+    }
+  ],
+  "faq": [
+    {
+      "question": "DeepL è completamente gratuito?",
+      "answer": "Esiste una versione gratuita con limiti di caratteri e di documenti tradotti al mese. Per volumi maggiori, glossari più ampi e garanzie contrattuali sulla riservatezza dei testi serve un piano DeepL Pro a pagamento."
+    },
+    {
+      "question": "È sicuro caricare documenti riservati su DeepL?",
+      "answer": "Nel piano gratuito no: i testi possono essere usati per migliorare il modello, e gli stessi termini di DeepL sconsigliano di caricarvi dati riservati o personali sensibili. DeepL Pro garantisce per contratto che il testo non viene conservato dopo la traduzione."
+    },
+    {
+      "question": "DeepL ha un'app ufficiale per Windows o Mac?",
+      "answer": "Sì, scaricabile direttamente da deepl.com/windows-app e deepl.com/macos-app. Sono anche disponibili app mobile ufficiali per iOS e Android negli store ufficiali."
+    },
+    {
+      "question": "DeepL è un'azienda europea soggetta al GDPR?",
+      "answer": "Sì, DeepL SE ha sede a Colonia, in Germania, ed è quindi soggetta al GDPR. Questo non sostituisce una verifica indipendente: per usi vincolati a requisiti di conformità specifici conviene comunque leggere l'accordo sul trattamento dati del proprio piano."
+    },
+    {
+      "question": "DeepL traduce bene l'italiano?",
+      "answer": "Sì, l'italiano è una delle lingue supportate fin dai primi anni del servizio, ed è generalmente considerata tra le combinazioni linguistiche con risultati più naturali rispetto a traduttori basati su regole, specialmente su testi lunghi o con registro formale."
+    }
+  ],
+  "italianSupport": "yes"
+}
