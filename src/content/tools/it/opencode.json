@@ -1,0 +1,69 @@
+{
+  "shortDescription": "Agente di programmazione open source per terminale, IDE e desktop: si collega a oltre 75 provider di modelli, da Claude a GPT fino ai modelli locali.",
+  "longDescription": "OpenCode è un agente di programmazione IA open source sviluppato da Anomaly (la società dietro progetti come SST, OpenNext e OpenAuth), pensato per chi vuole un unico flusso di lavoro tra terminale, editor e app desktop invece di una finestra di prompt isolata. A differenza di strumenti legati a un solo fornitore, OpenCode si connette a più di 75 provider di modelli tramite Models.dev — Claude, GPT, Gemini, DeepSeek, oppure modelli eseguiti in locale — lasciando all'utente la scelta di quale motore usare dietro l'agente. Il codice è pubblico su GitHub sotto licenza MIT, con oltre 190.000 stelle e centinaia di collaboratori.",
+  "bestFor": [
+    "Sviluppatori che vogliono un agente di codice open source senza vincolarsi a un unico fornitore di modelli",
+    "Chi lavora già con più provider IA (Anthropic, OpenAI, Google, modelli locali) e vuole gestirli da un'unica interfaccia a terminale",
+    "Team che passano tra terminale, VS Code e un'app desktop dedicata mantenendo lo stesso contesto di sessione",
+    "Chi preferisce pagare direttamente il provider del modello (o usare modelli locali gratuiti) invece di un abbonamento fisso legato a un solo strumento"
+  ],
+  "limitations": [
+    "OpenCode in sé è gratuito e open source, ma per usarlo con modelli cloud serve una chiave API a pagamento di un provider esterno (Anthropic, OpenAI, ecc.) oppure un account su OpenCode Zen, il servizio a consumo del team che gestisce il progetto: non include un accesso cloud gratuito e illimitato.",
+    "L'app desktop è ancora etichettata come BETA dal team di sviluppo al momento di questa revisione, quindi può presentare instabilità rispetto alla versione da terminale, più matura.",
+    "Essendo un progetto open source mantenuto da un piccolo team (non da una grande azienda con supporto enterprise dedicato), la documentazione e il supporto ufficiale sono meno strutturati rispetto a strumenti come GitHub Copilot."
+  ],
+  "safetyNotes": [
+    "Installa OpenCode solo dai canali ufficiali: lo script di installazione su opencode.ai/install, il pacchetto opencode-ai su npm, i formula/cask ufficiali di Homebrew sotto anomalyco/tap, oppure le release pubblicate su github.com/anomalyco/opencode.",
+    "In rete circolano siti di documentazione non ufficiali con domini molto simili (ad esempio open-code.ai o open-code.dev) che si dichiarano esplicitamente \"community, non ufficiali\": sono utili come riferimento ma non sono gestiti da Anomaly e non vanno usati come fonte per scaricare l'installer."
+  ],
+  "editorialSummary": "OpenCode si è imposto rapidamente come uno degli agenti di programmazione open source più seguiti del 2026, grazie a un approccio \"porta il tuo modello\" che lo distingue da strumenti come Claude Code o GitHub Copilot, legati a un unico ecosistema. È gratuito da installare e usare con modelli locali, ma per i modelli cloud richiede una chiave API a pagamento propria o un account su OpenCode Zen.",
+  "editorialSections": [
+    {
+      "heading": "Un agente di codice che non ti lega a un solo modello",
+      "body": "La caratteristica che distingue OpenCode dalla maggior parte degli agenti di programmazione è la neutralità verso il fornitore del modello: invece di funzionare solo con un motore proprietario, si appoggia a Models.dev per collegarsi a oltre 75 provider diversi, incluse Claude, i modelli GPT, Gemini, DeepSeek e configurazioni locali eseguite sul proprio hardware.\n\nQuesto approccio ha un costo pratico: OpenCode non include un accesso cloud gratuito integrato, quindi bisogna collegare una chiave API propria (con relativa fatturazione del provider scelto) oppure usare OpenCode Zen, il servizio del team che seleziona e fattura a consumo un elenco di modelli verificati, con alcune opzioni gratuite limitate."
+    },
+    {
+      "heading": "Terminale, editor e desktop con lo stesso contesto",
+      "body": "OpenCode nasce come strumento da terminale — installabile con uno script ufficiale, npm, Bun o Homebrew — ma la stessa sessione si può continuare da un'estensione per VS Code, Cursor o Windsurf, oppure dall'app desktop nativa per Windows, macOS e Linux, ancora in fase beta al momento di questa revisione.\n\nPer chi lavora principalmente da riga di comando questo significa non dover scegliere tra un editor grafico e un flusso da terminale: si può passare dall'uno all'altro senza perdere il contesto della sessione di lavoro in corso."
+    },
+    {
+      "heading": "Un progetto open source con investitori seri alle spalle",
+      "body": "OpenCode è mantenuto da Anomaly, la società (nota in precedenza soprattutto per il framework SST) che ha reso pubblico questo marchio unificato nel 2026 per raccogliere sotto un solo nome i propri progetti open source, tra cui OpenNext, OpenAuth e Models.dev. Il codice di OpenCode è su GitHub con licenza MIT, con centinaia di migliaia di stelle e un ritmo di sviluppo molto attivo.\n\nEssere open source e sostenuto da investitori come Y Combinator dà una certa garanzia di continuità, ma resta comunque un progetto più piccolo di un prodotto enterprise: prima di adottarlo in un team, vale la pena verificare che il livello di documentazione e supporto disponibile oggi risponda alle esigenze reali del proprio flusso di lavoro."
+    },
+    {
+      "heading": "OpenCode rispetto a Claude Code, Cursor e GitHub Copilot",
+      "body": "Rispetto a Claude Code, che resta legato all'ecosistema Anthropic, o a GitHub Copilot, integrato soprattutto nell'editor, OpenCode punta sulla libertà di scegliere il modello e sulla trasparenza del codice open source. Cursor, invece, è un editor completo con un proprio motore di autocompletamento, un'esperienza più \"IDE-first\" rispetto all'approccio da terminale di OpenCode.\n\nSe l'obiettivo è restare indipendenti da un singolo fornitore di IA, o pagare solo per l'uso effettivo del modello scelto, OpenCode è un'opzione da valutare seriamente. Se invece si preferisce un prodotto con supporto ufficiale strutturato e un unico abbonamento fisso, gli strumenti proprietari come Claude Code possono risultare più comodi da gestire nel tempo."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Il 3 giugno 2026 è stato segnalato su GitHub un problema tecnico nella gestione dei limiti di frequenza (rate limit) di OpenCode con il provider OpenAI: quando l'API restituiva un errore 429, l'agente ritentava la richiesta circa ogni secondo, senza un backoff esponenziale efficace né un numero massimo di tentativi. L'analisi ha individuato tre cause concorrenti: i retry interni dell'SDK ufficiale di OpenAI (fino a due tentativi con ritardi di circa 0,5-1 secondo) che si sommavano a quelli di OpenCode; un errore nella formula di calcolo del ritardo in \"session/retry.ts\" (un off-by-one che dimezzava il ritardo iniziale previsto, da 2 secondi a 1 secondo sul primo tentativo); e l'assenza di un tetto massimo ai tentativi, che continuavano finché l'errore restava \"retryable\", con un backoff limitato solo a un massimo di 30 secondi. È un promemoria utile per chi usa OpenCode con provider che applicano rate limiting aggressivo: in caso di errori 429 ripetuti conviene controllare le impostazioni di retry del proprio provider invece di presumere che il comportamento predefinito dell'agente sia sempre quello ottimale.",
+      "source": "https://github.com/anomalyco/opencode/issues/30510",
+      "sourceLabel": "GitHub — issue #30510 su anomalyco/opencode",
+      "date": "2026-06-03"
+    }
+  ],
+  "faq": [
+    {
+      "question": "OpenCode è gratuito?",
+      "answer": "Il software in sé sì: è open source con licenza MIT e si installa senza costi. Per usarlo con modelli cloud (Claude, GPT, Gemini) serve però una chiave API a pagamento del provider scelto, oppure un account su OpenCode Zen, che offre alcuni modelli gratuiti limitati e altri a consumo."
+    },
+    {
+      "question": "OpenCode ha un'app desktop ufficiale?",
+      "answer": "Sì, per Windows, macOS e Linux, scaricabile da opencode.ai/download. Al momento di questa revisione il team la etichetta ancora come versione BETA."
+    },
+    {
+      "question": "Serve un account per usare OpenCode?",
+      "answer": "Non per installarlo o per usarlo con modelli locali. Per collegare un provider cloud serve la tua chiave API di quel provider (o un account OpenCode Zen), ma non un account obbligatorio con OpenCode stesso."
+    },
+    {
+      "question": "Chi sviluppa OpenCode ed è un progetto affidabile?",
+      "answer": "È mantenuto da Anomaly, azienda open source sostenuta da investitori come Y Combinator, con il codice pubblico su GitHub (organizzazione anomalyco) sotto licenza MIT e centinaia di migliaia di stelle."
+    },
+    {
+      "question": "OpenCode funziona in italiano?",
+      "answer": "L'interfaccia a terminale e la documentazione ufficiale sono in inglese. Puoi comunque scrivere le tue richieste in italiano: la lingua delle risposte dipende dal modello che colleghi (Claude, GPT, Gemini e altri gestiscono bene l'italiano), non da OpenCode stesso."
+    }
+  ],
+  "italianSupport": "partial"
+}
