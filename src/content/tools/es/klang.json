@@ -1,0 +1,69 @@
+{
+  "shortDescription": "Servicio europeo de transcripción de reuniones desde Suecia, con fuerte enfoque en cumplimiento GDPR — su precisión comprobada está en idiomas nórdicos, no en español.",
+  "longDescription": "Klang es un servicio de transcripción y resumen de reuniones desarrollado por la empresa sueca Klang AI AB, en Helsingborg. Se conecta a Teams, Zoom y Google Meet, identifica quién habla y genera resúmenes y tareas pendientes automáticamente. Su diferenciador frente a herramientas como Fireflies, Fathom u Otter.ai no es una función exclusiva, sino el origen: es una empresa europea que promociona explícitamente el cumplimiento del GDPR y el procesamiento de datos dentro de la UE, con una precisión de transcripción comprobada específicamente en sueco y otros idiomas nórdicos. Para español, la calidad de transcripción no está verificada de forma independiente.",
+  "bestFor": [
+    "Empresas hispanohablantes con oficinas, clientes o socios en países nórdicos que necesitan transcribir reuniones donde se habla sueco, noruego o danés",
+    "Profesionales o estudiantes en intercambio en Suecia u otro país nórdico que necesitan transcribir clases, entrevistas o reuniones en el idioma local",
+    "Equipos que priorizan un proveedor con sede y procesamiento de datos dentro de la Unión Europea por sobre uno estadounidense, y que se reúnen principalmente en inglés",
+    "Quien está comparando alternativas europeas a las herramientas de transcripción estadounidenses dominantes, como parte de una evaluación de proveedores más amplia"
+  ],
+  "limitations": [
+    "La calidad de transcripción en español no está confirmada de forma independiente: el caso de uso comprobado de Klang es sueco y otros idiomas nórdicos, no español. Si tu necesidad principal es transcribir reuniones en español, herramientas como Fireflies, Fathom u Otter.ai tienen un historial más extenso en ese idioma.",
+    "No existe una aplicación de escritorio para Windows, macOS ni Linux al momento de esta revisión: Klang se usa desde el navegador en app.klang.ai o desde la app móvil para iOS y Android.",
+    "El plan gratuito está limitado a un solo usuario sin análisis programado ni integraciones; funciones como transcripción de llamadas telefónicas o acceso a la API requieren el plan Pro (17,5 euros por persona al mes con facturación anual)."
+  ],
+  "safetyNotes": [
+    "Presta especial atención al dominio: Klang.ai (este servicio, transcripción de reuniones) no tiene relación con Klang.io (Klangio), una empresa alemana de transcripción musical que además tiene un sitio completo en español (klang.io/es) — es fácil confundirlos precisamente porque el segundo es más visible para un buscador hispanohablante.",
+    "Crea tu cuenta únicamente en app.klang.ai o descarga la app móvil desde las tiendas oficiales de Apple y Google; el servicio no publica ningún instalador de escritorio, así que cualquier sitio que ofrezca uno no es oficial."
+  ],
+  "editorialSummary": "Klang es un caso de uso específico más que una alternativa general a las herramientas de transcripción dominantes: tiene sentido concreto para quien trabaja con países nórdicos o prioriza un proveedor europeo por cumplimiento GDPR, pero su precisión comprobada es en sueco, no en español. Vale la pena conocerlo por eso mismo — como ejemplo de que existen alternativas europeas serias a las herramientas estadounidenses — más que como primera opción para transcribir reuniones en español.",
+  "editorialSections": [
+    {
+      "heading": "Para quién tiene sentido Klang si hablas español",
+      "body": "La mayoría de guías en español sobre transcripción con IA comparan Fireflies, Fathom, Otter.ai y herramientas similares, todas pensadas ante todo para el mercado angloparlante. Klang no compite directamente en ese terreno: es una herramienta sueca que existe porque las herramientas globales rendían peor específicamente en idiomas nórdicos, y ese sigue siendo su argumento de venta más fuerte.\n\nEso la vuelve relevante para un lector hispanohablante en un puñado de escenarios concretos: una empresa española o latinoamericana con una filial o cliente en Suecia, alguien haciendo un intercambio académico o laboral en la región nórdica, o un equipo que evalúa proveedores europeos frente a estadounidenses como parte de una política de cumplimiento. Fuera de esos casos, no hay una razón específica para elegir Klang sobre una alternativa con más trayectoria en español."
+    },
+    {
+      "heading": "El riesgo de confundir Klang.ai con Klang.io es mayor en español",
+      "body": "Klang.io (la marca es Klangio, una empresa alemana) transcribe música a partituras, no reuniones, y es un producto completamente distinto de Klang.ai. La confusión ya es un riesgo en cualquier idioma por lo parecido de los dominios, pero para un buscador hispanohablante el riesgo es mayor todavía: Klangio tiene un sitio completo traducido al español (klang.io/es), mientras que Klang.ai no tiene una versión en español confirmada de su propio sitio.\n\nEsto significa que alguien que busca \"klang transcripción\" en español tiene más probabilidades de aterrizar primero en el sitio del producto equivocado. Si tu intención es transcribir una reunión de trabajo y no una pieza musical, confirma que estás en klang.ai antes de crear una cuenta."
+    },
+    {
+      "heading": "Qué promete Klang sobre el manejo de datos, y qué no puedes dar por sentado",
+      "body": "Klang AI AB es una empresa sueca y, como tal, está sujeta al GDPR igual que cualquier empresa europea. La compañía mantiene un Trust Center público (trust.klang.ai) para documentación de seguridad, y según la descripción de su propia app en Google Play, las grabaciones se cifran y almacenan en Europa sin usarse para entrenar modelos de IA sin consentimiento.\n\nEstas son garantías declaradas por el propio proveedor, no una auditoría independiente verificada por FuenteAI. Si el cumplimiento normativo es un requisito vinculante para tu organización, revisa igualmente el acuerdo de tratamiento de datos específico de tu plan antes de conectar reuniones con información sensible, en vez de asumir que basta con que la empresa sea europea."
+    },
+    {
+      "heading": "Klang frente a Fireflies, Fathom y Otter.ai para un usuario hispanohablante",
+      "body": "Si tu prioridad es la calidad de transcripción en español, Fireflies, Fathom y Otter.ai tienen un historial mucho más extenso en ese idioma que Klang, cuyo caso de uso comprobado son los idiomas nórdicos. Ninguna de las tres es europea en el mismo sentido que Klang, así que si el origen del proveedor y el procesamiento de datos dentro de la UE son un requisito real (no solo una preferencia), Klang sigue siendo la opción más consecuente con ese criterio entre estas cuatro.\n\nEn la práctica, para la mayoría de equipos hispanohablantes que simplemente necesitan transcribir reuniones en español sin un requisito específico de residencia de datos en la UE, una alternativa con más trayectoria en el idioma probablemente rinda mejor desde el primer uso."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Klang tiene una sola reseña sustancial públicamente disponible en Capterra al momento de esta revisión, publicada el 17 de octubre de 2023 por un usuario identificado como Jonathan N., productor ejecutivo en el sector de producción audiovisual, con una calificación de 5 sobre 5. Entre los aspectos a mejorar señaló: \"There are still a bit of development in delivering the optimal formatted subtitles in terms of sentence length\" (todavía falta desarrollo para lograr subtítulos con un formato óptimo en cuanto a la longitud de las oraciones), es decir, que el corte automático de los subtítulos no siempre resultaba natural. Capterra etiqueta esta reseña como \"Vendor Referred – Incentive Offered\": el propio Klang invitó al usuario a dejarla a cambio de un incentivo simbólico, algo que conviene tener presente al valorar su peso como opinión independiente. Es además una reseña de hace más de dos años sobre un producto que ha seguido en desarrollo activo, así que no hay forma de confirmar si esa limitación puntual sigue vigente hoy. Lo que sí deja claro, más allá del detalle puntual, es que Klang cuenta con muy poca evidencia pública e independiente de uso real, algo esperable en una herramienta europea todavía pequeña frente a competidores estadounidenses mucho más establecidos.",
+      "source": "https://www.capterra.com/p/10014487/Klang/reviews/",
+      "sourceLabel": "Capterra — reseña de Jonathan N. sobre Klang",
+      "date": "2023-10-17"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Klang transcribe bien en español?",
+      "answer": "No está confirmado de forma independiente. El caso de uso comprobado de Klang es sueco y otros idiomas nórdicos; para español, herramientas como Fireflies, Fathom u Otter.ai tienen un historial más extenso."
+    },
+    {
+      "question": "¿Klang.ai es lo mismo que Klang.io?",
+      "answer": "No. Klang.ai (esta herramienta) transcribe reuniones y pertenece a la empresa sueca Klang AI AB. Klang.io (Klangio) es un servicio alemán distinto que transcribe música a partituras, y además tiene un sitio completo en español que puede generar confusión al buscar en este idioma."
+    },
+    {
+      "question": "¿Klang tiene aplicación de escritorio?",
+      "answer": "No al momento de esta revisión. Se usa desde el navegador en app.klang.ai o desde la app móvil oficial para iOS y Android."
+    },
+    {
+      "question": "¿Klang es gratuito?",
+      "answer": "Existe un plan gratuito sin tarjeta de crédito, limitado a un usuario. El plan Pro cuesta 17,5 euros por persona al mes con facturación anual e incluye análisis programado, integraciones y acceso a la API."
+    },
+    {
+      "question": "¿Por qué elegir Klang en vez de Fireflies o Fathom si hablo español?",
+      "answer": "En general no hay una razón para hacerlo, salvo que necesites transcribir reuniones específicamente en un idioma nórdico o que el procesamiento de datos dentro de la Unión Europea sea un requisito vinculante para tu organización."
+    }
+  ],
+  "spanishSupport": "unknown"
+}
