@@ -218,6 +218,17 @@ summary::-webkit-details-marker {
   color: var(--fai-signal);
   white-space: nowrap;
 }
+/* Etiquetas de fuente en texto libre (titulares de artículo, no dominios): el
+   `nowrap` de arriba las desborda del marco en móvil, así que aquí sí parten
+   línea. Sin versalitas ni tracking heredados: son títulos, se leen mejor. */
+.fai-domain-wrap {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  min-width: 0;
+  max-width: 100%;
+}
 
 @media (max-width: 640px) {
   .fai-card-title {

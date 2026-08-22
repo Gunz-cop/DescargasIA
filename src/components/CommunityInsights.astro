@@ -34,7 +34,12 @@ const t = useTranslations(lang);
         <p class="text-[14px] leading-[1.55] text-fai-ink-2">{insight.text}</p>
         <p class="fai-mono-sm mt-2.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-fai-muted-2">
           <span>{t('section.community.source')}:</span>
-          <a href={insight.source} target="_blank" rel="noopener noreferrer" class="fai-domain transition-colors hover:text-fai-find">
+          <a
+            href={insight.source}
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={['fai-domain transition-colors hover:text-fai-find', insight.sourceLabel && 'fai-domain-wrap']}
+          >
             {insight.sourceLabel ?? getDomain(insight.source)}
           </a>
           {insight.date && formatDate(insight.date, lang) && (
