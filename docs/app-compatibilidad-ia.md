@@ -62,31 +62,58 @@ Regla de oro del diseño: **ningún número del veredicto sale de la IA.** La IA
 
 ---
 
-## Documento de ejecución en el repo
+## Modelo de ejecución
 
-Este fichero (`docs/app-compatibilidad-ia.md`) **es** ese documento: cada IA lo lee al empezar y lo actualiza al terminar su fase. Estados: `⬜ Pendiente` · `🟨 En curso` · `✅ Hecho` · `⛔ Bloqueado`.
+Este proyecto **no se implementa en una sola sesión**. Se ejecuta como *spec-driven development*, con el método empaquetado en la skill `.claude/skills/sdd-fases/`:
 
-### Reglas de coordinación multi-agente (extienden las de `AGENTS.md`)
-1. Antes de trabajar, marcar la fase `🟨 En curso` con el nombre del agente y la fecha, y hacer commit de esa línea sola. Así el resto ve el bloqueo antes de duplicar trabajo.
-2. **Un agente = una fase.** No editar archivos que pertenecen a otra fase en curso (la columna "Archivos que posee" es el contrato).
-3. Al cerrar, marcar `✅` solo si **todos** los criterios de aceptación pasan y `npm run build` está verde.
-4. Si algo bloquea, marcar `⛔` con una línea explicando qué falta. No improvisar fuera del alcance de la fase.
-5. Ningún dato inventado. Si una cifra (VRAM, tamaño de un `.gguf`, ancho de banda) no se puede verificar en una fuente oficial, se deja fuera y se anota en el tablero. Es la misma regla editorial que rige el catálogo.
-6. Toda fase termina con `npm run build` verde antes del commit final.
+| Pieza | Rol |
+|---|---|
+| Este documento | Spec de producto: el porqué, la arquitectura y las decisiones cerradas. |
+| `docs/fases/F<n>.md` | Spec autoritativa de cada fase. **Es lo que lee la sesión ejecutora.** |
+| El issue de GitHub | La orden de trabajo y la fuente de verdad del estado. |
+| La sesión ejecutora | Desechable: nace, hace una fase, abre PR, muere. |
+| La sesión revisora | Corre los criterios, revisa el PR y corrige specs. Reemplazable. |
+
+Ninguna sesión de Claude Code es memoria durable —tampoco la que coordina—, así que la memoria vive en el repo. Es la misma apuesta que ya hace `scripts/harness/run.sh`.
+
+### Las reglas que lo sostienen
+
+1. **Criterios de aceptación ejecutables.** Cada criterio es un comando que sale 0 o 1. Si una fase necesita que alguien juzgue "¿esto está bien?", la spec falló y se arregla la spec.
+2. **El examen es intocable.** Cada spec declara `PROTEGIDOS`: los archivos que su sesión ejecutora no puede modificar. Si el examinado puede editar la compuerta, el veredicto no vale nada.
+3. **El issue apunta a la spec, no la copia.**
+4. **Si una sesión no puede terminar leyendo solo su spec, el bug es de la spec.** Se corrige la spec y se relanza.
+
+### Cómo se arranca una fase
+
+```
+Trabajás en Gunz-cop/DescargasIA. Leé AGENTS.md, docs/app-compatibilidad-ia.md y
+docs/fases/F<n>.md. Implementá la fase F<n> completa contra la rama
+claude/ai-model-compatibility-plan-ptlr3j. No modifiques ningún archivo de la lista
+PROTEGIDOS de la spec. Cuando todos los criterios de aceptación pasen, abrí un PR
+con "Closes #<issue>" en el cuerpo.
+```
+
+**Integración:** todas las fases abren PR contra `claude/ai-model-compatibility-plan-ptlr3j`. Nada llega a `main` hasta que la app esté completa y verde: `deploy.yml` despliega en cada push a `main`.
+
+Validá las specs con `node .claude/skills/sdd-fases/scripts/audit-specs.mjs`.
 
 ### Tablero
 
-| Fase | Nombre | Depende de | Estado | Agente | Actualizado |
-|---|---|---|---|---|---|
-| F0 | Fundaciones, tipos y tablero | — | ⬜ | — | — |
-| F1 | Datos: GPUs, modelos y cuantizaciones | F0 | ⬜ | — | — |
-| F2 | Motor determinista + tests | F0 | ⬜ | — | — |
-| F3 | Página, i18n, SEO y enlazado (sin JS) | F1 | ⬜ | — | — |
-| F4 | UI interactiva: combobox, tooltips, resultados | F2, F3 | ⬜ | — | — |
-| F5 | Autodetección de hardware en el navegador | F3 | ⬜ | — | — |
-| F6 | Worker + Workers AI | F1, F2 | ⬜ | — | — |
-| F7 | Endurecimiento: límites, caché, privacidad | F6 | ⬜ | — | — |
-| F8 | QA, accesibilidad, rendimiento y lanzamiento | todas | ⬜ | — | — |
+El issue de GitHub es la fuente de verdad del estado; esta tabla es el resumen legible.
+
+| Fase | Spec | Depende de | Issue | Estado |
+|---|---|---|---|---|
+| F0 | Fundaciones, tipos, specs e issues — [`F0.md`](fases/F0.md) | — | #1 | ✅ |
+| F1 | Datos: GPUs, modelos y cuantizaciones — [`F1.md`](fases/F1.md) | F0 | #2 | ⬜ |
+| F2 | Motor determinista + tests — [`F2.md`](fases/F2.md) | F0 | #3 | ⬜ |
+| F3 | Página, i18n, SEO y enlazado (sin JS) — [`F3.md`](fases/F3.md) | F1 | #4 | ⛔ |
+| F4 | UI interactiva: combobox, tooltips, resultados — [`F4.md`](fases/F4.md) | F2, F3 | #5 | ⛔ |
+| F5 | Autodetección de hardware — [`F5.md`](fases/F5.md) | F3 | #6 | ⛔ |
+| F6 | Worker + Workers AI — [`F6.md`](fases/F6.md) | F1, F2 | #7 | ⛔ |
+| F7 | Endurecimiento: límites, caché, privacidad — [`F7.md`](fases/F7.md) | F6 | #8 | ⛔ |
+| F8 | QA, accesibilidad, rendimiento y lanzamiento — [`F8.md`](fases/F8.md) | todas | #9 | ⛔ |
+
+**F1 y F2 están desbloqueadas y pueden ejecutarse en paralelo, en sesiones distintas.**
 
 F1 y F2 pueden ir en paralelo. F4 y F5 pueden ir en paralelo. F6 puede arrancar en cuanto F1+F2 estén cerradas.
 
@@ -377,3 +404,5 @@ Cada agente que cierre una fase añade aquí una línea con lo que decidió y qu
 | Fecha | Fase | Decisión | Motivo |
 |---|---|---|---|
 | 2026-08-23 | — | Plan aprobado con: Worker + assets, veredicto determinista, solo LLMs de texto, 3 idiomas y catálogo curado en el repo | Ver tabla "Decisiones ya cerradas con el usuario" |
+| 2026-08-23 | — | El proyecto se ejecuta con sesiones desechables por fase, no en una sesión larga | Ninguna sesión es memoria durable, tampoco la coordinadora; la memoria vive en el repo |
+| 2026-08-23 | F0 | El criterio de tipado es `npx tsc --noEmit`, no `astro check` | `@astrojs/check` no es dependencia del proyecto: el criterio no era ejecutable como estaba escrito |

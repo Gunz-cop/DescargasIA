@@ -37,6 +37,7 @@ Esto es lo que hoy cada sesión nueva redescubre a mano. **Verificalo contra el 
 - Etiquetas cortas en `src/i18n/ui.ts`; prosa larga con ternario `lang === 'sv' ? … : lang === 'it' ? … : …`, como en `Home.astro`.
 - **Las tres tablas de `ui.ts` deben tener el mismo conjunto de claves.** El fallback es solo en runtime: si `sv`/`it` pierden una clave, los tipos derivan sin avisar. Conviene un test de paridad.
 - Slugs de página: se mantienen **en español en los tres idiomas** (`acerca-de`, `aviso-legal`, y el segmento `categoria`). Es deliberado: mantiene el mapeo hreflang 1:1 sin tabla de traducción de rutas.
+- **Todo el contenido en español va en tú neutro, nunca voseo.** "Puedes", no "podés". Aplica a cualquier texto que vea el usuario: `ui.ts`, prosa de página, marcadores de posición de formularios. (Los documentos internos para agentes —specs, `docs/fases/`— no son contenido de sitio y quedan fuera de esta regla.)
 - Autoría siempre `Organization` desde `src/data/editorial-team.ts`, nunca `Person`.
 
 ## Otros
