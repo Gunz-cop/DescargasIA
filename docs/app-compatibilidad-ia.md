@@ -103,15 +103,15 @@ El issue de GitHub es la fuente de verdad del estado; esta tabla es el resumen l
 
 | Fase | Spec | Depende de | Issue | Estado |
 |---|---|---|---|---|
-| F0 | Fundaciones, tipos, specs e issues — [`F0.md`](fases/F0.md) | — | #1 | ✅ |
-| F1 | Datos: GPUs, modelos y cuantizaciones — [`F1.md`](fases/F1.md) | F0 | #2 | ⬜ |
-| F2 | Motor determinista + tests — [`F2.md`](fases/F2.md) | F0 | #3 | ⬜ |
-| F3 | Página, i18n, SEO y enlazado (sin JS) — [`F3.md`](fases/F3.md) | F1 | #4 | ⛔ |
-| F4 | UI interactiva: combobox, tooltips, resultados — [`F4.md`](fases/F4.md) | F2, F3 | #5 | ⛔ |
-| F5 | Autodetección de hardware — [`F5.md`](fases/F5.md) | F3 | #6 | ⛔ |
-| F6 | Worker + Workers AI — [`F6.md`](fases/F6.md) | F1, F2 | #7 | ⛔ |
-| F7 | Endurecimiento: límites, caché, privacidad — [`F7.md`](fases/F7.md) | F6 | #8 | ⛔ |
-| F8 | QA, accesibilidad, rendimiento y lanzamiento — [`F8.md`](fases/F8.md) | todas | #9 | ⛔ |
+| F0 | Fundaciones, tipos, specs e issues — [`F0.md`](fases/F0.md) | — | #5 | ✅ |
+| F1 | Datos: GPUs, modelos y cuantizaciones — [`F1.md`](fases/F1.md) | F0 | #6 | ⬜ |
+| F2 | Motor determinista + tests — [`F2.md`](fases/F2.md) | F0 | #7 | ⬜ |
+| F3 | Página, i18n, SEO y enlazado (sin JS) — [`F3.md`](fases/F3.md) | F1 | #8 | ⛔ |
+| F4 | UI interactiva: combobox, tooltips, resultados — [`F4.md`](fases/F4.md) | F2, F3 | #9 | ⛔ |
+| F5 | Autodetección de hardware — [`F5.md`](fases/F5.md) | F3 | #10 | ⛔ |
+| F6 | Worker + Workers AI — [`F6.md`](fases/F6.md) | F1, F2 | #11 | ⛔ |
+| F7 | Endurecimiento: límites, caché, privacidad — [`F7.md`](fases/F7.md) | F6 | #12 | ⛔ |
+| F8 | QA, accesibilidad, rendimiento y lanzamiento — [`F8.md`](fases/F8.md) | todas | #13 | ⛔ |
 
 **F1 y F2 están desbloqueadas y pueden ejecutarse en paralelo, en sesiones distintas.**
 
