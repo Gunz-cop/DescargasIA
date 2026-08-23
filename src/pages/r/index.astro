@@ -12,18 +12,24 @@ const baseTools = await getCollection('toolsBase');
 const toolsDb = baseTools.reduce((acc, tool) => {
   const getUrl = (origUrl: string) => (linkzipCache as Record<string, string>)[origUrl] ?? origUrl;
   
+  // `url` es a donde se navega (puede pasar por el acortador monetizado);
+  // `displayUrl` es la URL oficial real y es la unica que se muestra en
+  // pantalla: ensenar el dominio del acortador en el aviso de destino hacia
+  // desconfiar a la gente, porque no coincide con la web que pidio.
   acc[tool.id] = {
     name: tool.data.name,
     officialWebsite: getUrl(tool.data.officialWebsite),
+    officialWebsiteDisplay: tool.data.officialWebsite,
     platforms: Object.entries(tool.data.platforms).reduce((plats, [key, val]) => {
       if (val) {
         plats[key] = {
           url: getUrl(val.url),
+          displayUrl: val.url,
           isOfficial: val.isOfficial
         };
       }
       return plats;
-    }, {} as Record<string, { url: string; isOfficial: boolean }>)
+    }, {} as Record<string, { url: string; displayUrl: string; isOfficial: boolean }>)
   };
   return acc;
 }, {} as Record<string, any>);
@@ -183,6 +189,7 @@ const toolsDb = baseTools.reduce((acc, tool) => {
         // Validation
         const tool = toolsDb[toolId];
         let targetUrl = '';
+        let displayUrl = '';
         let name = '';
 
         if (tool) {
@@ -191,10 +198,12 @@ const toolsDb = baseTools.reduce((acc, tool) => {
             const plat = tool.platforms[platformId];
             if (plat && plat.isOfficial) {
               targetUrl = plat.url;
+              displayUrl = plat.displayUrl || plat.url;
             }
           } else {
             // Fallback to officialWebsite
             targetUrl = tool.officialWebsite;
+            displayUrl = tool.officialWebsiteDisplay || tool.officialWebsite;
           }
         }
 
@@ -204,11 +213,13 @@ const toolsDb = baseTools.reduce((acc, tool) => {
           heading.textContent = t.heading;
           connecting.innerHTML = `${t.connecting}<strong class="text-brand-text font-bold">${name}</strong>.`;
           
+          // Siempre el dominio final real (el que pidio la persona), nunca el
+          // del acortador por el que pasa la navegacion.
           let hostname = '';
           try {
-            hostname = new URL(targetUrl).hostname.replace(/^www\./, '');
+            hostname = new URL(displayUrl).hostname.replace(/^www\./, '');
           } catch {
-            hostname = targetUrl;
+            hostname = displayUrl;
           }
           
           destination.textContent = `${t.destination} ${hostname}`;
