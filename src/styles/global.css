@@ -584,6 +584,7 @@ summary::-webkit-details-marker {
 .hardware-combobox-list {
   position: absolute;
   z-index: 20;
+  top: 100%;
   left: 0;
   right: 0;
   max-height: min(19rem, 55vh);
@@ -916,7 +917,7 @@ summary::-webkit-details-marker {
   bottom: calc(100% + 0.5rem);
   left: 50%;
   width: min(18rem, calc(100vw - 2rem));
-  transform: translateX(-50%);
+  transform: translateX(calc(-50% + var(--tooltip-shift-x, 0px)));
   border: 1px solid var(--fai-line);
   border-radius: var(--radius-md);
   padding: 0.75rem;
