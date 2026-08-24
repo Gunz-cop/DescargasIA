@@ -189,3 +189,5 @@ spec buena y una mala. Elegí el modelo por coste y contexto; invertí el tiempo
 | 2026-08-24 | Sin CI, el examinado se aprueba solo | `.github/workflows/ci.yml` |
 | 2026-08-24 | `npx` sin `--no-install` baja código de internet | CI + `typescript` en `package.json` |
 | 2026-08-24 | El gate de CI corría rojo en cada PR desde que se montó (`.astro/` gitignoreado, `astro sync` faltante) | `.github/workflows/ci.yml`; paso "Generar tipos de Astro" agregado |
+| 2026-08-24 | Un criterio se verifica leyendo el check de CI, no corriendo el comando en local | Paso 1 del ciclo de revisión en `procedimiento.md` |
+| 2026-08-24 | `Closes #n` no cierra el issue si el PR va contra la rama de integración: el tablero miente en silencio | Paso 6 del ciclo de revisión en `procedimiento.md` |

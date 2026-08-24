@@ -100,9 +100,17 @@ Al usuario le das: el orden de lanzamiento, qué está desbloqueado ahora, y el 
 **Antes de nada, `git fetch` y comprobá que revisás el head actual.** Pasó en este proyecto: revisé un PR sobre un commit de hacía cinco horas sin verificar, y reporté como bloqueantes cosas que la sesión ya había corregido. Un comentario de revisión sobre un commit obsoleto hace perder tiempo a quien lo lee y resta credibilidad al resto de los hallazgos. Empezá siempre imprimiendo el sha que estás revisando, y citalo en el comentario.
 
 
-1. Correr los criterios de aceptación de la spec.
+1. Leer el resultado del check de CI del PR, **no correr los criterios a mano**. Correrlos en
+   tu máquina no prueba nada: un directorio generado y gitignoreado (`.astro/`, `dist/`,
+   `node_modules/.cache`) sobrevive de corridas anteriores y hace pasar comandos que en un
+   checkout limpio fallan. En este proyecto el gate llevaba rojo en todos los PR desde que se
+   montó y nadie lo vio, porque las revisiones miraron el comando y no el check.
 2. `/code-review` sobre el diff.
 3. Verificar que `PROTEGIDOS` esté intacto: `git diff --name-only origin/<base>...HEAD`.
 4. Hallazgos → **comentarios en el PR**. Lo que no queda escrito en GitHub, no existe.
 5. Si el fallo fue de la spec y no de la ejecución → corregir `docs/fases/F<n>.md` en un commit aparte y anotarlo en la bitácora de la spec de producto.
-6. Verde → merge a la rama de integración, cerrar el issue, quitar `estado:bloqueada` a los que dependían de él.
+6. Verde → merge a la rama de integración, **cerrar el issue a mano**, quitar `estado:bloqueada`
+   a los que dependían de él. Lo de "a mano" es literal: `Closes #<n>` solo cierra el issue
+   cuando el PR se fusiona en la rama **por defecto** del repo. Contra una rama de integración
+   no dispara, así que el issue —que es la fuente de verdad del estado— se queda abierto y el
+   tablero miente sin que nada avise.
