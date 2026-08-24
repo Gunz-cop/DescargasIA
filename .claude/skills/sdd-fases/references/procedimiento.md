@@ -84,6 +84,9 @@ Al usuario le das: el orden de lanzamiento, qué está desbloqueado ahora, y el 
 
 ## El ciclo de revisión (después, en cada PR)
 
+**Antes de nada, `git fetch` y comprobá que revisás el head actual.** Pasó en este proyecto: revisé un PR sobre un commit de hacía cinco horas sin verificar, y reporté como bloqueantes cosas que la sesión ya había corregido. Un comentario de revisión sobre un commit obsoleto hace perder tiempo a quien lo lee y resta credibilidad al resto de los hallazgos. Empezá siempre imprimiendo el sha que estás revisando, y citalo en el comentario.
+
+
 1. Correr los criterios de aceptación de la spec.
 2. `/code-review` sobre el diff.
 3. Verificar que `PROTEGIDOS` esté intacto: `git diff --name-only origin/<base>...HEAD`.
