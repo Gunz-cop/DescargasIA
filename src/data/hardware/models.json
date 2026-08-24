@@ -1,0 +1,2674 @@
+[
+  {
+    "id": "smollm2-135m-instruct",
+    "family": "SmolLM",
+    "displayName": "SmolLM2 135M Instruct",
+    "paramsB": 0.13,
+    "numLayers": 30,
+    "numKvHeads": 3,
+    "headDim": 64,
+    "contextMax": 8192,
+    "license": "apache-2.0",
+    "hfRepo": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "ollamaTag": "smollm2:135m",
+    "useCases": [
+      "modelos-locales"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 5.54,
+        "fileSizeGb": 0.09,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 5.54,
+        "fileSizeGb": 0.09,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 6.77,
+        "fileSizeGb": 0.11,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 6.77,
+        "fileSizeGb": 0.11,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 8.62,
+        "fileSizeGb": 0.14,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.62,
+        "fileSizeGb": 0.14,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "smollm2-360m-instruct",
+    "family": "SmolLM",
+    "displayName": "SmolLM2 360M Instruct",
+    "paramsB": 0.36,
+    "numLayers": 32,
+    "numKvHeads": 5,
+    "headDim": 64,
+    "contextMax": 8192,
+    "license": "apache-2.0",
+    "hfRepo": "HuggingFaceTB/SmolLM2-360M-Instruct",
+    "ollamaTag": "smollm2:360m",
+    "useCases": [
+      "modelos-locales"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 4.89,
+        "fileSizeGb": 0.22,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 5.11,
+        "fileSizeGb": 0.23,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 6,
+        "fileSizeGb": 0.27,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 6.44,
+        "fileSizeGb": 0.29,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 8.22,
+        "fileSizeGb": 0.37,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.67,
+        "fileSizeGb": 0.39,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen2.5-0.5b-instruct",
+    "family": "Qwen",
+    "displayName": "Qwen2.5 0.5B Instruct",
+    "paramsB": 0.49,
+    "numLayers": 24,
+    "numKvHeads": 2,
+    "headDim": 64,
+    "contextMax": 32768,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen2.5-0.5B-Instruct",
+    "ollamaTag": "qwen2.5:0.5b",
+    "useCases": [
+      "modelos-locales"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 5.55,
+        "fileSizeGb": 0.34,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 5.88,
+        "fileSizeGb": 0.36,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 6.53,
+        "fileSizeGb": 0.4,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 6.86,
+        "fileSizeGb": 0.42,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 8.33,
+        "fileSizeGb": 0.51,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.65,
+        "fileSizeGb": 0.53,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen3-0.6b",
+    "family": "Qwen",
+    "displayName": "Qwen3 0.6B",
+    "paramsB": 0.75,
+    "numLayers": 28,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen3-0.6B",
+    "ollamaTag": "qwen3:0.6b",
+    "useCases": [
+      "modelos-locales"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.73,
+        "fileSizeGb": 0.35,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.37,
+        "fileSizeGb": 0.41,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 5.12,
+        "fileSizeGb": 0.48,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.87,
+        "fileSizeGb": 0.55,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.61,
+        "fileSizeGb": 0.62,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.53,
+        "fileSizeGb": 0.8,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "gemma-3-1b-it",
+    "family": "Gemma",
+    "displayName": "Gemma 3 1B Instruct",
+    "paramsB": 1,
+    "numLayers": 26,
+    "numKvHeads": 1,
+    "headDim": 256,
+    "contextMax": 32768,
+    "license": "gemma",
+    "hfRepo": "google/gemma-3-1b-it",
+    "ollamaTag": "gemma3:1b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 5.52,
+        "fileSizeGb": 0.69,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 5.76,
+        "fileSizeGb": 0.72,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 6.48,
+        "fileSizeGb": 0.81,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 6.8,
+        "fileSizeGb": 0.85,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 8.08,
+        "fileSizeGb": 1.01,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.56,
+        "fileSizeGb": 1.07,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "llama-3.2-1b-instruct",
+    "family": "Llama",
+    "displayName": "Llama 3.2 1B Instruct",
+    "paramsB": 1.24,
+    "numLayers": 16,
+    "numKvHeads": 8,
+    "headDim": 64,
+    "contextMax": 131072,
+    "license": "llama3.2",
+    "hfRepo": "meta-llama/Llama-3.2-1B-Instruct",
+    "ollamaTag": "llama3.2:1b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q4_K_M",
+        "bpw": 5.23,
+        "fileSizeGb": 0.81,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.87,
+        "fileSizeGb": 0.91,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 1.02,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.52,
+        "fileSizeGb": 1.32,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen2.5-1.5b-instruct",
+    "family": "Qwen",
+    "displayName": "Qwen2.5 1.5B Instruct",
+    "paramsB": 1.54,
+    "numLayers": 28,
+    "numKvHeads": 2,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen2.5-1.5B-Instruct",
+    "ollamaTag": "qwen2.5:1.5b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.53,
+        "fileSizeGb": 0.68,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.26,
+        "fileSizeGb": 0.82,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 5.14,
+        "fileSizeGb": 0.99,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.87,
+        "fileSizeGb": 1.13,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.6,
+        "fileSizeGb": 1.27,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.57,
+        "fileSizeGb": 1.65,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "smollm2-1.7b-instruct",
+    "family": "SmolLM",
+    "displayName": "SmolLM2 1.7B Instruct",
+    "paramsB": 1.71,
+    "numLayers": 24,
+    "numKvHeads": 32,
+    "headDim": 64,
+    "contextMax": 8192,
+    "license": "apache-2.0",
+    "hfRepo": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "ollamaTag": "smollm2:1.7b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.13,
+        "fileSizeGb": 0.67,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.02,
+        "fileSizeGb": 0.86,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.96,
+        "fileSizeGb": 1.06,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.75,
+        "fileSizeGb": 1.23,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.6,
+        "fileSizeGb": 1.41,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.51,
+        "fileSizeGb": 1.82,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "deepseek-r1-distill-qwen-1.5b",
+    "family": "DeepSeek",
+    "displayName": "DeepSeek-R1 Distill Qwen 1.5B",
+    "paramsB": 1.78,
+    "numLayers": 28,
+    "numKvHeads": 2,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "mit",
+    "hfRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    "ollamaTag": "deepseek-r1:1.5b",
+    "useCases": [
+      "modelos-locales"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.37,
+        "fileSizeGb": 0.75,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.13,
+        "fileSizeGb": 0.92,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 5.03,
+        "fileSizeGb": 1.12,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.8,
+        "fileSizeGb": 1.29,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 1.46,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.49,
+        "fileSizeGb": 1.89,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen3-1.7b",
+    "family": "Qwen",
+    "displayName": "Qwen3 1.7B",
+    "paramsB": 2.03,
+    "numLayers": 28,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen3-1.7B",
+    "ollamaTag": "qwen3:1.7b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.47,
+        "fileSizeGb": 0.88,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.22,
+        "fileSizeGb": 1.07,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 5.04,
+        "fileSizeGb": 1.28,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.79,
+        "fileSizeGb": 1.47,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 1.67,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.55,
+        "fileSizeGb": 2.17,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "granite-3.1-2b-instruct",
+    "family": "Granite",
+    "displayName": "Granite 3.1 2B Instruct",
+    "paramsB": 2.53,
+    "numLayers": 40,
+    "numKvHeads": 8,
+    "headDim": 64,
+    "contextMax": 131072,
+    "license": "apache-2.0",
+    "hfRepo": "ibm-granite/granite-3.1-2b-instruct",
+    "ollamaTag": "granite3.1-dense:2b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.1,
+        "fileSizeGb": 0.98,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.95,
+        "fileSizeGb": 1.25,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.9,
+        "fileSizeGb": 1.55,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.69,
+        "fileSizeGb": 1.8,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 2.08,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.51,
+        "fileSizeGb": 2.69,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "gemma-2-2b-it",
+    "family": "Gemma",
+    "displayName": "Gemma 2 2B Instruct",
+    "paramsB": 2.61,
+    "numLayers": 26,
+    "numKvHeads": 4,
+    "headDim": 256,
+    "contextMax": 8192,
+    "license": "gemma",
+    "hfRepo": "google/gemma-2-2b-it",
+    "ollamaTag": "gemma2:2b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q4_K_M",
+        "bpw": 5.24,
+        "fileSizeGb": 1.71,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.89,
+        "fileSizeGb": 1.92,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.59,
+        "fileSizeGb": 2.15,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.52,
+        "fileSizeGb": 2.78,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen2.5-3b-instruct",
+    "family": "Qwen",
+    "displayName": "Qwen2.5 3B Instruct",
+    "paramsB": 3.09,
+    "numLayers": 36,
+    "numKvHeads": 2,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "qwen-research",
+    "hfRepo": "Qwen/Qwen2.5-3B-Instruct",
+    "ollamaTag": "qwen2.5:3b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.29,
+        "fileSizeGb": 1.27,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.12,
+        "fileSizeGb": 1.59,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 5,
+        "fileSizeGb": 1.93,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.75,
+        "fileSizeGb": 2.22,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 2.54,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.52,
+        "fileSizeGb": 3.29,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "llama-3.2-3b-instruct",
+    "family": "Llama",
+    "displayName": "Llama 3.2 3B Instruct",
+    "paramsB": 3.21,
+    "numLayers": 28,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "llama3.2",
+    "hfRepo": "meta-llama/Llama-3.2-3B-Instruct",
+    "ollamaTag": "llama3.2:3b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q4_K_M",
+        "bpw": 5.03,
+        "fileSizeGb": 2.02,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.78,
+        "fileSizeGb": 2.32,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 2.64,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.52,
+        "fileSizeGb": 3.42,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "phi-3.5-mini-instruct",
+    "family": "Phi",
+    "displayName": "Phi-3.5 mini Instruct",
+    "paramsB": 3.82,
+    "numLayers": 32,
+    "numKvHeads": 32,
+    "headDim": 96,
+    "contextMax": 131072,
+    "license": "mit",
+    "hfRepo": "microsoft/Phi-3.5-mini-instruct",
+    "ollamaTag": "phi3.5:3.8b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 2.97,
+        "fileSizeGb": 1.42,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.1,
+        "fileSizeGb": 1.96,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 5.01,
+        "fileSizeGb": 2.39,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.91,
+        "fileSizeGb": 2.82,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 3.14,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 4.06,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "phi-4-mini-instruct",
+    "family": "Phi",
+    "displayName": "Phi-4 mini Instruct",
+    "paramsB": 3.84,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "mit",
+    "hfRepo": "microsoft/Phi-4-mini-instruct",
+    "ollamaTag": "phi4-mini:3.8b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.5,
+        "fileSizeGb": 1.68,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.42,
+        "fileSizeGb": 2.12,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 5.19,
+        "fileSizeGb": 2.49,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.94,
+        "fileSizeGb": 2.85,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 3.16,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 4.08,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen3-4b",
+    "family": "Qwen",
+    "displayName": "Qwen3 4B",
+    "paramsB": 4.02,
+    "numLayers": 36,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen3-4B",
+    "ollamaTag": "qwen3:4b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.32,
+        "fileSizeGb": 1.67,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.14,
+        "fileSizeGb": 2.08,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.98,
+        "fileSizeGb": 2.5,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.75,
+        "fileSizeGb": 2.89,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.59,
+        "fileSizeGb": 3.31,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.52,
+        "fileSizeGb": 4.28,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "gemma-3-4b-it",
+    "family": "Gemma",
+    "displayName": "Gemma 3 4B Instruct",
+    "paramsB": 4.3,
+    "numLayers": 34,
+    "numKvHeads": 4,
+    "headDim": 256,
+    "contextMax": 131072,
+    "license": "gemma",
+    "hfRepo": "google/gemma-3-4b-it",
+    "ollamaTag": "gemma3:4b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.22,
+        "fileSizeGb": 1.73,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.91,
+        "fileSizeGb": 2.1,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.63,
+        "fileSizeGb": 2.49,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.27,
+        "fileSizeGb": 2.83,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 5.93,
+        "fileSizeGb": 3.19,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 7.68,
+        "fileSizeGb": 4.13,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "deepseek-coder-6.7b-instruct",
+    "family": "DeepSeek",
+    "displayName": "DeepSeek Coder 6.7B Instruct",
+    "paramsB": 6.74,
+    "numLayers": 32,
+    "numKvHeads": 32,
+    "headDim": 128,
+    "contextMax": 16384,
+    "license": "deepseek",
+    "hfRepo": "deepseek-ai/deepseek-coder-6.7b-instruct",
+    "ollamaTag": "deepseek-coder:6.7b",
+    "useCases": [
+      "modelos-locales",
+      "programacion"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.36,
+        "fileSizeGb": 2.83,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.92,
+        "fileSizeGb": 3.3,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.84,
+        "fileSizeGb": 4.08,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.69,
+        "fileSizeGb": 4.79,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 5.53,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 7.16,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "mistral-7b-instruct-v0.3",
+    "family": "Mistral",
+    "displayName": "Mistral 7B Instruct v0.3",
+    "paramsB": 7.25,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "apache-2.0",
+    "hfRepo": "mistralai/Mistral-7B-Instruct-v0.3",
+    "ollamaTag": "mistral:7b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3,
+        "fileSizeGb": 2.72,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.88,
+        "fileSizeGb": 3.52,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.82,
+        "fileSizeGb": 4.37,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.67,
+        "fileSizeGb": 5.14,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.57,
+        "fileSizeGb": 5.95,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 7.7,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "deepseek-r1-distill-qwen-7b",
+    "family": "DeepSeek",
+    "displayName": "DeepSeek-R1 Distill Qwen 7B",
+    "paramsB": 7.62,
+    "numLayers": 28,
+    "numKvHeads": 4,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "mit",
+    "hfRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+    "ollamaTag": "deepseek-r1:7b",
+    "useCases": [
+      "modelos-locales",
+      "programacion"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.17,
+        "fileSizeGb": 3.02,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4,
+        "fileSizeGb": 3.81,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.91,
+        "fileSizeGb": 4.68,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.71,
+        "fileSizeGb": 5.44,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 6.25,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 8.1,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen2.5-7b-instruct",
+    "family": "Qwen",
+    "displayName": "Qwen2.5 7B Instruct",
+    "paramsB": 7.62,
+    "numLayers": 28,
+    "numKvHeads": 4,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen2.5-7B-Instruct",
+    "ollamaTag": "qwen2.5:7b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.17,
+        "fileSizeGb": 3.02,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4,
+        "fileSizeGb": 3.81,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.91,
+        "fileSizeGb": 4.68,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.71,
+        "fileSizeGb": 5.44,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 6.25,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 8.1,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen2.5-coder-7b-instruct",
+    "family": "Qwen",
+    "displayName": "Qwen2.5-Coder 7B Instruct",
+    "paramsB": 7.62,
+    "numLayers": 28,
+    "numKvHeads": 4,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "ollamaTag": "qwen2.5-coder:7b",
+    "useCases": [
+      "modelos-locales",
+      "programacion"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.17,
+        "fileSizeGb": 3.02,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4,
+        "fileSizeGb": 3.81,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.91,
+        "fileSizeGb": 4.68,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.71,
+        "fileSizeGb": 5.44,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 6.25,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 8.1,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "deepseek-r1-distill-llama-8b",
+    "family": "DeepSeek",
+    "displayName": "DeepSeek-R1 Distill Llama 8B",
+    "paramsB": 8.03,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "mit",
+    "hfRepo": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    "ollamaTag": "deepseek-r1:8b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.17,
+        "fileSizeGb": 3.18,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4,
+        "fileSizeGb": 4.02,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.9,
+        "fileSizeGb": 4.92,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.71,
+        "fileSizeGb": 5.73,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 6.6,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.51,
+        "fileSizeGb": 8.54,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "llama-3-8b-instruct",
+    "family": "Llama",
+    "displayName": "Llama 3 8B Instruct",
+    "paramsB": 8.03,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 8192,
+    "license": "llama3",
+    "hfRepo": "meta-llama/Meta-Llama-3-8B-Instruct",
+    "ollamaTag": "llama3:8b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.17,
+        "fileSizeGb": 3.18,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4,
+        "fileSizeGb": 4.02,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.9,
+        "fileSizeGb": 4.92,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.71,
+        "fileSizeGb": 5.73,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 6.6,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.51,
+        "fileSizeGb": 8.54,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "llama-3.1-8b-instruct",
+    "family": "Llama",
+    "displayName": "Llama 3.1 8B Instruct",
+    "paramsB": 8.03,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "llama3.1",
+    "hfRepo": "meta-llama/Llama-3.1-8B-Instruct",
+    "ollamaTag": "llama3.1:8b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.17,
+        "fileSizeGb": 3.18,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4,
+        "fileSizeGb": 4.02,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.9,
+        "fileSizeGb": 4.92,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.71,
+        "fileSizeGb": 5.73,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 6.6,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.51,
+        "fileSizeGb": 8.54,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "llama-3.1-nemotron-nano-8b-v1",
+    "family": "Nemotron",
+    "displayName": "Llama 3.1 Nemotron Nano 8B v1",
+    "paramsB": 8.03,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "nvidia-open-model-license",
+    "hfRepo": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.17,
+        "fileSizeGb": 3.18,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4,
+        "fileSizeGb": 4.02,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.9,
+        "fileSizeGb": 4.92,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.71,
+        "fileSizeGb": 5.73,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 6.6,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.51,
+        "fileSizeGb": 8.54,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "granite-3.1-8b-instruct",
+    "family": "Granite",
+    "displayName": "Granite 3.1 8B Instruct",
+    "paramsB": 8.17,
+    "numLayers": 40,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "apache-2.0",
+    "hfRepo": "ibm-granite/granite-3.1-8b-instruct",
+    "ollamaTag": "granite3.1-dense:8b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.04,
+        "fileSizeGb": 3.1,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.92,
+        "fileSizeGb": 4,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.84,
+        "fileSizeGb": 4.94,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.68,
+        "fileSizeGb": 5.8,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.57,
+        "fileSizeGb": 6.71,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 8.68,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen3-8b",
+    "family": "Qwen",
+    "displayName": "Qwen3 8B",
+    "paramsB": 8.19,
+    "numLayers": 36,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen3-8B",
+    "ollamaTag": "qwen3:8b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.2,
+        "fileSizeGb": 3.28,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.02,
+        "fileSizeGb": 4.12,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.91,
+        "fileSizeGb": 5.03,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.71,
+        "fileSizeGb": 5.85,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.57,
+        "fileSizeGb": 6.73,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.51,
+        "fileSizeGb": 8.71,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "gemma-2-9b-it",
+    "family": "Gemma",
+    "displayName": "Gemma 2 9B Instruct",
+    "paramsB": 9.24,
+    "numLayers": 42,
+    "numKvHeads": 8,
+    "headDim": 256,
+    "contextMax": 8192,
+    "license": "gemma",
+    "hfRepo": "google/gemma-2-9b-it",
+    "ollamaTag": "gemma2:9b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.3,
+        "fileSizeGb": 3.81,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.12,
+        "fileSizeGb": 4.76,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.99,
+        "fileSizeGb": 5.76,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.76,
+        "fileSizeGb": 6.65,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.57,
+        "fileSizeGb": 7.59,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.51,
+        "fileSizeGb": 9.83,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "gemma-3-12b-it",
+    "family": "Gemma",
+    "displayName": "Gemma 3 12B Instruct",
+    "paramsB": 12.19,
+    "numLayers": 48,
+    "numKvHeads": 8,
+    "headDim": 256,
+    "contextMax": 131072,
+    "license": "gemma",
+    "hfRepo": "google/gemma-3-12b-it",
+    "ollamaTag": "gemma3:12b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.13,
+        "fileSizeGb": 4.77,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.94,
+        "fileSizeGb": 6.01,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.79,
+        "fileSizeGb": 7.3,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.55,
+        "fileSizeGb": 8.45,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.34,
+        "fileSizeGb": 9.66,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.21,
+        "fileSizeGb": 12.51,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "mistral-nemo-instruct-2407",
+    "family": "Mistral",
+    "displayName": "Mistral NeMo 12B Instruct",
+    "paramsB": 12.25,
+    "numLayers": 40,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "apache-2.0",
+    "hfRepo": "mistralai/Mistral-Nemo-Instruct-2407",
+    "ollamaTag": "mistral-nemo:12b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.13,
+        "fileSizeGb": 4.79,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.97,
+        "fileSizeGb": 6.08,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.88,
+        "fileSizeGb": 7.48,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.7,
+        "fileSizeGb": 8.73,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.57,
+        "fileSizeGb": 10.06,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 13.02,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "phi-4",
+    "family": "Phi",
+    "displayName": "Phi-4 14B",
+    "paramsB": 14.66,
+    "numLayers": 40,
+    "numKvHeads": 10,
+    "headDim": 128,
+    "contextMax": 16384,
+    "license": "mit",
+    "hfRepo": "microsoft/phi-4",
+    "ollamaTag": "phi4:14b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.03,
+        "fileSizeGb": 5.55,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.02,
+        "fileSizeGb": 7.36,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.94,
+        "fileSizeGb": 9.05,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.78,
+        "fileSizeGb": 10.6,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 12.03,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 15.58,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "deepseek-r1-distill-qwen-14b",
+    "family": "DeepSeek",
+    "displayName": "DeepSeek-R1 Distill Qwen 14B",
+    "paramsB": 14.77,
+    "numLayers": 48,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "mit",
+    "hfRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B",
+    "ollamaTag": "deepseek-r1:14b",
+    "useCases": [
+      "modelos-locales",
+      "programacion"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.13,
+        "fileSizeGb": 5.77,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.98,
+        "fileSizeGb": 7.34,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.87,
+        "fileSizeGb": 8.99,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.69,
+        "fileSizeGb": 10.51,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 12.12,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 15.7,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen2.5-14b-instruct",
+    "family": "Qwen",
+    "displayName": "Qwen2.5 14B Instruct",
+    "paramsB": 14.77,
+    "numLayers": 48,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen2.5-14B-Instruct",
+    "ollamaTag": "qwen2.5:14b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.13,
+        "fileSizeGb": 5.77,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.98,
+        "fileSizeGb": 7.34,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.87,
+        "fileSizeGb": 8.99,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.69,
+        "fileSizeGb": 10.51,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 12.12,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 15.7,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen2.5-coder-14b-instruct",
+    "family": "Qwen",
+    "displayName": "Qwen2.5-Coder 14B Instruct",
+    "paramsB": 14.77,
+    "numLayers": 48,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen2.5-Coder-14B-Instruct",
+    "ollamaTag": "qwen2.5-coder:14b",
+    "useCases": [
+      "modelos-locales",
+      "programacion"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.13,
+        "fileSizeGb": 5.77,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.98,
+        "fileSizeGb": 7.34,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.87,
+        "fileSizeGb": 8.99,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.69,
+        "fileSizeGb": 10.51,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 12.12,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 15.7,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen3-14b",
+    "family": "Qwen",
+    "displayName": "Qwen3 14B",
+    "paramsB": 14.77,
+    "numLayers": 40,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen3-14B",
+    "ollamaTag": "qwen3:14b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.11,
+        "fileSizeGb": 5.75,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.96,
+        "fileSizeGb": 7.32,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.87,
+        "fileSizeGb": 9,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.69,
+        "fileSizeGb": 10.51,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 12.12,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 15.7,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "codestral-22b-v0.1",
+    "family": "Mistral",
+    "displayName": "Codestral 22B v0.1",
+    "paramsB": 22.25,
+    "numLayers": 56,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "mnpl",
+    "hfRepo": "mistralai/Codestral-22B-v0.1",
+    "ollamaTag": "codestral:22b",
+    "useCases": [
+      "modelos-locales",
+      "programacion"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 2.97,
+        "fileSizeGb": 8.27,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.87,
+        "fileSizeGb": 10.76,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.8,
+        "fileSizeGb": 13.34,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.65,
+        "fileSizeGb": 15.72,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 18.25,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 23.64,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "mistral-small-24b-instruct-2501",
+    "family": "Mistral",
+    "displayName": "Mistral Small 3 24B Instruct",
+    "paramsB": 23.57,
+    "numLayers": 40,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "apache-2.0",
+    "hfRepo": "mistralai/Mistral-Small-24B-Instruct-2501",
+    "ollamaTag": "mistral-small:24b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.02,
+        "fileSizeGb": 8.89,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.89,
+        "fileSizeGb": 11.47,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.86,
+        "fileSizeGb": 14.33,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.69,
+        "fileSizeGb": 16.76,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.57,
+        "fileSizeGb": 19.35,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 25.05,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "gemma-2-27b-it",
+    "family": "Gemma",
+    "displayName": "Gemma 2 27B Instruct",
+    "paramsB": 27.23,
+    "numLayers": 46,
+    "numKvHeads": 16,
+    "headDim": 128,
+    "contextMax": 8192,
+    "license": "gemma",
+    "hfRepo": "google/gemma-2-27b-it",
+    "ollamaTag": "gemma2:27b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.07,
+        "fileSizeGb": 10.45,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.94,
+        "fileSizeGb": 13.42,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.89,
+        "fileSizeGb": 16.65,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.7,
+        "fileSizeGb": 19.41,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 22.34,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 28.94,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "gemma-3-27b-it",
+    "family": "Gemma",
+    "displayName": "Gemma 3 27B Instruct",
+    "paramsB": 27.43,
+    "numLayers": 62,
+    "numKvHeads": 16,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "gemma",
+    "hfRepo": "google/gemma-3-27b-it",
+    "ollamaTag": "gemma3:27b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.06,
+        "fileSizeGb": 10.5,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.92,
+        "fileSizeGb": 13.44,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.83,
+        "fileSizeGb": 16.55,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.62,
+        "fileSizeGb": 19.27,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.47,
+        "fileSizeGb": 22.17,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.37,
+        "fileSizeGb": 28.71,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen3-30b-a3b",
+    "family": "Qwen",
+    "displayName": "Qwen3 30B-A3B (MoE)",
+    "paramsB": 30.53,
+    "activeParamsB": 3.3,
+    "numLayers": 48,
+    "numKvHeads": 4,
+    "headDim": 128,
+    "contextMax": 40960,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen3-30B-A3B",
+    "ollamaTag": "qwen3:30b-a3b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 2.86,
+        "fileSizeGb": 10.91,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.69,
+        "fileSizeGb": 14.08,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.88,
+        "fileSizeGb": 18.63,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.7,
+        "fileSizeGb": 21.74,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.58,
+        "fileSizeGb": 25.1,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.51,
+        "fileSizeGb": 32.48,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "deepseek-r1-distill-qwen-32b",
+    "family": "DeepSeek",
+    "displayName": "DeepSeek-R1 Distill Qwen 32B",
+    "paramsB": 32.76,
+    "numLayers": 64,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "mit",
+    "hfRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    "ollamaTag": "deepseek-r1:32b",
+    "useCases": [
+      "modelos-locales",
+      "programacion"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.01,
+        "fileSizeGb": 12.31,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.89,
+        "fileSizeGb": 15.94,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.85,
+        "fileSizeGb": 19.85,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.68,
+        "fileSizeGb": 23.26,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.57,
+        "fileSizeGb": 26.89,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 34.82,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen2.5-32b-instruct",
+    "family": "Qwen",
+    "displayName": "Qwen2.5 32B Instruct",
+    "paramsB": 32.76,
+    "numLayers": 64,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen2.5-32B-Instruct",
+    "ollamaTag": "qwen2.5:32b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.01,
+        "fileSizeGb": 12.31,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.89,
+        "fileSizeGb": 15.94,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.85,
+        "fileSizeGb": 19.85,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.68,
+        "fileSizeGb": 23.26,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.57,
+        "fileSizeGb": 26.89,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 34.82,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen2.5-coder-32b-instruct",
+    "family": "Qwen",
+    "displayName": "Qwen2.5-Coder 32B Instruct",
+    "paramsB": 32.76,
+    "numLayers": 64,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen2.5-Coder-32B-Instruct",
+    "ollamaTag": "qwen2.5-coder:32b",
+    "useCases": [
+      "modelos-locales",
+      "programacion"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.01,
+        "fileSizeGb": 12.31,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.89,
+        "fileSizeGb": 15.94,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.85,
+        "fileSizeGb": 19.85,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.68,
+        "fileSizeGb": 23.26,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.57,
+        "fileSizeGb": 26.89,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 34.82,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen3-32b",
+    "family": "Qwen",
+    "displayName": "Qwen3 32B",
+    "paramsB": 32.76,
+    "numLayers": 64,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "license": "apache-2.0",
+    "hfRepo": "Qwen/Qwen3-32B",
+    "ollamaTag": "qwen3:32b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.01,
+        "fileSizeGb": 12.34,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.9,
+        "fileSizeGb": 15.97,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.83,
+        "fileSizeGb": 19.76,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.67,
+        "fileSizeGb": 23.21,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 26.88,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 34.82,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "mixtral-8x7b-instruct-v0.1",
+    "family": "Mistral",
+    "displayName": "Mixtral 8x7B Instruct v0.1 (MoE)",
+    "paramsB": 46.7,
+    "activeParamsB": 12.9,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "apache-2.0",
+    "hfRepo": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "ollamaTag": "mixtral:8x7b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 2.97,
+        "fileSizeGb": 17.31,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.86,
+        "fileSizeGb": 22.54,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.87,
+        "fileSizeGb": 28.45,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.69,
+        "fileSizeGb": 33.23,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.57,
+        "fileSizeGb": 38.38,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 49.62,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "llama-3.3-70b-instruct",
+    "family": "Llama",
+    "displayName": "Llama 3.3 70B Instruct",
+    "paramsB": 70.55,
+    "numLayers": 80,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "license": "llama3.3",
+    "hfRepo": "meta-llama/Llama-3.3-70B-Instruct",
+    "ollamaTag": "llama3.3:70b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 2.99,
+        "fileSizeGb": 26.38,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 3.89,
+        "fileSizeGb": 34.27,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 4.82,
+        "fileSizeGb": 42.52,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.66,
+        "fileSizeGb": 49.95,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 6.56,
+        "fileSizeGb": 57.89,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 74.98,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  },
+  {
+    "id": "qwen2.5-72b-instruct",
+    "family": "Qwen",
+    "displayName": "Qwen2.5 72B Instruct",
+    "paramsB": 72.71,
+    "numLayers": 80,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "license": "qwen",
+    "hfRepo": "Qwen/Qwen2.5-72B-Instruct",
+    "ollamaTag": "qwen2.5:72b",
+    "useCases": [
+      "modelos-locales",
+      "asistentes-ia",
+      "traduccion-redaccion-ia"
+    ],
+    "quants": [
+      {
+        "name": "Q2_K",
+        "bpw": 3.28,
+        "fileSizeGb": 29.81,
+        "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+      },
+      {
+        "name": "Q3_K_M",
+        "bpw": 4.15,
+        "fileSizeGb": 37.7,
+        "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+      },
+      {
+        "name": "Q4_K_M",
+        "bpw": 5.22,
+        "fileSizeGb": 47.42,
+        "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+      },
+      {
+        "name": "Q5_K_M",
+        "bpw": 5.99,
+        "fileSizeGb": 54.45,
+        "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+      },
+      {
+        "name": "Q6_K",
+        "bpw": 7.08,
+        "fileSizeGb": 64.35,
+        "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+      },
+      {
+        "name": "Q8_0",
+        "bpw": 8.5,
+        "fileSizeGb": 77.26,
+        "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+      }
+    ]
+  }
+]
