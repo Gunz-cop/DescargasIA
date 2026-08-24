@@ -21,13 +21,28 @@ const MAX_REQUESTS = 30;
 /** Status que devolvemos al superar el límite. */
 const TOO_MANY_REQUESTS = 429;
 
-/** Clave de KV por IP; no incluye nada del cuerpo de la petición. */
-function clientKey(request: Request): string {
+/**
+ * Sal fija del hash de IP. No es un secreto de verdad para este uso: solo evita
+ * que alguien reaproveche una rainbow table de SHA-256(ip) ya calculada. Con
+ * sal, el espacio deja de ser enumerable y el hash cumple lo que promete la
+ * página de privacidad (la IP no es recuperable desde la clave de KV).
+ */
+const IP_SALT = 'fuenteai-rate-limit-v1';
+
+/** Hash SHA-256 de la IP + sal: nunca guardamos la dirección en claro. */
+async function hashIp(ip: string): Promise<string> {
+  const bytes = new TextEncoder().encode(ip + IP_SALT);
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+/** Clave de KV por IP hasheada (SHA-256 + sal); no guardamos la IP en claro. */
+async function clientKey(request: Request): Promise<string> {
   const ip =
     request.headers.get('cf-connecting-ip') ??
     request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ??
     'local';
-  return 'rl:' + ip;
+  return 'rl:' + (await hashIp(ip));
 }
 
 export interface RateLimitResult {
@@ -36,7 +51,7 @@ export interface RateLimitResult {
 }
 
 export async function checkRateLimit(cache: KvLike, request: Request): Promise<RateLimitResult> {
-  const key = clientKey(request);
+  const key = await clientKey(request);
   const now = Math.floor(Date.now() / 1000);
   const windowStart = now - WINDOW_SECONDS;
 

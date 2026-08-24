@@ -409,7 +409,9 @@ variable no afecta las 86 fichas ni el SEO.
 ### Límites y abuso
 
 - Límite por IP: **30 peticiones / 10 min** (ventana deslizante en KV, binding
-  `HW_CACHE`, clave `rl:<ip>`). Al superarlo se responde `429` con
+  `HW_CACHE`, clave `rl:<sha256-ip+salt>` — la IP se guarda hasheada con
+  SHA-256 + sal fija, nunca en claro ni reversible).
+  Al superarlo se responde `429` con
   `Retry-After`; el cliente lo ignora y sigue en local. Chocar contra el muro
   nunca rompe la app.
 - Validación de entrada: `Content-Type: application/json`, cuerpo ≤ 4 KB,
