@@ -86,12 +86,28 @@ Ninguna sesión de Claude Code es memoria durable —tampoco la que coordina—,
 ### Cómo se arranca una fase
 
 ```
-Trabajás en Gunz-cop/DescargasIA. Leé AGENTS.md, docs/app-compatibilidad-ia.md y
-docs/fases/F<n>.md. Implementá la fase F<n> completa contra la rama
-claude/ai-model-compatibility-plan-ptlr3j. No modifiques ningún archivo de la lista
-PROTEGIDOS de la spec. Cuando todos los criterios de aceptación pasen, abrí un PR
-con "Closes #<issue>" en el cuerpo.
+Trabajás en el repo Gunz-cop/DescargasIA.
+
+Usá /goal para planificar y ejecutar esto:
+
+Leé, en este orden: AGENTS.md, docs/app-compatibilidad-ia.md y docs/fases/F<n>.md.
+
+Implementá la fase F<n> completa contra la rama claude/ai-model-compatibility-plan-ptlr3j
+(hacé checkout de esa rama; ya existe).
+
+No modifiques ningún archivo de la lista PROTEGIDOS de la spec.
+
+Cuando todos los criterios de aceptación pasen, abrí un PR con "Closes #<issue>" en el
+cuerpo y suscribite a la actividad del PR con subscribe_pr_activity: quedás a cargo de
+llevarlo a verde y de atender los comentarios hasta que se fusione o se cierre.
+
+Si algo de la spec no te alcanza para trabajar, no improvises: comentá en el issue #<issue>
+qué faltaba. Eso es un bug de la spec, no tuyo.
 ```
+
+**`/goal` hace que la sesión presente un plan antes de escribir código**, que es el punto de máximo apalancamiento: revisar veinte líneas de plan cuesta un minuto; revisar el PR resultante, una hora, y para entonces las decisiones de fondo ya están tomadas. El costo es que **se bloquea esperando tu aprobación**: si vas a lanzar la sesión y desconectarte, quitá esa línea.
+
+**La sesión ejecutora se suscribe a su propio PR** y queda a cargo de llevarlo a verde. Sigue siendo desechable para trabajo nuevo —no se le encarga otra fase— pero no abandona lo que abrió. Para que no se pise con la revisora: la ejecutora **empuja código**, la revisora **comenta y corrige specs**, y ninguna de las dos fusiona.
 
 **Integración:** todas las fases abren PR contra `claude/ai-model-compatibility-plan-ptlr3j`. Nada llega a `main` hasta que la app esté completa y verde: `deploy.yml` despliega en cada push a `main`.
 
@@ -422,3 +438,8 @@ Cada agente que cierre una fase añade aquí una línea con lo que decidió y qu
 | 2026-08-23 | F0 | El criterio de tipado es `npx tsc --noEmit`, no `astro check` | `@astrojs/check` no es dependencia del proyecto: el criterio no era ejecutable como estaba escrito |
 | 2026-08-23 | F0 | El tablero pierde la columna de estado; el estado vive solo en las etiquetas de los issues y se consulta con `scripts/estado-fases.mjs` | Dos representaciones del mismo hecho derivan siempre y obligan a actualizar dos sistemas |
 | 2026-08-23 | F0 | Prohibidos los criterios de aceptación del tipo «`grep X` no devuelve nada»; las ausencias se comprueban sobre el código sin comentarios | El grep matchea el comentario que documenta la regla: el criterio de pureza de F2 no podía pasar nunca, y `types.ts` estaba en sus PROTEGIDOS. `audit-specs.mjs` ya lo rechaza |
+| 2026-08-24 | F1 | `src/data/hardware/README.md` es contrato de salida de F1, no un extra | Los criterios exigen que los JSON sean arrays y `types.ts` no tiene campo de notas: la fecha de revisión, las fuentes y los supuestos no caben dentro del dato |
+| 2026-08-24 | F1 | La regla «`fileSizeGb` contra `paramsB * bpw / 8` al ±25 %» se sustituye por monotonía de tamaño en el orden canónico de cuantización | Con `bpw` nominales falla en modelos legítimos (+29 % en uno de 135 M por el peso de los embeddings); con `bpw` medidos es tautológica: 0,16 % de desvío máximo sobre 288 comprobaciones contra una tolerancia del 25 % |
+| 2026-08-24 | F1 | `ModelSpec.quants[].bpw` es el medido sobre cada `.gguf`; `quants.json` es solo tabla de referencia para la interfaz | Los `bpw` publicados se midieron sobre LLaMA-7B en 2023 y las cuantizaciones cambiaron: Q2_K son ~3,0 bpw, no 2,63 |
+| 2026-08-24 | F1/F2 | Una forma corta ambigua **entre escritorio y portátil** tampoco se asigna: F2 devuelve candidatas | La política de "no adivinar" se había aplicado solo entre variantes de escritorio. Hay 9 familias donde difiere la VRAM (`rtx 4090`: 24 GB contra 16), y sesgar a escritorio reintroduce en silencio el sesgo que la app existe para corregir |
+| 2026-08-24 | — | Las sesiones ejecutoras arrancan con `/goal` y se suscriben a su propio PR | El plan es donde se corrigen barato las decisiones de fondo; y quien implementó una fase es quien mejor la arregla. La ejecutora empuja código, la revisora comenta y corrige specs, ninguna fusiona |
