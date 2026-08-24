@@ -111,6 +111,8 @@ qué faltaba. Eso es un bug de la spec, no tuyo.
 
 **Integración:** todas las fases abren PR contra `claude/ai-model-compatibility-plan-ptlr3j`. Nada llega a `main` hasta que la app esté completa y verde: `deploy.yml` despliega en cada push a `main`.
 
+**Las lecciones de este proyecto se recogen en [`docs/lecciones-sdd.md`](lecciones-sdd.md)**, documento vivo que se actualiza en cada hallazgo. Es lo primero que debe leer quien traiga esta metodología a otro proyecto.
+
 **Los criterios los corre GitHub, no el examinado.** `.github/workflows/ci.yml` ejecuta en cada pull request las mismas ocho comprobaciones que corre quien revisa: specs bien formadas, los tres audits, tests, tipos, build, enlazado y —si la rama trae Worker— `wrangler deploy --dry-run`. Cada una aparece como un check separado en el PR.
 
 Validá las specs en local con `node .claude/skills/sdd-fases/scripts/audit-specs.mjs`.
@@ -532,3 +534,4 @@ Cada agente que cierre una fase añade aquí una línea con lo que decidió y qu
 | 2026-08-24 | — | Los criterios de aceptación corren en CI (`.github/workflows/ci.yml`) en cada PR | Hasta ahora los corría a mano quien revisaba, y quien los declaraba cumplidos era la misma sesión que escribía el código. Eso funciona con un buen ejecutor y falla en silencio con cualquier otro |
 | 2026-08-24 | — | `npx tsc --noEmit` pasa a ser criterio de todas las fases, no solo de F0 | F4 y F6 metieron dos errores de tipos a la rama de integración —los dos sobre `SystemSpecs.os`, uno de ellos sobre datos que llegan por red sin validar— y ninguna revisión los vio porque el criterio no existía |
 | 2026-08-24 | F5 | `PROTEGIDOS` de F5 lista los tests ajenos uno por uno, no `tests/hardware/` entera | La spec exigía crear `detect-sin-red.test.mjs` dentro de un directorio que ella misma prohibía tocar: la fase quedaba sin salida legal. Es la causa de las tres iteraciones fallidas y del código ofuscado. `audit-specs.mjs` ya rechaza que un archivo que la fase posee caiga dentro de un PROTEGIDO |
+| 2026-08-24 | — | `typescript` pasa a ser dependencia declarada y el CI usa `npx --no-install` en todos los pasos | `npx tsc` no encontraba el binario en `node_modules/.bin` y se descargaba de npm un paquete llamado `tsc` que no es TypeScript. Rompía el CI, y además ejecutaba código ajeno bajado de internet en cada corrida |
