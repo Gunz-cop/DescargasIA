@@ -1,7 +1,10 @@
 ---
 import models from '../../data/hardware/models.json';
+import { estimate } from '../../lib/hardware/estimate';
+import { formatGb } from '../../lib/hardware/format';
 import { useTranslations } from '../../i18n/ui';
 import type { Lang } from '../../utils/brand';
+import type { ModelSpec, SystemSpecs } from '../../lib/hardware/types';
 
 interface Props {
   lang: Lang;
@@ -10,25 +13,20 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-type Model = (typeof models)[number];
+type Model = ModelSpec;
 type Quant = Model['quants'][number];
 
 const CONTEXT_TOKENS = 4096;
-const KV_BYTES = 2;
-
-function modelSizeGb(model: Model, quant: Quant): number {
-  return quant.fileSizeGb ?? (model.paramsB * quant.bpw) / 8;
-}
+const STATIC_SPECS: SystemSpecs = { os: 'unknown' };
+const typedModels = models as ModelSpec[];
 
 /**
- * Reference only: weights + KV cache at 4K + runtime/activation margin.
- * The interactive estimator in F2 is the source of actual verdicts.
+ * Reference memory at 4K, calculated by the same deterministic engine as the
+ * interactive estimator. The table has no hardware verdict to evaluate, so it
+ * only exposes the engine's memory breakdown for each model and quantization.
  */
-function estimatedMemoryGb(model: Model, quant: Quant): string {
-  const weightsGb = modelSizeGb(model, quant);
-  const kvCacheGb = (2 * model.numLayers * model.numKvHeads * model.headDim * CONTEXT_TOKENS * KV_BYTES) / 1e9;
-  const overheadGb = 0.6 + weightsGb * 0.05;
-  return (weightsGb + kvCacheGb + overheadGb).toFixed(1);
+function referenceMemory(model: Model, quant: Quant): string {
+  return formatGb(estimate(model, quant, STATIC_SPECS, CONTEXT_TOKENS).memory.total, lang);
 }
 
 function formatParameters(paramsB: number): string {
@@ -63,7 +61,7 @@ function formatContext(tokens: number): string {
         </tr>
       </thead>
       <tbody class="divide-y divide-fai-line">
-        {models.map((model) => (
+        {typedModels.map((model) => (
           <tr class="align-top transition-colors hover:bg-fai-card">
             <th scope="row" class="max-w-[230px] px-4 py-4 font-medium leading-6 text-fai-ink">{model.displayName}</th>
             <td class="px-4 py-4 text-fai-muted">{model.family}</td>
@@ -74,7 +72,7 @@ function formatContext(tokens: number): string {
                 {model.quants.map((quant) => (
                   <li class="flex min-w-[9.5rem] items-baseline justify-between gap-3 rounded-md border border-fai-line px-2.5 py-1.5">
                     <span class="font-mono text-[12px] tracking-[0.08em] text-fai-signal">{quant.name}</span>
-                    <span class="whitespace-nowrap tabular-nums text-fai-ink">{estimatedMemoryGb(model, quant)} GB</span>
+                    <span class="whitespace-nowrap tabular-nums text-fai-ink">{referenceMemory(model, quant)}</span>
                   </li>
                 ))}
               </ul>
