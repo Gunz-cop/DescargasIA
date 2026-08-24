@@ -2,6 +2,7 @@ import gpus from '../../data/hardware/gpus.json';
 import appleSilicon from '../../data/hardware/apple-silicon.json';
 import models from '../../data/hardware/models.json';
 import { canDetectHardware, detectHardware } from '../../lib/hardware/detect';
+import type { DetectedHardware } from '../../lib/hardware/detect';
 import { formatContext, formatGb, formatTps } from '../../lib/hardware/format';
 import { recommend } from '../../lib/hardware/recommend';
 import { resolveGpu } from '../../lib/hardware/resolve';
@@ -652,6 +653,7 @@ export function initHardwareApp(root: HTMLElement): void {
   });
   root.addEventListener('hardware:detect-request', async () => {
     if (!detectButton) return;
+    const restoreFocus = document.activeElement === detectButton;
     detectButton.disabled = true;
     try {
       const detail = await detectHardware();
@@ -660,28 +662,30 @@ export function initHardwareApp(root: HTMLElement): void {
       }
     } finally {
       detectButton.disabled = false;
+      if (restoreFocus) detectButton.focus();
     }
   });
   root.addEventListener('hardware:detected', (event) => {
-    const detail = (event as CustomEvent<Partial<SystemSpecs>>).detail;
+    const detail = (event as CustomEvent<DetectedHardware>).detail;
     if (detail.gpu?.rawName) input.value = detail.gpu.rawName;
-    if (detail.ram?.totalGb && ramInput) {
-      ramInput.value = String(detail.ram.totalGb);
+    if (detail.ramMinimumGb) {
       ramWasEdited = false;
-      setDetectedChip('ram', true, textOf(root, 'ramMinimum').replace('{value}', String(detail.ram.totalGb)));
+      if (ramInput) ramInput.value = '';
+      setDetectedChip('ram', true, textOf(root, 'ramMinimum').replace('{value}', String(detail.ramMinimumGb)));
     } else setDetectedChip('ram', false);
     if (detail.gpu?.vramGb && vramInput) vramInput.value = String(detail.gpu.vramGb);
     if (detail.cpu?.rawName && cpuInput) cpuInput.value = detail.cpu.rawName;
     if (detail.os && detail.os !== 'unknown' && osInput) osInput.value = detail.os;
-    selectedGpu = detail.gpu?.id ? GPU_CATALOG.find((gpu) => gpu.id === detail.gpu?.id) ?? null : selectedResolution().gpu;
+    selectedGpu = detail.gpu?.id ? GPU_CATALOG.find((gpu) => gpu.id === detail.gpu?.id) ?? null : null;
     aiGpuEstimate = null;
     lastGpuLookupName = '';
     setAiChip('gpu', false);
     setDetectedChip('gpu', Boolean(detail.gpu?.rawName));
     setDetectedChip('cpu', Boolean(detail.cpu?.rawName));
     setDetectedChip('os', Boolean(detail.os && detail.os !== 'unknown'));
-    typedGpuConfirmed = false;
+    typedGpuConfirmed = Boolean(detail.gpu?.rawName && !selectedGpu);
     setHidden(detectedNote, Object.keys(detail).length === 0);
+    renderOptions();
     apply();
   });
   root.addEventListener('hardware:parsed', (event) => {

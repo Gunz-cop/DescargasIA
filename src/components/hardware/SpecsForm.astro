@@ -83,7 +83,16 @@ const t = useTranslations(lang);
       </summary>
       <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <label class="grid min-w-0 gap-2 sm:col-span-2" for="hardware-gpu-detail">
-          <span class="hardware-label">{t('hw.field.gpu')}</span>
+          <span class="hardware-label inline-flex flex-wrap items-center gap-2">
+            {t('hw.field.gpu')}
+            <span
+              class="hardware-detected-chip"
+              data-hardware-detected-chip="gpu"
+              title={t('hw.detected.tooltip')}
+              aria-label={t('hw.detected.tooltip')}
+              hidden
+            >{t('hw.detected')}</span>
+          </span>
           <input id="hardware-gpu-detail" type="text" class="hardware-input min-w-0 rounded-lg border border-fai-line bg-fai-card px-3 text-fai-ink" data-hardware-detail-gpu />
         </label>
         <label class="grid min-w-0 gap-2" for="hardware-vram">

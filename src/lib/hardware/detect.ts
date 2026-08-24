@@ -61,7 +61,7 @@ function navigatorOf(): NavigatorLike | undefined {
 }
 
 function canvasOf(): CanvasLike | undefined {
-  const browserDocument = Reflect.get(globalThis, ['doc', 'ument'].join('')) as BrowserDocumentLike | undefined;
+  const browserDocument = Reflect.get(globalThis, 'document') as BrowserDocumentLike | undefined;
   if (browserDocument?.createElement) return browserDocument.createElement('canvas');
 
   const OffscreenCanvas = Reflect.get(globalThis, 'OffscreenCanvas') as OffscreenCanvasConstructor | undefined;
@@ -185,7 +185,12 @@ export function canDetectHardware(): boolean {
 }
 
 /** Detect browser-exposed hardware signals, without throwing or sending them away. */
-export async function detectHardware(): Promise<Partial<SystemSpecs>> {
+export type DetectedHardware = Partial<SystemSpecs> & {
+  /** navigator.deviceMemory is a lower bound, never an exact RAM reading. */
+  ramMinimumGb?: number;
+};
+
+export async function detectHardware(): Promise<DetectedHardware> {
   try {
     const nav = navigatorOf();
     if (!nav) return {};
@@ -196,12 +201,12 @@ export async function detectHardware(): Promise<Partial<SystemSpecs>> {
     const vendor = vendorOf(adapterInfo?.vendor ?? rawName);
     const platform = await highEntropyPlatform(nav);
     const os = osOf(platform.platform);
-    const result: Partial<SystemSpecs> = {};
+    const result: DetectedHardware = {};
     const gpu = detectedGpu(rawName, vendor);
 
     if (gpu) result.gpu = gpu;
     if (nav.deviceMemory && Number.isFinite(nav.deviceMemory) && nav.deviceMemory > 0) {
-      result.ram = { totalGb: nav.deviceMemory, source: DETECTED };
+      result.ramMinimumGb = nav.deviceMemory;
     }
     if (nav.hardwareConcurrency && Number.isFinite(nav.hardwareConcurrency) && nav.hardwareConcurrency > 0) {
       result.cpu = {
