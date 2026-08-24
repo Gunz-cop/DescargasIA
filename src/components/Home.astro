@@ -4,7 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Directory from './Directory.astro';
 import { getTranslatedTools } from '../utils/tools';
 import { CATEGORIES, getDomain, type Lang } from '../utils/brand';
-import { homeUrl, toolUrl, categoryUrl, absolute, buildAlternates } from '../utils/links';
+import { homeUrl, toolUrl, categoryUrl, hardwareUrl, absolute, buildAlternates } from '../utils/links';
 import { useTranslations, languages } from '../i18n/ui';
 
 interface Props {
@@ -154,5 +154,16 @@ const eyebrow = lang === 'sv'
         </a>
       ))}
     </div>
+  </section>
+
+  <section class="mt-12 rounded-2xl border border-[rgba(15,191,143,.28)] bg-[linear-gradient(150deg,rgba(15,191,143,.12),rgba(15,191,143,.03))] p-5 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:p-7" aria-labelledby="hardware-home-title">
+    <div class="max-w-2xl">
+      <p class="fai-mono-sm text-fai-signal">{t('hw.nav')}</p>
+      <h2 id="hardware-home-title" class="mt-2 text-[22px] font-semibold tracking-[-0.02em] text-fai-ink">{t('hw.page.title')}</h2>
+      <p class="mt-2 text-[14px] leading-6 text-fai-muted">{t('hw.page.description')}</p>
+    </div>
+    <a href={hardwareUrl(lang)} class="mt-5 inline-flex min-h-11 shrink-0 items-center justify-center rounded-[8px] bg-fai-find px-4 text-[13px] font-semibold !text-[#06231c] transition-opacity hover:opacity-90 sm:mt-0">
+      {t('hw.nav')} <span aria-hidden="true" class="ml-1.5">→</span>
+    </a>
   </section>
 </BaseLayout>

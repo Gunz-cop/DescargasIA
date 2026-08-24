@@ -1,6 +1,3 @@
-import gpus from '../../data/hardware/gpus.json';
-import appleSilicon from '../../data/hardware/apple-silicon.json';
-import models from '../../data/hardware/models.json';
 import { canDetectHardware, detectHardware } from '../../lib/browser/detect';
 import type { DetectedHardware } from '../../lib/browser/detect';
 import { formatContext, formatGb, formatTps } from '../../lib/hardware/format';
@@ -13,8 +10,11 @@ type RuntimeUrls = Record<'ollama' | 'lm-studio' | 'jan', string>;
 type AiGpuEstimate = Pick<NonNullable<SystemSpecs['gpu']>, 'vramGb' | 'bandwidthGbs' | 'vendor'>;
 type ApiRecord = Record<string, unknown>;
 
-const GPU_CATALOG = [...(gpus as GpuSpec[]), ...(appleSilicon as GpuSpec[])];
-const MODEL_CATALOG = models as ModelSpec[];
+interface HardwareCatalog {
+  gpus: GpuSpec[];
+  appleSilicon: GpuSpec[];
+  models: ModelSpec[];
+}
 const DEFAULT_CONTEXT = 4096;
 const MIN_CONTEXT = 2048;
 const MAX_CONTEXT = 131072;
@@ -234,6 +234,37 @@ export function initHardwareApp(root: HTMLElement): void {
 
   if (detectButton) detectButton.hidden = !canDetectHardware();
 
+  // El catálogo es la parte pesada de la app. La página ya contiene la tabla
+  // completa en HTML para el camino sin JS; el motor interactivo lo pide solo
+  // cuando la persona empieza a usar el formulario.
+  let gpuCatalog: GpuSpec[] = [];
+  let modelCatalog: ModelSpec[] = [];
+  let catalogReady = false;
+  let catalogPromise: Promise<void> | null = null;
+  const loadCatalog = (): Promise<void> => {
+    if (catalogReady) return Promise.resolve();
+    if (!catalogPromise) {
+      catalogPromise = fetch('/hardware/catalog.json', { headers: { accept: 'application/json' } })
+        .then(async (response) => {
+          if (!response.ok) throw new Error(`catalogue ${response.status}`);
+          const payload = await response.json() as Partial<HardwareCatalog>;
+          const gpus = Array.isArray(payload.gpus) ? payload.gpus : [];
+          const apple = Array.isArray(payload.appleSilicon) ? payload.appleSilicon : [];
+          const models = Array.isArray(payload.models) ? payload.models : [];
+          gpuCatalog = [...gpus, ...apple] as GpuSpec[];
+          modelCatalog = models as ModelSpec[];
+        })
+        .catch(() => {
+          // Si el asset está bloqueado, la tabla sin JS sigue disponible y no
+          // se convierte un fallo opcional en un error de consola.
+        })
+        .finally(() => {
+          catalogReady = true;
+        });
+    }
+    return catalogPromise;
+  };
+
   const setDetectedChip = (field: string, visible: boolean, suffix?: string) => {
     root.querySelectorAll<HTMLElement>(`[data-hardware-detected-chip="${field}"]`).forEach((chip) => {
       chip.hidden = !visible;
@@ -283,7 +314,7 @@ export function initHardwareApp(root: HTMLElement): void {
     window.history.replaceState(null, '', `${url.pathname}?${params.toString()}`);
   };
 
-  const selectedResolution = () => resolveGpu(input.value, GPU_CATALOG);
+  const selectedResolution = () => resolveGpu(input.value, gpuCatalog);
 
   const effectiveGpu = (): GpuSpec | null => {
     const resolution = selectedResolution();
@@ -335,6 +366,12 @@ export function initHardwareApp(root: HTMLElement): void {
   };
 
   const renderOptions = () => {
+    if (!catalogReady) {
+      options.replaceChildren();
+      options.hidden = true;
+      input.setAttribute('aria-expanded', 'false');
+      return;
+    }
     const resolution = selectedResolution();
     const candidates = resolution.candidates;
     options.innerHTML = '';
@@ -384,7 +421,7 @@ export function initHardwareApp(root: HTMLElement): void {
       typedGpuConfirmed = true;
       updateFieldVisibility();
     } else {
-      const gpu = GPU_CATALOG.find((candidate) => candidate.id === option.dataset.gpuId);
+      const gpu = gpuCatalog.find((candidate) => candidate.id === option.dataset.gpuId);
       if (gpu) {
         selectedGpu = gpu;
         typedGpuConfirmed = false;
@@ -408,7 +445,7 @@ export function initHardwareApp(root: HTMLElement): void {
       return null;
     }
 
-    const estimates = recommend(specs, MODEL_CATALOG, { contextTokens });
+    const estimates = recommend(specs, modelCatalog, { contextTokens });
     const buckets: Array<{ key: string; title: string; estimates: Estimate[]; open: boolean }> = [
       { key: 'roomy', title: textOf(root, 'groupRoomy'), estimates: estimates.filter((e) => e.verdict === 'holgado'), open: true },
       { key: 'works', title: textOf(root, 'groupWorks'), estimates: estimates.filter((e) => e.verdict === 'funciona' || e.verdict === 'justo'), open: true },
@@ -442,7 +479,7 @@ export function initHardwareApp(root: HTMLElement): void {
 
   const createCard = (result: Estimate): HTMLElement => {
     const card = template.content.firstElementChild!.cloneNode(true) as HTMLElement;
-    const model = MODEL_CATALOG.find((candidate) => candidate.id === result.modelId);
+    const model = modelCatalog.find((candidate) => candidate.id === result.modelId);
     if (!model) return card;
     const setResult = (key: string, value: string) => setText(card.querySelector(`[data-result="${key}"]`), value);
     const verdictText = result.verdict === 'holgado' ? textOf(root, 'verdictRoomy') : result.verdict === 'no-cabe' ? textOf(root, 'verdictNo') : textOf(root, 'verdictWorks');
@@ -480,7 +517,7 @@ export function initHardwareApp(root: HTMLElement): void {
   const applyParsedSpecs = (parsed: Partial<SystemSpecs>) => {
     let changed = false;
     const parsedGpu = parsed.gpu;
-    const parsedGpuMatch = parsedGpu?.id ? GPU_CATALOG.find((gpu) => gpu.id === parsedGpu.id) : null;
+    const parsedGpuMatch = parsedGpu?.id ? gpuCatalog.find((gpu) => gpu.id === parsedGpu.id) : null;
     if (parsedGpuMatch && !effectiveGpu()) {
       selectedGpu = parsedGpuMatch;
       changed = true;
@@ -595,6 +632,14 @@ export function initHardwareApp(root: HTMLElement): void {
     scheduleOptionalApis(local);
   };
 
+  const applyAfterCatalog = () => {
+    void loadCatalog().then(() => {
+      selectedGpu = selectedResolution().gpu;
+      renderOptions();
+      apply();
+    });
+  };
+
   input.addEventListener('input', () => {
     selectedGpu = selectedResolution().gpu;
     typedGpuConfirmed = false;
@@ -603,9 +648,12 @@ export function initHardwareApp(root: HTMLElement): void {
     setAiChip('gpu', false);
     setDetectedChip('gpu', false);
     renderOptions();
-    apply();
+    applyAfterCatalog();
   });
-  input.addEventListener('focus', renderOptions);
+  input.addEventListener('focus', () => {
+    if (catalogReady) renderOptions();
+    else void loadCatalog().then(renderOptions);
+  });
   input.addEventListener('keydown', (event) => {
     const all = [...options.querySelectorAll<HTMLElement>('[role="option"]')];
     if (event.key === 'ArrowDown') {
@@ -649,13 +697,13 @@ export function initHardwareApp(root: HTMLElement): void {
     } else if (field === osInput) {
       setDetectedChip('os', false);
     }
-    apply();
+    applyAfterCatalog();
   }));
   details?.addEventListener('toggle', updateFieldVisibility);
-  context.addEventListener('input', apply);
+  context.addEventListener('input', applyAfterCatalog);
   form?.addEventListener('submit', (event) => {
     event.preventDefault();
-    apply();
+    applyAfterCatalog();
     results?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
@@ -667,7 +715,8 @@ export function initHardwareApp(root: HTMLElement): void {
     const restoreFocus = document.activeElement === detectButton;
     detectButton.disabled = true;
     try {
-      const detail = await detectHardware();
+      await loadCatalog();
+      const detail = await detectHardware(gpuCatalog);
       if (Object.keys(detail).length > 0) {
         root.dispatchEvent(new CustomEvent('hardware:detected', { detail }));
       }
@@ -687,7 +736,7 @@ export function initHardwareApp(root: HTMLElement): void {
     if (detail.gpu?.vramGb && vramInput) vramInput.value = String(detail.gpu.vramGb);
     if (detail.cpu?.rawName && cpuInput) cpuInput.value = detail.cpu.rawName;
     if (detail.os && detail.os !== 'unknown' && osInput) osInput.value = detail.os;
-    selectedGpu = detail.gpu?.id ? GPU_CATALOG.find((gpu) => gpu.id === detail.gpu?.id) ?? null : null;
+    selectedGpu = detail.gpu?.id ? gpuCatalog.find((gpu) => gpu.id === detail.gpu?.id) ?? null : null;
     aiGpuEstimate = null;
     lastGpuLookupName = '';
     setAiChip('gpu', false);
@@ -712,10 +761,12 @@ export function initHardwareApp(root: HTMLElement): void {
   if (osInput) osInput.value = url.searchParams.get('os') ?? '';
   contextTokens = clampContext(numberFrom(url.searchParams.get('ctx')) ?? DEFAULT_CONTEXT);
   context.value = String(contextTokens);
-  selectedGpu = selectedResolution().gpu;
   initTooltips(root);
-  renderOptions();
-  apply();
+  if (input.value || vramInput?.value || ramInput?.value || osInput?.value || url.searchParams.has('ctx')) {
+    applyAfterCatalog();
+  } else {
+    updateFieldVisibility();
+  }
 }
 
 function boot(): void {
