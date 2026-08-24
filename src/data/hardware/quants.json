@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Q2_K",
+    "bpw": 3.01,
+    "qualityNote": "Degradación severa. El modelo sigue contestando, pero razona bastante peor y se inventa más. Casi siempre sale mejor un modelo más pequeño en Q4_K_M que uno grande en Q2_K."
+  },
+  {
+    "name": "Q3_K_M",
+    "bpw": 3.89,
+    "qualityNote": "Se nota la pérdida. Tiene sentido cuando Q4_K_M no entra y no quieres bajar de tamaño de modelo."
+  },
+  {
+    "name": "Q4_K_M",
+    "bpw": 4.85,
+    "qualityNote": "El punto dulce, y la cuantización por defecto de casi todo el ecosistema local: la mejor relación entre lo que ocupa y lo que conserva."
+  },
+  {
+    "name": "Q5_K_M",
+    "bpw": 5.68,
+    "qualityNote": "Un escalón de calidad por encima de Q4_K_M, a cambio de algo más de memoria."
+  },
+  {
+    "name": "Q6_K",
+    "bpw": 6.56,
+    "qualityNote": "Diferencia inapreciable frente al modelo sin cuantizar en uso normal."
+  },
+  {
+    "name": "Q8_0",
+    "bpw": 8.5,
+    "qualityNote": "Prácticamente idéntico al modelo original. Solo compensa si te sobra memoria: ocupa casi el doble que Q4_K_M."
+  }
+]
