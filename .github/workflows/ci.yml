@@ -57,6 +57,14 @@ jobs:
       - name: Tests
         run: npm test
 
+      # `astro sync` genera `.astro/types.d.ts` (el modulo virtual `astro:content`).
+      # Ese directorio esta en `.gitignore`, asi que un checkout limpio de CI nunca
+      # lo tiene: sin este paso, `tsc` fallaba con "Cannot find module 'astro:content'"
+      # en cualquier PR, y nadie lo veia porque en una maquina local el directorio
+      # ya existe de una corrida anterior de `astro dev`/`astro build`.
+      - name: Generar tipos de Astro
+        run: npx --no-install astro sync
+
       # --no-install es deliberado: sin el, `npx tsc` no encuentra el binario en
       # node_modules/.bin y se descarga de npm un paquete llamado `tsc` que no
       # es TypeScript. Paso de silencioso a error, y de error a codigo ajeno

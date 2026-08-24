@@ -109,6 +109,25 @@ Dos problemas: rompía todos los PRs, y ejecutaba código ajeno en cada corrida.
 **Regla:** toda herramienta que use un criterio va declarada en `package.json`, y todo paso
 de CI usa `npx --no-install`, que falla en vez de ir a la red.
 
+### 6. Un directorio generado y gitignoreado esconde que el gate nunca corrió limpio
+
+`tsc --noEmit` necesita `.astro/types.d.ts` para resolver el módulo virtual
+`astro:content`. Ese directorio lo genera `astro sync` —y también `astro dev`/`astro build`,
+de pasada— pero está en `.gitignore`. El paso "Tipos" de `ci.yml` corría antes que "Build" y
+sin ningún `astro sync` propio.
+
+Resultado: **en un checkout limpio de CI, `tsc` fallaba siempre** con
+`Cannot find module 'astro:content'`. En una máquina local nunca se veía, porque el
+directorio ya estaba ahí de una corrida anterior de `astro dev`. Las revisiones manuales de
+F5 y F7 declararon "tipos OK" corriendo `tsc` sobre una máquina con ese residuo —**el gate
+llevaba corriendo rojo desde que se montó, en cada PR, y nadie lo notó** porque nadie miró
+el resultado real del check de GitHub, solo la corrida local.
+
+**Regla:** cualquier paso de CI que dependa de un artefacto generado y gitignoreado necesita
+el comando que lo genera como paso explícito, antes. Y **el criterio se verifica leyendo el
+check de GitHub, nunca corriendo el comando a mano**, aunque el comando sea el mismo: una
+máquina con residuo de corridas anteriores no es un checkout limpio.
+
 ## Lo que sí funcionó y conviene repetir
 
 - **Specs por fase con contratos de entrada y salida.** Permitieron ejecutar F1 y F2 en
@@ -145,8 +164,12 @@ spec buena y una mala. Elegí el modelo por coste y contexto; invertí el tiempo
   diseño y sigue verificada solo por lectura de código.
 - Los criterios `[manual]` (Lighthouse, lector de pantalla, recorrido en 360 px) siguen
   pendientes: son de F8.
-- La página de privacidad afirma "sin datos personales" mientras el rate limit guarda la IP
-  en claro. Reportado en el PR #20.
+- ~~La página de privacidad afirma "sin datos personales" mientras el rate limit guarda la IP
+  en claro.~~ Corregido en el PR #20: la clave de KV pasa a `SHA-256(ip + sal)`. Un primer
+  intento de arreglo usó un hash de 32 bits sin sal, reversible por tabla inversa completa del
+  espacio IPv4 en segundos — la promesa de privacidad seguía siendo falsa en la práctica
+  aunque el código ya no guardara la IP en claro. Vale como variante de la lección 3: un
+  criterio literal ("no guardes la IP en claro") se puede cumplir sin cumplir su propósito.
 
 ## Bitácora
 
@@ -159,3 +182,4 @@ spec buena y una mala. Elegí el modelo por coste y contexto; invertí el tiempo
 | 2026-08-24 | Spec sin salida legal → código deshonesto | `audit-specs.mjs` rechaza el solape POSEE/PROTEGIDOS |
 | 2026-08-24 | Sin CI, el examinado se aprueba solo | `.github/workflows/ci.yml` |
 | 2026-08-24 | `npx` sin `--no-install` baja código de internet | CI + `typescript` en `package.json` |
+| 2026-08-24 | El gate de CI corría rojo en cada PR desde que se montó (`.astro/` gitignoreado, `astro sync` faltante) | `.github/workflows/ci.yml`; paso "Generar tipos de Astro" agregado |
