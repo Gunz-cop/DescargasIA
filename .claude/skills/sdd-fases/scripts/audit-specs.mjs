@@ -33,6 +33,17 @@ const SECCIONES = [
 const EJECUTABLE = /`[^`]*\b(npm|npx|node|bash|git|wrangler|pnpm|yarn|curl|grep)\b[^`]*`/;
 const MANUAL = /\[manual\]/i;
 
+/**
+ * Trampa que costó dos specs y habría bloqueado una fase entera: un criterio
+ * del tipo «`grep X` no devuelve ninguna línea» matchea el propio comentario
+ * del código que documenta la regla ("este módulo no usa `window`"), así que
+ * no puede pasar nunca. Peor todavía si el archivo que lo dispara está en
+ * PROTEGIDOS: la sesión ejecutora queda sin salida.
+ *
+ * Un criterio de AUSENCIA tiene que quitar los comentarios antes de mirar.
+ */
+const GREP_DE_AUSENCIA = /`\s*grep\b[^`]*`[^\n]*\b(no devuelve|sin coincidencias|no debe (aparecer|devolver)|ninguna l[ií]nea)/i;
+
 const errores = [];
 const avisos = [];
 
@@ -67,6 +78,10 @@ for (const archivo of specs) {
   if (criterios.length === 0) {
     errores.push(`${ruta}: la sección de criterios de aceptación no tiene ninguna casilla "- [ ]"`);
     continue;
+  }
+
+  for (const c of criterios.filter((c) => GREP_DE_AUSENCIA.test(c))) {
+    errores.push(`${ruta}: criterio de ausencia por grep → "${c}"\n    Un grep matchea el comentario que documenta la propia regla, así que nunca pasa. Comprobalo sobre el código sin comentarios (test o \`node -e\`).`);
   }
 
   const noEjecutables = criterios.filter((c) => !EJECUTABLE.test(c) && !MANUAL.test(c));

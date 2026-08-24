@@ -52,6 +52,7 @@ Sobre los criterios de aceptación:
 - Cada uno es un comando con su salida esperada. `npm test`, `node scripts/audit-x.mjs`, `npm run build`, `git diff --name-only | grep -c protegido` → 0.
 - Si un criterio es inevitablemente visual o manual (accesibilidad con lector de pantalla, recorrido en móvil), escribilo como **pasos numerados reproducibles** con el resultado esperado en cada uno, y marcalo `[manual]`. No lo dejes como adjetivo.
 - Si una fase no tiene ningún criterio ejecutable, la fase está mal cortada.
+- **Cuidado con los criterios de ausencia.** Un criterio como «`grep -r "window" src/lib/` no devuelve ninguna línea» **no puede pasar nunca**: el propio código documenta la regla en un comentario y el grep la matchea. Si además el archivo que lo dispara está en `PROTEGIDOS`, la sesión ejecutora queda bloqueada sin salida. Comprobá las ausencias sobre el código **con los comentarios quitados**, en un test o en un `node -e`. `audit-specs.mjs` ya rechaza este patrón.
 
 ## 6. Validar las specs
 
@@ -65,7 +66,15 @@ Verifica que cada `docs/fases/F*.md` tenga las secciones obligatorias y que sus 
 
 Uno por fase, con `templates/issue.md`. El cuerpo **apunta** a la spec, no la copia.
 
-Labels: `fase:F<n>`, `<proyecto>` (paraguas), y uno de `estado:lista-para-tomar` / `estado:tomada` / `estado:en-revision` / `estado:bloqueada`. Las fases con dependencias abiertas nacen `estado:bloqueada` y con "Bloqueada por #N" en el cuerpo.
+Labels: `fase:F<n>`, `area:<dominio>`, `<proyecto>` (paraguas), y uno de `estado:lista-para-tomar` / `estado:tomada` / `estado:en-revision` / `estado:hecha` / `estado:bloqueada`. Las fases con dependencias abiertas nacen `estado:bloqueada` y con "Bloqueada por #N" en el cuerpo.
+
+### El estado vive en un solo sitio
+
+**La tabla del documento de producto NO lleva columna de estado.** Describe estructura y dependencias —hechos estables y versionados— y nada más. El estado es volátil y vive únicamente en las etiquetas `estado:*` de los issues.
+
+Mantenerlo en los dos sitios obliga a cada sesión a actualizar dos sistemas, y dos representaciones del mismo hecho derivan siempre: en este proyecto la cabecera del documento ya decía "F0 pendiente de arranque" con F0 cerrada, a las pocas horas.
+
+La vista legible se genera bajo demanda con un script que lee los issues (ver `scripts/estado-fases.mjs`). **Ese script nunca se encadena en `npm run build`**: necesita red, y una compuerta de build no puede depender de una API externa.
 
 ## 8. Entregar
 

@@ -1,13 +1,13 @@
 # Plan de implementación — App "¿Qué modelos de IA puedo correr en mi máquina?"
 
-> **Este documento es el tablero de ejecución del proyecto.** Está escrito para que
-> varias IAs (o personas) puedan trabajar en paralelo sin pisarse. Si vas a empezar
-> una fase, lee primero `AGENTS.md` y las guías que enumera, luego las **Reglas de
-> coordinación** de más abajo, y actualiza el **Tablero** antes y después de trabajar.
+> **Spec de producto.** Contiene el porqué, la arquitectura y las decisiones cerradas.
+> El contrato de cada fase está en `docs/fases/F<n>.md`; el trabajo pendiente, en los
+> issues de GitHub. Si vas a ejecutar una fase, leé `AGENTS.md`, este documento y la
+> spec de tu fase — nada más hace falta.
 >
-> - Creado: 2026-08-23 · Última actualización: 2026-08-23
-> - Estado global: **F0 pendiente de arranque** (este documento es el único entregable existente)
+> - Creado: 2026-08-23
 > - Alcance v1 cerrado: solo LLMs de texto (GGUF/Ollama), es/sv/it, veredicto determinista
+> - **El estado no se escribe aquí.** Vive en las etiquetas de los issues; se consulta con `node scripts/estado-fases.mjs`
 
 ## Contexto
 
@@ -99,21 +99,35 @@ Validá las specs con `node .claude/skills/sdd-fases/scripts/audit-specs.mjs`.
 
 ### Tablero
 
-El issue de GitHub es la fuente de verdad del estado; esta tabla es el resumen legible.
+Esta tabla describe **estructura y dependencias**: hechos estables y versionados. **No lleva columna de estado, a propósito.**
 
-| Fase | Spec | Depende de | Issue | Estado |
+El estado es un hecho volátil y vive en un único sitio: las etiquetas `estado:*` de los issues. Mantenerlo también aquí obligaría a cada sesión a actualizar dos sistemas, y dos representaciones del mismo hecho derivan siempre. Para ver el estado real:
+
+```bash
+node scripts/estado-fases.mjs
+```
+
+| Fase | Spec | Depende de | Issue | Área |
 |---|---|---|---|---|
-| F0 | Fundaciones, tipos, specs e issues — [`F0.md`](fases/F0.md) | — | #5 | ✅ |
-| F1 | Datos: GPUs, modelos y cuantizaciones — [`F1.md`](fases/F1.md) | F0 | #6 | ⬜ |
-| F2 | Motor determinista + tests — [`F2.md`](fases/F2.md) | F0 | #7 | ⬜ |
-| F3 | Página, i18n, SEO y enlazado (sin JS) — [`F3.md`](fases/F3.md) | F1 | #8 | ⛔ |
-| F4 | UI interactiva: combobox, tooltips, resultados — [`F4.md`](fases/F4.md) | F2, F3 | #9 | ⛔ |
-| F5 | Autodetección de hardware — [`F5.md`](fases/F5.md) | F3 | #10 | ⛔ |
-| F6 | Worker + Workers AI — [`F6.md`](fases/F6.md) | F1, F2 | #11 | ⛔ |
-| F7 | Endurecimiento: límites, caché, privacidad — [`F7.md`](fases/F7.md) | F6 | #12 | ⛔ |
-| F8 | QA, accesibilidad, rendimiento y lanzamiento — [`F8.md`](fases/F8.md) | todas | #13 | ⛔ |
+| F0 | Fundaciones, tipos, specs e issues — [`F0.md`](fases/F0.md) | — | [#5](https://github.com/Gunz-cop/DescargasIA/issues/5) | meta |
+| F1 | Datos: GPUs, modelos y cuantizaciones — [`F1.md`](fases/F1.md) | F0 | [#6](https://github.com/Gunz-cop/DescargasIA/issues/6) | datos |
+| F2 | Motor determinista + tests — [`F2.md`](fases/F2.md) | F0 | [#7](https://github.com/Gunz-cop/DescargasIA/issues/7) | motor |
+| F3 | Página, i18n, SEO y enlazado (sin JS) — [`F3.md`](fases/F3.md) | F1 | [#8](https://github.com/Gunz-cop/DescargasIA/issues/8) | frontend |
+| F4 | UI interactiva: combobox, tooltips, resultados — [`F4.md`](fases/F4.md) | F2, F3 | [#9](https://github.com/Gunz-cop/DescargasIA/issues/9) | frontend |
+| F5 | Autodetección de hardware — [`F5.md`](fases/F5.md) | F3 | [#10](https://github.com/Gunz-cop/DescargasIA/issues/10) | frontend |
+| F6 | Worker + Workers AI — [`F6.md`](fases/F6.md) | F1, F2 | [#11](https://github.com/Gunz-cop/DescargasIA/issues/11) | worker |
+| F7 | Endurecimiento: límites, caché, privacidad — [`F7.md`](fases/F7.md) | F6 | [#12](https://github.com/Gunz-cop/DescargasIA/issues/12) | worker |
+| F8 | QA, accesibilidad, rendimiento y lanzamiento — [`F8.md`](fases/F8.md) | todas | [#13](https://github.com/Gunz-cop/DescargasIA/issues/13) | qa |
 
-**F1 y F2 están desbloqueadas y pueden ejecutarse en paralelo, en sesiones distintas.**
+```
+                F1 ──────┬─ F3 ──┬─ F4
+               /         │       └─ F5      ┐
+        F0 ───┤          │                  ├─ F8
+               \         └─ F6 ── F7        ┘
+                F2 ──────┘
+```
+
+F1 y F2 son independientes entre sí y pueden ejecutarse en paralelo, en sesiones distintas.
 
 F1 y F2 pueden ir en paralelo. F4 y F5 pueden ir en paralelo. F6 puede arrancar en cuanto F1+F2 estén cerradas.
 
@@ -406,3 +420,5 @@ Cada agente que cierre una fase añade aquí una línea con lo que decidió y qu
 | 2026-08-23 | — | Plan aprobado con: Worker + assets, veredicto determinista, solo LLMs de texto, 3 idiomas y catálogo curado en el repo | Ver tabla "Decisiones ya cerradas con el usuario" |
 | 2026-08-23 | — | El proyecto se ejecuta con sesiones desechables por fase, no en una sesión larga | Ninguna sesión es memoria durable, tampoco la coordinadora; la memoria vive en el repo |
 | 2026-08-23 | F0 | El criterio de tipado es `npx tsc --noEmit`, no `astro check` | `@astrojs/check` no es dependencia del proyecto: el criterio no era ejecutable como estaba escrito |
+| 2026-08-23 | F0 | El tablero pierde la columna de estado; el estado vive solo en las etiquetas de los issues y se consulta con `scripts/estado-fases.mjs` | Dos representaciones del mismo hecho derivan siempre y obligan a actualizar dos sistemas |
+| 2026-08-23 | F0 | Prohibidos los criterios de aceptación del tipo «`grep X` no devuelve nada»; las ausencias se comprueban sobre el código sin comentarios | El grep matchea el comentario que documenta la regla: el criterio de pureza de F2 no podía pasar nunca, y `types.ts` estaba en sus PROTEGIDOS. `audit-specs.mjs` ya lo rechaza |
