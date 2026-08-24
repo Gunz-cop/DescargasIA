@@ -63,8 +63,9 @@ const CASES = [
   ],
   ['GTX 1660 Super', 'nvidia-geforce-gtx-1660-super'],
   ['gtx1650', 'nvidia-geforce-gtx-1650'],
-  ['rtx 4090', 'nvidia-geforce-rtx-4090'],
-  ['RTX 5090', 'nvidia-geforce-rtx-5090'],
+  ['rtx 4090 sobremesa', 'nvidia-geforce-rtx-4090'],
+  ['RTX 5090 desktop', 'nvidia-geforce-rtx-5090'],
+  ['RTX 4090 Laptop GPU', 'nvidia-geforce-rtx-4090-laptop-gpu'],
   ['radeon rx 6600 xt', 'amd-radeon-rx-6600-xt'],
   ['7900xtx', 'amd-radeon-rx-7900-xtx'],
   ['rx 9070 xt', 'amd-radeon-rx-9070-xt'],
@@ -77,7 +78,25 @@ const CASES = [
   ['ANGLE (Apple, ANGLE Metal Renderer: Apple M2 Pro, Unspecified Version)', 'apple-m2-pro'],
   ['m4 pro', 'apple-m4-pro'],
   ['tesla t4', 'nvidia-tesla-t4'],
-  ['rtx a4000', 'nvidia-rtx-a4000'],
+  ['rtx a4000 desktop', 'nvidia-rtx-a4000'],
+  ['rtx a4000 mobile', 'nvidia-rtx-a4000-mobile'],
+];
+
+/**
+ * Y el reverso: formas cortas que NO deben resolver a nadie, porque escritorio y
+ * portátil no coinciden en memoria. Resolverlas a la de escritorio —que es lo que
+ * pasa si uno no lo piensa— le prometería 24 GB a quien tiene 16. F2 tiene que
+ * verlas empatar y ofrecer las dos candidatas.
+ */
+const AMBIGUAS = [
+  'rtx 4090', // 24 GB en escritorio, 16 en portátil
+  'rtx 4080', // 16 contra 12
+  'rtx 4070', // 12 contra 8
+  'rtx 3080', // 10 contra 8
+  'rtx 5070', // 12 contra 8
+  'rtx 5090', // 32 contra 24
+  'rtx a4000', // 16 contra 8: el mismo eje en las workstation
+  'rtx 3060', // 12 contra 8 entre las dos de escritorio
 ];
 
 let failed = 0;
@@ -89,5 +108,16 @@ for (const [input, expected] of CASES) {
   console.log('    esperado: ' + expected + '   obtenido: ' + (hit ? hit.id : '(ningún alias)'));
 }
 
-console.log((CASES.length - failed) + '/' + CASES.length + ' nombres reales resueltos por alias directo');
+for (const input of AMBIGUAS) {
+  const hit = index.get(normalize(input));
+  if (!hit) continue;
+  failed++;
+  console.log('x ' + JSON.stringify(input) + ' debería quedar sin dueño y resuelve a ' + hit.id);
+}
+
+const total = CASES.length + AMBIGUAS.length;
+console.log(
+  (total - failed) + '/' + total + ' comprobaciones: ' + CASES.length + ' nombres reales resueltos, ' +
+    AMBIGUAS.length + ' formas ambiguas correctamente sin dueño'
+);
 if (failed) process.exit(1);

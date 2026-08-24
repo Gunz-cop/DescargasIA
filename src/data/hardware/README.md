@@ -126,8 +126,41 @@ ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0
 Los alias guardan la parte del dispositivo, no la envoltura entera: quitar el
 `ANGLE (…)` y el id PCI es trabajo del normalizador del resolver (F2).
 
-**Las formas ambiguas se dejan sin dueño a propósito.** Quien escribe "rtx 3060"
-puede tener la de 12 GB o la de 8 GB, y adivinar significa prometer 4 GB que
-quizá no existen. Sin alias que decida, el matcher de F2 puntúa la cadena contra
-los dos nombres completos, empata, y cae en la vía de "¿quisiste decir…?" con las
-dos candidatas — que es lo que el producto quiere que pase.
+### Formas cortas ambiguas
+
+La **forma corta** es el nombre sin sus dos desambiguadores: la capacidad y el
+sufijo de portátil. `GeForce RTX 3060 12 GB` y `GeForce RTX 4090 Laptop GPU` se
+reducen las dos a lo que la gente teclea de verdad.
+
+**Cuando una forma corta la comparten dos GPUs con distinta memoria, no se le
+adjudica a ninguna.** Sin alias que decida, el matcher de F2 puntúa la cadena
+contra los nombres completos, empata, y cae en la vía de "¿quisiste decir…?" con
+las candidatas — que es lo que el producto quiere que pase. La auditoría lo
+comprueba: son 32 formas en esa situación.
+
+Aplica en los dos ejes, y el segundo es el que importa:
+
+| Forma corta | Escritorio | Portátil |
+|---|---|---|
+| `rtx 4090` | 24 GB | 16 GB |
+| `rtx 4080` | 16 GB | 12 GB |
+| `rtx 4070` | 12 GB | 8 GB |
+| `rtx 5090` | 32 GB | 24 GB |
+| `rtx a4000` | 16 GB | 8 GB |
+
+Dejar que la forma corta se la quede la de escritorio —que es lo que pasa si uno
+no lo piensa, porque su nombre **es** la forma corta— reintroduce en silencio el
+sesgo que esta app existe para corregir, y en la dirección peligrosa: prometerle
+memoria de más a quien tiene menos.
+
+Lo que decide el empate es la **memoria**, no el formato. Cuando escritorio y
+portátil coinciden en VRAM (la RTX 4060 son 8 GB en los dos), el veredicto sale
+igual por cualquiera de las dos y la forma corta se la queda la de escritorio, de
+quien es el nombre. Lo único que difiere ahí es el ancho de banda, que solo mueve
+una estimación de tok/s ya presentada como rango.
+
+Una tarjeta cuyo nombre es exactamente la forma corta no se queda muda: recibe
+alias con señal explícita —`rtx 4090 desktop`, `rtx 4090 sobremesa`,
+`rx 9070 gre 12gb`, y las dos señales juntas cuando ninguna basta por separado
+(`rtx 2060 6gb desktop`)—, que es la señal que F2 busca en el texto. Son 21
+tarjetas.

@@ -222,7 +222,7 @@ const VENDOR_WORD = { nvidia: 'nvidia', amd: 'amd', intel: 'intel' };
  * importa es cubrir las FORMAS: con y sin marca, con y sin "GeForce", pegado,
  * separado, "laptop" y "mobile", y la cadena que devuelve el navegador.
  */
-const aliasesFor = (name, vendor, formFactor) => {
+const aliasesFor = ({ name, vendor, formFactor, vramGb }) => {
   const out = new Set();
   const add = (value) => {
     const clean = strip(value);
@@ -263,22 +263,9 @@ const aliasesFor = (name, vendor, formFactor) => {
     variants.add(base.replace(/ laptop gpu max-q$/, ' max q'));
   }
   if (/max-q/.test(base)) variants.add(base.replace(/max-q/, 'max q'));
-  // "8 GB" en el nombre: la gente escribe "8gb" o directamente lo omite. La
-  // forma SIN capacidad la reclaman varias tarjetas a la vez ("rtx 3060" la
-  // quieren la de 12 GB y la de 8 GB), así que sale aparte: se reparte en una
-  // segunda ronda, cuando cada tarjeta ya tiene asegurado su nombre exacto.
-  const loose = new Set();
   for (const variant of [...variants]) {
-    if (/ \d+ ?gb\b/.test(variant)) {
-      variants.add(variant.replace(/ (\d+) gb\b/, ' $1gb'));
-      loose.add(variant.replace(/ \d+ ?gb\b/, ''));
-    }
-    // "Iris Xe Graphics G7 96EU Mobile" -> "iris xe graphics g7 96eu". Para las
-    // NVIDIA anteriores a la serie 30 esta forma choca con la de escritorio, que
-    // es justo lo que hay que detectar en vez de resolver a ciegas.
-    if (/ (mobile|laptop|laptop gpu|portatil)$/.test(variant)) {
-      loose.add(variant.replace(/ (mobile|laptop|laptop gpu|portatil)$/, ''));
-    }
+    // "8 GB" en el nombre: la gente escribe también "8gb".
+    if (/ \d+ gb\b/.test(variant)) variants.add(variant.replace(/ (\d+) gb\b/, ' $1gb'));
   }
 
   const expand = (source, sink) => {
@@ -299,13 +286,75 @@ const aliasesFor = (name, vendor, formFactor) => {
   // es la más tecleada y ya está en `forms`.
   if (formFactor === 'integrated') add(vendorWord + ' ' + base);
 
-  const looseOut = new Set();
-  expand(loose, (value) => {
+  // La FORMA DESNUDA: el nombre sin ninguno de los dos desambiguadores, ni la
+  // capacidad ni el sufijo de portátil. "GeForce RTX 4090 Laptop GPU" y
+  // "GeForce RTX 3060 12 GB" se reducen las dos a lo que la gente teclea de
+  // verdad. Sale aparte porque es la que se disputan varias tarjetas, y quién se
+  // la queda —o si no se la queda nadie— lo decide el reparto de más abajo.
+  const bareKey = base
+    .replace(/ \d+ ?gb\b/, '')
+    .replace(/ (laptop gpu|laptop|mobile|portatil)( max-q)?$/, '')
+    .trim();
+
+  const bare = new Set();
+  if (bareKey !== base) {
+    expand([bareKey], (value) => {
+      const clean = strip(value);
+      if (clean && !out.has(clean)) bare.add(clean);
+    });
+  } else {
+    // La tarjeta se llama ya por su forma desnuda —el caso de las de escritorio,
+    // "GeForce RTX 4090"—, así que TODOS sus alias son la forma en disputa.
+    for (const value of out) bare.add(value);
+    out.clear();
+  }
+
+  /**
+   * Alias de reserva para cuando la forma desnuda queda sin dueño. Llevan la
+   * señal que falta —de formato o de capacidad—, que es la que F2 busca en el
+   * texto para desempatar. Sin ellos, una tarjeta cuyo nombre ES la forma
+   * desnuda (una "GeForce RTX 4090", una "Radeon RX 9070 GRE") se quedaría
+   * literalmente sin ningún alias propio.
+   */
+  const markedByFormat = new Set();
+  if (formFactor !== 'laptop') {
+    expand([bareKey + ' desktop', bareKey + ' sobremesa', bareKey + ' de escritorio'], (value) => {
+      const clean = strip(value);
+      if (clean) markedByFormat.add(clean);
+    });
+  }
+
+  const capacity = vramGb ? [bareKey + ' ' + vramGb + ' gb', bareKey + ' ' + vramGb + 'gb'] : [];
+
+  const markedByCapacity = new Set();
+  expand(capacity, (value) => {
     const clean = strip(value);
-    if (clean && !out.has(clean)) looseOut.add(clean);
+    if (clean && !out.has(clean)) markedByCapacity.add(clean);
   });
 
-  return { primary: [...out], loose: [...looseOut] };
+  // Y las dos señales juntas, para el caso en que ninguna basta por separado: una
+  // "GeForce RTX 2060" convive con una de 12 GB (misma forma) y con una de
+  // portátil de 6 GB (misma memoria), así que solo "rtx 2060 6gb desktop" la
+  // identifica sin ambigüedad.
+  const markedByBoth = new Set();
+  if (formFactor !== 'laptop') {
+    expand(
+      capacity.flatMap((value) => [value + ' desktop', value + ' sobremesa']),
+      (value) => {
+        const clean = strip(value);
+        if (clean && !out.has(clean)) markedByBoth.add(clean);
+      }
+    );
+  }
+
+  return {
+    specific: [...out],
+    bare: [...bare],
+    markedByFormat: [...markedByFormat],
+    markedByCapacity: [...markedByCapacity],
+    markedByBoth: [...markedByBoth],
+    bareKey,
+  };
 };
 
 // ---------------------------------------------------------------------------
@@ -414,37 +463,94 @@ const claim = (entry, aliases) => {
   }
 };
 
-// Dos rondas. En la primera cada tarjeta se queda con las formas de su nombre
-// exacto, para que ninguna pueda quedarse sin alias propio.
-const alias = kept.map((entry) => aliasesFor(entry.name, entry.vendor, entry.formFactor));
-kept.forEach((entry, index) => claim(entry, alias[index].primary));
+// Primera ronda: cada tarjeta se queda con las formas que llevan un
+// desambiguador —la capacidad, el sufijo de portátil— y que por tanto no puede
+// disputarle nadie.
+const alias = kept.map((entry) => aliasesFor(entry));
+kept.forEach((entry, index) => claim(entry, alias[index].specific));
 
-// En la segunda se reparten las formas que omiten un desambiguador: la
-// capacidad ("rtx 3060" en vez de "rtx 3060 12 gb") o el sufijo de portátil
-// ("rtx 2060" en vez de "rtx 2060 mobile").
+// Segunda ronda: la forma desnuda, la que la gente teclea de verdad.
 //
-// Si dos tarjetas distintas se disputan una de estas formas, NO se le adjudica a
-// ninguna. Es deliberado: quien escribe "rtx 3060" puede tener la de 12 GB o la
-// de 8 GB, y adivinar significa prometer 4 GB que quizá no existen. Sin alias, el
-// matcher de F2 puntúa la cadena contra los dos `name` completos, empata, y cae
-// en la vía de "¿quisiste decir…?" con las dos candidatas — que es exactamente lo
-// que el producto quiere que pase.
-const looseClaimants = new Map();
+// Si se la disputan dos tarjetas con distinta memoria, NO se le adjudica a
+// ninguna. Sin alias, el matcher de F2 puntúa la cadena contra los dos `name`
+// completos, empata, y cae en la vía de "¿quisiste decir…?" con las dos
+// candidatas — que es lo que el producto quiere que pase.
+//
+// El caso obvio son las variantes de capacidad: "rtx 3060" la quieren la de
+// 12 GB y la de 8 GB, y adivinar promete 4 GB que quizá no existen.
+//
+// El caso que importa de verdad es el otro eje, escritorio contra portátil. Una
+// RTX 4090 son 24 GB en una torre y 16 en un portátil; una 4070, 12 contra 8.
+// Dejar que la forma corta se la quede la de escritorio —que es lo que pasa si
+// uno no lo piensa, porque su nombre ES la forma corta— reintroduce en silencio
+// el sesgo que esta app existe para corregir, y encima en la dirección
+// peligrosa: prometerle memoria de más a quien tiene menos.
+//
+// Lo que decide el empate es la MEMORIA, no el formato. Cuando escritorio y
+// portátil coinciden en VRAM (la RTX 4060 son 8 GB en los dos), el veredicto sale
+// igual por cualquiera de las dos y la forma corta se la queda la de escritorio,
+// que es de quien es el nombre: NVIDIA le pone "Laptop GPU" a la otra. Lo único
+// que difiere ahí es el ancho de banda, que solo mueve una estimación de tok/s ya
+// presentada como rango.
+//
+// La de escritorio nunca se queda muda: cuando pierde la forma corta recibe sus
+// alias con señal explícita ("rtx 4090 desktop", "rtx 4090 sobremesa"), que es la
+// señal que F2 busca en el texto.
+// El reparto se decide POR CADENA DE ALIAS, no por nombre. Dos tarjetas de
+// familias distintas pueden producir la misma forma corta —"Quadro T1000 Mobile"
+// y "T1000" se reducen las dos a "t1000"— y agrupar por nombre las dejaría
+// pasar.
+const bareClaimants = new Map();
 kept.forEach((entry, index) => {
-  for (const value of alias[index].loose) {
+  for (const value of alias[index].bare) {
     if (aliasOwner.has(value)) continue;
-    if (!looseClaimants.has(value)) looseClaimants.set(value, []);
-    looseClaimants.get(value).push(entry);
+    if (!bareClaimants.has(value)) bareClaimants.set(value, []);
+    bareClaimants.get(value).push(index);
   }
 });
-let ambiguous = 0;
-for (const [value, claimants] of looseClaimants) {
-  if (claimants.length > 1) {
-    ambiguous++;
+
+/** Qué memoria promete esta tarjeta. `unificada` no se compara con un número. */
+const memorySignature = (entry) => (entry.unifiedMemory ? 'unificada' : String(entry.vramGb));
+
+const ambiguous = [];
+for (const [value, indexes] of bareClaimants) {
+  const entries = indexes.map((index) => kept[index]);
+
+  if (new Set(entries.map(memorySignature)).size > 1) {
+    ambiguous.push(value);
     continue;
   }
-  claim(claimants[0], [value]);
+
+  // Todas prometen la misma memoria, así que la forma corta no puede mentir. Se
+  // la queda la de escritorio si hay exactamente una —el nombre desnudo es suyo,
+  // NVIDIA le pone "Laptop GPU" a la otra—, y si no, la más antigua, que es a la
+  // que la gente llama así.
+  const desktops = indexes.filter((index) => kept[index].formFactor !== 'laptop');
+  const winner = desktops.length === 1 ? desktops[0] : indexes[0];
+  claim(kept[winner], [value]);
 }
+
+// Una tarjeta cuyo nombre ES la forma corta ("GeForce RTX 4090", "Radeon RX 9070
+// GRE") se queda sin ningún alias cuando esa forma cae en disputa. Recibe
+// entonces los alias con señal explícita —de formato, de capacidad, o las dos
+// juntas cuando ninguna basta por separado—, que es la señal que F2 busca en el
+// texto para desempatar.
+const quiet = (entry, aliases) => {
+  for (const value of aliases) {
+    if (aliasOwner.has(value)) continue;
+    aliasOwner.set(value, entry.id);
+    entry.aliases.push(value);
+  }
+};
+
+let rescued = 0;
+kept.forEach((entry, index) => {
+  if (entry.aliases.length) return;
+  quiet(entry, alias[index].markedByFormat);
+  quiet(entry, alias[index].markedByCapacity);
+  quiet(entry, alias[index].markedByBoth);
+  rescued++;
+});
 
 const orphans = kept.filter((entry) => entry.aliases.length === 0);
 if (orphans.length) {
@@ -476,5 +582,7 @@ console.log('  integrated:  ' + count((g) => g.formFactor === 'integrated'));
 console.log('  workstation: ' + count((g) => g.formFactor === 'workstation'));
 console.log('  alias:       ' + aliasOwner.size);
 console.log('Descartadas: ' + JSON.stringify(dropped));
-console.log('Formas ambiguas dejadas sin dueño a propósito: ' + ambiguous);
+console.log('Formas cortas sin dueño por ambiguedad: ' + ambiguous.length);
+console.log('Tarjetas rescatadas con alias de señal explicita: ' + rescued);
 console.log('Colisiones directas de nombre exacto: ' + collisions.length);
+if (process.env.DEBUG_ALIAS) console.log(collisions.slice(0, 12).join('\n'));

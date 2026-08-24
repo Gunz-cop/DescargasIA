@@ -16,8 +16,13 @@
  *     exactamente el error que esta app existe para no cometer.
  *   - `vramGb > 0` salvo memoria unificada. Una GPU sin VRAM declarada y sin
  *     `unifiedMemory` haría que el motor calculara sobre cero.
- *   - `fileSizeGb` contra `paramsB * bpw / 8`. Atrapa la errata de un dígito:
- *     4,92 GB escrito 49,2 GB pasa desapercibido leyendo, no aquí.
+ *   - `fileSizeGb` creciente en el orden canónico de cuantización. Atrapa la
+ *     errata de un dígito —4,92 GB escrito 49,2 GB pasa desapercibido leyendo, no
+ *     aquí— y es independiente de los `bpw`, porque el orden es fijo.
+ *   - Ninguna forma corta ambigua con dueño. Si "rtx 4090" resolviera a la de
+ *     escritorio, quien tiene el portátil recibiría una promesa de 24 GB cuando
+ *     tiene 16 — el sesgo que esta app existe para corregir, y en la dirección
+ *     peligrosa. Se dejan sin dueño para que F2 ofrezca las dos candidatas.
  *   - Cobertura mínima de portátiles e integradas. Es el diferenciador del
  *     producto: si alguien recorta el JSON y se lleva por delante las variantes
  *     Laptop, la app vuelve a ser la que dejaba fuera al usuario que la motivó.
@@ -35,12 +40,30 @@ const MIN_LAPTOP = 30;
 const MIN_INTEGRATED = 10;
 
 /**
- * Margen entre el tamaño real del `.gguf` y el que predicen los bits por
- * parámetro. No es holgura para que quepan datos flojos: es lo que tolera que un
- * repo republique un requantizado algo distinto. Una errata de un dígito se sale
- * de aquí por un factor de diez.
+ * Orden canónico de las cuantizaciones, de menos a más bits. Un `.gguf` de un
+ * nivel superior SIEMPRE pesa más que el de uno inferior del mismo modelo: es una
+ * propiedad del formato, no de este catálogo, y por eso sirve de comprobación.
+ *
+ * Aquí estuvo antes la regla que pedía la spec original —`fileSizeGb` contra
+ * `paramsB * bpw / 8` al ±25 %— y no funcionaba en ninguna de sus dos formas.
+ * Con `bpw` nominales falla en modelos legítimos: en uno de 135 M la tabla de
+ * embeddings domina el archivo y un Q4_K_M sale a 6,3 bpw en vez de 4,85. Y con
+ * los `bpw` medidos de cada archivo —que es lo que guarda `models.json`, porque
+ * es lo que el motor necesita— la comprobación es tautológica: como
+ * `bpw = fileSizeGb * 8 / paramsB`, el desvío es cero salvo redondeo. Medido
+ * sobre las 288 comprobaciones reales, el máximo fue 0,16 % contra una
+ * tolerancia del 25 %: no podía fallar nunca. Un check que no puede fallar es
+ * peor que no tener ninguno, porque aparenta que algo vigila.
  */
-const SIZE_TOLERANCE = 0.25;
+const QUANT_ORDER = ['Q2_K', 'Q3_K_M', 'Q4_K_M', 'Q5_K_M', 'Q6_K', 'Q8_0'];
+
+/**
+ * Tolerancia absoluta para el redondeo a dos decimales. En SmolLM2-135M el
+ * archivo entero pesa 0,09 GB y dos niveles seguidos colapsan al mismo número; en
+ * cualquier modelo de tamaño normal, una errata de un dígito se sale de aquí por
+ * varios órdenes de magnitud.
+ */
+const SIZE_EPSILON = 0.02;
 
 const errors = [];
 const warnings = [];
@@ -172,7 +195,40 @@ for (const gpu of allGpus) {
   }
 }
 
-// --- 4. Cobertura ----------------------------------------------------------
+// --- 4. Formas cortas ambiguas ---------------------------------------------
+// La forma corta es el nombre sin sus dos desambiguadores: la capacidad y el
+// sufijo de portátil. Si dos GPUs se reducen a la misma forma corta y prometen
+// distinta memoria, esa forma no puede tener dueño. Ver docs/fases/F1.md.
+const bareForm = (name) =>
+  name
+    .toLowerCase()
+    .replace(/ \d+ ?gb\b/, '')
+    .replace(/ (laptop gpu|laptop|mobile|portatil)( max-q)?$/, '')
+    .trim();
+
+const byBareForm = new Map();
+for (const gpu of gpus) {
+  const form = bareForm(gpu.name);
+  if (!byBareForm.has(form)) byBareForm.set(form, []);
+  byBareForm.get(form).push(gpu);
+}
+
+let ambiguousForms = 0;
+for (const [form, group] of byBareForm) {
+  const memories = new Set(group.map((gpu) => (gpu.unifiedMemory ? 'unificada' : String(gpu.vramGb))));
+  if (memories.size < 2) continue;
+  ambiguousForms++;
+
+  const owner = aliasOwner.get(form);
+  if (!owner) continue;
+  errors.push(
+    'El alias "' + form + '" resuelve a ' + owner + ', pero lo comparten ' + group.length +
+      ' GPUs con distinta memoria (' + group.map((gpu) => gpu.id + ' ' + (gpu.vramGb ?? 'unificada') + ' GB').join(', ') +
+      '). Una forma corta ambigua no puede tener dueño: prometería memoria que quizá no existe.'
+  );
+}
+
+// --- 5. Cobertura ----------------------------------------------------------
 const byFormFactor = (formFactor) => gpus.filter((gpu) => gpu.formFactor === formFactor).length;
 
 if (byFormFactor('laptop') < MIN_LAPTOP) {
@@ -187,7 +243,7 @@ if (byFormFactor('integrated') < MIN_INTEGRATED) {
   );
 }
 
-// --- 5. Tamaños de los GGUF ------------------------------------------------
+// --- 6. Tamaños de los GGUF ------------------------------------------------
 const quantNames = new Set(quants.map((quant) => quant.name));
 
 for (const model of models) {
@@ -201,14 +257,20 @@ for (const model of models) {
     if (!quantNames.has(quant.name)) {
       warnings.push(model.id + ': "' + quant.name + '" no está en quants.json, así que se queda sin nota de calidad.');
     }
+  }
 
-    if (quant.fileSizeGb === undefined) continue;
-    const expected = (model.paramsB * quant.bpw) / 8;
-    const drift = Math.abs(quant.fileSizeGb / expected - 1);
-    if (drift > SIZE_TOLERANCE) {
+  // El tamaño tiene que crecer con la cuantización. Es lo que rompe si alguien
+  // edita un tamaño a mano y se come o añade un dígito.
+  const sized = QUANT_ORDER.map((name) => model.quants.find((quant) => quant.name === name)).filter(
+    (quant) => quant && quant.fileSizeGb !== undefined
+  );
+  for (let index = 1; index < sized.length; index++) {
+    const previous = sized[index - 1];
+    const current = sized[index];
+    if (current.fileSizeGb + SIZE_EPSILON < previous.fileSizeGb) {
       errors.push(
-        model.id + ' / ' + quant.name + ': el archivo pesa ' + quant.fileSizeGb + ' GB pero ' + model.paramsB +
-          ' B a ' + quant.bpw + ' bpw dan ' + expected.toFixed(2) + ' GB (' + Math.round(drift * 100) + ' % de desvío).'
+        model.id + ': ' + current.name + ' pesa ' + current.fileSizeGb + ' GB, menos que ' +
+          previous.name + ' (' + previous.fileSizeGb + ' GB). El tamaño tiene que crecer con la cuantización.'
       );
     }
   }
@@ -221,7 +283,7 @@ for (const model of models) {
   }
 }
 
-// --- 6. Casos de uso contra las categorías reales del sitio ----------------
+// --- 7. Casos de uso contra las categorías reales del sitio ----------------
 // Un `useCases` que no existe como categoría deja el bloque de "dónde aprender a
 // instalarlo" enlazando a una página que no se genera.
 const brandCategories = new Set(
@@ -243,6 +305,7 @@ console.log('GPUs:      ' + gpus.length + ' (' + byFormFactor('desktop') + ' esc
   ' portatil, ' + byFormFactor('integrated') + ' integrada, ' + byFormFactor('workstation') + ' workstation)');
 console.log('Apple:     ' + apple.length + ' chips de memoria unificada');
 console.log('Alias:     ' + aliasOwner.size + ' sin colisiones');
+console.log('Ambiguas:  ' + ambiguousForms + ' formas cortas sin dueno (escritorio/portatil o capacidad)');
 console.log('Modelos:   ' + models.length + ' en ' + new Set(models.map((m) => m.family)).size + ' familias');
 console.log('Cuantiz.:  ' + quants.length);
 
