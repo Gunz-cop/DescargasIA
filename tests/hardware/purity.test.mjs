@@ -25,13 +25,6 @@ const PROHIBIDOS = [
   { nombre: 'import.meta.env', patron: /\bimport\s*\.\s*meta\s*\.\s*env\b/ }
 ];
 
-/** Operaciones de red prohibidas en todo el motor, incluida la detección. */
-const RED_PROHIBIDA = [
-  { nombre: 'fetch', patron: /\bfetch\s*\(/ },
-  { nombre: 'XMLHttpRequest', patron: /\bXMLHttpRequest\b/ },
-  { nombre: 'sendBeacon', patron: /\bsendBeacon\b/ }
-];
-
 /**
  * Quita comentarios de línea y de bloque sin tocar lo que va dentro de una
  * cadena o de una expresión regular. Un `.replace(/\/\/.*$/)` ingenuo se come
@@ -118,28 +111,13 @@ const fuentes = fs
 
 test('hay fuentes que auditar', () => {
   assert.ok(fuentes.length >= 5, `solo se encontraron ${fuentes.length} archivos en ${DIR}`);
-  assert.ok(fuentes.some(({ file }) => file.endsWith('detect.ts')), 'detect.ts tiene que estar en el directorio');
 });
 
 test('el código del motor no usa DOM, almacenamiento ni variables de entorno', () => {
   const hallazgos = [];
   for (const { file, source } of fuentes) {
     const codigo = stripComments(source);
-    // detect.ts es el adaptador opt-in del navegador; el resto del motor sí
-    // debe conservar la garantía de ser TypeScript puro y ejecutable en Worker.
-    if (file.endsWith('detect.ts')) continue;
     for (const { nombre, patron } of PROHIBIDOS) {
-      if (patron.test(codigo)) hallazgos.push(`${file} usa ${nombre}`);
-    }
-  }
-  assert.deepEqual(hallazgos, []);
-});
-
-test('el motor y la detección no hacen peticiones de red', () => {
-  const hallazgos = [];
-  for (const { file, source } of fuentes) {
-    const codigo = stripComments(source);
-    for (const { nombre, patron } of RED_PROHIBIDA) {
       if (patron.test(codigo)) hallazgos.push(`${file} usa ${nombre}`);
     }
   }

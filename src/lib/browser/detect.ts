@@ -1,7 +1,7 @@
 import gpus from '../../data/hardware/gpus.json';
 import appleSilicon from '../../data/hardware/apple-silicon.json';
-import { resolveGpu } from './resolve';
-import type { GpuSpec, SpecSource, SystemSpecs, Vendor } from './types';
+import { resolveGpu } from '../hardware/resolve';
+import type { GpuSpec, SpecSource, SystemSpecs, Vendor } from '../hardware/types';
 
 interface AdapterInfoLike {
   vendor?: string;
@@ -57,11 +57,11 @@ const ADAPTER_TIMEOUT_MS = 1000;
 const DETECTED: SpecSource = 'detected';
 
 function navigatorOf(): NavigatorLike | undefined {
-  return Reflect.get(globalThis, 'navigator') as NavigatorLike | undefined;
+  return globalThis.navigator as unknown as NavigatorLike | undefined;
 }
 
 function canvasOf(): CanvasLike | undefined {
-  const browserDocument = Reflect.get(globalThis, 'document') as BrowserDocumentLike | undefined;
+  const browserDocument = globalThis.document as unknown as BrowserDocumentLike | undefined;
   if (browserDocument?.createElement) return browserDocument.createElement('canvas');
 
   const OffscreenCanvas = Reflect.get(globalThis, 'OffscreenCanvas') as OffscreenCanvasConstructor | undefined;

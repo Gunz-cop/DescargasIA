@@ -1,8 +1,8 @@
 import gpus from '../../data/hardware/gpus.json';
 import appleSilicon from '../../data/hardware/apple-silicon.json';
 import models from '../../data/hardware/models.json';
-import { canDetectHardware, detectHardware } from '../../lib/hardware/detect';
-import type { DetectedHardware } from '../../lib/hardware/detect';
+import { canDetectHardware, detectHardware } from '../../lib/browser/detect';
+import type { DetectedHardware } from '../../lib/browser/detect';
 import { formatContext, formatGb, formatTps } from '../../lib/hardware/format';
 import { recommend } from '../../lib/hardware/recommend';
 import { resolveGpu } from '../../lib/hardware/resolve';
@@ -529,7 +529,7 @@ export function initHardwareApp(root: HTMLElement): void {
     if (rawName && rawName !== lastParsedText) lastParsedText = rawName;
 
     const unknownGpu = Boolean(rawName && local.specs.gpu && !local.specs.gpu.id);
-    const lookupPromise = unknownGpu && rawName !== lastGpuLookupName
+    const lookupPromise = rawName && unknownGpu && rawName !== lastGpuLookupName
       ? postOptional('/api/hw/gpu-lookup', { name: rawName.slice(0, 256) })
       : Promise.resolve(null);
     if (unknownGpu && rawName) lastGpuLookupName = rawName;
