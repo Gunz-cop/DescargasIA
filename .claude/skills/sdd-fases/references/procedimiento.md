@@ -57,6 +57,14 @@ Sobre los criterios de aceptación:
 - **Una compuerta que prohíbe algo debe cubrir solo el código que puede cumplirla.** Si una fase posterior mete bajo esa regla un archivo que por naturaleza necesita lo prohibido, el autor queda entre romper el test o esquivarlo —y lo normal es que lo esquive: partir `document` en `['doc','ument'].join('')` deja el test verde mintiendo. Al ampliar el alcance de una regla, comprobá que todo lo que caerá dentro puede cumplirla; si no, separá los directorios.
 - **Cuidado con los criterios de ausencia.** Un criterio como «`grep -r "window" src/lib/` no devuelve ninguna línea» **no puede pasar nunca**: el propio código documenta la regla en un comentario y el grep la matchea. Si además el archivo que lo dispara está en `PROTEGIDOS`, la sesión ejecutora queda bloqueada sin salida. Comprobá las ausencias sobre el código **con los comentarios quitados**, en un test o en un `node -e`. `audit-specs.mjs` ya rechaza este patrón.
 
+## 5 bis. Poné los criterios en CI antes de repartir el trabajo
+
+Un criterio que corre a mano no es una compuerta: **quien lo declara cumplido es la misma sesión que escribió el código**. Eso funciona mientras el ejecutor sea bueno, y falla en silencio en cuanto no lo es. En este proyecto, antes de existir el CI, pasaron un validador que no podía fallar, un test esquivado partiendo `document` en dos trozos, un id de credencial inventado y dos errores de tipos que llegaron a la rama de integración.
+
+Un workflow de `pull_request` con un paso por criterio cuesta media hora y convierte cada uno en un check visible que el examinado no controla. **Es el requisito para delegar en un ejecutor que no conocés**: sin él, cada PR flojo se paga en tiempo de revisión en vez de ahorrarlo.
+
+Incluí siempre el typecheck. Es el criterio que más se olvida y el que atrapa los errores de integración entre fases, que por definición ninguna fase ve sola.
+
 ## 6. Validar las specs
 
 ```bash

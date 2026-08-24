@@ -47,6 +47,17 @@ function parseOs(text: string): SystemSpecs['os'] {
   return 'unknown';
 }
 
+/**
+ * El `value` de un `<select>` es `string`, y `SystemSpecs['os']` es un union
+ * cerrado. Sin este filtro, un `value` manipulado desde las devtools entra al
+ * motor como un sistema operativo que no existe.
+ */
+const OS_VALIDOS: SystemSpecs['os'][] = ['windows', 'macos', 'linux', 'unknown'];
+
+function asOs(value: string | undefined): SystemSpecs['os'] | undefined {
+  return OS_VALIDOS.find((os) => os === value);
+}
+
 function vendorOf(gpu: GpuSpec | null): Vendor | undefined {
   return gpu?.vendor;
 }
@@ -212,7 +223,7 @@ export function initHardwareApp(root: HTMLElement): void {
         : undefined,
       ram: fallbackRam ? { totalGb: fallbackRam, source: 'user' } : undefined,
       cpu: cpuInput?.value.trim() ? { rawName: cpuInput.value.trim(), source: 'user' } : undefined,
-      os: osInput?.value || parseOs(rawName)
+      os: asOs(osInput?.value) ?? parseOs(rawName)
     };
   };
 

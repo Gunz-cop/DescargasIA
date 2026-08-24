@@ -111,7 +111,9 @@ qué faltaba. Eso es un bug de la spec, no tuyo.
 
 **Integración:** todas las fases abren PR contra `claude/ai-model-compatibility-plan-ptlr3j`. Nada llega a `main` hasta que la app esté completa y verde: `deploy.yml` despliega en cada push a `main`.
 
-Validá las specs con `node .claude/skills/sdd-fases/scripts/audit-specs.mjs`.
+**Los criterios los corre GitHub, no el examinado.** `.github/workflows/ci.yml` ejecuta en cada pull request las mismas ocho comprobaciones que corre quien revisa: specs bien formadas, los tres audits, tests, tipos, build, enlazado y —si la rama trae Worker— `wrangler deploy --dry-run`. Cada una aparece como un check separado en el PR.
+
+Validá las specs en local con `node .claude/skills/sdd-fases/scripts/audit-specs.mjs`.
 
 ### Tablero
 
@@ -455,3 +457,5 @@ Cada agente que cierre una fase añade aquí una línea con lo que decidió y qu
 | 2026-08-24 | F6 | El criterio de salida estructurada comprueba que los tres endpoints pidan un esquema, no cuántas veces aparece `response_format` | Contar apariciones premia la duplicación: una función compartida que reciba el esquema como argumento es mejor diseño y solo tiene una |
 | 2026-08-24 | F6 | El bloque `kv_namespaces` es opcional en F6 y su `id` nunca puede ser un placeholder con forma de id real | `wrangler deploy --dry-run` no resuelve el namespace contra la cuenta, así que un id inventado pasa el criterio y falla en el despliegue. La caché es de F7 |
 | 2026-08-24 | F5/F2 | `detect.ts` se mueve a `src/lib/browser/`; `src/lib/hardware/` queda reservado al motor | El test de pureza prohíbe el DOM en ese directorio y la detección lo necesita. La contradicción empujó a la sesión a escribir `Reflect.get(globalThis, ['doc','ument'].join(''))` para que el regex no lo viera: el test quedaba verde mintiendo |
+| 2026-08-24 | — | Los criterios de aceptación corren en CI (`.github/workflows/ci.yml`) en cada PR | Hasta ahora los corría a mano quien revisaba, y quien los declaraba cumplidos era la misma sesión que escribía el código. Eso funciona con un buen ejecutor y falla en silencio con cualquier otro |
+| 2026-08-24 | — | `npx tsc --noEmit` pasa a ser criterio de todas las fases, no solo de F0 | F4 y F6 metieron dos errores de tipos a la rama de integración —los dos sobre `SystemSpecs.os`, uno de ellos sobre datos que llegan por red sin validar— y ninguna revisión los vio porque el criterio no existía |

@@ -16,6 +16,7 @@ import {
   lookupGpu,
   explainVerdict
 } from './ai';
+import type { SystemSpecs } from '../src/lib/hardware/types.ts';
 
 interface Env {
   ASSETS: { fetch: (request: Request) => Promise<Response> };
@@ -82,7 +83,18 @@ async function handleExplain(env: Env, request: Request): Promise<Response> {
   const lang = typeof body.lang === 'string' ? body.lang : 'es';
   if (!verdict || !specs || typeof specs !== 'object') return fail('missing_fields');
 
-  const result = await explainVerdict(env.AI, { verdict, specs, lang });
+  // `specs` viene de la red: `os` es parte del contrato de SystemSpecs y no se
+  // puede dar por supuesto. Un cuerpo sin `os` llegaba a explainVerdict como
+  // SystemSpecs incompleto.
+  const rawOs = (specs as { os?: unknown }).os;
+  const os: SystemSpecs['os'] =
+    rawOs === 'windows' || rawOs === 'macos' || rawOs === 'linux' ? rawOs : 'unknown';
+
+  const result = await explainVerdict(env.AI, {
+    verdict,
+    specs: { ...(specs as Omit<SystemSpecs, 'os'>), os },
+    lang
+  });
   return json({ ok: true, ...result });
 }
 
