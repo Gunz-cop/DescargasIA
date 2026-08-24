@@ -28,7 +28,23 @@ const t = useTranslations(lang);
 
   <div class="mt-6 grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-3">
     <label class="grid min-w-0 gap-2 sm:col-span-2 lg:col-span-3" for="hardware-free-input">
-      <span class="text-[14px] font-medium text-fai-ink">{t('hw.step1.free-label')}</span>
+      <span class="inline-flex flex-wrap items-center gap-2 text-[14px] font-medium text-fai-ink">
+        {t('hw.step1.free-label')}
+        <span
+          class="hardware-detected-chip"
+          data-hardware-detected-chip="gpu"
+          title={t('hw.detected.tooltip')}
+          aria-label={t('hw.detected.tooltip')}
+          hidden
+        >{t('hw.detected')}</span>
+        <span
+          class="hardware-detected-chip hardware-ai-chip"
+          data-hardware-ai-chip="gpu"
+          title={t('hw.ai-estimated')}
+          aria-label={t('hw.ai-estimated')}
+          hidden
+        >{t('hw.ai-estimated')}</span>
+      </span>
       <input
         id="hardware-free-input"
         name="gpu"
@@ -67,26 +83,51 @@ const t = useTranslations(lang);
       </summary>
       <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <label class="grid min-w-0 gap-2 sm:col-span-2" for="hardware-gpu-detail">
-          <span class="hardware-label">{t('hw.field.gpu')}</span>
+          <span class="hardware-label inline-flex flex-wrap items-center gap-2">
+            {t('hw.field.gpu')}
+            <span
+              class="hardware-detected-chip"
+              data-hardware-detected-chip="gpu"
+              title={t('hw.detected.tooltip')}
+              aria-label={t('hw.detected.tooltip')}
+              hidden
+            >{t('hw.detected')}</span>
+          </span>
           <input id="hardware-gpu-detail" type="text" class="hardware-input min-w-0 rounded-lg border border-fai-line bg-fai-card px-3 text-fai-ink" data-hardware-detail-gpu />
         </label>
         <label class="grid min-w-0 gap-2" for="hardware-vram">
-          <span class="hardware-label inline-flex items-center gap-2">
+          <span class="hardware-label inline-flex flex-wrap items-center gap-2">
             {t('hw.field.vram')}
             <Tooltip id={`hw-tooltip-${lang}-vram`} label={t('hw.tooltip.vram-label')} content={t('hw.tooltip.vram')} />
+            <span
+              class="hardware-detected-chip hardware-ai-chip"
+              data-hardware-ai-chip="gpu"
+              title={t('hw.ai-estimated')}
+              aria-label={t('hw.ai-estimated')}
+              hidden
+            >{t('hw.ai-estimated')}</span>
           </span>
           <input id="hardware-vram" name="vram" type="number" min="1" step="0.1" inputmode="decimal" placeholder="8" class="hardware-input min-w-0 rounded-lg border border-fai-line bg-fai-card px-3 text-fai-ink" data-hardware-vram />
         </label>
         <label class="grid min-w-0 gap-2" for="hardware-ram">
-          <span class="hardware-label">{t('hw.field.ram')}</span>
+          <span class="hardware-label inline-flex flex-wrap items-center gap-2">
+            {t('hw.field.ram')}
+            <span class="hardware-detected-chip" data-hardware-detected-chip="ram" title={t('hw.detected.tooltip')} aria-label={t('hw.detected.tooltip')} hidden>{t('hw.detected')}</span>
+          </span>
           <input id="hardware-ram" name="ram" type="number" min="1" step="1" inputmode="numeric" placeholder="16" class="hardware-input min-w-0 rounded-lg border border-fai-line bg-fai-card px-3 text-fai-ink" data-hardware-ram />
         </label>
         <label class="grid min-w-0 gap-2" for="hardware-cpu">
-          <span class="hardware-label">{t('hw.field.cpu')}</span>
+          <span class="hardware-label inline-flex flex-wrap items-center gap-2">
+            {t('hw.field.cpu')}
+            <span class="hardware-detected-chip" data-hardware-detected-chip="cpu" title={t('hw.detected.tooltip')} aria-label={t('hw.detected.tooltip')} hidden>{t('hw.detected')}</span>
+          </span>
           <input id="hardware-cpu" name="cpu" type="text" class="hardware-input min-w-0 rounded-lg border border-fai-line bg-fai-card px-3 text-fai-ink" data-hardware-cpu />
         </label>
         <label class="grid min-w-0 gap-2" for="hardware-os">
-          <span class="hardware-label">{t('hw.field.os')}</span>
+          <span class="hardware-label inline-flex flex-wrap items-center gap-2">
+            {t('hw.field.os')}
+            <span class="hardware-detected-chip" data-hardware-detected-chip="os" title={t('hw.detected.tooltip')} aria-label={t('hw.detected.tooltip')} hidden>{t('hw.detected')}</span>
+          </span>
           <select id="hardware-os" name="os" class="hardware-input min-w-0 rounded-lg border border-fai-line bg-fai-card px-3 text-fai-ink" data-hardware-os>
             <option value="">{t('hw.page.form.os.any')}</option>
             <option value="windows">Windows</option>

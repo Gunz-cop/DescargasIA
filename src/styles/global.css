@@ -645,6 +645,26 @@ summary::-webkit-details-marker {
   background: var(--fai-signal);
 }
 
+.hardware-detected-chip {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(15, 191, 143, 0.35);
+  border-radius: 999px;
+  padding: 0.2rem 0.45rem;
+  color: var(--fai-signal);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.hardware-ai-chip {
+  border-color: var(--fai-muted);
+  color: var(--fai-muted);
+}
+
 .hardware-command-label {
   margin-bottom: 0.35rem;
   color: var(--fai-ink);
