@@ -9,12 +9,15 @@ import type { Estimate, GpuSpec, ModelSpec, SpecSource, SystemSpecs, Vendor } fr
 
 type Copy = Record<string, string>;
 type RuntimeUrls = Record<'ollama' | 'lm-studio' | 'jan', string>;
+type AiGpuEstimate = Pick<NonNullable<SystemSpecs['gpu']>, 'vramGb' | 'bandwidthGbs' | 'vendor'>;
+type ApiRecord = Record<string, unknown>;
 
 const GPU_CATALOG = [...(gpus as GpuSpec[]), ...(appleSilicon as GpuSpec[])];
 const MODEL_CATALOG = models as ModelSpec[];
 const DEFAULT_CONTEXT = 4096;
 const MIN_CONTEXT = 2048;
 const MAX_CONTEXT = 131072;
+const API_TIMEOUT_MS = 6000;
 
 function numberFrom(value: string | null | undefined): number | undefined {
   if (!value) return undefined;
@@ -64,6 +67,75 @@ function parseJson<T>(value: string | undefined, fallback: T): T {
   } catch {
     return fallback;
   }
+}
+
+function asRecord(value: unknown): ApiRecord | null {
+  return value && typeof value === 'object' && !Array.isArray(value) ? value as ApiRecord : null;
+}
+
+function apiData(value: unknown): ApiRecord | null {
+  const record = asRecord(value);
+  if (!record || record.ok === false) return null;
+  return asRecord(record.data) ?? asRecord(record.result) ?? record;
+}
+
+function numberFromUnknown(value: unknown): number | undefined {
+  if (typeof value === 'number' && Number.isFinite(value) && value > 0) return value;
+  if (typeof value === 'string') return numberFrom(value);
+  return undefined;
+}
+
+function vendorFromUnknown(value: unknown): Vendor | undefined {
+  if (value === 'nvidia' || value === 'amd' || value === 'intel' || value === 'apple' || value === 'other') return value;
+  return undefined;
+}
+
+async function postOptional(path: string, body: unknown): Promise<unknown | null> {
+  const controller = typeof AbortController === 'undefined' ? null : new AbortController();
+  const timer = setTimeout(() => controller?.abort(), API_TIMEOUT_MS);
+  try {
+    const response = await fetch(path, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+      signal: controller?.signal
+    });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function partialSpecsFromApi(payload: unknown): Partial<SystemSpecs> | null {
+  const data = apiData(payload);
+  const specs = asRecord(data?.specs) ?? data;
+  return specs ? specs as Partial<SystemSpecs> : null;
+}
+
+function aiGpuFromApi(payload: unknown): AiGpuEstimate | null {
+  const data = apiData(payload);
+  const gpu = asRecord(data?.gpu) ?? data;
+  if (!gpu) return null;
+  const result: AiGpuEstimate = {
+    vramGb: numberFromUnknown(gpu.vramGb),
+    bandwidthGbs: numberFromUnknown(gpu.bandwidthGbs),
+    vendor: vendorFromUnknown(gpu.vendor)
+  };
+  return result.vramGb || result.bandwidthGbs || result.vendor ? result : null;
+}
+
+function explanationFromApi(payload: unknown): { text: string; tips: string[] } | null {
+  const data = apiData(payload);
+  if (!data) return null;
+  const explanation = asRecord(data.explanation);
+  const text = [data.text, data.message, data.explanation, explanation?.text]
+    .find((value): value is string => typeof value === 'string' && value.trim().length > 0);
+  const rawTips = data.tips ?? data.advice ?? explanation?.tips;
+  const tips = Array.isArray(rawTips) ? rawTips.filter((tip): tip is string => typeof tip === 'string' && tip.trim().length > 0) : [];
+  return text ? { text, tips } : null;
 }
 
 function setText(element: Element | null, value: string): void {
@@ -140,6 +212,9 @@ export function initHardwareApp(root: HTMLElement): void {
   const template = root.querySelector<HTMLTemplateElement>('[data-hardware-result-template]');
   const detectButton = root.querySelector<HTMLButtonElement>('[data-hardware-detect]');
   const detectedNote = root.querySelector<HTMLElement>('[data-hardware-detected-note]');
+  const aiExplanation = root.querySelector<HTMLElement>('[data-hardware-ai-explanation]');
+  const aiExplanationText = root.querySelector<HTMLElement>('[data-hardware-ai-explanation-text]');
+  const aiExplanationTips = root.querySelector<HTMLUListElement>('[data-hardware-ai-explanation-tips]');
   const runtimeUrls = parseJson<RuntimeUrls>(root.dataset.hwRuntimeUrls, { ollama: '#', 'lm-studio': '#', jan: '#' });
   const lang = root.dataset.hwLang ?? 'es';
 
@@ -147,10 +222,37 @@ export function initHardwareApp(root: HTMLElement): void {
 
   if (detectButton) detectButton.hidden = !canDetectHardware();
 
+  const setDetectedChip = (field: string, visible: boolean, suffix?: string) => {
+    root.querySelectorAll<HTMLElement>(`[data-hardware-detected-chip="${field}"]`).forEach((chip) => {
+      chip.hidden = !visible;
+      if (visible) chip.textContent = suffix ? `${textOf(root, 'detected')} · ${suffix}` : textOf(root, 'detected');
+    });
+  };
+
+  const setAiChip = (field: string, visible: boolean) => {
+    root.querySelectorAll<HTMLElement>(`[data-hardware-ai-chip="${field}"]`).forEach((chip) => {
+      chip.hidden = !visible;
+      if (visible) chip.textContent = textOf(root, 'aiEstimated');
+    });
+  };
+
+  const clearAiExplanation = () => {
+    if (aiExplanation) aiExplanation.hidden = true;
+    if (aiExplanationText) aiExplanationText.textContent = '';
+    if (aiExplanationTips) aiExplanationTips.replaceChildren();
+  };
+
   let selectedGpu: GpuSpec | null = null;
   let typedGpuConfirmed = false;
+  let aiGpuEstimate: AiGpuEstimate | null = null;
+  let ramWasEdited = false;
   let activeOption = -1;
   let contextTokens = clampContext(numberFrom(context.value) ?? DEFAULT_CONTEXT);
+  let remoteTimer: ReturnType<typeof setTimeout> | undefined;
+  let remoteSequence = 0;
+  let lastParsedText = '';
+  let lastGpuLookupName = '';
+  let lastExplainKey = '';
 
   const updateUrl = () => {
     const url = new URL(window.location.href);
@@ -193,22 +295,23 @@ export function initHardwareApp(root: HTMLElement): void {
   const buildSpecs = (): SystemSpecs | null => {
     const rawName = input.value.trim();
     const gpu = effectiveGpu();
+    const aiGpu = !gpu ? aiGpuEstimate : null;
     const explicitVram = numberFrom(vramInput?.value) ?? parseExplicitVram(rawName);
-    const explicitRam = numberFrom(ramInput?.value) ?? parseExplicitRam(rawName);
+    const explicitRam = (ramWasEdited ? numberFrom(ramInput?.value) : undefined) ?? parseExplicitRam(rawName);
     const generic = parseGenericGb(rawName);
     const fallbackRam = explicitRam ?? (generic.length > 0 ? generic[generic.length - 1] : undefined);
     if (!rawName && !gpu && !explicitVram && !fallbackRam) return null;
 
-    const gpuVram = gpu?.vramGb ?? explicitVram;
-    const gpuSource: SpecSource = gpu ? 'db' : 'user';
+    const gpuVram = gpu?.vramGb ?? explicitVram ?? aiGpu?.vramGb;
+    const gpuSource: SpecSource = gpu ? 'db' : aiGpu ? 'ai-estimate' : 'user';
     return {
       gpu: rawName || gpu
         ? {
             id: gpu?.id,
             rawName: rawName || gpu?.name || '',
             vramGb: gpuVram,
-            bandwidthGbs: gpu?.bandwidthGbs,
-            vendor: vendorOf(gpu),
+            bandwidthGbs: gpu?.bandwidthGbs ?? aiGpu?.bandwidthGbs,
+            vendor: vendorOf(gpu) ?? aiGpu?.vendor,
             unifiedMemory: gpu?.unifiedMemory,
             source: gpuSource
           }
@@ -285,12 +388,12 @@ export function initHardwareApp(root: HTMLElement): void {
     apply();
   };
 
-  const renderResults = () => {
+  const renderResults = (): { specs: SystemSpecs; estimates: Estimate[] } | null => {
     const specs = buildSpecs();
     groups.innerHTML = '';
     if (!specs) {
       setText(status, textOf(root, 'resultStart'));
-      return;
+      return null;
     }
 
     const estimates = recommend(specs, MODEL_CATALOG, { contextTokens });
@@ -322,6 +425,7 @@ export function initHardwareApp(root: HTMLElement): void {
       detailsElement.append(grid);
       groups.append(detailsElement);
     });
+    return { specs, estimates };
   };
 
   const createCard = (result: Estimate): HTMLElement => {
@@ -361,6 +465,112 @@ export function initHardwareApp(root: HTMLElement): void {
     return card;
   };
 
+  const applyParsedSpecs = (parsed: Partial<SystemSpecs>) => {
+    let changed = false;
+    const parsedGpu = parsed.gpu;
+    const parsedGpuMatch = parsedGpu?.id ? GPU_CATALOG.find((gpu) => gpu.id === parsedGpu.id) : null;
+    if (parsedGpuMatch && !effectiveGpu()) {
+      selectedGpu = parsedGpuMatch;
+      changed = true;
+    }
+    if (parsedGpu?.vramGb && vramInput && !numberFrom(vramInput.value)) {
+      vramInput.value = String(parsedGpu.vramGb);
+      changed = true;
+    }
+    if (parsed.ram?.totalGb && ramInput && !numberFrom(ramInput.value)) {
+      ramInput.value = String(parsed.ram.totalGb);
+      ramWasEdited = true;
+      setDetectedChip('ram', false);
+      changed = true;
+    }
+    if (parsed.cpu?.rawName && cpuInput && !cpuInput.value.trim()) {
+      cpuInput.value = parsed.cpu.rawName;
+      changed = true;
+    }
+    if (parsed.os && parsed.os !== 'unknown' && osInput && !osInput.value) {
+      osInput.value = parsed.os;
+      changed = true;
+    }
+    if (changed) apply();
+  };
+
+  const renderAiExplanation = (payload: unknown) => {
+    const explanation = explanationFromApi(payload);
+    if (!explanation || !aiExplanation || !aiExplanationText || !aiExplanationTips) return;
+    aiExplanationText.textContent = explanation.text;
+    aiExplanationTips.replaceChildren(...explanation.tips.map((tip) => {
+      const item = document.createElement('li');
+      item.textContent = tip;
+      return item;
+    }));
+    aiExplanation.hidden = false;
+  };
+
+  const runOptionalApis = async (
+    local: { specs: SystemSpecs; estimates: Estimate[] },
+    sequence: number
+  ) => {
+    const rawName = local.specs.gpu?.rawName?.trim();
+    const parsePromise = rawName && rawName !== lastParsedText
+      ? postOptional('/api/hw/parse', { text: rawName.slice(0, 1024), lang })
+      : Promise.resolve(null);
+    if (rawName && rawName !== lastParsedText) lastParsedText = rawName;
+
+    const unknownGpu = Boolean(rawName && local.specs.gpu && !local.specs.gpu.id);
+    const lookupPromise = unknownGpu && rawName !== lastGpuLookupName
+      ? postOptional('/api/hw/gpu-lookup', { name: rawName.slice(0, 256) })
+      : Promise.resolve(null);
+    if (unknownGpu && rawName) lastGpuLookupName = rawName;
+
+    const verdict = local.estimates.map((estimate) => ({
+      modelId: estimate.modelId,
+      quant: estimate.quant,
+      backend: estimate.backend,
+      verdict: estimate.verdict,
+      reason: estimate.reason,
+      memory: estimate.memory,
+      available: estimate.available,
+      contextTokens: estimate.contextTokens,
+      tokensPerSecond: estimate.tokensPerSecond
+    }));
+    const explainKey = JSON.stringify({ specs: local.specs, verdict, lang });
+    const explainPromise = explainKey !== lastExplainKey
+      ? postOptional('/api/hw/explain', { verdict, specs: local.specs, lang })
+      : Promise.resolve(null);
+    if (explainKey !== lastExplainKey) lastExplainKey = explainKey;
+
+    const [parsedPayload, lookupPayload, explanationPayload] = await Promise.all([
+      parsePromise,
+      lookupPromise,
+      explainPromise
+    ]);
+    if (sequence !== remoteSequence) return;
+
+    const parsed = partialSpecsFromApi(parsedPayload);
+    if (parsed) root.dispatchEvent(new CustomEvent('hardware:parsed', { detail: parsed }));
+
+    const aiGpu = aiGpuFromApi(lookupPayload);
+    if (aiGpu && rawName && input.value.trim() === rawName) {
+      aiGpuEstimate = aiGpu;
+      setAiChip('gpu', true);
+      if (aiGpu.vramGb && vramInput && !numberFrom(vramInput.value)) vramInput.value = String(aiGpu.vramGb);
+      apply();
+    }
+
+    renderAiExplanation(explanationPayload);
+  };
+
+  const scheduleOptionalApis = (local: { specs: SystemSpecs; estimates: Estimate[] } | null) => {
+    if (remoteTimer) clearTimeout(remoteTimer);
+    remoteSequence += 1;
+    clearAiExplanation();
+    if (!local) return;
+    const sequence = remoteSequence;
+    remoteTimer = setTimeout(() => {
+      void runOptionalApis(local, sequence);
+    }, 300);
+  };
+
   const apply = () => {
     updateFieldVisibility();
     if (detailGpu && input.value !== detailGpu.value && document.activeElement !== detailGpu) detailGpu.value = input.value;
@@ -368,13 +578,18 @@ export function initHardwareApp(root: HTMLElement): void {
     context.value = String(contextTokens);
     if (contextOutput) contextOutput.value = formatContext(contextTokens);
     updateUrl();
-    renderResults();
+    const local = renderResults();
     root.dispatchEvent(new CustomEvent('hardware:specs-change', { detail: buildSpecs() }));
+    scheduleOptionalApis(local);
   };
 
   input.addEventListener('input', () => {
     selectedGpu = selectedResolution().gpu;
     typedGpuConfirmed = false;
+    aiGpuEstimate = null;
+    lastGpuLookupName = '';
+    setAiChip('gpu', false);
+    setDetectedChip('gpu', false);
     renderOptions();
     apply();
   });
@@ -407,6 +622,20 @@ export function initHardwareApp(root: HTMLElement): void {
     if (field === detailGpu && detailGpu) {
       input.value = detailGpu.value;
       selectedGpu = selectedResolution().gpu;
+      aiGpuEstimate = null;
+      lastGpuLookupName = '';
+      setAiChip('gpu', false);
+      setDetectedChip('gpu', false);
+    } else if (field === vramInput) {
+      aiGpuEstimate = null;
+      setAiChip('gpu', false);
+    } else if (field === ramInput) {
+      ramWasEdited = true;
+      setDetectedChip('ram', false);
+    } else if (field === cpuInput) {
+      setDetectedChip('cpu', false);
+    } else if (field === osInput) {
+      setDetectedChip('os', false);
     }
     apply();
   }));
@@ -424,30 +653,47 @@ export function initHardwareApp(root: HTMLElement): void {
   root.addEventListener('hardware:detect-request', async () => {
     if (!detectButton) return;
     detectButton.disabled = true;
-    const detail = await detectHardware();
-    detectButton.disabled = false;
-    if (Object.keys(detail).length > 0) {
-      root.dispatchEvent(new CustomEvent('hardware:detected', { detail }));
+    try {
+      const detail = await detectHardware();
+      if (Object.keys(detail).length > 0) {
+        root.dispatchEvent(new CustomEvent('hardware:detected', { detail }));
+      }
+    } finally {
+      detectButton.disabled = false;
     }
   });
   root.addEventListener('hardware:detected', (event) => {
     const detail = (event as CustomEvent<Partial<SystemSpecs>>).detail;
     if (detail.gpu?.rawName) input.value = detail.gpu.rawName;
-    if (detail.ram?.totalGb && ramInput) ramInput.value = String(detail.ram.totalGb);
+    if (detail.ram?.totalGb && ramInput) {
+      ramInput.value = String(detail.ram.totalGb);
+      ramWasEdited = false;
+      setDetectedChip('ram', true, textOf(root, 'ramMinimum').replace('{value}', String(detail.ram.totalGb)));
+    } else setDetectedChip('ram', false);
     if (detail.gpu?.vramGb && vramInput) vramInput.value = String(detail.gpu.vramGb);
     if (detail.cpu?.rawName && cpuInput) cpuInput.value = detail.cpu.rawName;
     if (detail.os && detail.os !== 'unknown' && osInput) osInput.value = detail.os;
     selectedGpu = detail.gpu?.id ? GPU_CATALOG.find((gpu) => gpu.id === detail.gpu?.id) ?? null : selectedResolution().gpu;
+    aiGpuEstimate = null;
+    lastGpuLookupName = '';
+    setAiChip('gpu', false);
+    setDetectedChip('gpu', Boolean(detail.gpu?.rawName));
+    setDetectedChip('cpu', Boolean(detail.cpu?.rawName));
+    setDetectedChip('os', Boolean(detail.os && detail.os !== 'unknown'));
     typedGpuConfirmed = false;
-    setHidden(detectedNote, false);
+    setHidden(detectedNote, Object.keys(detail).length === 0);
     apply();
   });
-  root.addEventListener('hardware:parsed', (event) => root.dispatchEvent(new CustomEvent('hardware:detected', { detail: (event as CustomEvent).detail })));
+  root.addEventListener('hardware:parsed', (event) => {
+    const parsed = (event as CustomEvent<Partial<SystemSpecs>>).detail;
+    if (parsed) applyParsedSpecs(parsed);
+  });
 
   const url = new URL(window.location.href);
   input.value = url.searchParams.get('gpu') ?? '';
   if (vramInput) vramInput.value = url.searchParams.get('vram') ?? '';
   if (ramInput) ramInput.value = url.searchParams.get('ram') ?? '';
+  ramWasEdited = Boolean(url.searchParams.get('ram'));
   if (osInput) osInput.value = url.searchParams.get('os') ?? '';
   contextTokens = clampContext(numberFrom(url.searchParams.get('ctx')) ?? DEFAULT_CONTEXT);
   context.value = String(contextTokens);

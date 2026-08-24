@@ -109,6 +109,8 @@ const copy = {
   comboHint: t('hw.combo.hint'),
   comboUseTyped: t('hw.combo.use-typed'),
   comboTypedHint: t('hw.combo.typed-hint'),
+  detected: t('hw.detected'),
+  ramMinimum: t('hw.detected.minimum'),
   unifiedMemory: t('hw.result.unified-memory'),
   groupRoomy: t('hw.group.roomy'),
   groupWorks: t('hw.group.works'),
@@ -125,6 +127,7 @@ const copy = {
   unifiedNote: t('hw.result.unified-note'),
   noFitNote: t('hw.result.no-fit-note'),
   estimateNotice: t('hw.estimate-notice'),
+  aiEstimated: t('hw.ai-estimated'),
   memoryBar: t('hw.result.memory-bar')
 };
 
@@ -186,6 +189,12 @@ const runtimeUrls = {
 
         <p class="hardware-result-status" role="status" aria-live="polite" data-hardware-result-status>{t('hw.result.start')}</p>
         <div class="hardware-result-groups" data-hardware-result-groups></div>
+
+        <aside class="mt-6 rounded-xl border border-fai-line bg-fai-surface p-4" data-hardware-ai-explanation hidden aria-live="polite">
+          <p class="fai-mono-sm text-fai-muted">{t('hw.ai.explanation')}</p>
+          <p class="mt-2 text-[14px] leading-6 text-fai-ink-2" data-hardware-ai-explanation-text></p>
+          <ul class="mt-3 list-disc space-y-1 pl-5 text-[14px] leading-6 text-fai-muted" data-hardware-ai-explanation-tips></ul>
+        </aside>
 
         <div class="hardware-tooltip-row" aria-label={t('hw.result.explanations')}>
           <span>{t('hw.result.explanations')}</span>
