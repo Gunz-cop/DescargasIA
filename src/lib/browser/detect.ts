@@ -1,5 +1,3 @@
-import gpus from '../../data/hardware/gpus.json';
-import appleSilicon from '../../data/hardware/apple-silicon.json';
 import { resolveGpu } from '../hardware/resolve';
 import type { GpuSpec, SpecSource, SystemSpecs, Vendor } from '../hardware/types';
 
@@ -52,7 +50,6 @@ interface OffscreenCanvasConstructor {
   new (width: number, height: number): CanvasLike;
 }
 
-const GPU_CATALOG = [...(gpus as GpuSpec[]), ...(appleSilicon as GpuSpec[])];
 const ADAPTER_TIMEOUT_MS = 1000;
 const DETECTED: SpecSource = 'detected';
 
@@ -158,9 +155,9 @@ async function highEntropyPlatform(nav: NavigatorLike): Promise<{ platform?: str
   }
 }
 
-function detectedGpu(rawName: string | undefined, vendor: Vendor | undefined): SystemSpecs['gpu'] | undefined {
+function detectedGpu(rawName: string | undefined, vendor: Vendor | undefined, catalog: GpuSpec[]): SystemSpecs['gpu'] | undefined {
   if (!rawName) return undefined;
-  const resolved = resolveGpu(rawName, GPU_CATALOG).gpu;
+  const resolved = resolveGpu(rawName, catalog).gpu;
   return {
     id: resolved?.id,
     rawName,
@@ -169,9 +166,9 @@ function detectedGpu(rawName: string | undefined, vendor: Vendor | undefined): S
   };
 }
 
-function preferredGpuName(names: Array<string | undefined>): string | undefined {
+function preferredGpuName(names: Array<string | undefined>, catalog: GpuSpec[]): string | undefined {
   const available = names.filter((name): name is string => Boolean(name));
-  return available.find((name) => resolveGpu(name, GPU_CATALOG).gpu) ?? available[0];
+  return available.find((name) => resolveGpu(name, catalog).gpu) ?? available[0];
 }
 
 /** Whether the browser exposes a graphics API that makes detection useful. */
@@ -190,19 +187,19 @@ export type DetectedHardware = Partial<SystemSpecs> & {
   ramMinimumGb?: number;
 };
 
-export async function detectHardware(): Promise<DetectedHardware> {
+export async function detectHardware(catalog: GpuSpec[] = []): Promise<DetectedHardware> {
   try {
     const nav = navigatorOf();
     if (!nav) return {};
 
     const adapter = await adapterOf(nav);
     const adapterInfo = adapter?.info;
-    const rawName = preferredGpuName([adapterName(adapterInfo), webglRenderer()]);
+    const rawName = preferredGpuName([adapterName(adapterInfo), webglRenderer()], catalog);
     const vendor = vendorOf(adapterInfo?.vendor ?? rawName);
     const platform = await highEntropyPlatform(nav);
     const os = osOf(platform.platform);
     const result: DetectedHardware = {};
-    const gpu = detectedGpu(rawName, vendor);
+    const gpu = detectedGpu(rawName, vendor, catalog);
 
     if (gpu) result.gpu = gpu;
     if (nav.deviceMemory && Number.isFinite(nav.deviceMemory) && nav.deviceMemory > 0) {

@@ -10,7 +10,7 @@ import CommunityInsights from '../../components/CommunityInsights.astro';
 import { EDITORIAL_TEAM } from '../../data/editorial-team';
 import { getTranslatedTools, getTranslatedTool } from '../../utils/tools';
 import { getAlternatives, getKeepExploring } from '../../utils/related';
-import { homeUrl, toolUrl, categoryUrl, pageUrl, redirectUrl, absolute, buildAlternates } from '../../utils/links';
+import { homeUrl, toolUrl, categoryUrl, hardwareUrl, pageUrl, redirectUrl, absolute, buildAlternates } from '../../utils/links';
 import { useTranslations, languages } from '../../i18n/ui';
 import {
   formatDate,
@@ -21,6 +21,12 @@ import {
   PLATFORM_ORDER,
   type Lang
 } from '../../utils/brand';
+
+// Fichas de runtimes locales: la app de compatibilidad (/puedo-correr-ia)
+// existe para que, antes de instalar uno de estos, la persona sepa qué
+// modelo le conviene. Ver docs/fases/F8.md — "enlazar la app desde las
+// fichas de los runtimes".
+const RUNTIME_SLUGS = ['ollama', 'lm-studio', 'jan'];
 
 export async function getStaticPaths() {
   const locales = Object.keys(languages);
@@ -337,6 +343,18 @@ const metaChips = [
       <!-- En móvil cae entre la descripción y el CTA (mismo orden del DOM);
            en desktop queda en la columna izquierda sin desplazar la tarjeta
            de la derecha (lg:items-start). -->
+      <!-- Cierra el círculo del producto: quien llega a un runtime local
+           (Ollama, LM Studio, Jan) puede volver a la app de compatibilidad
+           para saber qué modelo le conviene antes de instalar nada. -->
+      {RUNTIME_SLUGS.includes(tool.slug) && (
+        <aside class="mt-5 rounded-[12px] border border-[rgba(15,191,143,.28)] bg-[rgba(15,191,143,.06)] p-4" aria-labelledby="hardware-tool-link-title">
+          <p id="hardware-tool-link-title" class="fai-mono-sm text-fai-signal">{t('hw.nav')}</p>
+          <a href={hardwareUrl(lang)} class="mt-2 inline-flex min-h-11 items-center text-[14px] font-medium text-fai-find transition-colors hover:text-fai-signal">
+            {t('hw.page.title')} <span aria-hidden="true" class="ml-1.5">→</span>
+          </a>
+        </aside>
+      )}
+
       <AdSlot slotId={`ad-tool-top-${tool.slug}`} format="bar" network="banner-320x50" eager class="mt-5" />
     </div>
 
