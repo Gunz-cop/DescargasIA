@@ -52,6 +52,8 @@ Sobre los criterios de aceptación:
 - Cada uno es un comando con su salida esperada. `npm test`, `node scripts/audit-x.mjs`, `npm run build`, `git diff --name-only | grep -c protegido` → 0.
 - Si un criterio es inevitablemente visual o manual (accesibilidad con lector de pantalla, recorrido en móvil), escribilo como **pasos numerados reproducibles** con el resultado esperado en cada uno, y marcalo `[manual]`. No lo dejes como adjetivo.
 - Si una fase no tiene ningún criterio ejecutable, la fase está mal cortada.
+- **No escribas criterios que cuenten apariciones de una cadena.** «`grep X` devuelve al menos 3 líneas» premia la duplicación y castiga el buen diseño: una función compartida que reciba lo que varía como argumento cumple el objetivo con una sola aparición. Comprobá el efecto, no la forma.
+- **Un placeholder con forma de dato real es peor que un hueco visible.** Un id de credencial inventado (`0a1b2c3d4e5f…`) pasa desapercibido a la lectura y muchas veces también a la validación —un `--dry-run` no resuelve un namespace contra la cuenta—, así que el criterio pasa y el fallo aparece en producción. Cuando una fase necesite un identificador que solo existe tras crear el recurso, la spec debe decir explícitamente que se deje fuera antes que inventarlo.
 - **Cuidado con los criterios de ausencia.** Un criterio como «`grep -r "window" src/lib/` no devuelve ninguna línea» **no puede pasar nunca**: el propio código documenta la regla en un comentario y el grep la matchea. Si además el archivo que lo dispara está en `PROTEGIDOS`, la sesión ejecutora queda bloqueada sin salida. Comprobá las ausencias sobre el código **con los comentarios quitados**, en un test o en un `node -e`. `audit-specs.mjs` ya rechaza este patrón.
 
 ## 6. Validar las specs
