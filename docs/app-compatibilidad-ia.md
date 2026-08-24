@@ -111,6 +111,8 @@ qué faltaba. Eso es un bug de la spec, no tuyo.
 
 **Integración:** todas las fases abren PR contra `claude/ai-model-compatibility-plan-ptlr3j`. Nada llega a `main` hasta que la app esté completa y verde: `deploy.yml` despliega en cada push a `main`.
 
+**Las lecciones de este proyecto se recogen en [`docs/lecciones-sdd.md`](lecciones-sdd.md)**, documento vivo que se actualiza en cada hallazgo. Es lo primero que debe leer quien traiga esta metodología a otro proyecto.
+
 **Los criterios los corre GitHub, no el examinado.** `.github/workflows/ci.yml` ejecuta en cada pull request las mismas ocho comprobaciones que corre quien revisa: specs bien formadas, los tres audits, tests, tipos, build, enlazado y —si la rama trae Worker— `wrangler deploy --dry-run`. Cada una aparece como un check separado en el PR.
 
 Validá las specs en local con `node .claude/skills/sdd-fases/scripts/audit-specs.mjs`.
