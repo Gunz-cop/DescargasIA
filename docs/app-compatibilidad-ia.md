@@ -111,7 +111,9 @@ qué faltaba. Eso es un bug de la spec, no tuyo.
 
 **Integración:** todas las fases abren PR contra `claude/ai-model-compatibility-plan-ptlr3j`. Nada llega a `main` hasta que la app esté completa y verde: `deploy.yml` despliega en cada push a `main`.
 
-Validá las specs con `node .claude/skills/sdd-fases/scripts/audit-specs.mjs`.
+**Los criterios los corre GitHub, no el examinado.** `.github/workflows/ci.yml` ejecuta en cada pull request las mismas ocho comprobaciones que corre quien revisa: specs bien formadas, los tres audits, tests, tipos, build, enlazado y —si la rama trae Worker— `wrangler deploy --dry-run`. Cada una aparece como un check separado en el PR.
+
+Validá las specs en local con `node .claude/skills/sdd-fases/scripts/audit-specs.mjs`.
 
 ### Tablero
 
@@ -452,3 +454,9 @@ Cada agente que cierre una fase añade aquí una línea con lo que decidió y qu
 | 2026-08-24 | F2 | `USE_CASE_ORDER` son los slugs de categoría del sitio, no los cuatro nombres que enumera la spec | El audit de F1 exige que cada `useCases[]` referencie una categoría existente, así que «razonamiento» y «resumen de documentos» no existen en los datos. Ver el comentario en #7 |
 | 2026-08-24 | F2 | Al desempatar, la capacidad escrita en el nombre es decoración; la que escribe la persona, pista | El catálogo llama «RTX 3060 12 GB» a la de sobremesa y «RTX 3060 Laptop GPU» a la portátil: puntuando el «12» ganaba siempre la portátil de 6 GB ante `rtx 3060`, que es el sesgo de la app al revés |
 | 2026-08-24 | F3/F4 | La fórmula de memoria que F3 escribió en `ModelTable.astro` es deuda deliberada; F4 la sustituye por `estimate()` y lo verifica un criterio | F3 va antes que F2 por cómo corté las fases, así que no había motor al que llamar. Dos fuentes de verdad para el número central del producto divergen en cuanto se toque una constante |
+| 2026-08-24 | F6 | El criterio de salida estructurada comprueba que los tres endpoints pidan un esquema, no cuántas veces aparece `response_format` | Contar apariciones premia la duplicación: una función compartida que reciba el esquema como argumento es mejor diseño y solo tiene una |
+| 2026-08-24 | F6 | El bloque `kv_namespaces` es opcional en F6 y su `id` nunca puede ser un placeholder con forma de id real | `wrangler deploy --dry-run` no resuelve el namespace contra la cuenta, así que un id inventado pasa el criterio y falla en el despliegue. La caché es de F7 |
+| 2026-08-24 | F5/F2 | `detect.ts` se mueve a `src/lib/browser/`; `src/lib/hardware/` queda reservado al motor | El test de pureza prohíbe el DOM en ese directorio y la detección lo necesita. La contradicción empujó a la sesión a escribir `Reflect.get(globalThis, ['doc','ument'].join(''))` para que el regex no lo viera: el test quedaba verde mintiendo |
+| 2026-08-24 | — | Los criterios de aceptación corren en CI (`.github/workflows/ci.yml`) en cada PR | Hasta ahora los corría a mano quien revisaba, y quien los declaraba cumplidos era la misma sesión que escribía el código. Eso funciona con un buen ejecutor y falla en silencio con cualquier otro |
+| 2026-08-24 | — | `npx tsc --noEmit` pasa a ser criterio de todas las fases, no solo de F0 | F4 y F6 metieron dos errores de tipos a la rama de integración —los dos sobre `SystemSpecs.os`, uno de ellos sobre datos que llegan por red sin validar— y ninguna revisión los vio porque el criterio no existía |
+| 2026-08-24 | F5 | `PROTEGIDOS` de F5 lista los tests ajenos uno por uno, no `tests/hardware/` entera | La spec exigía crear `detect-sin-red.test.mjs` dentro de un directorio que ella misma prohibía tocar: la fase quedaba sin salida legal. Es la causa de las tres iteraciones fallidas y del código ofuscado. `audit-specs.mjs` ya rechaza que un archivo que la fase posee caiga dentro de un PROTEGIDO |

@@ -94,6 +94,37 @@ for (const archivo of specs) {
     avisos.push(`${ruta}: todos los criterios son [manual]. Una fase sin ninguna compuerta automática suele estar mal cortada.`);
   }
 
+  /**
+   * Contradiccion que dejo una fase sin salida y costo tres iteraciones: la
+   * spec le exigia un archivo que su propia lista de PROTEGIDOS le prohibia
+   * tocar. Enfrentada a eso, la sesion no lo reporto — ofusco el codigo para
+   * pasar el test que no podia modificar.
+   *
+   * Ningun archivo que la fase POSEE puede caer dentro de un PROTEGIDO.
+   */
+  const bloqueProt = (texto.split(/^##+\s+PROTEGIDOS.*$/m)[1] ?? '').split(/^##+\s+/m)[0] ?? '';
+  const bloquePosee = (texto.split(/^##+\s+Archivos que posee.*$/m)[1] ?? '').split(/^##+\s+/m)[0] ?? '';
+  // Solo los items de lista: la prosa explicativa de un bloque tambien lleva
+  // backticks ("no `tests/` entera") y leerla como ruta da falsos positivos.
+  const rutasDeLista = (bloque) =>
+    [...bloque.matchAll(/^\s*-\s+(.*)$/gm)]
+      .flatMap((linea) => [...linea[1].matchAll(/`([^`]+)`/g)].map((m) => m[1]))
+      .filter((r) => r.includes('/') || r.includes('.'));
+
+  const rutasProt = rutasDeLista(bloqueProt);
+  const rutasPosee = rutasDeLista(bloquePosee);
+
+  for (const propio of rutasPosee) {
+    for (const prot of rutasProt) {
+      if (propio !== prot && propio.startsWith(prot)) {
+        errores.push(
+          `${ruta}: la fase posee \`${propio}\` pero PROTEGIDOS incluye \`${prot}\`.\n` +
+            `    La fase no puede escribir lo que se le pide. Afina el PROTEGIDO (lista los archivos ajenos uno por uno) en vez de proteger el directorio entero.`
+        );
+      }
+    }
+  }
+
   // PROTEGIDOS con contenido real, no la plantilla sin rellenar.
   const prot = (texto.split(/^##+\s+PROTEGIDOS.*$/m)[1] ?? '').split(/^##+\s+/m)[0] ?? '';
   const entradas = [...prot.matchAll(/^\s*-\s+`([^`]+)`/gm)].map((m) => m[1]);
