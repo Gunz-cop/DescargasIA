@@ -10,11 +10,18 @@ import type { Estimate, ModelSpec, SystemSpecs } from './types';
 import { bestQuant, estimate, verdictRank, type EstimateOptions } from './estimate.ts';
 
 /**
- * Los cuatro casos de uso del producto, en el orden en que se enseñan. Un
- * modelo puede estar en varios; los `useCases` que no estén aquí se muestran
- * después, en el orden en que aparezcan en los datos.
+ * Orden en que se enseñan los casos de uso. Son las categorías del sitio,
+ * porque es lo que `models.json` puede declarar: el audit de F1 exige que
+ * cada `useCases[]` referencie una categoría existente del catálogo. Un
+ * modelo puede estar en varias; las que no estén aquí se muestran después, en
+ * el orden en que aparezcan en los datos.
  */
-export const USE_CASE_ORDER = ['chat', 'codigo', 'razonamiento', 'documentos'] as const;
+export const USE_CASE_ORDER = [
+  'asistentes-ia',
+  'programacion',
+  'traduccion-redaccion-ia',
+  'modelos-locales'
+] as const;
 
 export interface RecommendOptions extends EstimateOptions {
   /** Longitud de contexto a la que se juzga cada modelo. Por defecto 4k. */

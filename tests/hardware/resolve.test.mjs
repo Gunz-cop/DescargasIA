@@ -10,37 +10,37 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import { normalizeGpuText, resolveGpu, RESOLVE_THRESHOLDS } from '../../src/lib/hardware/resolve.ts';
-import { gpus } from './fixtures/gpus.fixture.mjs';
+import { gpus } from './fixtures/catalog.mjs';
 
 /** 25 cadenas humanas → la GPU que la persona quería decir. */
 const HUMAN_STRINGS = [
-  ['rtx 3090', 'nvidia-rtx-3090'],
-  ['RTX3090', 'nvidia-rtx-3090'],
-  ['nvidia geforce rtx 3090', 'nvidia-rtx-3090'],
-  ['tengo una 3090', 'nvidia-rtx-3090'],
-  ['3060ti', 'nvidia-rtx-3060-ti'],
-  ['rtx 3060 ti', 'nvidia-rtx-3060-ti'],
-  ['RTX 3060Ti', 'nvidia-rtx-3060-ti'],
-  ['NVIDIA GeForce RTX 3060 Ti', 'nvidia-rtx-3060-ti'],
-  ['rtx 4060 laptop', 'nvidia-rtx-4060-laptop'],
-  ['laptop con RTX 4060', 'nvidia-rtx-4060-laptop'],
-  ['rtx 4060 portátil', 'nvidia-rtx-4060-laptop'],
-  ['RTX 4060 Laptop GPU', 'nvidia-rtx-4060-laptop'],
+  ['rtx 3090', 'nvidia-geforce-rtx-3090'],
+  ['RTX3090', 'nvidia-geforce-rtx-3090'],
+  ['nvidia geforce rtx 3090', 'nvidia-geforce-rtx-3090'],
+  ['tengo una 3090', 'nvidia-geforce-rtx-3090'],
+  ['3060ti', 'nvidia-geforce-rtx-3060-ti'],
+  ['rtx 3060 ti', 'nvidia-geforce-rtx-3060-ti'],
+  ['RTX 3060Ti', 'nvidia-geforce-rtx-3060-ti'],
+  ['NVIDIA GeForce RTX 3060 Ti', 'nvidia-geforce-rtx-3060-ti'],
+  ['rtx 4060 laptop', 'nvidia-geforce-rtx-4060-laptop-gpu'],
+  ['laptop con RTX 4060', 'nvidia-geforce-rtx-4060-laptop-gpu'],
+  ['rtx 4060 portátil', 'nvidia-geforce-rtx-4060-laptop-gpu'],
+  ['RTX 4060 Laptop GPU', 'nvidia-geforce-rtx-4060-laptop-gpu'],
   // La cadena cruda de WEBGL_debug_renderer_info, envoltorio ANGLE incluido.
   [
     'ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x00002820) Direct3D11 vs_5_0 ps_5_0, D3D11)',
-    'nvidia-rtx-4060-laptop'
+    'nvidia-geforce-rtx-4060-laptop-gpu'
   ],
-  ['rtx 4090 de sobremesa', 'nvidia-rtx-4090'],
-  ['RTX 4090 Laptop', 'nvidia-rtx-4090-laptop'],
-  ['rtx 3080 max-q', 'nvidia-rtx-3080-laptop-16gb'],
-  ['gtx1080ti', 'nvidia-gtx-1080-ti'],
-  ['GTX 1650', 'nvidia-gtx-1650'],
-  ['rx 6800 xt', 'amd-rx-6800-xt'],
-  ['radeon rx 7900 xtx', 'amd-rx-7900-xtx'],
-  ['una amd 6600', 'amd-rx-6600'],
-  ['intel arc a770', 'intel-arc-a770-16gb'],
-  ['iris xe', 'intel-iris-xe'],
+  ['rtx 4090 de sobremesa', 'nvidia-geforce-rtx-4090'],
+  ['RTX 4090 Laptop', 'nvidia-geforce-rtx-4090-laptop-gpu'],
+  ['rtx 3080 max-q', 'nvidia-geforce-rtx-3080-laptop-gpu-max-q'],
+  ['gtx1080ti', 'nvidia-geforce-gtx-1080-ti'],
+  ['GTX 1650', 'nvidia-geforce-gtx-1650'],
+  ['rx 6800 xt', 'amd-radeon-rx-6800-xt'],
+  ['radeon rx 7900 xtx', 'amd-radeon-rx-7900-xtx'],
+  ['una amd 6600', 'amd-radeon-rx-6600'],
+  ['intel arc a770', 'intel-arc-a770'],
+  ['radeon 780m', 'amd-radeon-780m'],
   ['macbook pro con m2 pro', 'apple-m2-pro'],
   ['Apple M1 Ultra', 'apple-m1-ultra']
 ];
@@ -61,8 +61,8 @@ test('la normalización separa dígitos de letras y limpia lo que mete el navega
   assert.equal(normalizeGpuText('3060ti'), '3060 ti');
   assert.equal(normalizeGpuText('  Gráfica   RTX  4060  '), 'grafica rtx 4060');
   assert.equal(
-    normalizeGpuText('ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 (0x00002803) Direct3D11)'),
-    'angle nvidia nvidia geforce rtx 4060 direct 3 d 11'
+    normalizeGpuText('ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 (0x00002803) Direct3D11 vs_5_0)'),
+    'nvidia nvidia geforce rtx 4060'
   );
 });
 
@@ -71,8 +71,8 @@ test('una forma corta ambigua entre escritorio y portátil no se resuelve: se pr
 
   assert.equal(gpu, null, 'resolver a escritorio prometería 24 GB a quien tiene 16');
   const ids = candidates.map((c) => c.id);
-  assert.ok(ids.includes('nvidia-rtx-4090'));
-  assert.ok(ids.includes('nvidia-rtx-4090-laptop'));
+  assert.ok(ids.includes('nvidia-geforce-rtx-4090'));
+  assert.ok(ids.includes('nvidia-geforce-rtx-4090-laptop-gpu'));
   assert.notEqual(
     candidates[0].vramGb,
     candidates[1].vramGb,
@@ -81,16 +81,30 @@ test('una forma corta ambigua entre escritorio y portátil no se resuelve: se pr
 });
 
 test('con una señal de formato la ambigüedad desaparece', () => {
-  assert.equal(resolveGpu('rtx 4090 laptop', gpus).gpu?.id, 'nvidia-rtx-4090-laptop');
-  assert.equal(resolveGpu('rtx 4090 portatil', gpus).gpu?.id, 'nvidia-rtx-4090-laptop');
-  assert.equal(resolveGpu('rtx 4090 desktop', gpus).gpu?.id, 'nvidia-rtx-4090');
-  assert.equal(resolveGpu('rtx 4090 de sobremesa', gpus).gpu?.id, 'nvidia-rtx-4090');
+  assert.equal(resolveGpu('rtx 4090 laptop', gpus).gpu?.id, 'nvidia-geforce-rtx-4090-laptop-gpu');
+  assert.equal(resolveGpu('rtx 4090 portatil', gpus).gpu?.id, 'nvidia-geforce-rtx-4090-laptop-gpu');
+  assert.equal(resolveGpu('rtx 4090 desktop', gpus).gpu?.id, 'nvidia-geforce-rtx-4090');
+  assert.equal(resolveGpu('rtx 4090 de sobremesa', gpus).gpu?.id, 'nvidia-geforce-rtx-4090');
 });
 
 test('la ambigüedad se aplica a todas las familias donde la VRAM difiere', () => {
-  for (const short of ['rtx 3080', 'rtx 3060', 'rtx 4090']) {
+  for (const short of ['rtx 3080', 'rtx 3060', 'rtx 4090', 'rtx 4060 ti']) {
     assert.equal(resolveGpu(short, gpus).gpu, null, `${short} no debería resolverse sola`);
   }
+});
+
+test('la duda no es solo escritorio contra portátil', () => {
+  // `rtx 4060 ti` son 8 GB o 16 según la edición, las dos de sobremesa.
+  const { gpu, candidates } = resolveGpu('rtx 4060 ti', gpus);
+  assert.equal(gpu, null);
+  assert.deepEqual(candidates.map((c) => c.vramGb).sort((a, b) => a - b), [8, 16]);
+  assert.deepEqual([...new Set(candidates.map((c) => c.formFactor))], ['desktop']);
+});
+
+test('la capacidad escrita deshace la duda', () => {
+  assert.equal(resolveGpu('rtx 3060 12gb', gpus).gpu?.vramGb, 12);
+  assert.equal(resolveGpu('rtx 3060 8 GB', gpus).gpu?.vramGb, 8);
+  assert.equal(resolveGpu('rtx 4060 ti 16gb', gpus).gpu?.vramGb, 16);
 });
 
 test('donde la VRAM coincide no se molesta a nadie preguntando', () => {
@@ -99,15 +113,21 @@ test('donde la VRAM coincide no se molesta a nadie preguntando', () => {
   assert.equal(resolveGpu('rtx 4060', gpus).gpu?.vramGb, 8);
 });
 
+test('una Max-Q se puede pedir a propósito', () => {
+  // `maxq` dice "portátil" y además distingue una variante real: si se
+  // tratara solo como señal de formato, nadie podría seleccionarla.
+  assert.match(resolveGpu('rtx 3080 max-q', gpus).gpu?.id ?? '', /max-q$/);
+  assert.doesNotMatch(resolveGpu('rtx 3080 laptop', gpus).gpu?.id ?? '', /max-q$/);
+});
+
 test('nunca se responde con una GPU cuya VRAM no es la que la persona tiene', () => {
   // La trampa concreta: "rtx 3060" a secas son 12 GB en sobremesa y 6 en
   // portátil. Contestar 12 es lo que hace fallar a las herramientas rivales.
   const { gpu, candidates } = resolveGpu('rtx 3060', gpus);
   assert.equal(gpu, null);
-  assert.deepEqual(
-    candidates.map((c) => c.vramGb).sort(),
-    [12, 6].sort()
-  );
+  const vrams = candidates.map((c) => c.vramGb);
+  assert.ok(vrams.includes(12), 'la de sobremesa son 12 GB');
+  assert.ok(vrams.includes(6), 'la portátil son 6 GB');
 });
 
 test('una GPU que no existe devuelve null y deja la vía de escape abierta', () => {

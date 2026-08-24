@@ -14,16 +14,15 @@ import {
   memoryBreakdown,
   offloadLayers
 } from '../../src/lib/hardware/estimate.ts';
-import { byId as models } from './fixtures/models.fixture.mjs';
-import { systemFor, cpuOnly } from './fixtures/specs.fixture.mjs';
+import { model, systemFor, cpuOnly } from './fixtures/catalog.mjs';
 
 const GIB = 1024 ** 3;
-const llama8b = models['llama-3.1-8b-instruct'];
-const llama70b = models['llama-3.3-70b-instruct'];
-const mixtral = models['mixtral-8x7b-instruct-v0.1'];
+const llama8b = model('llama-3.1-8b-instruct');
+const llama70b = model('llama-3.3-70b-instruct');
+const mixtral = model('mixtral-8x7b-instruct-v0.1');
 
 test('el caso que rompe a las herramientas rivales: RTX 4060 Laptop 8 GB + Llama-3.1-8B-Q4_K_M', async (t) => {
-  const laptop = systemFor('nvidia-rtx-4060-laptop', 16);
+  const laptop = systemFor('nvidia-geforce-rtx-4060-laptop-gpu', 16);
 
   await t.test('a 4k de contexto cabe entero en la VRAM', () => {
     const e = estimate(llama8b, 'Q4_K_M', laptop, 4096);
@@ -65,7 +64,7 @@ test('M2 Pro con 16 GB de memoria unificada', () => {
 });
 
 test('RTX 3090 de 24 GB: holgado y con margen para subir de cuantización', () => {
-  const desktop = systemFor('nvidia-rtx-3090', 32);
+  const desktop = systemFor('nvidia-geforce-rtx-3090', 32);
   const e = estimate(llama8b, 'Q4_K_M', desktop, 8192);
 
   assert.equal(e.backend, 'gpu');
@@ -75,7 +74,7 @@ test('RTX 3090 de 24 GB: holgado y con margen para subir de cuantización', () =
 });
 
 test('iGPU con 16 GB de RAM cae a CPU', () => {
-  const igpu = systemFor('intel-iris-xe', 16);
+  const igpu = systemFor('intel-iris-xe-graphics-96eu-mobile', 16);
   assert.equal(igpu.gpu.vramGb, undefined, 'una integrada no declara VRAM dedicada');
 
   const e = estimate(llama8b, 'Q4_K_M', igpu, 4096);
@@ -90,13 +89,13 @@ test('iGPU con 16 GB de RAM cae a CPU', () => {
 });
 
 test('sin GPU declarada también se responde por CPU', () => {
-  const e = estimate(models['llama-3.2-3b-instruct'], 'Q4_K_M', cpuOnly(8), 4096);
+  const e = estimate(model('llama-3.2-3b-instruct'), 'Q4_K_M', cpuOnly(8), 4096);
   assert.equal(e.backend, 'cpu');
   assert.notEqual(e.verdict, 'no-cabe');
 });
 
 test('RTX 4090 con un 70B: offload parcial, no milagro', () => {
-  const rig = systemFor('nvidia-rtx-4090', 64);
+  const rig = systemFor('nvidia-geforce-rtx-4090', 64);
   const e = estimate(llama70b, 'Q4_K_M', rig, 4096);
 
   assert.equal(e.backend, 'partial-offload');
@@ -109,7 +108,7 @@ test('RTX 4090 con un 70B: offload parcial, no milagro', () => {
 });
 
 test('un 70B en una portátil de 8 GB no cabe de ninguna manera', () => {
-  const laptop = systemFor('nvidia-rtx-4060-laptop', 8);
+  const laptop = systemFor('nvidia-geforce-rtx-4060-laptop-gpu', 8);
   const e = estimate(llama70b, 'Q4_K_M', laptop, 4096);
 
   assert.equal(e.verdict, 'no-cabe');
@@ -138,7 +137,7 @@ test('el KV cache en q8 ocupa la mitad que en f16', () => {
 });
 
 test('en MoE la velocidad se calcula sobre los parámetros activos', () => {
-  const rig = systemFor('nvidia-rtx-4090', 128);
+  const rig = systemFor('nvidia-geforce-rtx-4090', 128);
   const e = estimate(mixtral, 'Q4_K_M', rig, 4096);
   const dense = estimate(llama70b, 'Q3_K_M', rig, 4096);
 
@@ -150,7 +149,7 @@ test('en MoE la velocidad se calcula sobre los parámetros activos', () => {
 });
 
 test('la velocidad se devuelve siempre como rango, nunca como cifra exacta', () => {
-  const e = estimate(llama8b, 'Q4_K_M', systemFor('nvidia-rtx-3090', 32), 4096);
+  const e = estimate(llama8b, 'Q4_K_M', systemFor('nvidia-geforce-rtx-3090', 32), 4096);
   assert.ok(e.tokensPerSecond.min < e.tokensPerSecond.max);
 });
 
@@ -166,7 +165,7 @@ test('sin ancho de banda conocido no se inventa una velocidad', () => {
 });
 
 test('subir el contexto solo puede empeorar el veredicto, nunca mejorarlo', () => {
-  const laptop = systemFor('nvidia-rtx-4060-laptop', 16);
+  const laptop = systemFor('nvidia-geforce-rtx-4060-laptop-gpu', 16);
   const rank = { holgado: 0, funciona: 1, justo: 2, 'no-cabe': 3 };
   let previous = -1;
   for (const ctx of [2048, 4096, 8192, 16384, 32768, 65536, 131072]) {
@@ -178,7 +177,7 @@ test('subir el contexto solo puede empeorar el veredicto, nunca mejorarlo', () =
 
 test('pedir una cuantización que el modelo no publica es un error, no un silencio', () => {
   assert.throws(
-    () => estimate(llama8b, 'Q1_K_XS', systemFor('nvidia-rtx-3090', 32), 4096),
+    () => estimate(llama8b, 'Q1_K_XS', systemFor('nvidia-geforce-rtx-3090', 32), 4096),
     /Q1_K_XS/
   );
 });

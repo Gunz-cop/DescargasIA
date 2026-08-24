@@ -1,0 +1,927 @@
+{
+  "smollm2-135m-instruct": {
+    "hfRepo": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "configRepo": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "ggufRepo": "bartowski/SmolLM2-135M-Instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 134515008,
+    "numLayers": 30,
+    "numKvHeads": 3,
+    "headDim": 64,
+    "contextMax": 8192,
+    "quants": {
+      "Q2_K": 88202080,
+      "Q3_K_M": 93510496,
+      "Q4_K_M": 105454432,
+      "Q5_K_M": 112103776,
+      "Q6_K": 138383200,
+      "Q8_0": 144811360
+    }
+  },
+  "smollm2-360m-instruct": {
+    "hfRepo": "HuggingFaceTB/SmolLM2-360M-Instruct",
+    "configRepo": "HuggingFaceTB/SmolLM2-360M-Instruct",
+    "ggufRepo": "bartowski/SmolLM2-360M-Instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 361821120,
+    "numLayers": 32,
+    "numKvHeads": 5,
+    "headDim": 64,
+    "contextMax": 8192,
+    "quants": {
+      "Q2_K": 218674080,
+      "Q3_K_M": 234686880,
+      "Q4_K_M": 270590880,
+      "Q5_K_M": 289944480,
+      "Q6_K": 367358880,
+      "Q8_0": 386405280
+    }
+  },
+  "smollm2-1.7b-instruct": {
+    "hfRepo": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "configRepo": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "ggufRepo": "bartowski/SmolLM2-1.7B-Instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 1711376384,
+    "numLayers": 24,
+    "numKvHeads": 32,
+    "headDim": 64,
+    "contextMax": 8192,
+    "quants": {
+      "Q2_K": 674583520,
+      "Q3_K_M": 860181472,
+      "Q4_K_M": 1055609824,
+      "Q5_K_M": 1225479136,
+      "Q6_K": 1405965280,
+      "Q8_0": 1820414944
+    }
+  },
+  "qwen3-0.6b": {
+    "hfRepo": "Qwen/Qwen3-0.6B",
+    "configRepo": "Qwen/Qwen3-0.6B",
+    "ggufRepo": "bartowski/Qwen_Qwen3-0.6B-GGUF",
+    "license": "apache-2.0",
+    "params": 751632384,
+    "numLayers": 28,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "quants": {
+      "Q2_K": 347288992,
+      "Q3_K_M": 413979040,
+      "Q4_K_M": 484220320,
+      "Q5_K_M": 551378336,
+      "Q6_K": 622733728,
+      "Q8_0": 804753824
+    }
+  },
+  "qwen2.5-0.5b-instruct": {
+    "hfRepo": "Qwen/Qwen2.5-0.5B-Instruct",
+    "configRepo": "Qwen/Qwen2.5-0.5B-Instruct",
+    "ggufRepo": "bartowski/Qwen2.5-0.5B-Instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 494032768,
+    "numLayers": 24,
+    "numKvHeads": 2,
+    "headDim": 64,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 338607520,
+      "Q3_K_M": 355466656,
+      "Q4_K_M": 397808192,
+      "Q5_K_M": 420086336,
+      "Q6_K": 505736768,
+      "Q8_0": 531068480
+    }
+  },
+  "gemma-3-1b-it": {
+    "hfRepo": "google/gemma-3-1b-it",
+    "configRepo": "unsloth/gemma-3-1b-it",
+    "ggufRepo": "unsloth/gemma-3-1b-it-GGUF",
+    "license": "gemma",
+    "params": 999885952,
+    "numLayers": 26,
+    "numKvHeads": 1,
+    "headDim": 256,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 689814560,
+      "Q3_K_M": 722416160,
+      "Q4_K_M": 806058272,
+      "Q5_K_M": 851345696,
+      "Q6_K": 1011738656,
+      "Q8_0": 1069306400
+    }
+  },
+  "llama-3.2-1b-instruct": {
+    "hfRepo": "meta-llama/Llama-3.2-1B-Instruct",
+    "configRepo": "unsloth/Llama-3.2-1B-Instruct",
+    "ggufRepo": "bartowski/Llama-3.2-1B-Instruct-GGUF",
+    "license": "llama3.2",
+    "params": 1235814400,
+    "numLayers": 16,
+    "numKvHeads": 8,
+    "headDim": 64,
+    "contextMax": 131072,
+    "quants": {
+      "Q4_K_M": 807694464,
+      "Q5_K_M": 911503488,
+      "Q6_K": 1021800576,
+      "Q8_0": 1321083008
+    }
+  },
+  "qwen2.5-1.5b-instruct": {
+    "hfRepo": "Qwen/Qwen2.5-1.5B-Instruct",
+    "configRepo": "Qwen/Qwen2.5-1.5B-Instruct",
+    "ggufRepo": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 1543714304,
+    "numLayers": 28,
+    "numKvHeads": 2,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 676304992,
+      "Q3_K_M": 824178784,
+      "Q4_K_M": 986048768,
+      "Q5_K_M": 1125050624,
+      "Q6_K": 1272740096,
+      "Q8_0": 1646573312
+    }
+  },
+  "deepseek-r1-distill-qwen-1.5b": {
+    "hfRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    "configRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+    "ggufRepo": "bartowski/DeepSeek-R1-Distill-Qwen-1.5B-GGUF",
+    "license": "mit",
+    "params": 1777088000,
+    "numLayers": 28,
+    "numKvHeads": 2,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 752880224,
+      "Q3_K_M": 924456032,
+      "Q4_K_M": 1117320800,
+      "Q5_K_M": 1285494368,
+      "Q6_K": 1464178784,
+      "Q8_0": 1894532192
+    }
+  },
+  "qwen3-1.7b": {
+    "hfRepo": "Qwen/Qwen3-1.7B",
+    "configRepo": "Qwen/Qwen3-1.7B",
+    "ggufRepo": "bartowski/Qwen_Qwen3-1.7B-GGUF",
+    "license": "apache-2.0",
+    "params": 2031739904,
+    "numLayers": 28,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "quants": {
+      "Q2_K": 879896992,
+      "Q3_K_M": 1073242528,
+      "Q4_K_M": 1282439584,
+      "Q5_K_M": 1471805856,
+      "Q6_K": 1673007520,
+      "Q8_0": 2165039520
+    }
+  },
+  "granite-3.1-2b-instruct": {
+    "hfRepo": "ibm-granite/granite-3.1-2b-instruct",
+    "configRepo": "ibm-granite/granite-3.1-2b-instruct",
+    "ggufRepo": "bartowski/granite-3.1-2b-instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 2533531648,
+    "numLayers": 40,
+    "numKvHeads": 8,
+    "headDim": 64,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 978245184,
+      "Q3_K_M": 1251726912,
+      "Q4_K_M": 1545295424,
+      "Q5_K_M": 1804817984,
+      "Q6_K": 2080560704,
+      "Q8_0": 2694110208
+    }
+  },
+  "gemma-2-2b-it": {
+    "hfRepo": "google/gemma-2-2b-it",
+    "configRepo": "unsloth/gemma-2-2b-it",
+    "ggufRepo": "bartowski/gemma-2-2b-it-GGUF",
+    "license": "gemma",
+    "params": 2614341888,
+    "numLayers": 26,
+    "numKvHeads": 4,
+    "headDim": 256,
+    "contextMax": 8192,
+    "quants": {
+      "Q4_K_M": 1708582752,
+      "Q5_K_M": 1923278688,
+      "Q6_K": 2151393120,
+      "Q8_0": 2784495456
+    }
+  },
+  "llama-3.2-3b-instruct": {
+    "hfRepo": "meta-llama/Llama-3.2-3B-Instruct",
+    "configRepo": "unsloth/Llama-3.2-3B-Instruct",
+    "ggufRepo": "bartowski/Llama-3.2-3B-Instruct-GGUF",
+    "license": "llama3.2",
+    "params": 3212749824,
+    "numLayers": 28,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q4_K_M": 2019377696,
+      "Q5_K_M": 2322154016,
+      "Q6_K": 2643853856,
+      "Q8_0": 3421899296
+    }
+  },
+  "qwen2.5-3b-instruct": {
+    "hfRepo": "Qwen/Qwen2.5-3B-Instruct",
+    "configRepo": "Qwen/Qwen2.5-3B-Instruct",
+    "ggufRepo": "bartowski/Qwen2.5-3B-Instruct-GGUF",
+    "license": "qwen-research",
+    "params": 3085938688,
+    "numLayers": 36,
+    "numKvHeads": 2,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 1274756256,
+      "Q3_K_M": 1590475936,
+      "Q4_K_M": 1929903264,
+      "Q5_K_M": 2224815264,
+      "Q6_K": 2538159264,
+      "Q8_0": 3285476512
+    }
+  },
+  "phi-3.5-mini-instruct": {
+    "hfRepo": "microsoft/Phi-3.5-mini-instruct",
+    "configRepo": "microsoft/Phi-3.5-mini-instruct",
+    "ggufRepo": "bartowski/Phi-3.5-mini-instruct-GGUF",
+    "license": "mit",
+    "params": 3821079552,
+    "numLayers": 32,
+    "numKvHeads": 32,
+    "headDim": 96,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 1416204576,
+      "Q3_K_M": 1955477280,
+      "Q4_K_M": 2393232672,
+      "Q5_K_M": 2815276320,
+      "Q6_K": 3135853344,
+      "Q8_0": 4061222688
+    }
+  },
+  "phi-4-mini-instruct": {
+    "hfRepo": "microsoft/Phi-4-mini-instruct",
+    "configRepo": "microsoft/Phi-4-mini-instruct",
+    "ggufRepo": "bartowski/microsoft_Phi-4-mini-instruct-GGUF",
+    "license": "mit",
+    "params": 3836021760,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 1682636160,
+      "Q3_K_M": 2117533056,
+      "Q4_K_M": 2491874688,
+      "Q5_K_M": 2848128384,
+      "Q6_K": 3155623296,
+      "Q8_0": 4084611456
+    }
+  },
+  "qwen3-4b": {
+    "hfRepo": "Qwen/Qwen3-4B",
+    "configRepo": "Qwen/Qwen3-4B",
+    "ggufRepo": "bartowski/Qwen_Qwen3-4B-GGUF",
+    "license": "apache-2.0",
+    "params": 4022468096,
+    "numLayers": 36,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "quants": {
+      "Q2_K": 1669499840,
+      "Q3_K_M": 2075618240,
+      "Q4_K_M": 2497280960,
+      "Q5_K_M": 2889513920,
+      "Q6_K": 3306261440,
+      "Q8_0": 4280405440
+    }
+  },
+  "gemma-3-4b-it": {
+    "hfRepo": "google/gemma-3-4b-it",
+    "configRepo": "unsloth/gemma-3-4b-it",
+    "ggufRepo": "unsloth/gemma-3-4b-it-GGUF",
+    "license": "gemma",
+    "params": 4300079472,
+    "numLayers": 34,
+    "numKvHeads": 4,
+    "headDim": 256,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 1729164416,
+      "Q3_K_M": 2098459776,
+      "Q4_K_M": 2489894016,
+      "Q5_K_M": 2829698176,
+      "Q6_K": 3190740096,
+      "Q8_0": 4130402176
+    }
+  },
+  "deepseek-coder-6.7b-instruct": {
+    "hfRepo": "deepseek-ai/deepseek-coder-6.7b-instruct",
+    "configRepo": "deepseek-ai/deepseek-coder-6.7b-instruct",
+    "ggufRepo": "TheBloke/deepseek-coder-6.7B-instruct-GGUF",
+    "license": "deepseek",
+    "params": 6740512768,
+    "numLayers": 32,
+    "numKvHeads": 32,
+    "headDim": 128,
+    "contextMax": 16384,
+    "quants": {
+      "Q2_K": 2827706592,
+      "Q3_K_M": 3299877088,
+      "Q4_K_M": 4083015904,
+      "Q5_K_M": 4785299680,
+      "Q6_K": 5531476192,
+      "Q8_0": 7163879648
+    }
+  },
+  "mistral-7b-instruct-v0.3": {
+    "hfRepo": "mistralai/Mistral-7B-Instruct-v0.3",
+    "configRepo": "mistralai/Mistral-7B-Instruct-v0.3",
+    "ggufRepo": "bartowski/Mistral-7B-Instruct-v0.3-GGUF",
+    "license": "apache-2.0",
+    "params": 7248023552,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 2722877664,
+      "Q3_K_M": 3522941152,
+      "Q4_K_M": 4372812000,
+      "Q5_K_M": 5136175328,
+      "Q6_K": 5947248864,
+      "Q8_0": 7702565088
+    }
+  },
+  "qwen2.5-7b-instruct": {
+    "hfRepo": "Qwen/Qwen2.5-7B-Instruct",
+    "configRepo": "Qwen/Qwen2.5-7B-Instruct",
+    "ggufRepo": "bartowski/Qwen2.5-7B-Instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 7615616512,
+    "numLayers": 28,
+    "numKvHeads": 4,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 3015940800,
+      "Q3_K_M": 3808391872,
+      "Q4_K_M": 4683074240,
+      "Q5_K_M": 5444831936,
+      "Q6_K": 6254199488,
+      "Q8_0": 8098525888
+    }
+  },
+  "qwen2.5-coder-7b-instruct": {
+    "hfRepo": "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "configRepo": "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "ggufRepo": "bartowski/Qwen2.5-Coder-7B-Instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 7615616512,
+    "numLayers": 28,
+    "numKvHeads": 4,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 3015940896,
+      "Q3_K_M": 3808391968,
+      "Q4_K_M": 4683074336,
+      "Q5_K_M": 5444832032,
+      "Q6_K": 6254199584,
+      "Q8_0": 8098525984
+    }
+  },
+  "deepseek-r1-distill-qwen-7b": {
+    "hfRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+    "configRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+    "ggufRepo": "bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF",
+    "license": "mit",
+    "params": 7615616512,
+    "numLayers": 28,
+    "numKvHeads": 4,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 3015940064,
+      "Q3_K_M": 3808391136,
+      "Q4_K_M": 4683073504,
+      "Q5_K_M": 5444831200,
+      "Q6_K": 6254198752,
+      "Q8_0": 8098525152
+    }
+  },
+  "llama-3-8b-instruct": {
+    "hfRepo": "meta-llama/Meta-Llama-3-8B-Instruct",
+    "configRepo": "unsloth/llama-3-8b-Instruct",
+    "ggufRepo": "QuantFactory/Meta-Llama-3-8B-Instruct-GGUF",
+    "license": "llama3",
+    "params": 8030261248,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 8192,
+    "quants": {
+      "Q2_K": 3179131456,
+      "Q3_K_M": 4018917952,
+      "Q4_K_M": 4920734272,
+      "Q5_K_M": 5732987456,
+      "Q6_K": 6596006464,
+      "Q8_0": 8540770880
+    }
+  },
+  "llama-3.1-8b-instruct": {
+    "hfRepo": "meta-llama/Llama-3.1-8B-Instruct",
+    "configRepo": "unsloth/Meta-Llama-3.1-8B-Instruct",
+    "ggufRepo": "bartowski/Meta-Llama-3.1-8B-Instruct-GGUF",
+    "license": "llama3.1",
+    "params": 8030261248,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 3179136416,
+      "Q3_K_M": 4018922912,
+      "Q4_K_M": 4920739232,
+      "Q5_K_M": 5732992416,
+      "Q6_K": 6596011424,
+      "Q8_0": 8540775840
+    }
+  },
+  "deepseek-r1-distill-llama-8b": {
+    "hfRepo": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    "configRepo": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
+    "ggufRepo": "bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF",
+    "license": "mit",
+    "params": 8030261248,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 3179133792,
+      "Q3_K_M": 4018920288,
+      "Q4_K_M": 4920736608,
+      "Q5_K_M": 5732989792,
+      "Q6_K": 6596008800,
+      "Q8_0": 8540773216
+    }
+  },
+  "granite-3.1-8b-instruct": {
+    "hfRepo": "ibm-granite/granite-3.1-8b-instruct",
+    "configRepo": "ibm-granite/granite-3.1-8b-instruct",
+    "ggufRepo": "bartowski/granite-3.1-8b-instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 8170848256,
+    "numLayers": 40,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 3103590880,
+      "Q3_K_M": 3996584416,
+      "Q4_K_M": 4942858720,
+      "Q5_K_M": 5797448160,
+      "Q6_K": 6705449440,
+      "Q8_0": 8684246400
+    }
+  },
+  "qwen3-8b": {
+    "hfRepo": "Qwen/Qwen3-8B",
+    "configRepo": "Qwen/Qwen3-8B",
+    "ggufRepo": "bartowski/Qwen_Qwen3-8B-GGUF",
+    "license": "apache-2.0",
+    "params": 8190735360,
+    "numLayers": 36,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "quants": {
+      "Q2_K": 3281733152,
+      "Q3_K_M": 4124161568,
+      "Q4_K_M": 5027784224,
+      "Q5_K_M": 5851112992,
+      "Q6_K": 6725899808,
+      "Q8_0": 8709518880
+    }
+  },
+  "llama-3.1-nemotron-nano-8b-v1": {
+    "hfRepo": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "configRepo": "nvidia/Llama-3.1-Nemotron-Nano-8B-v1",
+    "ggufRepo": "bartowski/nvidia_Llama-3.1-Nemotron-Nano-8B-v1-GGUF",
+    "license": "nvidia-open-model-license",
+    "params": 8030261248,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 3179134048,
+      "Q3_K_M": 4018920544,
+      "Q4_K_M": 4920736864,
+      "Q5_K_M": 5732990048,
+      "Q6_K": 6596009056,
+      "Q8_0": 8540773472
+    }
+  },
+  "gemma-2-9b-it": {
+    "hfRepo": "google/gemma-2-9b-it",
+    "configRepo": "unsloth/gemma-2-9b-it",
+    "ggufRepo": "bartowski/gemma-2-9b-it-GGUF",
+    "license": "gemma",
+    "params": 9241705984,
+    "numLayers": 42,
+    "numKvHeads": 8,
+    "headDim": 256,
+    "contextMax": 8192,
+    "quants": {
+      "Q2_K": 3805397952,
+      "Q3_K_M": 4761781184,
+      "Q4_K_M": 5761057728,
+      "Q5_K_M": 6647366592,
+      "Q6_K": 7589069760,
+      "Q8_0": 9827148736
+    }
+  },
+  "gemma-3-12b-it": {
+    "hfRepo": "google/gemma-3-12b-it",
+    "configRepo": "unsloth/gemma-3-12b-it",
+    "ggufRepo": "unsloth/gemma-3-12b-it-GGUF",
+    "license": "gemma",
+    "params": 12187325040,
+    "numLayers": 48,
+    "numKvHeads": 8,
+    "headDim": 256,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 4768221536,
+      "Q3_K_M": 6008818016,
+      "Q4_K_M": 7300778336,
+      "Q5_K_M": 8445036896,
+      "Q6_K": 9660811616,
+      "Q8_0": 12510212576
+    }
+  },
+  "mistral-nemo-instruct-2407": {
+    "hfRepo": "mistralai/Mistral-Nemo-Instruct-2407",
+    "configRepo": "mistralai/Mistral-Nemo-Instruct-2407",
+    "ggufRepo": "bartowski/Mistral-Nemo-Instruct-2407-GGUF",
+    "license": "apache-2.0",
+    "params": 12247782400,
+    "numLayers": 40,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 4791051392,
+      "Q3_K_M": 6083093632,
+      "Q4_K_M": 7477208192,
+      "Q5_K_M": 8727635072,
+      "Q6_K": 10056213632,
+      "Q8_0": 13022372992
+    }
+  },
+  "phi-4": {
+    "hfRepo": "microsoft/phi-4",
+    "configRepo": "microsoft/phi-4",
+    "ggufRepo": "bartowski/phi-4-GGUF",
+    "license": "mit",
+    "params": 14659507200,
+    "numLayers": 40,
+    "numKvHeads": 10,
+    "headDim": 128,
+    "contextMax": 16384,
+    "quants": {
+      "Q2_K": 5547348416,
+      "Q3_K_M": 7363269056,
+      "Q4_K_M": 9053114816,
+      "Q5_K_M": 10604188096,
+      "Q6_K": 12030251456,
+      "Q8_0": 15580500416
+    }
+  },
+  "qwen2.5-14b-instruct": {
+    "hfRepo": "Qwen/Qwen2.5-14B-Instruct",
+    "configRepo": "Qwen/Qwen2.5-14B-Instruct",
+    "ggufRepo": "bartowski/Qwen2.5-14B-Instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 14770033664,
+    "numLayers": 48,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 5770498176,
+      "Q3_K_M": 7339204736,
+      "Q4_K_M": 8988110976,
+      "Q5_K_M": 10508873856,
+      "Q6_K": 12124684416,
+      "Q8_0": 15701598336
+    }
+  },
+  "qwen2.5-coder-14b-instruct": {
+    "hfRepo": "Qwen/Qwen2.5-Coder-14B-Instruct",
+    "configRepo": "Qwen/Qwen2.5-Coder-14B-Instruct",
+    "ggufRepo": "bartowski/Qwen2.5-Coder-14B-Instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 14770033664,
+    "numLayers": 48,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 5770498272,
+      "Q3_K_M": 7339204832,
+      "Q4_K_M": 8988111072,
+      "Q5_K_M": 10508873952,
+      "Q6_K": 12124684512,
+      "Q8_0": 15701598432
+    }
+  },
+  "qwen3-14b": {
+    "hfRepo": "Qwen/Qwen3-14B",
+    "configRepo": "Qwen/Qwen3-14B",
+    "ggufRepo": "bartowski/Qwen_Qwen3-14B-GGUF",
+    "license": "apache-2.0",
+    "params": 14768307200,
+    "numLayers": 40,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "quants": {
+      "Q2_K": 5753984032,
+      "Q3_K_M": 7321313312,
+      "Q4_K_M": 9001753632,
+      "Q5_K_M": 10514570272,
+      "Q6_K": 12121937952,
+      "Q8_0": 15698534432
+    }
+  },
+  "deepseek-r1-distill-qwen-14b": {
+    "hfRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B",
+    "configRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B",
+    "ggufRepo": "bartowski/DeepSeek-R1-Distill-Qwen-14B-GGUF",
+    "license": "mit",
+    "params": 14770033664,
+    "numLayers": 48,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 5770497440,
+      "Q3_K_M": 7339204000,
+      "Q4_K_M": 8988110240,
+      "Q5_K_M": 10508873120,
+      "Q6_K": 12124683680,
+      "Q8_0": 15701597600
+    }
+  },
+  "codestral-22b-v0.1": {
+    "hfRepo": "mistralai/Codestral-22B-v0.1",
+    "configRepo": "mistralai/Codestral-22B-v0.1",
+    "ggufRepo": "bartowski/Codestral-22B-v0.1-GGUF",
+    "license": "mnpl",
+    "params": 22247282688,
+    "numLayers": 56,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 8272093536,
+      "Q3_K_M": 10756825440,
+      "Q4_K_M": 13341237600,
+      "Q5_K_M": 15722553696,
+      "Q6_K": 18252702048,
+      "Q8_0": 23640547680
+    }
+  },
+  "mistral-small-24b-instruct-2501": {
+    "hfRepo": "mistralai/Mistral-Small-24B-Instruct-2501",
+    "configRepo": "mistralai/Mistral-Small-24B-Instruct-2501",
+    "ggufRepo": "bartowski/Mistral-Small-24B-Instruct-2501-GGUF",
+    "license": "apache-2.0",
+    "params": 23572403200,
+    "numLayers": 40,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 8890324672,
+      "Q3_K_M": 11474081472,
+      "Q4_K_M": 14333908672,
+      "Q5_K_M": 16763983552,
+      "Q6_K": 19345938112,
+      "Q8_0": 25054779072
+    }
+  },
+  "gemma-2-27b-it": {
+    "hfRepo": "google/gemma-2-27b-it",
+    "configRepo": "unsloth/gemma-2-27b-it",
+    "ggufRepo": "bartowski/gemma-2-27b-it-GGUF",
+    "license": "gemma",
+    "params": 27227128320,
+    "numLayers": 46,
+    "numKvHeads": 16,
+    "headDim": 128,
+    "contextMax": 8192,
+    "quants": {
+      "Q2_K": 10449575424,
+      "Q3_K_M": 13424647680,
+      "Q4_K_M": 16645381632,
+      "Q5_K_M": 19408117248,
+      "Q6_K": 22343523840,
+      "Q8_0": 28937387520
+    }
+  },
+  "gemma-3-27b-it": {
+    "hfRepo": "google/gemma-3-27b-it",
+    "configRepo": "unsloth/gemma-3-27b-it",
+    "ggufRepo": "unsloth/gemma-3-27b-it-GGUF",
+    "license": "gemma",
+    "params": 27432406640,
+    "numLayers": 62,
+    "numKvHeads": 16,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 10503720672,
+      "Q3_K_M": 13437640416,
+      "Q4_K_M": 16546688736,
+      "Q5_K_M": 19271675616,
+      "Q6_K": 22166974176,
+      "Q8_0": 28707972192
+    }
+  },
+  "qwen3-30b-a3b": {
+    "hfRepo": "Qwen/Qwen3-30B-A3B",
+    "configRepo": "Qwen/Qwen3-30B-A3B",
+    "ggufRepo": "bartowski/Qwen_Qwen3-30B-A3B-GGUF",
+    "license": "apache-2.0",
+    "params": 30532122624,
+    "numLayers": 48,
+    "numKvHeads": 4,
+    "headDim": 128,
+    "contextMax": 40960,
+    "quants": {
+      "Q2_K": 10908648096,
+      "Q3_K_M": 14076803744,
+      "Q4_K_M": 18632184480,
+      "Q5_K_M": 21744456352,
+      "Q6_K": 25104722592,
+      "Q8_0": 32483932832
+    }
+  },
+  "qwen2.5-32b-instruct": {
+    "hfRepo": "Qwen/Qwen2.5-32B-Instruct",
+    "configRepo": "Qwen/Qwen2.5-32B-Instruct",
+    "ggufRepo": "bartowski/Qwen2.5-32B-Instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 32763876352,
+    "numLayers": 64,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 12313099136,
+      "Q3_K_M": 15935048576,
+      "Q4_K_M": 19851336576,
+      "Q5_K_M": 23262157696,
+      "Q6_K": 26886155136,
+      "Q8_0": 34820885376
+    }
+  },
+  "qwen2.5-coder-32b-instruct": {
+    "hfRepo": "Qwen/Qwen2.5-Coder-32B-Instruct",
+    "configRepo": "Qwen/Qwen2.5-Coder-32B-Instruct",
+    "ggufRepo": "bartowski/Qwen2.5-Coder-32B-Instruct-GGUF",
+    "license": "apache-2.0",
+    "params": 32763876352,
+    "numLayers": 64,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 12313099232,
+      "Q3_K_M": 15935048672,
+      "Q4_K_M": 19851336672,
+      "Q5_K_M": 23262157792,
+      "Q6_K": 26886155232,
+      "Q8_0": 34820885184
+    }
+  },
+  "qwen3-32b": {
+    "hfRepo": "Qwen/Qwen3-32B",
+    "configRepo": "Qwen/Qwen3-32B",
+    "ggufRepo": "bartowski/Qwen_Qwen3-32B-GGUF",
+    "license": "apache-2.0",
+    "params": 32762123264,
+    "numLayers": 64,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 40960,
+    "quants": {
+      "Q2_K": 12344652096,
+      "Q3_K_M": 15971777856,
+      "Q4_K_M": 19762149696,
+      "Q5_K_M": 23214831936,
+      "Q6_K": 26883306816,
+      "Q8_0": 34817719616
+    }
+  },
+  "deepseek-r1-distill-qwen-32b": {
+    "hfRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    "configRepo": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
+    "ggufRepo": "bartowski/DeepSeek-R1-Distill-Qwen-32B-GGUF",
+    "license": "mit",
+    "params": 32763876352,
+    "numLayers": 64,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 12313098400,
+      "Q3_K_M": 15935047840,
+      "Q4_K_M": 19851335840,
+      "Q5_K_M": 23262156960,
+      "Q6_K": 26886154400,
+      "Q8_0": 34820884352
+    }
+  },
+  "mixtral-8x7b-instruct-v0.1": {
+    "hfRepo": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "configRepo": "mistralai/Mixtral-8x7B-Instruct-v0.1",
+    "ggufRepo": "MaziyarPanahi/Mixtral-8x7B-Instruct-v0.1-GGUF",
+    "license": "apache-2.0",
+    "params": 46702792704,
+    "numLayers": 32,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 17309173632,
+      "Q3_K_M": 22544394112,
+      "Q4_K_M": 28446410624,
+      "Q5_K_M": 33227523968,
+      "Q6_K": 38378760064,
+      "Q8_0": 49624262528
+    }
+  },
+  "llama-3.3-70b-instruct": {
+    "hfRepo": "meta-llama/Llama-3.3-70B-Instruct",
+    "configRepo": "unsloth/Llama-3.3-70B-Instruct",
+    "ggufRepo": "bartowski/Llama-3.3-70B-Instruct-GGUF",
+    "license": "llama3.3",
+    "params": 70553706496,
+    "numLayers": 80,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 131072,
+    "quants": {
+      "Q2_K": 26375113696,
+      "Q3_K_M": 34267499488,
+      "Q4_K_M": 42520398816,
+      "Q5_K_M": 49949822112,
+      "Q6_K": 57888148672,
+      "Q8_0": 74975055008
+    }
+  },
+  "qwen2.5-72b-instruct": {
+    "hfRepo": "Qwen/Qwen2.5-72B-Instruct",
+    "configRepo": "Qwen/Qwen2.5-72B-Instruct",
+    "ggufRepo": "bartowski/Qwen2.5-72B-Instruct-GGUF",
+    "license": "qwen",
+    "params": 72706203648,
+    "numLayers": 80,
+    "numKvHeads": 8,
+    "headDim": 128,
+    "contextMax": 32768,
+    "quants": {
+      "Q2_K": 29811762848,
+      "Q3_K_M": 37698725536,
+      "Q4_K_M": 47415715488,
+      "Q5_K_M": 54447466336,
+      "Q6_K": 64347629408,
+      "Q8_0": 77262612320
+    }
+  }
+}

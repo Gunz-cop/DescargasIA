@@ -77,6 +77,23 @@ const FORM_SIGNALS: Record<string, 'laptop' | 'desktop'> = {
 };
 
 /**
+ * De las señales anteriores, las que además son ruido y se descartan. `maxq`
+ * no está: dice que es portátil y encima distingue una variante real del
+ * catálogo, así que si se quitara nadie podría pedir una Max-Q a propósito.
+ */
+const FORM_TOKENS_TO_DROP = new Set([
+  'laptop',
+  'portatil',
+  'notebook',
+  'mobile',
+  'movil',
+  'desktop',
+  'sobremesa',
+  'escritorio',
+  'torre'
+]);
+
+/**
  * Normaliza como escribe la gente de verdad y como escriben los navegadores.
  *
  * Minúsculas, sin acentos, sin los identificadores hex ni el envoltorio
@@ -89,6 +106,12 @@ export function normalizeGpuText(text: string): string {
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/0x[0-9a-f]+/g, ' ')
+    // Morralla de las cadenas de WebGL y de los nombres de driver. Sin esto,
+    // "vs_5_0" o "d3d11" se parten en tokens sueltos ("5", "0", "d", "11")
+    // que sí existen en algún nombre de GPU y acaban puntuando.
+    .replace(/\b(?:direct3d|d3d|opengl|opencl)\s*(?:es)?\s*[\d.]*/g, ' ')
+    .replace(/\b[vp]s[\s_]*\d+[\s_]*\d+/g, ' ')
+    .replace(/\b(?:angle|vulkan|metal|pcie|pci|sse\d?)\b/g, ' ')
     .replace(/\bmax\s*-?\s*q\b/g, ' maxq ')
     .replace(/[^a-z0-9]+/g, ' ')
     .replace(/(\d)([a-z])/g, '$1 $2')
@@ -98,25 +121,43 @@ export function normalizeGpuText(text: string): string {
 }
 
 interface Parsed {
-  /** Tokens con peso, ya sin ruido ni señales de formato. */
+  /** Tokens con peso, ya sin ruido, capacidades ni señales de formato. */
   tokens: string[];
   signal: 'laptop' | 'desktop' | null;
+  /** La capacidad que venga escrita ("12gb"), en GB. Desempata, no puntúa. */
+  vramHint: number | null;
 }
 
 function parse(text: string): Parsed {
+  const crudos = normalizeGpuText(text).split(' ').filter(Boolean);
   const tokens: string[] = [];
   let signal: 'laptop' | 'desktop' | null = null;
-  for (const token of normalizeGpuText(text).split(' ')) {
-    if (!token) continue;
+  let vramHint: number | null = null;
+
+  for (let i = 0; i < crudos.length; i += 1) {
+    const token = crudos[i]!;
+
+    // "12 gb" (que viene de "12gb" o de "12 GB") no es parte del nombre: es
+    // la capacidad. Como token solo estorba —el catálogo llama "RTX 3060
+    // 12 GB" a la de sobremesa y "RTX 3060 Laptop GPU" a la portátil, así que
+    // puntuar el "12" haría ganar siempre a la portátil ante "rtx 3060"—,
+    // pero como pista desempata de maravilla.
+    if (/^\d+$/.test(token) && crudos[i + 1] === 'gb') {
+      vramHint = vramHint ?? Number(token);
+      i += 1;
+      continue;
+    }
+
     const form = FORM_SIGNALS[token];
     if (form) {
       signal = signal ?? form;
-      continue;
+      if (FORM_TOKENS_TO_DROP.has(token)) continue;
     }
     if (NOISE_TOKENS.has(token)) continue;
     tokens.push(token);
   }
-  return { tokens, signal };
+
+  return { tokens, signal, vramHint };
 }
 
 interface Surface {
@@ -228,7 +269,7 @@ export function resolveGpu(text: string, gpus: GpuSpec[]): ResolveResult {
   const empty: ResolveResult = { gpu: null, score: 0, candidates: [] };
   if (!text || gpus.length === 0) return empty;
 
-  const { tokens, signal } = parse(text);
+  const { tokens, signal, vramHint } = parse(text);
   if (tokens.length === 0) return empty;
   const query = new Set(tokens);
 
@@ -264,13 +305,20 @@ export function resolveGpu(text: string, gpus: GpuSpec[]): ResolveResult {
   const top = scored[0]!;
   let peers = scored.filter((s) => s.covered === top.covered && s.score >= top.score - 1e-9);
 
+  if (vramHint !== null) {
+    const filtered = peers.filter((s) => s.gpu.vramGb === vramHint);
+    if (filtered.length > 0) peers = filtered;
+  }
+
   if (signal) {
     const filtered = peers.filter((s) => matchesSignal(s.gpu.formFactor, signal));
     if (filtered.length > 0) peers = filtered;
   } else if (peers.length > 1) {
-    const forms = new Set(peers.map((s) => s.gpu.formFactor));
-    const vrams = new Set(peers.map((s) => s.gpu.vramGb));
-    if (forms.size > 1 && vrams.size > 1) {
+    // Lo que decide no es el formato sino la VRAM. La confusión más habitual
+    // es escritorio contra portátil, pero `rtx 4060 ti` son 8 GB o 16 según
+    // la edición, las dos de sobremesa, y equivocarse ahí duele igual.
+    const vrams = new Set(peers.map((s) => s.gpu.vramGb ?? null));
+    if (vrams.size > 1) {
       return {
         gpu: null,
         score: top.score,

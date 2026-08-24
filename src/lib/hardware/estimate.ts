@@ -69,6 +69,11 @@ export type KvPrecision = keyof typeof ENGINE_CONSTANTS.KV_BYTES;
 export interface EstimateOptions {
   /** Precisión del KV cache. Los runtimes usan f16 salvo que se les pida otra. */
   kvPrecision?: KvPrecision;
+  /**
+   * Fracción de la memoria unificada asignable a la GPU, cuando se conoce.
+   * Sale de `GpuSpec.unifiedUsableFraction`, que `SystemSpecs` no transporta.
+   */
+  unifiedUsableFraction?: number;
 }
 
 export interface MemoryBreakdown {
@@ -130,9 +135,24 @@ function gibOf(gb: number | undefined): number {
   return (gb ?? 0) * BYTES_PER_GIB;
 }
 
+/**
+ * Memoria unificada de verdad: Apple Silicon.
+ *
+ * `gpus.json` marca también las integradas de AMD e Intel con
+ * `unifiedMemory`, y físicamente es cierto que comparten la RAM. Pero el
+ * glosario del producto define memoria unificada como lo que hace Apple, y la
+ * spec de esta fase pide que una iGPU x86 caiga a CPU. Y es lo honesto: una
+ * iGPU lee exactamente la misma RAM que la CPU, así que no gana ancho de
+ * banda, y tratarla como acelerador recortaría la memoria disponible a la
+ * fracción asignable en vez de dejarle la RAM del sistema entera.
+ */
+function isUnifiedMemory(specs: SystemSpecs): boolean {
+  return specs.gpu?.unifiedMemory === true && specs.gpu.vendor === 'apple';
+}
+
 function hasDedicatedVram(specs: SystemSpecs): boolean {
   const gpu = specs.gpu;
-  if (!gpu || gpu.unifiedMemory) return false;
+  if (!gpu || isUnifiedMemory(specs)) return false;
   return (gpu.vramGb ?? 0) > ENGINE_CONSTANTS.INTEGRATED_VRAM_MAX_GB;
 }
 
@@ -161,14 +181,16 @@ export function offloadLayers(
  * Los tres modos de ejecución, evaluados en orden: GPU completa, memoria
  * unificada, offload parcial y, si no hay GPU utilizable, CPU.
  */
-function choosePool(specs: SystemSpecs, required: number): Pool {
+function choosePool(specs: SystemSpecs, required: number, opts: EstimateOptions): Pool {
   const gpu = specs.gpu;
   const gpuBandwidth = gpu?.bandwidthGbs ?? 0;
 
-  if (gpu?.unifiedMemory) {
+  if (isUnifiedMemory(specs)) {
     return {
       backend: 'unified',
-      available: gibOf(specs.ram?.totalGb) * ENGINE_CONSTANTS.UNIFIED_USABLE_FRACTION,
+      available:
+        gibOf(specs.ram?.totalGb) *
+        (opts.unifiedUsableFraction ?? ENGINE_CONSTANTS.UNIFIED_USABLE_FRACTION),
       bandwidthGbs: gpuBandwidth,
       efficiency: ENGINE_CONSTANTS.GPU_BANDWIDTH_EFFICIENCY
     };
@@ -287,7 +309,7 @@ function evaluate(
   opts: EstimateOptions
 ): Omit<Estimate, 'recommendedQuant'> {
   const memory = memoryBreakdown(model, quant, ctxTokens, opts);
-  const pool = choosePool(specs, memory.total);
+  const pool = choosePool(specs, memory.total, opts);
 
   const vramUsable =
     pool.backend === 'partial-offload'
