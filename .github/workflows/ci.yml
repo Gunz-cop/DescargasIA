@@ -57,11 +57,15 @@ jobs:
       - name: Tests
         run: npm test
 
+      # --no-install es deliberado: sin el, `npx tsc` no encuentra el binario en
+      # node_modules/.bin y se descarga de npm un paquete llamado `tsc` que no
+      # es TypeScript. Paso de silencioso a error, y de error a codigo ajeno
+      # ejecutandose en CI. Todos los pasos usan la misma bandera.
       - name: Tipos
-        run: npx tsc --noEmit
+        run: npx --no-install tsc --noEmit
 
       - name: Build
-        run: npx astro build
+        run: npx --no-install astro build
 
       - name: Enlazado interno, canonical y hreflang
         run: npm run links:audit
@@ -71,7 +75,7 @@ jobs:
       - name: Worker (si la rama lo incluye)
         run: |
           if [ -f wrangler.jsonc ] && grep -q '"main"' wrangler.jsonc; then
-            npx wrangler deploy --dry-run
+            npx --no-install wrangler deploy --dry-run
           else
             echo "Esta rama no trae Worker; nada que validar."
           fi
