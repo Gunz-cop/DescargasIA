@@ -40,6 +40,15 @@ Esto es lo que hoy cada sesión nueva redescubre a mano. **Verificalo contra el 
 - **Todo el contenido en español va en tú neutro, nunca voseo.** "Puedes", no "podés". Aplica a cualquier texto que vea el usuario: `ui.ts`, prosa de página, marcadores de posición de formularios. (Los documentos internos para agentes —specs, `docs/fases/`— no son contenido de sitio y quedan fuera de esta regla.)
 - Autoría siempre `Organization` desde `src/data/editorial-team.ts`, nunca `Person`.
 
+## Vista previa por rama
+
+La integración Git de Cloudflare Workers construye **cada PR** y publica en un comentario una *Branch Preview URL* (`https://<rama>-fuenteai.g1721m.workers.dev`) y una *Commit Preview URL*. Sirven el sitio construido desde esa rama **sin tocar producción**: `fuenteai.com` solo cambia con `deploy.yml`, en push a `main`.
+
+Dos consecuencias para las specs:
+
+- Los criterios `[manual]` (probar en 360 px, sin JS, con teclado, con lector de pantalla) se verifican sobre esa URL, sobre el sitio real, antes de fusionar. Escribilos asumiendo que existe.
+- **Ese build no es una compuerta**: no publica un status check que pueda bloquear el PR (`total_count: 0`). Los criterios de aceptación siguen ejecutándose a mano hasta que exista un workflow de `pull_request`.
+
 ## Otros
 
 - Si una página usa query params, agregalos al bloque de `Disallow` de `public/robots.txt` (precedente: `?q=`, `?cat=`, `?plat=`, `?precio=`).
