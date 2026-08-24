@@ -374,6 +374,76 @@ Tres endpoints, todos `POST`, todos con `response_format: { type: 'json_schema',
 
 ---
 
+## Operación (runbook) — capa de IA
+
+La IA es ayuda opcional: si se cae, se agota la cuota o está apagada, la app
+funciona entera en local. Esto es lo que un operador debe saber para mantenerla.
+
+### Interruptor de la IA (feature flag)
+
+La variable de entorno `AI_ENABLED` controla los tres endpoints (`/api/hw/parse`,
+`/api/hw/gpu-lookup`, `/api/hw/explain`). Vale `"true"` (por defecto, en
+`wrangler.jsonc`) o `"false"`.
+
+Cuando vale `"false"`, **los tres endpoints devuelven `{ ok: false, reason: 'disabled' }`**
+y la app sigue funcionando: el cliente lo trata como "IA no disponible" y usa el
+resolver local. No se rompe ninguna ruta estática ni el veredicto.
+
+**Cómo apagarla sin tocar el código** (un redploy, pero la app nunca deja de
+funcionar):
+
+```bash
+# Opción A — variable de entorno (no secreta):
+npx wrangler variable set AI_ENABLED false
+
+# Opción B — secreto (no va al repo):
+npx wrangler secret put AI_ENABLED   # y escribís "false" cuando lo pida
+
+# Volver a encender:
+npx wrangler variable set AI_ENABLED true
+```
+
+Como el Worker sirve `/api/*` y delega el resto a `env.ASSETS`, cambiar solo la
+variable no afecta las 86 fichas ni el SEO.
+
+### Límites y abuso
+
+- Límite por IP: **30 peticiones / 10 min** (ventana deslizante en KV, binding
+  `HW_CACHE`, clave `rl:<ip>`). Al superarlo se responde `429` con
+  `Retry-After`; el cliente lo ignora y sigue en local. Chocar contra el muro
+  nunca rompe la app.
+- Validación de entrada: `Content-Type: application/json`, cuerpo ≤ 4 KB,
+  `Origin` del propio sitio, solo `POST`. Respuestas con `Cache-Control:
+  no-store` y cabeceras de seguridad (`X-Content-Type-Options`,
+  `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`).
+
+### Caché en KV (binding `HW_CACHE`)
+
+| Clave | TTL | Qué guarda |
+|---|---|---|
+| `gpu:<nombre-normalizado>` | 30 días | Estimación de VRAM/ancho de banda de una GPU fuera de la base |
+| `explain:<hash>` | 7 días | Prosa redactada; hash de specs + veredicto + idioma |
+| `metrics:gpu:<nombre-normalizado>` | 180 días | **Contador agregado** de cuántas veces faltó esa GPU en la base |
+
+`metrics:gpu:*` es la lista de oro para saber qué añadir a `gpus.json`: es un
+contador por GPU, **nunca el texto libre del usuario**. El texto libre de
+`/api/hw/parse` no se registra en ningún log.
+
+### Invalidar una clave concreta de la caché
+
+Si una estimación de IA sale mal, queda hasta 30 días. Para borrarla:
+
+```bash
+npx wrangler kv key delete --binding=HW_CACHE "gpu:<nombre-normalizado>"
+# o, para borrar toda la caché de un tipo:
+npx wrangler kv key list --binding=HW_CACHE --prefix="gpu:" | npx wrangler kv bulk delete --binding=HW_CACHE
+```
+
+El `<nombre-normalizado>` es el nombre de la GPU en minúsculas, sin acentos ni
+espacios dobles (el mismo criterio de `normalizeGpuKey` en `worker/ai.ts`).
+
+---
+
 ## Verificación de punta a punta
 
 ```bash

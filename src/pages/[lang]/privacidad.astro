@@ -71,6 +71,33 @@ const alternates = buildAlternates(Astro.url.origin, (l) => pageUrl(l, 'privacid
               : 'Nuestro portal incluye enlaces a sitios web de terceros. Una vez que abandonas FuenteAI para ir a la descarga oficial, tu navegación queda sujeta a la política de privacidad de ese sitio externo.'}
         </p>
       </section>
+
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [03]</span> {lang === 'sv' ? 'Hjälpen "Vad kan min dator köra?"' : lang === 'it' ? 'Lo strumento "Cosa posso far girare?"' : 'La herramienta "¿Qué puedo correr?"'}
+        </h2>
+        <p>
+          {lang === 'sv'
+            ? 'Verktyget för att veta vilka LLM du kan köra i din dator fungerar helt i din webbläsare. Inget skickas någonstans förrän du använder hjälpen med AI, och det står tydligt angivet i det ögonblicket.'
+            : lang === 'it'
+              ? 'Lo strumento per sapere quali LLM puoi eseguire sul tuo computer funziona interamente nel tuo browser. Non viene inviato nulla finché non usi l\'aiuto con l\'IA, e in quel momento è indicato chiaramente.'
+              : 'La herramienta para saber qué LLM puedes correr en tu equipo funciona íntegramente en tu navegador. No se envía nada a ningún sitio hasta que usas la ayuda con IA, y eso se indica explícitamente en ese momento.'}
+        </p>
+        <p>
+          {lang === 'sv'
+            ? 'När du använder hjälpen med AI skickas till vår server: (1) den text du skriver om din hårdvara, för att extrahera specs; (2) namnet på en GPU som inte finns i vår databas, för att uppskatta dess VRAM; (3) det redan beräknade veredicto, dina specs och språket, för att formuleras i text. Inget av detta lagras som logg med din text: vi sparar bara mätvärden aggregerade (t.ex. hur ofta en GPU saknas i databasen), utan innehåll personligt.'
+            : lang === 'it'
+              ? 'Quando usi l\'aiuto con l\'IA vengono inviati al nostro server: (1) il testo che scrivi sulla tua hardware, per estrarne le specifiche; (2) il nome di una GPU assente dal nostro database, per stimarne la VRAM; (3) il verdetto già calcolato, le tue specifiche e la lingua, per essere formulati in prosa. Nulla di tutto questo finisce in un log con il tuo testo: conserviamo solo metriche aggregate (es. quante volte manca una GPU dal database), senza dati personali.'
+              : 'Cuando usas la ayuda con IA se envían a nuestro servidor: (1) el texto que escribes sobre tu hardware, para extraer las especificaciones; (2) el nombre de una GPU que no está en nuestra base, para estimar su VRAM; (3) el veredicto ya calculado, tus especificaciones y el idioma, para redactarlo en prosa. Nada de eso entra en un log con tu texto: solo guardamos métricas agregadas (p. ej. cuántas veces falta una GPU en la base), sin datos personales.'}
+        </p>
+        <p>
+          {lang === 'sv'
+            ? 'Upptäckten av hårdvara i webbläsaren (knappen "Detectera min dator") sker helt lokalt och skickas aldrig. De uppskattningar som AI:n gör cache:lagras i vår KV-uppdelning i 30 dagar (GPU) respektive 7 dagar (förklaring); den fria texten raderas efter svaret. Du kan stänga av hjälpen med AI när som helst: utan den fungerar verktyget lika bra, bara utan prosan.'
+            : lang === 'it'
+              ? 'Il rilevamento hardware nel browser (pulsante "Rileva il mio computer") avviene interamente in locale e non viene mai inviato. Le stime dell\'IA vengono cached (in KV) per 30 giorni (GPU) e 7 giorni (spiegazione); il testo libero viene scartato dopo la risposta. Puoi disattivare l\'aiuto con l\'IA in qualsiasi momento: senza di esso lo strumento funziona ugualmente, solo senza la prosa.'
+              : 'La detección de hardware en el navegador (botón "Detectar mi equipo") ocurre toda en local y nunca se envía. Las estimaciones de la IA se cachean en nuestra KV 30 días (GPU) y 7 días (explicación); el texto libre se descarta tras la respuesta. Puedes apagar la ayuda con IA en cualquier momento: sin ella la herramienta funciona igual, solo sin la prosa.'}
+        </p>
+      </section>
     </div>
   </article>
 </BaseLayout>
