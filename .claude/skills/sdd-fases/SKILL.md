@@ -39,6 +39,7 @@ Son lo único realmente transferible entre proyectos. Si una se rompe, el métod
 2. Leé `references/restricciones-repo.md` — las reglas fijas de este repo que toda fase debe respetar (regla de oro de `links.ts`, error de página huérfana, hreflang recíproco, `output: 'static'`, tokens `fai-*`). Verificalas contra el código: si hay discrepancia, gana el código y actualizá la referencia.
 3. Leé `references/procedimiento.md` — el flujo completo, de la exploración al primer issue.
 4. Mirá `docs/app-compatibilidad-ia.md` como ejemplo trabajado del formato.
+5. Leé `docs/lecciones-sdd.md`: los fallos reales del primer proyecto que usó esta skill, con lo que costó cada uno. Es la parte que más ahorra tiempo.
 
 ## Flujo resumido (el detalle está en `references/procedimiento.md`)
 

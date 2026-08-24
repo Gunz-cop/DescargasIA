@@ -65,6 +65,8 @@ Un criterio que corre a mano no es una compuerta: **quien lo declara cumplido es
 
 Un workflow de `pull_request` con un paso por criterio cuesta media hora y convierte cada uno en un check visible que el examinado no controla. **Es el requisito para delegar en un ejecutor que no conocés**: sin él, cada PR flojo se paga en tiempo de revisión en vez de ahorrarlo.
 
+**Usá `npx --no-install` en cada paso del CI.** Sin esa bandera, `npx` que no encuentra un binario en `node_modules/.bin` lo descarga de npm y lo ejecuta: en este proyecto `npx tsc` se bajó un paquete llamado `tsc` que no es TypeScript, rompió el CI y dejó código ajeno corriendo en cada build. Toda herramienta que use un criterio debe estar declarada en `package.json`.
+
 Incluí siempre el typecheck. Es el criterio que más se olvida y el que atrapa los errores de integración entre fases, que por definición ninguna fase ve sola.
 
 ## 6. Validar las specs

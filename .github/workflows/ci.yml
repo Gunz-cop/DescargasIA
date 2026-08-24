@@ -57,11 +57,23 @@ jobs:
       - name: Tests
         run: npm test
 
+      # `astro sync` genera `.astro/types.d.ts` (el modulo virtual `astro:content`).
+      # Ese directorio esta en `.gitignore`, asi que un checkout limpio de CI nunca
+      # lo tiene: sin este paso, `tsc` fallaba con "Cannot find module 'astro:content'"
+      # en cualquier PR, y nadie lo veia porque en una maquina local el directorio
+      # ya existe de una corrida anterior de `astro dev`/`astro build`.
+      - name: Generar tipos de Astro
+        run: npx --no-install astro sync
+
+      # --no-install es deliberado: sin el, `npx tsc` no encuentra el binario en
+      # node_modules/.bin y se descarga de npm un paquete llamado `tsc` que no
+      # es TypeScript. Paso de silencioso a error, y de error a codigo ajeno
+      # ejecutandose en CI. Todos los pasos usan la misma bandera.
       - name: Tipos
-        run: npx tsc --noEmit
+        run: npx --no-install tsc --noEmit
 
       - name: Build
-        run: npx astro build
+        run: npx --no-install astro build
 
       - name: Enlazado interno, canonical y hreflang
         run: npm run links:audit
@@ -71,7 +83,7 @@ jobs:
       - name: Worker (si la rama lo incluye)
         run: |
           if [ -f wrangler.jsonc ] && grep -q '"main"' wrangler.jsonc; then
-            npx wrangler deploy --dry-run
+            npx --no-install wrangler deploy --dry-run
           else
             echo "Esta rama no trae Worker; nada que validar."
           fi
