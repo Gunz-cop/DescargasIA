@@ -1,6 +1,7 @@
 import gpus from '../../data/hardware/gpus.json';
 import appleSilicon from '../../data/hardware/apple-silicon.json';
 import models from '../../data/hardware/models.json';
+import { canDetectHardware, detectHardware } from '../../lib/hardware/detect';
 import { formatContext, formatGb, formatTps } from '../../lib/hardware/format';
 import { recommend } from '../../lib/hardware/recommend';
 import { resolveGpu } from '../../lib/hardware/resolve';
@@ -143,6 +144,8 @@ export function initHardwareApp(root: HTMLElement): void {
   const lang = root.dataset.hwLang ?? 'es';
 
   if (!input || !options || !groups || !status || !template || !context) return;
+
+  if (detectButton) detectButton.hidden = !canDetectHardware();
 
   let selectedGpu: GpuSpec | null = null;
   let typedGpuConfirmed = false;
@@ -418,11 +421,21 @@ export function initHardwareApp(root: HTMLElement): void {
   detectButton?.addEventListener('click', () => {
     root.dispatchEvent(new CustomEvent('hardware:detect-request', { detail: { root } }));
   });
+  root.addEventListener('hardware:detect-request', async () => {
+    if (!detectButton) return;
+    detectButton.disabled = true;
+    const detail = await detectHardware();
+    detectButton.disabled = false;
+    if (Object.keys(detail).length > 0) {
+      root.dispatchEvent(new CustomEvent('hardware:detected', { detail }));
+    }
+  });
   root.addEventListener('hardware:detected', (event) => {
     const detail = (event as CustomEvent<Partial<SystemSpecs>>).detail;
     if (detail.gpu?.rawName) input.value = detail.gpu.rawName;
     if (detail.ram?.totalGb && ramInput) ramInput.value = String(detail.ram.totalGb);
     if (detail.gpu?.vramGb && vramInput) vramInput.value = String(detail.gpu.vramGb);
+    if (detail.cpu?.rawName && cpuInput) cpuInput.value = detail.cpu.rawName;
     if (detail.os && detail.os !== 'unknown' && osInput) osInput.value = detail.os;
     selectedGpu = detail.gpu?.id ? GPU_CATALOG.find((gpu) => gpu.id === detail.gpu?.id) ?? null : selectedResolution().gpu;
     typedGpuConfirmed = false;
