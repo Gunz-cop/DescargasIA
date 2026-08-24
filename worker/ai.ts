@@ -15,11 +15,13 @@
 import { resolveGpu } from '../src/lib/hardware/resolve';
 import type { GpuSpec, SystemSpecs, Vendor } from '../src/lib/hardware/types';
 import gpusData from '../src/data/hardware/gpus.json';
+import appleSiliconData from '../src/data/hardware/apple-silicon.json';
 
 /** Plazo máximo de espera a Workers AI. Ante fallo, el cliente sigue en local. */
 const AI_TIMEOUT_MS = 6000;
 
-const GPUS = gpusData as GpuSpec[];
+/** Base completa: GPU discretas/integradas + Apple Silicon (memoria unificada). */
+const ALL_GPUS = [...(gpusData as GpuSpec[]), ...(appleSiliconData as GpuSpec[])];
 
 /** Normaliza el nombre de GPU para usarlo como clave de caché KV. */
 function normalizeGpuKey(name: string): string {
@@ -44,22 +46,17 @@ function unwrap(result: unknown): Record<string, unknown> {
   return obj;
 }
 
-async function callAi(
-  ai: AiBinding,
-  messages: { role: 'system' | 'user'; content: string }[],
-  responseFormat: unknown
-): Promise<Record<string, unknown>> {
-  const result = await ai.run(MODEL, { messages, response_format: responseFormat }, {
-    signal: AbortSignal.timeout(AI_TIMEOUT_MS)
-  });
-  return unwrap(result);
-}
+// Modelo fijado en una única constante. Verificado contra el catálogo de
+// Workers AI en el momento de implementar: el más pequeño con salida
+// estructurada (JSON mode) de la lista oficial. El trabajo es extracción,
+// no razonamiento, así que 8B alcanza.
+export const MODEL = '@cf/meta/llama-3.1-8b-instruct-fast';
 
 // ---------------------------------------------------------------------------
 // /api/hw/parse — texto libre → SystemSpecs parcial
 // ---------------------------------------------------------------------------
 
-export const PARSE_SCHEMA = {
+const PARSE_SCHEMA = {
   type: 'object',
   properties: {
     gpuName: { type: ['string', 'null'] },
@@ -75,11 +72,6 @@ export const PARSE_SCHEMA = {
   additionalProperties: false
 } as const;
 
-const PARSE_RESPONSE_FORMAT = {
-  type: 'json_schema',
-  json_schema: PARSE_SCHEMA
-} as const;
-
 const PARSE_SYSTEM = [
   'Eres un extractor de especificaciones de hardware para una app que dice a la gente qué LLM puede correr en su máquina.',
   'Recibes texto libre en español, sueco o italiano y devuelves SOLO los datos que el usuario escribió explícitamente.',
@@ -92,16 +84,20 @@ const PARSE_SYSTEM = [
 ].join(' ');
 
 export async function parseSpecs(ai: AiBinding, text: string) {
-  const result = await callAi(
-    ai,
-    [
-      { role: 'system', content: PARSE_SYSTEM },
-      { role: 'user', content: text }
-    ],
-    PARSE_RESPONSE_FORMAT
+  const result = await ai.run(
+    MODEL,
+    {
+      messages: [
+        { role: 'system', content: PARSE_SYSTEM },
+        { role: 'user', content: text }
+      ],
+      response_format: { type: 'json_schema', json_schema: PARSE_SCHEMA }
+    },
+    { signal: AbortSignal.timeout(AI_TIMEOUT_MS) }
   );
 
-  const get = (k: string) => (result[k] === undefined || result[k] === null ? null : result[k]);
+  const data = unwrap(result);
+  const get = (k: string) => (data[k] === undefined || data[k] === null ? null : data[k]);
 
   const rawGpuName = (get('gpuName') as string | null)?.trim() || null;
   const rawVram = get('vramGb') as number | null;
@@ -109,21 +105,19 @@ export async function parseSpecs(ai: AiBinding, text: string) {
   const rawVendor = get('vendor') as Vendor | null;
   const rawOs = get('os') as SystemSpecs['os'] | null;
   const rawCpu = (get('cpuName') as string | null)?.trim() || null;
-  const confidence = typeof result.confidence === 'number' ? result.confidence : 0;
-  const unknownFields = Array.isArray(result.unknownFields)
-    ? result.unknownFields.filter((x) => typeof x === 'string').map((x) => String(x))
+  const confidence = typeof data.confidence === 'number' ? data.confidence : 0;
+  const unknownFields = Array.isArray(data.unknownFields)
+    ? data.unknownFields.filter((x) => typeof x === 'string').map((x) => String(x))
     : [];
 
-  // Reconciliación contra la base curada del repo (F1). Si la GPU está en la
-  // base, GANÁ la base: se descarta cualquier VRAM/ancho de banda que la IA
-  // haya dicho. Lo que la IA aporte para GPUs fuera de la base viaja como
-  // "ai-estimate" y el cliente lo rotula como tal.
-  const specs: SystemSpecs = {
-    os: rawOs ?? 'unknown'
-  };
+  // Reconciliación contra la base curada del repo (F1), Apple Silicon incluido.
+  // Si la GPU está en la base, GANÁ la base: se descarta cualquier VRAM/ancho
+  // de banda que la IA haya dicho. Lo que la IA aporte para GPUs fuera de la
+  // base viaja como "ai-estimate" y el cliente lo rotula como tal.
+  const specs: SystemSpecs = { os: rawOs ?? 'unknown' };
 
   if (rawGpuName) {
-    const resolved = resolveGpu(rawGpuName, GPUS);
+    const resolved = resolveGpu(rawGpuName, ALL_GPUS);
     if (resolved.gpu) {
       const g = resolved.gpu;
       specs.gpu = {
@@ -166,7 +160,7 @@ export async function parseSpecs(ai: AiBinding, text: string) {
 // /api/hw/gpu-lookup — GPU fuera de la base → specs estimados (cacheado en KV)
 // ---------------------------------------------------------------------------
 
-export const GPU_LOOKUP_SCHEMA = {
+const GPU_LOOKUP_SCHEMA = {
   type: 'object',
   properties: {
     vramGb: { type: ['number', 'null'] },
@@ -179,11 +173,6 @@ export const GPU_LOOKUP_SCHEMA = {
   additionalProperties: false
 } as const;
 
-const GPU_LOOKUP_RESPONSE_FORMAT = {
-  type: 'json_schema',
-  json_schema: GPU_LOOKUP_SCHEMA
-} as const;
-
 const GPU_LOOKUP_SYSTEM = [
   'Eres una base de datos de tarjetas gráficas.',
   'Recibes el nombre de una GPU que no está en nuestra base local (puede estar mal escrita o ser muy nueva).',
@@ -192,35 +181,89 @@ const GPU_LOOKUP_SYSTEM = [
   'Nunca inventes una GPU que no existe. Responde siempre en el esquema JSON, sin texto adicional.'
 ].join(' ');
 
-export async function lookupGpu(ai: AiBinding, name: string) {
-  const result = await callAi(
-    ai,
-    [
-      { role: 'system', content: GPU_LOOKUP_SYSTEM },
-      { role: 'user', content: name }
-    ],
-    GPU_LOOKUP_RESPONSE_FORMAT
+export interface GpuEstimate {
+  vramGb: number | null;
+  bandwidthGbs: number | null;
+  vendor: Vendor | null;
+  year: number | null;
+  confidence: number;
+}
+
+/**
+ * Resuelve una GPU contra la base completa. Si la base la conoce, devuelve sus
+ * datos reales (source 'db') SIN consultar la IA: este endpoint es solo para
+ * GPUs fuera de la base. Si no la conoce, estima vía IA y la cachea en KV.
+ */
+export async function lookupGpu(ai: AiBinding, name: string, cache: {
+  get(key: string, type: 'json'): Promise<unknown>;
+  put(key: string, value: string, opts: { expirationTtl: number }): Promise<void>;
+}): Promise<{ known: boolean; cached: boolean; name: string } & GpuEstimate & { source: string }> {
+  const key = 'gpu:' + normalizeGpuKey(name);
+
+  const resolved = resolveGpu(name, ALL_GPUS);
+  if (resolved.gpu) {
+    const g = resolved.gpu;
+    return {
+      known: true,
+      cached: false,
+      name,
+      vramGb: g.vramGb ?? null,
+      bandwidthGbs: g.bandwidthGbs,
+      vendor: g.vendor,
+      year: g.year ?? null,
+      confidence: 1,
+      source: 'db'
+    };
+  }
+
+  try {
+    const cached = (await cache.get(key, 'json')) as GpuEstimate | null;
+    if (cached && typeof cached === 'object') {
+      return { known: false, cached: true, name, ...cached, source: 'ai-estimate' };
+    }
+  } catch {
+    // Caché best-effort.
+  }
+
+  const result = await ai.run(
+    MODEL,
+    {
+      messages: [
+        { role: 'system', content: GPU_LOOKUP_SYSTEM },
+        { role: 'user', content: name }
+      ],
+      response_format: { type: 'json_schema', json_schema: GPU_LOOKUP_SCHEMA }
+    },
+    { signal: AbortSignal.timeout(AI_TIMEOUT_MS) }
   );
 
+  const data = unwrap(result);
   const num = (k: string): number | null => {
-    const v = result[k];
+    const v = data[k];
     return typeof v === 'number' && Number.isFinite(v) ? v : null;
   };
-
-  return {
+  const estimate: GpuEstimate = {
     vramGb: num('vramGb'),
     bandwidthGbs: num('bandwidthGbs'),
-    vendor: (result.vendor as Vendor | null) ?? null,
+    vendor: (data.vendor as Vendor | null) ?? null,
     year: num('year'),
-    confidence: typeof result.confidence === 'number' ? result.confidence : 0
+    confidence: typeof data.confidence === 'number' ? data.confidence : 0
   };
+
+  try {
+    await cache.put(key, JSON.stringify(estimate), { expirationTtl: 30 * 24 * 3600 });
+  } catch {
+    // Caché best-effort.
+  }
+
+  return { known: false, cached: false, name, ...estimate, source: 'ai-estimate' };
 }
 
 // ---------------------------------------------------------------------------
-// /api/hw/explain — veredicto ya calculado → prosa localizada (SOLO redacta)
+// /api/hw/explain — veredicto ya calculado + specs → prosa localizada (SOLO redacta)
 // ---------------------------------------------------------------------------
 
-export const EXPLAIN_SCHEMA = {
+const EXPLAIN_SCHEMA = {
   type: 'object',
   properties: {
     sentences: { type: 'array', items: { type: 'string' }, minItems: 2, maxItems: 3 },
@@ -230,51 +273,47 @@ export const EXPLAIN_SCHEMA = {
   additionalProperties: false
 } as const;
 
-const EXPLAIN_RESPONSE_FORMAT = {
-  type: 'json_schema',
-  json_schema: EXPLAIN_SCHEMA
-} as const;
-
 const EXPLAIN_SYSTEM = [
   'Eres el redactor de una app que explica, en lenguaje claro y cercano, qué modelos de IA puede correr el equipo de un usuario.',
-  'Recibes un veredicto YA CALCULADO por un motor determinista (números exactos de VRAM/RAM, cuantización recomendada, tok/s).',
+  'Recibes un veredicto YA CALCULADO por un motor determinista (números exactos de VRAM/RAM, cuantización recomendada, tok/s) y las specs del equipo.',
   'Tu único trabajo es REDACTAR: convierte esos datos en 2-3 frases en el idioma pedido y 2 consejos prácticos. NO calcules, NO corrijas cifras, NO inventes números.',
   'Si el veredicto es "no-cabe", explica con calma qué falta. Si es "holgado", felicita. Usa el tono del sitio: confiable, directo, sin tecnicismos innecesarios.'
 ].join(' ');
 
 export async function explainVerdict(
   ai: AiBinding,
-  payload: { verdict: string; summary: string; lang: string }
+  payload: { verdict: string; specs: SystemSpecs; lang: string }
 ) {
-  const user = [
-    `Idioma: ${payload.lang}`,
-    `Veredicto: ${payload.verdict}`,
-    `Resumen de datos (ya calculados, no los cambies): ${payload.summary}`
+  const { verdict, specs, lang } = payload;
+  const gpu = specs.gpu;
+  const summary = [
+    `Veredicto: ${verdict}`,
+    gpu ? `GPU: ${gpu.rawName}${gpu.vramGb ? ` (${gpu.vramGb} GB VRAM)` : ''}${gpu.unifiedMemory ? ' (memoria unificada)' : ''}` : 'GPU: no declarada',
+    specs.ram ? `RAM: ${specs.ram.totalGb} GB` : 'RAM: no declarada',
+    `SO: ${specs.os}`
   ].join('\n');
 
-  const result = await callAi(
-    ai,
-    [
-      { role: 'system', content: EXPLAIN_SYSTEM },
-      { role: 'user', content: user }
-    ],
-    EXPLAIN_RESPONSE_FORMAT
+  const result = await ai.run(
+    MODEL,
+    {
+      messages: [
+        { role: 'system', content: EXPLAIN_SYSTEM },
+        { role: 'user', content: `Idioma: ${lang}\n${summary}` }
+      ],
+      response_format: { type: 'json_schema', json_schema: EXPLAIN_SCHEMA }
+    },
+    { signal: AbortSignal.timeout(AI_TIMEOUT_MS) }
   );
 
-  const sentences = Array.isArray(result.sentences)
-    ? result.sentences.filter((x) => typeof x === 'string').map((x) => String(x)).slice(0, 3)
+  const data = unwrap(result);
+  const sentences = Array.isArray(data.sentences)
+    ? data.sentences.filter((x) => typeof x === 'string').map((x) => String(x)).slice(0, 3)
     : [];
-  const tips = Array.isArray(result.tips)
-    ? result.tips.filter((x) => typeof x === 'string').map((x) => String(x)).slice(0, 2)
+  const tips = Array.isArray(data.tips)
+    ? data.tips.filter((x) => typeof x === 'string').map((x) => String(x)).slice(0, 2)
     : [];
 
   return { sentences, tips };
 }
-
-/** Modelo fijado en una única constante. Verificado contra el catálogo de
- *  Workers AI en el momento de implementar: el más pequeño con salida
- *  estructurada (JSON mode) de la lista oficial. El trabajo es extracción,
- *  no razonamiento, así que 8B alcanza. */
-export const MODEL = '@cf/meta/llama-3.1-8b-instruct-fast';
 
 export { normalizeGpuKey };

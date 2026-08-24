@@ -12,7 +12,6 @@
  */
 
 import {
-  normalizeGpuKey,
   parseSpecs,
   lookupGpu,
   explainVerdict
@@ -65,37 +64,25 @@ async function handleGpuLookup(env: Env, request: Request): Promise<Response> {
   const name = typeof body.name === 'string' ? body.name.slice(0, 200).trim() : '';
   if (!name) return fail('empty_name');
 
-  const key = 'gpu:' + normalizeGpuKey(name);
-  try {
-    const cached = (await env.HW_CACHE.get(key, 'json')) as Record<string, unknown> | null;
-    if (cached && typeof cached === 'object') {
-      return json({ ok: true, cached: true, name, ...cached });
-    }
-  } catch {
-    // Si KV falla, seguimos sin caché: la app no debe depender de él.
-  }
-
-  const result = await lookupGpu(env.AI, name);
-  try {
-    await env.HW_CACHE.put(key, JSON.stringify(result), { expirationTtl: 30 * 24 * 3600 });
-  } catch {
-    // Caché best-effort.
-  }
-  return json({ ok: true, cached: false, name, ...result });
+  // lookupGpu reconcilia contra la base completa (gpus.json + Apple Silicon):
+  // si la GPU es conocida devuelve datos reales sin consultar la IA; si no,
+  // estima y cachea en KV 30 días.
+  const result = await lookupGpu(env.AI, name, env.HW_CACHE);
+  return json({ ok: true, ...result });
 }
 
 async function handleExplain(env: Env, request: Request): Promise<Response> {
   const body = (await readJson(request, 4 * 1024)) as {
     verdict?: unknown;
-    summary?: unknown;
+    specs?: unknown;
     lang?: unknown;
   };
   const verdict = typeof body.verdict === 'string' ? body.verdict : '';
-  const summary = typeof body.summary === 'string' ? body.summary.slice(0, 2000) : '';
+  const specs = body.specs;
   const lang = typeof body.lang === 'string' ? body.lang : 'es';
-  if (!verdict || !summary) return fail('missing_fields');
+  if (!verdict || !specs || typeof specs !== 'object') return fail('missing_fields');
 
-  const result = await explainVerdict(env.AI, { verdict, summary, lang });
+  const result = await explainVerdict(env.AI, { verdict, specs, lang });
   return json({ ok: true, ...result });
 }
 
