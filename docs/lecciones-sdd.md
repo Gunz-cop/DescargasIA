@@ -128,6 +128,12 @@ el comando que lo genera como paso explícito, antes. Y **el criterio se verific
 check de GitHub, nunca corriendo el comando a mano**, aunque el comando sea el mismo: una
 máquina con residuo de corridas anteriores no es un checkout limpio.
 
+Verificado como revisor antes de dar el arreglo por bueno: con `.astro/` movido fuera del
+árbol, `tsc --noEmit` reprodujo los mismos veinte errores; tras `astro sync`, salió 0. Con el
+paso ya en la rama base, el check "Criterios de aceptación" del PR #19 pasó a verde. La
+lección de revisión que deja: **un arreglo reportado no se acepta por su descripción, se
+acepta por reproducir el fallo y verlo desaparecer**.
+
 ## Lo que sí funcionó y conviene repetir
 
 - **Specs por fase con contratos de entrada y salida.** Permitieron ejecutar F1 y F2 en
