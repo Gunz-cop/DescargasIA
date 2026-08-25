@@ -13,6 +13,12 @@
  * F7 añade: límite por IP, validación de entrada, cabeceras de seguridad,
  * caché de `explain` en KV, métricas agregadas sin PII y un interruptor para
  * apagar la IA sin romper la app.
+ *
+ * Además delega en `worker/agents/` todo lo que el sitio expone a agentes de
+ * IA: MCP en `/mcp`, A2A en `/a2a` y la negociación `Accept: text/markdown`.
+ * Esa capa es independiente de esta —no comparte estado, bindings ni rutas— y
+ * se resuelve antes que nada porque devuelve `null` en cuanto la petición no
+ * es suya. Ver `docs/agent-readiness.md`.
  */
 
 import {
@@ -20,9 +26,10 @@ import {
   lookupGpu,
   explainVerdict,
   normalizeGpuKey
-} from './ai';
-import { checkRateLimit, TOO_MANY_REQUESTS } from './ratelimit';
-import { validateRequest, withSecurityHeaders } from './security';
+} from './ai.ts';
+import { checkRateLimit, TOO_MANY_REQUESTS } from './ratelimit.ts';
+import { validateRequest, withSecurityHeaders } from './security.ts';
+import { tryAgentRoutes, variesByAccept } from './agents/index.ts';
 import type { SystemSpecs } from '../src/lib/hardware/types.ts';
 
 interface Env {
@@ -168,7 +175,16 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
-    if (url.pathname.startsWith('/api/')) {
+    // Capa de agentes primero: devuelve null salvo en /mcp, /a2a y en un GET
+    // que pida `Accept: text/markdown`, asi que no puede interferir con nada de
+    // lo de abajo. Nunca lanza: contiene sus propios errores (ver worker/agents/index.ts).
+    const agent = await tryAgentRoutes(request, env);
+    if (agent) return agent;
+
+    // Solo /api/hw/*, NO todo /api/. El sitio publica ademas /api/catalog.json
+    // y /api/openapi.json, que son assets estaticos: capturarlos aqui los
+    // convertiria en un 405 en cuanto alguien los pidiera por GET.
+    if (url.pathname.startsWith('/api/hw/')) {
       // Interruptor de la IA (F7): apagada, los tres endpoints devuelven
       // "disabled" y la app sigue funcionando entera en local.
       if (env.AI_ENABLED === 'false') {
@@ -205,7 +221,20 @@ export default {
       }
     }
 
-    // Todo lo que no es /api/* se sirve como estaba: el sitio estático intacto.
-    return env.ASSETS.fetch(request);
+    // Todo lo demás se sirve como estaba: el sitio estático intacto.
+    const response = await env.ASSETS.fetch(request);
+
+    // La misma URL puede devolver HTML o Markdown según `Accept`: sin este Vary
+    // una caché intermedia podría servirle Markdown a un navegador.
+    if (variesByAccept(request)) {
+      const headers = new Headers(response.headers);
+      headers.append('Vary', 'Accept');
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers
+      });
+    }
+    return response;
   }
 };

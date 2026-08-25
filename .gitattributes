@@ -2,3 +2,10 @@
 # linea de Windows, bash falla en la primera linea con "command not found" por el
 # retorno de carro. Se fuerza LF pase lo que pase la config local de core.autocrlf.
 *.sh text eol=lf
+
+# El indice de Agent Skills lleva un sha256 de cada SKILL.md, calculado sobre los
+# bytes tal y como estan en disco. Con core.autocrlf=true un checkout en Windows
+# convierte LF -> CRLF y el mismo repositorio genera digests distintos segun el
+# sistema: el indice commiteado y el regenerado dejan de coincidir, y un cliente
+# que verifique el digest descarta la skill. Se fuerza LF.
+public/.well-known/agent-skills/** text eol=lf

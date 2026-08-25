@@ -1,0 +1,63 @@
+# Cloudflare Workers Assets — cabeceras de respuesta por ruta.
+#
+# Motivo de cada bloque: docs/agent-readiness.md.
+# Las reglas se acumulan: una respuesta recibe las cabeceras de TODOS los
+# patrones que la matchean, del más general al más específico.
+
+# --- Descubrimiento por cabecera (RFC 8288 / RFC 9727 §3) -------------------
+# Un agente que solo hace GET / ya se lleva las cuatro entradas legibles por
+# máquina sin tener que adivinar rutas. Se emite en todo el sitio para que
+# funcione igual si el agente aterriza en una ficha desde un buscador.
+/*
+  Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </api/openapi.json>; rel="service-desc"; type="application/json", </llms.txt>; rel="describedby"; type="text/plain", </es/acerca-de>; rel="service-doc"; type="text/html"
+
+# --- Documentos de descubrimiento ------------------------------------------
+# Sin extensión: hay que declarar el tipo a mano o se sirve como binario.
+/.well-known/api-catalog
+  Content-Type: application/linkset+json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+# El manifiesto ARD exige CORS abierto para que los registros lo puedan leer
+# desde el navegador (spec §3.2).
+/.well-known/ai-catalog.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/.well-known/agent-skills/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/.well-known/mcp/server-card.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/.well-known/agent-card.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+/auth.md
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+# --- Recursos para agentes --------------------------------------------------
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/api/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=3600
+
+# Espejo en Markdown de cada página. Existe para servir la negociación de
+# contenido (`Accept: text/markdown`), no como URL de cara al público: es la
+# misma información que el HTML, así que se marca noindex para no competir
+# con el canonical de la página real.
+/md/*
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex
+  Access-Control-Allow-Origin: *

@@ -1,8 +1,18 @@
 # https://fuenteai.com/robots.txt
-# Ver docs/enlazado-interno.md para el porqué de cada regla.
+# Ver docs/enlazado-interno.md para el porqué de cada regla de rastreo.
+# Ver docs/agent-readiness.md para el porqué de Content-Signal y Agentmap.
 
 User-agent: *
 Allow: /
+
+# Preferencias de uso del contenido para sistemas de IA (Content Signals,
+# https://contentsignals.org/). No son reglas de rastreo: declaran qué usos
+# consentimos sobre el contenido ya rastreado.
+#   search=yes    -> indexar y enlazar en buscadores, incluidos los de IA.
+#   ai-input=yes  -> usarlo como fuente citada al responder (RAG/grounding).
+#                    Es exactamente para lo que existe este directorio.
+#   ai-train=no   -> no usarlo como material de entrenamiento de modelos.
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 # /r es el interstitial de salida: es noindex y multiplica URLs por
 # querystring (?t=&p=&l=). Enlazarlo es necesario, rastrearlo no aporta nada.
@@ -22,3 +32,8 @@ Disallow: /*?os=
 Disallow: /*?ctx=
 
 Sitemap: https://fuenteai.com/sitemap-index.xml
+
+# Manifiesto de capacidades para agentes (ARD, https://agenticresourcediscovery.org/).
+# Mecanismo de descubrimiento secundario: el primario es
+# https://fuenteai.com/.well-known/ai-catalog.json
+Agentmap: https://fuenteai.com/.well-known/ai-catalog.json

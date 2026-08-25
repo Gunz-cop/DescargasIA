@@ -57,6 +57,16 @@ jobs:
       - name: Tests
         run: npm test
 
+      # El indice de Agent Skills lleva el digest sha256 de cada SKILL.md. Se
+      # regenera y se comprueba que el commit ya traia el resultado correcto: un
+      # SKILL.md editado sin reconstruir deja el digest mintiendo, y un cliente
+      # que lo verifique descarta la skill.
+      - name: Índice de Agent Skills al día
+        run: |
+          npm run agents:skills
+          git diff --exit-code -- public/.well-known/agent-skills/index.json \
+            || { echo "::error::El indice de Agent Skills esta desactualizado. Ejecuta 'npm run agents:skills' y commitea."; exit 1; }
+
       # `astro sync` genera `.astro/types.d.ts` (el modulo virtual `astro:content`).
       # Ese directorio esta en `.gitignore`, asi que un checkout limpio de CI nunca
       # lo tiene: sin este paso, `tsc` fallaba con "Cannot find module 'astro:content'"
@@ -74,6 +84,13 @@ jobs:
 
       - name: Build
         run: npx --no-install astro build
+
+      # `npm test` corre antes del build, asi que la comprobacion sobre
+      # dist/api/catalog.json se saltaba y no se repetia: en CI no llegaba a
+      # ejecutarse nunca. El script test:build convierte ese skip en fallo, para
+      # que un build que dejara de emitir el catalogo no pase en silencio.
+      - name: Catálogo construido (safetyNotes y faq)
+        run: npm run test:build
 
       - name: Enlazado interno, canonical y hreflang
         run: npm run links:audit

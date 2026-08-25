@@ -1,0 +1,45 @@
+{
+  "$comment": "Agent Card A2A de FuenteAI. El agente lo implementa worker/index.ts en /a2a: responde de forma síncrona a message/send, sin tareas de larga duración ni streaming.",
+  "protocolVersion": "0.3.0",
+  "name": "FuenteAI — agente de catálogo de herramientas de IA",
+  "description": "Responde qué herramientas de IA existen para una necesidad concreta y devuelve, para cada una, su ficha editorial y sus canales oficiales de descarga o uso. Solo enlaza a sitios, tiendas, repositorios y documentación del propio desarrollador: FuenteAI no aloja instaladores, APKs, ejecutables ni mirrors.",
+  "version": "1.0.0",
+  "url": "https://fuenteai.com/a2a",
+  "preferredTransport": "JSONRPC",
+  "provider": {
+    "organization": "FuenteAI",
+    "url": "https://fuenteai.com"
+  },
+  "documentationUrl": "https://fuenteai.com/llms.txt",
+  "iconUrl": "https://fuenteai.com/favicon.svg",
+  "additionalInterfaces": [
+    {
+      "url": "https://fuenteai.com/a2a",
+      "transport": "JSONRPC"
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "securitySchemes": {},
+  "security": [],
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain"],
+  "skills": [
+    {
+      "id": "buscar-herramientas-ia",
+      "name": "Buscar herramientas de IA",
+      "description": "Dada una necesidad en lenguaje natural ('transcribir audio sin subirlo a la nube', 'generar vídeo desde texto'), devuelve las herramientas del catálogo que la cubren, con su ficha, su sitio oficial y sus canales de descarga por plataforma.",
+      "tags": ["catálogo", "herramientas-ia", "descargas-oficiales", "búsqueda"],
+      "examples": [
+        "¿Qué herramientas hay para transcribir audio en local?",
+        "Busco un editor de código con IA para Linux",
+        "Modelos locales gratis para Windows"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain"]
+    }
+  ]
+}
