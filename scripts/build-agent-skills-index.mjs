@@ -8,6 +8,14 @@
  * en cada build (`npm run agents:skills`, encadenado antes de `astro build`).
  *
  * La `description` sale del frontmatter del propio SKILL.md: una sola fuente.
+ *
+ * El digest se calcula sobre los BYTES del archivo, que es lo que se sirve por
+ * HTTP y lo que un cliente vuelve a hashear para verificarlo. Eso lo hace
+ * sensible a los finales de linea: con `core.autocrlf=true`, un checkout en
+ * Windows convierte LF -> CRLF y el mismo repositorio genera un indice
+ * distinto. `.gitattributes` fuerza LF en este directorio; aqui se comprueba,
+ * porque un editor puede guardar CRLF antes de que git normalice nada y el
+ * fallo seria silencioso: un digest que no corresponde al archivo servido.
  */
 import crypto from 'node:crypto';
 import fs from 'node:fs';
@@ -55,7 +63,16 @@ const skills = fs
     const file = path.join(SKILLS_DIR, dir, 'SKILL.md');
     if (!fs.existsSync(file)) throw new Error(`${dir}/ no contiene un SKILL.md`);
 
-    const source = fs.readFileSync(file, 'utf8');
+    const bytes = fs.readFileSync(file);
+    if (bytes.includes('\r\n')) {
+      throw new Error(
+        `${file}: tiene finales de linea CRLF. El digest se calcula sobre los bytes, ` +
+          'asi que CRLF genera un indice distinto al de un checkout en Linux. ' +
+          'Normaliza el archivo a LF (ver .gitattributes) y vuelve a ejecutar.'
+      );
+    }
+
+    const source = bytes.toString('utf8');
     const { name, description } = readFrontmatter(source, file);
 
     if (name !== dir) {
@@ -67,7 +84,7 @@ const skills = fs
       type: 'skill-md',
       description,
       url: `${BASE}/${dir}/SKILL.md`,
-      digest: 'sha256:' + crypto.createHash('sha256').update(source).digest('hex')
+      digest: 'sha256:' + crypto.createHash('sha256').update(bytes).digest('hex')
     };
   });
 

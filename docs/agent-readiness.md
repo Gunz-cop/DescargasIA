@@ -195,6 +195,17 @@ genera `npm run agents:skills` (encadenado en `npm run build`) calculando el
 `digest` sha256 de cada archivo. Escrito a mano, el digest se queda obsoleto
 en la primera edición.
 
+**El digest depende de los finales de línea.** Se calcula sobre los bytes del
+archivo, que es lo que se sirve por HTTP y lo que un cliente vuelve a hashear
+para verificarlo. Con `core.autocrlf=true`, un checkout en Windows convierte
+LF → CRLF y el mismo repositorio genera un índice distinto: el commiteado y el
+regenerado dejan de coincidir, y un cliente que verifique el digest descarta la
+skill. Dos barreras:
+
+- `.gitattributes` fuerza `text eol=lf` en `public/.well-known/agent-skills/**`.
+- El script **falla** si encuentra CRLF, porque un editor puede guardar así
+  antes de que git normalice nada y el fallo sería silencioso.
+
 Para añadir una skill: crea la carpeta con su `SKILL.md` (el `name` del
 frontmatter debe coincidir con el nombre de la carpeta) y reconstruye.
 
@@ -300,7 +311,7 @@ Tres cosas que la integración tuvo que resolver, y que conviene no deshacer:
 ### Cadena de build
 
 ```
-catalog:audit → hw:audit → npm test → agents:skills → astro build → links:audit
+catalog:audit → hw:audit → npm test → agents:skills → astro build → test:build → links:audit
 ```
 
 `agents:skills` va **antes** de `astro build`: genera un archivo en `public/`
@@ -326,9 +337,13 @@ falló de verdad, no lo que es fácil de probar:
 Los módulos del Worker se importan con extensión `.ts` explícita porque Node
 los ejecuta directamente (type stripping nativo); esbuild los resuelve igual.
 
-`catalogo-campos.test.mjs` valida siempre el contenido fuente y, además,
-`dist/api/catalog.json` cuando ya hay un build: `npm test` corre antes de
-`astro build`, así que en un árbol limpio esa parte se salta.
+`catalogo-campos.test.mjs` corre **dos veces**, y por un motivo concreto:
+`npm test` va antes de `astro build`, así que en un árbol limpio la parte que
+mira `dist/api/catalog.json` se saltaba y no se repetía — en CI no llegaba a
+ejecutarse nunca. Ahora `npm run test:build` la relanza después del build con
+`REQUIRE_BUILD=1`, y con esa variable la ausencia del catálogo deja de ser un
+`skip` y pasa a ser un fallo: un build que dejara de emitirlo habría pasado la
+comprobación en silencio.
 
 ## Verificar
 

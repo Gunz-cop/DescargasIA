@@ -13,6 +13,19 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
+
+/**
+ * Estos casos provocan fallos a proposito, y la capa los registra con
+ * console.error. Sin silenciarlos, la salida del build se llena de lineas que
+ * parecen errores reales: es justo lo que ensena a ignorar los de verdad.
+ */
+function silenciarErrores(t) {
+  const original = console.error;
+  console.error = () => {};
+  t.after(() => {
+    console.error = original;
+  });
+}
 import { tryAgentRoutes } from '../../worker/agents/index.ts';
 import { rpc } from './fixtures/fake-env.mjs';
 
@@ -34,7 +47,8 @@ test('la premisa: una peticion con el cuerpo consumido no se puede reutilizar', 
 });
 
 for (const ruta of ['/mcp', '/a2a']) {
-  test(`${ruta}: una excepcion tras leer el cuerpo sale como JSON-RPC, no como 500 vacio`, async () => {
+  test(`${ruta}: una excepcion tras leer el cuerpo sale como JSON-RPC, no como 500 vacio`, async (t) => {
+    silenciarErrores(t);
     const cuerpo = ruta === '/mcp'
       ? { jsonrpc: '2.0', id: 1, method: 'tools/call', params: { name: 'search_tools', arguments: {} } }
       : { jsonrpc: '2.0', id: 1, method: 'message/send', params: { message: { parts: [{ kind: 'text', text: 'x' }] } } };
@@ -61,7 +75,8 @@ for (const ruta of ['/mcp', '/a2a']) {
   });
 }
 
-test('un fallo en la negociacion Markdown devuelve null para que se sirva el HTML', async () => {
+test('un fallo en la negociacion Markdown devuelve null para que se sirva el HTML', async (t) => {
+  silenciarErrores(t);
   // Es un GET: el cuerpo nunca se toco, asi que reintentar contra los assets es
   // seguro y lo correcto es delegar en el router.
   const req = new Request('https://fuenteai.com/es/chatgpt', { headers: { Accept: 'text/markdown' } });

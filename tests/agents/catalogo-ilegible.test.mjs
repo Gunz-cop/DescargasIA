@@ -10,6 +10,19 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
+
+/**
+ * Estos casos provocan fallos a proposito, y la capa los registra con
+ * console.error. Sin silenciarlos, la salida del build se llena de lineas que
+ * parecen errores reales: es justo lo que ensena a ignorar los de verdad.
+ */
+function silenciarErrores(t) {
+  const original = console.error;
+  console.error = () => {};
+  t.after(() => {
+    console.error = original;
+  });
+}
 import { tryAgentRoutes } from '../../worker/agents/index.ts';
 import { resetCatalogCache } from '../../worker/agents/catalog.ts';
 import { envSinCatalogo, rpc } from './fixtures/fake-env.mjs';
