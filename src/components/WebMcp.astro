@@ -1,0 +1,123 @@
+---
+// src/components/WebMcp.astro — herramientas WebMCP de la página.
+//
+// Expone el buscador del directorio al agente que ya está dentro del navegador
+// del usuario (navigator.modelContext, https://webmachinelearning.github.io/webmcp/).
+// No es una API nueva: consume el mismo /search-index.json que usa el buscador
+// de la interfaz, así que agente y persona ven exactamente los mismos datos.
+//
+// El script es defensivo por diseño: si el navegador no implementa WebMCP —hoy,
+// casi todos— no hace absolutamente nada y no descarga el índice.
+---
+
+<script is:inline>
+  (() => {
+    const ctx = navigator.modelContext;
+    if (!ctx || typeof ctx.registerTool !== 'function') return;
+
+    let indexPromise = null;
+    const loadIndex = () => {
+      // Se pide una sola vez y solo si un agente llega a invocar la herramienta.
+      indexPromise ||= fetch('/search-index.json').then((r) => r.json());
+      return indexPromise;
+    };
+
+    const fold = (value) =>
+      String(value ?? '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+
+    const textResult = (text) => ({ content: [{ type: 'text', text }] });
+
+    try {
+      ctx.registerTool({
+        name: 'search_ai_tools',
+        description:
+          'Busca herramientas de IA en el catálogo de FuenteAI que se está mostrando. Devuelve nombre, descripción, categorías, modelo de precio, plataformas con canal oficial y la URL de la ficha. FuenteAI no aloja archivos: las fichas enlazan al canal del propio desarrollador.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            query: {
+              type: 'string',
+              description: 'Qué busca el usuario: nombre, uso o tecnología. Ejemplo: "transcribir audio en local".'
+            },
+            category: {
+              type: 'string',
+              description:
+                'Slug de categoría: asistentes-ia, programacion, modelos-locales, generacion-imagenes, video-ia, musica-ia, traduccion-redaccion-ia, productividad-presentaciones-ia.'
+            },
+            platform: {
+              type: 'string',
+              enum: ['web', 'windows', 'mac', 'linux', 'android', 'ios'],
+              description: 'Solo herramientas con canal oficial para esta plataforma.'
+            },
+            limit: { type: 'integer', minimum: 1, maximum: 25, description: 'Máximo de resultados (por defecto 8).' }
+          }
+        },
+        async execute({ query, category, platform, limit }) {
+          const tools = await loadIndex();
+          const words = fold(query).split(/\s+/).filter(Boolean);
+          const max = Math.min(Math.max(Number(limit) || 8, 1), 25);
+
+          const results = tools
+            .filter((tool) => (category ? (tool.categories || []).includes(category) : true))
+            .filter((tool) => (platform ? (tool.platforms || []).includes(platform) : true))
+            .filter((tool) => {
+              if (words.length === 0) return true;
+              const haystack = fold(
+                [tool.name, tool.shortDescription, (tool.tags || []).join(' '), (tool.categories || []).join(' ')].join(' ')
+              );
+              return words.every((word) => haystack.includes(word));
+            })
+            .slice(0, max);
+
+          if (results.length === 0) {
+            return textResult(
+              'Ningún resultado en el catálogo con esos filtros. El catálogo completo está en https://fuenteai.com/api/catalog.json'
+            );
+          }
+
+          return textResult(
+            results
+              .map((tool) =>
+                [
+                  `${tool.name} — ${tool.shortDescription}`,
+                  `  Ficha: ${new URL('/es/' + tool.slug, location.origin).href}`,
+                  `  Categorías: ${(tool.categories || []).join(', ')} | Precio: ${tool.pricingModel}`,
+                  `  Plataformas con canal oficial: ${(tool.platforms || []).join(', ') || 'ninguna registrada'}`
+                ].join('\n')
+              )
+              .join('\n\n')
+          );
+        }
+      });
+
+      ctx.registerTool({
+        name: 'open_ai_tool_page',
+        description:
+          'Abre en esta pestaña la ficha de una herramienta del catálogo de FuenteAI, donde están sus canales oficiales de descarga por plataforma.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            slug: { type: 'string', description: 'Identificador de la herramienta, tal como lo devuelve search_ai_tools. Ejemplo: "chatgpt".' },
+            lang: { type: 'string', enum: ['es', 'sv', 'it'], description: 'Idioma de la ficha. Por defecto "es".' }
+          },
+          required: ['slug']
+        },
+        async execute({ slug, lang }) {
+          const tools = await loadIndex();
+          if (!tools.some((tool) => tool.slug === slug)) {
+            return textResult(`No hay ninguna ficha con el identificador "${slug}". Usa search_ai_tools para localizarla.`);
+          }
+          const href = new URL(`/${lang || 'es'}/${slug}`, location.origin).href;
+          location.assign(href);
+          return textResult(`Abriendo ${href}`);
+        }
+      });
+    } catch (error) {
+      // Una implementación parcial de WebMCP no puede romper la página.
+      console.debug('WebMCP no disponible:', error);
+    }
+  })();
+</script>

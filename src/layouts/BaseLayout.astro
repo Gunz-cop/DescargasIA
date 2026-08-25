@@ -3,9 +3,11 @@
 // Fondo con halos, cabecera, pie de confianza de tres columnas.
 import '../styles/global.css';
 import Motion from '../components/Motion.astro';
+import WebMcp from '../components/WebMcp.astro';
 import { useTranslations } from '../i18n/ui';
 import { CATEGORIES, type Lang } from '../utils/brand';
 import { homeUrl, categoryUrl, pageUrl, directoryUrl } from '../utils/links';
+import { hasMarkdownMirror, markdownPathFor } from '../utils/agent-content';
 import { getTranslatedTools } from '../utils/tools';
 
 interface Props {
@@ -34,13 +36,24 @@ const {
 
 const t = useTranslations(lang);
 
+const langTools = await getTranslatedTools(lang);
+
 // El contador de la cabecera se deriva del catálogo, nunca se escribe a mano.
-const verifiedCount = (await getTranslatedTools(lang)).length;
+const verifiedCount = langTools.length;
 
 const esAlternate = alternates.find((alt) => alt.lang === 'es');
 
 const hreflangMap: Record<string, string> = { es: 'es-ES', sv: 'sv-SE', it: 'it-IT' };
 const ogLocaleMap: Record<string, string> = { es: 'es_ES', sv: 'sv_SE', it: 'it_IT' };
+
+// Espejo Markdown de ESTA pagina. Es la misma URL que sirve el Worker cuando
+// llega `Accept: text/markdown`; declararla en el head le ahorra al agente
+// tener que negociar para descubrir que existe. Solo se anuncia si de verdad
+// se generó: las paginas legales y el 404 no tienen espejo.
+// Ver docs/agent-readiness.md.
+const markdownUrl = hasMarkdownMirror(Astro.url.pathname, langTools.map((tool) => tool.slug))
+  ? markdownPathFor(Astro.url.pathname)
+  : null;
 
 const home = homeUrl(lang);
 const directory = directoryUrl(lang);
@@ -86,6 +99,12 @@ const rightsLine = lang === 'sv'
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
+    {markdownUrl && !noindex && <link rel="alternate" type="text/markdown" href={markdownUrl} />}
+
+    {/* Descubrimiento para agentes: manifiesto de capacidades del dominio
+        (ARD) y resumen del sitio. Ver docs/agent-readiness.md. */}
+    <link rel="ai-catalog" href="/.well-known/ai-catalog.json" />
+    <link rel="describedby" type="text/plain" href="/llms.txt" />
     {noindex && <meta name="robots" content="noindex" />}
 
     <meta name="theme-color" content="#04120e" />
@@ -294,5 +313,6 @@ const rightsLine = lang === 'sv'
         });
       });
     </script>
+    <WebMcp />
   </body>
 </html>

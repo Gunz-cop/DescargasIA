@@ -7,6 +7,7 @@ Antes de modificar UX, contenido o estructura editorial, lee estas guias:
 - `docs/fuenteai-referencia-visual.html`: referencia visual. Opciones 1a (home + ficha) y 2a (busqueda, movil, movimiento); 1b y 1c estan descartadas.
 - `docs/ux-home-cards.md`: reglas para las tarjetas de herramientas en la home.
 - `docs/ux-tool-pages.md`: estructura recomendada para fichas individuales de herramientas.
+- `docs/agent-readiness.md`: **que expone el sitio a agentes de IA (Content Signals, cabeceras Link, llms.txt, espejo Markdown, MCP, A2A, WebMCP, Agent Skills) y por que hay cosas que a proposito no se publican.** Leelo antes de tocar `public/_headers`, `public/robots.txt`, `public/.well-known/`, `worker/index.ts` o `src/utils/agent-content.ts`.
 - `docs/enlazado-interno.md`: **mapa de URLs, grafo de enlaces internos, reglas de hreflang/canonical y auditoria automatica.** Leelo antes de tocar rutas, navegacion, hreflang o cualquier bloque de enlaces.
 - `docs/tool-ficha-authoring.md`: como usar la skill `descargasia-tool-ficha` para crear fichas nuevas.
 - `docs/ficha-harness.md`: **arnes de GitHub Actions que encadena crear -> auditar -> corregir hasta 5 veces.** Es la via para generar fichas sin gastar cuota de una sesion interactiva.
@@ -21,6 +22,8 @@ Principios del proyecto:
 - Mantener Astro + Tailwind, rendimiento alto y mobile-first.
 - Antes de publicar cambios de UI o contenido, ejecutar `npm run build`. Encadena `catalog:audit` (integridad del contenido: fichas sin traducir, slugs de `alternatives` inexistentes, categorias fantasma) y `links:audit` (grafo de enlaces, canonical y hreflang). Cualquiera de las dos falla el build, y con el, el deploy.
 - Ninguna ruta interna se escribe a mano: todo enlace interno sale de los helpers de `src/utils/links.ts`.
+- Lo que lee un agente sale de la misma fuente que lee una persona: `src/utils/agent-content.ts` deriva llms.txt, el catalogo JSON, el espejo Markdown y las herramientas MCP de las mismas colecciones que las fichas HTML.
+- No se publica un documento de descubrimiento de una capacidad que no existe. Una tarjeta MCP sin servidor o metadatos OAuth sin servidor de autorizacion no son declarativos: rompen al cliente que se los cree.
 
 ## Colaboración y Creación de Contenido
 

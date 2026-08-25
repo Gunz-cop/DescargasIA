@@ -1,0 +1,60 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "FuenteAI",
+    "identifier": "did:web:fuenteai.com",
+    "description": "Directorio editorial de herramientas de IA que enlaza únicamente a canales oficiales de descarga y uso. No aloja instaladores, APKs, ejecutables ni mirrors.",
+    "url": "https://fuenteai.com"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:fuenteai.com:server:catalog",
+      "displayName": "Servidor MCP del catálogo de FuenteAI",
+      "description": "Servidor MCP de solo lectura sobre el catálogo: buscar herramientas de IA por uso, categoría, plataforma o precio, y leer la ficha editorial completa de cada una con sus canales oficiales.",
+      "type": "application/mcp-server-card+json",
+      "url": "https://fuenteai.com/.well-known/mcp/server-card.json",
+      "representativeQueries": [
+        "qué herramienta de IA sirve para transcribir audio en local",
+        "dónde descargo ChatGPT desde el sitio oficial",
+        "editores de código con IA para Linux",
+        "herramientas gratis para generar vídeo desde texto",
+        "modelos de lenguaje que se ejecutan sin conexión"
+      ]
+    },
+    {
+      "identifier": "urn:air:fuenteai.com:agent:catalog",
+      "displayName": "Agente A2A del catálogo de FuenteAI",
+      "description": "Agente agente-a-agente que responde en lenguaje natural qué herramientas de IA cubren una necesidad y devuelve sus canales oficiales de descarga.",
+      "type": "application/a2a-agent-card+json",
+      "url": "https://fuenteai.com/.well-known/agent-card.json",
+      "representativeQueries": [
+        "recomiéndame una herramienta de IA para presentaciones",
+        "qué alternativas oficiales hay a Midjourney",
+        "busco una app de IA para Android que no pida cuenta"
+      ]
+    },
+    {
+      "identifier": "urn:air:fuenteai.com:api:catalog",
+      "displayName": "API de lectura del catálogo",
+      "description": "Endpoints estáticos de solo lectura: el catálogo completo en JSON en los tres idiomas y su especificación OpenAPI 3.1.",
+      "type": "application/openapi+json",
+      "url": "https://fuenteai.com/api/openapi.json",
+      "representativeQueries": [
+        "listado completo de herramientas de IA en JSON",
+        "catálogo de herramientas de IA con su URL oficial",
+        "qué categorías de herramientas de IA cubre FuenteAI"
+      ]
+    },
+    {
+      "identifier": "urn:air:fuenteai.com:skills:index",
+      "displayName": "Agent Skills de FuenteAI",
+      "description": "Instrucciones publicadas para que un agente consulte el catálogo y resuelva la descarga oficial de una herramienta sin caer en clones ni mirrors.",
+      "type": "application/agent-skills+json",
+      "url": "https://fuenteai.com/.well-known/agent-skills/index.json",
+      "representativeQueries": [
+        "cómo consulto el catálogo de FuenteAI desde un agente",
+        "cómo verifico que un enlace de descarga es oficial"
+      ]
+    }
+  ]
+}

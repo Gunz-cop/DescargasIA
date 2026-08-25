@@ -1,0 +1,67 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://fuenteai.com/api/catalog.json",
+      "service-desc": [
+        {
+          "href": "https://fuenteai.com/api/openapi.json",
+          "type": "application/json",
+          "title": "Especificación OpenAPI 3.1 de los endpoints de lectura de FuenteAI"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fuenteai.com/llms.txt",
+          "type": "text/plain",
+          "title": "Resumen del sitio y de sus recursos legibles por máquina"
+        },
+        {
+          "href": "https://fuenteai.com/es/acerca-de",
+          "type": "text/html",
+          "title": "Criterio editorial: qué se verifica en cada ficha"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://fuenteai.com/es/aviso-legal",
+          "type": "text/html",
+          "title": "Condiciones de uso del contenido"
+        }
+      ]
+    },
+    {
+      "anchor": "https://fuenteai.com/mcp",
+      "service-desc": [
+        {
+          "href": "https://fuenteai.com/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "Tarjeta del servidor MCP: herramientas y recursos disponibles"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fuenteai.com/.well-known/agent-skills/fuenteai-catalogo/SKILL.md",
+          "type": "text/markdown",
+          "title": "Cómo consultar el catálogo de FuenteAI desde un agente"
+        }
+      ]
+    },
+    {
+      "anchor": "https://fuenteai.com/a2a",
+      "service-desc": [
+        {
+          "href": "https://fuenteai.com/.well-known/agent-card.json",
+          "type": "application/json",
+          "title": "Agent Card A2A del agente de catálogo"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://fuenteai.com/llms.txt",
+          "type": "text/plain",
+          "title": "Resumen del sitio y de sus recursos legibles por máquina"
+        }
+      ]
+    }
+  ]
+}

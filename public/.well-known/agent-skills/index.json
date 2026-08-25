@@ -1,0 +1,19 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "descargas-oficiales",
+      "type": "skill-md",
+      "description": "Resolver la descarga oficial de una herramienta de IA sin caer en clones, mirrors ni instaladores modificados. Úsalo cuando alguien pida descargar, instalar o \"bajar\" una herramienta de IA y necesites entregar un enlace en el que se pueda confiar.",
+      "url": "https://fuenteai.com/.well-known/agent-skills/descargas-oficiales/SKILL.md",
+      "digest": "sha256:98cabfa2ddbf01a2e5b328ee4d49c9002688fe3f66b729e9acdae76b364a7421"
+    },
+    {
+      "name": "fuenteai-catalogo",
+      "type": "skill-md",
+      "description": "Consultar el catálogo de herramientas de IA de FuenteAI. Úsalo cuando necesites saber qué herramientas de IA existen para una necesidad, comparar alternativas, o localizar la ficha de una herramienta concreta con sus canales oficiales.",
+      "url": "https://fuenteai.com/.well-known/agent-skills/fuenteai-catalogo/SKILL.md",
+      "digest": "sha256:9cb53e66715fdb7f770dffeedc18b965302c6343178d8957e18ad45f1a1de1b9"
+    }
+  ]
+}

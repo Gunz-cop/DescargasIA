@@ -1,10 +1,41 @@
 {
   "name": "fuenteai",
   "compatibility_date": "2026-06-18",
+
+  // El sitio sigue siendo el build estatico de Astro. El Worker existe solo
+  // para lo que un archivo estatico no puede hacer: negociar `Accept:
+  // text/markdown`, servir MCP en /mcp y A2A en /a2a. Ver worker/index.ts y
+  // docs/agent-readiness.md.
+  "main": "worker/index.ts",
+
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
     "html_handling": "drop-trailing-slash",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
+
+    // Rutas que pasan por el Worker ANTES que por los assets.
+    //
+    // Hay que listar /mcp y /a2a explicitamente aunque no sean archivos: con
+    // not_found_handling "404-page" el router de assets responde el 404 el
+    // mismo y el Worker no llega a ejecutarse nunca.
+    //
+    // Las paginas HTML estan aqui porque la negociacion de contenido
+    // (`Accept: text/markdown`) ocurre sobre URLs que SI son un asset. El
+    // resto de estaticos —/_astro, /fonts, /md, /api, /.well-known— se sirven
+    // sin invocar el Worker. "/es" (sin barra) queda fuera a proposito: lo
+    // resuelve el 301 de public/_redirects.
+    "run_worker_first": [
+      "/mcp",
+      "/a2a",
+      "/",
+      "/es/*",
+      "/sv/*",
+      "/it/*"
+    ]
+  },
+
+  "observability": {
+    "enabled": true
   }
 }
-

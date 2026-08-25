@@ -29,3 +29,6 @@ Thumbs.db
 
 # Salidas del arnes de fichas (informes por iteracion, logs, costos)
 harness-out/
+
+# Estado local de `wrangler dev`
+.wrangler/

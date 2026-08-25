@@ -1,0 +1,51 @@
+{
+  "$comment": "Tarjeta del servidor MCP de FuenteAI (SEP-1649). El servidor lo implementa worker/index.ts; sus herramientas leen /api/catalog.json, el mismo archivo que genera el build del sitio.",
+  "serverInfo": {
+    "name": "fuenteai-catalog",
+    "title": "FuenteAI — catálogo de herramientas de IA",
+    "version": "1.0.0",
+    "websiteUrl": "https://fuenteai.com"
+  },
+  "description": "Catálogo editorial de herramientas de IA con enlaces exclusivamente a canales oficiales del desarrollador de cada herramienta. Permite buscar por uso, categoría, plataforma o modelo de precio y leer la ficha completa de cada una. FuenteAI no aloja instaladores, APKs, ejecutables ni mirrors.",
+  "endpoint": "https://fuenteai.com/mcp",
+  "transport": "streamable-http",
+  "transports": [
+    {
+      "type": "streamable-http",
+      "url": "https://fuenteai.com/mcp"
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://fuenteai.com/mcp"
+    }
+  ],
+  "capabilities": {
+    "tools": {},
+    "resources": {}
+  },
+  "authentication": {
+    "type": "none",
+    "description": "Servidor público de solo lectura. No requiere credenciales: ver https://fuenteai.com/auth.md"
+  },
+  "tools": [
+    {
+      "name": "search_tools",
+      "description": "Busca herramientas de IA por texto libre, categoría, plataforma o modelo de precio."
+    },
+    {
+      "name": "get_tool",
+      "description": "Devuelve la ficha editorial completa de una herramienta en Markdown."
+    },
+    {
+      "name": "list_categories",
+      "description": "Lista las categorías del catálogo y cuántas herramientas contiene cada una."
+    }
+  ],
+  "resources": [
+    { "uri": "https://fuenteai.com/llms.txt", "name": "llms.txt" },
+    { "uri": "https://fuenteai.com/api/catalog.json", "name": "catalog.json" },
+    { "uri": "https://fuenteai.com/llms-full.txt", "name": "llms-full.txt" }
+  ]
+}
