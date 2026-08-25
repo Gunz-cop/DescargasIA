@@ -65,6 +65,19 @@ export function pageUrl(lang: Lang, slug: string): string {
   return `${langPrefix(lang)}/${slug}`;
 }
 
+/**
+ * App "¿qué modelos de IA puedo correr?".
+ *
+ * El slug se mantiene en español en los tres idiomas, igual que `acerca-de` o
+ * el segmento `categoria`: mantiene el mapeo hreflang 1:1 sin necesidad de una
+ * tabla de traducción de rutas. Ver `docs/app-compatibilidad-ia.md`.
+ */
+export const HARDWARE_SLUG = 'puedo-correr-ia';
+
+export function hardwareUrl(lang: Lang): string {
+  return pageUrl(lang, HARDWARE_SLUG);
+}
+
 /** Ancla al directorio dentro de la portada del idioma. */
 export function directoryUrl(lang: Lang): string {
   return lang === ROOT_LANG ? '/#directorio' : `/${lang}#directorio`;

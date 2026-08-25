@@ -1,0 +1,99 @@
+---
+import models from '../../data/hardware/models.json';
+import { estimate } from '../../lib/hardware/estimate';
+import { formatGb } from '../../lib/hardware/format';
+import { useTranslations } from '../../i18n/ui';
+import type { Lang } from '../../utils/brand';
+import type { ModelSpec, SystemSpecs } from '../../lib/hardware/types';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+type Model = ModelSpec;
+type Quant = Model['quants'][number];
+
+const CONTEXT_TOKENS = 4096;
+const STATIC_SPECS: SystemSpecs = { os: 'unknown' };
+const typedModels = models as ModelSpec[];
+
+/**
+ * Reference memory at 4K, calculated by the same deterministic engine as the
+ * interactive estimator. The table has no hardware verdict to evaluate, so it
+ * only exposes the engine's memory breakdown for each model and quantization.
+ */
+function referenceMemory(model: Model, quant: Quant): string {
+  return formatGb(estimate(model, quant, STATIC_SPECS, CONTEXT_TOKENS).memory.total, lang);
+}
+
+function formatParameters(paramsB: number): string {
+  return paramsB < 1 ? `${Math.round(paramsB * 1000)} M` : `${paramsB} B`;
+}
+
+function formatContext(tokens: number): string {
+  return `${Math.round(tokens / 1024)}K`;
+}
+---
+
+<section class="space-y-4" aria-labelledby="model-table-title" data-model-table>
+  <div>
+    <h2 id="model-table-title" class="text-[24px] font-semibold tracking-[-0.02em] text-fai-ink sm:text-[28px]">
+      {t('hw.page.table.title')}
+    </h2>
+    <p class="mt-2 max-w-3xl text-[15px] leading-7 text-fai-muted">
+      {t('hw.page.table.description')}
+    </p>
+  </div>
+
+  <div class="hardware-table-wrap rounded-2xl border border-fai-line bg-fai-surface" tabindex="0" aria-label={t('hw.page.table.title')}>
+    <table class="w-full min-w-[760px] border-collapse text-left text-[14px]">
+      <caption class="sr-only">{t('hw.page.table.title')}</caption>
+      <thead class="border-b border-fai-line bg-fai-card text-fai-muted">
+        <tr>
+          <th scope="col" class="px-4 py-3 font-medium">{t('hw.table.model')}</th>
+          <th scope="col" class="px-4 py-3 font-medium">{t('hw.table.family')}</th>
+          <th scope="col" class="px-4 py-3 font-medium">{t('hw.table.parameters')}</th>
+          <th scope="col" class="px-4 py-3 font-medium">{t('hw.table.context')}</th>
+          <th scope="col" class="px-4 py-3 font-medium">{t('hw.table.memory')}</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-fai-line">
+        {typedModels.map((model) => (
+          <tr class="align-top transition-colors hover:bg-fai-card">
+            <th scope="row" class="max-w-[230px] px-4 py-4 font-medium leading-6 text-fai-ink">{model.displayName}</th>
+            <td class="px-4 py-4 text-fai-muted">{model.family}</td>
+            <td class="whitespace-nowrap px-4 py-4 tabular-nums text-fai-muted">{formatParameters(model.paramsB)}</td>
+            <td class="whitespace-nowrap px-4 py-4 tabular-nums text-fai-muted">{formatContext(model.contextMax)}</td>
+            <td class="px-4 py-4">
+              <ul class="grid gap-1.5 sm:grid-cols-2" aria-label={t('hw.table.memory')}>
+                {model.quants.map((quant) => (
+                  <li class="flex min-w-[9.5rem] items-baseline justify-between gap-3 rounded-md border border-fai-line px-2.5 py-1.5">
+                    <span class="font-mono text-[12px] tracking-[0.08em] text-fai-signal">{quant.name}</span>
+                    <span class="whitespace-nowrap tabular-nums text-fai-ink">{referenceMemory(model, quant)}</span>
+                  </li>
+                ))}
+              </ul>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="text-[13px] leading-6 text-fai-muted-2">{t('hw.table.memory-note')}</p>
+</section>
+
+<style>
+  .hardware-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .hardware-table-wrap:focus-visible {
+    outline: 2px solid #0fbf8f;
+    outline-offset: 3px;
+  }
+</style>

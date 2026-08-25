@@ -5,7 +5,7 @@ import '../styles/global.css';
 import Motion from '../components/Motion.astro';
 import { useTranslations } from '../i18n/ui';
 import { CATEGORIES, type Lang } from '../utils/brand';
-import { homeUrl, categoryUrl, pageUrl, directoryUrl } from '../utils/links';
+import { homeUrl, categoryUrl, pageUrl, directoryUrl, hardwareUrl } from '../utils/links';
 import { getTranslatedTools } from '../utils/tools';
 
 interface Props {
@@ -44,6 +44,7 @@ const ogLocaleMap: Record<string, string> = { es: 'es_ES', sv: 'sv_SE', it: 'it_
 
 const home = homeUrl(lang);
 const directory = directoryUrl(lang);
+const hardware = hardwareUrl(lang);
 
 // URLs reales calculadas en build: si la página no existe en el idioma destino
 // se enlaza su portada en vez de provocar un 404.
@@ -152,6 +153,10 @@ const rightsLine = lang === 'sv'
             {t('nav.directory')}
           </a>
 
+          <a href={hardware} class="rounded-md px-3 py-2 text-[14px] text-fai-muted transition-colors hover:text-fai-ink">
+            {t('hw.nav')}
+          </a>
+
           <details class="relative" name="header-menus">
             <summary class="flex cursor-pointer list-none items-center gap-1.5 rounded-md px-3 py-2 text-[14px] text-fai-muted transition-colors hover:text-fai-ink">
               {t('nav.categories')}
@@ -216,6 +221,9 @@ const rightsLine = lang === 'sv'
             >
               <a href={directory} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">
                 {t('nav.directory')}
+              </a>
+              <a href={hardware} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">
+                {t('hw.nav')}
               </a>
               <p class="fai-mono-sm mt-4 px-3 py-1 text-fai-muted-2">{t('nav.categories')}</p>
               {CATEGORIES.map((cat) => (

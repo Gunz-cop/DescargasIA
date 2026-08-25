@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ModelTable from '../../components/hardware/ModelTable.astro';
+import ResultCard from '../../components/hardware/ResultCard.astro';
+import SpecsForm from '../../components/hardware/SpecsForm.astro';
+import Tooltip from '../../components/hardware/Tooltip.astro';
+import { languages, useTranslations } from '../../i18n/ui';
+import { absolute, buildAlternates, hardwareUrl, homeUrl, pageUrl, toolUrl } from '../../utils/links';
+import type { Lang } from '../../utils/brand';
+import { EDITORIAL_TEAM } from '../../data/editorial-team';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang }
+  }));
+}
+
+const lang = Astro.params.lang as Lang;
+const t = useTranslations(lang);
+const pagePath = hardwareUrl(lang);
+const pageUrlAbsolute = absolute(Astro.url.origin, pagePath);
+const alternates = buildAlternates(Astro.url.origin, (l) => hardwareUrl(l));
+const description = t('hw.page.description');
+
+const organization = {
+  '@type': 'Organization',
+  '@id': `${Astro.url.origin}/#editorial-team`,
+  name: EDITORIAL_TEAM.name[lang],
+  url: absolute(Astro.url.origin, pageUrl(lang, 'acerca-de'))
+};
+
+const faqItems = [
+  {
+    question: t('hw.page.faq.vram.question'),
+    answer: t('hw.page.faq.vram.answer')
+  },
+  {
+    question: t('hw.page.faq.context.question'),
+    answer: t('hw.page.faq.context.answer')
+  },
+  {
+    question: t('hw.page.faq.official.question'),
+    answer: t('hw.page.faq.official.answer')
+  }
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    '@id': `${pageUrlAbsolute}#application`,
+    name: t('hw.page.title'),
+    url: pageUrlAbsolute,
+    description,
+    applicationCategory: 'UtilitiesApplication',
+    operatingSystem: 'Windows, macOS, Linux',
+    inLanguage: lang,
+    author: { '@id': organization['@id'] },
+    publisher: { '@id': organization['@id'] }
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: t('nav.home'),
+        item: absolute(Astro.url.origin, homeUrl(lang))
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: t('hw.page.title'),
+        item: pageUrlAbsolute
+      }
+    ]
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(({ question, answer }) => ({
+      '@type': 'Question',
+      name: question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: answer
+      }
+    }))
+  },
+  organization
+];
+
+const methodology = {
+  weights: lang === 'sv'
+    ? 'Minnesvärdet utgår från den publicerade storleken på vikterna i varje GGUF-fil. Därefter läggs KV-cachen, som växer med kontextlängden, och en marginal för runtime och aktiveringar till.'
+    : lang === 'it'
+      ? 'La memoria parte dalla dimensione pubblicata dei pesi di ogni file GGUF. Poi si aggiungono la cache KV, che cresce con la lunghezza del contesto, e un margine per runtime e attivazioni.'
+      : 'La memoria parte del tamaño publicado de los pesos de cada archivo GGUF. Después se suma la caché KV, que crece con la longitud del contexto, y un margen para el runtime y las activaciones.',
+  speed: lang === 'sv'
+    ? 'Hastigheten är alltid en uppskattning: den beror på minnesbandbredd, processor, backend och inställningar. Den interaktiva motorn räknar senare ut ett besked utifrån dina uppgifter.'
+    : lang === 'it'
+      ? 'La velocità è sempre una stima: dipende da banda di memoria, processore, backend e configurazione. Il motore interattivo calcolerà poi il verdetto usando i tuoi dati.'
+      : 'La velocidad siempre será una estimación: depende del ancho de banda, del procesador, del backend y de la configuración. El motor interactivo calculará después el veredicto con tus datos.'
+};
+
+const copy = {
+  comboAskVram: t('hw.combo.ask-vram'),
+  comboHint: t('hw.combo.hint'),
+  comboUseTyped: t('hw.combo.use-typed'),
+  comboTypedHint: t('hw.combo.typed-hint'),
+  detected: t('hw.detected'),
+  ramMinimum: t('hw.detected.minimum'),
+  unifiedMemory: t('hw.result.unified-memory'),
+  groupRoomy: t('hw.group.roomy'),
+  groupWorks: t('hw.group.works'),
+  groupNo: t('hw.group.no'),
+  resultsCount: t('hw.results.count'),
+  resultStart: t('hw.result.start'),
+  resultEmpty: t('hw.result.empty'),
+  verdictRoomy: t('hw.result.verdict.roomy'),
+  verdictWorks: t('hw.result.verdict.works'),
+  verdictNo: t('hw.result.verdict.no'),
+  availableMemory: t('hw.result.available-memory'),
+  availableUnknown: t('hw.result.available-unknown'),
+  offloadNote: t('hw.result.offload-note'),
+  unifiedNote: t('hw.result.unified-note'),
+  noFitNote: t('hw.result.no-fit-note'),
+  estimateNotice: t('hw.estimate-notice'),
+  aiEstimated: t('hw.ai-estimated'),
+  memoryBar: t('hw.result.memory-bar')
+};
+
+const runtimeUrls = {
+  ollama: toolUrl(lang, 'ollama'),
+  'lm-studio': toolUrl(lang, 'lm-studio'),
+  jan: toolUrl(lang, 'jan')
+};
+---
+
+<BaseLayout
+  title={t('hw.page.title')}
+  description={description}
+  lang={lang}
+  alternates={alternates}
+  jsonLd={jsonLd}
+>
+  <article class="hardware-page mx-auto max-w-5xl py-10 sm:py-14" aria-labelledby="hardware-page-title">
+    <header class="max-w-3xl border-b border-fai-line pb-8">
+      <span class="fai-mono-sm inline-flex rounded border border-fai-signal/30 bg-fai-signal/10 px-3 py-1 text-fai-signal">
+        {t('hw.page.eyebrow')}
+      </span>
+      <h1 id="hardware-page-title" class="mt-4 text-[32px] font-semibold leading-[1.08] tracking-[-0.03em] text-fai-ink sm:text-[48px]">
+        {t('hw.page.title')}
+      </h1>
+      <p class="mt-5 text-[16px] leading-7 text-fai-ink-2">{t('hw.page.form.description')}</p>
+    </header>
+
+    <section
+      id="hardware-app"
+      class="mt-8 min-w-0 space-y-10"
+      data-hardware-app
+      data-hw-lang={lang}
+      data-hw-copy={JSON.stringify(copy)}
+      data-hw-runtime-urls={JSON.stringify(runtimeUrls)}
+      aria-labelledby="hardware-app-title"
+    >
+      <SpecsForm lang={lang} action={pagePath} />
+
+      <section class="hardware-results" data-hardware-results aria-labelledby="hardware-results-title">
+        <header class="flex flex-col gap-5 border-b border-fai-line pb-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <h2 id="hardware-results-title" class="fai-section-title text-fai-ink">{t('hw.step2.title')}</h2>
+              <Tooltip id={`hw-tooltip-${lang}-unified`} label={t('hw.tooltip.unified-label')} content={t('hw.tooltip.unified')} />
+            </div>
+            <p class="mt-2 max-w-2xl text-[15px] leading-7 text-fai-muted">{t('hw.result.intro')}</p>
+          </div>
+          <div class="hardware-context-control">
+            <label for="hardware-context-range" class="inline-flex items-center gap-2 text-[14px] font-medium text-fai-ink">
+              {t('hw.context.label')}
+              <Tooltip id={`hw-tooltip-${lang}-kv`} label={t('hw.tooltip.kv-cache-label')} content={t('hw.tooltip.kv-cache')} />
+            </label>
+            <output class="hardware-context-output" for="hardware-context-range" data-hardware-context-output>4k</output>
+            <input id="hardware-context-range" type="range" min="2048" max="131072" step="1024" value="4096" class="hardware-range" data-hardware-context />
+            <div class="flex justify-between text-[12px] text-fai-muted-2" aria-hidden="true"><span>2k</span><span>128k</span></div>
+          </div>
+        </header>
+
+        <p class="hardware-result-status" role="status" aria-live="polite" data-hardware-result-status>{t('hw.result.start')}</p>
+        <div class="hardware-result-groups" data-hardware-result-groups></div>
+
+        <aside class="mt-6 rounded-xl border border-fai-line bg-fai-surface p-4" data-hardware-ai-explanation hidden aria-live="polite">
+          <p class="fai-mono-sm text-fai-muted">{t('hw.ai.explanation')}</p>
+          <p class="mt-2 text-[14px] leading-6 text-fai-ink-2" data-hardware-ai-explanation-text></p>
+          <ul class="mt-3 list-disc space-y-1 pl-5 text-[14px] leading-6 text-fai-muted" data-hardware-ai-explanation-tips></ul>
+        </aside>
+
+        <div class="hardware-tooltip-row" aria-label={t('hw.result.explanations')}>
+          <span>{t('hw.result.explanations')}</span>
+          <Tooltip id={`hw-tooltip-${lang}-quant`} label={t('hw.tooltip.quant-label')} content={t('hw.tooltip.quant')} />
+          <Tooltip id={`hw-tooltip-${lang}-tps`} label={t('hw.tooltip.tps-label')} content={t('hw.tooltip.tps')} />
+          <Tooltip id={`hw-tooltip-${lang}-offload`} label={t('hw.tooltip.offload-label')} content={t('hw.tooltip.offload')} />
+        </div>
+      </section>
+
+      <ResultCard lang={lang} />
+      <ModelTable lang={lang} />
+    </section>
+
+    <section class="mt-12 grid gap-8 border-t border-fai-line pt-10 lg:grid-cols-[1fr_18rem]" aria-labelledby="methodology-title">
+      <div>
+        <h2 id="methodology-title" class="text-[24px] font-semibold tracking-[-0.02em] text-fai-ink sm:text-[28px]">
+          {t('hw.page.methodology.title')}
+        </h2>
+        <div class="mt-4 space-y-4 text-[15px] leading-7 text-fai-muted">
+          <p>{methodology.weights}</p>
+          <p>{methodology.speed}</p>
+        </div>
+      </div>
+      <aside class="rounded-2xl border border-fai-line bg-fai-surface p-5">
+        <p class="fai-mono-sm text-fai-signal">{t('hw.estimate-notice')}</p>
+        <p class="mt-3 text-[14px] leading-6 text-fai-muted">{t('hw.table.memory-note')}</p>
+      </aside>
+    </section>
+
+    <section class="mt-12 border-t border-fai-line pt-10" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="text-[24px] font-semibold tracking-[-0.02em] text-fai-ink sm:text-[28px]">{t('hw.page.faq.title')}</h2>
+      <div class="mt-5 grid grid-cols-1 gap-4">
+        {faqItems.map((item) => (
+          <details class="rounded-2xl border border-fai-line bg-fai-surface p-5">
+            <summary class="cursor-pointer text-[15px] font-medium leading-6 text-fai-ink">{item.question}</summary>
+            <p class="mt-3 max-w-3xl text-[14px] leading-6 text-fai-muted">{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  </article>
+  <script src="../../components/hardware/app.ts"></script>
+</BaseLayout>
+
+<style>
+  .hardware-page {
+    min-width: 0;
+    overflow-x: clip;
+  }
+</style>

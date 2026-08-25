@@ -1,0 +1,24 @@
+---
+interface Props {
+  id: string;
+  label: string;
+  content: string;
+}
+
+const { id, label, content } = Astro.props;
+---
+
+<span class="hardware-tooltip" data-hardware-tooltip>
+  <button
+    type="button"
+    class="hardware-tooltip__trigger"
+    aria-label={label}
+    aria-describedby={id}
+    data-tooltip-trigger
+  >
+    <span aria-hidden="true">i</span>
+  </button>
+  <span id={id} class="hardware-tooltip__panel" role="tooltip" hidden data-tooltip-panel>
+    {content}
+  </span>
+</span>
