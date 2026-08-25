@@ -148,6 +148,21 @@ export async function GET() {
             },
             bestFor: { type: 'array', items: { type: 'string' } },
             limitations: { type: 'array', items: { type: 'string' } },
+            safetyNotes: {
+              type: 'array',
+              description:
+                'Trampas conocidas al descargar esta herramienta. Muéstralas junto al enlace, no en lugar de él.',
+              items: { type: 'string' }
+            },
+            faq: {
+              type: 'array',
+              description: 'Preguntas frecuentes de la ficha, en el idioma de la entrada.',
+              items: {
+                type: 'object',
+                required: ['question', 'answer'],
+                properties: { question: { type: 'string' }, answer: { type: 'string' } }
+              }
+            },
             alternatives: { type: 'array', items: { type: 'string' } }
           }
         }

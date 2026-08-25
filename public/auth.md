@@ -28,27 +28,58 @@ cuáles son sus canales oficiales de descarga o uso.
 | `https://fuenteai.com/md/<ruta>.md` | `GET` | Ninguna |
 | Cualquier página del sitio | `GET` con `Accept: text/markdown` | Ninguna |
 
-Todos responden con `Access-Control-Allow-Origin: *`.
+Los recursos estáticos (`/api/*`, `/llms*.txt`, `/md/*`, `/.well-known/*`)
+responden con `Access-Control-Allow-Origin: *`.
 
-## Métodos de registro soportados
+`/mcp` y `/a2a` **no**. Ahí se valida `Origin` como exige la spec de MCP
+Streamable HTTP para prevenir DNS rebinding: se acepta la petición sin
+`Origin` —el caso normal de un cliente que no es un navegador— y la que venga
+del propio sitio; cualquier otro `Origin` recibe 403 y ninguna cabecera CORS.
+Si tu cliente no es un navegador, no te afecta: no mandes `Origin`.
 
-Ninguno. No hay endpoint de registro (`register_uri`), ni emisión de
-credenciales, ni servidor de autorización OAuth asociado a este dominio.
+## Endpoints de registro y aprovisionamiento
+
+**Ninguno, y es deliberado.** No existe `register_uri`, ni endpoint de
+aprovisionamiento, ni emisión de credenciales, ni servidor de autorización
+OAuth asociado a este dominio.
 
 Por eso este dominio **no** publica
 `/.well-known/oauth-authorization-server`,
 `/.well-known/openid-configuration` ni
-`/.well-known/oauth-protected-resource`: no existe tal servidor de
-autorización, y publicar esos documentos apuntando a uno inexistente rompería
-a cualquier cliente que intentase usarlos.
+`/.well-known/oauth-protected-resource`: no hay tal servidor de autorización, y
+publicar esos documentos apuntando a uno inexistente rompería a cualquier
+cliente que intentase seguirlos.
+
+## Métodos soportados
+
+Uno solo: **acceso anónimo por HTTPS**. No hay negociación, ni fallback, ni un
+segundo método para clientes registrados.
+
+```json
+{
+  "identity_types_supported": ["anonymous"],
+  "anonymous": {
+    "credential_types_supported": []
+  },
+  "registration_endpoints": [],
+  "bearer_methods_supported": []
+}
+```
+
+`credential_types_supported` está vacío y no hay `claim_uri` porque **no se
+emite ninguna credencial que reclamar**. El formato Auth.md contempla un
+`claim_uri` para el flujo anónimo cuando el servicio entrega un identificador
+efímero; aquí no se entrega nada, así que declararlo sería apuntar a un
+endpoint que no existe. Un validador estricto puede avisar de su ausencia: el
+aviso es correcto, y la respuesta es que no hay nada que reclamar.
 
 ## Uso de credenciales
 
-No se envía ninguna credencial. Si tu cliente añade una cabecera
-`Authorization`, se ignora.
+No se envía ninguna credencial, porque no hay ninguna que enviar.
 
-No se requiere ni se lee ninguna cookie. No hay sesión: cada petición es
-independiente.
+Si tu cliente añade una cabecera `Authorization`, se ignora: no se lee, no se
+valida y no cambia la respuesta. Tampoco se requiere ni se lee ninguna cookie.
+No hay sesión: cada petición es independiente y no deja estado en el servidor.
 
 ## Identidad
 

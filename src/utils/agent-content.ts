@@ -196,6 +196,18 @@ export interface AgentCatalogEntry {
   officialChannels: Array<{ platform: string; url: string; type: string; isOfficial: boolean }>;
   bestFor: string[];
   limitations: string[];
+  /**
+   * Avisos de seguridad y preguntas frecuentes de la ficha.
+   *
+   * Van en el catálogo porque son justo lo que un cliente necesita para NO
+   * mandar al usuario a un canal equivocado: `safetyNotes` recoge las trampas
+   * conocidas de cada herramienta (APKs de terceros, instaladores
+   * "modificados") y la FAQ responde lo que se pregunta antes de descargar.
+   * Sin ellas el consumidor del API tiene los enlaces pero no las advertencias
+   * que la página sí muestra.
+   */
+  safetyNotes: string[];
+  faq: Array<{ question: string; answer: string }>;
   alternatives: string[];
 }
 
@@ -226,6 +238,8 @@ export function toCatalogEntry(tool: ToolMerged, lang: Lang): AgentCatalogEntry 
       })),
     bestFor: tool.bestFor,
     limitations: tool.limitations,
+    safetyNotes: tool.safetyNotes,
+    faq: tool.faq,
     alternatives: tool.alternatives
   };
 }

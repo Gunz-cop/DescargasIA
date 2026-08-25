@@ -9,7 +9,7 @@ cambios el sitio estaba en **nivel 1 (Basic Web Presence)**: pasaba
 `robots.txt` y `sitemap`, y nada más.
 
 Léelo antes de tocar `public/_headers`, `public/robots.txt`,
-`public/.well-known/`, `worker/index.ts` o `src/utils/agent-content.ts`.
+`public/.well-known/`, `worker/agents/` o `src/utils/agent-content.ts`.
 
 ---
 
@@ -36,8 +36,7 @@ todo lo que se publica aquí funciona de verdad, y lo que no tenemos se dice en
 ## Arquitectura
 
 El sitio sigue siendo un build estático de Astro desplegado como Cloudflare
-Workers Assets. Lo nuevo es un Worker **delante** de los assets
-(`worker/index.ts`, declarado en `wrangler.jsonc` con `main`), que solo hace
+Workers Assets. Lo nuevo es un Worker **delante** de los assets, que solo hace
 lo que un archivo estático no puede hacer:
 
 ```
@@ -52,10 +51,38 @@ petición
 Cualquier excepción del Worker cae también a `env.ASSETS.fetch(request)`: un
 fallo en el código de agentes no puede tumbar la web para personas.
 
+### Todo vive en `worker/agents/`, y eso es deliberado
+
+| Archivo | Qué hace |
+| --- | --- |
+| `worker/agents/index.ts` | `tryAgentRoutes()`: única puerta de entrada. Devuelve `null` si la petición no es suya. |
+| `worker/agents/catalog.ts` | Lee `/api/catalog.json` y busca en él. |
+| `worker/agents/mcp.ts` | El servidor MCP. |
+| `worker/agents/a2a.ts` | El agente A2A. |
+| `worker/agents/markdown.ts` | La negociación de contenido. |
+| `worker/agents/http.ts` | Política de `Origin` y CORS. |
+| `worker/agents/types.ts` | `AgentEnv`: solo pide `ASSETS`. |
+| `worker/index.ts` | Router mínimo. **Descartable.** |
+
+El motivo es de integración. La rama de la app de hardware (F6/F7) tiene su
+propio `worker/index.ts` con las rutas `/api/hw/*`, sus bindings (`AI`,
+`HW_CACHE`) y su `worker/security.ts`. Fusionar dos `index.ts` que hacen cosas
+distintas es una resolución de conflictos a mano en el archivo más delicado del
+despliegue. Con esta forma, integrar es **añadir dos líneas** al router que
+sobreviva:
+
+```ts
+const agent = await tryAgentRoutes(request, env);
+if (agent) return agent;
+```
+
+`AgentEnv` pide solo `ASSETS`, así que el `Env` grande de aquel Worker encaja
+sin cambios. Ningún archivo de `worker/agents/` colisiona con los suyos.
+
 ### `run_worker_first`
 
 En `wrangler.jsonc` hay una lista explícita de rutas que pasan por el Worker
-antes que por los assets. Dos detalles que cuestan una tarde si no se saben:
+antes que por los assets. Tres detalles que cuestan una tarde si no se saben:
 
 1. **`/mcp` y `/a2a` hay que listarlos aunque no sean archivos.** Con
    `not_found_handling: "404-page"` el router de assets responde el 404 él
@@ -64,9 +91,33 @@ antes que por los assets. Dos detalles que cuestan una tarde si no se saben:
    ocurre sobre URLs que **sí** son un asset. El resto de estáticos
    (`/_astro`, `/fonts`, `/md`, `/api`, `/.well-known`) se sirven sin invocar
    el Worker.
+3. **`/sv/*` NO matchea `/sv`.** Cada portada de idioma necesita su entrada
+   exacta además del comodín, o devuelve HTML aunque le pidan Markdown. `"/es"`
+   es la única excepción: no existe como página, lo recoge el 301 de
+   `public/_redirects` hacia `/`.
 
-`"/es"` sin barra queda fuera a propósito: lo resuelve el 301 de
-`public/_redirects`.
+### La política de `Origin` de `/mcp` y `/a2a`
+
+La spec de MCP Streamable HTTP obliga a validar `Origin` en toda conexión, para
+que una página maliciosa abierta en el navegador de la víctima no pueda hacer
+POST contra el servidor (DNS rebinding).
+
+**La política no puede ser la de `worker/security.ts`** —exigir que `Origin`
+sea el propio sitio— porque los clientes MCP reales (Claude Desktop, los
+conectores de ChatGPT, un script) no son navegadores y **no envían `Origin` en
+absoluto**: exigirlo dejaría pasar a nadie. La regla, en `worker/agents/http.ts`:
+
+| `Origin` | Respuesta |
+| --- | --- |
+| ausente | Se permite. Es el cliente MCP normal. |
+| igual al sitio | Se permite, y CORS devuelve **ese** origen. |
+| cualquier otro | 403, sin ninguna cabecera CORS. |
+
+Nunca se emite `Access-Control-Allow-Origin: *` en estos dos endpoints: un
+comodín autorizaría a cualquier página a leer la respuesta desde el navegador
+de un tercero, que es justo lo que la validación impide. Los estáticos
+(`/api/*`, `/.well-known/*`, `/md/*`) sí lo llevan, y ahí es correcto: son
+datos públicos sin efectos.
 
 ---
 
@@ -88,7 +139,7 @@ antes que por los assets. Dos detalles que cuestan una tarde si no se saben:
 | `/.well-known/agent-skills/index.json` | `scripts/build-agent-skills-index.mjs` | `agentSkills` |
 | `/auth.md` | `public/auth.md` | `authMd` |
 | Herramientas `navigator.modelContext` | `src/components/WebMcp.astro` | `webMcp` |
-| `POST /mcp`, `POST /a2a` | `worker/index.ts` | lo que hace reales las tarjetas |
+| `POST /mcp`, `POST /a2a` | `worker/agents/` | lo que hace reales las tarjetas |
 
 ### Content Signals
 
@@ -111,8 +162,8 @@ llega de dos formas: pidiendo la URL normal con `Accept: text/markdown`, o
 pidiendo el `.md` directamente.
 
 - El nombre del archivo lo calcula `markdownPathFor()` en
-  `agent-content.ts`, y el Worker usa una función gemela. **Si cambias el
-  patrón de URLs, cambia los dos.**
+  `agent-content.ts`, y `worker/agents/markdown.ts` usa una función gemela.
+  **Si cambias el patrón de URLs, cambia los dos.**
 - Los `.md` van con `X-Robots-Tag: noindex` (`public/_headers`) para no
   competir con el canonical de la página real. El Worker **borra** esa
   cabecera cuando sirve el Markdown bajo la URL normal, que sí es indexable.
@@ -124,7 +175,7 @@ pidiendo el `.md` directamente.
   `agent-content.ts`). Una ficha sueca con etiquetas en español es un
   documento mezclado que el agente le pasaría así al usuario.
 
-### Las dos búsquedas del Worker
+### Las dos búsquedas del catálogo
 
 No son la misma función a propósito:
 
@@ -162,19 +213,115 @@ frontmatter debe coincidir con el nombre de la carpeta) y reconstruye.
 ### DNS-AID: lo único que hay que hacer a mano
 
 Estos registros se crean en el panel DNS de Cloudflare de `fuenteai.com`. No
-pueden vivir en el repo. Publican los mismos endpoints que ya sirve el Worker:
+pueden vivir en el repo, y **no están validados**: no hay forma de comprobarlos
+sin publicarlos. Trátalos como propuesta, no como receta.
+
+El criterio del escáner pide registros `SVCB` (o `HTTPS` para endpoints HTTPS)
+bajo el espacio `_agents`, con `alpn` y los parámetros de conexión, y
+**claves experimentales `keyNNNNN`** para los parámetros propios de DNS-AID
+mientras no estén registradas ante la IANA. Su ejemplo canónico usa un token
+`alpn` propio del protocolo, no `h2`:
 
 ```dns
-_mcp._agents.fuenteai.com.     3600 IN HTTPS 1 fuenteai.com. alpn="h2" port=443
-_a2a._agents.fuenteai.com.     3600 IN HTTPS 1 fuenteai.com. alpn="h2" port=443
-_index._agents.fuenteai.com.   3600 IN TXT   "url=https://fuenteai.com/.well-known/ai-catalog.json"
-_catalog._agents.fuenteai.com. 3600 IN TXT   "url=https://fuenteai.com/.well-known/ai-catalog.json"
+_a2a._agents.example.com. 3600 IN SVCB 1 agent.example.com. alpn="a2a" port=443 mandatory=alpn,port
 ```
 
-Firmar la zona con DNSSEC es parte de la comprobación. Cloudflare lo activa
-desde DNS → Settings → DNSSEC.
+Aplicado a los endpoints que el Worker ya sirve, y siguiendo esa forma:
 
----
+```dns
+; Servidor MCP -> https://fuenteai.com/mcp
+_mcp._agents.fuenteai.com.   3600 IN SVCB 1 fuenteai.com. alpn="mcp" port=443 mandatory=alpn,port
+
+; Agente A2A -> https://fuenteai.com/a2a
+_a2a._agents.fuenteai.com.   3600 IN SVCB 1 fuenteai.com. alpn="a2a" port=443 mandatory=alpn,port
+
+; Entrada de indice -> el manifiesto ARD
+_index._agents.fuenteai.com. 3600 IN TXT "url=https://fuenteai.com/.well-known/ai-catalog.json"
+
+; Mecanismo secundario de ARD (spec 6.1)
+_catalog._agents.fuenteai.com. 3600 IN TXT "url=https://fuenteai.com/.well-known/ai-catalog.json"
+```
+
+**Lo que falta decidir y hay que validar antes de publicar:**
+
+1. **La ruta del endpoint no cabe en el registro.** `SVCB` apunta a un host y
+   un puerto, no a `/mcp`. El camino que marca el criterio es un SvcParamKey
+   experimental (`keyNNNNN`) con la ruta, pero el número concreto no está
+   fijado en ningún sitio público que haya podido comprobar. Publicar un
+   `key65280="/mcp"` inventado es exactamente el tipo de dato falso que el
+   resto de este trabajo evita.
+2. **Los tokens `alpn="mcp"` y `alpn="a2a"` no son ALPN reales.** Ningún
+   servidor negocia TLS con ellos; son etiquetas de descubrimiento, siguiendo
+   el ejemplo del propio criterio. Conviene confirmar que el escáner los da por
+   buenos antes de dejarlos en producción.
+3. **DNSSEC** es parte de la comprobación. Cloudflare lo activa en
+   DNS → Settings → DNSSEC.
+
+**Procedimiento sugerido:** publicar solo los dos registros `TXT` (que son
+inequívocos y no dependen de claves experimentales), pasar el escáner, y ver
+qué reporta la evidencia de `dnsAid` sobre los `SVCB` antes de añadirlos. La
+respuesta del escáner incluye `queriesAttempted` y `records`, que dicen
+exactamente qué esperaba encontrar.
+
+## Integrar con el Worker de la app de hardware
+
+La rama F6/F7 (`fix/post-f8-ui-bugs` y sus hermanas) tiene su propio
+`worker/index.ts`, su `wrangler.jsonc` con bindings `AI` y `HW_CACHE`, y
+scripts `hw:audit` y `test` en `package.json`. Esta capa se diseñó para
+integrarse encima sin fusionar nada delicado. El procedimiento:
+
+**1. `worker/agents/` entra tal cual.** Ningún archivo de esa carpeta existe
+en la otra rama. Cero conflictos.
+
+**2. `worker/index.ts` de aquí se descarta.** Se queda el suyo, y se le añaden
+dos líneas al principio de su router, antes de que decida nada:
+
+```ts
+import { tryAgentRoutes, variesByAccept } from './agents';
+
+// ...dentro de fetch(), antes de /api/hw/* y de env.ASSETS:
+const agent = await tryAgentRoutes(request, env);
+if (agent) return agent;
+```
+
+Y, al servir los assets, añadir `Vary: Accept` cuando `variesByAccept(request)`
+sea cierto. Su `Env` ya incluye `ASSETS`, que es lo único que pide `AgentEnv`.
+
+**3. `wrangler.jsonc` se fusiona a mano.** Del de aquí solo hay que llevarse
+`assets.run_worker_first` completo. Sus `ai`, `vars` y `kv_namespaces` se
+quedan intactos.
+
+**4. `package.json`: preservar lo suyo y añadir `agents:skills`.** Sus scripts
+`test` y `hw:audit` **no se pueden perder** en la resolución. El resultado debe
+ser:
+
+```json
+"build": "npm run shorten && npm run catalog:audit && npm run hw:audit && npm test && npm run agents:skills && astro build && npm run links:audit",
+"build:no-shorten": "npm run catalog:audit && npm run hw:audit && npm test && npm run agents:skills && astro build && npm run links:audit",
+"agents:skills": "node scripts/build-agent-skills-index.mjs"
+```
+
+`agents:skills` tiene que ir **antes** de `astro build`: genera un archivo en
+`public/` que Astro copia a `dist/`.
+
+**5. `AGENTS.md`: quedarse con las dos listas.** El conflicto es que ambas
+ramas añaden líneas a la misma lista de documentos. Se conservan todas.
+
+**6. Desplegar primero en preview y pasar el escáner allí**, antes de tocar
+producción. El escáner acepta cualquier URL:
+
+```bash
+npx wrangler versions upload          # da una URL de preview
+curl -s -X POST https://isitagentready.com/api/scan \
+  -H 'Content-Type: application/json' \
+  -d '{"url":"https://<preview>.workers.dev"}'
+```
+
+Ojo con dos comprobaciones en preview: `linkHeaders` y los `.well-known`
+funcionan igual, pero las URL absolutas de `ai-catalog.json`, `server-card.json`
+y `agent-card.json` apuntan a `fuenteai.com`, así que `mcpServerCard` y
+`a2aAgentCard` describirán el sitio real, no el preview. Es esperado; lo que se
+valida en preview es que el Worker responde y que la negociación funciona.
 
 ## Verificar
 

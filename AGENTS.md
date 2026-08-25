@@ -7,7 +7,7 @@ Antes de modificar UX, contenido o estructura editorial, lee estas guias:
 - `docs/fuenteai-referencia-visual.html`: referencia visual. Opciones 1a (home + ficha) y 2a (busqueda, movil, movimiento); 1b y 1c estan descartadas.
 - `docs/ux-home-cards.md`: reglas para las tarjetas de herramientas en la home.
 - `docs/ux-tool-pages.md`: estructura recomendada para fichas individuales de herramientas.
-- `docs/agent-readiness.md`: **que expone el sitio a agentes de IA (Content Signals, cabeceras Link, llms.txt, espejo Markdown, MCP, A2A, WebMCP, Agent Skills) y por que hay cosas que a proposito no se publican.** Leelo antes de tocar `public/_headers`, `public/robots.txt`, `public/.well-known/`, `worker/index.ts` o `src/utils/agent-content.ts`.
+- `docs/agent-readiness.md`: **que expone el sitio a agentes de IA (Content Signals, cabeceras Link, llms.txt, espejo Markdown, MCP, A2A, WebMCP, Agent Skills) y por que hay cosas que a proposito no se publican.** Leelo antes de tocar `public/_headers`, `public/robots.txt`, `public/.well-known/`, `worker/agents/` o `src/utils/agent-content.ts`.
 - `docs/enlazado-interno.md`: **mapa de URLs, grafo de enlaces internos, reglas de hreflang/canonical y auditoria automatica.** Leelo antes de tocar rutas, navegacion, hreflang o cualquier bloque de enlaces.
 - `docs/tool-ficha-authoring.md`: como usar la skill `descargasia-tool-ficha` para crear fichas nuevas.
 - `docs/ficha-harness.md`: **arnes de GitHub Actions que encadena crear -> auditar -> corregir hasta 5 veces.** Es la via para generar fichas sin gastar cuota de una sesion interactiva.

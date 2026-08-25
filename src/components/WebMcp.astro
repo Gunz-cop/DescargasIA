@@ -1,25 +1,39 @@
 ---
 // src/components/WebMcp.astro — herramientas WebMCP de la página.
 //
-// Expone el buscador del directorio al agente que ya está dentro del navegador
-// del usuario (navigator.modelContext, https://webmachinelearning.github.io/webmcp/).
-// No es una API nueva: consume el mismo /search-index.json que usa el buscador
-// de la interfaz, así que agente y persona ven exactamente los mismos datos.
+// Expone el catálogo al agente que ya está dentro del navegador del usuario
+// (navigator.modelContext, https://webmachinelearning.github.io/webmcp/).
 //
-// El script es defensivo por diseño: si el navegador no implementa WebMCP —hoy,
-// casi todos— no hace absolutamente nada y no descarga el índice.
+// Lee `/api/catalog.json`, no `/search-index.json`, por dos motivos que son el
+// mismo: ese archivo trae las tres traducciones con su campo `lang`, y trae la
+// URL canónica ya construida de cada ficha. Así el componente puede comprobar
+// que una herramienta existe EN EL IDIOMA pedido —no solo que el slug exista
+// en alguno— y no tiene que construir ninguna ruta a mano: la URL sale del
+// catálogo, que la generó con los helpers de `src/utils/links.ts`. Es la regla
+// del proyecto (ver AGENTS.md) y aquí evita además navegar a un 404.
+//
+// El script es defensivo por diseño: si el navegador no implementa WebMCP
+// —hoy, casi todos— no hace absolutamente nada y no descarga el catálogo.
+import { LANGS } from '../utils/links';
+import type { Lang } from '../utils/brand';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'es' } = Astro.props;
 ---
 
-<script is:inline>
+<script is:inline define:vars={{ pageLang: lang, langs: LANGS }}>
   (() => {
     const ctx = navigator.modelContext;
     if (!ctx || typeof ctx.registerTool !== 'function') return;
 
-    let indexPromise = null;
-    const loadIndex = () => {
-      // Se pide una sola vez y solo si un agente llega a invocar la herramienta.
-      indexPromise ||= fetch('/search-index.json').then((r) => r.json());
-      return indexPromise;
+    let catalogPromise = null;
+    const loadCatalog = () => {
+      // Se pide una sola vez, y solo si un agente llega a invocar la herramienta.
+      catalogPromise ||= fetch('/api/catalog.json').then((r) => r.json());
+      return catalogPromise;
     };
 
     const fold = (value) =>
@@ -30,11 +44,14 @@
 
     const textResult = (text) => ({ content: [{ type: 'text', text }] });
 
+    /** El idioma de esta página, salvo que el agente pida otro válido. */
+    const resolveLang = (requested) => (langs.includes(requested) ? requested : pageLang);
+
     try {
       ctx.registerTool({
         name: 'search_ai_tools',
         description:
-          'Busca herramientas de IA en el catálogo de FuenteAI que se está mostrando. Devuelve nombre, descripción, categorías, modelo de precio, plataformas con canal oficial y la URL de la ficha. FuenteAI no aloja archivos: las fichas enlazan al canal del propio desarrollador.',
+          'Busca herramientas de IA en el catálogo de FuenteAI. Devuelve nombre, descripción, categorías, modelo de precio, plataformas con canal oficial y la URL de la ficha. FuenteAI no aloja archivos: las fichas enlazan al canal del propio desarrollador.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -52,21 +69,30 @@
               enum: ['web', 'windows', 'mac', 'linux', 'android', 'ios'],
               description: 'Solo herramientas con canal oficial para esta plataforma.'
             },
+            lang: {
+              type: 'string',
+              enum: ['es', 'sv', 'it'],
+              description: 'Idioma de las fichas. Por defecto, el idioma de la página que se está viendo.'
+            },
             limit: { type: 'integer', minimum: 1, maximum: 25, description: 'Máximo de resultados (por defecto 8).' }
           }
         },
-        async execute({ query, category, platform, limit }) {
-          const tools = await loadIndex();
+        async execute({ query, category, platform, lang, limit }) {
+          const catalog = await loadCatalog();
+          const wanted = resolveLang(lang);
           const words = fold(query).split(/\s+/).filter(Boolean);
           const max = Math.min(Math.max(Number(limit) || 8, 1), 25);
 
-          const results = tools
-            .filter((tool) => (category ? (tool.categories || []).includes(category) : true))
-            .filter((tool) => (platform ? (tool.platforms || []).includes(platform) : true))
+          const results = catalog.tools
+            .filter((tool) => tool.lang === wanted)
+            .filter((tool) => (category ? tool.categories.includes(category) : true))
+            .filter((tool) =>
+              platform ? tool.officialChannels.some((channel) => channel.platform === platform) : true
+            )
             .filter((tool) => {
               if (words.length === 0) return true;
               const haystack = fold(
-                [tool.name, tool.shortDescription, (tool.tags || []).join(' '), (tool.categories || []).join(' ')].join(' ')
+                [tool.name, tool.summary, tool.tags.join(' '), tool.categories.join(' ')].join(' ')
               );
               return words.every((word) => haystack.includes(word));
             })
@@ -74,7 +100,7 @@
 
           if (results.length === 0) {
             return textResult(
-              'Ningún resultado en el catálogo con esos filtros. El catálogo completo está en https://fuenteai.com/api/catalog.json'
+              `Ningún resultado en el catálogo (idioma "${wanted}") con esos filtros. El catálogo completo está en ${catalog.site}/api/catalog.json`
             );
           }
 
@@ -82,10 +108,13 @@
             results
               .map((tool) =>
                 [
-                  `${tool.name} — ${tool.shortDescription}`,
-                  `  Ficha: ${new URL('/es/' + tool.slug, location.origin).href}`,
-                  `  Categorías: ${(tool.categories || []).join(', ')} | Precio: ${tool.pricingModel}`,
-                  `  Plataformas con canal oficial: ${(tool.platforms || []).join(', ') || 'ninguna registrada'}`
+                  `${tool.name} — ${tool.summary}`,
+                  `  Ficha: ${tool.url}`,
+                  `  Sitio oficial: ${tool.officialWebsite}`,
+                  `  Categorías: ${tool.categories.join(', ')} | Precio: ${tool.pricingModel}`,
+                  `  Canales oficiales: ${
+                    tool.officialChannels.map((channel) => channel.platform).join(', ') || 'ninguno registrado'
+                  }`
                 ].join('\n')
               )
               .join('\n\n')
@@ -100,17 +129,40 @@
         inputSchema: {
           type: 'object',
           properties: {
-            slug: { type: 'string', description: 'Identificador de la herramienta, tal como lo devuelve search_ai_tools. Ejemplo: "chatgpt".' },
-            lang: { type: 'string', enum: ['es', 'sv', 'it'], description: 'Idioma de la ficha. Por defecto "es".' }
+            slug: {
+              type: 'string',
+              description: 'Identificador de la herramienta, tal como lo devuelve search_ai_tools. Ejemplo: "chatgpt".'
+            },
+            lang: {
+              type: 'string',
+              enum: ['es', 'sv', 'it'],
+              description: 'Idioma de la ficha. Por defecto, el idioma de la página que se está viendo.'
+            }
           },
           required: ['slug']
         },
         async execute({ slug, lang }) {
-          const tools = await loadIndex();
-          if (!tools.some((tool) => tool.slug === slug)) {
-            return textResult(`No hay ninguna ficha con el identificador "${slug}". Usa search_ai_tools para localizarla.`);
+          const catalog = await loadCatalog();
+          const wanted = resolveLang(lang);
+
+          // La ficha tiene que existir EN ESE IDIOMA. No todas las fichas están
+          // traducidas: dar por buena la existencia del slug en cualquier idioma
+          // llevaría a navegar a una traducción que no se publicó.
+          const entry = catalog.tools.find((tool) => tool.slug === slug && tool.lang === wanted);
+          if (!entry) {
+            const elsewhere = catalog.tools.filter((tool) => tool.slug === slug).map((tool) => tool.lang);
+            return textResult(
+              elsewhere.length > 0
+                ? `"${slug}" no está publicada en "${wanted}". Sí existe en: ${elsewhere.join(', ')}.`
+                : `No hay ninguna ficha con el identificador "${slug}". Usa search_ai_tools para localizarla.`
+            );
           }
-          const href = new URL(`/${lang || 'es'}/${slug}`, location.origin).href;
+
+          // La ruta viene del catálogo, que la construyó con los helpers de
+          // links.ts en build; aquí no se compone ninguna. Se reancla al origen
+          // actual para que también funcione en un despliegue de preview, donde
+          // el host no es fuenteai.com.
+          const href = new URL(new URL(entry.url).pathname, location.origin).href;
           location.assign(href);
           return textResult(`Abriendo ${href}`);
         }
