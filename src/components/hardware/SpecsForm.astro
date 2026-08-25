@@ -45,22 +45,24 @@ const t = useTranslations(lang);
           hidden
         >{t('hw.ai-estimated')}</span>
       </span>
-      <input
-        id="hardware-free-input"
-        name="gpu"
-        type="text"
-        autocomplete="off"
-        placeholder={t('hw.step1.free-placeholder')}
-        class="hardware-input min-w-0 rounded-lg border border-fai-line bg-fai-card px-3 text-fai-ink placeholder:text-fai-muted-2"
-        role="combobox"
-        aria-expanded="false"
-        aria-controls="hardware-gpu-options"
-        aria-haspopup="listbox"
-        aria-activedescendant=""
-        aria-describedby="hardware-combobox-help"
-        data-hardware-free-input
-      />
-      <ul id="hardware-gpu-options" class="hardware-combobox-list" role="listbox" hidden data-hardware-options></ul>
+      <div class="relative min-w-0">
+        <input
+          id="hardware-free-input"
+          name="gpu"
+          type="text"
+          autocomplete="off"
+          placeholder={t('hw.step1.free-placeholder')}
+          class="hardware-input min-w-0 rounded-lg border border-fai-line bg-fai-card px-3 text-fai-ink placeholder:text-fai-muted-2"
+          role="combobox"
+          aria-expanded="false"
+          aria-controls="hardware-gpu-options"
+          aria-haspopup="listbox"
+          aria-activedescendant=""
+          aria-describedby="hardware-combobox-help"
+          data-hardware-free-input
+        />
+        <ul id="hardware-gpu-options" class="hardware-combobox-list" role="listbox" hidden data-hardware-options></ul>
+      </div>
       <span id="hardware-combobox-help" class="text-[14px] leading-6 text-fai-muted" data-hardware-combobox-help>
         {t('hw.combo.hint')}
       </span>

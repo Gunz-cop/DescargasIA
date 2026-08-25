@@ -164,6 +164,15 @@ function clampContext(value: number): number {
 
 function initTooltips(root: HTMLElement): void {
   const triggers = [...root.querySelectorAll<HTMLButtonElement>('[data-tooltip-trigger]')];
+  const clampPanelToViewport = (panel: HTMLElement) => {
+    const EDGE_MARGIN = 8;
+    panel.style.setProperty('--tooltip-shift-x', '0px');
+    const rect = panel.getBoundingClientRect();
+    let shift = 0;
+    if (rect.left < EDGE_MARGIN) shift = EDGE_MARGIN - rect.left;
+    else if (rect.right > window.innerWidth - EDGE_MARGIN) shift = window.innerWidth - EDGE_MARGIN - rect.right;
+    if (shift !== 0) panel.style.setProperty('--tooltip-shift-x', `${Math.round(shift)}px`);
+  };
   const closeAll = (except?: HTMLElement) => {
     triggers.forEach((trigger) => {
       if (trigger === except) return;
@@ -179,6 +188,7 @@ function initTooltips(root: HTMLElement): void {
     const open = () => {
       closeAll(trigger);
       panel.hidden = false;
+      clampPanelToViewport(panel);
       trigger.setAttribute('aria-expanded', 'true');
     };
     const close = () => {
