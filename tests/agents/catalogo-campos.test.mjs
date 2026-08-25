@@ -11,10 +11,10 @@
  *
  * Ese segundo nivel se saltaba en un arbol limpio y no se repetia despues, asi
  * que en CI no llegaba a ejecutarse nunca. Ahora `npm run test:build` vuelve a
- * lanzar este fichero DESPUES de `astro build`, con REQUIRE_BUILD=1: con esa
- * variable, la ausencia de dist/api/catalog.json deja de ser un skip y pasa a
- * ser un fallo. Sin ella, un build que dejara de emitir el catalogo habria
- * pasado la comprobacion en silencio.
+ * lanzar este fichero DESPUES de `astro build`. El ciclo `test:build` de npm
+ * hace que la ausencia de dist/api/catalog.json deje de ser un skip y pase a
+ * ser un fallo. Sin el, un build que dejara de emitir el catalogo habria pasado
+ * la comprobacion en silencio.
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -72,14 +72,15 @@ test('cada entrada de faq tiene pregunta y respuesta con contenido', () => {
   assert.deepEqual(malas, []);
 });
 
-/** `npm run test:build` la pone: exige que el build exista en vez de saltarse. */
-const EXIGIR_BUILD = process.env.REQUIRE_BUILD === '1';
+/** `npm run test:build` exige que el build exista en vez de saltarse. */
+const EXIGIR_BUILD =
+  process.env.npm_lifecycle_event === 'test:build' || process.env.REQUIRE_BUILD === '1';
 
 test('el catalogo construido expone safetyNotes y faq en todas sus entradas', (t) => {
   if (!fs.existsSync(CATALOGO_BUILD)) {
     if (EXIGIR_BUILD) {
       assert.fail(
-        `No existe ${CATALOGO_BUILD}. Con REQUIRE_BUILD=1 este test corre despues de ` +
+        `No existe ${CATALOGO_BUILD}. Este test corre despues de ` +
           '`astro build` y su ausencia es un fallo, no un skip.'
       );
     }

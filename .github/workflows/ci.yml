@@ -87,8 +87,8 @@ jobs:
 
       # `npm test` corre antes del build, asi que la comprobacion sobre
       # dist/api/catalog.json se saltaba y no se repetia: en CI no llegaba a
-      # ejecutarse nunca. REQUIRE_BUILD=1 convierte ese skip en fallo, para que
-      # un build que dejara de emitir el catalogo no pase en silencio.
+      # ejecutarse nunca. El script test:build convierte ese skip en fallo, para
+      # que un build que dejara de emitir el catalogo no pase en silencio.
       - name: Catálogo construido (safetyNotes y faq)
         run: npm run test:build
 
