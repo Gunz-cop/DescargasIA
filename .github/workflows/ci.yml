@@ -1,0 +1,99 @@
+name: CI (pull requests)
+
+# Convierte los criterios de aceptacion en una compuerta real.
+#
+# Hasta ahora los criterios de `docs/fases/F*.md` los corria a mano quien
+# revisaba, y quien los declaraba cumplidos era la misma sesion que escribia el
+# codigo. Eso funciona con un ejecutor bueno y falla en silencio con cualquier
+# otro: en este proyecto ya pasaron un validador que no podia fallar, un test
+# esquivado partiendo `document` en dos trozos, y un id de credencial inventado.
+#
+# Este workflow corre lo mismo que corre el revisor, pero lo corre GitHub: el
+# examinado no puede declararse aprobado.
+#
+# No incluye `npm run shorten` (necesita los secretos de LinkZip y toca la red)
+# ni despliega nada: eso es de deploy.yml, en push a main.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# Un PR que recibe varios push seguidos cancela la corrida anterior: solo
+# importa el ultimo commit.
+concurrency:
+  group: ci-${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  compuerta:
+    name: Criterios de aceptación
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      # Cada paso es un criterio que aparece por separado en el PR: si algo
+      # falla, se ve cual sin abrir los logs.
+      - name: Specs de fase bien formadas
+        run: node .claude/skills/sdd-fases/scripts/audit-specs.mjs
+
+      - name: Integridad del catálogo
+        run: npm run catalog:audit
+
+      - name: Integridad de los datos de hardware
+        run: npm run hw:audit
+
+      - name: Tests
+        run: npm test
+
+      # El indice de Agent Skills lleva el digest sha256 de cada SKILL.md. Se
+      # regenera y se comprueba que el commit ya traia el resultado correcto: un
+      # SKILL.md editado sin reconstruir deja el digest mintiendo, y un cliente
+      # que lo verifique descarta la skill.
+      - name: Índice de Agent Skills al día
+        run: |
+          npm run agents:skills
+          git diff --exit-code -- public/.well-known/agent-skills/index.json \
+            || { echo "::error::El indice de Agent Skills esta desactualizado. Ejecuta 'npm run agents:skills' y commitea."; exit 1; }
+
+      # `astro sync` genera `.astro/types.d.ts` (el modulo virtual `astro:content`).
+      # Ese directorio esta en `.gitignore`, asi que un checkout limpio de CI nunca
+      # lo tiene: sin este paso, `tsc` fallaba con "Cannot find module 'astro:content'"
+      # en cualquier PR, y nadie lo veia porque en una maquina local el directorio
+      # ya existe de una corrida anterior de `astro dev`/`astro build`.
+      - name: Generar tipos de Astro
+        run: npx --no-install astro sync
+
+      # --no-install es deliberado: sin el, `npx tsc` no encuentra el binario en
+      # node_modules/.bin y se descarga de npm un paquete llamado `tsc` que no
+      # es TypeScript. Paso de silencioso a error, y de error a codigo ajeno
+      # ejecutandose en CI. Todos los pasos usan la misma bandera.
+      - name: Tipos
+        run: npx --no-install tsc --noEmit
+
+      - name: Build
+        run: npx --no-install astro build
+
+      - name: Enlazado interno, canonical y hreflang
+        run: npm run links:audit
+
+      # El Worker solo se valida si la rama lo trae: las fases de frontend no
+      # tienen por que arrastrar wrangler.
+      - name: Worker (si la rama lo incluye)
+        run: |
+          if [ -f wrangler.jsonc ] && grep -q '"main"' wrangler.jsonc; then
+            npx --no-install wrangler deploy --dry-run
+          else
+            echo "Esta rama no trae Worker; nada que validar."
+          fi

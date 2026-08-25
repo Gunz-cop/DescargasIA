@@ -6,9 +6,9 @@
  *
  * Ver `docs/agent-readiness.md`.
  */
-import { loadCatalog, rankCatalog, describeTool, ORIGIN } from './catalog';
-import { checkOrigin, corsHeaders, forbiddenOrigin, jsonResponse, rpcError, rpcResult } from './http';
-import type { AgentEnv } from './types';
+import { loadCatalog, rankCatalog, describeTool, ORIGIN } from './catalog.ts';
+import { checkOrigin, corsHeaders, forbiddenOrigin, jsonResponse, rpcError, rpcResult } from './http.ts';
+import type { AgentEnv } from './types.ts';
 
 /** Texto plano de un `Message` A2A, concatenando sus partes de texto. */
 function a2aMessageText(message: Record<string, unknown> | undefined): string {

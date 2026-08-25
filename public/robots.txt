@@ -25,6 +25,11 @@ Disallow: /*?q=
 Disallow: /*?cat=
 Disallow: /*?plat=
 Disallow: /*?precio=
+Disallow: /*?gpu=
+Disallow: /*?vram=
+Disallow: /*?ram=
+Disallow: /*?os=
+Disallow: /*?ctx=
 
 Sitemap: https://fuenteai.com/sitemap-index.xml
 

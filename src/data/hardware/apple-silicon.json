@@ -1,0 +1,315 @@
+[
+  {
+    "id": "apple-m1",
+    "name": "Apple M1",
+    "aliases": [
+      "apple m1",
+      "m1",
+      "chip m1",
+      "m1 chip",
+      "apple silicon m1"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 68.3,
+    "arch": "M1",
+    "year": 2020,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m1-pro",
+    "name": "Apple M1 Pro",
+    "aliases": [
+      "apple m1 pro",
+      "m1 pro",
+      "m1pro",
+      "chip m1 pro",
+      "m1 pro chip",
+      "apple silicon m1 pro"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 200,
+    "arch": "M1",
+    "year": 2021,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m1-max",
+    "name": "Apple M1 Max",
+    "aliases": [
+      "apple m1 max",
+      "m1 max",
+      "m1max",
+      "chip m1 max",
+      "m1 max chip",
+      "apple silicon m1 max"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 400,
+    "arch": "M1",
+    "year": 2021,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m1-ultra",
+    "name": "Apple M1 Ultra",
+    "aliases": [
+      "apple m1 ultra",
+      "m1 ultra",
+      "m1ultra",
+      "chip m1 ultra",
+      "m1 ultra chip",
+      "apple silicon m1 ultra"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 800,
+    "arch": "M1",
+    "year": 2022,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m2",
+    "name": "Apple M2",
+    "aliases": [
+      "apple m2",
+      "m2",
+      "chip m2",
+      "m2 chip",
+      "apple silicon m2"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 100,
+    "arch": "M2",
+    "year": 2022,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m2-pro",
+    "name": "Apple M2 Pro",
+    "aliases": [
+      "apple m2 pro",
+      "m2 pro",
+      "m2pro",
+      "chip m2 pro",
+      "m2 pro chip",
+      "apple silicon m2 pro"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 200,
+    "arch": "M2",
+    "year": 2023,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m2-max",
+    "name": "Apple M2 Max",
+    "aliases": [
+      "apple m2 max",
+      "m2 max",
+      "m2max",
+      "chip m2 max",
+      "m2 max chip",
+      "apple silicon m2 max"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 400,
+    "arch": "M2",
+    "year": 2023,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m2-ultra",
+    "name": "Apple M2 Ultra",
+    "aliases": [
+      "apple m2 ultra",
+      "m2 ultra",
+      "m2ultra",
+      "chip m2 ultra",
+      "m2 ultra chip",
+      "apple silicon m2 ultra"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 800,
+    "arch": "M2",
+    "year": 2023,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m3",
+    "name": "Apple M3",
+    "aliases": [
+      "apple m3",
+      "m3",
+      "chip m3",
+      "m3 chip",
+      "apple silicon m3"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 100,
+    "arch": "M3",
+    "year": 2023,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m3-pro",
+    "name": "Apple M3 Pro",
+    "aliases": [
+      "apple m3 pro",
+      "m3 pro",
+      "m3pro",
+      "chip m3 pro",
+      "m3 pro chip",
+      "apple silicon m3 pro"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 150,
+    "arch": "M3",
+    "year": 2023,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m3-max-gpu-de-30-nucleos",
+    "name": "Apple M3 Max (GPU de 30 núcleos)",
+    "aliases": [
+      "m3 max",
+      "m3max",
+      "apple m3 max",
+      "m3 max 30",
+      "m3 max 30 nucleos",
+      "m3 max 30-core"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 300,
+    "arch": "M3",
+    "year": 2023,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m3-max-gpu-de-40-nucleos",
+    "name": "Apple M3 Max (GPU de 40 núcleos)",
+    "aliases": [
+      "m3 max 40",
+      "m3 max 40 nucleos",
+      "m3 max 40-core"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 400,
+    "arch": "M3",
+    "year": 2023,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m3-ultra",
+    "name": "Apple M3 Ultra",
+    "aliases": [
+      "apple m3 ultra",
+      "m3 ultra",
+      "m3ultra",
+      "chip m3 ultra",
+      "m3 ultra chip",
+      "apple silicon m3 ultra"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 800,
+    "arch": "M3",
+    "year": 2025,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m4",
+    "name": "Apple M4",
+    "aliases": [
+      "apple m4",
+      "m4",
+      "chip m4",
+      "m4 chip",
+      "apple silicon m4"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 120,
+    "arch": "M4",
+    "year": 2024,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m4-pro",
+    "name": "Apple M4 Pro",
+    "aliases": [
+      "apple m4 pro",
+      "m4 pro",
+      "m4pro",
+      "chip m4 pro",
+      "m4 pro chip",
+      "apple silicon m4 pro"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 273,
+    "arch": "M4",
+    "year": 2024,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m4-max-gpu-de-32-nucleos",
+    "name": "Apple M4 Max (GPU de 32 núcleos)",
+    "aliases": [
+      "m4 max",
+      "m4max",
+      "apple m4 max",
+      "m4 max 32",
+      "m4 max 32 nucleos",
+      "m4 max 32-core"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 410,
+    "arch": "M4",
+    "year": 2024,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  },
+  {
+    "id": "apple-m4-max-gpu-de-40-nucleos",
+    "name": "Apple M4 Max (GPU de 40 núcleos)",
+    "aliases": [
+      "m4 max 40",
+      "m4 max 40 nucleos",
+      "m4 max 40-core"
+    ],
+    "vendor": "apple",
+    "bandwidthGbs": 546,
+    "arch": "M4",
+    "year": 2024,
+    "formFactor": "integrated",
+    "unifiedMemory": true,
+    "unifiedUsableFraction": 0.75
+  }
+]

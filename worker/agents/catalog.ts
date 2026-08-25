@@ -7,7 +7,7 @@
  *
  * Ver `docs/agent-readiness.md`.
  */
-import type { AgentEnv } from './types';
+import type { AgentEnv } from './types.ts';
 
 export const ORIGIN = 'https://fuenteai.com';
 
@@ -52,9 +52,20 @@ export interface Catalog {
 /** Cache por isolate: el catálogo es estático entre despliegues. */
 let catalogCache: Catalog | null = null;
 
+/**
+ * Vacía la caché por isolate.
+ *
+ * Existe para los tests: `node --test` corre cada fichero en su proceso, pero
+ * dentro de uno solo el módulo se carga una vez, y un caso que carga un
+ * catálogo bueno contaminaría al siguiente que espera un fallo de lectura.
+ */
+export function resetCatalogCache(): void {
+  catalogCache = null;
+}
+
 export async function loadCatalog(env: AgentEnv): Promise<Catalog> {
   if (catalogCache) return catalogCache;
-  const response = await env.ASSETS.fetch(`${ORIGIN}/api/catalog.json`);
+  const response = await env.ASSETS.fetch(new Request(`${ORIGIN}/api/catalog.json`));
   if (!response.ok) throw new Error(`No se pudo leer /api/catalog.json (${response.status})`);
   catalogCache = (await response.json()) as Catalog;
   return catalogCache;

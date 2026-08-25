@@ -4,7 +4,7 @@
  *
  * Ver `docs/agent-readiness.md`.
  */
-import type { AgentEnv } from './types';
+import type { AgentEnv } from './types.ts';
 
 /**
  * `/es/chatgpt` -> `/md/es/chatgpt.md`, `/` -> `/md/index.md`.
@@ -24,7 +24,7 @@ export function prefersMarkdown(request: Request): boolean {
 export async function serveMarkdown(request: Request, env: AgentEnv): Promise<Response | null> {
   const url = new URL(request.url);
   const target = new URL(markdownPathFor(url.pathname), url.origin);
-  const response = await env.ASSETS.fetch(target.toString());
+  const response = await env.ASSETS.fetch(new Request(target));
   if (!response.ok) return null; // La página no tiene espejo: se sirve el HTML.
 
   const headers = new Headers(response.headers);

@@ -7,9 +7,9 @@
  *
  * Ver `docs/agent-readiness.md`.
  */
-import { loadCatalog, searchCatalog, describeTool, ORIGIN, type CatalogTool, type SearchArgs } from './catalog';
-import { checkOrigin, corsHeaders, forbiddenOrigin, jsonResponse, rpcError, rpcResult } from './http';
-import type { AgentEnv } from './types';
+import { loadCatalog, searchCatalog, describeTool, ORIGIN, type CatalogTool, type SearchArgs } from './catalog.ts';
+import { checkOrigin, corsHeaders, forbiddenOrigin, jsonResponse, rpcError, rpcResult } from './http.ts';
+import type { AgentEnv } from './types.ts';
 
 const SERVER_NAME = 'fuenteai-catalog';
 const SERVER_VERSION = '1.0.0';
@@ -138,7 +138,7 @@ async function callMcpTool(env: AgentEnv, name: string, args: Record<string, unk
     }
     // La ficha en Markdown ya está generada en build; se sirve tal cual para
     // que el agente lea exactamente lo mismo que la página publicada.
-    const markdown = await env.ASSETS.fetch(tool.markdownUrl);
+    const markdown = await env.ASSETS.fetch(new Request(tool.markdownUrl));
     if (markdown.ok) return textResult(await markdown.text());
     return textResult(describeTool(tool));
   }
@@ -196,7 +196,7 @@ async function handleMcpMessage(env: AgentEnv, message: Record<string, unknown>)
       const uri = String(params?.uri ?? '');
       const known = MCP_RESOURCES.find((resource) => resource.uri === uri);
       if (!known) return rpcError(id, -32002, `Recurso no encontrado: ${uri}`);
-      const response = await env.ASSETS.fetch(uri);
+      const response = await env.ASSETS.fetch(new Request(uri));
       if (!response.ok) return rpcError(id, -32002, `No se pudo leer ${uri}`);
       return rpcResult(id, {
         contents: [{ uri, mimeType: known.mimeType, text: await response.text() }]

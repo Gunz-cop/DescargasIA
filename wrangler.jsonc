@@ -2,10 +2,10 @@
   "name": "fuenteai",
   "compatibility_date": "2026-06-18",
 
-  // El sitio sigue siendo el build estatico de Astro. El Worker existe solo
-  // para lo que un archivo estatico no puede hacer: negociar `Accept:
-  // text/markdown`, servir MCP en /mcp y A2A en /a2a. Ver worker/index.ts y
-  // docs/agent-readiness.md.
+  // Un unico Worker delante de los assets. Sirve dos cosas que no se tocan
+  // entre si: las rutas /api/hw/* de la app de hardware (F6/F7) y la capa de
+  // agentes de worker/agents/ (MCP, A2A, negociacion Markdown).
+  // Ver docs/agent-readiness.md.
   "main": "worker/index.ts",
 
   "assets": {
@@ -18,7 +18,8 @@
     //
     // Hay que listar /mcp y /a2a explicitamente aunque no sean archivos: con
     // not_found_handling "404-page" el router de assets responde el 404 el
-    // mismo y el Worker no llega a ejecutarse nunca.
+    // mismo y el Worker no llega a ejecutarse nunca. Las rutas /api/hw/* del
+    // Worker de hardware estan en el mismo caso.
     //
     // Las paginas HTML estan aqui porque la negociacion de contenido
     // (`Accept: text/markdown`) ocurre sobre URLs que SI son un asset.
@@ -31,6 +32,7 @@
     // El resto de estaticos —/_astro, /fonts, /md, /api, /.well-known— se
     // sirven sin invocar el Worker.
     "run_worker_first": [
+      "/api/hw/*",
       "/mcp",
       "/a2a",
       "/",
@@ -41,6 +43,18 @@
       "/it/*"
     ]
   },
+
+  // --- App "que modelos de IA puedo correr" (F6/F7) -------------------------
+  "ai": { "binding": "AI" },
+  "vars": {
+    "AI_ENABLED": "true"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "HW_CACHE",
+      "id": "0b8817010be342c89053895a59054508"
+    }
+  ],
 
   "observability": {
     "enabled": true

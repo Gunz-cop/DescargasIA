@@ -62,14 +62,13 @@ fallo en el código de agentes no puede tumbar la web para personas.
 | `worker/agents/markdown.ts` | La negociación de contenido. |
 | `worker/agents/http.ts` | Política de `Origin` y CORS. |
 | `worker/agents/types.ts` | `AgentEnv`: solo pide `ASSETS`. |
-| `worker/index.ts` | Router mínimo. **Descartable.** |
+| `worker/index.ts` | Router del Worker. Sirve esta capa **y** las rutas `/api/hw/*` de la app de hardware. |
 
-El motivo es de integración. La rama de la app de hardware (F6/F7) tiene su
-propio `worker/index.ts` con las rutas `/api/hw/*`, sus bindings (`AI`,
-`HW_CACHE`) y su `worker/security.ts`. Fusionar dos `index.ts` que hacen cosas
-distintas es una resolución de conflictos a mano en el archivo más delicado del
-despliegue. Con esta forma, integrar es **añadir dos líneas** al router que
-sobreviva:
+El motivo es de integración. El Worker de la app de hardware (F6/F7) ya
+existía, con sus rutas `/api/hw/*`, sus bindings (`AI`, `HW_CACHE`) y su
+`worker/security.ts`. Meter esta capa dentro de aquel fichero habría mezclado
+dos cosas que no se parecen en el archivo más delicado del despliegue. Con esta
+forma, integrarla fueron **dos líneas** en su router:
 
 ```ts
 const agent = await tryAgentRoutes(request, env);
@@ -77,7 +76,8 @@ if (agent) return agent;
 ```
 
 `AgentEnv` pide solo `ASSETS`, así que el `Env` grande de aquel Worker encaja
-sin cambios. Ningún archivo de `worker/agents/` colisiona con los suyos.
+sin cambios. Ningún archivo de `worker/agents/` colisiona con los suyos. El
+detalle de la convivencia está más abajo.
 
 ### `run_worker_first`
 
@@ -263,65 +263,72 @@ qué reporta la evidencia de `dnsAid` sobre los `SVCB` antes de añadirlos. La
 respuesta del escáner incluye `queriesAttempted` y `records`, que dicen
 exactamente qué esperaba encontrar.
 
-## Integrar con el Worker de la app de hardware
+## Convivencia con el Worker de la app de hardware
 
-La rama F6/F7 (`fix/post-f8-ui-bugs` y sus hermanas) tiene su propio
-`worker/index.ts`, su `wrangler.jsonc` con bindings `AI` y `HW_CACHE`, y
-scripts `hw:audit` y `test` en `package.json`. Esta capa se diseñó para
-integrarse encima sin fusionar nada delicado. El procedimiento:
+**Ya integrado.** Un solo Worker sirve dos capas que no comparten estado,
+bindings ni rutas:
 
-**1. `worker/agents/` entra tal cual.** Ningún archivo de esa carpeta existe
-en la otra rama. Cero conflictos.
-
-**2. `worker/index.ts` de aquí se descarta.** Se queda el suyo, y se le añaden
-dos líneas al principio de su router, antes de que decida nada:
-
-```ts
-import { tryAgentRoutes, variesByAccept } from './agents';
-
-// ...dentro de fetch(), antes de /api/hw/* y de env.ASSETS:
-const agent = await tryAgentRoutes(request, env);
-if (agent) return agent;
+```
+petición
+   │
+   ├─ tryAgentRoutes()  ──► /mcp, /a2a, Accept: text/markdown   (worker/agents/)
+   ├─ /api/hw/*         ──► parse, gpu-lookup, explain          (F6/F7)
+   └─ resto             ──► env.ASSETS.fetch() + Vary: Accept
 ```
 
-Y, al servir los assets, añadir `Vary: Accept` cuando `variesByAccept(request)`
-sea cierto. Su `Env` ya incluye `ASSETS`, que es lo único que pide `AgentEnv`.
+La capa de agentes va primero porque devuelve `null` en cuanto la petición no
+es suya, así que no puede interferir con nada de lo de abajo. `AgentEnv` pide
+solo `ASSETS` —con la misma firma que declara el `Env` de hardware— para que
+ese `Env` encaje sin modificarlo.
 
-**3. `wrangler.jsonc` se fusiona a mano.** Del de aquí solo hay que llevarse
-`assets.run_worker_first` completo. Sus `ai`, `vars` y `kv_namespaces` se
-quedan intactos.
+Tres cosas que la integración tuvo que resolver, y que conviene no deshacer:
 
-**4. `package.json`: preservar lo suyo y añadir `agents:skills`.** Sus scripts
-`test` y `hw:audit` **no se pueden perder** en la resolución. El resultado debe
-ser:
+1. **`/api/hw/*` está en `run_worker_first`.** Sin esa entrada la API de
+   hardware **no funciona**: con `not_found_handling: "404-page"` el router de
+   assets responde 405 y el Worker no llega a ejecutarse. Comprobado quitando
+   la línea: `POST /api/hw/parse` pasa de `200` a `405`.
+2. **El router de hardware filtra por `/api/hw/`, no por `/api/`.** El sitio
+   publica además `/api/catalog.json` y `/api/openapi.json`, que son assets
+   estáticos: el prefijo ancho los convertía en un 405 por GET.
+3. **La contención del cuerpo consumido vive en `tryAgentRoutes()`**, no en el
+   router. `handleMcp` y `handleA2a` leen el cuerpo de la petición; si dejaran
+   escapar una excepción, cualquier `env.ASSETS.fetch(request)` posterior
+   lanzaría *"Cannot reconstruct a Request with a used body"* y convertiría un
+   error manejable en un 500 sin cuerpo. Al contenerlo dentro del módulo que
+   consume el cuerpo, ningún router que integre esta capa tiene que saberlo.
 
-```json
-"build": "npm run shorten && npm run catalog:audit && npm run hw:audit && npm test && npm run agents:skills && astro build && npm run links:audit",
-"build:no-shorten": "npm run catalog:audit && npm run hw:audit && npm test && npm run agents:skills && astro build && npm run links:audit",
-"agents:skills": "node scripts/build-agent-skills-index.mjs"
+### Cadena de build
+
+```
+catalog:audit → hw:audit → npm test → agents:skills → astro build → links:audit
 ```
 
-`agents:skills` tiene que ir **antes** de `astro build`: genera un archivo en
-`public/` que Astro copia a `dist/`.
+`agents:skills` va **antes** de `astro build`: genera un archivo en `public/`
+que Astro copia a `dist/`. En `.github/workflows/ci.yml` hay además un paso que
+lo regenera y falla si el índice commiteado estaba desactualizado — un
+`SKILL.md` editado sin reconstruir deja el digest mintiendo, y un cliente que
+lo verifique descarta la skill.
 
-**5. `AGENTS.md`: quedarse con las dos listas.** El conflicto es que ambas
-ramas añaden líneas a la misma lista de documentos. Se conservan todas.
+### Los tests de esta capa
 
-**6. Desplegar primero en preview y pasar el escáner allí**, antes de tocar
-producción. El escáner acepta cualquier URL:
+En `tests/agents/`, con `node:test` como el resto del proyecto. Cubren lo que
+falló de verdad, no lo que es fácil de probar:
 
-```bash
-npx wrangler versions upload          # da una URL de preview
-curl -s -X POST https://isitagentready.com/api/scan \
-  -H 'Content-Type: application/json' \
-  -d '{"url":"https://<preview>.workers.dev"}'
-```
+| Fichero | Qué blinda |
+| --- | --- |
+| `origin.test.mjs` | Los tres casos de `Origin` en `/mcp` y `/a2a`, incluido que el 403 no lleve CORS y que el 200 no devuelva `*`. |
+| `markdown.test.mjs` | Las 7 rutas con espejo, portadas incluidas; que el `noindex` no viaje con la URL negociada; que un `Accept` de navegador no dispare Markdown. |
+| `catalogo-ilegible.test.mjs` | Un catálogo caído sale como fallo JSON-RPC en MCP y A2A, y no impide el handshake. |
+| `cuerpo-consumido.test.mjs` | Que ninguna excepción escape de `/mcp` ni `/a2a` tras leer el cuerpo. |
+| `catalogo-campos.test.mjs` | `safetyNotes` y `faq` presentes y no vacíos en todas las fichas publicadas. |
+| `run-worker-first.test.mjs` | La cobertura de `run_worker_first`, que es un fallo de configuración que ningún test de runtime detecta. |
 
-Ojo con dos comprobaciones en preview: `linkHeaders` y los `.well-known`
-funcionan igual, pero las URL absolutas de `ai-catalog.json`, `server-card.json`
-y `agent-card.json` apuntan a `fuenteai.com`, así que `mcpServerCard` y
-`a2aAgentCard` describirán el sitio real, no el preview. Es esperado; lo que se
-valida en preview es que el Worker responde y que la negociación funciona.
+Los módulos del Worker se importan con extensión `.ts` explícita porque Node
+los ejecuta directamente (type stripping nativo); esbuild los resuelve igual.
+
+`catalogo-campos.test.mjs` valida siempre el contenido fuente y, además,
+`dist/api/catalog.json` cuando ya hay un build: `npm test` corre antes de
+`astro build`, así que en un árbol limpio esa parte se salta.
 
 ## Verificar
 

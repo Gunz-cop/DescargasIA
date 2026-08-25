@@ -9,5 +9,11 @@
  * tocarse. Ver `docs/agent-readiness.md`.
  */
 export interface AgentEnv {
-  ASSETS: { fetch: (request: Request | string) => Promise<Response> };
+  /**
+   * La firma acepta solo `Request`, no `Request | string`, aunque el runtime
+   * admita ambas: asi es como la declara el `Env` del Worker de hardware, y
+   * ensancharla aqui hacia que su `Env` dejara de encajar en este. La capa de
+   * agentes construye el `Request` cuando solo tiene una URL.
+   */
+  ASSETS: { fetch: (request: Request) => Promise<Response> };
 }
