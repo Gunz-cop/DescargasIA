@@ -7,7 +7,16 @@
  * Ver `docs/agent-readiness.md`.
  */
 import { loadCatalog, rankCatalog, describeTool, ORIGIN } from './catalog.ts';
-import { checkOrigin, corsHeaders, forbiddenOrigin, jsonResponse, rpcError, rpcResult } from './http.ts';
+import {
+  checkOrigin,
+  corsHeaders,
+  forbiddenOrigin,
+  JsonBodyError,
+  jsonResponse,
+  readJsonBody,
+  rpcError,
+  rpcResult
+} from './http.ts';
 import type { AgentEnv } from './types.ts';
 
 /** Texto plano de un `Message` A2A, concatenando sus partes de texto. */
@@ -46,9 +55,20 @@ export async function handleA2a(request: Request, env: AgentEnv): Promise<Respon
 
   let payload: Record<string, unknown>;
   try {
-    payload = (await request.json()) as Record<string, unknown>;
-  } catch {
-    return jsonResponse(rpcError(null, -32700, 'JSON inválido'), origin, 400);
+    const parsed = await readJsonBody(request);
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      return jsonResponse(rpcError(null, -32600, 'Mensaje JSON-RPC inválido'), origin, 400);
+    }
+    payload = parsed as Record<string, unknown>;
+  } catch (error) {
+    if (error instanceof JsonBodyError) {
+      return jsonResponse(rpcError(null, error.rpcCode, error.message), origin, error.status);
+    }
+    throw error;
+  }
+
+  if (payload.jsonrpc !== '2.0' || typeof payload.method !== 'string') {
+    return jsonResponse(rpcError(payload.id ?? null, -32600, 'Mensaje JSON-RPC inválido'), origin, 400);
   }
 
   const id = payload.id ?? null;

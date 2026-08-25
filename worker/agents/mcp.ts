@@ -8,14 +8,23 @@
  * Ver `docs/agent-readiness.md`.
  */
 import { loadCatalog, searchCatalog, describeTool, ORIGIN, type CatalogTool, type SearchArgs } from './catalog.ts';
-import { checkOrigin, corsHeaders, forbiddenOrigin, jsonResponse, rpcError, rpcResult } from './http.ts';
+import {
+  checkOrigin,
+  corsHeaders,
+  forbiddenOrigin,
+  JsonBodyError,
+  jsonResponse,
+  readJsonBody,
+  rpcError,
+  rpcResult
+} from './http.ts';
 import type { AgentEnv } from './types.ts';
 
 const SERVER_NAME = 'fuenteai-catalog';
 const SERVER_VERSION = '1.0.0';
 
 /** Versiones del protocolo MCP que sabemos hablar. Se responde la del cliente si está. */
-const SUPPORTED_MCP_VERSIONS = ['2025-06-18', '2025-03-26', '2024-11-05'];
+const SUPPORTED_MCP_VERSIONS = ['2025-06-18', '2025-03-26'];
 const DEFAULT_MCP_VERSION = '2025-06-18';
 
 const MCP_TOOLS = [
@@ -228,24 +237,51 @@ export async function handleMcp(request: Request, env: AgentEnv): Promise<Respon
     });
   }
 
+  const accepted = (request.headers.get('accept') ?? '')
+    .toLowerCase()
+    .split(',')
+    .map((value) => value.split(';', 1)[0].trim());
+  if (!accepted.includes('application/json') || !accepted.includes('text/event-stream')) {
+    return jsonResponse(
+      rpcError(null, -32000, 'Accept debe incluir application/json y text/event-stream'),
+      origin,
+      406
+    );
+  }
+
   let payload: unknown;
   try {
-    payload = await request.json();
-  } catch {
-    return jsonResponse(rpcError(null, -32700, 'JSON inválido'), origin, 400);
+    payload = await readJsonBody(request);
+  } catch (error) {
+    if (error instanceof JsonBodyError) {
+      return jsonResponse(rpcError(null, error.rpcCode, error.message), origin, error.status);
+    }
+    throw error;
   }
 
-  const batch = Array.isArray(payload) ? payload : [payload];
-  const responses: unknown[] = [];
-  for (const message of batch) {
-    const response = await handleMcpMessage(env, (message ?? {}) as Record<string, unknown>);
-    if (response !== null) responses.push(response);
+  // Streamable HTTP admite exactamente un mensaje JSON-RPC por POST, no lotes.
+  if (!payload || typeof payload !== 'object' || Array.isArray(payload)) {
+    return jsonResponse(rpcError(null, -32600, 'Mensaje JSON-RPC inválido'), origin, 400);
   }
 
-  // Solo notificaciones: nada que devolver.
-  if (responses.length === 0) {
+  const message = payload as Record<string, unknown>;
+  if (message.jsonrpc !== '2.0' || typeof message.method !== 'string') {
+    return jsonResponse(rpcError(message.id ?? null, -32600, 'Mensaje JSON-RPC inválido'), origin, 400);
+  }
+
+  const protocolVersion = request.headers.get('mcp-protocol-version');
+  if (
+    message.method !== 'initialize' &&
+    protocolVersion !== null &&
+    !SUPPORTED_MCP_VERSIONS.includes(protocolVersion)
+  ) {
+    return jsonResponse(rpcError(message.id ?? null, -32000, 'Mcp-Protocol-Version no soportada'), origin, 400);
+  }
+
+  const response = await handleMcpMessage(env, message);
+  if (response === null) {
     return new Response(null, { status: 202, headers: corsHeaders(origin) });
   }
 
-  return jsonResponse(Array.isArray(payload) ? responses : responses[0], origin);
+  return jsonResponse(response, origin);
 }

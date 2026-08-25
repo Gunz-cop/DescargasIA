@@ -90,3 +90,65 @@ export const rpcError = (id: unknown, code: number, message: string) => ({
   id,
   error: { code, message }
 });
+
+/** Límite defensivo para mensajes JSON-RPC públicos. */
+export const MAX_JSON_BODY_BYTES = 64 * 1024;
+
+export class JsonBodyError extends Error {
+  readonly status: 400 | 413 | 415;
+  readonly rpcCode: number;
+
+  constructor(message: string, status: 400 | 413 | 415, rpcCode: number) {
+    super(message);
+    this.name = 'JsonBodyError';
+    this.status = status;
+    this.rpcCode = rpcCode;
+  }
+}
+
+/**
+ * Lee un cuerpo JSON sin permitir que una petición pública consuma memoria de
+ * forma ilimitada. Content-Length permite rechazar pronto, pero no se confía
+ * en él: el stream también se cuenta byte a byte.
+ */
+export async function readJsonBody(request: Request): Promise<unknown> {
+  const mediaType = request.headers.get('content-type')?.split(';', 1)[0].trim().toLowerCase();
+  if (mediaType !== 'application/json') {
+    throw new JsonBodyError('Content-Type debe ser application/json', 415, -32600);
+  }
+
+  const declaredLength = request.headers.get('content-length');
+  if (declaredLength !== null) {
+    const parsedLength = Number(declaredLength);
+    if (Number.isFinite(parsedLength) && parsedLength > MAX_JSON_BODY_BYTES) {
+      throw new JsonBodyError(`El cuerpo supera el límite de ${MAX_JSON_BODY_BYTES} bytes`, 413, -32000);
+    }
+  }
+
+  if (!request.body) throw new JsonBodyError('JSON inválido', 400, -32700);
+
+  const reader = request.body.getReader();
+  const decoder = new TextDecoder('utf-8', { fatal: true });
+  let total = 0;
+  let source = '';
+
+  try {
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      total += value.byteLength;
+      if (total > MAX_JSON_BODY_BYTES) {
+        await reader.cancel();
+        throw new JsonBodyError(`El cuerpo supera el límite de ${MAX_JSON_BODY_BYTES} bytes`, 413, -32000);
+      }
+      source += decoder.decode(value, { stream: true });
+    }
+    source += decoder.decode();
+    return JSON.parse(source);
+  } catch (error) {
+    if (error instanceof JsonBodyError) throw error;
+    throw new JsonBodyError('JSON inválido o no codificado en UTF-8', 400, -32700);
+  } finally {
+    reader.releaseLock();
+  }
+}

@@ -307,6 +307,11 @@ Tres cosas que la integración tuvo que resolver, y que conviene no deshacer:
    lanzaría *"Cannot reconstruct a Request with a used body"* y convertiría un
    error manejable en un 500 sin cuerpo. Al contenerlo dentro del módulo que
    consume el cuerpo, ningún router que integre esta capa tiene que saberlo.
+4. **Los cuerpos JSON-RPC están acotados a 64 KiB.** `/mcp` y `/a2a` rechazan
+   antes de parsear un `Content-Length` excesivo y vuelven a contar el stream,
+   porque esa cabecera puede faltar o mentir. También exigen JSON y la forma
+   mínima de JSON-RPC 2.0; MCP rechaza lotes y valida sus cabeceras de
+   negociación y versión.
 
 ### Cadena de build
 
@@ -331,6 +336,8 @@ falló de verdad, no lo que es fácil de probar:
 | `markdown.test.mjs` | Las 7 rutas con espejo, portadas incluidas; que el `noindex` no viaje con la URL negociada; que un `Accept` de navegador no dispare Markdown. |
 | `catalogo-ilegible.test.mjs` | Un catálogo caído sale como fallo JSON-RPC en MCP y A2A, y no impide el handshake. |
 | `cuerpo-consumido.test.mjs` | Que ninguna excepción escape de `/mcp` ni `/a2a` tras leer el cuerpo. |
+| `cuerpo-json.test.mjs` | Tipo de contenido, límite real del stream, forma JSON-RPC, mensaje único, `Accept` y versión MCP. |
+| `agent-card.test.mjs` | Que el Agent Card sea coherente con A2A 0.3 y declare su interfaz JSON-RPC con los campos correctos. |
 | `catalogo-campos.test.mjs` | `safetyNotes` y `faq` presentes y no vacíos en todas las fichas publicadas. |
 | `run-worker-first.test.mjs` | La cobertura de `run_worker_first`, que es un fallo de configuración que ningún test de runtime detecta. |
 
@@ -341,7 +348,8 @@ los ejecuta directamente (type stripping nativo); esbuild los resuelve igual.
 `npm test` va antes de `astro build`, así que en un árbol limpio la parte que
 mira `dist/api/catalog.json` se saltaba y no se repetía — en CI no llegaba a
 ejecutarse nunca. Ahora `npm run test:build` la relanza después del build con
-`REQUIRE_BUILD=1`, y con esa variable la ausencia del catálogo deja de ser un
+el evento de npm `test:build` (con `REQUIRE_BUILD=1` como alternativa), y en
+ese modo la ausencia del catálogo deja de ser un
 `skip` y pasa a ser un fallo: un build que dejara de emitirlo habría pasado la
 comprobación en silencio.
 
@@ -359,6 +367,7 @@ npx wrangler dev --port 8788 --local
 curl -sI http://127.0.0.1:8788/ | grep -i link
 curl -s -H 'Accept: text/markdown' http://127.0.0.1:8788/es/chatgpt | head
 curl -s -X POST http://127.0.0.1:8788/mcp -H 'Content-Type: application/json' \
+  -H 'Accept: application/json, text/event-stream' \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
 curl -s -X POST http://127.0.0.1:8788/a2a -H 'Content-Type: application/json' \
   -d '{"jsonrpc":"2.0","id":1,"method":"message/send","params":{"message":{"kind":"message","role":"user","messageId":"m","parts":[{"kind":"text","text":"transcribir audio en local"}]}}}'

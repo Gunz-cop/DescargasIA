@@ -82,7 +82,11 @@ export function envSinCatalogo() {
 export function rpc(pathname, cuerpo, cabeceras = {}) {
   return new Request(`https://fuenteai.com${pathname}`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', ...cabeceras },
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json, text/event-stream',
+      ...cabeceras
+    },
     body: JSON.stringify(cuerpo)
   });
 }

@@ -12,7 +12,7 @@
   },
   "documentationUrl": "https://fuenteai.com/llms.txt",
   "iconUrl": "https://fuenteai.com/favicon.svg",
-  "supportedInterfaces": [
+  "additionalInterfaces": [
     {
       "url": "https://fuenteai.com/a2a",
       "transport": "JSONRPC"
