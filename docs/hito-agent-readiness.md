@@ -1,4 +1,4 @@
-# Hito: FuenteAI, del nivel 1 al nivel 4 de preparación para agentes
+# Hito: FuenteAI, del nivel 1 al nivel 5 de preparación para agentes
 
 Registro de qué se hizo, qué costó, qué falló y qué sigue abierto. La guía
 operativa del sitio está en `docs/agent-readiness.md`; el método reutilizable en
@@ -7,16 +7,33 @@ otro repo, en `.claude/skills/agent-readiness/`.
 **Fecha del cierre:** 26 de agosto de 2026.
 **Medida:** las 21 comprobaciones de [isitagentready.com](https://isitagentready.com).
 
-| | Antes | Producción hoy | Tras desplegar |
-|---|---|---|---|
-| Nivel | 1 — Basic Web Presence | **4 — Agent-Integrated** | 4 |
-| En verde | 3 | 11 | **12** |
-| En fallo | 13 | 5 | 4 |
-| Neutrales / no aplican | 6 | 6 | 6 |
+| | Antes | Producción hoy |
+|---|---|---|
+| Nivel | 1 — Basic Web Presence | **5 — Agent-Native** |
+| Puntuación | — | **75 / 100** (12 de 16 aplicables) |
+| En verde | 3 | 12 |
+| En fallo | 13 | 4 |
+| Neutrales / no aplican | 6 | 6 |
 
-De las que quedan en rojo, ninguna es un descuido: dos son una decisión de
-arquitectura, una es un techo del propio criterio y una vive fuera del repo. El
-detalle, abajo.
+**El 5 es el último nivel**: el escáner devuelve `nextLevel: null`, no hay un 6.
+
+De las cuatro que quedan en rojo, **tres son el trío OAuth**, que solo se pasa
+teniendo autenticación real o inventándola. La cuarta es `dnsAid`, fuera del
+repo y sin validar. El techo honesto de este sitio son **13/16 = 81 puntos**, y
+solo si DNS-AID llega a funcionar: estamos a una comprobación de él.
+
+### Sobre los perfiles del escáner
+
+La interfaz permite escanear con perfiles reducidos. Con el perfil **Content
+Site** —7 de 20 comprobaciones— el sitio marca **86**.
+
+Ese número **no es una mejora, es otro examen**: apaga entera la categoría *API,
+Auth, MCP & Skill Discovery*, que es justo donde está el trabajo (MCP, agent
+card, api-catalog, agent skills, WebMCP, ARD). Subir de 75 a 86 se consigue no
+mirando lo que hace distinto al sitio.
+
+**El número que se reporta es el del escaneo completo.** Si en algún sitio
+aparece el 86, tiene que ir con la etiqueta de escaneo parcial.
 
 Reproducible en cualquier momento:
 
@@ -49,10 +66,9 @@ de descubrimiento en el `<head>`.
 
 ## Lo que no pasa, y por qué
 
-Las cinco que el último escaneo de producción marcó en rojo. Una ya está
-corregida en el repo y espera despliegue; las otras cuatro se quedan como están,
-cada una por un motivo distinto. Se añade `webBotAuth`, que no aplica aunque sea
-neutral y no penalice.
+Cuatro comprobaciones en rojo, y ninguna es un descuido. Se documenta también
+`a2aAgentCard`, que sí lo era y ya está corregida, porque el fallo enseña algo
+que se repite; y `webBotAuth`, que no aplica aunque sea neutral y no penalice.
 
 ### `oauthDiscovery` y `oauthProtectedResource` — decisión
 
@@ -72,9 +88,9 @@ hay OAuth, pero su implementación exige además la metadata OAuth o un flujo de
 registro completo. **Un sitio público sin cuentas no puede pasar esta
 comprobación sin inventar un endpoint de registro.** Se pierde a conciencia.
 
-### `a2aAgentCard` — corregido (pendiente de desplegar)
+### `a2aAgentCard` — corregido y desplegado
 
-Falla en producción con:
+Falló en producción con:
 
 > Invalid A2A Agent Card: Missing or empty required field "supportedInterfaces"
 
@@ -222,15 +238,13 @@ Dos observaciones que valen para el próximo proyecto:
 
 | Pendiente | Coste | Efecto |
 |---|---|---|
-| **Desplegar** las dos correcciones de este commit | — | Recupera `a2aAgentCard` y elimina el falso 404 |
-| `og:image` por ficha | Proyecto pequeño | Representación en redes; requiere generar imágenes |
-| DNS-AID: publicar los `TXT` y escanear | Fuera del repo | Posible `dnsAid` |
+| DNS-AID: publicar los `TXT` y escanear | Fuera del repo | La **única** comprobación que aún puede pasar: 75 → 81 |
+| `og:image` por ficha | Proyecto pequeño | Representación en redes; no afecta a agentes |
 | Dar de alta el servidor MCP en registros | Bajo | Sin esto, `/mcp` recibe cero llamadas |
 
-Tras desplegar, el nivel debería seguir siendo 4 con **12 comprobaciones en
-verde**. Subir al 5 exige `authMd`, y eso no se puede sin inventar un endpoint
-de registro: el nivel 4 es el techo honesto de este sitio mientras no tenga
-cuentas.
+El trío OAuth no está en esta lista a propósito: no se va a hacer. Con eso, el
+sitio está a **una comprobación** de su techo honesto, y ya en el último nivel
+de la escalera.
 
-Ese último punto es el que decide si la capa 5 sirve de algo. Nadie descubre un
+Dar de alta el MCP es lo que decide si esa capa sirve de algo: nadie descubre un
 servidor MCP por accidente.

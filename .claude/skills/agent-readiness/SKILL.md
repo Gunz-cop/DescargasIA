@@ -5,8 +5,8 @@ description: Preparar un sitio web para que agentes de IA lo encuentren, lo lean
 
 # Preparación de un sitio para agentes de IA
 
-Este método llevó a `fuenteai.com` del **nivel 1 (Basic Web Presence) al nivel 4
-(Agent-Integrated)** de las 21 comprobaciones de
+Este método llevó a `fuenteai.com` del **nivel 1 (Basic Web Presence) al nivel 5
+(Agent-Native), el último de la escalera**, en las 21 comprobaciones de
 [isitagentready.com](https://isitagentready.com), y lo validaron después cinco
 IAs distintas auditando el sitio en vivo. El registro completo de ese trabajo,
 con lo que salió mal, está en `docs/hito-agent-readiness.md`.
@@ -45,6 +45,13 @@ De ahí se derivan las tres decisiones que más ahorran tiempo:
    `/<dominio>` devuelve 404 al servidor: no se puede leer con curl. El escaneo
    real es un `POST /api/scan`, que es lo que hace ese script.
 
+   **Escaneá siempre completo.** La interfaz ofrece perfiles reducidos
+   («Content Site» y similares) que suben la puntuación apagando categorías
+   enteras. Eso no mide mejor: mide menos. En FuenteAI, el perfil Content Site
+   daba 86 frente a 75 del completo, y lo conseguía **no mirando** la categoría
+   donde estaba todo el trabajo (MCP, agent card, api-catalog, agent skills).
+   Un perfil sirve para leer una categoría de cerca, nunca para reportar.
+
 2. **Decidir qué aplica a este sitio.** Ver `references/comprobaciones.md`: las
    21 comprobaciones con lo que pide cada una y una matriz de qué implementar
    según el tipo de sitio. Un blog personal y una tienda no necesitan lo mismo,
@@ -81,8 +88,10 @@ Si solo vas a hacer una cosa, hacé la capa 1.
 
 ## No negociables
 
-- **Escanear antes y después.** Sin línea base no sabés qué cambió, y el nivel
-  que reporta el escáner es la única medida objetiva.
+- **Escanear antes y después, y siempre completo.** Sin línea base no sabés qué
+  cambió. Y la puntuación de un perfil reducido no es comparable con la del
+  escaneo completo: si la reportás, va con la etiqueta de parcial y el número de
+  comprobaciones que incluyó.
 - **Nunca fabricar un `claim_uri`, un `register_uri`, un `authorization_server`
   ni un `keyNNNNN` de DNS-AID** porque una comprobación lo pida. Si el dato no
   existe, la comprobación se pierde y se documenta el motivo.
