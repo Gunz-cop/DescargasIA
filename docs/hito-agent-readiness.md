@@ -7,15 +7,16 @@ otro repo, en `.claude/skills/agent-readiness/`.
 **Fecha del cierre:** 26 de agosto de 2026.
 **Medida:** las 21 comprobaciones de [isitagentready.com](https://isitagentready.com).
 
-| | Antes | Después |
-|---|---|---|
-| Nivel | 1 — Basic Web Presence | **4 — Agent-Integrated** |
-| En verde | 3 | **11** |
-| En fallo | 13 | 5 |
-| Neutrales / no aplican | 6 | 6 |
+| | Antes | Producción hoy | Tras desplegar |
+|---|---|---|---|
+| Nivel | 1 — Basic Web Presence | **4 — Agent-Integrated** | 4 |
+| En verde | 3 | 11 | **12** |
+| En fallo | 13 | 5 | 4 |
+| Neutrales / no aplican | 6 | 6 | 6 |
 
-De las 5 que siguen en rojo, **una es un fallo corregible** y las otras cuatro
-son decisiones tomadas a conciencia o cosas que no aplican. El detalle, abajo.
+De las que quedan en rojo, ninguna es un descuido: dos son una decisión de
+arquitectura, una es un techo del propio criterio y una vive fuera del repo. El
+detalle, abajo.
 
 Reproducible en cualquier momento:
 
@@ -48,9 +49,10 @@ de descubrimiento en el `<head>`.
 
 ## Lo que no pasa, y por qué
 
-Las cinco comprobaciones en rojo: dos son una decisión de arquitectura, una es
-un techo del propio criterio, una es un fallo corregible y una vive fuera del
-repo. Se añade `webBotAuth`, que no aplica, aunque es neutral y no penaliza.
+Las cinco que el último escaneo de producción marcó en rojo. Una ya está
+corregida en el repo y espera despliegue; las otras cuatro se quedan como están,
+cada una por un motivo distinto. Se añade `webBotAuth`, que no aplica aunque sea
+neutral y no penalice.
 
 ### `oauthDiscovery` y `oauthProtectedResource` — decisión
 
@@ -70,21 +72,44 @@ hay OAuth, pero su implementación exige además la metadata OAuth o un flujo de
 registro completo. **Un sitio público sin cuentas no puede pasar esta
 comprobación sin inventar un endpoint de registro.** Se pierde a conciencia.
 
-### `a2aAgentCard` — regresión, y es corregible
+### `a2aAgentCard` — corregido (pendiente de desplegar)
 
-Falla con:
+Falla en producción con:
 
 > Invalid A2A Agent Card: Missing or empty required field "supportedInterfaces"
 
-**Causa localizada**: el commit `6294d43` ("endurecer endpoints de agentes")
-renombró `supportedInterfaces` a `additionalInterfaces` en
-`public/.well-known/agent-card.json`. El cambio es defendible —la spec A2A 0.3
-usa `additionalInterfaces` junto a `url`/`preferredTransport`— pero el escáner
-exige literalmente `supportedInterfaces`.
+**Causa**: el commit `6294d43` renombró `supportedInterfaces` a
+`additionalInterfaces` en `public/.well-known/agent-card.json`, y dejó un test
+que fijaba `supportedInterfaces === undefined` con el comentario *"pertenece al
+Agent Card 1.0"*.
 
-**Arreglo**: publicar los dos campos. Describen el mismo endpoint real, así que
-no hay nada falso en ello. **Es la única de las cinco que sube el nivel a cambio
-de una línea.** Pendiente.
+Ese razonamiento tiene la mitad correcta y la mitad al revés. Verificado contra
+la spec:
+
+- **La versión publicada actual de A2A es 1.0.0**, no la 0.3.
+- En 1.0.0, `supportedInterfaces` es un campo **obligatorio** del AgentCard:
+  *"Ordered list of supported interfaces. The first entry is preferred"* (§4.4.1,
+  y §8.3.1 se titula literalmente "Supported Interfaces Declaration").
+- Cada entrada es `{url, protocolBinding, protocolVersion}` — el campo es
+  `protocolBinding`, no `transport`.
+- `additionalInterfaces` y `preferredTransport` **no aparecen ni una vez** en la
+  spec de 1.0: son de la 0.3.
+
+Es decir: el escáner no está siendo caprichoso, está siguiendo la spec vigente,
+y el cambio movió la tarjeta del campo actual a uno heredado.
+
+**Corregido así**: el documento adopta la forma de A2A 1.0 con
+`supportedInterfaces`, y **conserva** `url`, `preferredTransport` y
+`additionalInterfaces`. Describen el mismo endpoint, y la spec pide ignorar los
+campos no reconocidos (§5.7), así que mantenerlos no rompe a nadie y sirve a los
+clientes que aún leen la 0.3.
+
+El `protocolVersion` de la interfaz declara **`0.3`**, que es lo que el agente
+habla de verdad. Poner `1.0` sería prometer el `tenant` de §8.3.2 y demás, que
+no implementa: la forma del documento se actualiza, la promesa no se infla.
+
+`tests/agents/agent-card.test.mjs` blinda ahora las dos formas y que apunten al
+mismo endpoint.
 
 ### `dnsAid` — fuera del repo y sin validar
 
@@ -133,11 +158,15 @@ sitemap que funcionaba.
 
 ### Los hallazgos reales
 
-- **`/sitemap.xml` devuelve 404.** Solo existe `sitemap-index.xml`, correctamente
-  declarado en `robots.txt`. Tres de cinco tropezaron con esto. Un 301 lo
-  resuelve y evita el falso negativo en cualquier auditoría futura. Pendiente.
+- **`/sitemap.xml` devolvía 404.** Solo existe `sitemap-index.xml`, bien
+  declarado en `robots.txt`. Tres de cinco tropezaron con esto. **Corregido**
+  con un 301 en `public/_redirects`, con test que comprueba además que el
+  destino es el mismo sitemap que declara `robots.txt`.
 - **`og:image` genérica** en todas las fichas. No afecta al parsing por agentes;
-  sí a la representación en redes. Pendiente.
+  sí a cómo se ve el sitio compartido. **No corregido, y no es una línea**:
+  ninguna de las 86 fichas tiene `screenshotUrl`, así que hacen falta imágenes
+  generadas en build (satori/sharp o equivalente). Es un proyecto pequeño, no
+  una corrección.
 
 ### Lo que la auditoría no demuestra
 
@@ -193,11 +222,15 @@ Dos observaciones que valen para el próximo proyecto:
 
 | Pendiente | Coste | Efecto |
 |---|---|---|
-| Añadir `supportedInterfaces` al agent card | Una línea | Recupera `a2aAgentCard` |
-| 301 de `/sitemap.xml` → `/sitemap-index.xml` | Una línea | Evita el falso 404 |
-| `og:image` por ficha | Medio | Representación en redes |
+| **Desplegar** las dos correcciones de este commit | — | Recupera `a2aAgentCard` y elimina el falso 404 |
+| `og:image` por ficha | Proyecto pequeño | Representación en redes; requiere generar imágenes |
 | DNS-AID: publicar los `TXT` y escanear | Fuera del repo | Posible `dnsAid` |
 | Dar de alta el servidor MCP en registros | Bajo | Sin esto, `/mcp` recibe cero llamadas |
+
+Tras desplegar, el nivel debería seguir siendo 4 con **12 comprobaciones en
+verde**. Subir al 5 exige `authMd`, y eso no se puede sin inventar un endpoint
+de registro: el nivel 4 es el techo honesto de este sitio mientras no tenga
+cuentas.
 
 Ese último punto es el que decide si la capa 5 sirve de algo. Nadie descubre un
 servidor MCP por accidente.

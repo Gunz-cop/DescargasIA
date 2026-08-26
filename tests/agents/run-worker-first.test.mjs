@@ -69,6 +69,17 @@ test('"/es" queda fuera a proposito: lo resuelve el 301 de _redirects', () => {
   assert.match(redirects, /^\/es\s+\/\s+301$/m, 'falta el 301 de /es en public/_redirects');
 });
 
+test('/sitemap.xml redirige al indice en vez de dar 404', () => {
+  // Tres de las cinco IAs que auditaron el sitio reportaron un 404 aqui: piden
+  // /sitemap.xml antes de leer la directiva Sitemap: de robots.txt.
+  const redirects = fs.readFileSync('public/_redirects', 'utf8');
+  assert.match(redirects, /^\/sitemap\.xml\s+\/sitemap-index\.xml\s+301$/m);
+
+  const robots = fs.readFileSync('public/robots.txt', 'utf8');
+  assert.match(robots, /^Sitemap:\s+https:\/\/fuenteai\.com\/sitemap-index\.xml$/m,
+    'el destino del 301 debe ser el sitemap que robots.txt declara');
+});
+
 test('los estaticos no invocan al Worker', () => {
   for (const ruta of ['/_astro/x.css', '/fonts/x.woff2', '/md/es/chatgpt.md', '/api/catalog.json', '/.well-known/api-catalog']) {
     assert.ok(!cubierta(ruta), `${ruta} no deberia invocar al Worker`);

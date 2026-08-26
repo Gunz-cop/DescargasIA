@@ -44,7 +44,8 @@ Un sitemap declarado desde `robots.txt`. **Ojo con la ruta**: si tu generador
 emite `sitemap-index.xml` y no `sitemap.xml`, el escáner lo encuentra por la
 directiva `Sitemap:`, pero varias herramientas y varias IAs piden primero
 `/sitemap.xml` y reportan un 404 inexistente. Un 301 de `/sitemap.xml` al índice
-cuesta una línea y evita el falso positivo.
+cuesta una línea y evita el falso positivo. En la auditoría cruzada de FuenteAI,
+**tres de las cinco IAs** reportaron ese 404 como un fallo del sitio.
 
 ### `linkHeaders`
 Cabeceras `Link` (RFC 8288 / RFC 9727 §3) en la respuesta de la portada, con
@@ -153,10 +154,29 @@ responda de verdad.**
 `/.well-known/agent-card.json` con `name`, `version`, `description`,
 `capabilities`, `skills` y **`supportedInterfaces`**.
 
-**Trampa comprobada**: la spec A2A 0.3 usa `additionalInterfaces` junto a
-`url`/`preferredTransport`, pero el escáner exige literalmente
-`supportedInterfaces` y falla sin él. Publicá **ambos** campos: describen el
-mismo endpoint real, así que no hay nada falso en ello.
+**La trampa de versiones, comprobada contra la spec.** La versión publicada
+actual de A2A es **1.0.0**. En ella:
+
+- `supportedInterfaces` es **obligatorio**: *"Ordered list of supported
+  interfaces. The first entry is preferred"* (§4.4.1; §8.3.1 se titula
+  "Supported Interfaces Declaration").
+- Cada entrada es `{url, protocolBinding, protocolVersion}`. El campo es
+  **`protocolBinding`**, no `transport`.
+- `additionalInterfaces` y `preferredTransport` **no existen** en 1.0: son de la
+  0.3.
+
+Es fácil equivocarse al revés —pensar que `supportedInterfaces` es "de una
+versión futura" y quitarlo— y quedarse sin el único campo que los clientes 1.0 y
+el escáner exigen. En FuenteAI pasó exactamente eso.
+
+Lo correcto es **publicar ambas formas**: la de 1.0 y los campos de la 0.3.
+Describen el mismo endpoint, y la spec pide ignorar los campos no reconocidos
+(§5.7), así que la tarjeta sirve a clientes de las dos épocas sin mentir en
+ninguna.
+
+Y declará en `protocolVersion` de la interfaz **la versión que tu agente habla
+de verdad**, no la última que exista. Poner `1.0` sin implementar lo que 1.0
+exige (el `tenant` de §8.3.2, entre otras cosas) es prometer de más.
 
 ### `agentSkills`
 `/.well-known/agent-skills/index.json` (Agent Skills Discovery v0.2.0) con
