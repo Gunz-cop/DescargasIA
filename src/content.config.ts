@@ -3,7 +3,7 @@ import { glob } from 'astro/loaders';
 
 // Detalles de descarga específicos de cada plataforma
 const platformDetails = z.object({
-  url: z.string().url(),
+  url: z.url(),
   type: z.enum([
     'official-site',
     'app-store',
@@ -30,7 +30,7 @@ const editorialSection = z.object({
 
 const communityInsight = z.object({
   text: z.string(),
-  source: z.string().url(),
+  source: z.url(),
   sourceLabel: z.string().optional(),
   // Fecha del post/artículo citado (no la de hoy). Acepta YYYY-MM-DD o
   // YYYY-MM cuando no se pudo confirmar el día exacto.
@@ -41,7 +41,7 @@ const toolsBase = defineCollection({
   loader: glob({ pattern: '*.json', base: './src/content/tools-base' }),
   schema: z.object({
     name: z.string(),
-    officialWebsite: z.string().url(),
+    officialWebsite: z.url(),
     categories: z.array(z.string()),
     
     // Esquema de plataformas sin etiquetas traducidas (se generan dinámicamente)
@@ -58,13 +58,13 @@ const toolsBase = defineCollection({
     requiresAccount: z.union([z.boolean(), z.literal('unknown')]),
     tags: z.array(z.string()).default([]),
     alternatives: z.array(z.string()).default([]),
-    screenshotUrl: z.string().url().nullable().optional(),
+    screenshotUrl: z.url().nullable().optional(),
     initials: z.string().optional(),
     
     // Nivel de confianza editorial general
     trustLevel: z.enum(['official', 'verified', 'pending-review']),
     lastReviewed: z.string(), // Formato YYYY-MM-DD
-    officialSources: z.array(z.string().url()).default([]),
+    officialSources: z.array(z.url()).default([]),
 
     // 'discontinued' = el desarrollador cerró el producto; no hay canal de
     // descarga/uso vigente. Cambia el CTA principal, el título y el aviso de
