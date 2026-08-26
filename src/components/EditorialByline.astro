@@ -18,8 +18,8 @@ const t = useTranslations(lang);
 
 <div class="mt-4">
   <p class="fai-mono-sm text-fai-muted-2">
-    {t('editorial.byline')} <strong class="font-medium text-fai-muted">{EDITORIAL_TEAM.name[lang]}</strong>
-    <span aria-hidden="true">·</span>
+    {t('editorial.byline')} <strong class="font-medium text-fai-muted">{EDITORIAL_TEAM.name[lang]}</strong>{' '}
+    <span aria-hidden="true">·</span>{' '}
     <a href={`${pageUrl(lang, 'acerca-de')}#metodologia`} class="transition-colors hover:text-fai-signal">
       {t('editorial.methodology.link')}
     </a>
