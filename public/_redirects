@@ -6,3 +6,10 @@
 # recoge el tráfico y los enlaces externos que apunten a la URL antigua.
 /es / 301
 /es/ / 301
+
+# El generador emite "sitemap-index.xml", y robots.txt lo declara asi, que es lo
+# que miran los rastreadores modernos. Pero varias herramientas de auditoria y
+# varios agentes piden primero "/sitemap.xml" y reportan un 404 que no existe:
+# tres de las cinco IAs que auditaron el sitio tropezaron aqui. El 301 elimina
+# el falso negativo sin duplicar nada.
+/sitemap.xml /sitemap-index.xml 301
