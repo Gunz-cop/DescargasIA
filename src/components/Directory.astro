@@ -149,7 +149,11 @@ const allLabel = lang === 'sv' ? 'alla behov' : lang === 'it' ? 'tutte le necess
   <button
     type="button"
     id="context-bar"
-    class="fai-context lg:hidden"
+    {/* El prefijo webkit va como utilidad y no dentro de .fai-context porque
+        Lightning CSS (Vite 8) fusiona las reglas del mismo selector y descarta
+        una de las dos. Hace falta porque sus targets llegan a Safari 16.4 y
+        backdrop-filter sin prefijo no existio hasta Safari 18. */}
+    class="fai-context lg:hidden [-webkit-backdrop-filter:blur(12px)]"
     aria-controls="need-chips"
   >
     <span class="fai-mono-sm shrink-0 text-fai-muted-2">{t('filters.category')}</span>
