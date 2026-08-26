@@ -8,6 +8,8 @@ Antes de modificar UX, contenido o estructura editorial, lee estas guias:
 - `docs/ux-home-cards.md`: reglas para las tarjetas de herramientas en la home.
 - `docs/ux-tool-pages.md`: estructura recomendada para fichas individuales de herramientas.
 - `docs/agent-readiness.md`: **que expone el sitio a agentes de IA (Content Signals, cabeceras Link, llms.txt, espejo Markdown, MCP, A2A, WebMCP, Agent Skills) y por que hay cosas que a proposito no se publican.** Leelo antes de tocar `public/_headers`, `public/robots.txt`, `public/.well-known/`, `worker/agents/` o `src/utils/agent-content.ts`.
+- `docs/hito-agent-readiness.md`: **registro del hito** — nivel 1 -> 4 en las 21 comprobaciones, que se valido con cinco IAs auditando el sitio en vivo, que comprobaciones no pasan y por que, y las trampas que costaron tiempo.
+- `.claude/skills/agent-readiness/`: el metodo empaquetado para repetirlo en **otro repo** (matriz de que aplica segun el tipo de sitio, mecanicas, trampas, protocolo de auditoria cruzada y un escaner ejecutable).
 - `docs/enlazado-interno.md`: **mapa de URLs, grafo de enlaces internos, reglas de hreflang/canonical y auditoria automatica.** Leelo antes de tocar rutas, navegacion, hreflang o cualquier bloque de enlaces.
 - `docs/lecciones-sdd.md`: **lecciones del primer proyecto hecho con la metodologia SDD por fases.**
   Documento vivo. Si vas a planificar o ejecutar un proyecto grande en este repo, leelo antes:
