@@ -221,58 +221,55 @@ frontmatter debe coincidir con el nombre de la carpeta) y reconstruye.
 | `dnsAid` | Pendiente, fuera del repo | Son registros DNS, no archivos. Ver abajo. |
 | `x402`, `mpp`, `ucp`, `acp`, `ap2` | No aplican | Protocolos de pago agéntico. FuenteAI no vende nada. El escáner los marca `neutral`, no `fail`. |
 
-### DNS-AID: lo único que hay que hacer a mano
+### DNS-AID: lo que hay que hacer a mano
 
-Estos registros se crean en el panel DNS de Cloudflare de `fuenteai.com`. No
-pueden vivir en el repo, y **no están validados**: no hay forma de comprobarlos
-sin publicarlos. Trátalos como propuesta, no como receta.
+Estos registros se crean en el panel DNS de Cloudflare. No pueden vivir en el
+repo.
 
-El criterio del escáner pide registros `SVCB` (o `HTTPS` para endpoints HTTPS)
-bajo el espacio `_agents`, con `alpn` y los parámetros de conexión, y
-**claves experimentales `keyNNNNN`** para los parámetros propios de DNS-AID
-mientras no estén registradas ante la IANA. Su ejemplo canónico usa un token
-`alpn` propio del protocolo, no `h2`:
+**Estado actual, comprobado:**
 
-```dns
-_a2a._agents.example.com. 3600 IN SVCB 1 agent.example.com. alpn="a2a" port=443 mandatory=alpn,port
-```
-
-Aplicado a los endpoints que el Worker ya sirve, y siguiendo esa forma:
+- DNSSEC **activo y validando** — hay `DS`, las respuestas vienen con `AD: true`
+  y los `TXT` llegan firmados con `RRSIG`.
+- Los dos `TXT` publicados y leídos: `ard` reporta ahora los **cuatro**
+  mecanismos de descubrimiento (`well-known`, `agentmap`, `link-rel`,
+  `dns-catalog`), cuando antes eran tres.
+- `dnsAid` **sigue en rojo**, y es correcto: ese check **no mira los `TXT`**.
+  Solo cuenta `SVCB`/`HTTPS` (`serviceRecordCount: 0`).
 
 ```dns
-; Servidor MCP -> https://fuenteai.com/mcp
-_mcp._agents.fuenteai.com.   3600 IN SVCB 1 fuenteai.com. alpn="mcp" port=443 mandatory=alpn,port
-
-; Agente A2A -> https://fuenteai.com/a2a
-_a2a._agents.fuenteai.com.   3600 IN SVCB 1 fuenteai.com. alpn="a2a" port=443 mandatory=alpn,port
-
-; Entrada de indice -> el manifiesto ARD
-_index._agents.fuenteai.com. 3600 IN TXT "url=https://fuenteai.com/.well-known/ai-catalog.json"
-
-; Mecanismo secundario de ARD (spec 6.1)
-_catalog._agents.fuenteai.com. 3600 IN TXT "url=https://fuenteai.com/.well-known/ai-catalog.json"
+; Ya publicados — ganan el mecanismo dns-catalog de ARD
+_index._agents    TXT  "url=https://fuenteai.com/.well-known/ai-catalog.json"
+_catalog._agents  TXT  "url=https://fuenteai.com/.well-known/ai-catalog.json"
 ```
 
-**Lo que falta decidir y hay que validar antes de publicar:**
+**Lo que falta para `dnsAid`** son los `SVCB`. Una advertencia anterior de este
+documento era demasiado conservadora: decía que hacían falta claves
+experimentales `keyNNNNN` sin fijar. **Esas claves son para parámetros *custom*,
+que son opcionales.** El ejemplo canónico del criterio no lleva ninguno, así que
+no hay nada que inventar:
 
-1. **La ruta del endpoint no cabe en el registro.** `SVCB` apunta a un host y
-   un puerto, no a `/mcp`. El camino que marca el criterio es un SvcParamKey
-   experimental (`keyNNNNN`) con la ruta, pero el número concreto no está
-   fijado en ningún sitio público que haya podido comprobar. Publicar un
-   `key65280="/mcp"` inventado es exactamente el tipo de dato falso que el
-   resto de este trabajo evita.
-2. **Los tokens `alpn="mcp"` y `alpn="a2a"` no son ALPN reales.** Ningún
-   servidor negocia TLS con ellos; son etiquetas de descubrimiento, siguiendo
-   el ejemplo del propio criterio. Conviene confirmar que el escáner los da por
-   buenos antes de dejarlos en producción.
-3. **DNSSEC** es parte de la comprobación. Cloudflare lo activa en
-   DNS → Settings → DNSSEC.
+```dns
+_mcp._agents          SVCB  1 fuenteai.com. alpn="mcp" port=443 mandatory=alpn,port
+_a2a._agents          SVCB  1 fuenteai.com. alpn="a2a" port=443 mandatory=alpn,port
+```
 
-**Procedimiento sugerido:** publicar solo los dos registros `TXT` (que son
-inequívocos y no dependen de claves experimentales), pasar el escáner, y ver
-qué reporta la evidencia de `dnsAid` sobre los `SVCB` antes de añadirlos. La
-respuesta del escáner incluye `queriesAttempted` y `records`, que dicen
-exactamente qué esperaba encontrar.
+En el panel de Cloudflare el tipo `SVCB` pide **Prioridad** (`1`), **Destino**
+(`fuenteai.com`) y **Valor** (`alpn="mcp" port=443 mandatory=alpn,port`).
+
+Dos cosas que siguen siendo honestamente inciertas, y por eso se publica y se
+mide en vez de darlo por hecho:
+
+1. **`alpn="mcp"` y `alpn="a2a"` no son ALPN reales de TLS.** Ningún servidor
+   negocia con ellos: son etiquetas de descubrimiento, y así los usa el ejemplo
+   del propio criterio.
+2. **La ruta no cabe en el registro.** `SVCB` apunta a host y puerto, no a
+   `/mcp`. Ahí sí haría falta un `keyNNNNN`, y ahí sí no se inventa: el agente
+   encuentra la ruta por el manifiesto ARD, que es a lo que apuntan los `TXT`.
+
+Tras publicarlos, escanear y leer `details.serviceRecordCount` y
+`details.dnssecValidated` — este último sigue reportando `false` pese a que
+DNSSEC valida, probablemente porque lo evalúa sobre las respuestas `SVCB`, que
+hoy no existen.
 
 ## Convivencia con el Worker de la app de hardware
 

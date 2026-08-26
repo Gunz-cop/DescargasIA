@@ -59,12 +59,35 @@ que aterriza en una página interna desde un buscador.
 ### `dnsAid`
 Registros `SVCB`/`HTTPS` bajo `_agents.tudominio.com`, más DNSSEC.
 
-**Advertencia.** El criterio pide claves experimentales `keyNNNNN` para los
-parámetros propios de DNS-AID, y el número concreto no está fijado en ningún
-sitio público verificable. Inventarlo es exactamente el tipo de dato falso que
-esta skill prohíbe. Lo que se puede publicar con seguridad son los registros
-`TXT` (`_index._agents`, `_catalog._agents`) apuntando al manifiesto ARD.
-Publicá esos, escaneá, y leé la evidencia de `dnsAid` antes de añadir los SVCB.
+**Lo primero, porque cuesta una tarde descubrirlo: este check NO mira los
+registros `TXT`.** Solo cuenta `SVCB` y `HTTPS` (`serviceRecordCount`). Los
+`TXT` de `_index._agents` y `_catalog._agents` sí sirven —alimentan el check
+`ard` como cuarto mecanismo de descubrimiento— pero no mueven `dnsAid` ni un
+milímetro.
+
+El criterio menciona claves experimentales `keyNNNNN`, y es fácil leer eso como
+un bloqueo. No lo es: **son para parámetros *custom*, que son opcionales.** El
+ejemplo canónico del propio criterio no lleva ninguno:
+
+```dns
+_a2a._agents.example.com. 3600 IN SVCB 1 agent.example.com. alpn="a2a" port=443 mandatory=alpn,port
+```
+
+Solo `alpn`, `port` y `mandatory`. Nada que inventar. El `alpn` lleva un token
+propio del protocolo (`a2a`, `mcp`), no `h2`: no es un ALPN real de TLS, es una
+etiqueta de descubrimiento, y así lo usa el ejemplo oficial.
+
+Lo que **sí** queda sin resolver es que `SVCB` apunta a un host y un puerto, no
+a una ruta: `/mcp` no cabe en el registro. Ahí sí haría falta un `keyNNNNN`, y
+ahí sí conviene no inventar nada — el agente encuentra la ruta por el manifiesto
+ARD, que es a lo que apuntan los `TXT`.
+
+En Cloudflare el tipo `SVCB` existe en el panel gratuito, con campos separados
+de prioridad, destino y valor.
+
+**Orden recomendado**: activar DNSSEC, publicar los `TXT` (ganan `ard`),
+publicar los `SVCB` de los endpoints que existan de verdad, y escanear leyendo
+`details.serviceRecordCount` y `details.dnssecValidated`.
 
 ---
 
