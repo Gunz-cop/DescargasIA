@@ -6,7 +6,7 @@ description: Preparar un sitio web para que agentes de IA lo encuentren, lo lean
 # Preparación de un sitio para agentes de IA
 
 Este método llevó a `fuenteai.com` del **nivel 1 (Basic Web Presence) al nivel 5
-(Agent-Native), el último de la escalera**, en las 21 comprobaciones de
+(Agent-Native) con 81/100**, el último de la escalera, en las 21 comprobaciones de
 [isitagentready.com](https://isitagentready.com), y lo validaron después cinco
 IAs distintas auditando el sitio en vivo. El registro completo de ese trabajo,
 con lo que salió mal, está en `docs/hito-agent-readiness.md`.
@@ -76,7 +76,7 @@ De ahí se derivan las tres decisiones que más ahorran tiempo:
 | 3 | API JSON del contenido + OpenAPI + `/.well-known/api-catalog` | Horas | Ya, y es la base de todo lo demás |
 | 4 | Agent Skills, ARD (`ai-catalog.json`) | Horas | Cuando los registros de agentes lo indexen |
 | 5 | Servidor MCP, agente A2A, WebMCP | Días | Apuesta a 12 meses |
-| — | DNS-AID | Fuera del repo | Sin validar; ver la advertencia |
+| — | DNS-AID | Fuera del repo (DNS + DNSSEC) | Ya; se validó en producción |
 
 **La capa 1 y la 2 son las que rinden hoy.** Los rastreadores de ChatGPT,
 Perplexity y Google ya pasan por tu sitio: darles texto limpio en vez de HTML

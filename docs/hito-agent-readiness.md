@@ -10,17 +10,17 @@ otro repo, en `.claude/skills/agent-readiness/`.
 | | Antes | Producción hoy |
 |---|---|---|
 | Nivel | 1 — Basic Web Presence | **5 — Agent-Native** |
-| Puntuación | — | **75 / 100** (12 de 16 aplicables) |
-| En verde | 3 | 12 |
-| En fallo | 13 | 4 |
+| Puntuación | — | **81 / 100** (13 de 16 aplicables) |
+| En verde | 3 | 13 |
+| En fallo | 13 | 3 |
 | Neutrales / no aplican | 6 | 6 |
 
-**El 5 es el último nivel**: el escáner devuelve `nextLevel: null`, no hay un 6.
+**Se alcanzó el techo honesto.** El escáner devuelve `nextLevel: null` —no hay
+un nivel 6— y las **tres** comprobaciones que quedan en rojo son el trío OAuth,
+que solo se pasa teniendo autenticación real o inventando un servidor que no
+existe. No hay ninguna acción pendiente que suba la puntuación sin mentir.
 
-De las cuatro que quedan en rojo, **tres son el trío OAuth**, que solo se pasa
-teniendo autenticación real o inventándola. La cuarta es `dnsAid`, fuera del
-repo y sin validar. El techo honesto de este sitio son **13/16 = 81 puntos**, y
-solo si DNS-AID llega a funcionar: estamos a una comprobación de él.
+Discoverability, Content y Bot Access Control están al **100%**.
 
 ### Sobre los perfiles del escáner
 
@@ -66,9 +66,10 @@ de descubrimiento en el `<head>`.
 
 ## Lo que no pasa, y por qué
 
-Cuatro comprobaciones en rojo, y ninguna es un descuido. Se documenta también
-`a2aAgentCard`, que sí lo era y ya está corregida, porque el fallo enseña algo
-que se repite; y `webBotAuth`, que no aplica aunque sea neutral y no penalice.
+Tres comprobaciones en rojo, y son la misma decisión repetida. Se documentan
+además `a2aAgentCard` y `dnsAid`, que estuvieron en rojo y ya no lo están,
+porque lo que costó resolverlas es lo que más se repite; y `webBotAuth`, que no
+aplica aunque sea neutral y no penalice.
 
 ### `oauthDiscovery` y `oauthProtectedResource` — decisión
 
@@ -127,13 +128,37 @@ no implementa: la forma del documento se actualiza, la promesa no se infla.
 `tests/agents/agent-card.test.mjs` blinda ahora las dos formas y que apunten al
 mismo endpoint.
 
-### `dnsAid` — fuera del repo y sin validar
+### `dnsAid` — resuelto
 
-Registros DNS bajo `_agents.fuenteai.com` más DNSSEC. El criterio pide claves
-experimentales `keyNNNNN` cuyo número no está fijado en ningún sitio público
-verificable, e inventarlo sería el dato falso que este trabajo evita. Los
-valores propuestos y el procedimiento seguro —publicar solo los `TXT` primero y
-leer la evidencia del escáner— están en `docs/agent-readiness.md`.
+Pasó. `DNS for AI Discovery (DNS-AID) discovery record found at
+_a2a._agents.fuenteai.com`, con `serviceRecordCount: 2` y `dnssecValidated:
+true`.
+
+Lo que costó fue una lectura equivocada del criterio por parte de esta sesión,
+y vale la pena registrarla porque es la trampa que más tiempo consumió:
+
+1. **El check no mira los registros `TXT`.** Solo cuenta `SVCB`/`HTTPS`. Los
+   `TXT` sirven —le dan a `ard` su cuarto mecanismo de descubrimiento,
+   `dns-catalog`— pero no mueven `dnsAid`.
+2. **La advertencia sobre las claves `keyNNNNN` era demasiado conservadora.** Se
+   leyó como un bloqueo, y son para parámetros *custom*, que son opcionales. El
+   ejemplo canónico del criterio no lleva ninguno.
+
+Lo publicado, siguiendo ese ejemplo al pie de la letra:
+
+```dns
+_mcp._agents  SVCB  1 fuenteai.com. alpn="mcp" port=443 mandatory=alpn,port
+_a2a._agents  SVCB  1 fuenteai.com. alpn="a2a" port=443 mandatory=alpn,port
+_index._agents    TXT  "url=https://fuenteai.com/.well-known/ai-catalog.json"
+_catalog._agents  TXT  "url=https://fuenteai.com/.well-known/ai-catalog.json"
+```
+
+Más DNSSEC activo, que el check exige y ahora valida.
+
+Dos cosas siguen siendo ciertas y conviene no olvidarlas: `alpn="mcp"` no es un
+ALPN real de TLS sino una etiqueta de descubrimiento —así lo usa el ejemplo
+oficial—, y la ruta `/mcp` no cabe en un `SVCB`, que apunta a host y puerto. El
+agente la encuentra por el manifiesto ARD, que es a lo que apuntan los `TXT`.
 
 ### `webBotAuth` — no aplica
 
@@ -238,13 +263,13 @@ Dos observaciones que valen para el próximo proyecto:
 
 | Pendiente | Coste | Efecto |
 |---|---|---|
-| DNS-AID: publicar los `TXT` y escanear | Fuera del repo | La **única** comprobación que aún puede pasar: 75 → 81 |
-| `og:image` por ficha | Proyecto pequeño | Representación en redes; no afecta a agentes |
 | Dar de alta el servidor MCP en registros | Bajo | Sin esto, `/mcp` recibe cero llamadas |
+| `og:image` por ficha | Proyecto pequeño | Representación en redes; no afecta a agentes |
 
-El trío OAuth no está en esta lista a propósito: no se va a hacer. Con eso, el
-sitio está a **una comprobación** de su techo honesto, y ya en el último nivel
-de la escalera.
+**Ninguno de los dos sube la puntuación**, y eso es el final del camino: 81/100
+es el techo, y el trío OAuth no está en la lista porque no es un pendiente sino
+una decisión. Pasarlo exigiría autenticación real o inventar un servidor que no
+existe, y eso rompería a los clientes que se lo creyeran.
 
-Dar de alta el MCP es lo que decide si esa capa sirve de algo: nadie descubre un
-servidor MCP por accidente.
+Dar de alta el MCP es lo único que decide si esa capa llega a servir de algo:
+nadie descubre un servidor MCP por accidente.

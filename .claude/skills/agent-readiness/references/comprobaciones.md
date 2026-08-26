@@ -89,6 +89,12 @@ de prioridad, destino y valor.
 publicar los `SVCB` de los endpoints que existan de verdad, y escanear leyendo
 `details.serviceRecordCount` y `details.dnssecValidated`.
 
+En FuenteAI este orden funcionó: con DNSSEC más dos `SVCB` (`_mcp` y `_a2a`),
+el check pasó con `serviceRecordCount: 2` y `dnssecValidated: true`. **Basta con
+que exista uno de los puntos de entrada**: el mensaje fue "discovery record
+found at `_a2a._agents`". No hace falta cubrir `_index`, `_a2a` y `_mcp` los
+tres.
+
 ---
 
 ## Content Accessibility
