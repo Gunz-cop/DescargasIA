@@ -49,6 +49,11 @@ export function toolUrl(lang: Lang, slug: string): string {
   return `${langPrefix(lang)}/${slug}`;
 }
 
+/** Tarjeta OG estática generada para una ficha de herramienta. */
+export function toolOgImageUrl(origin: string, lang: Lang, slug: string): string {
+  return absolute(origin, `/og/${lang}/${slug}.png`);
+}
+
 /**
  * Página de categoría. El segmento `categoria` NO se traduce: mantenerlo
  * estable en los tres idiomas evita romper URLs ya indexadas y hace que el
