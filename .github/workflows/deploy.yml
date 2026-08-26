@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Debug dispatch inputs
         run: |
@@ -27,7 +27,7 @@ jobs:
           echo "sdi_mode=[${{ github.event.inputs.sdi_mode }}]"
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24
 
@@ -47,7 +47,7 @@ jobs:
       # prefijo la entrada más reciente que matchee.
       - name: Restore SDI state
         id: restore-sdi-state
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: .sdi
           key: sdi-state-fuenteai-${{ github.run_id }}
@@ -73,7 +73,7 @@ jobs:
       # El mismo dist/ que se genera acá es el que se deploya y el que SDI
       # va a leer después: no hay un segundo build en el medio.
       - name: Deploy to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
