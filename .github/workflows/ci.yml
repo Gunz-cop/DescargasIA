@@ -75,12 +75,39 @@ jobs:
       - name: Generar tipos de Astro
         run: npx --no-install astro sync
 
+      # Los bindings de `wrangler.jsonc` y `worker-configuration.d.ts` tienen que
+      # contar lo mismo. `--check` no regenera: compara y falla si divergen, que
+      # es justo lo que pasa cuando alguien anade un binding y no vuelve a correr
+      # `wrangler types`. Sin este paso el `Env` del Worker miente y `tsc` lo da
+      # por bueno.
+      #
+      # `--strict-vars=false` no es opcional aqui: tiene que ser el MISMO juego de
+      # banderas con el que se genero el fichero (ver worker-configuration.d.ts).
+      - name: Tipos del Worker al día
+        run: |
+          if [ -f wrangler.jsonc ] && grep -q '"main"' wrangler.jsonc; then
+            npx --no-install wrangler types --check --strict-vars=false
+          else
+            echo "Esta rama no trae Worker; nada que comprobar."
+          fi
+
       # --no-install es deliberado: sin el, `npx tsc` no encuentra el binario en
       # node_modules/.bin y se descarga de npm un paquete llamado `tsc` que no
       # es TypeScript. Paso de silencioso a error, y de error a codigo ajeno
       # ejecutandose en CI. Todos los pasos usan la misma bandera.
       - name: Tipos
         run: npx --no-install tsc --noEmit
+
+      # El Worker se comprueba en su propio proyecto: `worker-configuration.d.ts`
+      # trae los globales de workerd, que pisan a los del DOM y romperian el
+      # codigo de cliente de `src/`. Ver los comentarios de worker/tsconfig.json.
+      - name: Tipos del Worker
+        run: |
+          if [ -f wrangler.jsonc ] && grep -q '"main"' wrangler.jsonc; then
+            npx --no-install tsc --noEmit -p worker
+          else
+            echo "Esta rama no trae Worker; nada que comprobar."
+          fi
 
       - name: Build
         run: npx --no-install astro build

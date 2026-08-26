@@ -1,0 +1,29 @@
+{
+  // El Worker se comprueba APARTE del sitio, y no por gusto.
+  //
+  // `worker-configuration.d.ts` trae los tipos del runtime de workerd, que
+  // declaran globales propios —`Response`, `Request`, `Element`…— con firmas
+  // distintas a las del DOM. El tsconfig raiz incluye `**/*`, asi que meter ese
+  // fichero ahi hacia que los globales de workerd pisaran a los del navegador y
+  // rompia el codigo de cliente de `src/` (17 errores en
+  // `src/components/hardware/app.ts`: `Response` de workerd no acepta un
+  // `HTMLLIElement`, etc.).
+  //
+  // Separarlo es lo correcto ademas de lo que compila: el Worker NO corre en un
+  // navegador, asi que no debe ver `lib.dom`. Lo que comparten los dos mundos
+  // (`src/lib/hardware/`) se comprueba dos veces, una con cada juego de
+  // globales, que es exactamente lo que se quiere de codigo compartido.
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "types": [],
+    "noEmit": true
+  },
+  // `exclude` se redefine: el del tsconfig raiz aparta `worker/`, y al
+  // heredarlo este proyecto se quedaba sin ficheros (TS18003).
+  "exclude": [],
+  "include": [
+    "../worker-configuration.d.ts",
+    "./**/*.ts"
+  ]
+}

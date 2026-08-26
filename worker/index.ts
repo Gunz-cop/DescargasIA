@@ -32,18 +32,15 @@ import { validateRequest, withSecurityHeaders } from './security.ts';
 import { tryAgentRoutes, variesByAccept } from './agents/index.ts';
 import type { SystemSpecs } from '../src/lib/hardware/types.ts';
 
-interface Env {
-  ASSETS: { fetch: (request: Request) => Promise<Response> };
-  AI: {
-    run(model: string, inputs: Record<string, unknown>, opts?: { signal?: AbortSignal }): Promise<unknown>;
-  };
-  HW_CACHE: {
-    get(key: string, type: 'json'): Promise<unknown>;
-    put(key: string, value: string, opts: { expirationTtl: number }): Promise<void>;
-  };
-  /** Interruptor de la IA. "false" apaga los tres endpoints (F7). */
-  AI_ENABLED?: string;
-}
+// `Env` no se declara aqui: es el tipo global que genera `wrangler types` en
+// `worker-configuration.d.ts` a partir de los bindings de `wrangler.jsonc`. Se
+// escribia a mano y podia mentir —un binding nuevo en la config no aparecia en
+// el tipo, y `tsc` lo daba por bueno—; ahora CI lo comprueba con
+// `wrangler types --check`. El fichero se genera con `--strict-vars=false`
+// a proposito: con las banderas por defecto `AI_ENABLED` sale con el tipo
+// literal `"true"` (lo que hay hoy en la config) y la comparacion contra
+// `'false'` de mas abajo pasa a ser un error de tipos, cuando es justo el
+// interruptor que se voltea en runtime sin tocar el codigo.
 
 /**
  * Métrica agregada. Nunca lleva el texto libre del usuario: solo el nombre del
