@@ -1,3 +1,21 @@
+/**
+ * Cada og:image que el sitio anuncia tiene que existir en el build.
+ *
+ * El defecto que motiva este test: `BaseLayout` declaraba por defecto
+ * `https://fuenteai.com/og-default.png`, ese fichero no existia, y ninguna
+ * ficha traia `screenshotUrl`. El sitio entero anunciaba una imagen que
+ * devolvia 404, y ningun test lo veia porque el HTML era valido.
+ *
+ * Se comprueba en dos niveles, igual que `tests/agents/catalogo-campos.test.mjs`,
+ * porque `npm test` corre ANTES de `astro build` tanto en ci.yml como en el
+ * ciclo de trabajo local:
+ *   - sin build, se salta;
+ *   - con `npm run test:build`, que corre DESPUES de `astro build`, la ausencia
+ *     de dist/ deja de ser un skip y pasa a ser un fallo.
+ *
+ * Sin ese segundo nivel el test no comprueba nada en CI; con un `assert` duro
+ * en el primero, CI falla en todos los PR aunque el sitio este bien.
+ */
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -7,6 +25,10 @@ const ROOT = process.cwd();
 const DIST = path.join(ROOT, 'dist');
 const SITE_ORIGIN = 'https://fuenteai.com';
 
+/** `npm run test:build` exige que el build exista en vez de saltarse. */
+const EXIGIR_BUILD =
+  process.env.npm_lifecycle_event === 'test:build' || process.env.REQUIRE_BUILD === '1';
+
 function htmlFiles(dir) {
   if (!fs.existsSync(dir)) return [];
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
@@ -15,8 +37,16 @@ function htmlFiles(dir) {
   });
 }
 
-test('cada og:image local del build apunta a un fichero existente en dist', () => {
-  assert.ok(fs.existsSync(DIST), 'dist/ no existe; ejecuta el test después de astro build');
+test('cada og:image local del build apunta a un fichero existente en dist', (t) => {
+  // Solo bajo `test:build`. Que dist/ exista no prueba que este al dia: un
+  // build anterior deja un arbol viejo que hace fallar el test con el sitio
+  // bien. La unica corrida que significa algo es la inmediatamente posterior
+  // a `astro build`, y ahi la ausencia de dist/ si es un fallo.
+  if (!EXIGIR_BUILD) {
+    t.skip('se comprueba en `npm run test:build`, sobre el build recien hecho');
+    return;
+  }
+  assert.ok(fs.existsSync(DIST), 'No existe dist/. Ejecuta `astro build` antes de este test.');
 
   const pages = htmlFiles(DIST);
   assert.ok(pages.length > 0, 'el build no generó páginas HTML');
