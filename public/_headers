@@ -61,3 +61,10 @@
   Content-Type: text/markdown; charset=utf-8
   X-Robots-Tag: noindex
   Access-Control-Allow-Origin: *
+
+# --- Tarjetas Open Graph ----------------------------------------------------
+# Generadas en build a partir del contenido: sólo cambian cuando cambia la
+# ficha, y entonces cambian in situ. Las piden los scrapers de WhatsApp,
+# Slack, X y LinkedIn, que no tienen por qué revalidar en cada compartición.
+/og/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800

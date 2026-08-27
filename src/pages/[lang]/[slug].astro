@@ -10,7 +10,7 @@ import CommunityInsights from '../../components/CommunityInsights.astro';
 import { EDITORIAL_TEAM } from '../../data/editorial-team';
 import { getTranslatedTools, getTranslatedTool } from '../../utils/tools';
 import { getAlternatives, getKeepExploring } from '../../utils/related';
-import { homeUrl, toolUrl, categoryUrl, hardwareUrl, pageUrl, redirectUrl, absolute, buildAlternates } from '../../utils/links';
+import { homeUrl, toolUrl, toolOgImageUrl, categoryUrl, hardwareUrl, pageUrl, redirectUrl, absolute, buildAlternates } from '../../utils/links';
 import { useTranslations, languages } from '../../i18n/ui';
 import {
   formatDate,
@@ -169,7 +169,7 @@ const bestFor = tool.bestFor.length > 0
         : `Usuarios que buscan ${tag.replaceAll('-', ' ')}`
     );
 
-const toolImage: string | undefined = tool.screenshotUrl ?? undefined;
+const toolImage: string = tool.screenshotUrl ?? toolOgImageUrl(Astro.url.origin, lang, tool.slug);
 
 // Autoría de equipo, no persona física — ver decisión en docs/tool-ficha-authoring.md.
 const editorialOrg = {
@@ -295,6 +295,7 @@ const metaChips = [
   lang={lang}
   alternates={resolvedAlternates}
   ogImage={toolImage}
+  ogImageAlt={tool.name}
 >
   <nav class="fai-mono-sm flex flex-wrap items-center gap-2 pt-7 text-fai-muted-2" aria-label="Breadcrumb">
     <a href={homeUrl(lang)} class="transition-colors hover:text-fai-signal">FuenteAI</a>

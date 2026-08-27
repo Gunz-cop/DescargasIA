@@ -49,6 +49,20 @@ export function toolUrl(lang: Lang, slug: string): string {
   return `${langPrefix(lang)}/${slug}`;
 }
 
+/** Tarjeta OG estática generada para una ficha de herramienta. */
+export function toolOgImageUrl(origin: string, lang: Lang, slug: string): string {
+  return absolute(origin, `/og/${lang}/${slug}.png`);
+}
+
+/**
+ * Tarjeta OG de las páginas que no son ficha: portada, categorías y guías.
+ * Hay una por idioma — son 43 de las 190 páginas del sitio, y compartir la
+ * portada sueca con una tarjeta en español no sirve a nadie.
+ */
+export function defaultOgImageUrl(origin: string, lang: Lang): string {
+  return absolute(origin, `/og/default-${lang}.png`);
+}
+
 /**
  * Página de categoría. El segmento `categoria` NO se traduce: mantenerlo
  * estable en los tres idiomas evita romper URLs ya indexadas y hace que el
