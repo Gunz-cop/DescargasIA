@@ -1,5 +1,5 @@
 {
-  "shortDescription": "Plataforma de chat con personajes de IA generados por la comunidad o por ti, disponible en web, Android e iOS, para rol y escritura.",
+  "shortDescription": "Chat con personajes de IA. El acceso oficial es character.ai y las apps que Character.AI publica en Google Play y App Store; en el ordenador, el navegador.",
   "longDescription": "Character.AI es una plataforma que permite conversar con personajes de inteligencia artificial: figuras históricas, personajes de ficción, asistentes personalizados o creaciones propias con una personalidad y un estilo de conversación definidos por quien los crea. A diferencia de un chatbot genérico como ChatGPT, el foco de Character.AI está en la conversación sostenida con un personaje concreto, con memoria de la charla y un tono que intenta mantenerse coherente con esa personalidad. Esta ficha enlaza únicamente a la web oficial y a las apps publicadas por Character.AI en Google Play y App Store.",
   "bestFor": [
     "Conversar con personajes creados por la comunidad o crear los propios con una personalidad definida",
@@ -13,19 +13,20 @@
     "Algunas funciones (mensajes más rápidos, acceso prioritario) requieren la suscripción de pago c.ai+; el uso gratuito puede tener límites de velocidad en horarios de mucho tráfico."
   ],
   "safetyNotes": [
-    "Character.AI no distribuye instaladores de escritorio: usa únicamente character.ai en el navegador o las apps oficiales de Google Play y App Store, no APKs de terceros que digan ser \"Character AI Pro\" o versiones desbloqueadas.",
+    "El catálogo no declara ningún canal de escritorio verificado para Character.AI: usa character.ai en el navegador o las apps oficiales de Google Play y App Store. Un APK de un tercero que diga ser «Character AI Pro» o una versión desbloqueada no sale de ninguno de esos canales.",
     "Los personajes son generados por IA y no reemplazan el criterio propio ni el consejo de un profesional; la plataforma incluye avisos de que las respuestas son ficticias, algo que conviene tener presente especialmente con menores de edad.",
-    "Desde fines de noviembre de 2025, Character.AI ya no permite conversaciones abiertas y libres a usuarios menores de 18 años, a raíz de demandas vinculadas a suicidios de adolescentes (ver \"Qué dice la comunidad\" más arriba para más detalle). Las cuentas de menores quedan limitadas a funciones más acotadas, como creación de historias y generación de video."
+    "Desde fines de noviembre de 2025, Character.AI ya no permite conversaciones abiertas y libres a usuarios menores de 18 años, a raíz de demandas vinculadas a suicidios de adolescentes (ver \"Qué dice la comunidad\" más arriba para más detalle). Las cuentas de menores quedan limitadas a funciones más acotadas, como creación de historias y generación de video.",
+    "Un resultado de tienda con un nombre parecido puede ser directamente otro producto, no una versión de Character.AI: al buscar la app oficial se han observado fichas de tiendas correspondientes a aplicaciones distintas. El criterio para distinguirlas no es el nombre ni el icono, sino el editor que figura publicando la aplicación."
   ],
-  "editorialSummary": "Character.AI es una de las plataformas más buscadas para chatear con personajes de IA, ya sea creados por otros usuarios o propios, con foco en la conversación sostenida más que en resolver tareas puntuales. En FuenteAI enlazamos solo su web oficial y sus apps verificadas de Android e iOS, sin instaladores de escritorio porque la marca no distribuye ninguno.",
+  "editorialSummary": "Character.AI es una de las plataformas más buscadas para chatear con personajes de IA, propios o creados por otros, con foco en la conversación sostenida más que en resolver tareas. Su acceso oficial son tres canales: la web character.ai y las apps que el propio editor publica en Google Play y App Store. El catálogo de FuenteAI no declara ningún canal de escritorio verificado, así que en un ordenador la vía comprobada es abrir character.ai en el navegador. Y ojo con el nombre: en las tiendas conviven aplicaciones parecidas de otros editores, y el criterio que sirve para distinguirlas no es cómo se llaman, sino quién las publica.",
   "editorialSections": [
     {
       "heading": "Qué la diferencia de un chatbot como ChatGPT",
       "body": "La mayoría de los asistentes de IA generalistas están diseñados para resolver tareas: responder preguntas, redactar textos, programar. Character.AI apunta a otra necesidad: sostener una conversación con un personaje que mantiene una personalidad reconocible a lo largo del tiempo. Puedes hablar con un personaje creado por otro usuario o diseñar el propio, definiendo su forma de hablar, su trasfondo y el tono general de la charla.\n\nEsa diferencia de enfoque explica por qué tantas búsquedas relacionadas con la herramienta tienen que ver con \"crear personaje IA\" o \"chatear con personajes\" en lugar de \"resolver una tarea con IA\". No es mejor ni peor que un asistente generalista, es una herramienta con un objetivo distinto."
     },
     {
-      "heading": "Web, Android e iOS: no hay versión de escritorio",
-      "body": "Character.AI funciona desde character.ai en cualquier navegador, y tiene apps nativas oficiales tanto en Google Play como en App Store, publicadas por el mismo desarrollador. No existe, al momento de esta revisión, una aplicación de escritorio oficial para Windows o Mac: quien quiera usarla en una computadora debe hacerlo a través del navegador.\n\nSi encuentras un \"instalador de Character AI para PC\" en un sitio que no sea character.ai, no es oficial. La forma más segura de usar la herramienta en una computadora sigue siendo la web."
+      "heading": "Qué canal declara el catálogo en cada plataforma",
+      "body": "Character.AI funciona desde character.ai en cualquier navegador, y tiene apps nativas en Google Play y App Store publicadas por el mismo editor. Esos son los tres canales que este catálogo declara y ha comprobado.\n\nPara ordenador no hay ninguno declarado: el catálogo no registra un canal de escritorio verificado para Windows, macOS ni Linux. Conviene leer eso por lo que dice y no por lo que parece decir. Significa que aquí no encontrarás un instalador comprobado, no que el editor no publique uno en algún sitio; esta ficha no afirma esa inexistencia porque no la ha verificado. La consecuencia práctica es la misma en los dos casos: en un ordenador, la vía que podemos respaldar es el navegador.\n\nPor eso, si te encuentras un «instalador de Character AI para PC» en una página que no es character.ai, lo que tienes delante no sale de ningún canal que este catálogo haya podido comprobar."
     },
     {
       "heading": "Cómo evitar clones y apps falsas",
@@ -34,6 +35,14 @@
     {
       "heading": "Cuándo conviene mirar otras opciones",
       "body": "Si lo que buscas es resolver tareas de trabajo, estudio o programación, un asistente generalista como ChatGPT, Claude o Gemini va a ser más útil que Character.AI, que no está pensado para ese uso. Character.AI tiene sentido específicamente cuando el objetivo es la conversación sostenida con una personalidad definida, ya sea por entretenimiento, escritura creativa o práctica de diálogos.\n\nSi buscas algo intermedio, algunos asistentes generalistas también permiten personalizar un tono o rol dentro de la conversación, aunque sin el ecosistema de personajes creados por la comunidad que caracteriza a Character.AI."
+    },
+    {
+      "heading": "El nombre y el editor que figuran hoy en cada tienda",
+      "body": "La comprobación de canales del 2026-08-27 anotó qué se ve exactamente al abrir cada ficha de tienda, y ese detalle es el que te permite verificar por tu cuenta.\n\nEn Google Play, la aplicación aparece como «Character AI: Chat, Talk, Text» y el editor que figura es Character.AI. En App Store, el mismo nombre, con Character.AI como desarrollador. En los dos casos el dato decisivo está en la misma línea: el nombre de quien publica.\n\nEse campo es el que conviene mirar antes de instalar, porque es el más difícil de imitar. El nombre de una app se copia en cinco minutos, el icono también, y las capturas se pueden calcar. La cuenta de editor, no. Si abres una ficha que se llama casi igual pero la publica otro, no estás ante una versión alternativa de Character.AI: estás ante otra aplicación distinta."
+    },
+    {
+      "heading": "Usar Character.AI en el ordenador: qué cambia y qué no",
+      "body": "Como la vía comprobada en un equipo de escritorio es el navegador, vale la pena saber qué te llevas y qué dejas por el camino.\n\nLo que no cambia es lo esencial: la cuenta es la misma, las conversaciones y los personajes que has creado están donde los dejaste, y el teclado grande juega a favor cuando la charla es larga o estás escribiendo con un personaje. Para escritura creativa, que es uno de los usos más habituales, la pantalla ancha se nota.\n\nLo que sí cambia es todo lo que una app instalada da por sentado: no hay icono en el escritorio, no hay notificaciones del sistema y dependes de tener la pestaña abierta. Si echas de menos ese acceso rápido, los navegadores actuales permiten anclar el sitio como si fuera una aplicación. Es una función del navegador sobre la web oficial, no una descarga: no cambia de dónde sale el contenido, que sigue siendo character.ai."
     }
   ],
   "communityInsights": [
@@ -47,7 +56,7 @@
   "faq": [
     {
       "question": "¿Character.AI tiene aplicación oficial para Windows o Mac?",
-      "answer": "No hay una app de escritorio oficial confirmada al momento de esta revisión. En una computadora, el acceso recomendado es la versión web en character.ai."
+      "answer": "El catálogo no declara ningún canal de escritorio verificado para esta herramienta, así que no podemos confirmarte un instalador. Eso no es lo mismo que decir que no exista: es que no lo hemos comprobado y no vamos a afirmarlo. En un ordenador, la vía que sí está verificada es abrir character.ai en el navegador."
     },
     {
       "question": "¿Es seguro descargar Character.AI desde Google Play o App Store?",
@@ -60,6 +69,14 @@
     {
       "question": "¿Necesito cuenta para usar Character.AI?",
       "answer": "Sí, se requiere crear una cuenta para conversar con personajes y guardar el historial de chats."
+    },
+    {
+      "question": "¿Por qué al buscar «Character AI oficial» me salen APK y apps que no son?",
+      "answer": "Porque el nombre es genérico y la consulta tiene mucha demanda, así que atrae dos tipos de resultado: portales que ofrecen el archivo de la app por su cuenta, fuera de las tiendas, y aplicaciones de otros editores que usan un nombre parecido; en alguna revisión, el único resultado de tienda visible correspondía a un producto completamente distinto. No hace falta que juzgues cada resultado: comprueba quién publica. En Google Play y App Store, la app oficial figura publicada por Character.AI."
+    },
+    {
+      "question": "La app que instalé me pide pagar por funciones que en la web son gratis. ¿Es normal?",
+      "answer": "Character.AI tiene una suscripción propia, c.ai+, que agrega mensajes más rápidos y acceso prioritario, pero el uso básico no la necesita. Si la aplicación que instalaste te bloquea detrás de un pago cosas que en character.ai puedes hacer sin pagar, lo primero es abrir su ficha en la tienda y mirar el editor. Si no es Character.AI, no estás pagando por la herramienta que buscabas, sino por otra aplicación."
     }
   ],
   "spanishSupport": "yes"
