@@ -22,7 +22,7 @@
 | Producto | `it` |
 | Rama base | `main` |
 | Depende de | #37 (F2-IT) — fusionado |
-| Input no bloqueante | #36 (F1, taxonomía de eventos de funnel) |
+| Input no bloqueante | #36 (F1, contrato canónico de eventos de funnel) — **rama no fusionada en `main`** |
 | Salida | `docs/mejora/specs/it.md` (este archivo) |
 | Regla de oro | Sin mirrors, sin instaladores de terceros, solo fuentes oficiales; copy nativo italiano; revisión editorial posterior |
 
@@ -35,22 +35,42 @@
   rastrean línea a línea a ese documento.
 - `docs/mejora/decisiones.md`: `it` decide consultas, selección y prioridades
   italianas; no hereda de `es`/`sv`. F3-IT posee `docs/mejora/specs/it.md`.
+  Además mantiene una **decisión abierta** que bloquea «Cualquier guía nueva»:
+  «Si las guías de intención necesitan una ruta pública antes de
+  desbloquearse» (responsable F3/Codex). Las guías G1–G3 por eso **no son
+  ejecutables en esta fase** (ver §8.2).
 - `docs/plan-mejora-productos-por-idioma.md` §6 (F3): campos obligatorios de
   cada spec (ficha/guía/descarte, intención, above the fold, canales oficiales,
   secciones, FAQ, advertencias, enlaces, eventos, métricas).
-Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platform_select`, `redirect_start`, `redirect_result`, `redirect_error` (con `idioma=it` y `strumento=<slug>` come dimensioni). El esquema exacto de parametros lo define F1; esta spec declara que eventos debe emitir cada pagina, no el contrato tecnico.
-  (vista), `piattaforma` (selección), `/r` (clic al interstitial), `destino`
-  (salida al canal oficial), `idioma` (=`it`), `strumento` (slug). El esquema
-  exacto de parámetros lo define F1; esta spec declara **qué eventos debe
-  emitir cada página**, no el contrato técnico.
+- `src/utils/funnel-events.ts` y `docs/mejora/fases/F1.md` (F1, #36 — **rama no
+  fusionada en `main`**): contrato canónico de eventos de funnel. Esta spec usa
+  **solo** esos nombres, no inventa otros:
+  - Eventos: `ficha_view`, `platform_select`, `redirect_start`,
+    `redirect_result`, `redirect_error`.
+  - Parámetros de todo el payload: `lang` ∈ {`es`, `sv`, `it`} (aquí `it`);
+    `tool` = slug del catálogo; `platform` ∈ {`web`, `windows`, `mac`,
+    `linux`, `android`, `ios`, `null`}; `channel` ∈ {`official-site`,
+    `app-store`, `github-repo`, `documentation`, `official-installer`,
+    `web-app`}.
+  - `redirect_start` y `redirect_result` añaden `valid: true`;
+    `redirect_error` añade `valid: false` y `reason` ∈ {`tool_not_found`,
+    `platform_not_found`, `not_official`, `missing_params`, `unknown`}.
+  - `channel` es un **tipo de canal controlado**, no un dominio: las URLs no
+    son parámetros de funnel (el contrato excluye texto libre y PII).
+  - `ficha_view` corresponde solo a fichas, no a guías (ver B2).
+  - Es una **dependencia no fusionada**: esta spec se alinea al contrato de la
+    rama F1 sin copiar archivos ni declarar la dependencia como integrada. Si
+    F1 cambia el contrato antes de fusionarse, F4-IT debe realinear.
 
 ---
 
 ## 3. Contrato de salida
 
 - `docs/mejora/specs/it.md`: spec ejecutable por oportunidad para el producto
-  `it`, lista para que F4-IT la implemente en `src/content/tools/it/` y en las
-  rutas de guía que F3/F5 autoricen.
+  `it`. F4-IT implementa únicamente las fichas del §8.1 en
+  `src/content/tools/it/`. Las guías del §8.2 quedan **bloqueadas** por la
+  decisión abierta de `docs/mejora/decisiones.md` y no forman parte del
+  entregable ejecutable de esta fase.
 
 ---
 
@@ -67,8 +87,8 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
 - `docs/mejora/research/es.md`, `docs/mejora/research/sv.md`.
 - `src/content/tools/it/*`, `src/content/tools/es/*`, `src/content/tools/sv/*`,
   `src/content/tools-base/*` — contenido del sitio (lo implementa F4).
-- `public/`, `worker/`, `.well-known/`, `src/utils/links.ts`, rutas, hreflang,
-  canonical, robots y selector de idioma — fuera del alcance de F3.
+- `public/`, `worker/`, `.well-known/`, `src/utils/links.ts`, `src/utils/funnel-events.ts`,
+  rutas, hreflang, canonical, robots y selector de idioma — fuera del alcance de F3.
 - `docs/mejora/decisiones.md` — gobierno (lo edita Codex/F0).
 
 ---
@@ -89,27 +109,45 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
    existente. Esta spec es un documento de planificación.
 6. Los enlaces internos previstos usan solo slugs que existen en `it/` (según
    research/it.md §3.1) o los slugs nuevos que esta misma spec aprueba.
+7. La instrumentación usa **solo** el contrato canónico de F1 (§2): nombres de
+   eventos, parámetros `lang`/`tool`/`platform`/`channel`/`reason` y banderín
+   `valid`; `channel` siempre como tipo de canal controlado, nunca como URL.
+8. Las guías nuevas están **bloqueadas** por la decisión abierta de
+   `docs/mejora/decisiones.md`; no se entregan como specs ejecutables (ver §8.2).
 
 ---
 
 ## 7. Fuera de alcance
 
 - Crear o modificar fichas/`it/` (lo hace F4-IT).
-- Crear rutas públicas de guía (lo autoriza F3/F5; aquí solo se especifica).
+- Crear rutas públicas de guía: **bloqueadas** por la decisión abierta de
+  `docs/mejora/decisiones.md` («Cualquier guía nueva»); ver §8.2.
 - Cambiar hreflang, canonical, robots, selector de idioma o `src/utils/links.ts`.
-- Definir el esquema técnico de eventos (lo posee F1).
+- Definir o modificar el esquema técnico de eventos (lo posee F1).
 - Decidir el producto español o sueco (independencia de producto).
 
 ---
 
 ## 8. Especificaciones por oportunidad
 
-> Leyenda de campos por oportunidad:
-> **Página** (ficha/guía), **Trazabilidad** (research/it.md §), **Intención
-> primaria (IT)**, **Intenciones secundarias (IT)**, **Above the fold (IT)**,
-> **Plataformas**, **Rutas oficiales**, **Secciones nativas (IT)**,
+> Leyenda de campos por ficha (§8.1): **Trazabilidad** (research/it.md §),
+> **Intención primaria (IT)**, **Intenciones secundarias (IT)**, **Above the
+> fold (IT)**, **Plataformas**, **Rutas oficiales**, **Secciones nativas (IT)**,
 > **FAQ (IT)**, **Advertencias (IT)**, **Enlaces internos (slugs it/)**,
-> **Eventos de funnel**, **Métricas y ventana**.
+> **Eventos de funnel (contrato F1)**, **Métricas y ventana**.
+>
+> Forma canónica de cada evento de ficha (contrato F1, §2):
+> - `ficha_view` — `{ lang: it, tool: <slug>, platform: <P|null>, channel: <C> }`
+> - `platform_select` — `{ lang: it, tool: <slug>, platform: <P>, channel: <C> }`
+> - `redirect_start` — `{ lang: it, tool: <slug>, platform: <P>, channel: <C>, valid: true }`
+> - `redirect_result` — `{ lang: it, tool: <slug>, platform: <P>, channel: <C>, valid: true }`
+> - `redirect_error` — `{ lang: it, tool: <slug>, platform: <P>, channel: <C>, valid: false, reason: <R> }`
+>
+> donde `<P>` es la plataforma detectada (`ficha_view`) o seleccionada
+> (`platform_select`/`redirect_*`) dentro de {`web`, `windows`, `mac`, `linux`,
+> `android`, `ios`, `null`}, `<C>` el tipo de canal controlado y `<R>` el código
+> de error predefinido. Cada ficha declara debajo su `tool`, sus plataformas y
+> su canal.
 
 ### 8.1 Fichas seleccionadas (de research/it.md §5.1 y §7.1)
 
@@ -155,9 +193,11 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
   versioni modificate o non sicure. Usa sempre `cursor.com`.
 - **Enlaces internos esperados (slugs it/):** `chatgpt` (complemento
   generativo). *Relaciones fuertes mínimas en esta fase; F5 definirá el grafo.*
-- **Eventos de funnel:** `ficha_view` (`strumento=cursor`, `idioma=it`);
-  `piattaforma_selezionata`; `redirect_start` → `redirect_result`
-  (`destino=cursor.com`).
+- **Eventos de funnel (contrato F1):** `tool: cursor`; plataformas
+  `windows`/`mac`/`linux`; `channel: official-site` (descarga desde el sitio
+  oficial cursor.com). Emite `ficha_view`, `platform_select`,
+  `redirect_start`, `redirect_result` y `redirect_error` en la forma canónica
+  de la leyenda de §8.
 - **Métricas y ventana:** primaria = salidas al canal oficial `cursor.com` por
   plataforma; secundaria = CTR y posición en consulta "Cursor AI". Ventana: 14
   días para errores de destino, 28 días para tendencia (según plan F7).
@@ -190,7 +230,7 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
   - `Installazione dalla fonte ufficiale`
   - `Primi passi: scaricare un modello`
   - `Ollama e la privacy dei dati`
-  - `Ollama o LM Studio?` (enlace interno)
+  - `Ollama o LM Studio?` (enlace a la guía G2, bloqueada — ver §8.2)
 - **FAQ (IT):**
   - **Q: Serve una GPU per usare Ollama?** A: Ollama può usare CPU o GPU; le
     prestazioni dipendono dal modello e dall'hardware. Verifica i requisiti
@@ -202,11 +242,13 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
     sulla documentazione ufficiale.
 - **Advertencias (IT):** Non usare installer di terze parti; scarica solo da
   `ollama.com`. I modelli locali richiedono risorse hardware: verifica prima.
-- **Enlaces internos esperados (slugs it/):** `lm-studio`,
-  `ia-locale-privacy` (guida G1), `ollama-vs-lm-studio` (guida G2).
-- **Eventos de funnel:** `ficha_view` (`strumento=ollama`, `idioma=it`);
-  `platform_select`; `redirect_start` → `redirect_result`
-  (`destino=ollama.com`).
+- **Enlaces internos esperados (slugs it/):** `lm-studio` (activo); `ia-locale-privacy`
+  (G1) y `ollama-vs-lm-studio` (G2) quedan pendientes del desbloqueo de guías (§8.2).
+- **Eventos de funnel (contrato F1):** `tool: ollama`; plataformas
+  `windows`/`mac`/`linux`; `channel: official-site` (descarga desde el sitio
+  oficial ollama.com). Emite `ficha_view`, `platform_select`,
+  `redirect_start`, `redirect_result` y `redirect_error` en la forma canónica
+  de la leyenda de §8.
 - **Métricas y ventana:** primaria = salidas a `ollama.com`; secundaria = CTR y
   posición en "installare Llama in locale" / "Ollama". Ventana F7 (14/28 días).
 
@@ -236,7 +278,7 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
   - `Cos'è LM Studio`
   - `Installazione ufficiale`
   - `Scaricare e avviare un modello`
-  - `LM Studio vs Ollama` (enlace interno)
+  - `LM Studio vs Ollama` (enlace a la guía G2, bloqueada — ver §8.2)
   - `Privacy dei dati locali`
 - **FAQ (IT):**
   - **Q: LM Studio è gratuito?** A: LM Studio è gratuito per uso personale
@@ -247,11 +289,13 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
     dettagli sulla privacy sono nella documentazione ufficiale.
 - **Advertencias (IT):** Scarica solo da `lmstudio.ai`; evita pacchetti non
   ufficiali o modificati.
-- **Enlaces internos esperados (slugs it/):** `ollama`,
-  `ia-locale-privacy` (G1), `ollama-vs-lm-studio` (G2).
-- **Eventos de funnel:** `ficha_view` (`strumento=lm-studio`, `idioma=it`);
-  `piattaforma_selezionata`; `redirect_start` → `redirect_result`
-  (`destino=lmstudio.ai`).
+- **Enlaces internos esperados (slugs it/):** `ollama` (activo); `ia-locale-privacy`
+  (G1) y `ollama-vs-lm-studio` (G2) quedan pendientes del desbloqueo de guías (§8.2).
+- **Eventos de funnel (contrato F1):** `tool: lm-studio`; plataformas
+  `windows`/`mac`/`linux`; `channel: official-site` (descarga desde el sitio
+  oficial lmstudio.ai). Emite `ficha_view`, `platform_select`,
+  `redirect_start`, `redirect_result` y `redirect_error` en la forma canónica
+  de la leyenda de §8.
 - **Métricas y ventana:** primaria = salidas a `lmstudio.ai`; secundaria = CTR
   "LM Studio" / "Ollama vs LM Studio". Ventana F7.
 
@@ -278,7 +322,7 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
   - Badge revisione: `Canale ufficiale verificato · revisione editoriale pendente`
 - **Piattaforme:** Web, iOS, Android.
 - **Rutas oficiales (research/it.md §9):** `https://x.com/i/grok`
-- **Secciones nativas (IT):**
+- **Sezioni nativi (IT):**
   - `Cos'è Grok`
   - `Come accedere (ufficiale)`
   - `Cosa sa fare`
@@ -294,10 +338,12 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
     confermata sulla fonte ufficiale.
 - **Advertencias (IT):** Accedi solo da `x.com/i/grok`; non inserire credenziali
   in siti terzi che imitano l'accesso.
-- **Enlaces internos esperados (slugs it/):** `chatgpt`, `gemini`, `perplexity`.
-- **Eventos de funnel:** `ficha_view` (`strumento=grok`, `idioma=it`);
-  `platform_select`; `redirect_start` → `redirect_result`
-  (`destino=x.com/i/grok`).
+- **Enlaces interni esperados (slugs it/):** `chatgpt`, `gemini`, `perplexity`.
+- **Eventos de funnel (contrato F1):** `tool: grok`; plataformas `web`/`ios`/
+  `android`; `channel: web-app` para `web` (ruta x.com/i/grok) y
+  `channel: app-store` para `ios`/`android` (app X oficial). Emite
+  `ficha_view`, `platform_select`, `redirect_start`, `redirect_result` y
+  `redirect_error` en la forma canónica de la leyenda de §8.
 - **Métricas y ventana:** primaria = salidas a `x.com/i/grok`; secundaria = CTR
   "Grok". Ventana F7.
 
@@ -324,7 +370,7 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
   - Badge revisione: `Canale ufficiale verificato · revisione editoriale pendente`
 - **Piattaforme:** Web.
 - **Rutas oficiales (research/it.md §9):** `https://notebooklm.google.com`
-- **Secciones nativas (IT):**
+- **Sezioni nativi (IT):**
   - `Cos'è NotebookLM`
   - `Come iniziare (ufficiale)`
   - `Riassunti e fonti`
@@ -339,108 +385,52 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
     consulta l'informativa ufficiale.
 - **Advertencias (IT):** Usa solo `notebooklm.google.com`; non caricare
   documenti sensibili senza verificare le policy ufficiali.
-- **Enlaces internos esperados (slugs it/):** `chatgpt`, `gemini`,
-  `perplexity`, `strumenti-ai-freelance` (guida G3).
-- **Eventos de funnel:** `ficha_view` (`strumento=notebooklm`, `idioma=it`);
-  `platform_select`; `redirect_start` → `redirect_result`
-  (`destino=notebooklm.google.com`).
+- **Enlaces interni esperados (slugs it/):** `chatgpt`, `gemini`, `perplexity`
+  (activos); `strumenti-ai-freelance` (G3) queda pendiente del desbloqueo de
+  guías (§8.2).
+- **Eventos de funnel (contrato F1):** `tool: notebooklm`; plataforma `web`;
+  `channel: web-app`. Emite `ficha_view`, `platform_select`, `redirect_start`,
+  `redirect_result` y `redirect_error` en la forma canónica de la leyenda de §8.
 - **Métricas y ventana:** primaria = salidas a `notebooklm.google.com`;
   secundaria = CTR "NotebookLM". Ventana F7.
 
 ---
 
-### 8.2 Guías seleccionadas (de research/it.md §5.2 y §7.1)
+### 8.2 Guías G1–G3 — identificadas en research, BLOQUEADAS (no ejecutables en esta fase)
 
-#### G1 — ia-locale-privacy: IA locale o cloud per la privacy
+`docs/mejora/decisiones.md` mantiene una **decisión abierta** que bloquea
+explícitamente «Cualquier guía nueva»: «Si las guías de intención necesitan una
+ruta pública antes de desbloquearse» (responsable F3/Codex). Por lo tanto, en
+esta fase las guías **no** se entregan como specs ejecutables. Se conservan
+aquí su trazabilidad a research y su intención nativa para no perder el
+trabajo, pero **no** se definen above the fold, secciones, FAQ, advertencias,
+enlaces, eventos ni métricas hasta que Codex cierre esa decisión. Además, F1 no
+define un evento de vista para guías (`ficha_view` solo aplica a fichas), así
+que incluso desbloqueadas requerirían un evento propio de F1 (ver B2).
+
+#### G1 — ia-locale-privacy (BLOQUEADA)
 
 - **Trazabilidad:** research/it.md §4.2 (#11), §5.2 (G1), §7.1. Evidencia: 2+
   artículos dedicados; privacidad = barrera #1 en Italia (45%, Eurobarómetro).
   Confianza: Media.
-- **Decisión de página:** Guía (contenido comparativo/educativo, no ficha).
 - **Intención primaria (IT):** Capire quando conviene un'IA in locale per la
   privacy e quando il cloud è sufficiente.
-- **Intenciones secundarie (IT):** Che cos'è l'IA locale; rischi del cloud;
-  quali strumenti usare in locale.
-- **Above the fold (IT):**
-  - H1: `IA locale o cloud: guida alla privacy`
-  - Tagline: `In Italia la privacy è la prima barriera all'IA (45%, Eurobarometro 2026). Ecco come scegliere.`
-  - CTA secundario: `Vai agli strumenti in locale: Ollama · LM Studio`
-- **Piattaforme:** transversal (Windows/macOS/Linux para herramientas locales).
-- **Rutas oficiales citadas:** `https://ollama.com`, `https://lmstudio.ai`.
-- **Secciones nativas (IT):**
-  - `Perché la privacy preoccupa gli italiani`
-  - `Cos'è l'IA locale (Ollama, LM Studio)`
-  - `Quando il cloud basta`
-  - `Rischi e accorgimenti`
-  - `Strumenti consigliati per iniziare`
-- **FAQ (IT):**
-  - **Q: L'IA locale è più sicura?** A: Eseguire modelli in locale mantiene i
-    dati sul dispositivo, ma la sicurezza dipende anche da configurazione e
-    fonte del modello. Non è una garanzia assoluta.
-  - **Q: Serve hardware potente?** A: Dipende dal modello; i modelli più grandi
-    richiedono più memoria e GPU. Verifica i requisiti sulle fonti ufficiali.
-  - **Q: Posso usare modelli locali su Windows/Mac?** A: Sì, Ollama e LM Studio
-    sono disponibili per Windows e macOS (e Linux).
-- **Advertencias (IT):** La scelta "locale" non elimina rischi se i modelli
-  provengono da fonti non verificate. Scarica solo da siti ufficiali.
-- **Enlaces internos esperados (slugs it/):** `ollama`, `lm-studio`.
-- **Eventos de funnel:** `ficha_view` (`guida=ia-locale-privacy`, `idioma=it`);
-  `redirect_start` → `redirect_result` (hacia `ollama.com`/`lmstudio.ai`).
-- **Métricas y ventana:** primaria = clics desde la guía a las fichas enlazadas
-  (`ollama`, `lm-studio`); secundaria = visitas de la guía. Ventana F7.
+- **Estado:** BLOQUEADA — no ejecutable en F3-IT (ver nota superior y B2).
 
-#### G2 — ollama-vs-lm-studio: guida comparativa
+#### G2 — ollama-vs-lm-studio (BLOQUEADA)
 
 - **Trazabilidad:** research/it.md §4.2 (#2), §5.2 (G2), §7.1. Evidencia: 1
   artículo italiano dedicado (convly.ai). Confianza: Media.
-- **Decisión de página:** Guía comparativa.
 - **Intención primaria (IT):** Scegliere tra Ollama e LM Studio per l'IA locale.
-- **Above the fold (IT):**
-  - H1: `Ollama o LM Studio: quale scegliere`
-  - Tagline: `Due modi di usare l'IA in locale. Confronto onesto, senza scaricare nulla da noi.`
-- **Rutas oficiales citadas:** `https://ollama.com`, `https://lmstudio.ai`.
-- **Secciones nativas (IT):** `Differenze principali` · `Per chi è Ollama` ·
-  `Per chi è LM Studio` · `Requisiti` · `Da dove scaricare (ufficiale)`.
-- **FAQ (IT):**
-  - **Q: Quale è meglio per principianti?** A: LM Studio ha interfaccia
-    grafica; Ollama è più orientato alla riga di comando. La scelta dipende
-    dall'esperienza.
-  - **Q: Posso usare entrambi?** A: Sì, gestiscono modelli locali in modo
-    diverso e possono coesistere.
-- **Advertencias (IT):** Scarica solo dalle fonti ufficiali citate.
-- **Enlaces internos esperados (slugs it/):** `ollama`, `lm-studio`,
-  `ia-locale-privacy` (G1).
-- **Eventos de funnel:** `ficha_view` (`guida=ollama-vs-lm-studio`,
-  `idioma=it`); `redirect_start` → `redirect_result`.
-- **Métricas y ventana:** primaria = clics a `ollama`/`lm-studio`; secundaria =
-  CTR "Ollama vs LM Studio". Ventana F7.
+- **Estado:** BLOQUEADA — no ejecutable en F3-IT (ver nota superior y B2).
 
-#### G3 — strumenti-ai-freelance: strumenti IA per freelance
+#### G3 — strumenti-ai-freelance (BLOQUEADA)
 
 - **Trazabilidad:** research/it.md §4.2 (#7, #8, #9), §5.2 (G3), §7.1.
   Evidencia: 3+ artículos italiani. Confianza: Media.
-- **Decisión de página:** Guía editorial (agregadora por intención).
 - **Intención primaria (IT):** Quali strumenti di IA usare come freelance in
   Italia per produttività e studio.
-- **Above the fold (IT):**
-  - H1: `Strumenti di IA per freelance`
-  - Tagline: `Una selezione di strumenti ufficiali per scrivere, riassumere e organizzare il lavoro.`
-- **Rutas oficiales citadas:** las de las fichas enlazadas.
-- **Secciones nativas (IT):** `Scrittura e grammatica` · `Ricerca e riassunti`
-  · `Organizzazione` · `Cosa evitare (fonti non ufficiali)`.
-- **FAQ (IT):**
-  - **Q: Quali strumenti sono gratuiti?** A: Diverse opzioni hanno un piano
-    gratuito; verifica limiti e piani sulle fonti ufficiali di ciascuno.
-  - **Q: Posso usarli per i clienti?** A: Verifica i termini d'uso di ciascuno
-    strumento sulla sua fonte ufficiale.
-- **Advertencias (IT):** Usa solo strumenti da fonti ufficiali; evita siti che
-  promettono "versioni premium gratis".
-- **Enlaces internos esperados (slugs it/):** `notebooklm`, `chatgpt`,
-  `gemini`, `perplexity`, `grammarly`, `deepl`.
-- **Eventos de funnel:** `ficha_view` (`guida=strumenti-ai-freelance`,
-  `idioma=it`); `redirect_start` → `redirect_result`.
-- **Métricas y ventana:** primaria = clics a fichas enlazadas; secundaria =
-  visitas de la guía. Ventana F7.
+- **Estado:** BLOQUEADA — no ejecutable en F3-IT (ver nota superior y B2).
 
 ---
 
@@ -450,7 +440,7 @@ Taxonomia de eventos de funnel (nombres canonicos de F1): `ficha_view`, `platfor
 |---|---|---|
 | `languagetool` | **Descarte** | Sin evidencia de búsqueda italiana en research/it.md §5.1 (#5). Soporta italiano (languagetool.org) pero no hay señal de demanda. No se inventa demanda. |
 | `meta-ai` | **Descarte** | Hipótesis editorial sin confirmar (research/it.md §5.1 #6). Sin evidencia de búsqueda como herramienta independiente. |
-| `microsoft-copilot` | **Pendiente / blocker** | 1,8M usuarios (Cosenza) pero en declive y competencia alta (research/it.md §5.1 #7); además research/it.md §9 **no registra dominio oficial verificado**. No se declara ruta oficial ni ficha sin fuente. Ver §9. |
+| `microsoft-copilot` | **Pendiente / blocker B1** | 1,8M usuarios (Cosenza) pero en declive y competencia alta (research/it.md §5.1 #7); además research/it.md §9 **no registra dominio oficial verificado**. No se declara ruta oficial ni ficha sin fuente. Ver §9. |
 | `github-copilot` | **Descarte** | Sin evidencia de búsqueda italiana (research/it.md §5.1 #8). Existe en tools-base pero sin señal de demanda. |
 
 ### 8.4 Descartes confirmados (de research/it.md §5.3)
@@ -480,12 +470,18 @@ baja tracción en Italia, o sin evidencia de búsqueda italiana).
   crear su ficha, o lo descartamos definitivamente por el declive y la alta
   competencia SERP? Hasta entonces, la spec no lo aprueba.
 
-### B2 — Esquema técnico de eventos (F1)
+### B2 — Evento de vista de guía no definido en F1 + guías bloqueadas
 
-Los nombres de eventos en §8 son los de la taxonomía de F1
-(`ficha_view`, `platform_select`, `redirect_start`, `redirect_result`, `redirect_error`). El
-esquema de parámetros y la instrumentación los posee F1 (#36); esta spec los
-referencia pero no los define. Si F1 cambia los nombres, F4-IT debe alinear.
+- F1 (#36, rama no fusionada) no define un evento de vista para guías: su
+  taxonomía tiene `ficha_view` (solo para fichas), `platform_select`,
+  `redirect_start`, `redirect_result`, `redirect_error`. Ninguno corresponde a
+  la vista de una guía.
+- Las guías G1–G3 (§8.2) están además bloqueadas por la decisión abierta de
+  `docs/mejora/decisiones.md` («Cualquier guía nueva»). Por lo tanto esta spec
+  no emite eventos de guía.
+- **Pregunta a Codex:** al desbloquear las guías, ¿define F1 un evento de vista
+  de guía (p. ej. `guida_view`) y su ruta pública antes de que F4-IT las
+  implemente? Hasta entonces, las guías no instrumentan `ficha_view`.
 
 ---
 
@@ -504,10 +500,33 @@ referencia pero no los define. Si F1 cambia los nombres, F4-IT debe alinear.
   §7 fuera de alcance; el diff de este entregable es solo
   `docs/mejora/specs/it.md` (ver validación §11).
 
+### Cumplimiento del contrato F1 y de la gobernanza (corregido en esta revisión)
+
+- [x] **Eventos canónicos de F1:** las fichas de §8.1 emiten solo
+  `ficha_view`, `platform_select`, `redirect_start`, `redirect_result`,
+  `redirect_error`; no quedan nombres inventados.
+- [x] **Parámetros canónicos de F1:** los payloads usan solo `lang`, `tool`,
+  `platform`, `channel`, `valid` y `reason` (solo en `redirect_error`), con
+  valores dentro de las enumeraciones controladas de F1; `channel` siempre como
+  tipo de canal, nunca como URL. No quedan parámetros no canónicos.
+- [x] **`ficha_view` no se usa para guías:** las guías de §8.2 no emiten
+  eventos (ver B2).
+- [x] **Guías no presentadas como ejecutables:** §8.2 las registra como
+  BLOQUEADAS por la decisión abierta de `docs/mejora/decisiones.md`, sin above
+  the fold, secciones, FAQ, eventos ni métricas ejecutables.
+- [x] **Dependencia F1 declarada no fusionada:** §1, §2 y B2 lo explicitan; no
+  se copian archivos de la rama F1 ni se marca la dependencia como integrada.
+
+> **Estado de la entrega:** entregado para revisión de Codex; **no fusionado**.
+> El issue #41 permanece abierto. Bloqueadores pendientes: **B1**
+> (`microsoft-copilot`, sin fuente oficial verificada) y **B2** (guías nuevas
+> bloqueadas y sin evento de vista de guía en F1). Ningún criterio que dependa
+> de esas decisiones se marca como resuelto.
+
 ## 11. Validación y evidencia
 
 - Comando: `git status` / `git diff --stat` tras el commit → debe mostrar
-  **solo** `docs/mejora/specs/it.md` como nuevo archivo; ningún archivo
+  **solo** `docs/mejora/specs/it.md` como archivo modificado; ningún archivo
   protegido ni contenido de sitio modificado.
 - Esta spec es un documento de planificación (no UI/contenido del sitio), por lo
   que `npm run build` y los audits de contenido (`catalog:audit`, `hw:audit`,
@@ -515,6 +534,13 @@ referencia pero no los define. Si F1 cambia los nombres, F4-IT debe alinear.
   implementar las fichas.
 - Trazabilidad verificable: cada bloque de §8 enlaza a `research/it.md`
   (secciones §4.2, §5.1, §5.2, §5.3, §7.1, §9).
+- Contrato F1: los eventos y parámetros de §8.1 se contrastaron contra
+  `src/utils/funnel-events.ts` de la rama F1 (`FUNNEL_EVENT_NAMES`,
+  `VALID_LANGS`, `VALID_PLATFORMS`, `VALID_CHANNELS`,
+  `REDIRECT_ERROR_REASONS`); solo se usan nombres y valores de esas
+  enumeraciones.
+- Codificación: archivo verificado a nivel de bytes como UTF-8 válido
+  (acentos correctos, sin secuencias de mojibake).
 
 ## 12. Riesgos conocidos
 
@@ -525,4 +551,8 @@ referencia pero no los define. Si F1 cambia los nombres, F4-IT debe alinear.
    disponibilidad en tiendas italianas; las fichas deben verificarlo en F4.
 3. **AI Act (2 ago 2026):** posible impacto en disponibilidad; no verificado.
 4. **`microsoft-copilot` sin ruta oficial** → bloqueador B1.
-5. **Eventos dependen de F1** → alineación en F4 (B2).
+5. **Guías G1–G3 bloqueadas** por la decisión abierta de
+   `docs/mejora/decisiones.md` → no forman parte del entregable ejecutable
+   (§8.2, B2).
+6. **F1 no fusionada en `main`:** el contrato de eventos se alinea a la rama
+   F1; si cambia antes de fusionarse, F4-IT debe realinear (§2, B2).
