@@ -1,0 +1,57 @@
+{
+  "shortDescription": "L'editor di codice con intelligenza artificiale, basato su VS Code, per scrivere e revisionare codice più velocemente.",
+  "longDescription": "Cursor è un ambiente di sviluppo integrato nato come fork di VS Code e pensato per programmare con l'assistenza di modelli di linguaggio. Offre autocompletamento avanzato, chat integrata e refactoring guidato da istruzioni in linguaggio naturale, direttamente all'interno dell'editor.",
+  "bestFor": [
+    "Programmare con autocompletamento di IA che comprende il contesto dell'intero progetto",
+    "Migrare da VS Code mantenendo estensioni e configurazioni abituali",
+    "Refattorizzare e modificare codice con istruzioni in linguaggio naturale",
+    "Consultare dubbi sul codice senza uscire dall'ambiente di sviluppo"
+  ],
+  "limitations": [
+    "Non è un assistente di uso generale: non è pensato per scrivere email o rispondere a domande fuori dal codice.",
+    "Le funzioni di IA avanzate hanno limiti nel piano gratuito; un uso intensivo richiede il piano Pro.",
+    "Può suggerire implementazioni errate con apparente sicurezza, specialmente in logica di business complessa."
+  ],
+  "safetyNotes": [
+    "Scarica Cursor solo da cursor.com, il canale ufficiale che rileva automaticamente il sistema operativo.",
+    "Non installare Cursor da repository di terze parti o siti di download non ufficiali: l'editor ha accesso al tuo codice e all'ambiente di sviluppo."
+  ],
+  "editorialSummary": "Cursor è uno degli editor di codice con IA più adottati dagli sviluppatori, costruito come fork di VS Code per integrare l'assistenza di IA direttamente nel flusso di lavoro. Questa scheda rimanda solo al canale ufficiale di cursor.com, evidenziando fin dall'inizio che non si tratta di un assistente conversazionale generico.",
+  "editorialSections": [
+    {
+      "heading": "Cos'è Cursor e a cosa serve",
+      "body": "Cursor non è una chat di intelligenza artificiale generica: è un editor di codice costruito sulla stessa base di VS Code, con l'IA integrata direttamente nel flusso di programmazione. Chi cerca \"Cursor AI\", \"Cursor per Windows\" o \"editor di codice con IA\" di solito è uno sviluppatore che già conosce VS Code e vuole capire cosa cambia quando l'assistente non è una finestra separata, ma vive dentro l'editor.\n\nLa differenza rispetto a strumenti come ChatGPT o Claude è netta: Cursor è progettato per leggere, scrivere, revisionare e refattorizzare codice. Se stai cercando un'IA per scrivere testi, riassumere documenti o rispondere a domande generali, ti conviene guardare altre schede. Se invece il tuo obiettivo è programmare più velocemente rimanendo nel contesto del progetto, Cursor è costruito proprio per quello."
+    },
+    {
+      "heading": "Come si installa dai passaggi ufficiali",
+      "body": "Cursor si distribuisce esclusivamente da cursor.com/downloads. Il sito riconosce automaticamente il sistema operativo e propone l'installer per Windows, macOS o Linux. Il processo è simile a quello di VS Code: scarichi il file, lo avvii e l'editor è pronto, spesso importando estensioni e impostazioni del tuo ambiente precedente.\n\nIl rischio specifico con Cursor non è tanto un'app falsa su uno store, ma versioni modificate dell'installer che circolano in repository di terze parti. Dato che Cursor ha accesso al tuo codice sorgente, installare una build non ufficiale espone a rischi di sicurezza più seri del solito. Per questo motivo la regola è semplice: unico canale valido cursor.com, e nient'altro."
+    },
+    {
+      "heading": "Cursor e la privacy del codice",
+      "body": "Cursor ha accesso diretto ai file del progetto: può leggere la struttura del codebase, seguire le importazioni e fare suggerimenti basati su come è costruito ciò che esiste già. Questo contesto è il suo punto di forza, ma solleva anche una domanda su dove finiscano i tuoi dati. Le impostazioni di privacy e gestione dei dati sono controllate direttamente da Cursor e vanno verificate nella sua informativa ufficiale.\n\nDescargasIA non elabora il tuo codice e non offre una versione del software. Se lavori con codice sensibile, leggi la documentazione ufficiale di Cursor prima di attivare funzioni di sincronizzazione o training, e valuta se il piano e le impostazioni privacy del tuo account sono compatibili con il tipo di progetto."
+    },
+    {
+      "heading": "Cursor o un editor classico?",
+      "body": "Cursor ha senso se passi gran parte della giornata a scrivere codice e vuoi ridurre la frizione tra pensare e implementare. Rispetto a un editor classico più un plugin di IA, il vantaggio sta nel contesto: Cursor può ragionare su più file contemporaneamente e ricevere istruzioni dirette all'interno dell'editor, senza il ciclo copia-incolla tra chat e codice.\n\nSe programmi solo occasionalmente, o se il tuo flusso di lavoro mescola codice, scrittura e ricerca, potrebbe essere più pratico tenere il tuo editor abituale e usare un assistente generale come Claude o ChatGPT. La scelta dipende da quanto tempo passi dentro un editor di codice e da quanta frizione sei disposto a eliminare a fronte di un nuovo strumento."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Cursor è gratuito?",
+      "answer": "Cursor offre un piano gratuito con funzioni di IA base e limiti di uso mensili. Per più consultazioni, modelli avanzati e funzioni aggiuntive è previsto un piano a pagamento. Verifica prezzi e termini aggiornati su cursor.com."
+    },
+    {
+      "question": "Cursor funziona su Windows e Mac?",
+      "answer": "Sì, Cursor è disponibile per Windows, macOS e Linux. Puoi scaricare la versione corretta direttamente dalla pagina ufficiale cursor.com/downloads."
+    },
+    {
+      "question": "I miei codici restano privati?",
+      "answer": "Le impostazioni di privacy e uso dei dati sono gestite da Cursor. Consulta la sua informativa ufficiale per capire come vengono trattati i tuoi file e se attivare opzioni di esclusione dal training. DescargasIA non elabora il tuo codice."
+    },
+    {
+      "question": "Dove posso scaricare Cursor in modo sicuro?",
+      "answer": "L'unico canale sicuro è cursor.com. Non scaricare Cursor da siti non ufficiali, repository di terze parti o versioni che promettono funzioni sbloccate: rischi installer modificati o non sicuri."
+    }
+  ],
+  "italianSupport": "partial"
+}
