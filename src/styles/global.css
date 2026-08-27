@@ -1,4 +1,14 @@
 @import "tailwindcss";
+
+/* `worker-configuration.d.ts` lo genera `wrangler types` y son 582 KB de
+   definiciones del runtime de workerd. La deteccion automatica de Tailwind 4 lo
+   escaneaba como fuente y cosechaba palabras sueltas de ahi como candidatas a
+   clase: aparecian `.fixed`, `.grow` y `.shadow` en el CSS de todas las paginas
+   (+288 bytes) sin que nadie las usara. `grow` no sale ni una vez en `src/`,
+   solo en ese .d.ts. Excluirlo ataca la causa; purgar las reglas a mano seria
+   el sintoma, y volveria con el siguiente binding. */
+@source not "../../worker-configuration.d.ts";
+
 @import "./fonts.css";
 
 /* ==========================================================================
