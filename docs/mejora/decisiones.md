@@ -15,6 +15,7 @@
 | Destinos | Solo se aceptan dominios oficiales, tiendas oficiales, repositorios oficiales o documentación oficial. | DescargasIA no aloja instaladores ni publica mirrors. |
 | F0 | No añade eventos, proveedor de analítica, fichas, copy, rutas, indexación ni idiomas. | Esos trabajos pertenecen a F1, F2/F3 y sus implementaciones posteriores. |
 | Criterios SDD | Toda fase nueva debe tener contrato de entrada/salida, propiedad, protegidos, fuera de alcance, riesgos y criterios ejecutables. | Una sesión limpia debe poder trabajar sin recuperar conversaciones. |
+| Verificación de canales oficiales | La aporta **Codex o el propietario**, abriendo las URL y dejándolas en `docs/mejora/canales/evidencia-canales.md`, fechadas y versionadas. Las fases F4 escriben contra esa tabla y solo contra ella. | Las sesiones ejecutoras no tienen acceso de red a ningún dominio oficial (blocker #56). El arnés de Actions no basta: no tiene navegador y una respuesta HTTP no demuestra el `type` real del canal. |
 
 ## Límites por producto
 
@@ -57,6 +58,11 @@ Regla de bloqueo: si una fase necesita editar un archivo que aparece como
 protegido, su spec está mal cortada. Se corrige la spec o se secuencia la fase;
 no se esquiva el límite.
 
+`docs/mejora/canales/evidencia-canales.md` no pertenece a ninguna fase: lo posee
+Codex/el propietario. Para **todas** las fases F4 es un archivo **protegido de
+solo lectura**. Una sesión ejecutora que rellene una de sus celdas está
+falsificando evidencia, porque no puede abrir las URL que la tabla registra.
+
 ## Decisiones abiertas
 
 | Decisión pendiente | Responsable de cerrarla | Bloquea |
@@ -65,6 +71,7 @@ no se esquiva el límite.
 | Proveedor y formato de medición del funnel | F1/Codex | Instrumentación y comparación postpublicación |
 | Si las guías de intención necesitan una ruta pública antes de desbloquearse | F3/Codex | Cualquier guía nueva |
 | Permisos y política de los workflows de GitHub Actions para esta serie | Codex antes de automatizar | CI o arnés adicional |
+| Vigencia de una fila `verificado` del registro de canales: cuántos días vale antes de repetirse | Codex | Cuándo una fase F4 debe reverificar en vez de reutilizar la tabla |
 
 No se rellenan estas celdas con un proveedor, país, URL o credencial
 inventados. La decisión cerrada debe entrar aquí con fecha y motivo antes de
@@ -77,3 +84,5 @@ que la fase bloqueada la use.
 | 2026-08-26 | F0 | Se conserva el baseline resumido y se explicitan sus filtros no preservados. | Los exports originales no están versionados en el repositorio. |
 | 2026-08-26 | F0 | Los issues de GitHub y sus etiquetas son el estado operativo. | El plan maestro no debe mantener una segunda tabla de estado. |
 | 2026-08-27 | F0 | `main` es la rama de integración de esta serie. | Fija un único destino de integración para los PRs de F1–F7 y evita que cada fase invente una rama base distinta. |
+| 2026-08-27 | F4 | Se acepta el blocker #56 y se elige la vía 3: la verificación de canales la aporta Codex/el propietario en un registro versionado. | Una sesión ejecutora no puede abrir ninguna URL oficial; sin la regla común 3 no puede empezar ningún lote de F4. |
+| 2026-08-27 | F4 | Se crea `docs/mejora/canales/evidencia-canales.md` con las 30 filas del alcance aprobado (`es` e `it`), todas en `pendiente`. | Da soporte a la evidencia sin fabricarla: quien no puede verificar prepara la tabla, quien puede verificar la firma. |
