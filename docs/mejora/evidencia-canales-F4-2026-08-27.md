@@ -100,6 +100,67 @@ Fuentes observadas: https://chat.mistral.ai, https://play.google.com/store/apps/
 4. F4 no modifica src/content/tools-base/ como parte de la redacción. Los cambios de catálogo requieren una decisión o issue propio.
 5. La verificación es fechada y debe repetirse si la implementación se retrasa o si se observa un cambio de destino.
 
+## Actualización para F4-IT — 2026-08-27
+
+Tras resolver los blockers de catálogo #60, #62 y #63, se verifican los canales de las cinco herramientas del lote italiano. Las filas siguientes se añaden a la evidencia base y autorizan el copy de `src/content/tools/it/cursor.json`, `src/content/tools/it/ollama.json`, `src/content/tools/it/lm-studio.json`, `src/content/tools/it/grok.json` y `src/content/tools/it/notebooklm.json`.
+
+### cursor
+
+| Plataforma | URL declarada | Tipo declarado | Observación directa | Editor o proyecto observado | Resultado |
+|---|---|---|---|---|---|
+| web | https://cursor.com | official-site | La página abre como «Cursor is your coding agent for building ambitious software» y ofrece el enlace oficial de descarga. | Cursor / Anysphere, Inc. | Verificado: official-site |
+| windows | https://cursor.com/downloads | official-installer | La URL redirige a https://cursor.com/download; la página lista instaladores Windows x64 y ARM64, System/User. | Cursor | Verificado: official-installer |
+| mac | https://cursor.com/downloads | official-installer | La URL redirige a https://cursor.com/download; la página lista instaladores macOS ARM64, x64 y Universal. | Cursor | Verificado: official-installer |
+| linux | https://cursor.com/downloads | official-installer | La URL redirige a https://cursor.com/download; la página lista paquetes Linux .deb, RPM y AppImage. | Cursor | Verificado: official-installer |
+
+Fuentes observadas: https://cursor.com, https://cursor.com/downloads.
+
+### ollama (actualizado)
+
+| Plataforma | URL declarada | Tipo declarado | Observación directa | Editor o proyecto observado | Resultado |
+|---|---|---|---|---|---|
+| web | https://ollama.com | official-site | La página abre como «Ollama» y enlaza a Download dentro del dominio oficial. | Ollama Inc. | Verificado: official-site |
+| windows | https://ollama.com/download/OllamaSetup.exe | official-installer | La página oficial Download Ollama muestra «Download for Windows» y enlaza exactamente a OllamaSetup.exe. | Ollama | Verificado: official-installer |
+| mac | https://ollama.com/download/Ollama.dmg | official-installer | La página oficial actual Download Ollama / macOS enlaza a https://ollama.com/download/Ollama.dmg; la petición a esa URL devuelve el binario del instalador. | Ollama | Verificado: official-installer |
+| linux | https://ollama.com/download/linux | documentation | La página abre como «Download Ollama», muestra el comando de instalación Linux y enlaza a instrucciones manuales y documentación. | Ollama | Verificado: documentation |
+
+Fuentes observadas: https://ollama.com, https://ollama.com/download, https://ollama.com/download/mac, https://ollama.com/download/linux.
+
+Nota: se corrige la URL macOS de `Ollama-darwin.zip` a `Ollama.dmg`, según blocker #60.
+
+### lm-studio
+
+| Plataforma | URL declarada | Tipo declarado | Observación directa | Editor o proyecto observado | Resultado |
+|---|---|---|---|---|---|
+| web | https://lmstudio.ai | official-site | La página abre como «LM Studio Bionic - Agent for Work and Code», ofrece descarga del producto y enlaces a documentación. | Element Labs, Inc. / LM Studio | Verificado: official-site |
+| windows | https://lmstudio.ai | official-site | La página principal enlaza a descarga y documentación; se considera punto de entrada verificado. | Element Labs, Inc. / LM Studio | Verificado: official-site |
+| mac | https://lmstudio.ai | official-site | La página principal enlaza a descarga y documentación; se considera punto de entrada verificado. | Element Labs, Inc. / LM Studio | Verificado: official-site |
+| linux | https://lmstudio.ai | official-site | La página principal enlaza a descarga y documentación; se considera punto de entrada verificado. | Element Labs, Inc. / LM Studio | Verificado: official-site |
+
+Fuentes observadas: https://lmstudio.ai.
+
+### grok
+
+| Plataforma | URL declarada | Tipo declarado | Observación directa | Editor o proyecto observado | Resultado |
+|---|---|---|---|---|---|
+| web | https://grok.com | web-app | La página abre como «Grok» y muestra el acceso al servicio dentro del dominio oficial de xAI. | xAI / Grok | Verificado: web-app |
+| android | https://play.google.com/store/apps/details?id=ai.x.grok | app-store | Google Play muestra «Grok AI» y el editor «xAI». | xAI | Verificado: app-store |
+| ios | https://apps.apple.com/us/app/grok/id6670324846 | app-store | App Store muestra «Grok AI» y el desarrollador «X Corp.». | X Corp. / xAI | Verificado: app-store |
+
+Fuentes observadas: https://grok.com, https://play.google.com/store/apps/details?id=ai.x.grok, https://apps.apple.com/us/app/grok/id6670324846.
+
+Nota: x.com/i/grok es la integración de Grok dentro di X y también es un punto de accesso ufficiale; se incluye en `officialSources` como ruta alternativa verificabile.
+
+### notebooklm
+
+| Plataforma | URL declarada | Tipo declarado | Observación directa | Editor o proyecto observado | Resultado |
+|---|---|---|---|---|---|
+| web | https://notebooklm.google.com | web-app | El punto de entrada notebooklm.google.com resuelve a una página de inicio de sesión de Google Accounts, perteneciente al servicio NotebookLM. | Google LLC | Verificado: web-app |
+
+Fuentes observadas: https://notebooklm.google.com, https://notebooklm.google.
+
+Nota: el dominio `notebooklm.google.com` redirige funcionalmente hacia `notebook.google.com`/flujos de inicio de sesión. Ambos dominios pertenecen a Google.
+
 ## Consumo por F4
 
 F4-ES (#44), F4-SV (#43) y F4-IT (#46) pueden usar las filas marcadas «Verificado» como entrada de canal, sin repetir la prueba de red en la sesión ejecutora. No pueden ejecutar una ficha cuya fila de canal esté «NO COINCIDE» o «NO VERIFICABLE». Cada PR de F4 debe citar esta tabla y conservar la URL y fecha observadas en su evidencia.

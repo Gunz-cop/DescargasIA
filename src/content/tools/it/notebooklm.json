@@ -13,11 +13,11 @@
     "Le funzioni gratuite hanno limiti; i dettagli sui piani dipendono dalle condizioni ufficiali di Google."
   ],
   "safetyNotes": [
-    "Accedi a NotebookLM solo da notebooklm.google.com.",
+    "Accedi a NotebookLM dal punto di ingresso ufficiale notebooklm.google.com (gestito da Google; l'accesso può proseguire su notebook.google).",
     "Non caricare documenti sensibili senza aver verificato le policy ufficiali su privacy e gestione dei dati.",
     "Essendo un servizio Google, i dati caricati sono soggetti ai termini di Google."
   ],
-  "editorialSummary": "NotebookLM è lo strumento di Google per studiare e riassumere documenti con l'IA. Funziona nel browser e richiede un account Google. Questa scheda rimanda esclusivamente a notebooklm.google.com, senza offrire installer o mirror di terze parti.",
+  "editorialSummary": "NotebookLM è lo strumento di Google per studiare e riassumere documenti con l'IA. Funziona nel browser e richiede un account Google. Questa scheda rimanda al punto di ingresso ufficiale notebooklm.google.com, senza offrire installer o mirror di terze parti.",
   "editorialSections": [
     {
       "heading": "Cos'è NotebookLM",
@@ -25,7 +25,7 @@
     },
     {
       "heading": "Come iniziare dal canale ufficiale",
-      "body": "L'unico accesso ufficiale è notebooklm.google.com. Da lì puoi accedere con il tuo account Google, creare un quaderno e iniziare a caricare file o collegare documenti da Google Drive. Non è necessario installare nulla: funziona direttamente nel browser.\n\nLa spec per il prodotto italiano indica esplicitamente il dominio notebooklm.google.com come canale ufficiale. Il sito ufficiale di Google NotebookLM può apparire anche come notebooklm.google in alcune configurazioni, ma l'accesso corretto e verificabile è attraverso il dominio .com gestito da Google. Se trovi siti che offrono app, installer o versioni modificate di NotebookLM, trattali con estrema cautela."
+      "body": "Il punto di ingresso ufficiale è notebooklm.google.com. Da lì puoi accedere con il tuo account Google, creare un quaderno e iniziare a caricare file o collegare documenti da Google Drive. Non è necessario installare nulla: funziona direttamente nel browser.\n\nIn alcune sessioni o regioni, l'accesso a notebooklm.google.com può proseguire verso notebook.google o presentarsi come Gemini Notebook. In ogni caso, l'origine corretta è il dominio gestito da Google. Se trovi siti che offrono app, installer o versioni modificate di NotebookLM, trattali con estrema cautela."
     },
     {
       "heading": "Riassunti e fonti",
@@ -43,7 +43,7 @@
   "faq": [
     {
       "question": "NotebookLM è gratuito?",
-      "answer": "Ha un piano gratuito. Verifica limiti, piani a pagamento e termini aggiornati su notebooklm.google.com."
+      "answer": "Ha un piano gratuito. Verifica limiti, piani a pagamento e termini aggiornati sul sito ufficiale notebooklm.google.com."
     },
     {
       "question": "Funziona in italiano?",
@@ -55,7 +55,7 @@
     },
     {
       "question": "Devo installare NotebookLM?",
-      "answer": "No, NotebookLM è un servizio web. Accedi da notebooklm.google.com con il tuo account Google, senza scaricare installer."
+      "answer": "No, NotebookLM è un servizio web. Accedi dal punto di ingresso ufficiale notebooklm.google.com con il tuo account Google, senza scaricare installer."
     }
   ],
   "italianSupport": "partial"

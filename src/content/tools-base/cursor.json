@@ -9,25 +9,25 @@
       "url": "https://cursor.com",
       "type": "official-site",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-27"
     },
     "windows": {
       "url": "https://cursor.com/downloads",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-08-15"
+      "lastChecked": "2026-08-27"
     },
     "mac": {
       "url": "https://cursor.com/downloads",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-08-15"
+      "lastChecked": "2026-08-27"
     },
     "linux": {
       "url": "https://cursor.com/downloads",
       "type": "official-installer",
       "isOfficial": true,
-      "lastChecked": "2026-08-15"
+      "lastChecked": "2026-08-27"
     }
   },
   "pricingModel": "freemium",
@@ -44,8 +44,9 @@
   ],
   "initials": "CS",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-12",
+  "lastReviewed": "2026-08-27",
   "officialSources": [
-    "https://cursor.com"
+    "https://cursor.com",
+    "https://cursor.com/downloads"
   ]
 }
