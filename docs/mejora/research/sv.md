@@ -4,6 +4,10 @@
 **Producto:** `sv`
 **Estado:** investigación y priorización; no autoriza todavía cambios de contenido, rutas ni indexación.
 **Fecha de investigación:** 2026-08-26
+**Estado de integración (2026-08-27):** F0/#35 ya se fusionó en `main` mediante el
+[PR #53](https://github.com/Gunz-cop/DescargasIA/pull/53). F2-SV sigue pendiente
+en este [PR #49](https://github.com/Gunz-cop/DescargasIA/pull/49) y no se considera
+integrada hasta que ese PR se fusione.
 
 ## Resumen ejecutivo
 
@@ -48,19 +52,21 @@ traducción.
 La definición de Suecia proviene del propio issue #34 y del plan maestro. No se
 han inferido prioridades desde las rutas o consultas españolas.
 
-La dependencia declarada es F0, issue [#35](https://github.com/Gunz-cop/DescargasIA/issues/35),
-que sigue abierta en GitHub al realizar esta investigación. Se dispone del plan
-maestro y de las reglas editoriales, pero no del baseline de Search Console y
-Cloudflare que F0 debía dejar en `docs/mejora/`; esa carencia queda registrada
-como limitación y no se sustituye con estimaciones.
+La dependencia de entrada fue F0, issue [#35](https://github.com/Gunz-cop/DescargasIA/issues/35),
+que se fusionó después de realizar esta investigación. El baseline resumido
+ahora está disponible en `docs/mejora/baseline.md`, pero no conserva consultas,
+países, dispositivos ni filtros de Search Console por producto; por tanto no
+permite confirmar volumen de keywords suecas. Esa limitación se mantiene y no
+se sustituye con estimaciones.
 
 ## Alcance y disciplina de evidencia
 
 ### Qué se pudo medir
 
-- **Volumen confirmado:** ninguno. El checkout no contiene el baseline de F0 y
-  esta sesión no tiene una herramienta de keywords con volumen específico para
-  Suecia. No se publican cifras de búsquedas.
+- **Volumen confirmado:** ninguno. El baseline de F0 no contiene volumen de
+  keywords ni un desglose sueco reproducible, y esta sesión no tiene una
+  herramienta de keywords con volumen específico para Suecia. No se publican
+  cifras de búsquedas.
 - **Sugerencias de búsqueda:** consultadas en Google Autocomplete con
   `hl=sv&gl=se` el 2026-08-26. Sirven para validar formulaciones y expansiones,
   no para demostrar volumen, intención transaccional ni tendencia.
@@ -251,7 +257,8 @@ Para convertir estas oportunidades en specs, cada una debe fijar:
 
 Riesgos abiertos que deben resolver F3/F4:
 
-- no hay baseline sueco de Search Console en este checkout;
+- el baseline de F0 no conserva un desglose sueco de Search Console por consulta,
+  país, dispositivo o filtro;
 - no se dispone de volumen confirmado, posición ni CTR por consulta;
 - la disponibilidad y los planes de productos web cambian con frecuencia;
 - las páginas localizadas de Gamma, DeepL y otras no garantizan por sí solas
