@@ -1,4 +1,4 @@
-# Research italiano — Issue #37 F2-IT (v2 — correcciones post-review)
+# Research italiano — Issue #37 F2-IT (v3 — dependencia + independencia italiana)
 
 **Fecha de investigación:** 2026-08-26
 **Fecha de corrección:** 2026-08-27
@@ -6,6 +6,18 @@
 **Variante lingüística:** Italiano estándar (IT), sin variante regional específica
 **Plataformas predominantes:** Windows, Android, iOS, macOS
 **Registro editorial:** Tuteo formal (Lei), tono informativo-profesional
+
+**Dependencia:** Issue #35 (F0) está sin fusionar. Este research se ejecutó con el mismo
+inventario de catálogo y metodología, pero NO se copiaron archivos de la rama #35 para simular
+integración. La integración real requiere que #35 se fusione primero; mientras no ocurra, este
+documento se considera independiente de la arquitectura de #35.
+
+**Independencia italiana (punto 7 del review):** La selección, consultas y prioridades de este
+documento se derivan EXCLUSIVAMENTE de fuentes y datos italianos. No se heredaron selección,
+consultas ni prioridades del producto español (issue #35/#38) ni del sueco (issue #34). Ninguna
+herramienta se incluye por estar en el producto español; solo por evidencia en mercado/consulta
+italiana. (Inventario de catálogo cruzado en §3 como verificación de brecha, no como origen de
+selección.)
 
 ---
 
