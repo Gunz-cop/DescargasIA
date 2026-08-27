@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "astro dev",
     "shorten": "node scripts/shorten-official-links.mjs",
-    "test": "node --test \"tests/**/*.test.mjs\"",
+    "test": "node --test \"tests/**/*.test.mjs\" && npx tsx --test \"tests/**/*.test.ts\"",
     "test:build": "node --test tests/agents/catalogo-campos.test.mjs tests/og-images.test.mjs",
     "build": "npm run shorten && npm run catalog:audit && npm run hw:audit && npm test && npm run agents:skills && npm run build-og && astro build && npm run test:build && npm run links:audit",
     "build:no-shorten": "npm run catalog:audit && npm run hw:audit && npm test && npm run agents:skills && npm run build-og && astro build && npm run test:build && npm run links:audit",
@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "sdi-cli": "^0.1.0",
+    "tsx": "^4.19.1",
     "typescript": "7.0.2",
     "wrangler": "^4.126.0"
   }

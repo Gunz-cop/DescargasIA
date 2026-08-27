@@ -25,11 +25,12 @@ const toolsDb = baseTools.reduce((acc, tool) => {
         plats[key] = {
           url: getUrl(val.url),
           displayUrl: val.url,
-          isOfficial: val.isOfficial
+          isOfficial: val.isOfficial,
+          type: val.type
         };
       }
       return plats;
-    }, {} as Record<string, { url: string; displayUrl: string; isOfficial: boolean }>)
+    }, {} as Record<string, { url: string; displayUrl: string; isOfficial: boolean; type: string }>)
   };
   return acc;
 }, {} as Record<string, any>);
@@ -120,13 +121,23 @@ const toolsDb = baseTools.reduce((acc, tool) => {
       </div>
     </div>
 
-    <!-- Client Script -->
-    <script is:inline define:vars={{ toolsDb, REDIRECT_DELAY_SECONDS }}>
+    <script id="redirect-data" type="application/json" set:html={JSON.stringify({ toolsDb, delay: REDIRECT_DELAY_SECONDS })}></script>
+    <script>
+      import { dispatchFunnelEvent, resolveRedirect } from '../../utils/funnel-events';
+
       document.addEventListener('DOMContentLoaded', () => {
+        const dataEl = document.getElementById('redirect-data');
+        let toolsDb = {};
+        let REDIRECT_DELAY_SECONDS = 5;
+        try {
+          const parsed = JSON.parse(dataEl?.textContent || '{}');
+          toolsDb = parsed.toolsDb || {};
+          REDIRECT_DELAY_SECONDS = parsed.delay ?? 5;
+        } catch {}
+
         const params = new URLSearchParams(window.location.search);
-        const toolId = params.get('t');
-        const platformId = params.get('p');
-        const lang = params.get('l') || 'es';
+        const r = resolveRedirect(params, toolsDb);
+        const { lang, toolId, platformId, channel, targetUrl, displayUrl, name, errorReason } = r;
 
         const translations = {
           es: {
@@ -186,35 +197,12 @@ const toolsDb = baseTools.reduce((acc, tool) => {
         const errDesc = document.getElementById('error-desc');
         const errBtn = document.getElementById('error-btn');
 
-        // Validation
-        const tool = toolsDb[toolId];
-        let targetUrl = '';
-        let displayUrl = '';
-        let name = '';
-
-        if (tool) {
-          name = tool.name;
-          if (platformId) {
-            const plat = tool.platforms[platformId];
-            if (plat && plat.isOfficial) {
-              targetUrl = plat.url;
-              displayUrl = plat.displayUrl || plat.url;
-            }
-          } else {
-            // Fallback to officialWebsite
-            targetUrl = tool.officialWebsite;
-            displayUrl = tool.officialWebsiteDisplay || tool.officialWebsite;
-          }
-        }
-
         if (targetUrl) {
           // Update HTML texts
           document.title = t.title.replace('{name}', name);
-          heading.textContent = t.heading;
-          connecting.innerHTML = `${t.connecting}<strong class="text-brand-text font-bold">${name}</strong>.`;
+          if (heading) heading.textContent = t.heading;
+          if (connecting) connecting.innerHTML = `${t.connecting}<strong class="text-brand-text font-bold">${name}</strong>.`;
           
-          // Siempre el dominio final real (el que pidio la persona), nunca el
-          // del acortador por el que pasa la navegacion.
           let hostname = '';
           try {
             hostname = new URL(displayUrl).hostname.replace(/^www\./, '');
@@ -222,43 +210,45 @@ const toolsDb = baseTools.reduce((acc, tool) => {
             hostname = displayUrl;
           }
           
-          destination.textContent = `${t.destination} ${hostname}`;
-          countdownText.textContent = t.countdown;
-          fallback.textContent = t.fallback;
-          btn.textContent = `${t.btn} ${hostname}`;
-          btn.href = targetUrl;
+          if (destination) destination.textContent = `${t.destination} ${hostname}`;
+          if (countdownText) countdownText.textContent = t.countdown;
+          if (fallback) fallback.textContent = t.fallback;
+          if (btn) {
+            btn.textContent = `${t.btn} ${hostname}`;
+            btn.href = targetUrl;
+          }
 
-          // Show redirect view, hide error view
-          content.hidden = false;
-          errorBox.hidden = true;
+          if (content) content.hidden = false;
+          if (errorBox) errorBox.hidden = true;
 
-          // Auto redirect: se mantiene la pantalla el tiempo suficiente para
-          // registrar una impresión publicitaria válida antes de continuar.
-          // El contador va arriba del anuncio, bien visible, para que quede
-          // claro desde el primer momento que esto es una redirección con
-          // tiempo fijo y no una pantalla de publicidad disfrazada.
+          dispatchFunnelEvent({ event: 'redirect_start', lang, tool: toolId, platform: platformId, channel, valid: true });
+
           let remaining = REDIRECT_DELAY_SECONDS;
           const tick = setInterval(() => {
             remaining -= 1;
-            countdownEl.textContent = String(Math.max(remaining, 0));
+            if (countdownEl) countdownEl.textContent = String(Math.max(remaining, 0));
             if (remaining <= 0) clearInterval(tick);
           }, 1000);
 
           setTimeout(() => {
+            dispatchFunnelEvent({ event: 'redirect_result', lang, tool: toolId, platform: platformId, channel, valid: true });
             window.location.replace(targetUrl);
           }, REDIRECT_DELAY_SECONDS * 1000);
         } else {
-          // Validation failed
-          document.title = t.errorTitle + ' | FuenteAI';
-          errTitle.textContent = t.errorTitle;
-          errDesc.textContent = t.errorDesc;
-          errBtn.textContent = t.errorBtn;
-          errBtn.href = `/${lang}`;
+          // Validation failed: errorReason ya viene resuelto por el módulo
+          dispatchFunnelEvent({ event: 'redirect_error', lang, tool: toolId, platform: platformId, channel, valid: false, reason: errorReason ?? 'unknown' });
 
-          // Hide redirect view, show error view
-          spinner.hidden = true;
-          content.hidden = true;
-          errorBox.hidden = false;
+          document.title = t.errorTitle + ' | FuenteAI';
+          if (errTitle) errTitle.textContent = t.errorTitle;
+          if (errDesc) errDesc.textContent = t.errorDesc;
+          if (errBtn) {
+            errBtn.textContent = t.errorBtn;
+            errBtn.href = `/${lang}`;
+          }
+
+          if (spinner) spinner.hidden = true;
+          if (content) content.hidden = true;
+          if (errorBox) errorBox.hidden = false;
         }
       });
     </script>

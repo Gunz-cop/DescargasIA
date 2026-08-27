@@ -444,7 +444,7 @@ const metaChips = [
         </div>
 
         <ul class="mt-6 flex flex-col gap-2.5" role="list">
-          {platforms.map(({ id, name, typeLabel, host, lastChecked, btnLabel }) => (
+          {platforms.map(({ id, name, typeLabel, host, lastChecked, btnLabel, type }) => (
             <li class="fai-live flex flex-col gap-3 rounded-[14px] p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
               <div class="min-w-0">
                 <h3 class="text-[15px] font-medium text-fai-ink">{name}</h3>
@@ -457,6 +457,7 @@ const metaChips = [
                 href={redirectUrl(lang, tool.slug, id)}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
+                data-channel={type}
                 class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-[8px] border border-[rgba(15,191,143,.4)] px-4 text-[13px] font-medium text-fai-signal transition-colors hover:bg-[rgba(15,191,143,.12)]"
               >
                 {btnLabel}{' '}
@@ -625,4 +626,42 @@ const metaChips = [
       </p>
     </section>
   )}
+
+  <div id="funnel-ficha-data" data-lang={lang} data-tool={tool.slug} data-platform={primaryPlatform?.id ?? ''} data-channel={primaryPlatform?.type ?? 'web-app'} hidden></div>
+  <script>
+    import { dispatchFunnelEvent } from '../../utils/funnel-events';
+
+    const dataEl = document.getElementById('funnel-ficha-data');
+    if (dataEl) {
+      const lang = dataEl.dataset.lang || 'es';
+      const toolSlug = dataEl.dataset.tool || '';
+      const primaryPlatformId = dataEl.dataset.platform || null;
+      const platformVal = primaryPlatformId ? primaryPlatformId : null;
+      const primaryChannel = dataEl.dataset.channel || 'web-app';
+
+      dispatchFunnelEvent({
+        event: 'ficha_view',
+        lang,
+        tool: toolSlug,
+        platform: platformVal,
+        channel: primaryChannel,
+      });
+
+      document.querySelectorAll('#compatibilidad a[href*="/r?"]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          try {
+            const href = new URL((btn as HTMLAnchorElement).href);
+            const p = href.searchParams.get('p');
+            dispatchFunnelEvent({
+              event: 'platform_select',
+              lang,
+              tool: toolSlug,
+              platform: p,
+              channel: (btn as HTMLElement).dataset.channel || 'web-app',
+            });
+          } catch {}
+        });
+      });
+    }
+  </script>
 </BaseLayout>
