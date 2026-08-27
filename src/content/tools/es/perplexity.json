@@ -1,6 +1,6 @@
 {
-  "shortDescription": "Buscador conversacional con respuestas citadas, disponible en web, móvil y tienda de Windows, ideal para investigar con fuentes.",
-  "longDescription": "Perplexity es un motor de respuestas con IA que combina búsqueda, conversación y fuentes citadas. Su uso principal es web y móvil, con disponibilidad adicional en tiendas oficiales.",
+  "shortDescription": "Buscador conversacional con respuestas citadas. Canales verificados: la web oficial, la app de Microsoft Store en Windows y las apps de Google Play y App Store.",
+  "longDescription": "Perplexity es un motor de respuestas con IA que combina búsqueda, conversación y fuentes citadas: en lugar de devolverte una lista de enlaces, redacta una respuesta y va marcando de dónde ha sacado cada parte, para que puedas abrir el original y comprobarlo. Ese es su punto fuerte y también la razón por la que se usa mucho para investigar temas actuales, comparar versiones de una misma noticia o preparar un trabajo sin abrir quince pestañas.\n\nQuien busca «descargar Perplexity para Windows» suele dar por hecho que hay un .exe en la web del editor, y ahí es donde conviene precisar. Los canales que este catálogo declara y ha comprobado son cuatro: la web oficial, que funciona en cualquier navegador; la aplicación publicada en Microsoft Store para Windows; y las apps de Google Play y App Store para móvil. En Windows, por tanto, la ruta verificada pasa por la tienda del sistema, no por un archivo descargado de una página suelta. Esta ficha enlaza solo esos cuatro destinos.",
   "bestFor": [
     "Buscar respuestas con fuentes visibles",
     "Investigar temas actuales sin abrir muchas pestañas",
@@ -15,7 +15,8 @@
   "safetyNotes": [
     "Evita instalar paquetes de Perplexity desde portales no oficiales.",
     "Revisa que la app móvil sea publicada por Perplexity en tiendas oficiales.",
-    "Verifica las fuentes citadas antes de tomar decisiones importantes."
+    "Verifica las fuentes citadas antes de tomar decisiones importantes.",
+    "En las tiendas pueden aparecer aplicaciones publicadas por terceros que usan la marca Perplexity en el nombre; en la revisión de canales se observó ese caso. Es comprobable sin salir de la ficha de la tienda: en Google Play y App Store la app oficial figura publicada por Perplexity AI, Inc."
   ],
   "editorialSummary": "Perplexity es especialmente útil para usuarios que quieren respuestas rápidas con fuentes citadas. La ruta segura es la web oficial o las tiendas oficiales, evitando clones que se promocionan como buscadores IA alternativos.",
   "editorialSections": [
@@ -30,6 +31,18 @@
     {
       "heading": "Cuándo conviene frente a ChatGPT o Gemini",
       "body": "Perplexity destaca cuando la pregunta depende de información reciente o cuando quieres una respuesta acompañada por fuentes. ChatGPT y Claude pueden ser mejores para redactar, razonar o trabajar sobre documentos largos; Gemini puede integrarse mejor con servicios de Google; Copilot puede encajar si ya estás dentro del ecosistema Microsoft.\n\nLa elección práctica es simple: si necesitas investigar con referencias, prueba Perplexity. Si necesitas construir un texto, analizar una idea o programar, compara con asistentes más conversacionales."
+    },
+    {
+      "heading": "Qué significa que en Windows el canal sea una app de tienda",
+      "body": "La consulta más repetida en español da por supuesto un instalador descargable, y el canal declarado aquí es otro: la ficha de Microsoft Store. Merece la pena entender la diferencia, porque no es un tecnicismo.\n\nCuando la aplicación llega por la tienda del sistema, la instalación y las actualizaciones las gestiona Windows, y la identidad de quien publica está comprobada por la propia tienda antes de que tú llegues. En la comprobación del 2026-08-27, esa ficha se mostraba como «Perplexity AI - Download and install on Windows». Cuando el archivo llega de una página cualquiera, todo eso lo tienes que verificar tú, y normalmente no hay forma.\n\nUna precisión honesta para que no te lleves una idea equivocada: que aquí declaremos la tienda como canal verificado no significa que afirmemos que el editor no ofrezca ninguna otra vía. Significa que la que hemos comprobado, y por tanto la que podemos respaldar, es esa."
+    },
+    {
+      "heading": "Cómo reconocer las apps de tienda que usan la marca sin ser del editor",
+      "body": "Perplexity es una marca con tirón, y eso atrae aplicaciones de terceros que la usan en el nombre o en la descripción para captar búsquedas. No hace falta ser experto para separarlas: basta con mirar siempre el mismo campo.\n\nLo que se observó al comprobar los canales el 2026-08-27: en Google Play la app figura como «Perplexity - Ask Anything», con Perplexity Ai, Inc. como responsable; en App Store, como «Perplexity - AI Search & Chat», con desarrollador «Perplexity AI, Inc.»; en Microsoft Store, bajo el nombre citado en la sección anterior.\n\nEl nombre de la aplicación no es la prueba, porque se copia. La prueba es el editor, que es lo que una tienda verifica y lo que no se puede suplantar sin más. Si abres una ficha que promete «Perplexity Pro gratis» o «Perplexity sin límites» y quien la publica no es la empresa, no estás ante una versión mejorada: estás ante otra aplicación."
+    },
+    {
+      "heading": "Cómo leer una respuesta citada sin fiarte del resumen",
+      "body": "La ventaja de Perplexity es que enseña sus fuentes; el error más común es tratarlas como un sello de calidad y no llegar a abrirlas. Una cita indica de dónde salió el texto, no que el resumen sea fiel a lo que dice el original.\n\nTres hábitos que cambian el resultado. Abre la fuente cuando la respuesta te vaya a servir para decidir algo, no cuando te suene rara: las que suenan razonables son justamente las que no se revisan. Mira la fecha del original, porque en temas que cambian rápido una fuente correcta puede estar describiendo un estado anterior. Y comprueba que la frase concreta que vas a usar esté realmente en el material citado, no solo el tema general.\n\nNo es desconfianza gratuita: el litigio que recoge la sección de comunidad de esta misma ficha gira precisamente en torno a la relación entre las respuestas generadas y los artículos originales. Con más razón cuando la pregunta es de actualidad."
     }
   ],
   "communityInsights": [
@@ -42,8 +55,8 @@
   ],
   "faq": [
     {
-      "question": "¿Perplexity tiene app oficial para Windows?",
-      "answer": "Perplexity aparece en Microsoft Store. También puedes usarlo directamente desde la web oficial en cualquier navegador moderno."
+      "question": "¿Cómo descargo Perplexity para Windows?",
+      "answer": "El canal declarado y verificado para Windows es la aplicación publicada en Microsoft Store, no un instalador descargado de una página suelta. Si prefieres no instalar nada, la web oficial funciona igual en cualquier navegador moderno. Que este sea el canal que hemos comprobado no equivale a afirmar que no exista ningún otro: es el que podemos respaldar."
     },
     {
       "question": "¿Perplexity tiene app para Android e iOS?",
@@ -56,6 +69,14 @@
     {
       "question": "¿Las fuentes de Perplexity siempre son correctas?",
       "answer": "No necesariamente. Las citas ayudan a verificar, pero conviene abrir las fuentes originales cuando la información sea importante."
+    },
+    {
+      "question": "¿Y los APK «Premium» que prometen las funciones de pago desbloqueadas?",
+      "answer": "Al buscar la app en español aparecen portales que ofrecen archivos de instalación por su cuenta, algunos anunciados como versiones «Premium» con el plan de pago ya activado. No vamos a decirte qué contienen esos archivos, porque no lo hemos comprobado y nadie debería afirmarlo a la ligera. Lo que sí se puede afirmar es de dónde no salen: ninguno viene de los canales que el editor publica, que son los cuatro enlazados en esta ficha."
+    },
+    {
+      "question": "¿Necesito cuenta para usar Perplexity?",
+      "answer": "El catálogo no tiene ese dato confirmado para esta herramienta, así que no te lo damos por seguro en un sentido ni en el otro. Lo que sí está claro es que hay uso gratuito y planes de pago, y que las funciones asociadas a Pro sí van ligadas a una cuenta. La condición exacta para empezar la verás al abrir el canal oficial que elijas."
     }
   ],
   "spanishSupport": "yes"
