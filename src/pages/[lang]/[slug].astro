@@ -627,50 +627,41 @@ const metaChips = [
     </section>
   )}
 
-  <script is:inline define:vars={{ lang, toolSlug: tool.slug, primaryPlatformId: primaryPlatform?.id ?? null, primaryChannel: primaryPlatform?.type ?? 'web-app' }}>
-    (() => {
-      var VALID_LANGS = ['es', 'sv', 'it'];
-      var VALID_PLATFORMS = ['web', 'windows', 'mac', 'linux', 'android', 'ios'];
-      var VALID_CHANNELS = ['official-site', 'app-store', 'github-repo', 'documentation', 'official-installer', 'web-app'];
-      var SLUG_RE = /^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/;
-      var ALLOWED_FIELDS = new Set(['event', 'lang', 'tool', 'platform', 'channel', 'valid', 'reason']);
+  <div id="funnel-ficha-data" data-lang={lang} data-tool={tool.slug} data-platform={primaryPlatform?.id ?? ''} data-channel={primaryPlatform?.type ?? 'web-app'} hidden></div>
+  <script>
+    import { dispatchFunnelEvent } from '../../utils/funnel-events';
 
-      function sanitizeLang(v) { return VALID_LANGS.indexOf(v) !== -1 ? v : 'es'; }
-      function sanitizePlatform(v) { return v === null ? null : VALID_PLATFORMS.indexOf(v) !== -1 ? v : null; }
-      function sanitizeTool(v) { return typeof v === 'string' && SLUG_RE.test(v) && v.length <= 64 ? v : ''; }
-      function sanitizeChannel(v) { return VALID_CHANNELS.indexOf(v) !== -1 ? v : 'web-app'; }
+    const dataEl = document.getElementById('funnel-ficha-data');
+    if (dataEl) {
+      const lang = dataEl.dataset.lang || 'es';
+      const toolSlug = dataEl.dataset.tool || '';
+      const primaryPlatformId = dataEl.dataset.platform || null;
+      const platformVal = primaryPlatformId ? primaryPlatformId : null;
+      const primaryChannel = dataEl.dataset.channel || 'web-app';
 
-      function dispatch(detail) {
-        var keys = Object.keys(detail);
-        for (var i = 0; i < keys.length; i++) {
-          if (!ALLOWED_FIELDS.has(keys[i])) return;
-        }
-        window.dispatchEvent(new CustomEvent('fuenteai:funnel', { detail: detail }));
-      }
-
-      dispatch({
+      dispatchFunnelEvent({
         event: 'ficha_view',
-        lang: sanitizeLang(lang),
-        tool: sanitizeTool(toolSlug),
-        platform: sanitizePlatform(primaryPlatformId),
-        channel: sanitizeChannel(primaryChannel)
+        lang,
+        tool: toolSlug,
+        platform: platformVal,
+        channel: primaryChannel,
       });
 
-      document.querySelectorAll('#compatibilidad a[href*="/r?"]').forEach(function(btn) {
-        btn.addEventListener('click', function() {
+      document.querySelectorAll('#compatibilidad a[href*="/r?"]').forEach((btn) => {
+        btn.addEventListener('click', () => {
           try {
-            var href = new URL(btn.href);
-            var p = sanitizePlatform(href.searchParams.get('p'));
-            dispatch({
+            const href = new URL((btn as HTMLAnchorElement).href);
+            const p = href.searchParams.get('p');
+            dispatchFunnelEvent({
               event: 'platform_select',
-              lang: sanitizeLang(lang),
-              tool: sanitizeTool(toolSlug),
+              lang,
+              tool: toolSlug,
               platform: p,
-              channel: sanitizeChannel(btn.dataset.channel || 'web-app')
+              channel: (btn as HTMLElement).dataset.channel || 'web-app',
             });
-          } catch (e) { /* ignore */ }
+          } catch {}
         });
       });
-    })();
+    }
   </script>
 </BaseLayout>

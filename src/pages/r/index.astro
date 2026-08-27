@@ -34,23 +34,6 @@ const toolsDb = baseTools.reduce((acc, tool) => {
   };
   return acc;
 }, {} as Record<string, any>);
-
-// Parse and validate URL params server-side — never trust raw query strings
-const rawT = Astro.url.searchParams.get('t') ?? '';
-const rawP = Astro.url.searchParams.get('p') ?? '';
-const rawL = Astro.url.searchParams.get('l') ?? 'es';
-
-const SLUG_RE = /^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/;
-const VALID_LANGS_CHECK = ['es', 'sv', 'it'] as const;
-const VALID_PLATFORMS_CHECK = ['web', 'windows', 'mac', 'linux', 'android', 'ios'] as const;
-
-const sanitLang = VALID_LANGS_CHECK.includes(rawL as any) ? rawL : 'es';
-const sanitTool = SLUG_RE.test(rawT) && rawT.length <= 64 ? rawT : '';
-const sanitPlatform = VALID_PLATFORMS_CHECK.includes(rawP as any) ? rawP : null;
-
-const resolvedTool = toolsDb[sanitTool];
-const resolvedPlat = sanitPlatform && resolvedTool?.platforms[sanitPlatform];
-const sanitChannel: string = resolvedPlat?.type ?? 'web-app';
 ---
 
 <!DOCTYPE html>
@@ -138,22 +121,29 @@ const sanitChannel: string = resolvedPlat?.type ?? 'web-app';
       </div>
     </div>
 
-    <!-- Client Script -->
-    <script is:inline define:vars={{ toolsDb, REDIRECT_DELAY_SECONDS, sanitLang, sanitTool, sanitPlatform, sanitChannel }}>
-      document.addEventListener('DOMContentLoaded', () => {
-        const toolId = sanitTool;
-        const platformId = sanitPlatform;
-        const lang = sanitLang;
-        const channelFromCatalog = sanitChannel;
+    <script id="redirect-data" type="application/json" set:html={JSON.stringify({ toolsDb, delay: REDIRECT_DELAY_SECONDS })}></script>
+    <script>
+      import { dispatchFunnelEvent, sanitizeLang, sanitizeTool, sanitizePlatform } from '../../utils/funnel-events';
 
-        var ALLOWED_FIELDS = new Set(['event', 'lang', 'tool', 'platform', 'channel', 'valid', 'reason']);
-        function dispatchFunnel(detail) {
-          var keys = Object.keys(detail);
-          for (var i = 0; i < keys.length; i++) {
-            if (!ALLOWED_FIELDS.has(keys[i])) return;
-          }
-          window.dispatchEvent(new CustomEvent('fuenteai:funnel', { detail: detail }));
-        }
+      document.addEventListener('DOMContentLoaded', () => {
+        const dataEl = document.getElementById('redirect-data');
+        let toolsDb = {};
+        let REDIRECT_DELAY_SECONDS = 5;
+        try {
+          const parsed = JSON.parse(dataEl?.textContent || '{}');
+          toolsDb = parsed.toolsDb || {};
+          REDIRECT_DELAY_SECONDS = parsed.delay ?? 5;
+        } catch {}
+
+        const params = new URLSearchParams(window.location.search);
+        const rawT = params.get('t') ?? '';
+        const rawP = params.get('p');
+        const hasP = params.has('p');
+        const rawL = params.get('l') ?? 'es';
+
+        const lang = sanitizeLang(rawL);
+        const toolId = sanitizeTool(rawT);
+        const platformId = sanitizePlatform(rawP);
 
         const translations = {
           es: {
@@ -213,35 +203,42 @@ const sanitChannel: string = resolvedPlat?.type ?? 'web-app';
         const errDesc = document.getElementById('error-desc');
         const errBtn = document.getElementById('error-btn');
 
-        // Validation
-        const tool = toolsDb[toolId];
+        // Resolve target — distingue p ausente (fallback a officialWebsite) de p inválido (error)
+        const tool = toolId ? toolsDb[toolId] : null;
         let targetUrl = '';
         let displayUrl = '';
         let name = '';
+        let channelFromCatalog = 'web-app';
 
         if (tool) {
           name = tool.name;
-          if (platformId) {
-            const plat = tool.platforms[platformId];
-            if (plat && plat.isOfficial) {
-              targetUrl = plat.url;
-              displayUrl = plat.displayUrl || plat.url;
+          if (hasP) {
+            if (platformId === null) {
+              // p presente pero inválido (ej. p=banana) -> no caer en officialWebsite, queda targetUrl vacío para emitir redirect_error
+            } else {
+              const plat = tool.platforms[platformId];
+              if (plat && plat.isOfficial) {
+                targetUrl = plat.url;
+                displayUrl = plat.displayUrl || plat.url;
+                channelFromCatalog = plat.type;
+              } else if (plat) {
+                channelFromCatalog = plat.type;
+              }
             }
           } else {
-            // Fallback to officialWebsite
+            // p ausente -> fallback a officialWebsite (comportamiento previsto)
             targetUrl = tool.officialWebsite;
             displayUrl = tool.officialWebsiteDisplay || tool.officialWebsite;
+            // channelFromCatalog se mantiene web-app
           }
         }
 
         if (targetUrl) {
           // Update HTML texts
           document.title = t.title.replace('{name}', name);
-          heading.textContent = t.heading;
-          connecting.innerHTML = `${t.connecting}<strong class="text-brand-text font-bold">${name}</strong>.`;
+          if (heading) heading.textContent = t.heading;
+          if (connecting) connecting.innerHTML = `${t.connecting}<strong class="text-brand-text font-bold">${name}</strong>.`;
           
-          // Siempre el dominio final real (el que pidio la persona), nunca el
-          // del acortador por el que pasa la navegacion.
           let hostname = '';
           try {
             hostname = new URL(displayUrl).hostname.replace(/^www\./, '');
@@ -249,59 +246,55 @@ const sanitChannel: string = resolvedPlat?.type ?? 'web-app';
             hostname = displayUrl;
           }
           
-          destination.textContent = `${t.destination} ${hostname}`;
-          countdownText.textContent = t.countdown;
-          fallback.textContent = t.fallback;
-          btn.textContent = `${t.btn} ${hostname}`;
-          btn.href = targetUrl;
+          if (destination) destination.textContent = `${t.destination} ${hostname}`;
+          if (countdownText) countdownText.textContent = t.countdown;
+          if (fallback) fallback.textContent = t.fallback;
+          if (btn) {
+            btn.textContent = `${t.btn} ${hostname}`;
+            btn.href = targetUrl;
+          }
 
-          // Show redirect view, hide error view
-          content.hidden = false;
-          errorBox.hidden = true;
+          if (content) content.hidden = false;
+          if (errorBox) errorBox.hidden = true;
 
-          // F1 — emitir redirect_start cuando la validación es exitosa
-          dispatchFunnel({ event: 'redirect_start', lang: lang, tool: toolId, platform: platformId || null, channel: channelFromCatalog, valid: true });
+          dispatchFunnelEvent({ event: 'redirect_start', lang, tool: toolId, platform: platformId, channel: channelFromCatalog, valid: true });
 
-          // Auto redirect: se mantiene la pantalla el tiempo suficiente para
-          // registrar una impresión publicitaria válida antes de continuar.
-          // El contador va arriba del anuncio, bien visible, para que quede
-          // claro desde el primer momento que esto es una redirección con
-          // tiempo fijo y no una pantalla de publicidad disfrazada.
           let remaining = REDIRECT_DELAY_SECONDS;
           const tick = setInterval(() => {
             remaining -= 1;
-            countdownEl.textContent = String(Math.max(remaining, 0));
+            if (countdownEl) countdownEl.textContent = String(Math.max(remaining, 0));
             if (remaining <= 0) clearInterval(tick);
           }, 1000);
 
           setTimeout(() => {
-            // F1 — emitir redirect_result cuando el timer completa
-            dispatchFunnel({ event: 'redirect_result', lang: lang, tool: toolId, platform: platformId || null, channel: channelFromCatalog, valid: true });
+            dispatchFunnelEvent({ event: 'redirect_result', lang, tool: toolId, platform: platformId, channel: channelFromCatalog, valid: true });
             window.location.replace(targetUrl);
           }, REDIRECT_DELAY_SECONDS * 1000);
         } else {
           // Validation failed
-          // F1 — emitir redirect_error con la razón del fallo
-          var errorReason = 'missing_params';
-          if (!toolId || !lang) {
+          let errorReason = 'missing_params';
+          if (!rawT) {
             errorReason = 'missing_params';
-          } else if (!tool) {
+          } else if (!toolId || !tool) {
             errorReason = 'tool_not_found';
-          } else if (platformId && (!tool.platforms[platformId] || !tool.platforms[platformId].isOfficial)) {
+          } else if (hasP && platformId === null) {
+            errorReason = 'platform_not_found';
+          } else if (hasP && platformId && (!tool.platforms[platformId] || !tool.platforms[platformId].isOfficial)) {
             errorReason = tool.platforms[platformId] ? 'not_official' : 'platform_not_found';
           }
-          dispatchFunnel({ event: 'redirect_error', lang: lang, tool: toolId, platform: platformId || null, channel: channelFromCatalog, valid: false, reason: errorReason });
+          dispatchFunnelEvent({ event: 'redirect_error', lang, tool: toolId, platform: platformId, channel: channelFromCatalog, valid: false, reason: errorReason });
 
           document.title = t.errorTitle + ' | FuenteAI';
-          errTitle.textContent = t.errorTitle;
-          errDesc.textContent = t.errorDesc;
-          errBtn.textContent = t.errorBtn;
-          errBtn.href = `/${lang}`;
+          if (errTitle) errTitle.textContent = t.errorTitle;
+          if (errDesc) errDesc.textContent = t.errorDesc;
+          if (errBtn) {
+            errBtn.textContent = t.errorBtn;
+            errBtn.href = `/${lang}`;
+          }
 
-          // Hide redirect view, show error view
-          spinner.hidden = true;
-          content.hidden = true;
-          errorBox.hidden = false;
+          if (spinner) spinner.hidden = true;
+          if (content) content.hidden = true;
+          if (errorBox) errorBox.hidden = false;
         }
       });
     </script>
