@@ -82,6 +82,14 @@ jobs:
       - name: Tipos
         run: npx --no-install tsc --noEmit
 
+      # Las tarjetas Open Graph se generan en build y `public/og/` esta en
+      # .gitignore: un checkout limpio no las tiene. Este paso no puede
+      # omitirse aqui aunque `npm run build` ya lo encadene, porque CI no usa
+      # ese script: ejecuta `astro build` suelto. Sin el, las 190 paginas
+      # anuncian una og:image que no existe en dist/ y `test:build` falla.
+      - name: Tarjetas Open Graph
+        run: npm run build-og
+
       - name: Build
         run: npx --no-install astro build
 
