@@ -156,6 +156,13 @@ añade lo suyo.
 - El copy español no puede contradecir a `tools-base`. Si la ficha afirma una
   plataforma que `platforms` no declara, el error está en uno de los dos y se
   resuelve escalando, no escribiendo.
+- **Cómo se comprueba esa coherencia.** El «comprobador de plataformas» del
+  lote 1 es el patrón a reutilizar: analiza los **valores de texto** del JSON
+  con límites de palabra, no el JSON serializado, porque un nombre de
+  plataforma aparece en prosa («Disponible para Windows») y no entrecomillado.
+  Un comprobador que busque el token entre comillas no comprueba nada y no
+  puede presentarse como garantía. Cada criterio debe declarar qué detecta y
+  qué no, y dejar el repaso frase por frase como salvaguarda manual.
 
 ### 2. Registro editorial
 
