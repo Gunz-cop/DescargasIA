@@ -373,9 +373,8 @@ Antes de escribir una sola línea sobre canales, F3-ES debe **reverificar los
 
 **Blocker abierto:** falta el export de Google Search Console del producto `es`
 (consultas, países y rutas `/es/*`), sin el cual F2-ES no puede aportar volumen
-confirmado ni tendencia, y F1/F7 no pueden comparar antes y después. El texto
-del blocker se registró en el issue correspondiente de GitHub; su número y URL
-se reportan en el PR de esta fase y **no se transcriben aquí inventados**.
+confirmado ni tendencia, y F1/F7 no pueden comparar antes y después. Registrado
+como [issue #50](https://github.com/Gunz-cop/DescargasIA/issues/50).
 
 ---
 
