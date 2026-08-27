@@ -5,7 +5,7 @@
 **Producto:** `es`
 **Rama base:** `main`
 **Ejecuta:** F4-ES
-**Depende de:** F3-ES (#40) fusionada. Instrumentación de funnel F1 (#36) **no fusionada** — ver «Eventos de funnel».
+**Depende de:** F3-ES (#40) fusionada. Instrumentación de funnel F1 (#36) **integrada en `main`** mediante el PR #52 — ver «Eventos de funnel».
 
 > Alcance: dos fichas existentes, `character-ai` y `perplexity`. **Ninguna
 > ficha nueva.** Ninguna edición de `src/content/tools-base/`.
@@ -73,7 +73,7 @@ tocó el catálogo.
 | **Advertencias (`safetyNotes`)** | Se conservan las 3 existentes. Se añade **1**: que un resultado de tienda con un nombre parecido puede ser un producto distinto —el research observó exactamente ese caso— y que el criterio es el editor que publica, no el nombre |
 | **Enlaces internos** | A las alternativas ya declaradas en su `tools-base`: `/es/chatgpt`, `/es/claude`, `/es/gemini`. A la categoría `/es/categoria/asistentes-ia`. Al interstitial `/r?t=character-ai&p=web&l=es` y equivalentes de `android`/`ios`. Ningún enlace a un portal de terceros |
 | **Eventos de funnel** | `ficha_view` con `tool=character-ai`; `platform_select` con `platform` en `web`/`android`/`ios`; `redirect_start` y `redirect_result` con `channel` `web-app` o `app-store`. Un `redirect_error` con `reason=platform_not_found` sobre este slug indica que el copy prometió una plataforma que no existe |
-| **Ventana y métrica** | Ventana de 90 días con corte a 30. Primaria (condicionada a #36): proporción `platform_select`/`ficha_view` y `redirect_result`/`redirect_start`, y cero `redirect_error` con `reason=platform_not_found`. Secundaria (condicionada a #50): presencia en las consultas de §3.2. Sin #36 y #50 no se declara éxito medido |
+| **Ventana y métrica** | Ventana de 90 días con corte a 30. Primaria (instrumentada por F1/#36, ya integrada en `main` vía PR #52): proporción `platform_select`/`ficha_view` y `redirect_result`/`redirect_start`, y cero `redirect_error` con `reason=platform_not_found`. Secundaria (condicionada a #50, **abierto**): presencia en las consultas de §3.2. La distinción se mantiene: la **entrega** se da por verificada con los criterios de aceptación de esta spec, pero **no se declara éxito medido** mientras falte la línea base de consultas de #50 |
 
 ### Fila 2 — `descargar perplexity para windows` → ficha `es/perplexity`
 
@@ -85,12 +85,12 @@ tocó el catálogo.
 | **Respuesta above the fold** | Cuál es el canal real en cada plataforma, corrigiendo la premisa sin ridiculizarla. La corrección se apoya en `platforms`, que declara `windows` como `app-store`, **no** como `official-installer`. Se materializa en `shortDescription` y `editorialSummary`; la `longDescription` actual (181 caracteres) se amplía |
 | **Plataformas y canales** | `web` → `web-app`; `windows` → `app-store` (Microsoft Store); `android` → `app-store`; `ios` → `app-store`. macOS y Linux: no declaradas en `tools-base`, así que **no se afirma nada** sobre ellas |
 | **Verificación obligatoria previa** | El research marca el estado del escritorio como **no verificado**. Antes de escribir sobre Windows hay que comprobar en el canal oficial del editor qué ofrece hoy. Si lo que hay no coincide con `platforms.windows`, **se para y se escala**: es una decisión de catálogo, no de copy. Sin esa comprobación, la fila 2 no se ejecuta |
-| **Secciones editoriales** | Se conservan las 3 existentes. Se añaden **2 nuevas y únicas**: (a) qué significa exactamente que en Windows el canal sea una app de tienda y no un instalador descargado del sitio; (b) cómo reconocer las apps de tienda de terceros que usan la marca —el research observó una— comprobando el editor que publica. Ningún `heading` repetido |
+| **Secciones editoriales** | Se conservan las 3 existentes y se añaden **al menos 3 nuevas y únicas**, hasta un mínimo de **6 secciones** en la ficha —el mismo mínimo que exige el comprobador de profundidad de los criterios de aceptación—. Dos son obligatorias: (a) qué significa exactamente que en Windows el canal sea una app de tienda y no un instalador descargado del sitio; (b) cómo reconocer las apps de tienda de terceros que usan la marca —el research observó una— comprobando el editor que publica. La tercera, y las que hagan falta para llegar al mínimo, salen de las intenciones secundarias de esta fila (diferencia entre app de tienda y aplicación web, coste, comparación con otros asistentes) y no pueden ser texto genérico intercambiable con otra ficha. Ningún `heading` repetido |
 | **FAQ** | Se conservan las 4 existentes y se añaden **2**: una que responde literalmente a la consulta «descargar Perplexity para Windows» con el canal verificado, y otra sobre los APK «Premium» que prometen funciones de pago desbloqueadas. Ninguna respuesta afirma nada que la verificación previa no haya confirmado |
 | **Advertencias (`safetyNotes`)** | Se conservan las 3 existentes y se añade **1** sobre apps de tienda publicadas por terceros que usan la marca, descrita como hecho comprobable en la ficha de la tienda |
 | **Enlaces internos** | Alternativas ya declaradas en su `tools-base`: `/es/chatgpt`, `/es/gemini`, `/es/claude`, `/es/microsoft-copilot`. Categoría `/es/categoria/asistentes-ia`. Interstitial `/r?t=perplexity&p=windows&l=es` y equivalentes de `web`, `android` e `ios` |
 | **Eventos de funnel** | `ficha_view` con `tool=perplexity`; `platform_select` con `platform=windows` como señal específica de esta fila; `redirect_start`/`redirect_result` con `channel=app-store` para Windows. `redirect_error` con `reason=not_official` sería un fallo directo de este lote |
-| **Ventana y métrica** | Ventana de 90 días con corte a 30. Primaria (condicionada a #36): proporción de `platform_select` con `platform=windows` sobre `ficha_view` de este slug, y `redirect_result`/`redirect_start`. Secundaria (condicionada a #50): consultas de §3.4. Sin #36 y #50 no se declara éxito medido |
+| **Ventana y métrica** | Ventana de 90 días con corte a 30. Primaria (instrumentada por F1/#36, ya integrada en `main` vía PR #52): proporción de `platform_select` con `platform=windows` sobre `ficha_view` de este slug, y `redirect_result`/`redirect_start`. Secundaria (condicionada a #50, **abierto**): consultas de §3.4. La distinción se mantiene: la **entrega** se da por verificada con los criterios de aceptación de esta spec, pero **no se declara éxito medido** mientras falte la línea base de consultas de #50 |
 
 ## Archivos que posee
 
@@ -187,4 +187,4 @@ tocan: este lote solo posee las dos que enumera.
 | Se describe una app homónima concreta y esta desaparece o cambia de nombre | La reverificación al abrir el PR | La sesión del lote, describiendo el criterio (editor que publica) en vez del nombre |
 | El copy deriva hacia claims de seguridad al hablar de APK | Revisión editorial contra `AGENTS.md` y la regla común 4 | La sesión del lote |
 | Las dos fichas acaban con la misma estructura de secciones | El criterio de `heading` repetido solo detecta duplicados dentro de una ficha; entre fichas lo detecta la revisión editorial | La sesión del lote |
-| F1 (#36) sin fusionar al cerrar la ventana | No hay eventos que observar | Codex |
+| La ventana se cierra sin línea base de consultas: F1 (#36) ya está integrada y sus eventos son observables, pero #50 sigue abierto | La métrica secundaria no puede calcularse: no hay export de Search Console del producto `es` | Codex, al cerrar #50. Hasta entonces la entrega se declara verificada, no exitosa |
