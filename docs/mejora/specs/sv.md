@@ -42,8 +42,9 @@ en esta fase.
   sobre una ruta pública para las guías.
 - `docs/enlazado-interno.md` §7 confirma que la colección `guides` no tiene
   ruta pública bajo `src/pages/[lang]/guias/[slug].astro`.
-- F1/#36 no se considera una dependencia satisfecha. Las métricas de funnel
-  solo pueden referirse al esquema de F1 y no autorizan inventar eventos.
+- F1/#36 está integrada en `main` mediante el PR #52. Su esquema de eventos
+  existe y puede citarse, pero no autoriza inventar eventos ni convierte por sí
+  solo una spec en éxito medido.
 
 ### Bloqueo global vigente
 
@@ -165,9 +166,10 @@ disponibilidad regional.
 
 **Enlaces, funnel y medición:** enlazar solo a fichas suecas/categorías
 existentes y destinos declarados; no publicar mientras no haya ruta de guías.
-Si F1 lo permite, medir navegación hacia una ficha o `/r` con los eventos
-existentes; ventana de 90 días desde publicación, corte a 30. Sin F1/#36 no se
-declara éxito medido. Sin #50, no se declara éxito SEO medido.
+Con el contrato integrado de F1, medir navegación hacia una ficha o `/r` con
+los eventos existentes; ventana de 90 días desde publicación, corte a 30. La
+integración de F1/#36 no equivale por sí sola a éxito medido. Sin #50, no se
+declara éxito SEO medido.
 
 ### Oportunidad 2 — `ai skriva text svenska` (**BLOQUEADA**)
 
@@ -200,7 +202,7 @@ verificar soporte primario; no convertir «gratis» o «GDPR» en garantía.
 **Enlaces, funnel y medición:** solo enlaces internos a fichas suecas
 existentes y canales oficiales revisados; ningún enlace se implementa en esta
 fase. Mantener la ventana de 90 días/corte de 30 y las métricas condicionadas
-al contrato de F1/#36 y a Search Console/#50.
+al contrato integrado de F1/#36 y a Search Console/#50.
 
 ### Oportunidad 3 — `köra ai lokalt` (**BLOQUEADA**)
 
@@ -234,7 +236,7 @@ de privacidad y que una función cloud puede seguir requiriendo conexión.
 
 **Enlaces, funnel y medición:** salida principal a fichas/categoría existentes
 mediante helpers; no crear la ruta de guía ni ampliar F1. Métrica futura solo
-si el esquema de F1 se amplía de forma autorizada; ventana propuesta de 90
+si el esquema de F1 se amplía de forma autorizada para guías; ventana propuesta de 90
 días y corte de 30, sin declararla medible hoy.
 
 ### Oportunidad 4 — `ai presentation svenska` (**BLOQUEADA**)
@@ -268,7 +270,8 @@ compatible con sueco en toda su superficie si la lista oficial no lo confirma.
 **Enlaces, funnel y medición:** enlazar solo a fichas suecas y destinos
 oficiales existentes cuando una fase posterior tenga ruta; usar eventos de F1
 sin inventar nombres. Ventana futura de 90 días con corte de 30; no se declara
-éxito mientras F1/#36 y #50 no aporten sus entradas.
+éxito SEO mientras #50 no aporte sus entradas; F1/#36 ya está integrada, pero
+la guía no tiene eventos propios autorizados.
 
 ### Oportunidades aparcadas o rechazadas por el research
 
@@ -311,7 +314,7 @@ sin inventar nombres. Ventana futura de 90 días con corte de 30; no se declara
 - [ ] `node -e "const fs=require('fs');const t=fs.readFileSync('docs/mejora/specs/sv.md','utf8');for(const h of ['ai transkribering svenska','ai skriva text svenska','köra ai lokalt','ai presentation svenska'])if(!t.includes(h)||!t.includes('**BLOQUEADA**'))process.exit(1);"` sale 0: las cuatro oportunidades seleccionadas están presentes y bloqueadas.
 - [ ] `node -e "const fs=require('fs');const t=fs.readFileSync('docs/mejora/specs/sv.md','utf8');for(const h of ['Objetivo','Contrato de entrada','Contrato de salida','Archivos que posee','PROTEGIDOS','Instrucciones','Fuera de alcance','Criterios de aceptación','Riesgos conocidos'])if(!t.includes('## '+h))process.exit(1);if(!t.includes('docs/mejora/research/sv.md'))process.exit(1);"` sale 0: la spec declara el contrato completo y protege explícitamente el research sueco.
 - [ ] `node -e "const fs=require('fs');const t=fs.readFileSync('docs/mejora/specs/sv.md','utf8');for(const x of ['src/content/guides/','src/pages/[lang]/guias/[slug].astro','src/content/tools/sv/','guide_view'])if(!t.includes(x))process.exit(1);"` sale 0: las superficies bloqueadas o fuera de alcance están declaradas, sin implementarlas.
-- [ ] `node -e "const {execSync}=require('child_process');const out=execSync('git diff --name-only 82cde661b4140e8a6b8ecfe8046d400e992eea1d...HEAD').toString().split('\n').filter(Boolean);process.exit(out.length===1&&out[0]==='docs/mejora/specs/sv.md'?0:1);"` sale 0: el diff de F3-SV contiene únicamente el archivo propio.
+- [ ] `node -e "const {execSync}=require('child_process');const out=execSync('git diff --name-only origin/main...HEAD').toString().split('\n').filter(Boolean);process.exit(out.length===1&&out[0]==='docs/mejora/specs/sv.md'?0:1);"` sale 0: el diff de F3-SV contra la base actual del PR contiene únicamente el archivo propio.
 - [ ] `node -e "const fs=require('fs');const t=fs.readFileSync('docs/mejora/specs/sv.md','utf8');const sections=['Objetivo','Contrato de entrada','Contrato de salida','Archivos que posee','PROTEGIDOS','Instrucciones','Fuera de alcance','Criterios de aceptación','Riesgos conocidos'];for(const h of sections)if(!new RegExp('^## '+h,'m').test(t))process.exit(1);const own=(t.match(/^- `docs\\/mejora\\/specs\\/sv\\.md`/gm)||[]).length;if(own!==1)process.exit(1);"` sale 0: la spec conserva todas las secciones obligatorias y declara exactamente un archivo propio.
 - [ ] `[manual]` Estado del bloqueo: 1. comprobar que no existe `src/pages/[lang]/guias/[slug].astro`; 2. comprobar que la decisión sobre la ruta pública sigue abierta en `docs/mejora/decisiones.md`; 3. resultado esperado: las cuatro guías siguen sin archivo de contenido y no se ha creado ninguna ruta.
 - [ ] `[manual]` Revisión de independencia: 1. comparar las cuatro consultas con `docs/mejora/research/sv.md`; 2. comprobar que no se usan consultas, selección ni copy de `es` o `it`; 3. resultado esperado: cada contrato se puede rastrear a una oportunidad sueca y sus límites de evidencia están explícitos.
@@ -326,4 +329,4 @@ sin inventar nombres. Ventana futura de 90 días con corte de 30; no se declara
 | Se confunde guía con ficha o se amplía el catálogo | La salida de las cuatro oportunidades es guía; Klang es una ficha existente y Foundry Local/Skrivar/SpeechText no están seleccionados | Escalar cualquier ficha nueva a una fase con contrato propio |
 | Se afirma soporte sueco, gratis, privacidad u offline sin base primaria | Las páginas localizadas no garantizan toda la funcionalidad; el research enumera esta incertidumbre | Reverificar fecha, función y canal en F4; retirar la afirmación si no coincide |
 | La ruta se crea para poder medir o enlazar | `docs/enlazado-interno.md` exige constructor de URL y enlace entrante antes de una sección nueva | Ruta, enlazado, canonical, hreflang y sitemap pertenecen a una fase previa |
-| F1/#36 o Search Console/#50 siguen sin datos | Dependencias y bloqueos no satisfechos | Declarar la entrega de la spec, no éxito de funnel ni SEO |
+| F1/#36 ya está integrada, pero Search Console/#50 sigue sin datos | La integración del contrato no equivale a observaciones de funnel ni SEO | Declarar la entrega de la spec, no éxito SEO medido; no inventar eventos de guía |
