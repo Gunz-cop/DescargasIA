@@ -246,6 +246,110 @@ export function buildFunnelPayload(fields: Record<string, unknown>): Record<stri
 }
 
 // ---------------------------------------------------------------------------
+// Resolución de /r
+// ---------------------------------------------------------------------------
+
+/**
+ * Forma mínima de una entrada de herramienta en el interstitial `/r`.
+ * Es la misma forma que `src/pages/r/index.astro` construye a partir de
+ * `toolsBase` (name, officialWebsite y platforms con url/isOfficial/type).
+ */
+export interface RedirectPlatformEntry {
+  url: string;
+  displayUrl?: string;
+  isOfficial: boolean;
+  type: string;
+}
+
+export interface RedirectToolEntry {
+  name: string;
+  officialWebsite: string;
+  officialWebsiteDisplay?: string;
+  platforms: Record<string, RedirectPlatformEntry | null | undefined>;
+}
+
+export interface RedirectResolution {
+  lang: FunnelLang;
+  toolId: string;
+  platformId: FunnelPlatform | null;
+  channel: FunnelChannel;
+  targetUrl: string;
+  displayUrl: string;
+  name: string;
+  /** `null` cuando `targetUrl` es válido; código controlado en caso contrario. */
+  errorReason: RedirectErrorReason | null;
+}
+
+/**
+ * Resuelve el destino del interstitial `/r` a partir de los parámetros de
+ * URL y el catálogo. Es la única implementación de esta lógica: la página
+ * `/r` la importa en lugar de mantener su propia copia.
+ *
+ * Reglas:
+ * - `p` ausente: fallback a `officialWebsite` (comportamiento previsto).
+ * - `p` presente pero inválido o inexistente en la herramienta
+ *   (ej. `p=banana`): error `platform_not_found`; NO cae en `officialWebsite`.
+ * - `p` existente en la herramienta pero no oficial: error `not_official`.
+ * - `t` ausente: error `missing_params`; `t` inválida o no catalogada:
+ *   error `tool_not_found`.
+ */
+export function resolveRedirect(
+  params: URLSearchParams,
+  toolsDb: Record<string, RedirectToolEntry | undefined>,
+): RedirectResolution {
+  const rawT = params.get('t') ?? '';
+  const rawP = params.get('p');
+  const hasP = params.has('p');
+  const lang = sanitizeLang(params.get('l') ?? 'es');
+  const toolId = sanitizeTool(rawT);
+  const platformId = sanitizePlatform(rawP);
+  const tool = toolId ? toolsDb[toolId] : null;
+
+  let targetUrl = '';
+  let displayUrl = '';
+  let name = '';
+  let channel: FunnelChannel = 'web-app';
+
+  if (tool) {
+    name = tool.name;
+    if (hasP) {
+      if (platformId !== null) {
+        const plat = tool.platforms[platformId];
+        if (plat && plat.isOfficial) {
+          targetUrl = plat.url;
+          displayUrl = plat.displayUrl || plat.url;
+          channel = sanitizeChannel(plat.type);
+        } else if (plat) {
+          channel = sanitizeChannel(plat.type);
+        }
+      }
+      // p presente pero inválido: targetUrl queda vacío -> redirect_error
+    } else {
+      // p ausente: fallback a officialWebsite (comportamiento previsto)
+      targetUrl = tool.officialWebsite;
+      displayUrl = tool.officialWebsiteDisplay || tool.officialWebsite;
+    }
+  }
+
+  let errorReason: RedirectErrorReason | null = null;
+  if (!targetUrl) {
+    if (!rawT) {
+      errorReason = 'missing_params';
+    } else if (!toolId || !tool) {
+      errorReason = 'tool_not_found';
+    } else if (hasP && platformId === null) {
+      errorReason = 'platform_not_found';
+    } else if (hasP && platformId) {
+      errorReason = tool.platforms[platformId] ? 'not_official' : 'platform_not_found';
+    } else {
+      errorReason = 'unknown';
+    }
+  }
+
+  return { lang, toolId, platformId, channel, targetUrl, displayUrl, name, errorReason };
+}
+
+// ---------------------------------------------------------------------------
 // Dispatch
 // ---------------------------------------------------------------------------
 
@@ -284,7 +388,7 @@ export function dispatchFunnelEvent(payload: Record<string, unknown>): void {
 
   for (const handler of handlers) {
     try {
-      handler(safe as FunnelPayload);
+      handler(safe as unknown as FunnelPayload);
     } catch {
       // Los handlers no deben romper el flujo de usuario.
     }

@@ -123,7 +123,7 @@ const toolsDb = baseTools.reduce((acc, tool) => {
 
     <script id="redirect-data" type="application/json" set:html={JSON.stringify({ toolsDb, delay: REDIRECT_DELAY_SECONDS })}></script>
     <script>
-      import { dispatchFunnelEvent, sanitizeLang, sanitizeTool, sanitizePlatform } from '../../utils/funnel-events';
+      import { dispatchFunnelEvent, resolveRedirect } from '../../utils/funnel-events';
 
       document.addEventListener('DOMContentLoaded', () => {
         const dataEl = document.getElementById('redirect-data');
@@ -136,14 +136,8 @@ const toolsDb = baseTools.reduce((acc, tool) => {
         } catch {}
 
         const params = new URLSearchParams(window.location.search);
-        const rawT = params.get('t') ?? '';
-        const rawP = params.get('p');
-        const hasP = params.has('p');
-        const rawL = params.get('l') ?? 'es';
-
-        const lang = sanitizeLang(rawL);
-        const toolId = sanitizeTool(rawT);
-        const platformId = sanitizePlatform(rawP);
+        const r = resolveRedirect(params, toolsDb);
+        const { lang, toolId, platformId, channel, targetUrl, displayUrl, name, errorReason } = r;
 
         const translations = {
           es: {
@@ -203,36 +197,6 @@ const toolsDb = baseTools.reduce((acc, tool) => {
         const errDesc = document.getElementById('error-desc');
         const errBtn = document.getElementById('error-btn');
 
-        // Resolve target — distingue p ausente (fallback a officialWebsite) de p inválido (error)
-        const tool = toolId ? toolsDb[toolId] : null;
-        let targetUrl = '';
-        let displayUrl = '';
-        let name = '';
-        let channelFromCatalog = 'web-app';
-
-        if (tool) {
-          name = tool.name;
-          if (hasP) {
-            if (platformId === null) {
-              // p presente pero inválido (ej. p=banana) -> no caer en officialWebsite, queda targetUrl vacío para emitir redirect_error
-            } else {
-              const plat = tool.platforms[platformId];
-              if (plat && plat.isOfficial) {
-                targetUrl = plat.url;
-                displayUrl = plat.displayUrl || plat.url;
-                channelFromCatalog = plat.type;
-              } else if (plat) {
-                channelFromCatalog = plat.type;
-              }
-            }
-          } else {
-            // p ausente -> fallback a officialWebsite (comportamiento previsto)
-            targetUrl = tool.officialWebsite;
-            displayUrl = tool.officialWebsiteDisplay || tool.officialWebsite;
-            // channelFromCatalog se mantiene web-app
-          }
-        }
-
         if (targetUrl) {
           // Update HTML texts
           document.title = t.title.replace('{name}', name);
@@ -257,7 +221,7 @@ const toolsDb = baseTools.reduce((acc, tool) => {
           if (content) content.hidden = false;
           if (errorBox) errorBox.hidden = true;
 
-          dispatchFunnelEvent({ event: 'redirect_start', lang, tool: toolId, platform: platformId, channel: channelFromCatalog, valid: true });
+          dispatchFunnelEvent({ event: 'redirect_start', lang, tool: toolId, platform: platformId, channel, valid: true });
 
           let remaining = REDIRECT_DELAY_SECONDS;
           const tick = setInterval(() => {
@@ -267,22 +231,12 @@ const toolsDb = baseTools.reduce((acc, tool) => {
           }, 1000);
 
           setTimeout(() => {
-            dispatchFunnelEvent({ event: 'redirect_result', lang, tool: toolId, platform: platformId, channel: channelFromCatalog, valid: true });
+            dispatchFunnelEvent({ event: 'redirect_result', lang, tool: toolId, platform: platformId, channel, valid: true });
             window.location.replace(targetUrl);
           }, REDIRECT_DELAY_SECONDS * 1000);
         } else {
-          // Validation failed
-          let errorReason = 'missing_params';
-          if (!rawT) {
-            errorReason = 'missing_params';
-          } else if (!toolId || !tool) {
-            errorReason = 'tool_not_found';
-          } else if (hasP && platformId === null) {
-            errorReason = 'platform_not_found';
-          } else if (hasP && platformId && (!tool.platforms[platformId] || !tool.platforms[platformId].isOfficial)) {
-            errorReason = tool.platforms[platformId] ? 'not_official' : 'platform_not_found';
-          }
-          dispatchFunnelEvent({ event: 'redirect_error', lang, tool: toolId, platform: platformId, channel: channelFromCatalog, valid: false, reason: errorReason });
+          // Validation failed: errorReason ya viene resuelto por el módulo
+          dispatchFunnelEvent({ event: 'redirect_error', lang, tool: toolId, platform: platformId, channel, valid: false, reason: errorReason ?? 'unknown' });
 
           document.title = t.errorTitle + ' | FuenteAI';
           if (errTitle) errTitle.textContent = t.errorTitle;
