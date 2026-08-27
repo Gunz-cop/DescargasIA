@@ -3,6 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import satori from 'satori';
+import { getCategoryLabel } from '../src/utils/brand.ts';
+import { useTranslations } from '../src/i18n/ui.ts';
 import { Resvg } from '@resvg/resvg-js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -83,7 +85,7 @@ function textNode(text, style = {}) {
   return { type: 'div', props: { style, children: escapeText(text) } };
 }
 
-function cardTree({ name, category, icon, description, eyebrow = 'FUENTE OFICIAL' }) {
+function cardTree({ name, category, icon, description, eyebrow }) {
   return {
     type: 'div',
     props: {
@@ -118,7 +120,7 @@ function cardTree({ name, category, icon, description, eyebrow = 'FUENTE OFICIAL
                         ]
                       }
                     },
-                    textNode('FUENTEAI / IA', { fontFamily: 'IBM Plex Mono', fontSize: 18, fontWeight: 500, letterSpacing: 2, color: palette.muted })
+                    textNode('fuenteai.com', { fontFamily: 'IBM Plex Mono', fontSize: 18, fontWeight: 500, letterSpacing: 2, color: palette.muted })
                   ]
                 }
               },
@@ -183,6 +185,17 @@ function categoryFor(base) {
   return slug ? categories.get(slug) : undefined;
 }
 
+/**
+ * El nombre de la categoria y el encabezado salen de las MISMAS tablas que
+ * usa el sitio (`getCategoryLabel` de brand.ts y las cadenas de i18n/ui.ts).
+ * Los JSON de src/content/categories solo traen el nombre en espanol: leerlos
+ * aqui ponia "Programacion" y "FUENTE OFICIAL" en las tarjetas suecas e
+ * italianas, cuya descripcion si estaba traducida.
+ */
+const eyebrowFor = (lang) => useTranslations(lang)('info.trust.official').toUpperCase();
+const categoryLabelFor = (slug, lang) =>
+  slug ? getCategoryLabel(slug, lang) : undefined;
+
 function localizedTools() {
   const baseFiles = jsonFiles(baseDir);
   const result = [];
@@ -197,9 +210,9 @@ function localizedTools() {
       const base = readJson(basePath);
       const localized = readJson(localizedPath);
       const category = categoryFor(base);
-      const categoryPath = category
-        ? path.join(categoriesDir, `${base.categories[0]}.json`)
-        : null;
+      const categorySlug = base.categories?.[0];
+      const categoryLabel = categoryLabelFor(categorySlug, lang);
+      const eyebrow = eyebrowFor(lang);
       result.push({
         relative: `og/${lang}/${slug}.png`,
         output: path.join(OG_DIR, lang, `${slug}.png`),
@@ -208,13 +221,15 @@ function localizedTools() {
           lang,
           base: readJsonRaw(basePath),
           localized: readJsonRaw(localizedPath),
-          category: categoryPath && fs.existsSync(categoryPath) ? readJsonRaw(categoryPath) : ''
+          categoryLabel: categoryLabel ?? '',
+          eyebrow
         }),
         data: {
           name: base.name,
-          category: category?.name ?? 'Herramientas de IA',
+          category: categoryLabel ?? DEFAULT_COPY[lang].category,
           icon: category?.icon,
-          description: localized.shortDescription
+          description: localized.shortDescription,
+          eyebrow
         }
       });
     }
@@ -222,22 +237,40 @@ function localizedTools() {
   return result;
 }
 
-const defaultImage = {
-  relative: 'og-default.png',
-  output: path.join(PUBLIC_DIR, 'og-default.png'),
-  inputHash: hashInput({ kind: 'default', copy: 'FuenteAI default OG card' }),
-  data: {
+/**
+ * Portadas, categorias y guias comparten una tarjeta por idioma. Con una sola
+ * en espanol, 43 de las 190 paginas del sitio —entre ellas las portadas sueca
+ * e italiana— se compartian con un texto que su lector no entiende.
+ */
+const DEFAULT_COPY = {
+  es: {
     name: 'Fuentes oficiales de IA',
     category: 'Directorio de herramientas de IA',
-    icon: '✦',
     description: 'Encuentra herramientas de inteligencia artificial y sus canales oficiales, sin clones ni mirrors.'
+  },
+  sv: {
+    name: 'Officiella AI-källor',
+    category: 'Katalog över AI-verktyg',
+    description: 'Hitta AI-verktyg och deras officiella kanaler, utan kloner eller speglar.'
+  },
+  it: {
+    name: 'Fonti ufficiali di IA',
+    category: 'Directory di strumenti IA',
+    description: 'Trova strumenti di intelligenza artificiale e i loro canali ufficiali, senza cloni né mirror.'
   }
 };
+
+const defaultImages = LANGS.map((lang) => ({
+  relative: `og/default-${lang}.png`,
+  output: path.join(OG_DIR, `default-${lang}.png`),
+  inputHash: hashInput({ kind: 'default', lang, copy: DEFAULT_COPY[lang], eyebrow: eyebrowFor(lang) }),
+  data: { ...DEFAULT_COPY[lang], icon: '✦', eyebrow: eyebrowFor(lang) }
+}));
 
 async function main() {
   fs.mkdirSync(OG_DIR, { recursive: true });
   const manifest = loadManifest();
-  const expected = [defaultImage, ...localizedTools()];
+  const expected = [...defaultImages, ...localizedTools()];
   const nextImages = {};
   let generated = 0;
   let reused = 0;

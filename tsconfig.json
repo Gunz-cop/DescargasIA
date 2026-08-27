@@ -3,5 +3,12 @@
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "noEmit": true
-  }
+  },
+
+  // El Worker tiene su propio tsconfig (`worker/tsconfig.json`) porque los
+  // tipos de runtime de `worker-configuration.d.ts` declaran globales de
+  // workerd que pisan a los del DOM y rompen el codigo de cliente de `src/`.
+  // Ese fichero y `worker/` se comprueban alli, con `lib` sin DOM. CI corre los
+  // dos proyectos.
+  "exclude": ["dist", "worker", "worker-configuration.d.ts"]
 }

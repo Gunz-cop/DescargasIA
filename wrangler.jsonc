@@ -1,6 +1,6 @@
 {
   "name": "fuenteai",
-  "compatibility_date": "2026-06-18",
+  "compatibility_date": "2026-08-26",
 
   // Un unico Worker delante de los assets. Sirve dos cosas que no se tocan
   // entre si: las rutas /api/hw/* de la app de hardware (F6/F7) y la capa de
