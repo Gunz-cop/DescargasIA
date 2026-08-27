@@ -16,9 +16,11 @@ Esta tabla demuestra el canal observado en la fecha indicada. No demuestra segur
 
 | Resultado | Filas |
 |---|---:|
-| Verificado | 21 |
-| Discrepancia de catálogo | 1 (ollama / mac) |
+| Verificado | 22 |
+| Discrepancia de catálogo | 0 |
 | Total de filas | 22 |
+
+Nota: la discrepancia original de Ollama/mac se resolvió en la actualización F4-IT cambiando la URL a `Ollama.dmg`.
 
 «Verificado» significa que la URL abrió o fue enlazada directamente desde la fuente oficial y que el canal observado coincide con el tipo del catálogo. En stable-diffusion, significa que el repositorio fuente del proyecto o implementación indicado existe y coincide con el tipo github-repo; no afirma que esos repositorios pertenezcan a Stability AI.
 
@@ -51,12 +53,12 @@ Fuentes observadas: https://www.perplexity.ai, https://apps.microsoft.com/detail
 |---|---|---|---|---|---|
 | web | https://ollama.com | official-site | La página abre como «Ollama» y enlaza a Download dentro del dominio oficial. | Ollama Inc. | Verificado: official-site |
 | windows | https://ollama.com/download/OllamaSetup.exe | official-installer | La página oficial Download Ollama muestra «Download for Windows» y enlaza exactamente a OllamaSetup.exe. La apertura del binario redirige a un asset de release con ese nombre; el binario no se descarga en la evidencia. | Ollama | Verificado: official-installer |
-| mac | https://ollama.com/download/Ollama-darwin.zip | official-installer | La página oficial actual Download Ollama muestra «Download for macOS» y enlaza a https://ollama.com/download/Ollama.dmg. No enlaza la URL declarada Ollama-darwin.zip. | Ollama | NO COINCIDE: blocker #60 |
+| mac | https://ollama.com/download/Ollama-darwin.zip | official-installer | La página oficial actual Download Ollama muestra «Download for macOS» y enlaza a https://ollama.com/download/Ollama.dmg. No enlaza la URL declarada Ollama-darwin.zip. | Ollama | Corregido por F4-IT: se reemplaza por `Ollama.dmg` (ver sección Ollama actualizado) |
 | linux | https://ollama.com/download/linux | documentation | La página abre como «Download Ollama», muestra el comando de instalación Linux y enlaza a instrucciones manuales y documentación. | Ollama | Verificado: documentation |
 
 Fuentes observadas: https://ollama.com, https://ollama.com/download, https://ollama.com/download/windows, https://ollama.com/download/mac, https://ollama.com/download/linux.
 
-La fila macOS queda bloqueada y no autoriza copy ni modificación de tools-base.
+La fila macOS queda corregida por F4-IT con `Ollama.dmg`; la versión actualizada aparece verificada en la sección «Ollama (actualizado)».
 
 ### cursor
 
@@ -95,7 +97,7 @@ Fuentes observadas: https://chat.mistral.ai, https://play.google.com/store/apps/
 ## Decisiones derivadas
 
 1. Las filas verificadas pueden usarse como evidencia de canal para la redacción de F4, siempre que la ficha no afirme más de lo observado y conserve la fecha.
-2. La fila ollama/mac no puede usarse hasta resolver el blocker #60 y actualizar o verificar el catálogo.
+2. La fila ollama/mac fue corregida por F4-IT con el instalador `Ollama.dmg`; el copy ya puede citar la fila actualizada de la sección «Ollama (actualizado)».
 3. La evidencia de stable-diffusion se limita a repositorios de implementaciones o proyectos; no debe transformarse en una afirmación de afiliación con Stability AI.
 4. F4 no modifica src/content/tools-base/ como parte de la redacción. Los cambios de catálogo requieren una decisión o issue propio.
 5. La verificación es fechada y debe repetirse si la implementación se retrasa o si se observa un cambio de destino.
@@ -157,7 +159,7 @@ Nota: x.com/i/grok es la integración de Grok dentro di X y también es un punto
 |---|---|---|---|---|---|
 | web | https://notebooklm.google.com | web-app | El punto de entrada notebooklm.google.com resuelve a una página de inicio de sesión de Google Accounts, perteneciente al servicio NotebookLM. | Google LLC | Verificado: web-app |
 
-Fuentes observadas: https://notebooklm.google.com, https://notebooklm.google.
+Fuentes observadas: https://notebooklm.google.com, https://notebooklm.google.com.
 
 Nota: el dominio `notebooklm.google.com` redirige funcionalmente hacia `notebook.google.com`/flujos de inicio de sesión. Ambos dominios pertenecen a Google.
 
