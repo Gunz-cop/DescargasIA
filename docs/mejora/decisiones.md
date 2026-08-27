@@ -38,7 +38,7 @@ de otro producto.
 
 | Fase | Producto | Propietario | Protegidos mínimos |
 |---|---|---|---|
-| F0 | Común | `docs/mejora/baseline.md`, `docs/mejora/decisiones.md`, `docs/mejora/fases/F0.md`, `docs/mejora/templates/` | Código del sitio, contenido, rutas, SEO, `public/`, `worker/` y las salidas de F1–F7 |
+| F0 | Común | `docs/plan-mejora-productos-por-idioma.md`, `docs/mejora/baseline.md`, `docs/mejora/decisiones.md`, `docs/mejora/fases/F0.md`, `docs/mejora/templates/` | Código del sitio, contenido, rutas, SEO, `public/`, `worker/` y las salidas de F1–F7 |
 | F1 | Común | `docs/mejora/fases/F1.md` y la documentación/módulo de medición que su propia spec enumere | Contenido localizado, rutas, SEO y cualquier archivo que no figure en su spec |
 | F2-ES | `es` | `docs/mejora/research/es.md` | `docs/mejora/research/sv.md`, `docs/mejora/research/it.md` y todos los JSON de contenido |
 | F2-SV | `sv` | `docs/mejora/research/sv.md` | `docs/mejora/research/es.md`, `docs/mejora/research/it.md` y todos los JSON de contenido |
@@ -66,7 +66,7 @@ no se esquiva el límite.
 | Si las guías de intención necesitan una ruta pública antes de desbloquearse | F3/Codex | Cualquier guía nueva |
 | Permisos y política de los workflows de GitHub Actions para esta serie | Codex antes de automatizar | CI o arnés adicional |
 
-No se rellenan estas celdas con un proveedor, país, URL, credencial o rama
+No se rellenan estas celdas con un proveedor, país, URL o credencial
 inventados. La decisión cerrada debe entrar aquí con fecha y motivo antes de
 que la fase bloqueada la use.
 
@@ -76,4 +76,4 @@ que la fase bloqueada la use.
 |---|---|---|---|
 | 2026-08-26 | F0 | Se conserva el baseline resumido y se explicitan sus filtros no preservados. | Los exports originales no están versionados en el repositorio. |
 | 2026-08-26 | F0 | Los issues de GitHub y sus etiquetas son el estado operativo. | El plan maestro no debe mantener una segunda tabla de estado. |
-| 2026-08-27 | F0 | `main` es la rama de integración de esta serie, salvo que Codex indique otra cosa. Las fases actuales se plantean contra `main`. | Fija un único destino de integración para los PRs de F1–F7 y evita que cada fase invente una rama base distinta. |
+| 2026-08-27 | F0 | `main` es la rama de integración de esta serie. | Fija un único destino de integración para los PRs de F1–F7 y evita que cada fase invente una rama base distinta. |

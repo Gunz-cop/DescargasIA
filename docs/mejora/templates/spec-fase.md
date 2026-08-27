@@ -6,7 +6,7 @@
 **Proyecto:** `docs/plan-mejora-productos-por-idioma.md`
 **Issue:** #<n>
 **Producto:** `es`, `sv`, `it` o `común`
-**Rama base:** <rama de integración declarada por Codex>
+**Rama base:** `main`
 **Depende de:** F<x>, F<y> o `ninguna`
 
 ## Objetivo

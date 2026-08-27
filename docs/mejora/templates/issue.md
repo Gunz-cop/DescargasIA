@@ -2,7 +2,7 @@
 
 **Producto:** `es`, `sv`, `it` o `común`
 **Depende de:** #<n> o `ninguna — lista para tomar`
-**Rama de integración:** `<rama declarada por Codex>`
+**Rama de integración:** `main`
 
 ## Qué hay que hacer
 
@@ -14,7 +14,7 @@ uses este issue para introducir decisiones que no estén versionadas.
 
 ```text
 Trabajas en Gunz-cop/DescargasIA. Lee AGENTS.md, el plan maestro y la spec enlazada.
-Trabaja contra la rama de integración declarada. No modifiques ningún archivo de
+Trabaja contra `main`. No modifiques ningún archivo de
 PROTEGIDOS. Si la spec no alcanza para terminar, detente y documenta el bloqueo
 en este issue; no inventes datos, URLs, credenciales, proveedores ni workarounds.
 ```
