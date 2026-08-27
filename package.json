@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "astro dev",
     "shorten": "node scripts/shorten-official-links.mjs",
-    "test": "node --test \"tests/**/*.test.mjs\"",
+    "test": "node --test \"tests/**/*.test.mjs\" && npx tsx --test \"tests/**/*.test.ts\"",
     "test:build": "node --test tests/agents/catalogo-campos.test.mjs",
     "build": "npm run shorten && npm run catalog:audit && npm run hw:audit && npm run agents:skills && npm run build-og && astro build && npm test && npm run test:build && npm run links:audit",
     "build:no-shorten": "npm run catalog:audit && npm run hw:audit && npm run agents:skills && npm run build-og && astro build && npm test && npm run test:build && npm run links:audit",

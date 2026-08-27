@@ -444,7 +444,7 @@ const metaChips = [
         </div>
 
         <ul class="mt-6 flex flex-col gap-2.5" role="list">
-          {platforms.map(({ id, name, typeLabel, host, lastChecked, btnLabel }) => (
+          {platforms.map(({ id, name, typeLabel, host, lastChecked, btnLabel, type }) => (
             <li class="fai-live flex flex-col gap-3 rounded-[14px] p-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
               <div class="min-w-0">
                 <h3 class="text-[15px] font-medium text-fai-ink">{name}</h3>
@@ -457,6 +457,7 @@ const metaChips = [
                 href={redirectUrl(lang, tool.slug, id)}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
+                data-channel={type}
                 class="inline-flex min-h-11 shrink-0 items-center justify-center rounded-[8px] border border-[rgba(15,191,143,.4)] px-4 text-[13px] font-medium text-fai-signal transition-colors hover:bg-[rgba(15,191,143,.12)]"
               >
                 {btnLabel}{' '}
@@ -628,32 +629,44 @@ const metaChips = [
 
   <script is:inline define:vars={{ lang, toolSlug: tool.slug, primaryPlatformId: primaryPlatform?.id ?? null, primaryChannel: primaryPlatform?.type ?? 'web-app' }}>
     (() => {
+      var VALID_LANGS = ['es', 'sv', 'it'];
+      var VALID_PLATFORMS = ['web', 'windows', 'mac', 'linux', 'android', 'ios'];
+      var VALID_CHANNELS = ['official-site', 'app-store', 'github-repo', 'documentation', 'official-installer', 'web-app'];
+      var SLUG_RE = /^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/;
+      var ALLOWED_FIELDS = new Set(['event', 'lang', 'tool', 'platform', 'channel', 'valid', 'reason']);
+
+      function sanitizeLang(v) { return VALID_LANGS.indexOf(v) !== -1 ? v : 'es'; }
+      function sanitizePlatform(v) { return v === null ? null : VALID_PLATFORMS.indexOf(v) !== -1 ? v : null; }
+      function sanitizeTool(v) { return typeof v === 'string' && SLUG_RE.test(v) && v.length <= 64 ? v : ''; }
+      function sanitizeChannel(v) { return VALID_CHANNELS.indexOf(v) !== -1 ? v : 'web-app'; }
+
       function dispatch(detail) {
-        window.dispatchEvent(new CustomEvent('fuenteai:funnel', { detail }));
+        var keys = Object.keys(detail);
+        for (var i = 0; i < keys.length; i++) {
+          if (!ALLOWED_FIELDS.has(keys[i])) return;
+        }
+        window.dispatchEvent(new CustomEvent('fuenteai:funnel', { detail: detail }));
       }
 
       dispatch({
         event: 'ficha_view',
-        lang: lang,
-        tool: toolSlug,
-        platform: primaryPlatformId,
-        channel: primaryChannel
+        lang: sanitizeLang(lang),
+        tool: sanitizeTool(toolSlug),
+        platform: sanitizePlatform(primaryPlatformId),
+        channel: sanitizeChannel(primaryChannel)
       });
 
       document.querySelectorAll('#compatibilidad a[href*="/r?"]').forEach(function(btn) {
         btn.addEventListener('click', function() {
           try {
             var href = new URL(btn.href);
-            var p = href.searchParams.get('p');
-            var channel = 'web-app';
-            var platforms = { web: 'web-app', windows: 'official-installer', mac: 'official-installer', linux: 'official-installer', android: 'app-store', ios: 'app-store' };
-            if (p && platforms[p]) channel = platforms[p];
+            var p = sanitizePlatform(href.searchParams.get('p'));
             dispatch({
               event: 'platform_select',
-              lang: lang,
-              tool: toolSlug,
-              platform: p || null,
-              channel: channel
+              lang: sanitizeLang(lang),
+              tool: sanitizeTool(toolSlug),
+              platform: p,
+              channel: sanitizeChannel(btn.dataset.channel || 'web-app')
             });
           } catch (e) { /* ignore */ }
         });

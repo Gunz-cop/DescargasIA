@@ -24,10 +24,9 @@ export const VALID_PLATFORMS = ['web', 'windows', 'mac', 'linux', 'android', 'io
 export type FunnelPlatform = (typeof VALID_PLATFORMS)[number];
 
 export const VALID_CHANNELS = [
-  'official-website',
+  'official-site',
   'app-store',
   'github-repo',
-  'package-manager',
   'documentation',
   'official-installer',
   'web-app',
@@ -48,6 +47,7 @@ export const REDIRECT_ERROR_REASONS = [
   'platform_not_found',
   'not_official',
   'missing_params',
+  'unknown',
 ] as const;
 export type RedirectErrorReason = (typeof REDIRECT_ERROR_REASONS)[number];
 
@@ -121,7 +121,8 @@ const ALLOWED_FIELDS = new Set([
 export function validatePayload(payload: Record<string, unknown>): boolean {
   if (!isKnown(FUNNEL_EVENT_NAMES, payload.event)) return false;
   if (!isKnown(VALID_LANGS, payload.lang)) return false;
-  if (typeof payload.tool !== 'string' || payload.tool.length === 0) return false;
+  if (typeof payload.tool !== 'string') return false;
+  if (payload.tool.length === 0 && payload.event !== 'redirect_error') return false;
   if (payload.platform !== null && !isKnown(VALID_PLATFORMS, payload.platform)) return false;
   if (!isKnown(VALID_CHANNELS, payload.channel)) return false;
 
@@ -166,6 +167,85 @@ export function stripPII(payload: Record<string, unknown>): boolean {
 }
 
 // ---------------------------------------------------------------------------
+// Sanitización de entradas
+// ---------------------------------------------------------------------------
+
+const VALID_LANG_SET = new Set<string>(VALID_LANGS);
+const VALID_PLATFORM_SET = new Set<string>(VALID_PLATFORMS);
+const VALID_CHANNEL_SET = new Set<string>(VALID_CHANNELS);
+const VALID_REASON_SET = new Set<string>(REDIRECT_ERROR_REASONS);
+const SLUG_RE = /^[a-z0-9]([a-z0-9-]*[a-z0-9])?$/;
+const MAX_TOOL_SLUG_LENGTH = 64;
+
+/**
+ * Sanitiza `lang`: acepta solo `es`, `sv`, `it`. Cualquier otro valor
+ * devuelve `es` como fallback controlado.
+ */
+export function sanitizeLang(raw: unknown): FunnelLang {
+  return VALID_LANG_SET.has(String(raw)) ? (String(raw) as FunnelLang) : 'es';
+}
+
+/**
+ * Sanitiza `platform`: acepta solo las keys del catálogo o `null`.
+ */
+export function sanitizePlatform(raw: unknown): FunnelPlatform | null {
+  if (raw === null || raw === undefined) return null;
+  return VALID_PLATFORM_SET.has(String(raw)) ? (String(raw) as FunnelPlatform) : null;
+}
+
+/**
+ * Sanitiza `tool`: acepta solo slugs alfanuméricos con guiones, máx 64 chars.
+ * Rechaza URLs, rutas, texto libre o strings vacíos. Devuelve string vacío
+ * si no es un slug válido.
+ */
+export function sanitizeTool(raw: unknown): string {
+  if (typeof raw !== 'string') return '';
+  const trimmed = raw.trim();
+  if (trimmed.length === 0 || trimmed.length > MAX_TOOL_SLUG_LENGTH) return '';
+  if (!SLUG_RE.test(trimmed)) return '';
+  return trimmed;
+}
+
+/**
+ * Sanitiza `channel`: acepta solo tipos de canal del catálogo.
+ */
+export function sanitizeChannel(raw: unknown): FunnelChannel {
+  return VALID_CHANNEL_SET.has(String(raw)) ? (String(raw) as FunnelChannel) : 'web-app';
+}
+
+/**
+ * Sanitiza `reason`: acepta solo razones predefinidas.
+ */
+export function sanitizeReason(raw: unknown): RedirectErrorReason {
+  return VALID_REASON_SET.has(String(raw)) ? (String(raw) as RedirectErrorReason) : 'unknown';
+}
+
+/**
+ * Construye un payload sanitizado y listo para dispatch.
+ * Todas las entradas pasan por sanitización; los valores ilegibles se
+ * reemplazan por fallbacks controlados. El payload resultante siempre
+ * pasa `validatePayload()`.
+ */
+export function buildFunnelPayload(fields: Record<string, unknown>): Record<string, unknown> {
+  const event = String(fields.event ?? '');
+  const lang = sanitizeLang(fields.lang);
+  const tool = sanitizeTool(fields.tool);
+  const platform = sanitizePlatform(fields.platform);
+  const channel = sanitizeChannel(fields.channel);
+
+  const base: Record<string, unknown> = { event, lang, tool, platform, channel };
+
+  if (event === 'redirect_error') {
+    base.valid = false;
+    base.reason = sanitizeReason(fields.reason);
+  } else if (event === 'redirect_start' || event === 'redirect_result') {
+    base.valid = true;
+  }
+
+  return base;
+}
+
+// ---------------------------------------------------------------------------
 // Dispatch
 // ---------------------------------------------------------------------------
 
@@ -192,10 +272,11 @@ export function onFunnelEvent(handler: FunnelEventHandler): void {
  * o desde scripts inline en el navegador.
  */
 export function dispatchFunnelEvent(payload: Record<string, unknown>): void {
-  if (!validatePayload(payload)) return;
-  if (!stripPII(payload)) return;
+  const safe = buildFunnelPayload(payload);
+  if (!validatePayload(safe)) return;
+  if (!stripPII(safe)) return;
 
-  const event = new CustomEvent('fuenteai:funnel', { detail: payload });
+  const event = new CustomEvent('fuenteai:funnel', { detail: safe });
 
   if (typeof window !== 'undefined') {
     window.dispatchEvent(event);
@@ -203,7 +284,7 @@ export function dispatchFunnelEvent(payload: Record<string, unknown>): void {
 
   for (const handler of handlers) {
     try {
-      handler(payload as FunnelPayload);
+      handler(safe as FunnelPayload);
     } catch {
       // Los handlers no deben romper el flujo de usuario.
     }
