@@ -5,7 +5,7 @@
 **Producto:** `es`
 **Rama base:** `main`
 **Ejecuta:** F4-ES
-**Depende de:** F3-ES (#40) fusionada. Instrumentación de funnel F1 (#36) **no fusionada** — ver «Eventos de funnel».
+**Depende de:** F3-ES (#40) fusionada. Instrumentación de funnel F1 (#36) fusionada mediante PR #52 — ver «Eventos de funnel».
 
 > Alcance: dos fichas existentes, `ollama` y `cursor`. **Ninguna ficha nueva.**
 > Ninguna edición de `src/content/tools-base/`.
@@ -172,4 +172,4 @@ cómo se reconoce.
 | El dominio antiguo de Cursor cambia de comportamiento | La verificación manual con fecha | La sesión del lote |
 | El copy trata la documentación de Linux de Ollama como si fuera un instalador | El criterio de plataformas del interstitial y la lectura de la ficha | La sesión del lote |
 | Se cruza la frontera hacia la guía paso a paso | «Fuera de alcance» y la estructura de `docs/ux-tool-pages.md` | La sesión del lote |
-| F1 (#36) sin fusionar al cerrar la ventana | No hay eventos que observar | Codex |
+| F1 (#36) sin detección de eventos de funnel al cerrar la ventana | No hay eventos que observar | Codex |
