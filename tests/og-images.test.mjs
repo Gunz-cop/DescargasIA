@@ -52,14 +52,33 @@ test('cada og:image local del build apunta a un fichero existente en dist', (t) 
   assert.ok(pages.length > 0, 'el build no generó páginas HTML');
 
   let pagesWithImage = 0;
+  let externas = 0;
   for (const page of pages) {
     const html = fs.readFileSync(page, 'utf8');
     const match = html.match(/<meta property="og:image" content="([^"]+)"/i);
     if (!match) continue;
     pagesWithImage += 1;
 
-    const imageUrl = new URL(match[1], SITE_ORIGIN);
-    if (imageUrl.origin !== SITE_ORIGIN) continue;
+    // og:image tiene que ser absoluta: varios scrapers descartan las
+    // relativas en silencio.
+    assert.ok(
+      /^https?:\/\//.test(match[1]),
+      `${path.relative(DIST, page)} declara una og:image relativa: ${match[1]}`
+    );
+
+    const imageUrl = new URL(match[1]);
+    if (imageUrl.origin !== SITE_ORIGIN) {
+      // Una ficha con `screenshotUrl` apunta fuera y su existencia no se puede
+      // comprobar aqui. Se cuenta y se exige https, en vez de saltarla sin
+      // dejar rastro: ese silencio es el mismo que dejo pasar el bug original.
+      assert.equal(
+        imageUrl.protocol,
+        'https:',
+        `${path.relative(DIST, page)} apunta a una og:image externa sin https: ${match[1]}`
+      );
+      externas += 1;
+      continue;
+    }
 
     const relative = decodeURIComponent(imageUrl.pathname).replace(/^\//, '').replaceAll('/', path.sep);
     const imagePath = path.join(DIST, relative);
@@ -67,4 +86,5 @@ test('cada og:image local del build apunta a un fichero existente en dist', (t) 
   }
 
   assert.ok(pagesWithImage > 0, 'el build no generó ninguna og:image para verificar');
+  t.diagnostic(`${pagesWithImage} páginas con og:image; ${externas} externas (no verificables)`);
 });
