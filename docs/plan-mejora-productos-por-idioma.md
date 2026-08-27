@@ -1,6 +1,6 @@
 # Plan maestro de mejora de FuenteAI por producto lingüístico
 
-**Estado:** borrador de ejecución
+**Estado:** contrato operativo versionado; ejecución coordinada mediante issues y PRs
 **Fecha:** 2026-08-26
 **Metodología:** SDD (Spec-Driven Development)
 **Responsable de arquitectura y revisión:** Codex
@@ -421,7 +421,36 @@ estado de la sesión.
 
 En esta etapa Codex no implementará las mejoras del sitio. Primero cerrará el plan, derivará los requisitos verificables y revisará las implementaciones que lleguen por sesiones o PRs.
 
-## 10. Decisiones pendientes antes de abrir issues
+
+## Prompt inicial obligatorio para cualquier sesión ejecutora
+
+Copia este bloque al iniciar la sesión y sustituye `<numero>` por el issue asignado:
+
+> Actúa como sesión ejecutora del issue #<numero> de `Gunz-cop/DescargasIA`.
+>
+> **Rol y límites:** Codex es dueño de la arquitectura, el alcance, las decisiones y la revisión. Tú implementas únicamente el issue asignado. No amplíes el alcance, no cambies otro producto lingüístico y no modifiques archivos fuera de los que el issue posee.
+>
+> **1. Trabaja siempre en local y en el repositorio.** Localiza o clona `https://github.com/Gunz-cop/DescargasIA.git` dentro del workspace autorizado. Verifica `git remote -v`, `git status` y la rama actual. Si ya hay cambios ajenos, consérvalos: no uses `reset --hard`, `checkout --`, `clean`, borrados masivos ni sobrescrituras para “limpiar” el árbol.
+>
+> **2. Lee el contexto antes de editar.** Lee `AGENTS.md`, este plan, el issue completo, sus dependencias y todas las referencias que el issue declare. Comprueba en `docs/mejora/decisiones.md` cuál es la rama de integración vigente. Actualmente es `main`, salvo una decisión posterior explícita de Codex; no inventes otra.
+>
+> **3. Resuelve las dependencias.** Si el issue depende de otro que aún no está fusionado, decláralo en el preflight. Puedes preparar trabajo sólo si el issue lo permite, pero no declares la dependencia satisfecha ni fusiones contra una base que no contiene el contrato requerido. No copies silenciosamente archivos desde otra rama para simular que la dependencia está integrada.
+>
+> **4. Preflight obligatorio.** Antes de cambiar archivos reporta: issue, objetivo, producto (`es`, `sv`, `it` o `común`), rama base, rama nueva, archivos propios, archivos protegidos, dependencias, riesgos, comandos y criterios que deberán verificarse.
+>
+> **5. Rama y cambios.** Crea una rama aislada `codex/issue-<numero>-<slug>` desde la base vigente. Nunca trabajes directamente sobre `main`, nunca hagas force-push y nunca edites en paralelo un archivo que otra sesión posee. Si hay conflicto de propiedad, detente y pregunta.
+>
+> **6. Regla anti-alucinación.** No inventes datos, fuentes, URLs, precios, disponibilidad, requisitos, APIs, resultados de tests, estados de GitHub ni soluciones. Si no puedes resolver algo con evidencia suficiente, detente: crea un bug/blocker con evidencia, archivos afectados, intentos y pregunta concreta. Si no tienes permisos para crearlo, deja el texto listo sin inventar número o URL y súbelo a tu rama.
+>
+> **7. Validación.** Ejecuta los comandos exigidos por el issue y los audits del repositorio. Documenta la salida real. Marca un criterio sólo si es reproducible y tiene evidencia; una afirmación en el resumen no sustituye la prueba.
+>
+> **8. Entrega obligatoria, incluso con bloqueo.** Al terminar, haz commit de la implementación o del diagnóstico en tu rama y súbela al remoto. Abre o actualiza un PR contra la rama de integración, enlaza el issue y reporta la URL real de la rama/PR, el commit y las validaciones. Si la autenticación o el push fallan, detente y reporta el fallo; no finjas que publicaste cambios ni inventes enlaces.
+>
+> **9. Estado del issue.** No cierres manualmente un issue con criterios pendientes. `Closes #<numero>` sólo debe cerrarlo cuando el PR se fusione. Si la sesión termina bloqueada, deja el issue abierto y enlaza el blocker.
+
+La respuesta final de la sesión debe incluir el preflight, los archivos tocados, el commit, la URL real, las validaciones, los criterios evidenciados y cualquier limitación.
+
+## 10. Decisiones pendientes para las fases siguientes
 
 - confirmar el alcance geográfico inicial de cada producto lingüístico;
 - decidir qué proveedor o formato se usará para los eventos de funnel;
