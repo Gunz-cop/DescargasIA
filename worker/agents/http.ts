@@ -128,7 +128,11 @@ export async function readJsonBody(request: Request): Promise<unknown> {
   if (!request.body) throw new JsonBodyError('JSON inválido', 400, -32700);
 
   const reader = request.body.getReader();
-  const decoder = new TextDecoder('utf-8', { fatal: true });
+  // `ignoreBOM: false` es el valor por defecto del estandar y hace justo lo que
+  // aqui hace falta: descartar el BOM inicial en vez de colarlo como caracter,
+  // que romperia el `JSON.parse` de mas abajo. Va explicito porque los tipos de
+  // workerd declaran la opcion obligatoria, al contrario que los del DOM.
+  const decoder = new TextDecoder('utf-8', { fatal: true, ignoreBOM: false });
   let total = 0;
   let source = '';
 

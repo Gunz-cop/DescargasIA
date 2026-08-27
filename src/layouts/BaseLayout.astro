@@ -6,7 +6,7 @@ import Motion from '../components/Motion.astro';
 import WebMcp from '../components/WebMcp.astro';
 import { useTranslations } from '../i18n/ui';
 import { CATEGORIES, type Lang } from '../utils/brand';
-import { homeUrl, categoryUrl, pageUrl, directoryUrl, hardwareUrl } from '../utils/links';
+import { homeUrl, categoryUrl, pageUrl, directoryUrl, hardwareUrl, defaultOgImageUrl } from '../utils/links';
 import { hasMarkdownMirror, markdownPathFor } from '../utils/agent-content';
 import { getTranslatedTools } from '../utils/tools';
 
@@ -28,13 +28,17 @@ const {
   description,
   canonicalUrl = Astro.url.href,
   ogType = 'website',
-  ogImage = 'https://fuenteai.com/og-default.png',
+  ogImage,
   ogImageAlt = 'FuenteAI',
   jsonLd,
   lang = 'es',
   alternates = [],
   noindex = false
 } = Astro.props;
+
+// La tarjeta por defecto depende del idioma, así que no puede ir como valor
+// por defecto en la desestructuración: `lang` se resuelve en esa misma línea.
+const resolvedOgImage = ogImage ?? defaultOgImageUrl(Astro.url.origin, lang);
 
 const t = useTranslations(lang);
 
@@ -132,7 +136,7 @@ const rightsLine = lang === 'sv'
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={resolvedOgImage} />
     <meta property="og:image:alt" content={ogImageAlt} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
