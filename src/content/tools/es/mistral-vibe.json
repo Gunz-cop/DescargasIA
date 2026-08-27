@@ -1,6 +1,6 @@
 {
-  "shortDescription": "El asistente de la francesa Mistral AI, antes llamado Le Chat, ahora rebautizado como Vibe, con foco en privacidad europea (GDPR).",
-  "longDescription": "Vibe es el asistente conversacional de Mistral AI, la compañía francesa detrás de varios modelos de lenguaje de código abierto. El producto se llamó Le Chat hasta que Mistral lo renombró como Vibe, sumando funciones de agente para tareas largas: investigación con fuentes, análisis de hojas de cálculo y automatización de trabajo repetitivo. Esta ficha enlaza solo a los canales oficiales de Mistral: la web chat.mistral.ai y las apps verificadas.",
+  "shortDescription": "El asistente de Mistral AI que se llamó Le Chat y hoy se llama Vibe: mismo producto, nuevo nombre. Acceso oficial: la web chat.mistral.ai y las apps de Google Play y App Store.",
+  "longDescription": "Vibe es el asistente conversacional de Mistral AI, la compañía francesa detrás de varios modelos de lenguaje. El producto se llamó Le Chat y así lo sigue buscando buena parte del público hispanohablante; en 2026 Mistral lo renombró como Vibe, y en las tiendas el listado conserva la referencia «ex-Le Chat» precisamente para no perder a quien escribe el nombre antiguo. Los canales que este catálogo declara y verifica son tres: la web chat.mistral.ai y las apps que Mistral AI publica en Google Play y en App Store. Para escritorio no hay ningún canal declarado: la vía comprobada en un ordenador es abrir la web oficial en el navegador. Esta ficha enlaza solo esos destinos, sin espejos ni instaladores de terceros, y trata «Le Chat» como lo que es: el nombre anterior del mismo producto.",
   "bestFor": [
     "Chatear y redactar con un asistente enfocado en privacidad y cumplimiento europeo (GDPR)",
     "Investigar un tema con búsqueda profunda y fuentes citadas",
@@ -8,27 +8,36 @@
     "Usar modelos abiertos de Mistral desde una interfaz sencilla en el móvil o la web"
   ],
   "limitations": [
-    "El cambio de nombre de Le Chat a Vibe puede generar confusión: si buscas \"Le Chat\" en tu tienda de apps, el listado ahora aparece como \"Vibe by Mistral (ex-Le Chat)\".",
-    "Las funciones de agente más avanzadas (investigación profunda, tareas largas) suelen estar limitadas o requerir el plan Pro.",
-    "No hay una aplicación de escritorio nativa para Windows o macOS separada de la web; en el editor de código se usa mediante extensiones (VS Code, JetBrains, Zed)."
+    "El cambio de nombre de Le Chat a Vibe puede generar confusión: si buscas «Le Chat» en tu tienda de apps, el listado ahora aparece como «Vibe by Mistral (ex-Le Chat)».",
+    "Algunas funciones avanzadas pueden quedar limitadas en el plan gratuito (el catálogo registra el modelo como freemium); los límites exactos de cada plan no se detallan en esta ficha.",
+    "El catálogo no declara ningún canal de escritorio verificado: en un ordenador, la vía comprobada es abrir la web oficial en el navegador. Eso no afirma que no exista otro camino, solo que este catálogo no lo respalda."
   ],
   "safetyNotes": [
-    "Descarga la app únicamente desde Google Play o App Store con el nombre \"Vibe by Mistral\"; evita APKs sueltos que digan ser \"Le Chat\" de terceros.",
-    "Mistral AI no cobra por crear una cuenta básica; desconfía de páginas que pidan pago previo para \"activar\" el acceso."
+    "Descarga la app únicamente desde Google Play o App Store con el nombre «Vibe by Mistral»; evita APKs sueltos que digan ser «Le Chat» de terceros.",
+    "Mistral AI no cobra por crear una cuenta básica; desconfía de páginas que pidan pago previo para «activar» el acceso.",
+    "Si en una tienda aparece una app que usa «Le Chat» o «Mistral» en el nombre pero no está publicada por Mistral AI, no es una publicación del editor: antes de instalar, comprueba el campo del desarrollador. El riesgo observado en la auditoría española es bajo, pero el nombre no es la prueba."
   ],
-  "editorialSummary": "Mistral construyó su reputación sobre modelos abiertos y un enfoque europeo de la privacidad, y Vibe (antes Le Chat) es la forma más directa de probar esos modelos sin instalar nada técnico. En FuenteAI seguimos su cambio de marca para asegurarnos de enlazar siempre al canal vigente, sin quedarnos con enlaces rotos o nombres antiguos.",
+  "editorialSummary": "Mistral construyó su reputación sobre modelos abiertos, y Vibe (antes Le Chat) es la forma más directa de probarlos sin instalar nada técnico: la web chat.mistral.ai y las apps que Mistral AI publica en Google Play y App Store. En FuenteAI tratamos el nombre antiguo como sinónimo de búsqueda, no como producto aparte, para que quien siga escribiendo «Le Chat» llegue al canal vigente y no a una copia.",
   "editorialSections": [
     {
       "heading": "De Le Chat a Vibe: por qué cambió el nombre",
-      "body": "Mistral AI lanzó su asistente como \"Le Chat\" y así se hizo conocido durante buena parte de 2025. En 2026 la compañía lo renombró a Vibe para reflejar un producto más amplio, con capacidades de agente que van más allá de la conversación simple: puede investigar, analizar archivos y ejecutar tareas de varios pasos.\n\nSi llegaste a esta ficha buscando \"Le Chat\", estás en el lugar correcto: es el mismo producto con nombre nuevo. En las tiendas de aplicaciones el listado conserva la referencia \"ex-Le Chat\" precisamente para que quienes buscan el nombre anterior no terminen en una copia."
+      "body": "Mistral AI lanzó su asistente como «Le Chat» y así se hizo conocido durante buena parte de 2025. En 2026 la compañía lo renombró a Vibe para reflejar un producto más amplio, con capacidades de agente que van más allá de la conversación simple: puede investigar, analizar archivos y ejecutar tareas de varios pasos.\n\nSi llegaste a esta ficha buscando «Le Chat», estás en el lugar correcto: es el mismo producto con nombre nuevo. En las tiendas de aplicaciones el listado conserva la referencia «ex-Le Chat» precisamente para que quienes buscan el nombre anterior no terminen en una copia."
     },
     {
       "heading": "Qué lo diferencia de otros asistentes",
       "body": "Mistral construye buena parte de sus modelos como código abierto, lo que le da una reputación distinta a la de OpenAI o Anthropic entre desarrolladores y usuarios que valoran la transparencia. Vibe hereda ese posicionamiento: la compañía enfatiza el cumplimiento con normativas europeas de privacidad y ofrece planes gratuitos razonablemente generosos.\n\nA nivel de uso diario, Vibe compite de cerca con ChatGPT y Claude para tareas de redacción, resumen y consulta general, y suma capacidades de agente para investigación con fuentes y automatización de tareas repetitivas."
     },
     {
-      "heading": "Web, móvil y editor de código",
-      "body": "El acceso principal es la web en chat.mistral.ai, sin necesidad de instalar nada. Para móvil, la app oficial está en Google Play y App Store bajo el nombre Vibe by Mistral. Si programas, Mistral también ofrece integraciones directas para VS Code, JetBrains y Zed en lugar de una aplicación de escritorio separada.\n\nEsta variedad de canales significa que no existe un \"instalador de Vibe para Windows\" tradicional: la vía de escritorio es a través del navegador o de las extensiones de editor, no de un ejecutable independiente."
+      "heading": "Web y móvil: los canales que declara el catálogo",
+      "body": "El acceso principal es la web en chat.mistral.ai, sin necesidad de instalar nada. Para móvil, la app oficial está en Google Play y App Store; en la comprobación de canales del 2026-08-27, los dos listados mostraban el nombre «Vibe by Mistral (ex-Le Chat)» con Mistral AI como editor.\n\nPara el ordenador no hay un instalador declarado: la vía de escritorio que esta ficha puede respaldar es el navegador, abriendo la web oficial. Que el catálogo no declare un canal de escritorio no equivale a afirmar que el editor no publique ninguno: es exactamente eso, que no lo hemos verificado."
+    },
+    {
+      "heading": "Cómo reconocer la app de Mistral en cada tienda",
+      "body": "El nombre mostrado puede variar, y de hecho conviven formulaciones distintas en el material y en las tiendas: la auditoría española observó dos («Vibe by Mistral (ex-Le Chat)» y «Mistral Vibe (ex-Le Chat)»). Por eso el nombre no es el criterio: el criterio es quién publica.\n\nEn la comprobación del 2026-08-27, Google Play mostraba «Vibe by Mistral (ex-Le Chat)» con editor Mistral AI, y App Store mostraba el mismo nombre con desarrollador Mistral AI. Ese campo es lo que conviene mirar antes de instalar: el nombre se copia, la cuenta del editor es lo que la tienda verifica. Si la ficha que abres la publica Mistral AI, es la app de este editor; si la publica otro, es otra aplicación."
+    },
+    {
+      "heading": "Qué implica que en el ordenador la vía sea el navegador",
+      "body": "En el selector de plataformas de esta ficha no hay una fila de escritorio: los canales declarados y verificados son la web, Google Play y App Store. Para un ordenador, la vía comprobada es abrir chat.mistral.ai en el navegador, que es el mismo destino que figura en la fila web.\n\nQué se sigue de ahí y qué no. Se sigue que aquí no hay un instalador de escritorio que descargar ni que respaldar: el acceso desde un ordenador no pasa por un archivo, sino por una dirección web. No se sigue que el editor no ofrezca nada más en algún sitio: este catálogo no lo ha verificado y no lo afirma. Si te encuentras un supuesto «instalador de Vibe para PC» en una página suelta, no sale de ninguno de los canales comprobados en esta ficha."
     },
     {
       "heading": "Cuándo elegirlo frente a otras opciones",
@@ -46,19 +55,27 @@
   "faq": [
     {
       "question": "¿Le Chat de Mistral sigue existiendo?",
-      "answer": "Sí, pero cambió de nombre a Vibe. Es el mismo producto de Mistral AI; en las tiendas de apps aparece como \"Vibe by Mistral (ex-Le Chat)\"."
+      "answer": "Sí, pero cambió de nombre a Vibe. Es el mismo producto de Mistral AI; en las tiendas de apps aparece como «Vibe by Mistral (ex-Le Chat)»."
     },
     {
       "question": "¿Vibe (Le Chat) tiene app para Windows o macOS?",
-      "answer": "No como instalador de escritorio independiente. El acceso es vía web en chat.mistral.ai o mediante extensiones oficiales para editores de código."
+      "answer": "El catálogo no declara ningún canal de escritorio verificado para Windows ni macOS, así que no podemos confirmarte un instalador. Eso no es lo mismo que decir que no exista: es que no lo hemos comprobado. La vía verificada en un ordenador es abrir chat.mistral.ai en el navegador."
     },
     {
       "question": "¿Es gratis usar Vibe by Mistral?",
-      "answer": "Tiene un plan gratuito para tareas simples y respuestas rápidas; las funciones de agente e investigación profunda suelen requerir el plan Pro."
+      "answer": "El catálogo registra el modelo como freemium: hay un plan gratuito y opciones de pago. Los límites exactos de cada plan no se detallan en esta ficha."
     },
     {
       "question": "¿Es seguro descargar la app desde cualquier tienda?",
-      "answer": "Descárgala solo desde Google Play o App Store verificando que el desarrollador sea Mistral AI. Evita APKs de terceros que usen el nombre \"Le Chat\"."
+      "answer": "Descárgala solo desde Google Play o App Store verificando que el desarrollador sea Mistral AI. Evita APKs de terceros que usen el nombre «Le Chat»."
+    },
+    {
+      "question": "¿Dónde descargo Le Chat ahora que se llama Vibe?",
+      "answer": "En los mismos canales oficiales de Mistral AI: la web chat.mistral.ai y las apps «Vibe by Mistral (ex-Le Chat)» de Google Play y App Store. Es el mismo producto con otro nombre; no necesitas buscar un instalador distinto."
+    },
+    {
+      "question": "¿Qué hago si la tienda muestra un nombre distinto al de esta ficha?",
+      "answer": "Comprueba el campo del editor: si figura Mistral AI, es la app de este editor aunque el nombre mostrado varíe (se han observado dos formulaciones del nombre en circulación). Si lo publica otro desarrollador, no es la app de Mistral AI, por mucho que use «Le Chat» o «Mistral» en el nombre."
     }
   ],
   "spanishSupport": "yes"
