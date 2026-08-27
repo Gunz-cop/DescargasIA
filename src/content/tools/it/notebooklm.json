@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Lo strumento di Google per riassumere, organizzare e studiare documenti con l'assistenza dell'IA.",
+  "longDescription": "NotebookLM è un servizio web di Google che usa modelli di intelligenza artificiale per aiutare a riassumere, spiegare e confrontare documenti che carichi. È pensato per lo studio, la ricerca e la preparazione di contenuti, con funzioni come riassunti, domande automatiche e audio overview.",
+  "bestFor": [
+    "Riassumere e organizzare documenti, appunti e articoli per studio o lavoro",
+    "Generare spiegazioni e domande a partire da fonti caricate",
+    "Creare audio overview per ascoltare i contenuti mentre si fa altro",
+    "Lavorare con materiale di ricerca mantenendo il riferimento alle fonti originali"
+  ],
+  "limitations": [
+    "È un servizio web: non c'è un'applicazione desktop o mobile nativa da scaricare.",
+    "Richiede un account Google e una connessione a internet.",
+    "Le funzioni gratuite hanno limiti; i dettagli sui piani dipendono dalle condizioni ufficiali di Google."
+  ],
+  "safetyNotes": [
+    "Accedi a NotebookLM dal punto di ingresso ufficiale notebooklm.google.com (gestito da Google; l'accesso può proseguire su notebook.google).",
+    "Non caricare documenti sensibili senza aver verificato le policy ufficiali su privacy e gestione dei dati.",
+    "Essendo un servizio Google, i dati caricati sono soggetti ai termini di Google."
+  ],
+  "editorialSummary": "NotebookLM è lo strumento di Google per studiare e riassumere documenti con l'IA. Funziona nel browser e richiede un account Google. Questa scheda rimanda al punto di ingresso ufficiale notebooklm.google.com, senza offrire installer o mirror di terze parti.",
+  "editorialSections": [
+    {
+      "heading": "Cos'è NotebookLM",
+      "body": "NotebookLM è un servizio di Google che ti aiuta a studiare documenti usando l'intelligenza artificiale. Invece di farti leggere tutto manualmente, puoi caricare fonti e chiedere a NotebookLM di riassumerle, spiegarle, confrontarle o generare domande di verifica. È particolarmente utile per studenti, ricercatori e professionisti che devono lavorare con molto materiale scritto.\n\nA differenza di un assistente conversazionale generico, NotebookLM si concentra sulle fonti che gli fornisci. Non naviga liberamente su internet, ma ragiona sui documenti che hai caricato. Questo lo rende più affidabile quando devi studiare un testo specifico, anche se non sostituisce la lettura critica delle fonti originali."
+    },
+    {
+      "heading": "Come iniziare dal canale ufficiale",
+      "body": "Il punto di ingresso ufficiale è notebooklm.google.com. Da lì puoi accedere con il tuo account Google, creare un quaderno e iniziare a caricare file o collegare documenti da Google Drive. Non è necessario installare nulla: funziona direttamente nel browser.\n\nIn alcune sessioni o regioni, l'accesso a notebooklm.google.com può proseguire verso notebook.google o presentarsi come Gemini Notebook. In ogni caso, l'origine corretta è il dominio gestito da Google. Se trovi siti che offrono app, installer o versioni modificate di NotebookLM, trattali con estrema cautela."
+    },
+    {
+      "heading": "Riassunti e fonti",
+      "body": "Una volta caricati i documenti, NotebookLM può generare riassunti, estrarre concetti chiave e rispondere a domande basandosi esclusivamente sulle fonti che hai fornito. Questo è utile quando devi preparare una presentazione, studiare per un esame o confrontare più articoli sullo stesso argomento.\n\nLa caratteristica importante è che ogni risposta rimanda alle fonti originali. Non devi fidarti ciecamente dell'IA: puoi aprire il riferimento e verificare direttamente cosa dice il documento. Questo approccio lo rende più trasparente di un chatbot generico che non mostra da dove trae le informazioni."
+    },
+    {
+      "heading": "Audio overview e studio",
+      "body": "NotebookLM include una funzione chiamata Audio Overview, che trasforma i tuoi documenti in un episodio audio simile a un podcast. Il contenuto viene riassunto e discusso da due voci sintetiche, come se fossero due persone che parlano del materiale che hai caricato. È utile per ripassare mentre cammini, guidi o fai altre attività.\n\nÈ importante ricordare che l'audio è generato dall'IA e può semplificare o interpretare il contenuto. Non sostituisce la lettura del documento originale, specialmente per materiale tecnico o giuridico. Usalo come supporto allo studio, non come unica fonte."
+    },
+    {
+      "heading": "Privacy dei documenti",
+      "body": "I documenti caricati su NotebookLM sono gestiti da Google. Ciò significa che devi applicare le stesse cautele che usi per Google Drive o altri servizi Google: evita di caricare dati personali, medici, legali o aziendali riservati senza aver verificato le policy ufficiali e senza l'autorizzazione del titolare dei dati.\n\nGoogle pubblica le proprie informative su privacy e termini d'uso. Prima di caricare materiale sensibile, leggi cosa succede con i tuoi file. DescargasIA non memorizza i tuoi documenti né offre accesso al servizio: ti indica solo il canale ufficiale per usarlo."
+    }
+  ],
+  "faq": [
+    {
+      "question": "NotebookLM è gratuito?",
+      "answer": "Ha un piano gratuito. Verifica limiti, piani a pagamento e termini aggiornati sul sito ufficiale notebooklm.google.com."
+    },
+    {
+      "question": "Funziona in italiano?",
+      "answer": "NotebookLM supporta più lingue. Conferma le lingue disponibili e la qualità del supporto per l'italiano sulla documentazione ufficiale."
+    },
+    {
+      "question": "I miei documenti sono al sicuro?",
+      "answer": "La gestione dei dati è di Google. Consulta l'informativa privacy ufficiale prima di caricare documenti sensibili."
+    },
+    {
+      "question": "Devo installare NotebookLM?",
+      "answer": "No, NotebookLM è un servizio web. Accedi dal punto di ingresso ufficiale notebooklm.google.com con il tuo account Google, senza scaricare installer."
+    }
+  ],
+  "italianSupport": "partial"
+}

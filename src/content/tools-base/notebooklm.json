@@ -1,15 +1,15 @@
 {
   "name": "NotebookLM",
-  "officialWebsite": "https://notebooklm.google",
+  "officialWebsite": "https://notebooklm.google.com",
   "categories": [
     "productividad-presentaciones-ia"
   ],
   "platforms": {
     "web": {
-      "url": "https://notebooklm.google",
+      "url": "https://notebooklm.google.com",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-27"
     }
   },
   "pricingModel": "free",
@@ -30,8 +30,9 @@
   "screenshotUrl": null,
   "initials": "NL",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-12",
+  "lastReviewed": "2026-08-27",
   "officialSources": [
+    "https://notebooklm.google.com",
     "https://notebooklm.google"
   ]
 }

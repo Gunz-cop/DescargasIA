@@ -1,0 +1,62 @@
+{
+  "shortDescription": "Strumento open source per eseguire modelli di linguaggio direttamente sul tuo computer, in locale e senza inviare dati al cloud.",
+  "longDescription": "Ollama è uno strumento open source per scaricare ed eseguire modelli di intelligenza artificiale in locale sul proprio PC. Funziona principalmente da riga di comando e offre un'API compatibile con OpenAI, permettendo di integrare modelli locali in applicazioni proprie o di collegare interfacce grafiche come Open WebUI.",
+  "bestFor": [
+    "Eseguire modelli di linguaggio in locale per mantenere i dati sul proprio dispositivo",
+    "Sperimentare con modelli open source come Llama, Gemma, Mistral o Phi senza abbonamenti",
+    "Integrare modelli locali in applicazioni proprie tramite l'API compatibile con OpenAI",
+    "Lavorare con dati sensibili che non possono lasciare il proprio computer o organizzazione"
+  ],
+  "limitations": [
+    "È uno strumento a riga di comando: non ha un'interfaccia grafica pronta all'uso senza configurazioni aggiuntive.",
+    "Le prestazioni dipendono fortemente dall'hardware; i modelli grandi richiedono molta RAM o una GPU dedicata.",
+    "Non include un'app ufficiale per dispositivi mobili."
+  ],
+  "safetyNotes": [
+    "Scarica Ollama solo da ollama.com o dal repository ufficiale github.com/ollama/ollama.",
+    "Non usare installer di terze parti. I modelli locali richiedono risorse hardware: verifica i requisiti prima di installarli.",
+    "Se esponi Ollama oltre il tuo computer locale, proteggilo con un proxy inverso e autenticazione."
+  ],
+  "editorialSummary": "Ollama è diventato uno dei modi più diretti per eseguire modelli di linguaggio sul proprio computer, riducendo l'installazione e la gestione dei modelli a pochi comandi. Questa scheda rimanda solo al canale ufficiale, evidenziando che si tratta di una soluzione tecnica pensata per chi vuole controllo e privacy sui propri dati.",
+  "editorialSections": [
+    {
+      "heading": "Cos'è Ollama e a cosa serve",
+      "body": "Ollama risponde a un bisogno preciso: eseguire modelli di linguaggio direttamente sul tuo computer, senza inviare dati a server esterni, senza limiti di utilizzo legati a un abbonamento e senza dipendere da una connessione per ogni richiesta. Chi cerca \"installare Llama in locale\", \"Ollama Windows\" o \"modelli IA offline\" di solito è uno sviluppatore, un ricercatore o un utente tecnico che vuole sperimentare con l'IA senza passare per servizi cloud commerciali.\n\nA differenza di ChatGPT, Claude o Gemini, Ollama non è un'interfaccia di chat: è uno strumento da terminale che gestisce modelli localmente. Questo significa che il flusso d'uso è diverso e più tecnico. Se cerchi un'app di IA semplice da usare nel browser, probabilmente stai cercando un'altra scheda. Se vuoi invece far girare Llama, Mistral, Gemma o Phi sul tuo hardware, Ollama è una delle strade più pulite."
+    },
+    {
+      "heading": "Installazione dalla fonte ufficiale",
+      "body": "Ollama si distribuisce da ollama.com, che è l'unico canale ufficiale per gli installer. Il programma è disponibile per macOS, Windows e Linux. Su macOS l'installazione avviene come una normale app; su Windows è un eseguibile di installazione; su Linux è documentato uno script ufficiale. Il processo è ben documentato e non richiede configurazioni complesse per iniziare.\n\nIl punto di attenzione specifico con Ollama è dato proprio dalla sua natura open source e popolare: esistono fork, mirror e redistribuzioni che non sono il progetto ufficiale. La referenza corretta è sempre ollama.com per gli installer e github.com/ollama/ollama per il codice sorgente. Qualsiasi eseguibile che non proviene da queste due fonti va trattato con cautela."
+    },
+    {
+      "heading": "Primi passi: scaricare un modello",
+      "body": "Una volta installato, Ollama funziona come un server locale che gestisce i modelli. Con un comando come `ollama run llama3` puoi scaricare ed eseguire il modello Llama 3 direttamente sulla tua macchina. Il catalogo disponibile include modelli di Meta, Google, Microsoft, Mistral AI e molti altri, in varianti di dimensioni diverse in base alla memoria disponibile.\n\nOllama espone anche un'API locale compatibile con il formato di OpenAI. Questo significa che puoi collegarlo a client desktop come Open WebUI per avere un'interfaccia grafica, oppure integrarlo in applicazioni proprie che già usano l'API di ChatGPT. Quella compatibilità lo rende una componente flessibile per chi costruisce su modelli di linguaggio."
+    },
+    {
+      "heading": "Ollama e la privacy dei dati",
+      "body": "Eseguendo i modelli in locale, i dati non lasciano il dispositivo, salvo configurazioni esplicite. Questo è particolarmente rilevante in Italia, dove le preoccupazioni sulla privacy sono una delle principali barriere all'adozione dell'IA. Per questo motivo le ricerche legate a \"IA locale per la privacy\" puntano spesso a strumenti come Ollama.\n\nLa configurazione di default di Ollama ascolta solo su localhost, cioè non è raggiungibile da internet. Se però modifichi questa impostazione per accedere da un altro dispositivo della rete, potresti esporre il server senza autenticazione. In tal caso è indispensabile aggiungere un proxy inverso con autenticazione, invece di lasciare Ollama accessibile direttamente."
+    },
+    {
+      "heading": "Ollama o LM Studio?",
+      "body": "Ollama e LM Studio coprono lo stesso caso d'uso — eseguire modelli locali — ma con approcci diversi. Ollama è pensato per chi è a suo agio con la riga di comando e vuole un server leggero, integrabile con altri strumenti. LM Studio offre invece un'interfaccia grafica completa, utile per chi preferisce non digitare comandi.\n\nPuoi anche usarli insieme: alcuni utenti gestiscono i modelli con Ollama e poi li consumano attraverso interfacce di terze parti. Entrambi hanno canali ufficiali di download che questa scheda rimanda. La scelta dipende dal tuo livello di familiarità con la riga di comando e da quanto controllo vuoi avere sul backend."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Serve una GPU per usare Ollama?",
+      "answer": "Ollama può usare CPU o GPU: le prestazioni dipendono dal modello e dall'hardware. I modelli piccoli girano anche con 8 GB di RAM, mentre quelli grandi richiedono GPU dedicate o molta memoria. Verifica i requisiti nella documentazione ufficiale."
+    },
+    {
+      "question": "Ollama è gratuito?",
+      "answer": "Sì, Ollama è open source e gratuito. Non richiede account né abbonamento per installarlo o eseguire modelli. I dettagli sui termini sono sul sito ufficiale."
+    },
+    {
+      "question": "I miei dati restano sul mio PC?",
+      "answer": "Sì, eseguendo i modelli in locale i dati non lasciano il dispositivo, salvo configurazioni esplicite che tu abbia attivato. Conferma sempre le impostazioni sulla documentazione ufficiale."
+    },
+    {
+      "question": "Dove scarico Ollama in modo sicuro?",
+      "answer": "L'unico canale ufficiale è ollama.com. Il codice sorgente è disponibile su github.com/ollama/ollama. Non usare eseguibili da repository non elencati sul sito ufficiale."
+    }
+  ],
+  "italianSupport": "no"
+}

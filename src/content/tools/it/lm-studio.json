@@ -1,0 +1,61 @@
+{
+  "shortDescription": "Interfaccia grafica per scaricare ed eseguire modelli di IA in locale, senza dover usare la riga di comando.",
+  "longDescription": "LM Studio è un'applicazione desktop che permette di cercare, scaricare ed eseguire modelli di intelligenza artificiale direttamente sul proprio computer tramite un'interfaccia grafica. È pensata per chi vuole lavorare con modelli locali senza dover gestire comandi da terminale.",
+  "bestFor": [
+    "Usare modelli di linguaggio in locale con un'interfaccia grafica invece della riga di comando",
+    "Sperimentare facilmente diversi modelli open source senza configurazioni complesse",
+    "Chattare con modelli locali mantenendo i dati sul proprio dispositivo",
+    "Avvicinarsi all'IA locale senza competenze tecniche avanzate di terminale"
+  ],
+  "limitations": [
+    "Richiede risorse hardware sufficienti; i modelli grandi non girano bene su computer con poca RAM o senza GPU.",
+    "È un'applicazione desktop, non un servizio web o mobile.",
+    "Alcune funzioni avanzate possono essere limitate rispetto a soluzioni solo terminale."
+  ],
+  "safetyNotes": [
+    "Scarica LM Studio solo da lmstudio.ai, il sito ufficiale.",
+    "Evita pacchetti non ufficiali, installer modificati o versioni condivise su forum di terze parti."
+  ],
+  "editorialSummary": "LM Studio rende l'IA locale accessibile a chi preferisce un'interfaccia grafica. A differenza di Ollama, non richiede la riga di comando per scaricare modelli o avviare una chat. Questa scheda rimanda al canale ufficiale lmstudio.ai e chiarisce quando ha senso sceglierlo rispetto a strumenti simili.",
+  "editorialSections": [
+    {
+      "heading": "Cos'è LM Studio",
+      "body": "LM Studio è un'applicazione desktop che ti permette di cercare, scaricare e far girare modelli di linguaggio sul tuo computer. A differenza di altri strumenti locali che si usano principalmente da terminale, LM Studio offre un'interfaccia grafica completa: puoi sfogliare un catalogo di modelli, scaricarli, avviare una chat e regolare i parametri senza scrivere codice.\n\nChi cerca \"LM Studio\", \"interfaccia grafica per modelli locali\" o \"IA locale senza comandi\" di solito vuole la privacy dell'esecuzione locale, ma non ha voglia o esperienza per gestire server e script. LM Studio è pensato proprio per questo pubblico: abbassa la barriera tecnica dell'IA locale mantenendo i dati sul dispositivo."
+    },
+    {
+      "heading": "Installazione ufficiale",
+      "body": "LM Studio si scarica dal sito ufficiale lmstudio.ai, che rileva il sistema operativo e propone la versione per Windows, macOS o Linux. L'installazione segue il solito flusso di un'applicazione desktop: scarichi il file, lo avvii e segui le istruzioni. Non è necessario configurare manualmente dipendenze o ambienti di sviluppo.\n\nCome sempre quando si installa software che avrà accesso ai file e potenzialmente ai dati del tuo computer, è importante scaricarlo solo dalla fonte ufficiale. Non usare mirror, versioni precompilate su siti di download di terze parti o pacchetti condivisi in forum non verificati."
+    },
+    {
+      "heading": "Scaricare e avviare un modello",
+      "body": "Dopo aver aperto LM Studio, puoi cercare un modello nel catalogo integrato, scaricarlo con un clic e avviare una chat. L'applicazione gestisce in automatico la memoria richiesta e avvisa se il modello scelto è troppo grande per il tuo hardware. Puoi anche importare modelli che hai già scaricato in altri formati compatibili.\n\nQuesto flusso è molto diverso da Ollama, dove devi conoscere il nome del modello e lanciare comandi da terminale. Con LM Studio il percorso è più simile a quello di un'app di chat tradizionale, con il vantaggio che tutto gira in locale e non serve registrarsi."
+    },
+    {
+      "heading": "LM Studio vs Ollama",
+      "body": "LM Studio e Ollama risolvono lo stesso problema in modi diversi. Ollama è più leggero e pensato per chi è a suo agio con la riga di comando o vuole integrare modelli locali in altri progetti. LM Studio è più indicato se vuoi un'esperienza visiva, se stai iniziando con l'IA locale o se preferisci concentrarti sul contenuto della conversazione anziché sulla gestione del backend.\n\nLa scelta dipende dal tuo stile di lavoro. Se vuoi un server locale che altre app possano consumare, Ollama è più flessibile. Se vuoi un'applicazione completa con cui chattare subito, LM Studio è probabilmente la strada più rapida."
+    },
+    {
+      "heading": "Privacy dei dati locali",
+      "body": "Far girare i modelli in locale significa che i tuoi dati non lasciano il computer, a meno che tu non attivi esplicitamente funzioni di sincronizzazione o aggiornamento che richiedano una connessione. Anche in questo caso vale la regola di controllare sempre le impostazioni e la documentazione ufficiale dello strumento.\n\nPer chi in Italia considera la privacy una barriera all'uso dell'IA, strumenti come LM Studio sono un'opzione concreta. Non eliminano la necessità di hardware adeguato, ma offrono un buon compromesso tra facilità d'uso e controllo dei dati."
+    }
+  ],
+  "faq": [
+    {
+      "question": "LM Studio è gratuito?",
+      "answer": "LM Studio è gratuito per uso personale secondo i termini ufficiali. Verifica i dettagli e le eventuali condizioni commerciali direttamente su lmstudio.ai."
+    },
+    {
+      "question": "Posso usarlo senza comandi?",
+      "answer": "Sì, LM Studio ha un'interfaccia grafica completa. Questo lo distingue da soluzioni solo terminale come Ollama, che richiedono la riga di comando per gestire modelli e conversazioni."
+    },
+    {
+      "question": "I modelli restano sul mio PC?",
+      "answer": "Sì, i modelli girano in locale: i tuoi dati non vengono inviati a server esterni durante la conversazione. Per i dettagli sulla privacy e su eventuali connessioni opzionali, consulta la documentazione ufficiale."
+    },
+    {
+      "question": "Dove scarico LM Studio in modo sicuro?",
+      "answer": "L'unico canale ufficiale è lmstudio.ai. Scarica sempre da lì e evita pacchetti non ufficiali o modificati condivisi su siti di terze parti."
+    }
+  ],
+  "italianSupport": "no"
+}

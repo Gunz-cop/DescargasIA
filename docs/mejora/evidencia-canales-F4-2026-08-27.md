@@ -3,8 +3,8 @@
 **Fecha de comprobación:** 2026-08-27  
 **Responsable:** Codex  
 **Rama de origen del catálogo:** main  
-**Fuente del catálogo:** src/content/tools-base/*.json  
-**Alcance:** character-ai, perplexity, ollama, cursor, stable-diffusion y mistral-vibe.
+**Fuente del catálogo:** `src/content/tools-base/*.json`  
+**Alcance:** character-ai, perplexity, ollama, cursor, stable-diffusion, mistral-vibe (F4-ES), lm-studio, grok y notebooklm (F4-IT).
 
 ## Método y límite
 
@@ -15,10 +15,12 @@ Esta tabla demuestra el canal observado en la fecha indicada. No demuestra segur
 ## Resumen
 
 | Resultado | Filas |
-|---|---:|
-| Verificado | 21 |
-| Discrepancia de catálogo | 1 (ollama / mac) |
-| Total de filas | 22 |
+|---|---|---:|
+| Verificado | 30 |
+| Discrepancia de catálogo | 0 |
+| Total de filas | 30 |
+
+Nota histórica: durante F4-IT se resolvió la discrepancia de Ollama/mac (blocker #60): el catálogo actualizó su URL de `Ollama-darwin.zip` a `Ollama.dmg`. El estado canónico vigente en esta fecha aparece en la fila Ollama/mac de este documento.
 
 «Verificado» significa que la URL abrió o fue enlazada directamente desde la fuente oficial y que el canal observado coincide con el tipo del catálogo. En stable-diffusion, significa que el repositorio fuente del proyecto o implementación indicado existe y coincide con el tipo github-repo; no afirma que esos repositorios pertenezcan a Stability AI.
 
@@ -51,12 +53,12 @@ Fuentes observadas: https://www.perplexity.ai, https://apps.microsoft.com/detail
 |---|---|---|---|---|---|
 | web | https://ollama.com | official-site | La página abre como «Ollama» y enlaza a Download dentro del dominio oficial. | Ollama Inc. | Verificado: official-site |
 | windows | https://ollama.com/download/OllamaSetup.exe | official-installer | La página oficial Download Ollama muestra «Download for Windows» y enlaza exactamente a OllamaSetup.exe. La apertura del binario redirige a un asset de release con ese nombre; el binario no se descarga en la evidencia. | Ollama | Verificado: official-installer |
-| mac | https://ollama.com/download/Ollama-darwin.zip | official-installer | La página oficial actual Download Ollama muestra «Download for macOS» y enlaza a https://ollama.com/download/Ollama.dmg. No enlaza la URL declarada Ollama-darwin.zip. | Ollama | NO COINCIDE: blocker #60 |
+| mac | https://ollama.com/download/Ollama.dmg | official-installer | La página oficial actual Download Ollama / macOS enlaza a https://ollama.com/download/Ollama.dmg; la petición a esa URL devuelve el binario del instalador. | Ollama | Verificado: official-installer |
 | linux | https://ollama.com/download/linux | documentation | La página abre como «Download Ollama», muestra el comando de instalación Linux y enlaza a instrucciones manuales y documentación. | Ollama | Verificado: documentation |
 
-Fuentes observadas: https://ollama.com, https://ollama.com/download, https://ollama.com/download/windows, https://ollama.com/download/mac, https://ollama.com/download/linux.
+Fuentes observadas: https://ollama.com, https://ollama.com/download, https://ollama.com/download/mac, https://ollama.com/download/linux.
 
-La fila macOS queda bloqueada y no autoriza copy ni modificación de tools-base.
+**Nota histórica:** la URL anterior declarada en `tools-base` para macOS era `Ollama-darwin.zip` y no coincidía con la descarga oficial vigente (`Ollama.dmg`). Este cambio quedó registrado en el blocker #60 y se resolvió dentro de la entrega de F4-IT.
 
 ### cursor
 
@@ -92,12 +94,45 @@ Alcance editorial: estos repositorios son fuentes de los proyectos o implementac
 
 Fuentes observadas: https://chat.mistral.ai, https://play.google.com/store/apps/details?id=ai.mistral.chat, https://apps.apple.com/us/app/vibe-by-mistral-ex-le-chat/id6740410176.
 
+### lm-studio
+
+| Plataforma | URL declarada | Tipo declarado | Observación directa | Editor o proyecto observado | Resultado |
+|---|---|---|---|---|---|
+| web | https://lmstudio.ai | official-site | La página abre como «LM Studio Bionic - Agent for Work and Code», ofrece descarga del producto y enlaces a documentación. | Element Labs, Inc. / LM Studio | Verificado: official-site |
+| windows | https://lmstudio.ai | official-site | La página principal enlaza a descarga y documentación; se considera punto de entrada verificado. | Element Labs, Inc. / LM Studio | Verificado: official-site |
+| mac | https://lmstudio.ai | official-site | La página principal enlaza a descarga y documentación; se considera punto de entrada verificado. | Element Labs, Inc. / LM Studio | Verificado: official-site |
+| linux | https://lmstudio.ai | official-site | La página principal enlaza a descarga y documentación; se considera punto de entrada verificado. | Element Labs, Inc. / LM Studio | Verificado: official-site |
+
+Fuentes observadas: https://lmstudio.ai.
+
+### grok
+
+| Plataforma | URL declarada | Tipo declarado | Observación directa | Editor o proyecto observado | Resultado |
+|---|---|---|---|---|---|
+| web | https://grok.com | web-app | La página abre como «Grok» y muestra el acceso al servicio dentro del dominio oficial de xAI. | xAI / Grok | Verificado: web-app |
+| android | https://play.google.com/store/apps/details?id=ai.x.grok | app-store | Google Play muestra «Grok AI» y el editor «xAI». | xAI | Verificado: app-store |
+| ios | https://apps.apple.com/us/app/grok/id6670324846 | app-store | App Store muestra «Grok AI» y el desarrollador «X Corp.». | X Corp. / xAI | Verificado: app-store |
+
+Fuentes observadas: https://grok.com, https://play.google.com/store/apps/details?id=ai.x.grok, https://apps.apple.com/us/app/grok/id6670324846.
+
+Nota: `x.com/i/grok` es la integración de Grok dentro de X y también representa un punto de acceso oficial; se incluye en `officialSources` de `tools-base/grok.json` como ruta alternativa verificable.
+
+### notebooklm
+
+| Plataforma | URL declarada | Tipo declarado | Observación directa | Editor o proyecto observado | Resultado |
+|---|---|---|---|---|---|
+| web | https://notebooklm.google.com | web-app | El punto de entrada `notebooklm.google.com` resuelve a una página de inicio de sesión de Google Accounts, perteneciente al servicio NotebookLM. | Google LLC | Verificado: web-app |
+
+Fuentes observadas: https://notebooklm.google.com.
+
+Nota: el dominio `notebooklm.google.com` redirige funcionalmente hacia `notebook.google.com`/flujos de inicio de sesión. Ambos dominios pertenecen a Google.
+
 ## Decisiones derivadas
 
-1. Las filas verificadas pueden usarse como evidencia de canal para la redacción de F4, siempre que la ficha no afirme más de lo observado y conserve la fecha.
-2. La fila ollama/mac no puede usarse hasta resolver el blocker #60 y actualizar o verificar el catálogo.
+1. Las filas verificadas pueden usarse como evidencia de canal para la redacción de F4-ES, F4-SV y F4-IT, siempre que la ficha no afirme más de lo observado y conserve la fecha.
+2. La fila Ollama/mac se encuentra en estado canónico verificado con `Ollama.dmg`; el cambio histórico desde `Ollama-darwin.zip` queda consignado en la nota histórica del blocker #60.
 3. La evidencia de stable-diffusion se limita a repositorios de implementaciones o proyectos; no debe transformarse en una afirmación de afiliación con Stability AI.
-4. F4 no modifica src/content/tools-base/ como parte de la redacción. Los cambios de catálogo requieren una decisión o issue propio.
+4. F4 no modifica `src/content/tools-base/` como parte de la redacción. Los cambios de catálogo requieren una decisión o issue propio.
 5. La verificación es fechada y debe repetirse si la implementación se retrasa o si se observa un cambio de destino.
 
 ## Consumo por F4
