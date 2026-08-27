@@ -194,8 +194,15 @@ Antes de escribir una sola frase sobre canales, la sesión de F4-ES:
 modificados, sin claims de seguridad, auditorías, afiliaciones o endorsements.
 
 - Los `safetyNotes` describen **hechos observables del canal** («esta app de la
-  tienda la publica X», «el editor no distribuye instalador de escritorio»), no
-  valoraciones legales ni de cifrado.
+  tienda la publica X», «el catálogo no declara ningún canal de escritorio
+  verificado para esta herramienta»), no valoraciones legales ni de cifrado.
+- **La ausencia no se afirma como inexistencia.** Que `platforms` no declare
+  `windows`, `mac` o `linux` demuestra que **el catálogo no tiene un canal de
+  escritorio declarado y verificado**, no que el producto no exista. El copy
+  solo puede afirmar lo primero. Una afirmación absoluta («no hay aplicación de
+  escritorio») requiere una verificación explícita en la fuente oficial,
+  registrada con URL y fecha en el PR del lote; sin ella, se escribe la forma
+  acotada.
 - Un portal de terceros observado en la SERP se puede describir como categoría
   («portales que redistribuyen el binario») sin enlazarlo ni recomendarlo.
 - Toda afirmación sobre una app homónima de tienda debe poder comprobarse en la
@@ -264,6 +271,21 @@ Regla común, particularizada en cada hija:
 - Mientras #36 y #50 sigan abiertos, **ningún lote puede declarar éxito
   medido**. Puede declarar entrega verificada, que es otra cosa.
 
+### 9. Ninguna spec ordena un comando destructivo
+
+El checkout puede estar compartido con otra sesión: durante la propia
+ejecución de F3-ES, otra sesión cambió de rama en el mismo directorio de
+trabajo. En consecuencia:
+
+- ninguna spec de esta serie puede exigir `git reset --hard`, `git clean -fd`,
+  `git checkout -f`, borrado de ramas ni force-push como parte de un criterio o
+  de una instrucción;
+- las pruebas con dato inválido **no mutan el repositorio**: escriben una
+  fixture en el directorio temporal del sistema (`os.tmpdir()`) y ejecutan
+  sobre ella el mismo comprobador o el validador real, borrándola después;
+- si una sesión necesita otra rama sin desalojar a quien está trabajando en el
+  checkout, usa `git worktree add` en un directorio aparte.
+
 ## Instrucciones
 
 1. Lee `docs/mejora/research/es.md` entero antes de ejecutar cualquier lote: la
@@ -307,7 +329,7 @@ Regla común, particularizada en cada hija:
 - [ ] `node -e "const fs=require('fs');for(const s of ['character-ai','perplexity','ollama','cursor','stable-diffusion','mistral-vibe','lm-studio']){if(!fs.existsSync('src/content/tools-base/'+s+'.json'))process.exit(1);if(!fs.existsSync('src/content/tools/es/'+s+'.json'))process.exit(1);}"` sale 0 — todo slug citado por estas specs existe en ambos lados del catálogo.
 - [ ] `node -e "const fs=require('fs');const d='docs/mejora/specs/es';const mal=fs.readdirSync(d).filter(f=>{const t=fs.readFileSync(d+'/'+f,'utf8');return !t.includes('src/content/tools-base/')||!t.includes('PROTEGIDOS')});process.exit(mal.length?1:0)"` sale 0 — cada spec hija declara sus protegidos y nombra explícitamente el lado `tools-base`.
 - [ ] `node -e "const {execSync}=require('child_process');const out=execSync('git diff --name-only origin/main...HEAD').toString().split('\n').filter(Boolean);process.exit(out.every(f=>f.startsWith('docs/mejora/specs/'))?0:1)"` sale 0 — el diff de esta fase no toca nada fuera de `docs/mejora/specs/`.
-- [ ] `[manual]` Prueba con dato inválido del criterio anterior: 1. `git commit --allow-empty -m tmp` y crea `src/content/tools/es/_tmp-f3.json` con `{}` y `git add -f src/content/tools/es/_tmp-f3.json && git commit -m tmp2`; 2. repite el comando del criterio anterior; 3. resultado esperado: sale 1 porque el diff incluye un archivo fuera de `docs/mejora/specs/`; 4. deshaz con `git reset --hard HEAD~2` y borra el archivo.
+- [ ] `node -e "const fs=require('fs'),os=require('os'),p=require('path'),{spawnSync}=require('child_process');const d=fs.mkdtempSync(p.join(os.tmpdir(),'f3es-'));fs.writeFileSync(p.join(d,'F9-rota.md'),'# F9 rota\n\n## Objetivo\n\n## Criterios de aceptación\n\n- [ ] la UI se ve bien\n');const r=spawnSync(process.execPath,['.claude/skills/sdd-fases/scripts/audit-specs.mjs',d]);fs.rmSync(d,{recursive:true,force:true});process.exit(r.status===1?0:1)"` sale 0 — **prueba con dato inválido**: sobre una spec rota escrita en el directorio temporal del sistema, el validador real (`audit-specs.mjs`, el mismo del primer criterio) sale 1 por secciones ausentes y criterio no ejecutable. No toca el repositorio ni el índice de git.
 
 ## Riesgos conocidos
 
