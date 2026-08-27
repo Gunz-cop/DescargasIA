@@ -65,7 +65,7 @@ no se esquiva el límite.
 |---|---|---|
 | Alcance geográfico inicial de `es` (un país o hispanohablante multi-país) | F2-ES/Codex antes de seleccionar oportunidades | Research y prioridades españolas |
 | Proveedor y formato de medición del funnel | F1/Codex | Instrumentación y comparación postpublicación |
-| Si las guías de intención necesitan una ruta pública antes de desbloquearse | F3/Codex | Cualquier guía nueva |
+| Ruta pública para guías de intención | Se habilita mediante una fase común previa, con contrato propio de rutas, SEO, enlazado, sitemap y medición; no se publica contenido en esa fase. | F4-SV (#43) y cualquier guía futura |
 | Permisos y política de los workflows de GitHub Actions para esta serie | Codex antes de automatizar | CI o arnés adicional |
 
 No se rellenan estas celdas con un proveedor, país, URL o credencial
@@ -80,3 +80,4 @@ que la fase bloqueada la use.
 | 2026-08-26 | F0 | Los issues de GitHub y sus etiquetas son el estado operativo. | El plan maestro no debe mantener una segunda tabla de estado. |
 | 2026-08-27 | F0 | `main` es la rama de integración de esta serie. | Fija un único destino de integración para los PRs de F1–F7 y evita que cada fase invente una rama base distinta. |
 | 2026-08-27 | Codex/F4 | Se adopta la tabla versionada de evidencia directa como entrada autorizada para la verificación de canales. | Las sesiones ejecutoras no pueden abrir los dominios oficiales; la tabla conserva URL, fecha, editor/proyecto, tipo observado y discrepancias. La fila ollama/mac queda bloqueada por #60. |
+| 2026-08-27 | Codex | Se decide crear una ruta pública para guías localizadas como fase previa a F4-SV. | La colección `guides` ya existe y la lógica del sitemap anticipa `/{lang}/guias/{slug}`, pero no hay ruta; publicar contenido antes de resolver canonical, hreflang, sitemap y enlazado produciría páginas sin contrato SEO. |
