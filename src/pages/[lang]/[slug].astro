@@ -625,4 +625,39 @@ const metaChips = [
       </p>
     </section>
   )}
+
+  <script is:inline define:vars={{ lang, toolSlug: tool.slug, primaryPlatformId: primaryPlatform?.id ?? null, primaryChannel: primaryPlatform?.type ?? 'web-app' }}>
+    (() => {
+      function dispatch(detail) {
+        window.dispatchEvent(new CustomEvent('fuenteai:funnel', { detail }));
+      }
+
+      dispatch({
+        event: 'ficha_view',
+        lang: lang,
+        tool: toolSlug,
+        platform: primaryPlatformId,
+        channel: primaryChannel
+      });
+
+      document.querySelectorAll('#compatibilidad a[href*="/r?"]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          try {
+            var href = new URL(btn.href);
+            var p = href.searchParams.get('p');
+            var channel = 'web-app';
+            var platforms = { web: 'web-app', windows: 'official-installer', mac: 'official-installer', linux: 'official-installer', android: 'app-store', ios: 'app-store' };
+            if (p && platforms[p]) channel = platforms[p];
+            dispatch({
+              event: 'platform_select',
+              lang: lang,
+              tool: toolSlug,
+              platform: p || null,
+              channel: channel
+            });
+          } catch (e) { /* ignore */ }
+        });
+      });
+    })();
+  </script>
 </BaseLayout>

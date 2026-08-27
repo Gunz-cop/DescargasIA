@@ -232,6 +232,11 @@ const toolsDb = baseTools.reduce((acc, tool) => {
           content.hidden = false;
           errorBox.hidden = true;
 
+          // F1 — emitir redirect_start cuando la validación es exitosa
+          window.dispatchEvent(new CustomEvent('fuenteai:funnel', {
+            detail: { event: 'redirect_start', lang: lang, tool: toolId, platform: platformId || null, channel: tool && tool.platforms[platformId] ? (function() { var types = { web: 'web-app', windows: 'official-installer', mac: 'official-installer', linux: 'official-installer', android: 'app-store', ios: 'app-store' }; return types[platformId] || 'web-app'; })() : 'web-app', valid: true }
+          }));
+
           // Auto redirect: se mantiene la pantalla el tiempo suficiente para
           // registrar una impresión publicitaria válida antes de continuar.
           // El contador va arriba del anuncio, bien visible, para que quede
@@ -245,10 +250,27 @@ const toolsDb = baseTools.reduce((acc, tool) => {
           }, 1000);
 
           setTimeout(() => {
+            // F1 — emitir redirect_result cuando el timer completa
+            window.dispatchEvent(new CustomEvent('fuenteai:funnel', {
+              detail: { event: 'redirect_result', lang: lang, tool: toolId, platform: platformId || null, channel: tool && tool.platforms[platformId] ? (function() { var types = { web: 'web-app', windows: 'official-installer', mac: 'official-installer', linux: 'official-installer', android: 'app-store', ios: 'app-store' }; return types[platformId] || 'web-app'; })() : 'web-app', valid: true }
+            }));
             window.location.replace(targetUrl);
           }, REDIRECT_DELAY_SECONDS * 1000);
         } else {
           // Validation failed
+          // F1 — emitir redirect_error con la razón del fallo
+          var errorReason = 'missing_params';
+          if (!toolId || !lang) {
+            errorReason = 'missing_params';
+          } else if (!tool) {
+            errorReason = 'tool_not_found';
+          } else if (platformId && (!tool.platforms[platformId] || !tool.platforms[platformId].isOfficial)) {
+            errorReason = tool.platforms[platformId] ? 'not_official' : 'platform_not_found';
+          }
+          window.dispatchEvent(new CustomEvent('fuenteai:funnel', {
+            detail: { event: 'redirect_error', lang: lang || 'es', tool: toolId || '', platform: platformId || null, channel: 'web-app', valid: false, reason: errorReason }
+          }));
+
           document.title = t.errorTitle + ' | FuenteAI';
           errTitle.textContent = t.errorTitle;
           errDesc.textContent = t.errorDesc;
