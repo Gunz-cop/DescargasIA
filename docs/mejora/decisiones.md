@@ -21,6 +21,9 @@
 
 | Evidencia de canales F4 | Codex verifica directamente las URLs oficiales y versiona una tabla fechada en docs/mejora/evidencia-canales-F4-2026-08-27.md; F4 consume solo filas verificadas. | Las sesiones ejecutoras no tienen egress ni navegador suficiente para comprobar el canal y su tipo. |
 
+| Evidencia de Search Console | Los exports entregados por el propietario se ingieren como **evidencia derivada versionada y fechada** en `docs/mejora/evidencia/<fuente>-<fecha>/`, con procedencia, SHA-256 del archivo original y límites declarados. Los ZIP crudos no se versionan. | Un CSV suelto sin su periodo, su tipo de búsqueda y sus filtros se vuelve una cifra sin contrato en cuanto pasa una semana. El SHA-256 permite comprobar que el derivado corresponde al adjunto del issue. |
+| Alcance de lo que demuestra un export agregado | Un export de Search Console **sin filtro de página** aporta volumen por página y tendencia de propiedad, y **no** aporta consulta por ruta, país por producto lingüístico ni tendencia por URL. Afirmar cualquiera de esas tres exige un export nuevo con el filtro aplicado. | Las tablas del export son agregados por dimensión, no un cubo cruzado. Cruzarlas a mano produciría una atribución que el archivo no soporta. |
+
 ## Límites por producto
 
 | Área | Puede decidir | No puede heredar automáticamente |
@@ -58,6 +61,7 @@ de otro producto.
 | F5.1 | Común | `src/utils/guide-links.ts`, `src/utils/guides.ts`, `src/pages/[lang]/[slug].astro`, `src/i18n/ui.ts`, `tests/guias-fichas.test.ts`, `tests/guias-rutas.test.mjs`, `docs/ux-tool-pages.md`, `docs/enlazado-interno.md` | `src/content/tools-base/`, `src/content/tools/<lang>/`, `src/content/guides/`, `src/content.config.ts`, `public/robots.txt`, `public/_headers`, `.well-known/`, `/r`, canonical, hreflang y el selector de idioma |
 | F6 | Común | Informe de validación que su issue/spec enumere | Cualquier código o contenido que no esté bajo revisión explícita |
 | F7 | Común | `docs/mejora/seguimiento.md` | Código, contenido y conclusiones de otros productos no medidos |
+| Codex (ingesta de evidencia) | Común | `docs/mejora/evidencias.md` y `docs/mejora/evidencia/` | Cualquier documento de fase: la ingesta aporta la evidencia; la conclusión la escribe la fase propietaria |
 
 Regla de bloqueo: si una fase necesita editar un archivo que aparece como
 protegido, su spec está mal cortada. Se corrige la spec o se secuencia la fase;
@@ -67,7 +71,7 @@ no se esquiva el límite.
 
 | Decisión pendiente | Responsable de cerrarla | Bloquea |
 |---|---|---|
-| Alcance geográfico inicial de `es` (un país o hispanohablante multi-país) | F2-ES/Codex antes de seleccionar oportunidades | Research y prioridades españolas |
+| Alcance geográfico inicial de `es` (un país o hispanohablante multi-país) | F2-ES/Codex antes de seleccionar oportunidades | Research y prioridades españolas. **Sigue abierta tras la ingesta del 2026-08-28**: el export trae países de la propiedad completa, sin cruce con ruta ni idioma |
 | Proveedor y formato de medición del funnel | F1/Codex | Instrumentación y comparación postpublicación |
 | Permisos y política de los workflows de GitHub Actions para esta serie | Codex antes de automatizar | CI o arnés adicional |
 
@@ -89,3 +93,6 @@ que la fase bloqueada la use.
 | 2026-08-28 | Codex/F5.1 | La inversión reconoce exactamente dos formas de destino —`/{lang}/{slug}` y `/r?t={slug}&…&l={lang}`— y ninguna otra señal. | Las dos son declaraciones explícitas y no ambiguas del slug, producidas por `toolUrl()` y `redirectUrl()`. Resolver por `category`, `tags`, título o texto libre sería una heurística: produciría relaciones que ningún editor escribió, y `category` vale hoy el literal `"guias"` en las cinco guías. |
 | 2026-08-28 | Codex/F5.1 | No se añade `alternatives` por idioma, ni campo nuevo en el frontmatter de `guides`, ni ruta escrita a mano. | La relación es asimétrica por naturaleza (una guía es de un idioma) y ya está en el cuerpo; duplicarla en un campo obligaría a mantener dos verdades. Las URLs salen de `guideUrl()`/`guideIndexUrl()`, por la regla 1 de `docs/enlazado-interno.md`. |
 | 2026-08-28 | Codex/F5.1 | El bloque va al final de la ficha, antes de "sigue explorando", y no se renderiza si la lista está vacía. | La ficha resuelve primero "dónde descargo esto"; la guía es salida, no decisión. Un bloque vacío o un "todavía no hay guías" sería contenido delgado sin función. |
+| 2026-08-28 | Codex/#50 | Se ingieren los cuatro exports de Search Console del 2026-08-28 como evidencia derivada en `docs/mejora/evidencia/gsc-2026-08-28/` y se actualiza la sección de Search Console de la baseline. | El propietario los entregó en #50. El corte es de propiedad `fuenteai.com`, tipo de búsqueda `Web`, 2026-06-19 a 2026-08-26, sin ningún filtro de página, consulta, país o dispositivo. Se versiona el derivado y no el ZIP: conserva el dato y deja constancia del origen y su SHA-256. |
+| 2026-08-28 | Codex/#50 | #50 **no se cierra**. Queda acotado a tres faltas: export filtrado por `/es/`, cruce consulta × país y serie temporal por URL. | El export entregado desbloquea volumen por página y tendencia de propiedad, pero no permite atribuir ninguna consulta a una ruta `/es/*` ni medir una ficha concreta en el tiempo. Cerrar el blocker con esto daría por resuelto algo que el archivo no demuestra. |
+| 2026-08-28 | Codex/#50 | El «antes» de F7 para el producto `es` es la serie diaria de propiedad 2026-06-19 → 2026-08-26 (6.531 impresiones, 47 clics) más el corte por página de esa misma ventana. | Es la única línea base con periodo y filtros verificables hoy. F7 debe comparar contra ella declarando que la comparación es de propiedad, no de ficha, mientras no exista un export filtrado. |
