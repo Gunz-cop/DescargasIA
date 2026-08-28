@@ -62,6 +62,42 @@ export const EDITORIAL_TEAM = {
     },
     {
       heading: {
+        es: 'Cómo se revisa el texto antes de publicarse',
+        sv: 'Hur texten granskas innan publicering',
+        it: 'Come viene revisato il testo prima della pubblicazione'
+      },
+      body: {
+        es: 'Cada ficha se revisa con el criterio de un lector externo y escéptico, no con el de quien la escribió. Esa revisión mide cuánto se parece el texto al del resto del catálogo y a sí mismo, para que ninguna ficha sea una plantilla rellenada, y comprueba una por una que las fuentes citadas digan lo que la ficha les atribuye y que la fecha declarada coincida con la que publica la página citada. Una afirmación cuya fuente no la respalde se corrige o se elimina.',
+        sv: 'Varje sida granskas med en utomstående och skeptisk läsares måttstock, inte med skribentens. Granskningen mäter hur lik texten är resten av katalogen och sig själv, så att ingen sida blir en ifylld mall, och kontrollerar en i taget att de citerade källorna säger det som sidan tillskriver dem och att det angivna datumet stämmer med det som den citerade sidan publicerar. Ett påstående vars källa inte stödjer det rättas eller tas bort.',
+        it: 'Ogni scheda viene revisionata con il metro di un lettore esterno e scettico, non con quello di chi l\'ha scritta. La revisione misura quanto il testo somigli al resto del catalogo e a sé stesso, perché nessuna scheda sia un modello riempito, e verifica una per una che le fonti citate dicano ciò che la scheda attribuisce loro e che la data dichiarata coincida con quella pubblicata dalla pagina citata. Un\'affermazione che la sua fonte non sostiene viene corretta o rimossa.'
+      }
+    },
+    {
+      heading: {
+        es: 'Qué se comprueba en cada publicación',
+        sv: 'Vad som kontrolleras vid varje publicering',
+        it: 'Cosa viene controllato a ogni pubblicazione'
+      },
+      body: {
+        es: 'Ningún cambio llega al sitio sin pasar una batería de comprobaciones automáticas que lo bloquean si algo falla: fichas sin traducir o sin datos base, referencias a herramientas que no existen en el catálogo, enlaces internos rotos o que apuntan a una redirección, páginas que se quedan sin enlaces entrantes, y la coherencia de las etiquetas canonical y hreflang entre los tres idiomas. Si una sola de esas comprobaciones falla, la publicación se detiene.',
+        sv: 'Ingen ändring når webbplatsen utan att passera en uppsättning automatiska kontroller som stoppar den om något fallerar: sidor utan översättning eller utan grunddata, hänvisningar till verktyg som inte finns i katalogen, brutna interna länkar eller länkar som pekar på en omdirigering, sidor som blir utan inkommande länkar, och samstämmigheten mellan canonical- och hreflang-taggarna på de tre språken. Om en enda av dessa kontroller fallerar stoppas publiceringen.',
+        it: 'Nessuna modifica raggiunge il sito senza superare una serie di controlli automatici che la bloccano se qualcosa non torna: schede senza traduzione o senza dati di base, riferimenti a strumenti che non esistono nel catalogo, link interni rotti o che puntano a un reindirizzamento, pagine che restano senza link in entrata, e la coerenza dei tag canonical e hreflang fra le tre lingue. Se anche uno solo di questi controlli fallisce, la pubblicazione si ferma.'
+      }
+    },
+    {
+      heading: {
+        es: 'Quién firma las fichas',
+        sv: 'Vem som står bakom sidorna',
+        it: 'Chi firma le schede'
+      },
+      body: {
+        es: 'Las fichas se firman como Redacción FuenteAI, no con nombres de autor individuales. No creamos perfiles de personas ni credenciales que no existan: lo que respalda una ficha es el proceso descrito en esta página, la fecha de revisión que lleva y las fuentes que cita, no una biografía.',
+        sv: 'Sidorna signeras av FuenteAI-redaktionen, inte med enskilda författarnamn. Vi skapar inga personprofiler eller meriter som inte finns: det som står bakom en sida är processen som beskrivs på den här sidan, granskningsdatumet den bär och källorna den citerar, inte en biografi.',
+        it: 'Le schede sono firmate dalla Redazione FuenteAI, non da nomi di autori individuali. Non creiamo profili di persone né credenziali inesistenti: ciò che sostiene una scheda è il processo descritto in questa pagina, la data di revisione che riporta e le fonti che cita, non una biografia.'
+      }
+    },
+    {
+      heading: {
         es: 'Qué no hacemos',
         sv: 'Vad vi inte gör',
         it: 'Cosa non facciamo'
@@ -74,5 +110,5 @@ export const EDITORIAL_TEAM = {
     }
   ] as MethodologyPoint[],
 
-  lastUpdated: '2026-08-13'
+  lastUpdated: '2026-08-28'
 };
