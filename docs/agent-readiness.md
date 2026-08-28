@@ -141,6 +141,31 @@ datos públicos sin efectos.
 | Herramientas `navigator.modelContext` | `src/components/WebMcp.astro` | `webMcp` |
 | `POST /mcp`, `POST /a2a` | `worker/agents/` | lo que hace reales las tarjetas |
 
+### La cabecera `Link` vive en el único bloque `/*` de `public/_headers`
+
+La cabecera `Link` de descubrimiento es lo que hace que un agente que sólo pide
+`GET /` se lleve las cuatro entradas legibles por máquina. Sale de
+`public/_headers`, del bloque `/*`, **y ese bloque tiene que seguir siendo uno
+solo**.
+
+Las reglas de `_headers` se acumulan entre patrones **distintos** (`/*` y
+`/md/*` suman), pero **dos bloques con el patrón idéntico no**: el último gana y
+sustituye al anterior. En #88 se comprobó midiendo: al mover unas cabeceras
+nuevas a un segundo bloque `/*`, la cabecera `Link` desapareció de todas las
+respuestas del sitio y `wrangler` no dio ningún error —sólo contó una regla más.
+
+Si añades una cabecera global, va **dentro** del bloque `/*` que ya existe. Y
+después compruébalo por HTTP: `npm run build` y `wrangler dev --local`, y
+`curl -sS -D - -o /dev/null http://127.0.0.1:8788/` tiene que seguir mostrando
+la cabecera `Link` con las cuatro relaciones. Ver
+`docs/mejora/evidencia-cabeceras-2026-08-28.md`.
+
+Las cabeceras defensivas de #88 (`X-Content-Type-Options`, `Referrer-Policy`,
+`Permissions-Policy`, `X-Frame-Options`) viven en ese mismo bloque y no alteran
+CORS, `X-Robots-Tag` ni la negociación de contenido. Lo que **no** está ahí
+—CSP, HSTS y endpoints de reportes— y por qué, está en
+`docs/mejora/blockers/F6-security-headers-csp.md`.
+
 ### Content Signals
 
 ```
