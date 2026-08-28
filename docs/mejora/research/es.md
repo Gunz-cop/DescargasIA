@@ -1,6 +1,9 @@
 # Research nativo del producto español (F2-ES)
 
 > Issue #38 · fase F2-ES · fecha de investigación: **2026-08-27**.
+> **Actualizado el 2026-08-28** con la ingesta del export de Search Console del
+> issue #50 (§1.2, §4.2 y §7). La investigación de SERP de la §3 no se ha
+> repetido: conserva su fecha y su etiqueta original.
 > Documento de investigación. **No modifica ningún JSON de contenido ni activa
 > ninguna ruta.** Las selecciones que contiene son candidatas para F3-ES; no son
 > decisiones de publicación.
@@ -43,7 +46,7 @@ recorte por país, que solo puede decidirse con una fuente segmentada.
 
 | Fuente prevista por el issue | Estado real en esta sesión | Efecto |
 |---|---|---|
-| Google Search Console (consultas y tendencia del producto `es`) | **No accesible.** No hay credenciales ni export versionado en el repositorio. `docs/mejora/baseline.md` (F0) solo conserva agregados de propiedad, sin desglose por consulta, país ni ruta `/es/*` | Ninguna fila de la matriz lleva etiqueta «volumen confirmado». No se estima ni se deduce ninguna cifra |
+| Google Search Console (consultas y tendencia del producto `es`) | **Disponible desde el 2026-08-28** (#50): export de propiedad `fuenteai.com`, tipo de búsqueda `Web`, 2026-06-19 a 2026-08-26, **sin ningún filtro de página, consulta, país o dispositivo**. Evidencia derivada en `docs/mejora/evidencia/gsc-2026-08-28/` | Aporta **volumen confirmado por página**, incluidas 86 URLs `/es/*` (§4.2). **No** aporta consultas atribuibles a `/es/*`, ni tendencia por página, ni país por producto lingüístico: el export es agregado por dimensión, sin cruces |
 | Cloudflare Web Analytics | No accesible; F0 conserva agregados de comportamiento | No se usa para seleccionar oportunidades: F0 ya decidió que Cloudflare aporta comportamiento, no selección |
 | Herramienta de keywords con volumen por mercado | No disponible | Sin volumen confirmado en todo el documento |
 | Auditoría observable de SERP en español | **Disponible y ejecutada** (sección 3) | Es la base de evidencia real de este documento |
@@ -55,8 +58,10 @@ resultado que compite en español**, y **no** válida como muestra del
 posicionamiento exacto que ve un usuario en Madrid o en Monterrey. Cada
 observación de la sección 3 se etiqueta en consecuencia.
 
-Se ha abierto un blocker (sección 7) para el export de Search Console, porque
-F1 y F7 lo necesitan tanto como F2-ES.
+El blocker de la sección 7 (issue #50) está **parcialmente resuelto**: el
+export entregado el 2026-08-28 aporta volumen por página, pero no el desglose
+por consulta y ruta que pedía la pregunta original. Lo que sigue faltando está
+acotado en la §7.
 
 ---
 
@@ -297,8 +302,19 @@ descargas y prensa tecnológica hispanohablante.
 
 ## 4. Matriz de oportunidades
 
-Etiquetas de evidencia según `references/localized-research.md`. **No hay
-ninguna fila con «volumen confirmado»**, por lo declarado en 1.2.
+Etiquetas de evidencia según `references/localized-research.md`.
+
+La tabla de abajo conserva la investigación del 2026-08-27 **sin retocar**: sus
+columnas «Evidencia y etiqueta» y «Tendencia» describen lo que se sabía ese
+día. El volumen medido llegó después, con el export del 2026-08-28, y se añade
+en **§4.2** como una capa separada y fechada. Se leen juntas: §4 dice dónde
+falla la SERP española, §4.2 dice cuánta impresión recibe hoy la página que
+tendría que arreglarlo.
+
+La columna «Tendencia» sigue diciendo **«No medida» en todas las filas**, y eso
+no cambia con el export: la serie diaria de Search Console es de propiedad
+completa, no está desglosada por URL, así que ninguna página de esta matriz
+tiene tendencia demostrable.
 
 | # | Consulta principal | Variantes nativas | Idioma/país | Evidencia y etiqueta | Tendencia | Dificultad observable | Debilidad del resultado | Intención | Página recomendada | Confianza | Fuentes |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -323,6 +339,84 @@ ninguna fila con «volumen confirmado»**, por lo declarado en 1.2.
 - **Mantener sin trabajo:** fila 7.
 - **Descarte:** filas 8, 9, 10.
 - **Sin decisión por falta de auditoría:** fila 12.
+
+### 4.2 Volumen confirmado por página (Search Console, 2026-08-28)
+
+Fuente: `docs/mejora/evidencia/gsc-2026-08-28/rendimiento-paginas.csv`.
+Propiedad `fuenteai.com`, tipo de búsqueda `Web`, **2026-06-19 a 2026-08-26**,
+sin filtro de página, consulta, país ni dispositivo. Los cuatro valores de cada
+fila son los del export, sin redondear.
+
+Etiqueta aplicable: **volumen confirmado de página**. No es volumen de mercado
+de la consulta, y no es tendencia.
+
+| # de §4 | Página `/es/*` | Impresiones | Clics | CTR | Posición media | Etiqueta |
+|---|---|---|---|---|---|---|
+| 1 | `es/character-ai` | 264 | 1 | 0,38% | 10,86 | Volumen confirmado de página |
+| 2 | `es/perplexity` | 328 | 0 | 0% | 44,39 | Volumen confirmado de página |
+| 3 | `es/ollama` | 317 | 1 | 0,32% | 18,15 | Volumen confirmado de página |
+| 4 | `es/cursor` | 552 | 1 | 0,18% | 27,21 | Volumen confirmado de página |
+| 5 | `es/stable-diffusion` | 75 | 0 | 0% | 11,60 | Volumen confirmado de página |
+| 6 | — (guía de intención propuesta) | — | — | — | — | **Dato ausente**: la página no existe todavía |
+| 7 | `es/lm-studio` | 270 | 3 | 1,11% | 24,62 | Volumen confirmado de página |
+| 8 | — (descartada, sin página propia) | — | — | — | — | **Dato ausente** |
+| 9 | `es/open-webui` | 64 | 1 | 1,56% | 13,23 | Volumen confirmado de página |
+| 10 | — (descartada, sin página propia) | — | — | — | — | **Dato ausente** |
+| 11 | `es/mistral-vibe` | 73 | 0 | 0% | 8,67 | Volumen confirmado de página |
+| 12 | `es/gamma-app` | 591 | 0 | 0% | 24,71 | Volumen confirmado de página |
+| 12 | `es/hugging-face` | 48 | 0 | 0% | 8,52 | Volumen confirmado de página |
+
+#### Qué cambia y qué no cambia en la matriz
+
+1. **La fila 12 deja de ser la menos informada y pasa a ser la de más
+   impresiones.** `es/gamma-app` es la URL con más impresiones de todo el sitio
+   (591) y tiene **cero clics** en el periodo. Sigue **sin decisión**: no hay
+   auditoría de SERP propia para esa consulta y este export no la sustituye.
+   Lo que aporta es una razón medida para auditarla antes que otras.
+2. **La fila 2 (`es/perplexity`) tiene el peor puesto del grupo** —328
+   impresiones en posición media 44,39, sin ningún clic—, lo que es coherente
+   con la debilidad descrita en §3.4, pero **no la demuestra**: la posición
+   media mezcla países y dispositivos.
+3. **La fila 4 (`es/cursor`) es la segunda del sitio en impresiones** (552) con
+   un solo clic. Refuerza su prioridad 2 en §6 con un dato, no con una
+   impresión de sesión.
+4. **La fila 9 (`es/open-webui`) sigue descartada.** 64 impresiones y posición
+   13,23 no son evidencia de demanda del mercado: son impresiones de una página
+   que ya existe. El motivo del descarte en §5 no depende de este número.
+5. **Las filas 6, 8 y 10 no tienen dato y no pueden tenerlo**: dos son
+   descartes sin página propia y la tercera es una página que aún no existe.
+   No se les asigna volumen por analogía con ninguna otra fila.
+
+#### Páginas con volumen que esta matriz no cubre
+
+El export destapa dos URLs `/es/*` que concentran clics y que **no aparecen en
+la matriz** porque no se auditaron el 2026-08-27:
+
+| Página | Impresiones | Clics | CTR | Posición media |
+|---|---|---|---|---|
+| `es/jan` | 527 | 9 | 1,71% | 8,28 |
+| `es/grok` | 317 | 5 | 1,58% | 24,32 |
+
+Entre las dos suman **14 de los 41 clics** de `/es/*` del periodo. No se
+convierten en filas de la matriz en este documento: una fila necesita auditoría
+de SERP propia, y esta sesión no la ha hecho. Quedan anotadas como **candidatas
+con volumen confirmado y sin auditoría**, para la próxima iteración de F2-ES o
+para F7.
+
+#### Lo que este export no autoriza a escribir
+
+- **Ninguna consulta de `rendimiento-consultas.csv` es volumen de una ficha.**
+  El export no cruza consulta con página. `cursor` aparece con 242 impresiones
+  como consulta y `es/cursor` con 552 como página: son dos medidas distintas de
+  dos tablas distintas y **no se suman, no se dividen y no se atribuyen** la
+  una a la otra.
+- **La tabla de consultas está truncada**: 920 filas que suman 3.618 de las
+  6.531 impresiones de la propiedad. No es el universo de consultas del sitio.
+- **España (1.879 impresiones, 15 clics) no es el país de `/es/*`.** La tabla
+  de países es de propiedad completa e incluye `sv` e `it`. El alcance
+  multi-país declarado en §1.1 sigue igual de declarado y sigue sin cerrarse.
+- **Ninguna de estas páginas tiene tendencia.** La única serie temporal del
+  export es de propiedad.
 
 ---
 
@@ -365,16 +459,31 @@ Antes de escribir una sola línea sobre canales, F3-ES debe **reverificar los
 
 | Riesgo | Efecto | Mitigación aplicada en este documento |
 |---|---|---|
-| Ausencia de Search Console | Ninguna afirmación de volumen ni de tendencia real es posible | Ninguna fila lleva «volumen confirmado»; blocker abierto (abajo) |
+| Search Console sin cruce consulta × página | No se puede afirmar demanda de mercado por consulta para ninguna ficha | §4.2 etiqueta el volumen como «de página», nunca de consulta; blocker acotado (abajo) |
+| Ausencia de serie temporal por URL | Ninguna afirmación de tendencia por página es posible | La columna «Tendencia» sigue en «No medida» en las doce filas |
 | SERP auditada sin geolocalización hispanohablante | Las posiciones observadas no son las del usuario objetivo | Toda la sección 3 se etiqueta como evidencia cualitativa; se declara la limitación |
 | Alcance multi-país sin evidencia segmentada | Riesgo de escribir para un país usando señal de otro | Declarado en 1.1; se prohíbe explícitamente atribuir cualquier fila a un país |
 | Dato de canal con `lastChecked` de 2026-08-12 | Un canal puede haber cambiado | F3-ES obligada a reverificar (§6) |
 | Estado del escritorio de Perplexity no verificado | Riesgo de afirmar algo falso sobre un `.exe` | Marcado explícitamente como pendiente en §3.4 |
 
-**Blocker abierto:** falta el export de Google Search Console del producto `es`
-(consultas, países y rutas `/es/*`), sin el cual F2-ES no puede aportar volumen
-confirmado ni tendencia, y F1/F7 no pueden comparar antes y después. Registrado
-como [issue #50](https://github.com/Gunz-cop/DescargasIA/issues/50).
+**Blocker parcialmente resuelto (2026-08-28):** el export de Google Search
+Console se entregó en el [issue #50](https://github.com/Gunz-cop/DescargasIA/issues/50)
+y está ingerido en `docs/mejora/evidencia/gsc-2026-08-28/`.
+
+Resuelto: **volumen confirmado por página** para 86 URLs `/es/*` (§4.2), y
+tendencia de propiedad para F1/F7 (serie diaria 2026-06-19 → 2026-08-26).
+
+**Sigue faltando**, y por eso #50 no se cierra:
+
+1. un export **filtrado por página `/es/`** con su tabla de consultas, que es lo
+   único que permitiría decir «esta consulta trae impresiones a esta ficha»;
+2. el cruce **consulta × país**, sin el cual el alcance multi-país de §1.1
+   sigue declarado y no ratificado;
+3. una serie temporal **por URL**, sin la cual F7 no puede medir el antes y el
+   después de una ficha concreta, solo el de la propiedad entera.
+
+Los tres se piden como un export nuevo con el filtro aplicado en Search
+Console. No se deducen de este.
 
 ---
 
@@ -385,5 +494,5 @@ como [issue #50](https://github.com/Gunz-cop/DescargasIA/issues/50).
 | No hay traducciones literales presentadas como demanda | Cumplido | Todas las consultas de §3 se redactaron en español nativo; no se reutilizó ninguna consulta de `sv.md` ni de `it.md`, ni sus selecciones |
 | Cada selección tiene evidencia, confianza y fuentes | Cumplido | Columnas «Evidencia y etiqueta», «Confianza» y «Fuentes» de §4 |
 | Cada descarte importante tiene motivo | Cumplido | §5 |
-| Se diferencia tendencia, volumen confirmado, sugerencia y evidencia cualitativa | Cumplido | §1.2 declara la ausencia de volumen y tendencia; §4 etiqueta cada fila |
+| Se diferencia tendencia, volumen confirmado, sugerencia y evidencia cualitativa | Cumplido | §4 etiqueta cada fila como evidencia cualitativa; §4.2 separa el volumen confirmado de página (2026-08-28) y enumera las filas sin dato; la tendencia sigue declarada como no medida en ambas |
 | No se modifica ningún JSON de contenido ni se activa ninguna ruta | Cumplido | El único archivo que crea esta fase es este documento |
