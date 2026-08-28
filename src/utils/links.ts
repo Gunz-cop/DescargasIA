@@ -92,6 +92,16 @@ export function hardwareUrl(lang: Lang): string {
   return pageUrl(lang, HARDWARE_SLUG);
 }
 
+/** Guía localizada. */
+export function guideUrl(lang: Lang, slug: string): string {
+  return `${langPrefix(lang)}/guias/${slug}`;
+}
+
+/** Índice de guías para un idioma. */
+export function guideIndexUrl(lang: Lang): string {
+  return `${langPrefix(lang)}/guias`;
+}
+
 /** Ancla al directorio dentro de la portada del idioma. */
 export function directoryUrl(lang: Lang): string {
   return lang === ROOT_LANG ? '/#directorio' : `/${lang}#directorio`;

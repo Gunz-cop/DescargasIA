@@ -32,28 +32,33 @@ export function getSitemapDates(siteUrl) {
     });
   }
 
-  // Leer fechas de guías
-  const guidesDir = './src/content/guides';
-  if (fs.existsSync(guidesDir)) {
-    const files = fs.readdirSync(guidesDir).filter(f => f.endsWith('.md'));
-    files.forEach(file => {
-      try {
-        const content = fs.readFileSync(path.join(guidesDir, file), 'utf-8');
-        const match = content.match(/lastUpdated:\s*['"]?([\d-]+)['"]?/);
-        const pubMatch = content.match(/datePublished:\s*['"]?([\d-]+)['"]?/);
-        const slug = file.replace(/\.md$/, '');
-        const dateStr = match ? match[1] : (pubMatch ? pubMatch[1] : null);
-        if (dateStr) {
-          locales.forEach(lang => {
-            // Suponiendo que las guías por ahora se mapean o se duplican, o simplemente apuntan a la ruta por defecto
-            dates[`${siteUrl}/${lang}/guias/${slug}`] = new Date(dateStr);
-          });
-        }
-      } catch (e) {
-        console.error('Error al leer fecha de guía para sitemap:', file, e);
-      }
-    });
-  }
+   // Leer fechas de guías
+   const guidesDir = './src/content/guides';
+   if (fs.existsSync(guidesDir)) {
+     const files = fs.readdirSync(guidesDir).filter(f => f.endsWith('.md'));
+     files.forEach(file => {
+       try {
+         const content = fs.readFileSync(path.join(guidesDir, file), 'utf-8');
+         const match = content.match(/lastUpdated:\s*['"]?([\d-]+)['"]?/);
+         const pubMatch = content.match(/datePublished:\s*['"]?([\d-]+)['"]?/);
+         const slug = file.replace(/\.md$/, '');
+         const dateStr = match ? match[1] : (pubMatch ? pubMatch[1] : null);
+         if (dateStr) {
+           // Solo agregar fechas para idiomas que tengan la guía traducida
+           locales.forEach(lang => {
+             const guidePath = path.join('./src/content/guides', `${slug}.${lang}.md`);
+             // Por ahora, como no tenemos guías traducidas, solo añadimos el español por defecto
+             // Cuando se cree la guía en un idioma específico, ese idioma tendrá su archivo
+             if (lang === 'es' || fs.existsSync(guidePath)) {
+               dates[`${siteUrl}/${lang}/guias/${slug}`] = new Date(dateStr);
+             }
+           });
+         }
+       } catch (e) {
+         console.error('Error al leer fecha de guía para sitemap:', file, e);
+       }
+     });
+   }
 
   return dates;
 }

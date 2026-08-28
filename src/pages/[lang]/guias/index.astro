@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { guideUrl } from '../../../utils/links';
+import { useTranslations } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  return ['es', 'sv', 'it'].map(lang => ({
+    params: { lang }
+  }));
+}
+
+const { lang } = Astro.params;
+
+// Obtener todas las guías
+const guides = await getCollection('guides');
+
+// Filtrar solo las guías que existen en el idioma actual basado en su id (idioma/slug)
+const localizedGuides = guides.filter(guide => guide.id.startsWith(`${lang}/`));
+
+// Ordenar por fecha de publicación (más reciente primero)
+const sortedGuides = localizedGuides
+  .sort((a, b) => new Date(b.data.datePublished) - new Date(a.data.datePublished));
+
+const t = useTranslations(lang);
+---
+<BaseLayout 
+  lang={lang} 
+  title={t('guides.indexTitle')} 
+  description={t('guides.indexDescription')}
+>
+  <section class="prose mx-auto">
+    <h1>{t('guides.indexTitle')}</h1>
+    <p class="text-muted-foreground mb-6">{t('guides.indexDescription')}</p>
+
+     {sortedGuides.length > 0 ? (
+       <div class="space-y-6">
+         {sortedGuides.map((guide) => {
+           // Skip guides without valid slug
+           if (!guide.slug) return null;
+           return (
+             <article key={guide.slug} class="border-b pb-6 last:border-b-0 last:pb-0">
+               <h2 class="text-xl font-semibold mb-2">
+                 <a href={guideUrl(lang, guide.slug)} class="hover:underline">
+                   {guide.data.title}
+                 </a>
+               </h2>
+               <div class="text-sm text-muted-foreground mb-2">
+                 Por <span class="whitespace-nowrap">{guide.data.author}</span> 
+                 <span class="mx-2">•</span> 
+                 <time datetime={guide.data.datePublished}>
+                   {new Date(guide.data.datePublished).toLocaleDateString(lang, { 
+                     year: 'numeric', 
+                     month: 'long', 
+                     day: 'numeric' 
+                   })}
+                 </time>
+               </div>
+               <p class="text-muted-foreground">{guide.data.metaDescription}</p>
+               {guide.data.tags.length > 0 && (
+                 <div class="mt-2 flex flex-wrap gap-2">
+                   {guide.data.tags.map((tag) => (
+                     <span key={tag} class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-muted/50">
+                       #{tag}
+                     </span>
+                   ))}
+                 </div>
+               )}
+             </article>
+           );
+         }).filter(Boolean)} // Remove null values
+       </div>
+     ) : (
+       <p class="text-muted-foreground">{t('guides.noGuidesFound')}</p>
+     )}
+  </section>
+</BaseLayout>

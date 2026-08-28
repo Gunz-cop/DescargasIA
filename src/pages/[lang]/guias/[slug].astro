@@ -1,0 +1,87 @@
+---
+import { getEntry, getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { buildAlternates } from '../../../utils/links';
+import { SITE_URL } from '../../../utils/consts';
+import { formatDate } from '../../../utils/dates';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map(guide => {
+    const [lang, slug] = guide.id.split('/');
+    return {
+      params: { lang, slug }
+    };
+  });
+}
+
+const { lang, slug } = Astro.params;
+
+// Cargar la guía por su id localizado (idioma/slug)
+const guide = await getEntry('guides', `${lang}/${slug}`);
+
+// Si no existe la guía en este idioma, devolver 404
+if (!guide) {
+  return Astro.redirect(`/404`);
+}
+
+  // Construir las URLs alternativas para hreflang
+  const alternates = buildAlternates(
+    SITE_URL,
+    (targetLang) => {
+      // Solo generar hreflang para traducciones que existan realmente
+      if (targetLang !== 'es') {
+        // Por ahora, solo tenemos guías en español
+        return null;
+      }
+      const translated = getEntry('guides', `${targetLang}/${slug}`);
+      return translated ? `/${targetLang}/guias/${slug}` : null;
+    }
+  );
+
+const { data } = guide;
+const { title, seoTitle, metaDescription, datePublished, lastUpdated, author, tags } = data;
+
+const metaTitle = seoTitle || title;
+const description = metaDescription || guide.excerpt();
+
+// Fecha de última modificación para el sitemap (usamos lastUpdated o datePublished)
+const lastMod = new Date(lastUpdated || datePublished);
+---
+<BaseLayout 
+  lang={lang} 
+  title={metaTitle} 
+  description={description} 
+  alternates={alternates}
+  pubDate={datePublished}
+  modDate={lastUpdated}
+>
+  <article class="prose mx-auto">
+    <h1>{title}</h1>
+    <div class="text-sm text-muted-foreground mb-6">
+      Por <span class="whitespace-nowrap">{author}</span> 
+      <span class="mx-2">•</span> 
+      <time datetime={datePublished}>
+        {formatDate(datePublished, lang)}
+      </time>
+      {lastUpdated && (
+        <>
+          <span class="mx-2">•</span>
+          <time datetime={lastUpdated}>
+            {formatDate(lastUpdated, lang)}
+          </time>
+        </>
+      )}
+    </div>
+
+     <!-- Contenido de la guía -->
+     <div set:html={guide.body} />
+
+    {/* Enlace de regreso al directorio de guías (por idioma) */}
+    <div class="mt-8">
+      <a href={`/${lang}/guias`} class="text-sm text-muted-foreground hover:underline">
+        ← Volver al directorio de guías
+      </a>
+    </div>
+  </article>
+</BaseLayout>
