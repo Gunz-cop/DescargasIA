@@ -1,31 +1,31 @@
 {
-  "shortDescription": "L'assistente IA integrato in X, accessibile dal web e dalle app ufficiali per iOS e Android.",
-  "longDescription": "Grok è l'assistente di intelligenza artificiale sviluppato da xAI e integrato in X. È progettato per rispondere a domande, aiutare nella scrittura e offrire un tono più diretto e aggiornato rispetto ad altri assistenti, con accesso ai contenuti pubblici di X.",
+  "shortDescription": "L'assistente IA di xAI, disponibile su grok.com e nelle app ufficiali autonome per iOS e Android.",
+  "longDescription": "Grok è l'assistente di intelligenza artificiale sviluppato da xAI. È disponibile come servizio autonomo su grok.com e nelle app ufficiali per iOS e Android; l'account X può essere collegato, ma non è l'unico metodo di accesso.",
   "bestFor": [
-    "Usare un assistente IA integrato con X dal web o dall'app ufficiale",
+    "Usare l'assistente di xAI dal web o dalle app ufficiali di Grok",
     "Ottenere risposte con un tono diretto e accesso a informazioni recenti",
-    "Esplorare alternative a ChatGPT, Gemini o Claude mantenendo un account X",
+    "Esplorare un'alternativa a ChatGPT, Gemini o Claude con un account xAI",
     "Chiedere aiuto per scrivere, riassumere o confrontare punti di vista"
   ],
   "limitations": [
-    "Richiede un account X: l'accesso avviene attraverso il sito o l'app ufficiale di X.",
-    "Le funzioni gratuite e quelle a pagamento dipendono dalle condizioni di X, che possono cambiare.",
+    "Richiede un account xAI; puoi accedere con email, Google, Apple o X e collegare X in seguito.",
+    "Limiti e funzioni dipendono dal piano Grok; l'accesso di X Premium è gestito separatamente da X.",
     "Non è uno strumento di installazione locale: non c'è un installer da scaricare sul computer."
   ],
   "safetyNotes": [
-    "Accedi a Grok dai canali ufficiali: grok.com, x.com/i/grok o dalle app ufficiali di X per iOS e Android.",
-    "Non inserire le credenziali di X in siti di terze parti che imitano l'accesso.",
-    "Ricorda che Grok è collegato al tuo account X: la gestione dei dati segue le policy di X."
+    "Accedi a Grok dai canali ufficiali: grok.com o le app Grok pubblicate da xAI per iOS e Android.",
+    "Gestisci i metodi di accesso su accounts.x.ai; non inserire credenziali in pagine che imitano quel dominio.",
+    "Il collegamento a X è opzionale e serve, tra l'altro, a riconoscere eventuali benefici della sottoscrizione X."
   ],
-  "editorialSummary": "Grok è l'assistente IA di xAI, integrato nell'ecosistema X. In Italia risulta tra le app di IA più usate. Questa scheda non offre un installer: rimanda ai canali ufficiali — grok.com, x.com/i/grok e le app ufficiali di X — con le opportune distinzioni rispetto ad altri assistenti.",
+  "editorialSummary": "Grok è l'assistente IA di xAI. Oggi è un prodotto autonomo su grok.com e nelle app Grok per iOS e Android; X resta un metodo di accesso e un account collegabile, non un requisito esclusivo. Questa scheda rimanda ai tre canali ufficiali dichiarati nel catalogo.",
   "editorialSections": [
     {
       "heading": "Cos'è Grok",
-      "body": "Grok è l'assistente di intelligenza artificiale realizzato da xAI ed è integrato nell'ecosistema X. A differenza di assistenti come ChatGPT o Claude, che vivono in app o siti propri, Grok è pensato per funzionare in stretta connessione con X. Chi cerca \"Grok\", \"Grok X\" o \"Grok AI Italia\" di solito vuole provare un assistente alternativo, con accesso ai contenuti pubblici della piattaforma e un tono che si distingue per direttezza.\n\nNon si tratta di un programma da scaricare sul computer o sul telefono come un'app a sé. Si usa dal web o dall'app ufficiale, dopo aver effettuato l'accesso con il proprio account X. Questa distinzione è importante perché molte ricerche di \"scaricare Grok\" possono portare a siti non ufficiali che non hanno alcun rapporto con X o xAI."
+      "body": "Grok è l'assistente di intelligenza artificiale realizzato da xAI. Nato in stretta connessione con X, oggi vive anche come prodotto autonomo: la documentazione ufficiale indica grok.com e le app Grok per iOS e Android come piattaforme del servizio.\n\nSul computer si usa la web app, senza installer desktop. Sul telefono esistono invece app autonome pubblicate da xAI. L'accesso usa un account xAI e può avvenire con email, Google, Apple o X; collegare un account X è facoltativo."
     },
     {
       "heading": "Come accedere ai canali ufficiali",
-      "body": "Puoi accedere a Grok da grok.com, che è il sito ufficiale gestito da xAI, oppure dall'integrazione all'interno di X su x.com/i/grok. Su mobile, le app ufficiali di X per iOS e Android integrano Grok dopo l'accesso con il tuo account.\n\nQuesta scheda non indirizza a store di terze parti, APK o siti che offrono accessi alternativi. Se una pagina ti chiede le credenziali di X e non è grok.com, x.com/i/grok o l'app ufficiale di X, è meglio non procedere."
+      "body": "Puoi accedere a Grok da grok.com oppure dalle app Grok che xAI pubblica in Google Play e App Store. Sono gli stessi tre canali presenti nei dati tecnici di questa scheda; X non sostituisce le app autonome.\n\nQuesta scheda non indirizza a store di terze parti né ad APK. I metodi di accesso si gestiscono su accounts.x.ai: se una pagina diversa chiede credenziali per imitare Grok o xAI, non è il percorso dichiarato dal fornitore."
     },
     {
       "heading": "Cosa sa fare",
@@ -33,21 +33,21 @@
     },
     {
       "heading": "Grok, ChatGPT e Gemini: differenze",
-      "body": "ChatGPT è probabilmente l'assistente più conosciuto, con app web, desktop e mobile. Gemini si integra meglio con i servizi Google e con l'ecosistema Android. Grok si distingue per il legame con X: se già usi X e vuoi un assistente accessibile senza cambiare piattaforma, ha senso.\n\nSe invece non hai un account X o stai cercando un'app autonoma da usare fuori dai social, Grok potrebbe non essere la prima scelta. La decisione dipende meno da quale IA è \"migliore\" e più da dove già passi tempo e quali strumenti usi abitualmente."
+      "body": "ChatGPT offre app web, desktop e mobile. Gemini si integra con i servizi Google e con Android. Grok offre web e app mobile autonome, con la possibilità di collegare X per riconoscere l'account e alcuni benefici associati.\n\nNon serve essere utenti X per creare un account xAI. La scelta dipende dalle funzioni e dal piano di ciascun servizio, non da un requisito social che oggi non esiste."
     },
     {
-      "heading": "Privacy e account X",
-      "body": "Grok è accessibile tramite l'account X: ciò significa che le impostazioni, i dati e le policy che valgono per X valgono anche per Grok. Se decidi di usarlo, ti conviene rivedere le impostazioni di privacy del tuo account X e capire come vengono trattate le conversazioni con l'assistente.\n\nDescargasIA non elabora i tuoi dati né offre accesso diretto al servizio. Questa scheda ha l'unico scopo di indicare il percorso ufficiale prima che tu inserisca credenziali o dati personali in un sito non autorizzato."
+      "heading": "Account xAI e collegamento a X",
+      "body": "Grok usa un account xAI. Nelle impostazioni puoi aggiungere o cambiare i metodi di accesso e, se vuoi, collegare X; la documentazione tratta quel collegamento come un'azione opzionale. Prima di caricare file o dati personali, consulta le policy di xAI applicabili al servizio Grok.\n\nDescargasIA non offre accesso diretto al servizio. Questa scheda indica soltanto i canali ufficiali prima che tu inserisca credenziali o contenuti in una piattaforma esterna."
     }
   ],
   "faq": [
     {
       "question": "Grok è gratis?",
-      "answer": "L'accesso e i piani dipendono dalle condizioni di X. Verifica le opzioni disponibili su grok.com, x.com/i/grok o nell'app ufficiale di X."
+      "answer": "La documentazione di xAI indica che Grok offre un livello gratuito e piani SuperGrok a pagamento. Limiti e prezzi possono cambiare: verificali su grok.com o nelle app ufficiali."
     },
     {
       "question": "Serve l'account X?",
-      "answer": "Sì, Grok è integrato nell'ecosistema X e l'accesso avviene dal sito o dall'app ufficiale con il tuo account X."
+      "answer": "No. Serve un account xAI, ma puoi accedere con email, Google, Apple o X. L'account X si può collegare in seguito dalle impostazioni."
     },
     {
       "question": "Grok è disponibile in Italia?",
@@ -55,7 +55,7 @@
     },
     {
       "question": "Posso scaricare Grok sul computer o sul telefono?",
-      "answer": "No, Grok non è un'app da installare a parte. Si usa dal web su grok.com o x.com/i/grok, oppure dall'app ufficiale di X per iOS e Android."
+      "answer": "Sul computer si usa la web app su grok.com; non c'è un installer desktop dichiarato dal catalogo. Su telefono esistono app Grok autonome per iOS e Android, pubblicate da xAI e collegate da questa scheda."
     }
   ],
   "italianSupport": "partial"

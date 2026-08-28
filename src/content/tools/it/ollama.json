@@ -1,11 +1,11 @@
 {
-  "shortDescription": "Strumento open source per eseguire modelli di linguaggio direttamente sul tuo computer, in locale e senza inviare dati al cloud.",
+  "shortDescription": "Strumento open source per eseguire modelli di linguaggio sul computer; distingue i modelli locali dalle funzioni cloud opzionali.",
   "longDescription": "Ollama è uno strumento open source per scaricare ed eseguire modelli di intelligenza artificiale in locale sul proprio PC. Funziona principalmente da riga di comando e offre un'API compatibile con OpenAI, permettendo di integrare modelli locali in applicazioni proprie o di collegare interfacce grafiche come Open WebUI.",
   "bestFor": [
     "Eseguire modelli di linguaggio in locale per mantenere i dati sul proprio dispositivo",
     "Sperimentare con modelli open source come Llama, Gemma, Mistral o Phi senza abbonamenti",
     "Integrare modelli locali in applicazioni proprie tramite l'API compatibile con OpenAI",
-    "Lavorare con dati sensibili che non possono lasciare il proprio computer o organizzazione"
+    "Lavorare in modalità solo locale con modelli scaricati quando i dati non possono lasciare il computer"
   ],
   "limitations": [
     "È uno strumento a riga di comando: non ha un'interfaccia grafica pronta all'uso senza configurazioni aggiuntive.",
@@ -21,7 +21,7 @@
   "editorialSections": [
     {
       "heading": "Cos'è Ollama e a cosa serve",
-      "body": "Ollama risponde a un bisogno preciso: eseguire modelli di linguaggio direttamente sul tuo computer, senza inviare dati a server esterni, senza limiti di utilizzo legati a un abbonamento e senza dipendere da una connessione per ogni richiesta. Chi cerca \"installare Llama in locale\", \"Ollama Windows\" o \"modelli IA offline\" di solito è uno sviluppatore, un ricercatore o un utente tecnico che vuole sperimentare con l'IA senza passare per servizi cloud commerciali.\n\nA differenza di ChatGPT, Claude o Gemini, Ollama non è un'interfaccia di chat: è uno strumento da terminale che gestisce modelli localmente. Questo significa che il flusso d'uso è diverso e più tecnico. Se cerchi un'app di IA semplice da usare nel browser, probabilmente stai cercando un'altra scheda. Se vuoi invece far girare Llama, Mistral, Gemma o Phi sul tuo hardware, Ollama è una delle strade più pulite."
+      "body": "Ollama permette di scaricare ed eseguire modelli di linguaggio direttamente sul computer. Con un modello locale, la documentazione del progetto dichiara che prompt e risposte non vengono inviati a ollama.com. Esistono però anche modelli cloud, elaborati dal servizio di Ollama e accessibili con un account: le due modalità non vanno confuse.\n\nA differenza di ChatGPT, Claude o Gemini, Ollama non è un'interfaccia di chat: è uno strumento da terminale che può gestire modelli locali o invocare una variante `:cloud` scelta dall'utente. Se cerchi un'app semplice da usare nel browser, probabilmente stai cercando un'altra scheda. Se vuoi far girare Llama, Mistral, Gemma o Phi sul tuo hardware, scegli una variante locale e, quando il percorso dei dati è vincolante, attiva la modalità solo locale documentata dal progetto."
     },
     {
       "heading": "Installazione dalla fonte ufficiale",
@@ -32,8 +32,8 @@
       "body": "Una volta installato, Ollama funziona come un server locale che gestisce i modelli. Con un comando come `ollama run llama3` puoi scaricare ed eseguire il modello Llama 3 direttamente sulla tua macchina. Il catalogo disponibile include modelli di Meta, Google, Microsoft, Mistral AI e molti altri, in varianti di dimensioni diverse in base alla memoria disponibile.\n\nOllama espone anche un'API locale compatibile con il formato di OpenAI. Questo significa che puoi collegarlo a client desktop come Open WebUI per avere un'interfaccia grafica, oppure integrarlo in applicazioni proprie che già usano l'API di ChatGPT. Quella compatibilità lo rende una componente flessibile per chi costruisce su modelli di linguaggio."
     },
     {
-      "heading": "Ollama e la privacy dei dati",
-      "body": "Eseguendo i modelli in locale, i dati non lasciano il dispositivo, salvo configurazioni esplicite. Questo è particolarmente rilevante in Italia, dove le preoccupazioni sulla privacy sono una delle principali barriere all'adozione dell'IA. Per questo motivo le ricerche legate a \"IA locale per la privacy\" puntano spesso a strumenti come Ollama.\n\nLa configurazione di default di Ollama ascolta solo su localhost, cioè non è raggiungibile da internet. Se però modifichi questa impostazione per accedere da un altro dispositivo della rete, potresti esporre il server senza autenticazione. In tal caso è indispensabile aggiungere un proxy inverso con autenticazione, invece di lasciare Ollama accessibile direttamente."
+      "heading": "Modelli locali, cloud e percorso dei dati",
+      "body": "Con i modelli eseguiti in locale, Ollama dichiara di non vedere prompt o risposte. Con i modelli cloud, invece, il servizio elabora prompt e risposte per fornire il risultato. La modalità solo locale disabilita sia i modelli cloud sia la ricerca web ed è la scelta da configurare quando il materiale non può uscire dal dispositivo.\n\nLa configurazione del server ascolta normalmente su localhost. Se la modifichi per accedere da un altro dispositivo, puoi rendere il servizio raggiungibile senza autenticazione: in quel caso usa un proxy inverso o un gateway con autenticazione invece di esporre direttamente la porta di Ollama."
     },
     {
       "heading": "Ollama o LM Studio?",
@@ -51,7 +51,7 @@
     },
     {
       "question": "I miei dati restano sul mio PC?",
-      "answer": "Sì, eseguendo i modelli in locale i dati non lasciano il dispositivo, salvo configurazioni esplicite che tu abbia attivato. Conferma sempre le impostazioni sulla documentazione ufficiale."
+      "answer": "Con un modello locale, Ollama dichiara di non ricevere prompt o risposte. I modelli cloud e la ricerca web usano servizi esterni; per escluderli devi attivare la modalità solo locale (`disable_ollama_cloud` oppure `OLLAMA_NO_CLOUD=1`)."
     },
     {
       "question": "Dove scarico Ollama in modo sicuro?",

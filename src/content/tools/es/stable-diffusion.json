@@ -10,7 +10,7 @@
   "limitations": [
     "No existe un único instalador oficial universal de Stable Diffusion.",
     "Requiere una computadora compatible y, para buen rendimiento, una GPU adecuada.",
-    "Muchos instaladores de terceros prometen instalación fácil pero pueden incluir componentes no verificados."
+    "Los instaladores de terceros no son publicaciones de los proyectos que enlaza esta ficha, por lo que su contenido y mantenimiento no están verificados aquí."
   ],
   "safetyNotes": [
     "No descargues supuestos instaladores de Stable Diffusion desde portales anónimos o mirrors no verificados.",
@@ -22,7 +22,7 @@
   "editorialSections": [
     {
       "heading": "Por qué Stable Diffusion genera tanta confusión",
-      "body": "Cuando un usuario busca descargar Stable Diffusion suele esperar una aplicación normal: un botón, un instalador y una ventana lista para crear imágenes. En la práctica, Stable Diffusion es más bien un ecosistema. Los modelos se ejecutan dentro de interfaces como AUTOMATIC1111 o ComfyUI, y cada ruta tiene requisitos distintos de Python, Git, modelos, extensiones y tarjeta gráfica.\n\nEsa complejidad abre la puerta a instaladores falsos. Muchos sitios ofrecen un supuesto «Stable Diffusion para PC» empaquetado como si fuera una app oficial. Algunos pueden ser simples wrappers, otros pueden traer dependencias modificadas o software no deseado. Por eso esta ficha no apunta a mirrors ni a descargas reempaquetadas: muestra repositorios y gestores reconocidos para que el usuario entienda que la instalación real se hace desde fuentes abiertas verificables."
+      "body": "Cuando un usuario busca descargar Stable Diffusion suele esperar una aplicación normal: un botón, un instalador y una ventana lista para crear imágenes. En la práctica, Stable Diffusion es más bien un ecosistema. Los modelos se ejecutan dentro de interfaces como AUTOMATIC1111 o ComfyUI, y cada ruta tiene requisitos distintos de Python, Git, modelos, extensiones y tarjeta gráfica.\n\nEsa complejidad también produce páginas que empaquetan «Stable Diffusion para PC» como si fuera una app única. Esos paquetes no son publicaciones de AUTOMATIC1111, ComfyUI ni Stability Matrix, y esta ficha no ha verificado qué contienen. Por eso no apunta a mirrors ni a descargas reempaquetadas: muestra los repositorios de los proyectos para que el usuario pueda comprobar el origen antes de ejecutar nada."
     },
     {
       "heading": "Modelo, interfaz y servicio en la nube: qué cataloga esta ficha",
@@ -59,8 +59,8 @@
       "answer": "No existe una app única ni un instalador universal. Para Windows, el canal que declara esta ficha es el repositorio de Stability Matrix; AUTOMATIC1111 y ComfyUI son las rutas de las demás plataformas."
     },
     {
-      "question": "¿Es seguro descargar Stable Diffusion desde cualquier web?",
-      "answer": "No. Evita instaladores de terceros y mirrors: FuenteAI enlaza los repositorios de los propios proyectos para reducir el riesgo de paquetes modificados."
+      "question": "¿Desde qué sitios descargo las interfaces de Stable Diffusion?",
+      "answer": "Usa los repositorios de los proyectos que enlaza esta ficha. Un instalador servido por otro portal no es una publicación de AUTOMATIC1111, ComfyUI ni Stability Matrix, y aquí no se ha verificado su contenido."
     },
     {
       "question": "¿Stable Diffusion funciona sin internet?",

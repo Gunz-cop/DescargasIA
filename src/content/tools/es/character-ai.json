@@ -59,8 +59,8 @@
       "answer": "El catálogo no declara ningún canal de escritorio verificado para esta herramienta, así que no podemos confirmarte un instalador. Eso no es lo mismo que decir que no exista: es que no lo hemos comprobado y no vamos a afirmarlo. En un ordenador, la vía que sí está verificada es abrir character.ai en el navegador."
     },
     {
-      "question": "¿Es seguro descargar Character.AI desde Google Play o App Store?",
-      "answer": "Sí, siempre que verifiques que el desarrollador listado sea Character.AI y no una app de terceros con un nombre similar."
+      "question": "¿Cómo verifico la app de Character.AI en Google Play o App Store?",
+      "answer": "Abre la tienda desde el enlace de esta ficha y comprueba que el desarrollador listado sea Character.AI. Una app con un nombre parecido publicada por otro desarrollador es un producto distinto."
     },
     {
       "question": "¿Character.AI es gratis?",

@@ -2,7 +2,7 @@
   "shortDescription": "El asistente de Mistral AI que se llamó Le Chat y hoy se llama Vibe: mismo producto, nuevo nombre. Acceso oficial: la web chat.mistral.ai y las apps de Google Play y App Store.",
   "longDescription": "Vibe es el asistente conversacional de Mistral AI, la compañía francesa detrás de varios modelos de lenguaje. El producto se llamó Le Chat y así lo sigue buscando buena parte del público hispanohablante; en 2026 Mistral lo renombró como Vibe, y en las tiendas el listado conserva la referencia «ex-Le Chat» precisamente para no perder a quien escribe el nombre antiguo. Los canales que este catálogo declara y verifica son tres: la web chat.mistral.ai y las apps que Mistral AI publica en Google Play y en App Store. Para escritorio no hay ningún canal declarado: la vía comprobada en un ordenador es abrir la web oficial en el navegador. Esta ficha enlaza solo esos destinos, sin espejos ni instaladores de terceros, y trata «Le Chat» como lo que es: el nombre anterior del mismo producto.",
   "bestFor": [
-    "Chatear y redactar con un asistente enfocado en privacidad y cumplimiento europeo (GDPR)",
+    "Chatear y redactar con un asistente cuyos datos se alojan por defecto en la Unión Europea",
     "Investigar un tema con búsqueda profunda y fuentes citadas",
     "Analizar hojas de cálculo o documentos conectados",
     "Usar modelos abiertos de Mistral desde una interfaz sencilla en el móvil o la web"
@@ -25,7 +25,7 @@
     },
     {
       "heading": "Qué lo diferencia de otros asistentes",
-      "body": "Mistral construye buena parte de sus modelos como código abierto, lo que le da una reputación distinta a la de OpenAI o Anthropic entre desarrolladores y usuarios que valoran la transparencia. Vibe hereda ese posicionamiento: la compañía enfatiza el cumplimiento con normativas europeas de privacidad y ofrece planes gratuitos razonablemente generosos.\n\nA nivel de uso diario, Vibe compite de cerca con ChatGPT y Claude para tareas de redacción, resumen y consulta general, y suma capacidades de agente para investigación con fuentes y automatización de tareas repetitivas."
+      "body": "Mistral publica modelos abiertos y, según su centro de ayuda, aloja los datos por defecto en la Unión Europea, aunque algunas funciones pueden transferirlos temporalmente a subprocesadores de otros países. Ese origen europeo no equivale por sí solo a una garantía superior de privacidad.\n\nEn Vibe Free, Pro y Education, Mistral indica que usa por defecto entradas y salidas para entrenar sus modelos salvo que el usuario lo desactive. En Team y Enterprise no aplica ese entrenamiento. La configuración y el plan importan más que una etiqueta general de «privacidad»."
     },
     {
       "heading": "Web y móvil: los canales que declara el catálogo",
@@ -41,7 +41,7 @@
     },
     {
       "heading": "Cuándo elegirlo frente a otras opciones",
-      "body": "Vibe puede ser una buena opción si te interesa apoyar modelos abiertos, priorizas la privacidad de tus datos o ya usas otras herramientas de Mistral en tu flujo de trabajo. También es una alternativa válida si buscas variedad frente a los asistentes más conocidos.\n\nSi tu prioridad es el ecosistema más maduro de plugins e integraciones, ChatGPT sigue teniendo ventaja; si buscas redacción extensa muy pulida, Claude suele destacar. Compara según el caso de uso, no solo por moda."
+      "body": "Vibe puede ser una opción si te interesan los modelos abiertos, el alojamiento europeo por defecto o si ya usas otras herramientas de Mistral. Si el tratamiento de datos es decisivo, revisa el plan y la preferencia de entrenamiento antes de subir contenido: Free, Pro y Education parten con ese uso activado, con opción de desactivarlo.\n\nPara comparar con otros asistentes, revisa las integraciones, el tipo de tareas y las políticas concretas del plan. Esta ficha no presenta una marca como más privada o más capaz sin una comparación equivalente."
     }
   ],
   "communityInsights": [

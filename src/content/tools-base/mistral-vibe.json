@@ -42,9 +42,11 @@
   "screenshotUrl": null,
   "initials": "VBM",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-12",
+  "lastReviewed": "2026-08-28",
   "officialSources": [
     "https://mistral.ai",
-    "https://mistral.ai/products/le-chat"
+    "https://mistral.ai/products/le-chat",
+    "https://help.mistral.ai/en/articles/347629-where-do-you-store-my-data-or-my-organization-s-data",
+    "https://help.mistral.ai/en/articles/347617-do-you-use-my-user-data-to-train-your-artificial-intelligence-models"
   ]
 }

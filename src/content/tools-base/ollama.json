@@ -48,9 +48,12 @@
   ],
   "initials": "OL",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-27",
+  "lastReviewed": "2026-08-28",
   "officialSources": [
     "https://ollama.com",
-    "https://ollama.com/download/Ollama.dmg"
+    "https://ollama.com/download/Ollama.dmg",
+    "https://docs.ollama.com/cloud",
+    "https://docs.ollama.com/faq",
+    "https://docs.ollama.com/api/authentication"
   ]
 }

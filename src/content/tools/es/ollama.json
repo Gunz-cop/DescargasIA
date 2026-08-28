@@ -2,19 +2,19 @@
   "shortDescription": "Runtime de línea de comandos para ejecutar modelos de lenguaje en tu propio ordenador. El instalador sale de ollama.com; otro portal que lo sirva es una redistribución.",
   "longDescription": "Ollama es un runtime local y de código abierto que descarga, gestiona y ejecuta modelos de lenguaje grandes en tu propio ordenador, desde la terminal o levantando un servidor local con una API compatible con la de OpenAI. Conviene separar cuatro cosas que las búsquedas en español mezclan constantemente: el runtime es Ollama; los modelos son piezas distintas (Llama, Mistral, Gemma, Phi) que Ollama descarga aparte y que pesan cada una lo suyo; la aplicación de chat que mucha gente imagina al leer «IA local» no viene incluida, porque Ollama no trae interfaz gráfica propia; y el canal de descarga es ollama.com, que en Windows y en macOS entrega un instalador oficial y en Linux entrega una página de instrucciones con el comando de instalación, no un archivo. Esa última distinción es la que más se pierde por el camino, y es también la que separa el canal del proyecto de los portales que redistribuyen el binario por su cuenta.",
   "bestFor": [
-    "Ejecutar modelos de lenguaje en local, desde la terminal, sin enviar el texto a un servicio externo",
+    "Ejecutar modelos descargados en local, desde la terminal, sin enviar el texto a un servicio externo",
     "Integrar modelos locales en aplicaciones propias a través de su API compatible con la de OpenAI",
     "Conectar una interfaz gráfica como Open WebUI encima del runtime para chatear sin escribir comandos",
-    "Trabajar con material que no puede salir del equipo o de la organización"
+    "Trabajar en modo solo local con modelos descargados cuando el material no puede salir del equipo"
   ],
   "limitations": [
     "Es un runtime de línea de comandos, no una aplicación de chat lista para usar: la conversación se hace en la terminal o a través de una interfaz que instalas aparte.",
-    "El rendimiento depende del hardware: los modelos grandes (70B o más) necesitan una GPU dedicada con memoria suficiente, y el mismo modelo va muy distinto en dos equipos.",
+    "El rendimiento depende del modelo, su cuantización y el hardware; la misma familia puede comportarse de forma muy distinta según la variante y el equipo.",
     "No incluye interfaz gráfica propia; para eso se combina con herramientas como Open WebUI.",
     "En Linux el canal oficial no es un instalador que se descarga y se ejecuta, sino una página de instrucciones con el comando de instalación: el flujo no es el mismo que en Windows o en macOS y conviene saberlo antes de empezar."
   ],
   "safetyNotes": [
-    "Ollama no pide registro ni cuenta para descargarlo ni para usarlo. Un sitio que te exija registrarte, rellenar una encuesta o pasar por un gestor de descargas para entregarte el instalador no está sirviendo el canal del proyecto.",
+    "Ollama no pide cuenta para descargar el runtime ni para ejecutar su API y modelos locales. Las funciones de nube sí requieren iniciar sesión; un gestor de descargas de otro dominio no es el canal del proyecto.",
     "Al buscar «descargar Ollama para Windows» en español, junto al sitio del proyecto aparecen portales de descarga que redistribuyen el binario por su cuenta. No los enlazamos ni los nombramos, y tampoco afirmamos qué contienen sus archivos: lo comprobable de ellos es que no son el canal del proyecto.",
     "Una redistribución sirve la copia que ese portal subió en su día, y en la revisión de resultados en español se observó alguna ofreciendo una versión anterior de Ollama presentada como la actual. Si la versión que anuncia el sitio desde el que vas a descargar no es la que publica ollama.com, no estás en el canal oficial.",
     "Ollama escucha por defecto solo en localhost (127.0.0.1), pero un cambio de configuración habitual para acceder desde otro dispositivo en la red (vincularlo a 0.0.0.0 o a una interfaz pública) puede dejar el servidor expuesto a internet sin autenticación (más detalle en «Qué dice la comunidad», más arriba en esta ficha). Si necesitas exponer Ollama fuera de tu propia máquina, añade autenticación mediante un proxy inverso o una pasarela de API."
@@ -31,7 +31,7 @@
   "editorialSections": [
     {
       "heading": "Por qué los usuarios técnicos buscan descargar Ollama",
-      "body": "Ollama responde a una necesidad concreta: ejecutar modelos de lenguaje grandes directamente en tu ordenador, sin enviar el texto a servidores externos, sin límites de uso por suscripción y sin depender de una conexión para cada consulta. Las búsquedas de «descargar Ollama para Windows», «cómo instalar Ollama en Mac» o «modelos locales con Ollama» vienen sobre todo de desarrolladores, investigadores y usuarios técnicos que quieren experimentar con IA sin pasar por los servicios de nube comerciales.\n\nA diferencia de ChatGPT, Claude o Gemini, Ollama no es una interfaz de chat: es un runtime de línea de comandos que gestiona modelos de lenguaje en local. Eso cambia el flujo de uso y lo vuelve más técnico. Si has llegado buscando una aplicación de IA fácil de usar desde el navegador, probablemente lo que buscas es otra herramienta. Si has llegado queriendo ejecutar Llama, Mistral, Gemma o Phi en tu propio equipo, Ollama es una de las formas más limpias de hacerlo."
+      "body": "Ollama responde a una necesidad concreta: descargar y ejecutar modelos de lenguaje directamente en tu ordenador. Con un modelo local, los prompts no se envían a ollama.com y no hace falta una conexión para cada consulta. Ollama también ofrece modelos cloud, que se procesan en su servicio y requieren cuenta; quien necesite excluir esa vía puede activar el modo solo local documentado por el proyecto.\n\nA diferencia de ChatGPT, Claude o Gemini, Ollama no es una interfaz de chat: es un runtime de línea de comandos que gestiona modelos locales y también puede invocar modelos cloud si el usuario los elige. Si has llegado buscando una aplicación de IA fácil de usar desde el navegador, probablemente buscas otra herramienta. Si quieres ejecutar Llama, Mistral, Gemma o Phi en tu propio equipo, Ollama sigue siendo una ruta directa, siempre distinguiendo la variante local de la que lleva el sufijo `:cloud`."
     },
     {
       "heading": "Cómo instalar Ollama desde el canal oficial",
@@ -47,11 +47,11 @@
     },
     {
       "heading": "Lo que Ollama exige de tu hardware",
-      "body": "Ejecutar modelos de lenguaje en local tiene un coste de hardware que no existe en los servicios de nube. Los modelos más pequeños (1B-3B parámetros) pueden funcionar en ordenadores con 8 GB de RAM, aunque a velocidades moderadas. Los medianos (7B-13B parámetros) piden 16 GB o más para ir cómodos. Los grandes (70B o más) necesitan una GPU dedicada con memoria de vídeo suficiente para resultar utilizables.\n\nSi tu equipo tiene una GPU compatible (NVIDIA con CUDA o Apple Silicon con Metal), Ollama la aprovecha para acelerar la inferencia. En CPU el rendimiento es funcional para uso personal, pero se nota en modelos grandes. La pregunta de «qué modelo aguanta mi equipo» es previa a la de «qué instalador descargo», y en este sitio tienes la aplicación de compatibilidad de hardware enlazada desde esta misma ficha para resolverla antes de instalar nada."
+      "body": "Ejecutar modelos de lenguaje en local tiene un coste de hardware que no existe cuando el cálculo ocurre en la nube. No hay un único umbral fiable: influyen el número de parámetros, la cuantización, el contexto, la memoria disponible y si parte del modelo se ejecuta en CPU o GPU. Dos variantes con un nombre parecido pueden necesitar recursos muy distintos.\n\nLa pregunta de «qué modelo aguanta mi equipo» es previa a la de «qué instalador descargo». En este sitio tienes la aplicación de compatibilidad de hardware enlazada desde esta misma ficha para contrastar modelo, cuantización y equipo en vez de depender de una cifra genérica. Si un modelo local no cabe, eso no convierte automáticamente su variante cloud en local: esa variante se procesa en el servicio de Ollama."
     },
     {
       "heading": "Cuándo Ollama es la respuesta correcta",
-      "body": "Ollama tiene sentido cuando la privacidad, el control o el coste son lo prioritario. Si trabajas con material que no puede salir de tu organización, si quieres experimentar con modelos sin topes de uso, o si prefieres no depender de un servicio externo para tus herramientas de desarrollo, es una opción sólida. También es la elección natural para quien quiere integrar modelos de lenguaje en aplicaciones propias sin pagar una API de terceros.\n\nSi prefieres una ventana gráfica para gestionar y conversar con modelos locales sin pasar por la terminal, LM Studio cubre el mismo caso de uso con una experiencia más visual, y Jan y GPT4All son las otras dos comparaciones razonables dentro del catálogo. No son excluyentes: hay quien usa Ollama como runtime y le conecta una interfaz por encima. Lo que las cuatro comparten, y es lo que aquí importa, es que cada una tiene un canal oficial identificable y esta ficha no te manda a ningún otro sitio."
+      "body": "Ollama tiene sentido cuando quieres controlar qué modelo se ejecuta y dónde. Para material que no puede salir del equipo, usa un modelo descargado y activa el modo solo local que deshabilita modelos cloud y búsqueda web; no basta con asumir que todo lo que se invoca desde la API local se procesa en el dispositivo. Las funciones cloud son opcionales, pero cambian el recorrido de los datos y requieren cuenta.\n\nSi prefieres una ventana gráfica para gestionar y conversar con modelos locales sin pasar por la terminal, LM Studio cubre el mismo caso de uso con una experiencia más visual, y Jan y GPT4All son las otras dos comparaciones razonables dentro del catálogo. No son excluyentes: hay quien usa Ollama como runtime y le conecta una interfaz por encima. Lo que las cuatro comparten, y es lo que aquí importa, es que cada una tiene un canal oficial identificable y esta ficha no te manda a ningún otro sitio."
     }
   ],
   "faq": [
@@ -69,7 +69,7 @@
     },
     {
       "question": "¿Necesito internet para usar Ollama?",
-      "answer": "Solo para descargar el runtime y los modelos la primera vez. Una vez descargados, Ollama funciona sin conexión y el texto que le escribes no sale de tu equipo."
+      "answer": "Los modelos descargados pueden ejecutarse sin conexión y, según la documentación de Ollama, sus prompts no se envían a ollama.com. Los modelos cloud y la búsqueda web sí usan servicios externos. Si necesitas excluirlos, activa el modo solo local (`disable_ollama_cloud` u `OLLAMA_NO_CLOUD=1`)."
     },
     {
       "question": "¿Y si ya instalé Ollama desde un portal de descargas de terceros?",
