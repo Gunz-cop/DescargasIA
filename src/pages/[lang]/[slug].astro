@@ -10,7 +10,8 @@ import CommunityInsights from '../../components/CommunityInsights.astro';
 import { EDITORIAL_TEAM } from '../../data/editorial-team';
 import { getTranslatedTools, getTranslatedTool } from '../../utils/tools';
 import { getAlternatives, getKeepExploring } from '../../utils/related';
-import { homeUrl, toolUrl, toolOgImageUrl, categoryUrl, hardwareUrl, pageUrl, redirectUrl, absolute, buildAlternates } from '../../utils/links';
+import { homeUrl, toolUrl, toolOgImageUrl, categoryUrl, hardwareUrl, pageUrl, redirectUrl, guideUrl, guideIndexUrl, absolute, buildAlternates } from '../../utils/links';
+import { getGuidesLinkingTool } from '../../utils/guides';
 import { useTranslations, languages } from '../../i18n/ui';
 import {
   formatDate,
@@ -153,6 +154,12 @@ const alternatives = getAlternatives({
 
 // Salida del pie: fichas de las OTRAS categorias de esta herramienta.
 const keepExploring = getKeepExploring(tool, allTools, alternatives, 4);
+
+// §11 Guias — descubrimiento derivado (F5.1, #85; resuelve #83 por la via A).
+// NO es una lista declarada en ningun sitio: son las guias de ESTE idioma
+// cuyo Markdown ya enlaza esta ficha, invertidas en src/utils/guide-links.ts.
+// Si la lista viene vacia el bloque entero no se renderiza.
+const relatedGuides = await getGuidesLinkingTool(lang, tool.slug, 4);
 
 // Todas las necesidades a las que pertenece la ficha, no solo la primera.
 // La miga de pan solo puede declarar una; estas etiquetas enlazan el resto.
@@ -603,6 +610,39 @@ const metaChips = [
       )}
     </aside>
   </div>
+
+  <!-- §11 Guias que mencionan esta herramienta. Cierra el circuito del
+       enlazado: hasta F5.1 la guia enlazaba a la ficha y la ficha no
+       devolvia el enlace (#83). Los destinos salen de guideUrl(), y los
+       titulos y slugs de la coleccion real: no hay ruta escrita a mano ni
+       enlace posible a una guia que no exista. Ver docs/enlazado-interno.md §7. -->
+  {relatedGuides.length > 0 && (
+    <section class="mt-16 border-t border-fai-line pt-12" aria-labelledby="guias-relacionadas-title">
+      <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2 border-b border-fai-line pb-4">
+        <h2 id="guias-relacionadas-title" class="fai-section-title text-fai-ink">
+          {t('tool.guides.title')} {tool.name}
+        </h2>
+        <a
+          href={guideIndexUrl(lang)}
+          class="fai-mono-sm inline-flex min-h-11 items-center text-fai-muted-2 transition-colors hover:text-fai-signal"
+        >{t('guides.back')} &rarr;</a>
+      </div>
+
+      <p class="mt-4 max-w-[62ch] text-[14px] leading-[1.55] text-fai-muted">{t('tool.guides.intro')}</p>
+
+      <ul class="mt-6 grid gap-4 sm:grid-cols-2">
+        {relatedGuides.map((guide) => (
+          <li class="rounded-[14px] border border-fai-line bg-fai-surface/60 p-5 transition-colors hover:border-fai-signal">
+            <h3 class="fai-card-title text-fai-ink">
+              <a href={guideUrl(lang, guide.slug)} class="transition-colors hover:text-fai-signal">
+                {guide.title}
+              </a>
+            </h3>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
 
   <!-- Enlazado interno: reparto hacia la cola larga del catalogo.
        El relleno rota por slug, asi que no siempre salen las mismas fichas.

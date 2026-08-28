@@ -98,6 +98,8 @@ decide lo contrario.
               ├─► TODAS sus categorías           (chips "Aparece en")
               ├─► 6 alternativas                 (declaradas + relleno rotado)
               ├─► categoría principal            ("Ver todas las herramientas de…")
+              ├─► hasta 4 guías del idioma       (las que ya la enlazan; derivado)
+              ├─► índice de guías del idioma     (solo si hay bloque de guías)
               ├─► 4 fichas afines                ("Sigue explorando el catálogo")
               └─► portada                        (cierre)
 ```
@@ -153,6 +155,54 @@ Dos consecuencias que conviene tener presentes antes de repetir la operación:
 `sora` queda fuera de la regla a propósito: tiene `status: "discontinued"` y
 citarlo como alternativa sería un claim falso. Ver `docs/mejora/fases/F5.md`.
 
+### Descubrimiento de guías (F5.1, #85)
+
+El grafo era unidireccional: la guía enlazaba hacia fichas y categorías, y
+ninguna devolvía el enlace. Las cinco guías publicadas recibían **un solo
+entrante**, el de su índice, que a su vez solo se enlaza desde la cabecera —y
+la cabecera es boilerplate—. Ese es el diagnóstico de #83.
+
+La ficha cierra ahora el circuito con un bloque derivado: **las guías de ESTE
+idioma cuyo Markdown ya enlaza esta ficha**. No hay lista nueva que mantener.
+`src/utils/guide-links.ts` invierte la relación leyendo el cuerpo de cada guía
+y reconociendo exactamente dos formas de destino:
+
+| Forma | Quién la produce | Qué se exige |
+| --- | --- | --- |
+| `/{lang}/{slug}` | `toolUrl()` | dos segmentos exactos, `lang` = idioma de la carpeta de la guía, `slug` en el catálogo traducido de ese idioma |
+| `/r?t={slug}&…&l={lang}` | `redirectUrl()` | `l` = idioma de la guía, `t` en el catálogo traducido de ese idioma |
+
+Todo lo demás se descarta. Tres segmentos (`/sv/categoria/…`, `/sv/guias/…`)
+no encajan en el patrón; `/es/acerca-de` encaja pero no es una ficha y muere
+al contrastarlo contra el catálogo. **No se usa `category`, ni `tags`, ni el
+título, ni coincidencia por texto libre**: una heurística así inventaría
+relaciones que nadie escribió, y el frontmatter `category` de las guías es hoy
+el literal `"guias"`, que no es una categoría del catálogo (ver #83).
+
+Dos consecuencias de diseño:
+
+- **Es imposible generar un enlace roto.** El slug de la ficha sale del
+  catálogo real y el de la guía es su nombre de archivo; la URL la construye
+  `guideUrl()`. Si la lista sale vacía, el bloque no se renderiza.
+- **Es imposible cruzar idiomas.** El índice está separado por idioma y la
+  ficha solo consulta el suyo. Una ficha sueca no puede enlazar la guía
+  española ni al revés, aunque compartan slug de herramienta.
+
+**Efecto medido sobre `dist/`, enlaces internos entrantes por guía:**
+
+| Guía | antes | después | desde |
+| --- | --- | --- | --- |
+| `/es/guias/descargar-chatgpt-para-windows` | 1 | 4 | índice + `/es/chatgpt`, `/es/claude`, `/es/gemini` |
+| `/sv/guias/ai-presentation-svenska` | 1 | 3 | índice + `/sv/canva`, `/sv/gamma-app` |
+| `/sv/guias/ai-skriva-text-svenska` | 1 | 3 | índice + `/sv/deepl`, `/sv/languagetool` |
+| `/sv/guias/ai-transkribering-svenska` | 1 | 3 | índice + `/sv/elevenlabs`, `/sv/klang` |
+| `/sv/guias/kora-ai-lokalt` | 1 | 4 | índice + `/sv/jan`, `/sv/lm-studio`, `/sv/ollama` |
+
+Ninguna guía depende ya solo del enlace de cabecera. La media de entrantes por
+ficha sube de 11,6 a 12,7 (mínimo 4, máximo 101) porque el bloque **añade**
+enlaces en vez de desplazarlos: no consume el presupuesto fijo de alternativas
+ni el de "sigue explorando".
+
 ---
 
 ## 3. Reglas que no se rompen
@@ -198,13 +248,14 @@ marcadas con ✋.
 | --- | --- |
 | `src/utils/links.ts` | **Forma de todas las URLs internas** y construcción de hreflang (`buildAlternates`). Punto único de cambio. |
 | `src/utils/related.ts` | Reparto de enlaces entre fichas: alternativas y "sigue explorando". |
+| `src/utils/guide-links.ts` | **Inversión guía → ficha.** Módulo puro: qué destinos del Markdown de una guía cuentan como relación y cómo se indexan por idioma. |
 | `src/layouts/BaseLayout.astro` | Cabecera, pie, selector de idioma, `<link rel=canonical>` y bloque hreflang. |
 | `src/components/Home.astro` | Portada: rejilla del directorio + bloque "Explora por necesidad". |
 | `src/components/ToolCard.astro` | Enlace de tarjeta hacia la ficha. |
-| `src/pages/[lang]/[slug].astro` | Ficha: miga de pan, chips de categoría, alternativas, "sigue explorando". |
+| `src/pages/[lang]/[slug].astro` | Ficha: miga de pan, chips de categoría, alternativas, guías relacionadas, "sigue explorando". |
 | `src/pages/[lang]/categoria/[slug].astro` | Categoría: miga de pan, chips de otras categorías, rejilla. |
 | `src/pages/[lang]/index.astro` | Excluye `es` de `getStaticPaths` (la portada ES es `/`). |
-| `src/utils/guides.ts` | Lectura de la colección `guides`: idioma y slug derivados del id real, qué idiomas tienen guías y en cuáles existe un slug. |
+| `src/utils/guides.ts` | Lectura de la colección `guides`: idioma y slug derivados del id real, qué idiomas tienen guías y en cuáles existe un slug. Memoiza el índice invertido que consume la ficha. |
 | `src/pages/[lang]/guias/index.astro` | Índice de guías del idioma. Solo se genera si ese idioma tiene guías. |
 | `src/pages/[lang]/guias/[slug].astro` | Guía: miga de pan, cuerpo Markdown renderizado, JSON-LD `Article`, vuelta al índice. |
 | `scripts/satteri-guide-links.mjs` | Plugin hast que fuerza `rel="nofollow"` en los enlaces a `/r` escritos dentro del Markdown de una guía. |
@@ -371,6 +422,16 @@ vive en `BaseLayout.astro` (`guidesIndex`). Cada guía recibe su enlace del
 índice, y devuelve dos: la miga de pan y el botón de vuelta del pie, ambos
 construidos con `guideIndexUrl()`.
 
+Desde F5.1 (#85) recibe además el enlace de **cada ficha que ya menciona en su
+Markdown**, que es lo que la saca de depender del enlace de cabecera. La
+relación se deriva, no se declara: ver §2, "Descubrimiento de guías". Los
+números de antes y después están en esa misma sección.
+
+Consecuencia práctica para quien escribe una guía nueva: **para que una ficha
+enlace la guía, basta con que la guía enlace la ficha** —con `/{lang}/{slug}`
+o con su botón `/r?t=…&l={lang}`— en el idioma que le corresponde. No hay que
+tocar `tools-base`, ni el frontmatter, ni ninguna lista.
+
 ### Índices vacíos
 
 **Un idioma sin guías no publica índice.** Un `/sv/guias` vacío sería una
@@ -423,11 +484,16 @@ escriben literales. Eso obliga a dos cosas:
   No se corrigió en F5 porque `/r` está protegido y porque hoy ese enlace lleva
   a la portada española para los tres idiomas: cambiarlo por `homeUrl(lang)`
   cambiaría el comportamiento de `/r` y necesita una decisión propia.
-- **Las guías reciben un único enlace entrante**, el de su índice, mientras
-  ellas sí enlazan hacia fichas y categorías. No son huérfanas, así que
-  `links:audit` no las marca, pero su descubrimiento depende por completo del
-  enlace de cabecera, que es boilerplate. Diagnóstico, evidencia y las cuatro
-  vías posibles están en
-  `docs/mejora/blockers/F5-bloqueo-descubrimiento-de-guias.md` y en el issue #83;
-  la decisión es
-  de Codex y F5 no la tomó.
+- ~~**Las guías reciben un único enlace entrante**, el de su índice.~~
+  **Resuelto en F5.1 (#85)** por la vía A del blocker #83: la ficha publica un
+  bloque derivado con las guías de su idioma que ya la enlazan. Las cinco
+  guías pasan de 1 a 3-4 entrantes y ninguna depende ya del enlace de
+  cabecera. Ver §2, "Descubrimiento de guías", y
+  `docs/mejora/blockers/F5-bloqueo-descubrimiento-de-guias.md` para el
+  diagnóstico original.
+- **`links:audit` sigue sin poder detectar este fallo.** Su regla 3 prohíbe
+  páginas huérfanas, y una página con un solo entrante no lo es. Si mañana se
+  publica una guía que no enlaza ninguna ficha de su idioma, el bloque no
+  aparecerá en ninguna parte y la guía volverá a tener un único entrante. Lo
+  cubre `tests/guias-fichas.test.ts` ("cada guía publicada relaciona al menos
+  una ficha de su propio idioma"), que falla el build; la auditoría no.
