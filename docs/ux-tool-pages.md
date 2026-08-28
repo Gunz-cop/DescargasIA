@@ -141,6 +141,35 @@ Listar las fuentes usadas para revision editorial.
 - Documentacion oficial.
 - Repositorio oficial si aplica.
 
+### 11. Guias Relacionadas
+
+Bloque **derivado**, no editorial: muestra las guias del idioma actual cuyo
+Markdown ya enlaza esta ficha. Resuelve #83 —las guias recibian un unico
+enlace entrante, el de su indice— sin inventar ninguna relacion.
+
+Reglas:
+
+- La relacion se **deriva** del cuerpo de la guia (`src/utils/guide-links.ts`),
+  no se declara en `tools-base`, ni en el frontmatter de la guia, ni en una
+  lista manual. Solo se reconocen dos formas de destino, ambas exactas:
+  `/{lang}/{slug}` (la ficha) y `/r?t={slug}&...&l={lang}` (su boton de
+  descarga). Nada de `category`, `tags`, titulo ni coincidencia por texto.
+- El idioma del destino debe coincidir con el idioma de la CARPETA de la
+  guia: el bloque no cruza idiomas ni productos.
+- El slug debe existir en el catalogo traducido de ese idioma. Un slug
+  desconocido se descarta, asi que no se puede generar un enlace roto.
+- Las URLs salen de `guideUrl()` y `guideIndexUrl()` (`src/utils/links.ts`).
+  Titulos y slugs son los reales de la coleccion.
+- **Si no hay guias, el bloque entero no se renderiza.** Nunca un bloque
+  vacio ni un "todavia no hay guias".
+- Maximo 4 entradas, mas reciente primero. Una guia no aparece dos veces.
+
+Ancla descriptiva (regla 8 de `docs/enlazado-interno.md`): el enlace lleva el
+titulo real de la guia, nunca "ver mas".
+
+Rotulos en `src/i18n/ui.ts`: `tool.guides.title`, `tool.guides.intro` y el ya
+existente `guides.back` para el enlace al indice. Independientes por idioma.
+
 ## SEO Y Adsense
 
 La pagina debe tener contenido propio y util antes y despues del CTA.
@@ -189,7 +218,11 @@ Ya implementado, no pendiente:
   - El bloque `EditorialByline` en cada ficha (nombre + resumen corto + link a la metodologia completa).
   - La seccion `#metodologia` en `acerca-de.astro` (unico lugar con el texto completo).
 
-Orden de secciones actualizado en `src/pages/[lang]/[slug].astro`: header+CTA oficial → alternativas → plataformas → "mejor para" → resumen editorial + `EditorialByline` → `editorialSections` (guia larga) → `CommunityInsights` (si hay) → `safetyNotes` → `limitations` → `faq`.
+Orden de secciones actualizado en `src/pages/[lang]/[slug].astro`: header+CTA oficial → alternativas → plataformas → "mejor para" → resumen editorial + `EditorialByline` → `editorialSections` (guia larga) → `CommunityInsights` (si hay) → `safetyNotes` → `limitations` → `faq` → **guias relacionadas (si hay)** → "sigue explorando".
+
+Las guias relacionadas van al final a proposito: son descubrimiento, no
+decision. Quien entra a la ficha viene a resolver "donde descargo esto"; la
+guia es la salida para quien ya lo resolvio, igual que "sigue explorando".
 
 ## Checklist Para Nuevas Fichas
 
@@ -203,3 +236,4 @@ Orden de secciones actualizado en `src/pages/[lang]/[slug].astro`: header+CTA of
 8. `editorialSections` son especificas de la herramienta y no texto duplicado.
 9. `npm run build` pasa antes de publicar.
 10. Si hay `communityInsights`, cada uno tiene una fuente real y verificable — nunca generalizar sin link.
+11. El bloque de guias relacionadas no se rellena a mano: si la ficha deberia salir en una guia, el enlace se escribe en el Markdown de la guia y el bloque aparece solo.

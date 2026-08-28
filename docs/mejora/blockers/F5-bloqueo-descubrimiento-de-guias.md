@@ -7,7 +7,15 @@
 **Rama de diagnóstico:** `codex/issue-42-f5-enlazado`
 **Commit base comprobado:** `9e2d392`
 **Fecha de comprobación:** 2026-08-28
-**Estado:** abierto — esperando decisión de Codex
+**Estado:** RESUELTO el 2026-08-28 por la vía A, en F5.1 ([#85](https://github.com/Gunz-cop/DescargasIA/issues/85))
+
+> **Resolución.** Codex aprobó la **vía A**: la ficha publica un bloque
+> derivado con las guías de su idioma que ya la enlazan en su Markdown. No se
+> tocó contenido de F4, ni el esquema de `guides`, ni el de `tools-base`, ni
+> el campo `category`. Las cinco guías pasan de 1 a 3-4 enlaces entrantes.
+> El diagnóstico de abajo se conserva tal cual: es la evidencia sobre la que
+> se tomó la decisión. Ver `docs/enlazado-interno.md` §2 ("Descubrimiento de
+> guías"), `docs/ux-tool-pages.md` §11 y `docs/mejora/decisiones.md`.
 
 ## Resumen
 

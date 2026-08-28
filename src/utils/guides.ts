@@ -18,6 +18,13 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import type { Lang } from './brand';
 import { LANGS } from './links';
+import { getTranslatedTools } from './tools';
+import {
+  getGuidesForTool,
+  indexGuidesByTool,
+  type GuideRef,
+  type GuidesByTool
+} from './guide-links';
 
 export type GuideEntry = CollectionEntry<'guides'>;
 
@@ -79,3 +86,52 @@ export async function getLangsForGuideSlug(slug: string): Promise<Lang[]> {
 export function guideDate(guide: LocalizedGuide): string {
   return guide.entry.data.lastUpdated ?? guide.entry.data.datePublished;
 }
+
+/**
+ * Índice invertido guía -> ficha, construido una sola vez por build.
+ *
+ * Se memoiza porque lo consulta CADA ficha (unas 270 páginas entre los tres
+ * idiomas) y recorrer la colección de guías y el catálogo traducido en cada
+ * una sería tiempo de build regalado. Ver `src/utils/guide-links.ts` para las
+ * dos formas de destino que se reconocen y por qué no hay ninguna más.
+ */
+let guidesByToolPromise: Promise<GuidesByTool> | null = null;
+
+async function buildGuidesByToolIndex(): Promise<GuidesByTool> {
+  const ordered: Array<{ lang: Lang; slug: string; title: string; body: string }> = [];
+
+  for (const lang of LANGS) {
+    // Ya vienen de más reciente a más antigua; ese orden se conserva dentro
+    // de cada ficha, así que el bloque encabeza con la guía más nueva.
+    for (const guide of await getGuidesForLang(lang)) {
+      ordered.push({
+        lang,
+        slug: guide.slug,
+        title: guide.entry.data.title,
+        body: guide.entry.body ?? ''
+      });
+    }
+  }
+
+  const toolSlugsByLang: Partial<Record<Lang, string[]>> = {};
+  for (const lang of LANGS) {
+    toolSlugsByLang[lang] = (await getTranslatedTools(lang)).map((tool) => tool.slug);
+  }
+
+  return indexGuidesByTool(ordered, toolSlugsByLang);
+}
+
+/**
+ * Guías del idioma `lang` que ya enlazan la ficha `toolSlug` en su Markdown.
+ * Vacío si no hay ninguna: la ficha no renderiza el bloque en ese caso.
+ */
+export async function getGuidesLinkingTool(
+  lang: Lang,
+  toolSlug: string,
+  limit = 4
+): Promise<GuideRef[]> {
+  guidesByToolPromise ??= buildGuidesByToolIndex();
+  return getGuidesForTool(await guidesByToolPromise, lang, toolSlug, limit);
+}
+
+export type { GuideRef } from './guide-links';

@@ -132,6 +132,12 @@ export const ui = {
     'guides.updated': 'Actualizado',
     'guides.author': 'Por',
     'guides.back': 'Ver todas las guías',
+
+    // Bloque derivado de la ficha: guías que ya enlazan esta herramienta.
+    // La relación se deriva del Markdown publicado, no se declara aquí.
+    // Ver src/utils/guide-links.ts y docs/ux-tool-pages.md §11.
+    'tool.guides.title': 'Guías que mencionan',
+    'tool.guides.intro': 'Guías editoriales de FuenteAI que enlazan esta herramienta y sus canales oficiales.',
     'theme.toggle': 'Cambiar entre tema claro y oscuro',
     'theme.light': 'Claro',
     'theme.dark': 'Oscuro',
@@ -456,6 +462,9 @@ export const ui = {
     'guides.updated': 'Uppdaterad',
     'guides.author': 'Av',
     'guides.back': 'Se alla guider',
+
+    'tool.guides.title': 'Guider som nämner',
+    'tool.guides.intro': 'Redaktionella guider på FuenteAI som länkar till det här verktyget och dess officiella kanaler.',
     'theme.toggle': 'Växla mellan ljust och mörkt tema',
     'theme.light': 'Ljust',
     'theme.dark': 'Mörkt',
@@ -780,6 +789,9 @@ export const ui = {
     'guides.updated': 'Aggiornato',
     'guides.author': 'Di',
     'guides.back': 'Vedi tutte le guide',
+
+    'tool.guides.title': 'Guide che citano',
+    'tool.guides.intro': 'Guide editoriali di FuenteAI che rimandano a questo strumento e ai suoi canali ufficiali.',
     'theme.toggle': 'Alterna tema chiaro e scuro',
     'theme.light': 'Chiaro',
     'theme.dark': 'Scuro',

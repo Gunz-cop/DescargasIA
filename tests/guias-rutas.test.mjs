@@ -128,3 +128,113 @@ test('la guia renderizada no deja Markdown crudo ni URLs con undefined', (t) => 
     assert.ok(html.includes('"@type":"Article"'), 'falta el JSON-LD de la guia');
   }
 });
+
+/**
+ * F5.1 (#85): el bloque de guias de la ficha, comprobado sobre el HTML real.
+ *
+ * Cierra el circuito que #83 documento: hasta ahora la guia enlazaba a la
+ * ficha y la ficha no devolvia el enlace. Estas comprobaciones solo pueden
+ * hacerse sobre `dist/`, porque lo que importa es lo que se publica.
+ */
+
+/** Enlaces a `/{lang}/guias/{slug}` que emite el bloque de una ficha. */
+function guiasEnlazadasDesdeFicha(html) {
+  const bloque = html.split('id="guias-relacionadas-title"')[1];
+  if (!bloque) return [];
+  const seccion = bloque.split('</section>')[0];
+  return [...seccion.matchAll(/href="\/(es|sv|it)\/guias\/([^"#?]+)"/g)]
+    .map(([, lang, slug]) => `${lang}/${slug}`);
+}
+
+/** [{ lang, slug, html }] de todas las fichas publicadas. */
+function fichasEnDist() {
+  const fichas = [];
+  for (const lang of LANGS) {
+    const dir = path.join(DIST, lang);
+    if (!fs.existsSync(dir)) continue;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (!entry.isDirectory() || entry.name === 'guias' || entry.name === 'categoria') continue;
+      const file = path.join(dir, entry.name, 'index.html');
+      if (!fs.existsSync(file)) continue;
+      fichas.push({ lang, slug: entry.name, html: fs.readFileSync(file, 'utf8') });
+    }
+  }
+  return fichas;
+}
+
+test('cada guia publicada recibe al menos un enlace desde una ficha', (t) => {
+  if (!fs.existsSync(DIST)) {
+    if (EXIGIR_BUILD) assert.fail('no existe dist/: ejecuta `npm run build` antes de test:build');
+    return t.skip('sin dist/');
+  }
+
+  const entrantes = new Map();
+  for (const ficha of fichasEnDist()) {
+    for (const clave of guiasEnlazadasDesdeFicha(ficha.html)) {
+      entrantes.set(clave, (entrantes.get(clave) ?? 0) + 1);
+    }
+  }
+
+  for (const { lang, slug } of guiasEnDisco()) {
+    assert.ok(
+      (entrantes.get(`${lang}/${slug}`) ?? 0) > 0,
+      `/${lang}/guias/${slug} no recibe ningun enlace desde una ficha (#83)`
+    );
+  }
+});
+
+test('el bloque de guias de la ficha no repite enlaces ni inventa rutas', (t) => {
+  if (!fs.existsSync(DIST)) {
+    if (EXIGIR_BUILD) assert.fail('no existe dist/: ejecuta `npm run build` antes de test:build');
+    return t.skip('sin dist/');
+  }
+
+  const existentes = new Set(guiasEnDisco().map(({ lang, slug }) => `${lang}/${slug}`));
+
+  for (const ficha of fichasEnDist()) {
+    const enlazadas = guiasEnlazadasDesdeFicha(ficha.html);
+
+    assert.deepEqual(
+      enlazadas,
+      [...new Set(enlazadas)],
+      `/${ficha.lang}/${ficha.slug} repite un enlace en el bloque de guias`
+    );
+
+    for (const clave of enlazadas) {
+      assert.ok(
+        existentes.has(clave),
+        `/${ficha.lang}/${ficha.slug} enlaza /${clave}, que no existe como guia`
+      );
+      assert.ok(
+        clave.startsWith(`${ficha.lang}/`),
+        `/${ficha.lang}/${ficha.slug} enlaza una guia de otro idioma: /${clave}`
+      );
+    }
+  }
+});
+
+test('la ficha sin guias relacionadas no publica un bloque vacio', (t) => {
+  if (!fs.existsSync(DIST)) {
+    if (EXIGIR_BUILD) assert.fail('no existe dist/: ejecuta `npm run build` antes de test:build');
+    return t.skip('sin dist/');
+  }
+
+  let conBloque = 0;
+
+  for (const ficha of fichasEnDist()) {
+    const tieneBloque = ficha.html.includes('id="guias-relacionadas-title"');
+    const enlaces = guiasEnlazadasDesdeFicha(ficha.html);
+
+    assert.equal(
+      tieneBloque,
+      enlaces.length > 0,
+      `/${ficha.lang}/${ficha.slug}: el bloque de guias existe sin enlaces dentro`
+    );
+
+    if (tieneBloque) conBloque += 1;
+  }
+
+  if (guiasEnDisco().length > 0) {
+    assert.ok(conBloque > 0, 'ninguna ficha publica el bloque de guias pese a haber guias');
+  }
+});
