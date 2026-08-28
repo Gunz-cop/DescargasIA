@@ -30,7 +30,8 @@
     "midjourney",
     "leonardo-ai",
     "stable-diffusion",
-    "flux"
+    "flux",
+    "recraft"
   ],
   "screenshotUrl": null,
   "initials": "IDG",

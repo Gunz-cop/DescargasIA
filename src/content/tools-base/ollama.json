@@ -43,7 +43,8 @@
     "lm-studio",
     "jan",
     "gpt4all",
-    "open-webui"
+    "open-webui",
+    "gemma"
   ],
   "initials": "OL",
   "trustLevel": "official",

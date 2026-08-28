@@ -42,7 +42,8 @@
   ],
   "alternatives": [
     "lm-studio",
-    "ollama"
+    "ollama",
+    "msty"
   ],
   "initials": "JN",
   "trustLevel": "verified",

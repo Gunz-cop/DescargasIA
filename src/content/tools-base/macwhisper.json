@@ -8,7 +8,7 @@
   "pricingModel": "freemium",
   "requiresAccount": false,
   "tags": ["trascrizione", "whisper", "offline", "macos"],
-  "alternatives": ["fireflies", "fathom"],
+  "alternatives": ["fireflies", "fathom", "adobe-podcast"],
   "screenshotUrl": null,
   "initials": "MW",
   "trustLevel": "official",

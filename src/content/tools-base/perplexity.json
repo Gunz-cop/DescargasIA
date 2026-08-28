@@ -43,7 +43,8 @@
     "chatgpt",
     "gemini",
     "claude",
-    "microsoft-copilot"
+    "microsoft-copilot",
+    "comet"
   ],
   "screenshotUrl": null,
   "initials": "PX",

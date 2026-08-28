@@ -9,7 +9,7 @@
   "pricingModel": "freemium",
   "requiresAccount": "unknown",
   "tags": ["pdf", "documenti", "ricerca", "riassunti"],
-  "alternatives": ["pdfgear", "scispace", "consensus"],
+  "alternatives": ["pdfgear", "scispace", "consensus", "quizlet"],
   "screenshotUrl": null,
   "initials": "CP",
   "trustLevel": "official",
