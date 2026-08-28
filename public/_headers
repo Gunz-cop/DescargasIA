@@ -4,12 +4,63 @@
 # Las reglas se acumulan: una respuesta recibe las cabeceras de TODOS los
 # patrones que la matchean, del más general al más específico.
 
-# --- Descubrimiento por cabecera (RFC 8288 / RFC 9727 §3) -------------------
-# Un agente que solo hace GET / ya se lleva las cuatro entradas legibles por
-# máquina sin tener que adivinar rutas. Se emite en todo el sitio para que
-# funcione igual si el agente aterriza en una ficha desde un buscador.
+# --- Reglas de todo el sitio ------------------------------------------------
+# OJO: la acumulacion de la cabecera de arriba vale entre patrones DISTINTOS
+# (`/*` y `/md/*` suman). Dos bloques `/*` NO suman: el segundo sustituye al
+# primero. Se comprobo en #88 partiendo las cabeceras defensivas a un segundo
+# bloque `/*`: la respuesta perdio entera la cabecera `Link` de descubrimiento
+# y las superficies de agentes se quedaron sin ella. Por eso este bloque es
+# uno solo. Si anades una cabecera global, va AQUI DENTRO.
+#
+# Descubrimiento por cabecera (RFC 8288 / RFC 9727 3). Un agente que solo hace
+# GET / ya se lleva las cuatro entradas legibles por maquina sin tener que
+# adivinar rutas. Se emite en todo el sitio para que funcione igual si el
+# agente aterriza en una ficha desde un buscador. Ver docs/agent-readiness.md.
+#
+# Cabeceras defensivas (#88). Contrato minimo y verificable; la justificacion
+# completa, el inventario de origenes y lo que NO se pone estan en
+# docs/mejora/evidencia-cabeceras-2026-08-28.md y en
+# docs/mejora/blockers/F6-security-headers-csp.md. Solo entran cabeceras que
+# (a) se comprueban desde este repositorio con `wrangler dev` y (b) no pueden
+# alterar la carga de los anuncios de terceros, el funnel de /r ni las
+# superficies de agentes.
+#
+# X-Content-Type-Options: impide reinterpretar el tipo declarado. Todas las
+#   respuestas del sitio declaran su Content-Type —las que no tienen extension
+#   lo declaran mas abajo en este mismo archivo—, asi que nada depende del
+#   sniffing. Es la cabecera que ya emite worker/security.ts en /api/hw/*.
+# Referrer-Policy: igual al comportamiento por defecto de los navegadores
+#   actuales. No recorta lo que /r envia hoy al destino oficial ni lo que
+#   acompana a las peticiones de anuncios; solo deja de depender del navegador.
+#   NO se usa `same-origin` ni `no-referrer`: dejarian al destino sin origen.
+# Permissions-Policy: lista corta y deliberada. Solo se deniegan tres
+#   capacidades que el sitio no usa en ningun punto y que ningun formato
+#   publicitario necesita para renderizar. Se deja intacto todo lo que si
+#   podria afectar a la monetizacion o a la app de hardware: no se declaran
+#   `attribution-reporting`, `browsing-topics`, `interest-cohort` ni `webgpu`
+#   —este ultimo lo usa src/lib/browser/detect.ts—. Es la trinca de
+#   worker/security.ts.
+# X-Frame-Options: el sitio no se enmarca a si mismo y no debe enmarcarlo
+#   nadie. No afecta a los iframes que crean los creativos publicitarios DENTRO
+#   de la pagina: gobierna quien puede enmarcar a FuenteAI, no lo que FuenteAI
+#   enmarca. `frame-ancestors`, su equivalente moderno, queda para el contrato
+#   de CSP del blocker y no se adelanta aqui.
+#
+# NO estan aqui, a proposito:
+#   - Content-Security-Policy: los creativos de Adsterra encadenan origenes que
+#     no aparecen en el repositorio y produccion inyecta ademas
+#     static.cloudflareinsights.com. Una lista de permitidos escrita desde el
+#     codigo estaria incompleta por construccion y apagaria los anuncios.
+#   - report-to / report-uri: no existe endpoint de reportes. No se declara uno
+#     que no responda.
+#   - Strict-Transport-Security: no es verificable desde local ni preview y su
+#     max-age es dificil de revertir. Se decide sobre produccion real.
 /*
   Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json", </api/openapi.json>; rel="service-desc"; type="application/json", </llms.txt>; rel="describedby"; type="text/plain", </es/acerca-de>; rel="service-doc"; type="text/html"
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  X-Frame-Options: SAMEORIGIN
 
 # --- Documentos de descubrimiento ------------------------------------------
 # Sin extensión: hay que declarar el tipo a mano o se sirve como binario.
