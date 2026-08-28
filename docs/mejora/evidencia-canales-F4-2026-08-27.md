@@ -255,6 +255,62 @@ guía `kora-ai-lokalt`, no una ficha ni un destino de descarga aprobado.
    Write queda expresamente fuera de esa afirmación con la evidencia consultada;
    LanguageTool sí tiene una mención oficial explícita de Swedish.
 
+## Actualización #89 — 2026-08-28 (identidad y canales de Microsoft Copilot)
+
+Esta sección resuelve el blocker [#89](https://github.com/Gunz-cop/DescargasIA/issues/89)
+proveniente de F6: los dos canales móviles declarados para `microsoft-copilot`
+devolvían 404. Cada URL se comprobó directamente en la fecha indicada con
+`curl` (CA del sistema, cabecera de navegador) y, para App Store, con la API
+oficial de Apple `itunes.apple.com/lookup`.
+
+### Identidad verificada
+
+- El artículo oficial de soporte
+  https://support.microsoft.com/en-US/Microsoft-365-Copilot/what-is-microsoft-copilot-app
+  (200 el 2026-08-28) declara: «The Microsoft 365 Copilot app is now called
+  Microsoft Copilot app», unificando escritorio (Windows/Mac), web
+  (`copilot.cloud.microsoft`, `www.copilot.com`) y móvil (iOS/Android) en una
+  sola app con experiencias de cuenta personal y de trabajo o escuela.
+- La app móvil independiente anterior (`com.microsoft.copilot` en Google Play;
+  App Store ID `6472538445`) fue retirada: Google Play responde 404 en mercado
+  estadounidense e italiano y la lookup de Apple devuelve 0 resultados para ese
+  ID (2026-08-28).
+- Las fichas actuales en ambas tiendas se publican exactamente con el nombre
+  «Microsoft Copilot» y editor «Microsoft Corporation»; los fwlinks oficiales
+  de Microsoft desde https://www.microsoft.com/en-us/microsoft-365/mobile
+  apuntan a ellas (`linkid=2256391` → Google Play; `linkid=2256798` → App
+  Store; comprobados el 2026-08-28).
+
+Conclusión: no existe una identidad «Microsoft 365 Copilot» separada que
+sustituya a la ficha; el nombre oficial vigente de la app unificada es
+«Microsoft Copilot», el mismo de la ficha. Los canales móviles migran a las
+fichas actuales y no se inventa ningún ID nuevo.
+
+### microsoft-copilot
+
+| Plataforma | URL declarada | Tipo declarado | Observación directa | Editor o proyecto observado | Resultado |
+|---|---|---|---|---|---|
+| web | https://copilot.microsoft.com | web-app | La página abre con el título «Microsoft Copilot: Your AI companion». | Microsoft | Verificado: web-app |
+| windows | https://www.microsoft.com/en-us/microsoft-365-copilot/download-copilot-app | official-site | La página «Download Microsoft 365 Copilot App on Windows, Mac, Android & iOS» responde 200; es la página de descarga de escritorio citada por el artículo de soporte, que remite la app de Windows al Microsoft Store (producto 9WZDNCRD29V9, responde 200). | Microsoft | Verificado: official-site |
+| android | https://play.google.com/store/apps/details?id=com.microsoft.office.officehubrow | app-store | Google Play muestra «Microsoft Copilot - Apps on Google Play» con el editor «Microsoft Corporation»; verificado en mercado estadounidense e italiano (hl=it&gl=IT). Es el destino del fwlink oficial linkid=2256391. | Microsoft Corporation | Verificado: app-store |
+| ios | https://apps.apple.com/us/app/microsoft-copilot/id541164041 | app-store | La lookup de Apple devuelve «Microsoft Copilot», vendedor «Microsoft Corporation», bundle `com.microsoft.officemobile`, versión 2.113.4 (2026-08-26), con italiano entre los idiomas; disponible también en la store italiana (country=it). Es el destino del fwlink oficial linkid=2256798. | Microsoft Corporation | Verificado: app-store |
+
+Fuentes observadas: https://copilot.microsoft.com,
+https://www.microsoft.com/en-us/microsoft-365-copilot/download-copilot-app,
+https://play.google.com/store/apps/details?id=com.microsoft.office.officehubrow,
+https://apps.apple.com/us/app/microsoft-copilot/id541164041,
+https://support.microsoft.com/en-US/Microsoft-365-Copilot/what-is-microsoft-copilot-app,
+https://www.microsoft.com/en-us/microsoft-365/mobile.
+
+**Nota de identidad:** el paquete anterior `com.microsoft.copilot` y el ID
+`6472538445` quedan consignados aquí como retirados (404 y 0 resultados el
+2026-08-28). No deben reutilizarse ni sustituirse por IDs no verificados.
+
+**Alcance para F4-IT:** esta verificación resuelve el bloqueador B1 de la spec
+F3-IT (`microsoft-copilot` sin ruta oficial verificada): las filas anteriores
+quedan como entrada de canal autorizada para la ficha italiana, creada en el
+mismo PR que este anexo.
+
 ## Consumo por F4
 
 F4-ES (#44), F4-SV (#43) y F4-IT (#46) pueden usar las filas marcadas «Verificado» como entrada de canal, sin repetir la prueba de red en la sesión ejecutora. No pueden ejecutar una ficha cuya fila de canal esté «NO COINCIDE» o «NO VERIFICABLE». Cada PR de F4 debe citar esta tabla y conservar la URL y fecha observadas en su evidencia.

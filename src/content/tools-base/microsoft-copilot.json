@@ -9,25 +9,25 @@
       "url": "https://copilot.microsoft.com",
       "type": "web-app",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-28"
     },
     "windows": {
       "url": "https://www.microsoft.com/en-us/microsoft-365-copilot/download-copilot-app",
       "type": "official-site",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-28"
     },
     "android": {
-      "url": "https://play.google.com/store/apps/details?id=com.microsoft.copilot",
+      "url": "https://play.google.com/store/apps/details?id=com.microsoft.office.officehubrow",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-28"
     },
     "ios": {
-      "url": "https://apps.apple.com/us/app/microsoft-copilot/id6472538445",
+      "url": "https://apps.apple.com/us/app/microsoft-copilot/id541164041",
       "type": "app-store",
       "isOfficial": true,
-      "lastChecked": "2026-08-12"
+      "lastChecked": "2026-08-28"
     }
   },
   "pricingModel": "freemium",
@@ -48,11 +48,12 @@
   "screenshotUrl": null,
   "initials": "MS",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-12",
+  "lastReviewed": "2026-08-28",
   "officialSources": [
     "https://copilot.microsoft.com",
     "https://www.microsoft.com/en-us/microsoft-365-copilot/download-copilot-app",
-    "https://play.google.com/store/apps/details?id=com.microsoft.copilot",
-    "https://apps.apple.com/us/app/microsoft-copilot/id6472538445"
+    "https://play.google.com/store/apps/details?id=com.microsoft.office.officehubrow",
+    "https://apps.apple.com/us/app/microsoft-copilot/id541164041",
+    "https://support.microsoft.com/en-US/Microsoft-365-Copilot/what-is-microsoft-copilot-app"
   ]
 }

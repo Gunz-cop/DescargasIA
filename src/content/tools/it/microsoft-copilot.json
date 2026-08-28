@@ -1,0 +1,62 @@
+{
+  "shortDescription": "L'assistente IA di Microsoft: disponibile sul web, con app per Windows e Mac e app mobili ufficiali per iOS e Android.",
+  "longDescription": "Microsoft Copilot è l'assistente di intelligenza artificiale di Microsoft. Si usa sul web con copilot.microsoft.com, con app per Windows e Mac e con app mobili per iOS e Android. Microsoft ha unificato l'app mobile e desktop: quella che si chiamava Microsoft 365 Copilot si chiama ora Microsoft Copilot, un'unica app per uso personale e per il lavoro.",
+  "bestFor": [
+    "Usare l'assistente IA di Microsoft dal web, dal computer o dal telefono",
+    "Ottenere risposte, scrivere testi, riassumere discussioni e generare idee",
+    "Lavorare con l'ecosistema Microsoft: file, documenti e strumenti Microsoft 365",
+    "Usare un unico account Microsoft per il personale e, con il piano adatto, per il lavoro"
+  ],
+  "limitations": [
+    "Funzioni e limiti dipendono dal piano: l'uso personale è gratuito, le funzioni di lavoro richiedono un abbonamento Microsoft 365.",
+    "La disponibilità delle app mobili varia per paese o regione, secondo la documentazione Microsoft.",
+    "Il nome Copilot ricopre più esperienze Microsoft; non tutte le funzioni sono le stesse per tutti gli utenti."
+  ],
+  "safetyNotes": [
+    "Usa i canali ufficiali: copilot.microsoft.com, la pagina di download di Microsoft o le app pubblicate da Microsoft Corporation su App Store e Google Play.",
+    "La vecchia scheda autonoma sugli store non esiste più: se uno store di terze parti o un sito propone un pacchetto diverso, non è il percorso dichiarato dal fornitore.",
+    "Verifica di entrare in copilot.microsoft.com o in un dominio ufficiale Microsoft prima di inserire credenziali o contenuti."
+  ],
+  "editorialSummary": "Microsoft Copilot è l'assistente IA di Microsoft. Microsoft ha unificato l'app che si chiamava Microsoft 365 Copilot: ora si chiama Microsoft Copilot ed è un'unica app per web, computer e telefono. Questa scheda rimanda ai canali ufficiali dichiarati nel catalogo e segnala che la vecchia scheda autonoma sugli store non esiste più.",
+  "editorialSections": [
+    {
+      "heading": "Cos'è Microsoft Copilot",
+      "body": "Microsoft Copilot è l'assistente di intelligenza artificiale di Microsoft. La documentazione Microsoft indica che l'app che si chiamava Microsoft 365 Copilot si chiama ora Microsoft Copilot: un'unica app che unisce la chat con i file e gli strumenti di lavoro, con esperienze sia per account personali sia per account lavorativi.\n\nSul web si usa copilot.microsoft.com senza installare nulla. Sul computer esistono app per Windows e Mac. Sul telefono l'app è disponibile per iOS e Android."
+    },
+    {
+      "heading": "I canali ufficiali",
+      "body": "Puoi accedere a Microsoft Copilot da copilot.microsoft.com, dalla pagina di download di Microsoft per Windows e Mac o dalle app che Microsoft Corporation pubblica su App Store e Google Play. Sono i canali presenti nei dati tecnici di questa scheda.\n\nLe schede attuali sugli store sono quelle indicate dai link ufficiali di Microsoft. Questa scheda non indirizza a store di terze parti né ad APK: se una pagina diversa chiede credenziali o propone un pacchetto diverso, non è il percorso dichiarato dal fornitore."
+    },
+    {
+      "heading": "Copilot in italiano e in Italia",
+      "body": "L'app supporta la lingua italiana e risulta disponibile sugli App Store e Google Play italiani. I dati di uso in Italia riportati dalla comunità mostrano però una quota in calo in un mercato dove ChatGPT e Gemini dominano: il dato con la sua fonte è riportato nella sezione dati della comunità di questa scheda.\n\nLa disponibilità esatta delle funzioni e le condizioni d'uso vanno confermate sulle fonti ufficiali, perché possono variare per paese, piano e tipo di account."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Secondo i dati Audicom/Audiweb riportati da Vincenzo Cosenza, Copilot era tra le app di IA più usate in Italia a fine 2025, con circa 1,8 milioni di utenti, un dato però in calo rispetto ai periodi precedenti in un mercato dove ChatGPT e Gemini dominano. La disponibilità esatta e le condizioni vanno confermate sulle fonti ufficiali.",
+      "source": "https://vincos.substack.com/p/le-app-di-ia-piu-usate-in-italia-b2d",
+      "sourceLabel": "Vincos (Vincenzo Cosenza) — le app di IA più usate in Italia",
+      "date": "2026-03"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Microsoft Copilot è gratis?",
+      "answer": "La documentazione Microsoft indica un uso personale gratuito; le funzioni di lavoro richiedono un piano Microsoft 365. Limiti e prezzi possono cambiare: verificali sulle fonti ufficiali."
+    },
+    {
+      "question": "Che differenza c'è tra Microsoft Copilot e Microsoft 365 Copilot?",
+      "answer": "Sugli store e sul computer Microsoft unifica le app: quella che si chiamava Microsoft 365 Copilot si chiama ora Microsoft Copilot. Nel web il nome Copilot ricopre più esperienze Microsoft e non tutte le funzioni sono le stesse per tutti gli utenti."
+    },
+    {
+      "question": "Microsoft Copilot è disponibile in Italia?",
+      "answer": "Gli store italiani mostrano la scheda Microsoft Copilot pubblicata da Microsoft Corporation e l'app supporta la lingua italiana. La disponibilità esatta delle funzioni va confermata sulle fonti ufficiali, perché può variare per paese o piano."
+    },
+    {
+      "question": "Posso scaricare Microsoft Copilot sul computer?",
+      "answer": "La pagina di download di Microsoft copre Windows e Mac; esiste anche una scheda Microsoft Store. Sul web si usa copilot.microsoft.com senza installare nulla."
+    }
+  ],
+  "italianSupport": "yes"
+}
