@@ -9,8 +9,6 @@ lastUpdated: "2026-06-18"
 author: "Redacción DescargasIA"
 ---
 
-# Cómo descargar ChatGPT desde su sitio oficial
-
 OpenAI ha lanzado oficialmente aplicaciones nativas de ChatGPT para los sistemas operativos más populares. Esto significa que ya no necesitas depender exclusivamente del navegador web para entablar conversaciones, redactar textos o depurar código. Sin embargo, debido a la popularidad de la herramienta, han surgido decenas de sitios falsos de descargas que intentan inyectar malware o cobrar por el software gratuito.
 
 En esta guía te explicamos cómo descargar e instalar el cliente oficial de ChatGPT de forma 100% segura.
@@ -52,8 +50,8 @@ Sigue estos sencillos pasos para instalar la aplicación oficial de escritorio e
 
 Si buscas otras opciones de chats con IA de alto nivel que también cuenten con integraciones seguras, te recomendamos evaluar:
 
-*   [Gemini](/gemini): La IA conversacional y multimodal integrada de Google.
-*   [Claude](/claude): La inteligencia artificial de Anthropic optimizada para redacción avanzada.
+*   [Gemini](/es/gemini): La IA conversacional y multimodal integrada de Google.
+*   [Claude](/es/claude): La inteligencia artificial de Anthropic optimizada para redacción avanzada.
 
 ## Preguntas frecuentes (FAQ)
 

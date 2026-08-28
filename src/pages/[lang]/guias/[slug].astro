@@ -1,0 +1,122 @@
+---
+// src/pages/[lang]/guias/[slug].astro — guía editorial localizada.
+//
+// `getStaticPaths()` recorre los documentos REALES de la colección: una guía
+// solo existe en el idioma en el que existe su archivo. No hay reutilización
+// automática de un Markdown español bajo /sv/ o /it/.
+import { render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/ui';
+import type { Lang } from '../../../utils/brand';
+import { homeUrl, guideUrl, guideIndexUrl, absolute, buildAlternates } from '../../../utils/links';
+import { getLocalizedGuides, guideDate, type LocalizedGuide } from '../../../utils/guides';
+
+export async function getStaticPaths() {
+  const guides = await getLocalizedGuides();
+
+  // `langsBySlug` se calcula aquí, en contexto asíncrono, y viaja como prop:
+  // el hreflang no puede resolverse con un `getEntry()` sin `await` dentro de
+  // un callback síncrono de la plantilla.
+  const langsBySlug = new Map<string, string[]>();
+  for (const guide of guides) {
+    const langs = langsBySlug.get(guide.slug) ?? [];
+    langs.push(guide.lang);
+    langsBySlug.set(guide.slug, langs);
+  }
+
+  return guides.map((guide) => ({
+    params: { lang: guide.lang, slug: guide.slug },
+    props: { guide, translatedLangs: langsBySlug.get(guide.slug) ?? [guide.lang] }
+  }));
+}
+
+const { guide, translatedLangs } = Astro.props as {
+  guide: LocalizedGuide;
+  translatedLangs: string[];
+};
+const lang = guide.lang as Lang;
+const t = useTranslations(lang);
+const data = guide.entry.data;
+
+// Mecanismo oficial de Astro Content: nada de `set:html` sobre el Markdown
+// crudo, que dejaría el cuerpo sin renderizar y sin pasar por los plugins.
+const { Content } = await render(guide.entry);
+
+// Solo se declara alternativa la traducción que existe como archivo. La
+// autorreferencia entra por construcción porque `guide.lang` siempre está en
+// `translatedLangs`.
+const alternates = buildAlternates(Astro.url.origin, (l) =>
+  translatedLangs.includes(l) ? guideUrl(l, guide.slug) : null
+);
+
+const effectiveDate = guideDate(guide);
+const indexUrl = guideIndexUrl(lang);
+
+const schemaBreadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: absolute(Astro.url.origin, homeUrl(lang)) },
+    { '@type': 'ListItem', position: 2, name: t('guides.index.title'), item: absolute(Astro.url.origin, indexUrl) },
+    { '@type': 'ListItem', position: 3, name: data.title, item: Astro.url.href }
+  ]
+};
+
+// Solo datos que existen de verdad en el frontmatter. `dateModified` no se
+// inventa: si no hay `lastUpdated`, no se declara.
+const schemaArticle: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: data.title,
+  name: data.title,
+  description: data.metaDescription,
+  inLanguage: lang,
+  datePublished: data.datePublished,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': Astro.url.href },
+  url: Astro.url.href,
+  author: { '@type': 'Organization', name: data.author },
+  publisher: { '@type': 'Organization', name: 'FuenteAI' }
+};
+if (data.lastUpdated) schemaArticle.dateModified = data.lastUpdated;
+if (data.tags.length > 0) schemaArticle.keywords = data.tags.join(', ');
+---
+
+<BaseLayout
+  title={data.seoTitle}
+  description={data.metaDescription}
+  ogType="article"
+  jsonLd={[schemaBreadcrumb, schemaArticle]}
+  lang={lang}
+  alternates={alternates}
+>
+  <nav class="fai-mono-sm flex flex-wrap items-center gap-2 pt-7 text-fai-muted-2" aria-label="Breadcrumb">
+    <a href={homeUrl(lang)} class="transition-colors hover:text-fai-signal">FuenteAI</a>
+    <span aria-hidden="true">/</span>
+    <a href={indexUrl} class="transition-colors hover:text-fai-signal">{t('guides.index.title')}</a>
+    <span aria-hidden="true">/</span>
+    <span class="text-fai-muted" aria-current="page">{data.title}</span>
+  </nav>
+
+  <article class="mx-auto mt-8 w-full max-w-[72ch]">
+    <header class="border-t border-fai-line pt-7">
+      <h1 class="fai-h2 text-fai-ink">{data.title}</h1>
+      <p class="mt-4 text-[15px] leading-[1.55] text-fai-muted">{data.metaDescription}</p>
+      <p class="fai-mono-sm mt-5 flex flex-wrap gap-x-4 gap-y-1 text-fai-muted-2">
+        <span>{t('guides.author')} {data.author}</span>
+        <span>
+          {data.lastUpdated ? t('guides.updated') : t('guides.published')}
+          {' '}
+          <time datetime={effectiveDate}>{effectiveDate}</time>
+        </span>
+      </p>
+    </header>
+
+    <div class="fai-guide-body mt-10">
+      <Content />
+    </div>
+
+    <footer class="mt-12 border-t border-fai-line pt-7">
+      <a href={indexUrl} class="fai-chip">{t('guides.back')}</a>
+    </footer>
+  </article>
+</BaseLayout>

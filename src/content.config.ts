@@ -102,8 +102,12 @@ const categories = defineCollection({
   })
 });
 
+// Guías: Markdown localizado en `src/content/guides/<lang>/<slug>.md`.
+// El patrón es recursivo a propósito — el idioma y el slug se derivan del id
+// real del documento (`es/descargar-chatgpt-para-windows`), nunca del
+// frontmatter, para que sea imposible publicar una guía española bajo /sv/.
 const guides = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/guides' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/guides' }),
   schema: z.object({
     title: z.string(),
     seoTitle: z.string(),
