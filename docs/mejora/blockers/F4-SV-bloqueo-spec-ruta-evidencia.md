@@ -7,7 +7,21 @@
 **Rama de diagnóstico:** `codex/issue-43-sv-guides`
 **Commit base comprobado:** `434a678857b76c5f663f51b4044388c39087d977`
 **Fecha de comprobación:** 2026-08-27
-**Estado:** bloqueado antes de escribir contenido.
+**Estado:** resuelto por Codex el 2026-08-28; F4-SV queda habilitada con los límites de `docs/mejora/specs/sv.md`.
+
+## Resolución
+
+- PR #78 integró la ruta pública de guías en `main`.
+- F4-SV aprobó exactamente `ai-transkribering-svenska.md`,
+  `ai-skriva-text-svenska.md`, `kora-ai-lokalt.md` y
+  `ai-presentation-svenska.md` bajo `src/content/guides/sv/`.
+- La tabla canónica de evidencia se amplió con 26 filas F4-SV verificadas el
+  2026-08-28. El registro distingue las filas de canal de las afirmaciones de
+  soporte lingüístico; DeepL Write y Gamma/Canva no se presentan como soporte
+  sueco sin evidencia específica.
+
+El diagnóstico que sigue conserva el estado observado antes de esta
+resolución y no debe usarse como contrato vigente de F4-SV.
 
 ## Resumen
 

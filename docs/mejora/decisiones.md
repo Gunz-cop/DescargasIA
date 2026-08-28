@@ -16,6 +16,9 @@
 | F0 | No añade eventos, proveedor de analítica, fichas, copy, rutas, indexación ni idiomas. | Esos trabajos pertenecen a F1, F2/F3 y sus implementaciones posteriores. |
 | Criterios SDD | Toda fase nueva debe tener contrato de entrada/salida, propiedad, protegidos, fuera de alcance, riesgos y criterios ejecutables. | Una sesión limpia debe poder trabajar sin recuperar conversaciones. |
 
+| Ruta pública de guías localizadas | Se habilita `/{lang}/guias/{slug}` mediante la implementación integrada en PR #78; las guías deben existir en la colección y solo se generan para idiomas y archivos presentes. | La colección `guides` ya existía, pero publicar contenido sin una ruta con canonical, hreflang, sitemap y enlazado definidos dejaba un contrato SEO incompleto. |
+| Slugs F4-SV | Se aprueban exactamente `ai-transkribering-svenska`, `ai-skriva-text-svenska`, `kora-ai-lokalt` y `ai-presentation-svenska`, bajo `src/content/guides/sv/`. | Son los cuatro intents seleccionados por el research sueco; se normaliza `köra` a ASCII para el nombre de archivo sin cambiar la consulta editorial. |
+
 | Evidencia de canales F4 | Codex verifica directamente las URLs oficiales y versiona una tabla fechada en docs/mejora/evidencia-canales-F4-2026-08-27.md; F4 consume solo filas verificadas. | Las sesiones ejecutoras no tienen egress ni navegador suficiente para comprobar el canal y su tipo. |
 
 ## Límites por producto
@@ -65,7 +68,6 @@ no se esquiva el límite.
 |---|---|---|
 | Alcance geográfico inicial de `es` (un país o hispanohablante multi-país) | F2-ES/Codex antes de seleccionar oportunidades | Research y prioridades españolas |
 | Proveedor y formato de medición del funnel | F1/Codex | Instrumentación y comparación postpublicación |
-| Ruta pública para guías de intención | Se habilita mediante una fase común previa, con contrato propio de rutas, SEO, enlazado, sitemap y medición; no se publica contenido en esa fase. | F4-SV (#43) y cualquier guía futura |
 | Permisos y política de los workflows de GitHub Actions para esta serie | Codex antes de automatizar | CI o arnés adicional |
 
 No se rellenan estas celdas con un proveedor, país, URL o credencial
@@ -81,3 +83,4 @@ que la fase bloqueada la use.
 | 2026-08-27 | F0 | `main` es la rama de integración de esta serie. | Fija un único destino de integración para los PRs de F1–F7 y evita que cada fase invente una rama base distinta. |
 | 2026-08-27 | Codex/F4 | Se adopta la tabla versionada de evidencia directa como entrada autorizada para la verificación de canales. | Las sesiones ejecutoras no pueden abrir los dominios oficiales; la tabla conserva URL, fecha, editor/proyecto, tipo observado y discrepancias. La fila ollama/mac queda bloqueada por #60. |
 | 2026-08-27 | Codex | Se decide crear una ruta pública para guías localizadas como fase previa a F4-SV. | La colección `guides` ya existe y la lógica del sitemap anticipa `/{lang}/guias/{slug}`, pero no hay ruta; publicar contenido antes de resolver canonical, hreflang, sitemap y enlazado produciría páginas sin contrato SEO. |
+| 2026-08-28 | Codex | Se cierra la puerta de ruta para F4-SV: PR #78 está fusionado en `main`; se autorizan solo los cuatro slugs definidos en esta fecha. | El bloqueo #79 detectó que la spec conservaba el estado anterior y no tenía nombres de archivo ejecutables. |

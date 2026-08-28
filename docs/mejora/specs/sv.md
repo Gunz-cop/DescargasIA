@@ -8,10 +8,10 @@
 **Depende de:** F2-SV (#34, fusionada en `main` mediante el PR #49) y F0 (#35,
 fusionada en `main` mediante el PR #53)
 
-> Documento de especificación. **No publica contenido ni crea rutas.** Convierte
-> el research sueco en contratos para una fase posterior. Las cuatro guías
-> quedan bloqueadas hasta que exista una decisión global que autorice la ruta
-> pública de guías y la publicación de contenido nuevo.
+> Documento de especificación. **No publica contenido.** Convierte el research
+> sueco en contratos ejecutables para F4-SV. La ruta pública de guías ya está
+> integrada mediante PR #78; F4-SV puede crear únicamente los cuatro archivos
+> aprobados en esta spec.
 
 ## Objetivo
 
@@ -27,6 +27,18 @@ La prioridad paraguas `bästa ai verktyg svenska` se conserva como backlog de
 baja prioridad del research, pero no se convierte en una quinta guía ejecutable
 en esta fase.
 
+## Archivos aprobados para F4-SV
+
+Los nombres de archivo son parte del contrato y no se pueden sustituir por
+variantes de una consulta ni por nombres traducidos desde otro producto:
+
+| Oportunidad sueca | Archivo permitido |
+|---|---|
+| `ai transkribering svenska` | `src/content/guides/sv/ai-transkribering-svenska.md` |
+| `ai skriva text svenska` | `src/content/guides/sv/ai-skriva-text-svenska.md` |
+| `köra ai lokalt` | `src/content/guides/sv/kora-ai-lokalt.md` |
+| `ai presentation svenska` | `src/content/guides/sv/ai-presentation-svenska.md` |
+
 ## Contrato de entrada
 
 - `docs/mejora/research/sv.md` está integrado en `main` y es la fuente de
@@ -37,36 +49,36 @@ en esta fase.
 - El research no conserva volumen de keywords, posición, CTR ni una serie
   temporal reproducible para Suecia. Las sugerencias de Google y la SERP son
   señales cualitativas, no volumen confirmado.
-- `docs/mejora/decisiones.md` fija que `sv` es un producto independiente,
-  asigna a F3-SV la propiedad de este archivo y mantiene abierta la decisión
-  sobre una ruta pública para las guías.
-- `docs/enlazado-interno.md` §7 confirma que la colección `guides` no tiene
-  ruta pública bajo `src/pages/[lang]/guias/[slug].astro`.
+- `docs/mejora/decisiones.md` fija que `sv` es un producto independiente y
+  asigna a F3-SV la propiedad de este archivo. La decisión de crear la ruta
+  pública quedó cerrada con PR #78.
+- `docs/enlazado-interno.md` y PR #78 definen la ruta pública bajo
+  `src/pages/[lang]/guias/[slug].astro`, con canonical, hreflang y sitemap
+  derivados de las guías que existen en disco.
 - F1/#36 está integrada en `main` mediante el PR #52. Su esquema de eventos
   existe y puede citarse, pero no autoriza inventar eventos ni convierte por sí
   solo una spec en éxito medido.
 
-### Bloqueo global vigente
+### Puerta de entrada resuelta
 
-Las cuatro oportunidades son **BLOQUEADAS**. La decisión abierta de
-`docs/mejora/decisiones.md` («Si las guías de intención necesitan una ruta
-pública antes de desbloquearse») no está cerrada y la ruta de guías no existe.
-Por tanto, esta fase no crea un Markdown de guía, no crea una ruta, no cambia
-el sitemap, canonical, hreflang, navegación ni enlazado entrante, y no escribe
-contenido de ninguna ficha.
+La ruta pública de guías está integrada en `main` mediante PR #78 y la decisión
+global correspondiente ya está registrada. F4-SV puede crear los cuatro
+Markdown aprobados, sin crear rutas, cambiar el sitemap, canonical, hreflang,
+navegación ni contenido de fichas. Debe consumir únicamente las filas
+`Verificado` del registro canónico de canales y detenerse si una afirmación
+necesaria no tiene evidencia primaria.
 
 ## Contrato de salida
 
-- Este archivo, `docs/mejora/specs/sv.md`, con cuatro contratos bloqueados y un
-  registro explícito de oportunidades aparcadas o rechazadas.
-- Para cada guía bloqueada: consulta primaria y variantes nativas, tipo de
+- Este archivo, `docs/mejora/specs/sv.md`, con cuatro contratos ejecutables y
+  un registro explícito de oportunidades aparcadas o rechazadas.
+- Para cada guía: consulta primaria y variantes nativas, tipo de
   página, intención, respuesta above the fold prevista, plataformas y canales
   que deben reverificarse, secciones únicas, FAQ, advertencias, enlaces
   internos, eventos permitidos, ventana y métrica.
-- Ningún archivo de `src/` ni de `public/` queda modificado por F3-SV.
-- Si Codex desbloquea la ruta pública, deberá abrir una fase/issue previo para
-  ruta, SEO, enlazado y sitemap. Solo después podrá F4-SV redactar las guías
-  con un alcance aprobado.
+- F4-SV puede modificar únicamente los cuatro archivos aprobados bajo
+  `src/content/guides/sv/`; no puede crear rutas ni modificar fichas, catálogo,
+  sitemap, canonical, hreflang o navegación.
 
 ## Archivos que posee
 
@@ -133,7 +145,9 @@ contenido de ninguna ficha.
 7. Cada guía debe tener una salida editorial suficiente para decidir, no una
    lista de enlaces ni una página delgada para una variante de búsqueda.
 
-### Oportunidad 1 — `ai transkribering svenska` (**BLOQUEADA**)
+### Oportunidad 1 — `ai transkribering svenska` (**LISTA PARA F4-SV**)
+
+**Archivo aprobado:** `src/content/guides/sv/ai-transkribering-svenska.md`
 
 **Tipo y alcance:** guía comparativa de transcripción en sueco, con `ai
 transkribering svenska gratis`, `ai transkribera svenska` y `whisper svenska
@@ -165,13 +179,16 @@ no demuestra por sí sola precisión, soporte de todas las variantes ni
 disponibilidad regional.
 
 **Enlaces, funnel y medición:** enlazar solo a fichas suecas/categorías
-existentes y destinos declarados; no publicar mientras no haya ruta de guías.
+existentes y destinos declarados; la ruta pública ya existe y F4-SV debe usar
+los helpers de enlaces al implementar.
 Con el contrato integrado de F1, medir navegación hacia una ficha o `/r` con
 los eventos existentes; ventana de 90 días desde publicación, corte a 30. La
 integración de F1/#36 no equivale por sí sola a éxito medido. Sin #50, no se
 declara éxito SEO medido.
 
-### Oportunidad 2 — `ai skriva text svenska` (**BLOQUEADA**)
+### Oportunidad 2 — `ai skriva text svenska` (**LISTA PARA F4-SV**)
+
+**Archivo aprobado:** `src/content/guides/sv/ai-skriva-text-svenska.md`
 
 **Tipo y alcance:** guía de escritura y corrección en sueco. Incluye `ai
 skriva svenska`, `ai skriva om text svenska`, `rättstavning svenska online` y
@@ -200,11 +217,12 @@ traducción, cuenta y datos. No presentar Grammarly como corrector sueco sin
 verificar soporte primario; no convertir «gratis» o «GDPR» en garantía.
 
 **Enlaces, funnel y medición:** solo enlaces internos a fichas suecas
-existentes y canales oficiales revisados; ningún enlace se implementa en esta
-fase. Mantener la ventana de 90 días/corte de 30 y las métricas condicionadas
+existentes y canales oficiales revisados. Mantener la ventana de 90 días/corte de 30 y las métricas condicionadas
 al contrato integrado de F1/#36 y a Search Console/#50.
 
-### Oportunidad 3 — `köra ai lokalt` (**BLOQUEADA**)
+### Oportunidad 3 — `köra ai lokalt` (**LISTA PARA F4-SV**)
+
+**Archivo aprobado:** `src/content/guides/sv/kora-ai-lokalt.md`
 
 **Tipo y alcance:** guía de decisión local/offline. Incluye `AI utan internet`,
 `lokal AI Windows`, `köra språkmodell på datorn` y `ladda ner AI modell lokalt`.
@@ -235,11 +253,13 @@ hardware, privacidad y modelos. Advertir que «local» no es una certificación
 de privacidad y que una función cloud puede seguir requiriendo conexión.
 
 **Enlaces, funnel y medición:** salida principal a fichas/categoría existentes
-mediante helpers; no crear la ruta de guía ni ampliar F1. Métrica futura solo
+mediante helpers; no crear una ruta ni ampliar F1. Métrica futura solo
 si el esquema de F1 se amplía de forma autorizada para guías; ventana propuesta de 90
 días y corte de 30, sin declararla medible hoy.
 
-### Oportunidad 4 — `ai presentation svenska` (**BLOQUEADA**)
+### Oportunidad 4 — `ai presentation svenska` (**LISTA PARA F4-SV**)
+
+**Archivo aprobado:** `src/content/guides/sv/ai-presentation-svenska.md`
 
 **Tipo y alcance:** guía comparativa de creación de presentaciones. Incluye
 `ai presentation svenska gratis`, `ai presentationer svenska` y `bästa ai för
@@ -268,7 +288,7 @@ PowerPoint, idioma y cuenta. Advertir que Gamma no debe describirse como
 compatible con sueco en toda su superficie si la lista oficial no lo confirma.
 
 **Enlaces, funnel y medición:** enlazar solo a fichas suecas y destinos
-oficiales existentes cuando una fase posterior tenga ruta; usar eventos de F1
+oficiales existentes; usar eventos de F1
 sin inventar nombres. Ventana futura de 90 días con corte de 30; no se declara
 éxito SEO mientras #50 no aporte sus entradas; F1/#36 ya está integrada, pero
 la guía no tiene eventos propios autorizados.
@@ -296,8 +316,9 @@ la guía no tiene eventos propios autorizados.
 
 ## Fuera de alcance
 
-- Crear cualquier archivo en `src/content/guides/` o `src/content/tools/sv/`.
-- Crear `src/pages/[lang]/guias/[slug].astro` o cualquier ruta nueva.
+- Crear archivos fuera de los cuatro nombres aprobados bajo
+  `src/content/guides/sv/`, o crear cualquier archivo en `src/content/tools/sv/`.
+- Crear o modificar `src/pages/[lang]/guias/[slug].astro` o cualquier ruta.
 - Cambiar sitemap, canonical, hreflang, selector de idioma, navegación,
   categorías, `src/utils/links.ts` o cualquier archivo común.
 - Añadir eventos, proveedor de analítica, dashboards o datos de funnel.
@@ -305,25 +326,24 @@ la guía no tiene eventos propios autorizados.
 - Traducir specs, research o contenido de `es` o `it`.
 - Presentar sugerencias, SERP, SCB o una página comercial como volumen de
   búsquedas confirmado.
-- Cerrar el bloqueo por iniciativa propia. La decisión global debe quedar
-  registrada en `docs/mejora/decisiones.md` y contar con una fase/issue de ruta
-  antes de que F4-SV pueda redactar.
+- Reabrir la decisión de ruta o ampliar el alcance sin un issue/decisión de
+  arquitectura propio.
 
 ## Criterios de aceptación
 
-- [ ] `node -e "const fs=require('fs');const t=fs.readFileSync('docs/mejora/specs/sv.md','utf8');for(const h of ['ai transkribering svenska','ai skriva text svenska','köra ai lokalt','ai presentation svenska'])if(!t.includes(h)||!t.includes('**BLOQUEADA**'))process.exit(1);"` sale 0: las cuatro oportunidades seleccionadas están presentes y bloqueadas.
+- [ ] `node -e "const fs=require('fs');const t=fs.readFileSync('docs/mejora/specs/sv.md','utf8');for(const h of ['ai transkribering svenska','ai skriva text svenska','köra ai lokalt','ai presentation svenska'])if(!t.includes(h)||!t.includes('**LISTA PARA F4-SV**'))process.exit(1);"` sale 0: las cuatro oportunidades seleccionadas y sus estados ejecutables están presentes.
 - [ ] `node -e "const fs=require('fs');const t=fs.readFileSync('docs/mejora/specs/sv.md','utf8');for(const h of ['Objetivo','Contrato de entrada','Contrato de salida','Archivos que posee','PROTEGIDOS','Instrucciones','Fuera de alcance','Criterios de aceptación','Riesgos conocidos'])if(!t.includes('## '+h))process.exit(1);if(!t.includes('docs/mejora/research/sv.md'))process.exit(1);"` sale 0: la spec declara el contrato completo y protege explícitamente el research sueco.
-- [ ] `node -e "const fs=require('fs');const t=fs.readFileSync('docs/mejora/specs/sv.md','utf8');for(const x of ['src/content/guides/','src/pages/[lang]/guias/[slug].astro','src/content/tools/sv/','guide_view'])if(!t.includes(x))process.exit(1);"` sale 0: las superficies bloqueadas o fuera de alcance están declaradas, sin implementarlas.
+- [ ] `node -e "const fs=require('fs');const t=fs.readFileSync('docs/mejora/specs/sv.md','utf8');for(const x of ['src/content/guides/sv/','src/pages/[lang]/guias/[slug].astro','src/content/tools/sv/','guide_view'])if(!t.includes(x))process.exit(1);"` sale 0: las superficies propias y protegidas están declaradas.
 - [ ] `node -e "const {execSync}=require('child_process');const out=execSync('git diff --name-only origin/main...HEAD').toString().split('\n').filter(Boolean);process.exit(out.length===1&&out[0]==='docs/mejora/specs/sv.md'?0:1);"` sale 0: el diff de F3-SV contra la base actual del PR contiene únicamente el archivo propio.
 - [ ] `node -e "const fs=require('fs');const t=fs.readFileSync('docs/mejora/specs/sv.md','utf8');const sections=['Objetivo','Contrato de entrada','Contrato de salida','Archivos que posee','PROTEGIDOS','Instrucciones','Fuera de alcance','Criterios de aceptación','Riesgos conocidos'];for(const h of sections)if(!new RegExp('^## '+h,'m').test(t))process.exit(1);const own=(t.match(/^- `docs\\/mejora\\/specs\\/sv\\.md`/gm)||[]).length;if(own!==1)process.exit(1);"` sale 0: la spec conserva todas las secciones obligatorias y declara exactamente un archivo propio.
-- [ ] `[manual]` Estado del bloqueo: 1. comprobar que no existe `src/pages/[lang]/guias/[slug].astro`; 2. comprobar que la decisión sobre la ruta pública sigue abierta en `docs/mejora/decisiones.md`; 3. resultado esperado: las cuatro guías siguen sin archivo de contenido y no se ha creado ninguna ruta.
+- [ ] `[manual]` Puerta de ruta: 1. comprobar que `src/pages/[lang]/guias/[slug].astro` existe en `main`; 2. comprobar que PR #78 está fusionado y la decisión de ruta figura como cerrada; 3. comprobar que F4 solo crea los cuatro archivos aprobados y no modifica la ruta.
 - [ ] `[manual]` Revisión de independencia: 1. comparar las cuatro consultas con `docs/mejora/research/sv.md`; 2. comprobar que no se usan consultas, selección ni copy de `es` o `it`; 3. resultado esperado: cada contrato se puede rastrear a una oportunidad sueca y sus límites de evidencia están explícitos.
 
 ## Riesgos conocidos
 
 | Riesgo | Evidencia que lo detecta | Resolución |
 |---|---|---|
-| Una sesión publica una guía sin ruta pública | No existe `src/pages/[lang]/guias/[slug].astro`; el criterio manual y el diff detectan archivos nuevos fuera de la spec | Codex debe cerrar la decisión y abrir una fase de ruta antes de F4-SV |
+| Una sesión publica una guía fuera del contrato de ruta | La ruta existe por PR #78, pero el criterio manual y el diff deben detectar archivos nuevos fuera de los cuatro nombres aprobados | F4-SV conserva la ruta común intacta y escala cualquier cambio de SEO/ruta a un issue propio |
 | Se trata una sugerencia o SERP como volumen sueco | El research declara que no hay volumen confirmado ni filtros reproducibles | Mantener lenguaje de señal cualitativa; no añadir cifras |
 | Se heredan prioridades de español o italiano | La matriz de `decisiones.md` separa productos y el criterio manual compara contra el research SV | Codex revisa cada contrato contra `research/sv.md` |
 | Se confunde guía con ficha o se amplía el catálogo | La salida de las cuatro oportunidades es guía; Klang es una ficha existente y Foundry Local/Skrivar/SpeechText no están seleccionados | Escalar cualquier ficha nueva a una fase con contrato propio |
