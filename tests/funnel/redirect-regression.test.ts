@@ -146,6 +146,7 @@ test('los call sites importan funnel-events y /r usa resolveRedirect con window.
   assert.match(rSource, /import\s*{[^}]*resolveRedirect[^}]*}\s*from\s*['"]\.\.\/\.\.\/utils\/funnel-events['"]/);
   assert.match(rSource, /import\s*{[^}]*dispatchFunnelEvent[^}]*}\s*from\s*['"]\.\.\/\.\.\/utils\/funnel-events['"]/);
   assert.match(rSource, /window\.location\.search/);
+  assert.match(rSource, /document\.documentElement\.lang\s*=\s*lang/);
   assert.doesNotMatch(rSource, /Astro\.url\.searchParams/);
   // Sin dispatcher duplicado ni esquema duplicado fuera del módulo
   assert.doesNotMatch(rSource, /new CustomEvent\(/);
@@ -234,5 +235,8 @@ test('build: la página /r compilada despacha los eventos del módulo y no usa A
   assert.match(built.scriptGraph, /fuenteai:funnel/);
   // La navegación se decide en runtime con window.location.search
   assert.match(built.scriptGraph, /window\.location\.search/);
+  // El mismo idioma saneado que selecciona el copy actualiza el documento
+  // para que lectores de pantalla no pronuncien IT/SV como español.
+  assert.match(built.scriptGraph, /document\.documentElement\.lang=/);
   assert.doesNotMatch(built.scriptGraph, /Astro\.url\.searchParams/);
 });

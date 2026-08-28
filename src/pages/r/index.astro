@@ -138,6 +138,10 @@ const toolsDb = baseTools.reduce((acc, tool) => {
         const params = new URLSearchParams(window.location.search);
         const r = resolveRedirect(params, toolsDb);
         const { lang, toolId, platformId, channel, targetUrl, displayUrl, name, errorReason } = r;
+        // El contenido se localiza en el cliente porque `/r` es una única ruta.
+        // Mantener también el idioma del documento evita que lectores de
+        // pantalla pronuncien italiano o sueco con reglas de español.
+        document.documentElement.lang = lang;
 
         const translations = {
           es: {

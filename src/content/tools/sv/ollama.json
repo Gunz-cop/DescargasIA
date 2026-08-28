@@ -20,7 +20,7 @@
   "editorialSections": [
     {
       "heading": "Varför tekniska användare väljer Ollama",
-      "body": "Ollama löser ett tydligt problem: att köra språkmodeller på den egna datorn. Det passar utvecklare, experimenterande användare och team som vill testa AI utan att använda en extern molntjänst för varje fråga.\n\nDet är inte samma sak som ChatGPT eller Claude. Ollama är främst ett lokalt verktyg och en modellhanterare. Du installerar det, laddar ner modeller och kör dem lokalt via terminal eller lokalt API."
+      "body": "Ollama löser ett tydligt problem: att ladda ner och köra språkmodeller på den egna datorn. För en lokal modell anger projektets dokumentation att promptar och svar inte skickas till ollama.com. Ollama erbjuder samtidigt molnmodeller som bearbetas i deras tjänst och kräver konto, så de två lägena måste skiljas åt.\n\nDet är inte samma sak som ChatGPT eller Claude. Ollama är ett runtime och en modellhanterare. Du kan köra en nedladdad modell lokalt via terminal eller lokalt API, eller uttryckligen välja en modell med `:cloud`. När data inte får lämna datorn kan molnfunktionerna stängas av med projektets local-only-inställning."
     },
     {
       "heading": "Officiell installation",
@@ -46,7 +46,7 @@
     },
     {
       "question": "Kan Ollama användas offline?",
-      "answer": "Ja, efter att modellerna har laddats ner kan de köras lokalt utan internetanslutning."
+      "answer": "Ja, nedladdade lokala modeller kan köras utan internetanslutning. Molnmodeller och webbsökning kräver externa tjänster; aktivera local-only-läget om de funktionerna ska vara avstängda."
     },
     {
       "question": "Vilken hårdvara behöver jag?",

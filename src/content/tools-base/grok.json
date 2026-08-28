@@ -43,10 +43,12 @@
   "screenshotUrl": null,
   "initials": "GRK",
   "trustLevel": "official",
-  "lastReviewed": "2026-08-27",
+  "lastReviewed": "2026-08-28",
   "officialSources": [
     "https://x.com/i/grok",
     "https://grok.com",
-    "https://x.ai"
+    "https://x.ai",
+    "https://docs.x.ai/grok/overview",
+    "https://docs.x.ai/grok/faq"
   ]
 }
