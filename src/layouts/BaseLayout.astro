@@ -6,7 +6,8 @@ import Motion from '../components/Motion.astro';
 import WebMcp from '../components/WebMcp.astro';
 import { useTranslations } from '../i18n/ui';
 import { CATEGORIES, type Lang } from '../utils/brand';
-import { homeUrl, categoryUrl, pageUrl, directoryUrl, hardwareUrl, defaultOgImageUrl } from '../utils/links';
+import { homeUrl, categoryUrl, pageUrl, directoryUrl, hardwareUrl, guideIndexUrl, defaultOgImageUrl } from '../utils/links';
+import { getLangsWithGuides } from '../utils/guides';
 import { hasMarkdownMirror, markdownPathFor } from '../utils/agent-content';
 import { getTranslatedTools } from '../utils/tools';
 
@@ -64,6 +65,11 @@ const markdownUrl = hasMarkdownMirror(Astro.url.pathname, langTools.map((tool) =
 const home = homeUrl(lang);
 const directory = directoryUrl(lang);
 const hardware = hardwareUrl(lang);
+
+// Enlace entrante de la seccion de guias. Solo se pinta si ese idioma tiene
+// guias reales: el indice no se genera para un idioma sin archivos, asi que
+// enlazarlo siempre seria un enlace interno roto. Ver docs/enlazado-interno.md.
+const guidesIndex = (await getLangsWithGuides()).includes(lang) ? guideIndexUrl(lang) : null;
 
 // URLs reales calculadas en build: si la página no existe en el idioma destino
 // se enlaza su portada en vez de provocar un 404.
@@ -200,6 +206,12 @@ const rightsLine = lang === 'sv'
             </div>
           </details>
 
+          {guidesIndex && (
+            <a href={guidesIndex} class="rounded-md px-3 py-2 text-[14px] text-fai-muted transition-colors hover:text-fai-ink">
+              {t('nav.guides')}
+            </a>
+          )}
+
           <a href={pageUrl(lang, 'acerca-de')} class="rounded-md px-3 py-2 text-[14px] text-fai-muted transition-colors hover:text-fai-ink">
             {t('nav.about')}
           </a>
@@ -252,6 +264,11 @@ const rightsLine = lang === 'sv'
               <a href={hardware} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">
                 {t('hw.nav')}
               </a>
+              {guidesIndex && (
+                <a href={guidesIndex} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">
+                  {t('nav.guides')}
+                </a>
+              )}
               <p class="fai-mono-sm mt-4 px-3 py-1 text-fai-muted-2">{t('nav.categories')}</p>
               {CATEGORIES.map((cat) => (
                 <a href={categoryUrl(lang, cat.slug)} class="block rounded-md px-3 py-3 text-[15px] text-fai-ink hover:bg-fai-card">

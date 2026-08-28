@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "shorten": "node scripts/shorten-official-links.mjs",
     "test": "node --test \"tests/**/*.test.mjs\" && npx tsx --test \"tests/**/*.test.ts\"",
-    "test:build": "node --test tests/agents/catalogo-campos.test.mjs tests/og-images.test.mjs",
+    "test:build": "node --test tests/agents/catalogo-campos.test.mjs tests/og-images.test.mjs tests/guias-rutas.test.mjs",
     "build": "npm run shorten && npm run catalog:audit && npm run hw:audit && npm test && npm run agents:skills && npm run build-og && astro build && npm run test:build && npm run links:audit",
     "build:no-shorten": "npm run catalog:audit && npm run hw:audit && npm test && npm run agents:skills && npm run build-og && astro build && npm run test:build && npm run links:audit",
     "preview": "astro preview",
@@ -23,6 +23,7 @@
     "hw:build": "node scripts/hardware/build-gpus.mjs && node scripts/hardware/build-quants.mjs && node scripts/hardware/build-models.mjs"
   },
   "dependencies": {
+    "@astrojs/markdown-satteri": "0.3.8",
     "@astrojs/sitemap": "^3.7.3",
     "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.3.3",

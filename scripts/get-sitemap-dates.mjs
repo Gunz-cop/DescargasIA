@@ -32,26 +32,33 @@ export function getSitemapDates(siteUrl) {
     });
   }
 
-  // Leer fechas de guías
+  // Leer fechas de guías localizadas: src/content/guides/<lang>/<slug>.md
+  //
+  // Se recorre carpeta por carpeta y SOLO se asigna `lastmod` a la URL del
+  // idioma cuyo archivo existe. Antes se copiaba la fecha de la guía española
+  // a `/sv/guias/...` e `/it/guias/...`, URLs que ni siquiera se generan.
   const guidesDir = './src/content/guides';
   if (fs.existsSync(guidesDir)) {
-    const files = fs.readdirSync(guidesDir).filter(f => f.endsWith('.md'));
-    files.forEach(file => {
-      try {
-        const content = fs.readFileSync(path.join(guidesDir, file), 'utf-8');
-        const match = content.match(/lastUpdated:\s*['"]?([\d-]+)['"]?/);
-        const pubMatch = content.match(/datePublished:\s*['"]?([\d-]+)['"]?/);
-        const slug = file.replace(/\.md$/, '');
-        const dateStr = match ? match[1] : (pubMatch ? pubMatch[1] : null);
-        if (dateStr) {
-          locales.forEach(lang => {
-            // Suponiendo que las guías por ahora se mapean o se duplican, o simplemente apuntan a la ruta por defecto
-            dates[`${siteUrl}/${lang}/guias/${slug}`] = new Date(dateStr);
-          });
-        }
-      } catch (e) {
-        console.error('Error al leer fecha de guía para sitemap:', file, e);
-      }
+    locales.forEach(lang => {
+      const langDir = path.join(guidesDir, lang);
+      if (!fs.existsSync(langDir)) return;
+
+      fs.readdirSync(langDir)
+        .filter(f => f.endsWith('.md'))
+        .forEach(file => {
+          try {
+            const content = fs.readFileSync(path.join(langDir, file), 'utf-8');
+            const match = content.match(/lastUpdated:\s*['"]?([\d-]+)['"]?/);
+            const pubMatch = content.match(/datePublished:\s*['"]?([\d-]+)['"]?/);
+            const slug = file.replace(/\.md$/, '');
+            const dateStr = match ? match[1] : (pubMatch ? pubMatch[1] : null);
+            if (dateStr) {
+              dates[`${siteUrl}/${lang}/guias/${slug}`] = new Date(dateStr);
+            }
+          } catch (e) {
+            console.error('Error al leer fecha de guía para sitemap:', lang, file, e);
+          }
+        });
     });
   }
 

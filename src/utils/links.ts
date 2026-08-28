@@ -92,6 +92,28 @@ export function hardwareUrl(lang: Lang): string {
   return pageUrl(lang, HARDWARE_SLUG);
 }
 
+/**
+ * Guías editoriales.
+ *
+ * El segmento `guias` NO se traduce, por la misma razón que `categoria`:
+ * mantenerlo estable en los tres idiomas hace que el mapeo hreflang sea 1:1
+ * sin tabla de traducción de rutas. Ver `docs/enlazado-interno.md`.
+ *
+ * A diferencia de la portada, las guías españolas SÍ llevan prefijo:
+ * `/es/guias/...`, igual que `/es/<slug>`.
+ */
+export const GUIDES_SEGMENT = 'guias';
+
+/** Índice de guías de un idioma. Solo se genera si ese idioma tiene guías. */
+export function guideIndexUrl(lang: Lang): string {
+  return `${langPrefix(lang)}/${GUIDES_SEGMENT}`;
+}
+
+/** Guía concreta. `slug` sin idioma y sin barra inicial. */
+export function guideUrl(lang: Lang, slug: string): string {
+  return `${langPrefix(lang)}/${GUIDES_SEGMENT}/${slug}`;
+}
+
 /** Ancla al directorio dentro de la portada del idioma. */
 export function directoryUrl(lang: Lang): string {
   return lang === ROOT_LANG ? '/#directorio' : `/${lang}#directorio`;

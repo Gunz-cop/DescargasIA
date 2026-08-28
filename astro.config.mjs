@@ -2,6 +2,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import { getSitemapDates } from './scripts/get-sitemap-dates.mjs';
+import { satteri } from '@astrojs/markdown-satteri';
+import { guideLinkRel } from './scripts/satteri-guide-links.mjs';
 
 const SITE_URL = 'https://fuenteai.com';
 const sitemapDates = getSitemapDates(SITE_URL);
@@ -21,6 +23,14 @@ export default defineConfig({
       redirectToDefaultLocale: false
     }
   },
+  markdown: {
+    // Satteri es el procesador por defecto de Astro 7; aqui solo se le anade
+    // un plugin. El cuerpo Markdown de las guias no puede usar los helpers de
+    // links.ts, pero la regla de `rel="nofollow"` en /r sigue siendo
+    // obligatoria. Ver scripts/satteri-guide-links.mjs y docs/enlazado-interno.md.
+    processor: satteri({ hastPlugins: [guideLinkRel] })
+  },
+
   integrations: [
     sitemap({
       // El sitemap solo lista URLs canonicas e indexables. "/es" ya no se

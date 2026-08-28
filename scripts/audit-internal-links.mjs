@@ -192,7 +192,15 @@ for (const page of indexable) {
   }
 }
 
-const RESERVED = new Set(['acerca-de', 'aviso-legal', 'privacidad', 'cookies']);
+// Rutas de dos segmentos que NO son fichas de herramienta: no entran en la
+// estadistica de enlaces entrantes por ficha ni en su aviso de cola larga.
+const RESERVED = new Set([
+  'acerca-de',
+  'aviso-legal',
+  'privacidad',
+  'cookies',
+  'guias'
+]);
 const isToolRoute = (route) =>
   /^\/(es|sv|it)\/[^/]+$/.test(route) && !RESERVED.has(route.split('/').pop());
 

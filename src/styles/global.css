@@ -1115,3 +1115,83 @@ details[open] > summary .details-marker {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* ==========================================================================
+   Cuerpo de guía — HTML generado por Astro Content desde Markdown.
+   No hay clases en el Markdown, así que el estilo se aplica por descendencia
+   sobre los tokens del sistema. Sin plugin de tipografía: son seis elementos.
+   ========================================================================== */
+
+.fai-guide-body {
+  color: var(--fai-ink-2);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.fai-guide-body > * + * {
+  margin-top: 1.15em;
+}
+
+.fai-guide-body h2 {
+  margin-top: 2.4em;
+  font-size: clamp(22px, 2.4vw, 26px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--fai-ink);
+}
+
+.fai-guide-body h3 {
+  margin-top: 1.9em;
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--fai-ink);
+}
+
+.fai-guide-body ul,
+.fai-guide-body ol {
+  padding-left: 1.35em;
+}
+
+.fai-guide-body ul {
+  list-style: disc;
+}
+
+.fai-guide-body ol {
+  list-style: decimal;
+}
+
+.fai-guide-body li + li {
+  margin-top: 0.45em;
+}
+
+.fai-guide-body a {
+  color: var(--fai-signal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.fai-guide-body a:hover {
+  color: var(--fai-find);
+}
+
+.fai-guide-body strong {
+  color: var(--fai-ink);
+  font-weight: 700;
+}
+
+.fai-guide-body code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  border-radius: 5px;
+  background: var(--fai-card);
+  padding: 0.15em 0.4em;
+}
+
+.fai-guide-body blockquote {
+  border-left: 2px solid var(--fai-find);
+  padding-left: 1.1em;
+  color: var(--fai-muted);
+}

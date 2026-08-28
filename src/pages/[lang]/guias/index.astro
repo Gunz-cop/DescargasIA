@@ -1,0 +1,91 @@
+---
+// src/pages/[lang]/guias/index.astro — índice de guías de un idioma.
+//
+// Solo se genera para los idiomas que TIENEN al menos una guía real en
+// `src/content/guides/<lang>/`. Un índice vacío sería una página indexable
+// sin contenido y, por construcción, huérfana: `links:audit` la marcaría.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/ui';
+import type { Lang } from '../../../utils/brand';
+import { homeUrl, guideUrl, guideIndexUrl, absolute, buildAlternates } from '../../../utils/links';
+import { getGuidesForLang, getLangsWithGuides, guideDate, type LocalizedGuide } from '../../../utils/guides';
+
+export async function getStaticPaths() {
+  const langs = await getLangsWithGuides();
+
+  return Promise.all(
+    langs.map(async (lang) => ({
+      params: { lang },
+      props: { lang, guides: await getGuidesForLang(lang) }
+    }))
+  );
+}
+
+const { lang, guides } = Astro.props as { lang: Lang; guides: LocalizedGuide[] };
+const t = useTranslations(lang);
+
+// hreflang: solo los idiomas que de verdad publican un índice de guías.
+const langsWithGuides = await getLangsWithGuides();
+const alternates = buildAlternates(Astro.url.origin, (l) =>
+  langsWithGuides.includes(l) ? guideIndexUrl(l) : null
+);
+
+const schemaBreadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t('nav.home'), item: absolute(Astro.url.origin, homeUrl(lang)) },
+    { '@type': 'ListItem', position: 2, name: t('guides.index.title'), item: Astro.url.href }
+  ]
+};
+
+const schemaItemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: t('guides.index.title'),
+  numberOfItems: guides.length,
+  itemListElement: guides.map((guide, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    url: absolute(Astro.url.origin, guideUrl(lang, guide.slug)),
+    name: guide.entry.data.title
+  }))
+};
+---
+
+<BaseLayout
+  title={t('guides.index.seo-title')}
+  description={t('guides.index.description')}
+  jsonLd={[schemaBreadcrumb, schemaItemList]}
+  lang={lang}
+  alternates={alternates}
+>
+  <nav class="fai-mono-sm flex flex-wrap items-center gap-2 pt-7 text-fai-muted-2" aria-label="Breadcrumb">
+    <a href={homeUrl(lang)} class="transition-colors hover:text-fai-signal">FuenteAI</a>
+    <span aria-hidden="true">/</span>
+    <span class="text-fai-muted" aria-current="page">{t('guides.index.title')}</span>
+  </nav>
+
+  <header class="mt-8 border-t border-fai-line pt-7">
+    <h1 class="fai-h2 text-fai-ink">{t('guides.index.title')}</h1>
+    <p class="mt-4 max-w-[62ch] text-[15px] leading-[1.55] text-fai-muted">{t('guides.index.intro')}</p>
+  </header>
+
+  <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+    {guides.map((guide) => (
+      <li class="rounded-[14px] border border-fai-line bg-fai-surface/60 p-6 transition-colors hover:border-fai-signal">
+        <h2 class="fai-card-title text-fai-ink">
+          <a href={guideUrl(lang, guide.slug)} class="transition-colors hover:text-fai-signal">
+            {guide.entry.data.title}
+          </a>
+        </h2>
+        <p class="mt-2.5 text-[14px] leading-[1.55] text-fai-muted">{guide.entry.data.metaDescription}</p>
+        <p class="fai-mono-sm mt-4 text-fai-muted-2">
+          {guide.entry.data.lastUpdated ? t('guides.updated') : t('guides.published')}
+          {' '}
+          <time datetime={guideDate(guide)}>{guideDate(guide)}</time>
+        </p>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>
