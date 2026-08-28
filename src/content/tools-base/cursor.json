@@ -40,7 +40,10 @@
     "autocompletado"
   ],
   "alternatives": [
-    "github-copilot"
+    "github-copilot",
+    "google-antigravity",
+    "lovable",
+    "opencode"
   ],
   "initials": "CS",
   "trustLevel": "official",

@@ -42,7 +42,8 @@
   "alternatives": [
     "stable-diffusion",
     "midjourney",
-    "comfyui"
+    "comfyui",
+    "adobe-firefly"
   ],
   "screenshotUrl": null,
   "initials": "FL",

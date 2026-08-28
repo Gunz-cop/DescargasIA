@@ -23,7 +23,8 @@
   ],
   "alternatives": [
     "chatgpt",
-    "gemini"
+    "gemini",
+    "elevenmusic"
   ],
   "initials": "SN",
   "trustLevel": "official",

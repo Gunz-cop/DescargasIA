@@ -29,8 +29,8 @@ Tres idiomas: `es` (por defecto), `sv`, `it`.
 
 Las guías **solo se generan en el idioma en el que existe su archivo**, y el
 índice de un idioma solo se genera si ese idioma tiene al menos una guía. Hoy
-eso significa que existen `/es/guias` y `/es/guias/descargar-chatgpt-para-windows`
-y **no existen** `/sv/guias` ni `/it/guias`. Ver §8.
+existen `/es/guias` (1 guía) y `/sv/guias` (4 guías, F4-SV/#43); **no existe**
+`/it/guias`, porque no hay ninguna guía italiana. Ver §8.
 
 ### La única asimetría: la portada en español vive en `/`, no en `/es`
 
@@ -128,6 +128,31 @@ primero, porque son la relación con más valor semántico.
 | media | ~3 | 11.6 |
 | portada canónica `/` | 0 | 97 |
 
+### Reciprocidad declarada (F5, #42)
+
+El relleno rotado reparte, pero no expresa ninguna decisión editorial: cambia en
+cuanto entra una ficha nueva en la categoría. F5 comprobó que **24 fichas** no
+aparecían en el `alternatives` de ninguna otra y dependían solo de esa rotación.
+
+La regla que las sacó de ahí no inventa relaciones: **si A ya declara a B como
+alternativa, se añade A al `alternatives` de B**. La ficha padre se elige de
+forma determinista entre las que la huérfana ya declara —comparte categoría,
+tiene menos alternativas declaradas, desempate por el orden editorial del
+array— y nunca se superan las 6 declaradas que consume `getAlternatives()`.
+
+Dos consecuencias que conviene tener presentes antes de repetir la operación:
+
+- **El presupuesto de enlaces por ficha es fijo** (6 alternativas + 4 "sigue
+  explorando"). Declarar una relación **desplaza** un hueco del relleno, no crea
+  un enlace nuevo: la media apenas se movió (11,66 → 11,67). Lo que mejora es la
+  *naturaleza* del enlace, no el volumen.
+- **`alternatives` es común a los tres productos.** Vive en `tools-base/`, así
+  que una relación se aplica a `es`, `sv` e `it` a la vez y se materializa solo
+  donde ambas fichas están traducidas. No existe un `alternatives` por idioma.
+
+`sora` queda fuera de la regla a propósito: tiene `status: "discontinued"` y
+citarlo como alternativa sería un claim falso. Ver `docs/mejora/fases/F5.md`.
+
 ---
 
 ## 3. Reglas que no se rompen
@@ -220,17 +245,26 @@ Salida esperada hoy de `links:audit`:
 
 ```
 --- Auditoria de enlazado interno ---
-Paginas en dist:        197
-Indexables:             196
+Paginas en dist:        202
+Indexables:             201
 Fichas de herramienta:  155
-Enlaces entrantes por ficha: min 4 | media 12.6 | max 101
+Enlaces entrantes por ficha: min 4 | media 12.7 | max 101
 
-AVISOS (2):
-  ! /it/adobe-podcast: solo 4 enlaces internos entrantes (minimo deseado 5)
+AVISOS (5):
+  ! /sv/guias/ai-presentation-svenska: sin hreflang="x-default"
+  ! /sv/guias/ai-skriva-text-svenska: sin hreflang="x-default"
+  ! /sv/guias/ai-transkribering-svenska: sin hreflang="x-default"
+  ! /sv/guias/kora-ai-lokalt: sin hreflang="x-default"
   ! /it/opencode: solo 4 enlaces internos entrantes (minimo deseado 5)
 
 Sin errores de enlazado interno.
 ```
+
+Los cuatro avisos de `x-default` son **estructurales, no un fallo**: esas guías
+solo existen en sueco, y la regla 6 hace que `x-default` apunte a la version ES
+de esa misma pagina, que no existe. Desapareceran solos el dia que se traduzca
+la guia al espanol; forzar un `x-default` hacia otra URL seria declarar una
+alternativa falsa.
 
 `/{lang}/guias` no entra en el recuento de "fichas de herramienta": aunque su
 ruta tenga dos segmentos, no es una ficha. Está en `RESERVED`
@@ -378,6 +412,22 @@ escriben literales. Eso obliga a dos cosas:
 
 - **`/404` está solo en español** y con clases de un sistema de diseño anterior
   (`brand-*` en vez de `fai-*`). No afecta al enlazado indexable —es `noindex`—
-  pero un visitante sueco o italiano cae en una página en español.
+  pero un visitante sueco o italiano cae en una página en español. Sus dos
+  enlaces internos sí pasan ya por los helpers (F5).
 - **Un aviso permanente de cola larga.** Siempre habrá 1–2 fichas justo por
-  debajo del umbral; el aviso es informativo, no un fallo.
+  debajo del umbral; el aviso es informativo, no un fallo. Hoy es
+  `/it/opencode`: `it/programacion` solo tiene dos fichas traducidas, así que
+  ninguna ficha italiana puede citarlo sin inventar la relación. Se resuelve
+  traduciendo fichas de esa categoría, no tocando el grafo.
+- **`src/pages/r/index.astro` escribe `href="/"` a mano**, contra la regla 1.
+  No se corrigió en F5 porque `/r` está protegido y porque hoy ese enlace lleva
+  a la portada española para los tres idiomas: cambiarlo por `homeUrl(lang)`
+  cambiaría el comportamiento de `/r` y necesita una decisión propia.
+- **Las guías reciben un único enlace entrante**, el de su índice, mientras
+  ellas sí enlazan hacia fichas y categorías. No son huérfanas, así que
+  `links:audit` no las marca, pero su descubrimiento depende por completo del
+  enlace de cabecera, que es boilerplate. Diagnóstico, evidencia y las cuatro
+  vías posibles están en
+  `docs/mejora/blockers/F5-bloqueo-descubrimiento-de-guias.md` y en el issue #83;
+  la decisión es
+  de Codex y F5 no la tomó.

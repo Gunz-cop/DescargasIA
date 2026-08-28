@@ -37,7 +37,9 @@
   "alternatives": [
     "luma-dream-machine",
     "elevenlabs",
-    "canva"
+    "canva",
+    "google-flow",
+    "pika"
   ],
   "screenshotUrl": null,
   "initials": "RW",

@@ -8,7 +8,7 @@
   "pricingModel": "freemium",
   "requiresAccount": true,
   "tags": ["audio", "podcast", "rumore", "voce"],
-  "alternatives": ["macwhisper", "fathom"],
+  "alternatives": ["macwhisper", "fathom", "descript"],
   "screenshotUrl": null,
   "initials": "AP",
   "trustLevel": "official",

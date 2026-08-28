@@ -48,7 +48,10 @@
   "alternatives": [
     "gemini",
     "claude",
-    "perplexity"
+    "perplexity",
+    "character-ai",
+    "deepseek",
+    "meta-ai"
   ],
   "screenshotUrl": null,
   "initials": "GPT",

@@ -8,7 +8,7 @@
   "pricingModel": "freemium",
   "requiresAccount": true,
   "tags": ["riunioni", "trascrizione", "riassunti", "audio"],
-  "alternatives": ["fathom", "macwhisper"],
+  "alternatives": ["fathom", "macwhisper", "klang"],
   "screenshotUrl": null,
   "initials": "FF",
   "trustLevel": "official",
