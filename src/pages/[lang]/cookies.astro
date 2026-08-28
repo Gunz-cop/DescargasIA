@@ -19,9 +19,9 @@ const titles = {
 };
 
 const descs = {
-  es: 'Política de cookies de FuenteAI: usamos solo cookies técnicas necesarias, sin rastreo publicitario ni datos compartidos con terceros. Transparencia total.',
-  sv: 'Cookiepolicy för FuenteAI: vi använder endast nödvändiga tekniska cookies, utan spårning eller delning av data med annonsörer eller tredje part.',
-  it: 'Informativa sui cookie di FuenteAI: utilizziamo solo cookie tecnici essenziali, senza tracciamento pubblicitario né condivisione di dati con terze parti.'
+  es: 'Política de cookies de FuenteAI: almacenamiento propio que podemos comprobar y recursos publicitarios de terceros cuyo comportamiento depende del proveedor.',
+  sv: 'Cookiepolicy för FuenteAI: lagring som vi kan kontrollera och tredjepartsannonser vars beteende beror på leverantören.',
+  it: 'Informativa sui cookie di FuenteAI: archiviazione che possiamo verificare e annunci di terze parti il cui comportamento dipende dal fornitore.'
 };
 // Autorreferencial: incluye el idioma actual, requisito de Google.
 const alternates = buildAlternates(Astro.url.origin, (l) => pageUrl(l, 'cookies'));
@@ -31,17 +31,17 @@ const alternates = buildAlternates(Astro.url.origin, (l) => pageUrl(l, 'cookies'
   <article class="max-w-3xl mx-auto py-12" aria-labelledby="page-title">
     <header class="mb-10 border-b border-brand-card-border pb-8">
       <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-card-border bg-brand-card-bg px-3 py-1 eyebrow text-brand-text-muted font-mono">
-        {lang === 'sv' ? 'Reviderad: Juni 2026' : lang === 'it' ? 'Revisionato: Giugno 2026' : 'Revisado: Junio 2026'}
+        {lang === 'sv' ? 'Granskad: 28 augusti 2026' : lang === 'it' ? 'Revisionato: 28 agosto 2026' : 'Revisado: 28 de agosto de 2026'}
       </span>
       <h1 id="page-title" class="text-[30px] sm:text-[38px] text-brand-text display mb-4">
         {lang === 'sv' ? 'Cookiepolicy' : lang === 'it' ? 'Informativa sui Cookie' : 'Política de Cookies'}
       </h1>
       <p class="text-sm text-brand-text-muted leading-relaxed">
         {lang === 'sv'
-          ? 'Vi värnar om transparens. Här förklaras hur vi använder cookies på FuenteAI.'
+          ? 'Här skiljer vi mellan cookies, annan lokal lagring och resurser från tredje part som webbläsaren kan ladda.'
           : lang === 'it'
-            ? 'Trasparenza prima di tutto. Di seguito spieghiamo l\'uso dei cookie su FuenteAI.'
-            : 'Información clara y transparente sobre el uso de cookies y almacenamiento de preferencias en FuenteAI.'}
+            ? 'Qui distinguiamo tra cookie, altra archiviazione locale e risorse di terze parti che il browser può caricare.'
+            : 'Aquí distinguimos entre cookies, otros almacenamientos locales y recursos de terceros que el navegador puede cargar.'}
       </p>
     </header>
 
@@ -52,23 +52,56 @@ const alternates = buildAlternates(Astro.url.origin, (l) => pageUrl(l, 'cookies'
         </h2>
         <p>
           {lang === 'sv'
-            ? 'Cookies är små textfiler som sparas i din webbläsare för att komma ihåg dina val, t.ex. vilket tema (mörkt/ljust) du valt.'
+            ? 'Cookies är små textfiler som en webbplats kan be webbläsaren att spara. Webbläsaren har också andra mekanismer, till exempel localStorage, som inte är cookies men som kan spara en preferens lokalt.'
             : lang === 'it'
-              ? 'I cookie sono piccoli file di testo salvati nel tuo browser per ricordare le tue preferenze, come ad esempio la scelta del tema visivo.'
-              : 'Las cookies son pequeños archivos de texto que se almacenan en tu navegador para guardar preferencias del usuario, como el tema visual (oscuro o claro).'}
+              ? 'I cookie sono piccoli file di testo che un sito può chiedere al browser di salvare. Il browser dispone anche di altri meccanismi, come localStorage, che non sono cookie ma possono conservare una preferenza in locale.'
+              : 'Las cookies son pequeños archivos de texto que un sitio puede pedir al navegador que almacene. El navegador también tiene otros mecanismos, como localStorage, que no son cookies pero pueden guardar una preferencia localmente.'}
         </p>
       </section>
 
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
-          <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> {lang === 'sv' ? 'Tekniska cookies' : lang === 'it' ? 'Cookie Tecnici' : 'Cookies Técnicas Obligatorias'}
+          <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> {lang === 'sv' ? 'Lagring som vi kan kontrollera' : lang === 'it' ? 'Archiviazione che possiamo verificare' : 'Almacenamiento que podemos comprobar'}
         </h2>
         <p>
           {lang === 'sv'
-            ? 'FuenteAI använder endast nödvändiga tekniska cookies för sajtens funktioner. Vi spårar dig inte och delar ingen data med tredjepartsannonsörer.'
+            ? 'I den versionerade koden hittade vi ingen egen skrivning av cookies. På /r läser sidan localStorage-värdet theme om det finns, för att välja ljust eller mörkt tema; det är en lokal läsning och inte bevis på hur externa skript fungerar. Koden som använder /r försöker fortsätta även om webbläsaren inte ger åtkomst till localStorage.'
             : lang === 'it'
-              ? 'FuenteAI utilizza esclusivamente cookie tecnici essenziali. Non tracciamo gli utenti per scopi pubblicitari o marketing di terze parti.'
-              : 'FuenteAI utiliza exclusivamente cookies técnicas necesarias para el funcionamiento del sitio. No realizamos rastreo invasivo de comportamiento para publicidad de terceros.'}
+              ? 'Nel codice versionato non abbiamo trovato una scrittura propria di cookie. Su /r la pagina legge il valore theme di localStorage, se presente, per scegliere il tema chiaro o scuro; è una lettura locale e non dimostra come funzionino gli script esterni. Il codice di /r prova a continuare anche quando il browser non concede l\'accesso a localStorage.'
+              : 'En el código versionado no encontramos escritura propia de cookies. En /r la página lee el valor theme de localStorage, si existe, para elegir el tema claro u oscuro; es una lectura local y no demuestra cómo funcionan los scripts externos. El código de /r intenta continuar aunque el navegador no permita acceder a localStorage.'}
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [03]</span> {lang === 'sv' ? 'Annonsskript från tredje part' : lang === 'it' ? 'Script pubblicitari di terze parti' : 'Scripts publicitarios de terceros'}
+        </h2>
+        <p>
+          {lang === 'sv'
+            ? 'FuenteAI behåller annonserna och laddar tredjepartsskript genom www.highperformanceformat.com för bannerformat 320×50 och 300×250 samt genom pl30788864.effectivecpmnetwork.com för Native Banner på /r. Bannerslotten ovanför första skärmen laddas direkt när sidan renderas. Övriga slots är reserverade men begär skriptet först när de närmar sig synligt område (IntersectionObserver, 300 px marginal).'
+            : lang === 'it'
+              ? 'FuenteAI mantiene gli annunci e carica script di terze parti tramite www.highperformanceformat.com per i banner 320×50 e 300×250 e tramite pl30788864.effectivecpmnetwork.com per il Native Banner su /r. Gli slot banner nella prima schermata vengono caricati quando la pagina viene renderizzata. Gli altri slot riservano lo spazio ma richiedono lo script quando si avvicinano all\'area visibile (IntersectionObserver, margine di 300 px).'
+              : 'FuenteAI mantiene los anuncios y carga scripts de terceros mediante www.highperformanceformat.com para los banners de 320×50 y 300×250, y mediante pl30788864.effectivecpmnetwork.com para el Native Banner de /r. Los slots de banner de la primera pantalla se cargan al renderizar la página. Los demás reservan el espacio, pero solicitan el script cuando se acercan al área visible (IntersectionObserver, margen de 300 px).'}
+        </p>
+        <p>
+          {lang === 'sv'
+            ? 'I produktion observerade vi också static.cloudflareinsights.com/beacon.min.js. Annons- och mätningsleverantörer kan göra ytterligare förfrågningar eller använda lagring som inte exponeras av FuenteAI:s HTML. Vi kan därför inte bekräfta om dessa skript använder cookies, localStorage eller andra identifierare, vilka uppgifter de skickar eller hur länge något sparas. Läs leverantörens egen policy för det som inte går att kontrollera från vår kod.'
+            : lang === 'it'
+              ? 'In produzione abbiamo osservato anche static.cloudflareinsights.com/beacon.min.js. I fornitori di pubblicità e misurazione possono effettuare ulteriori richieste o usare forme di archiviazione non esposte dall\'HTML di FuenteAI. Non possiamo quindi confermare se questi script usino cookie, localStorage o altri identificatori, quali dati inviino o per quanto tempo conservino qualcosa. Per ciò che non è controllabile dal nostro codice, consulta la policy del fornitore.'
+              : 'En producción observamos también static.cloudflareinsights.com/beacon.min.js. Los proveedores de publicidad y medición pueden hacer solicitudes adicionales o usar almacenamientos que no expone el HTML de FuenteAI. Por eso no podemos confirmar si esos scripts usan cookies, localStorage u otros identificadores, qué datos envían ni durante cuánto tiempo conservan algo. Para lo que no puede comprobarse desde nuestro código, consulta la política del proveedor.'}
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [04]</span> {lang === 'sv' ? 'Samtycke och begränsningar' : lang === 'it' ? 'Consenso e limiti' : 'Consentimiento y límites'}
+        </h2>
+        <p>
+          {lang === 'sv'
+            ? 'Vi hittade inget eget samtyckesfönster, ingen CMP och ingen funktion för att acceptera eller avvisa annonser i den kod och de sidor som granskades. Det betyder inte att ett juridiskt krav saknas eller att webbplatsen uppfyller någon regel; den frågan kräver en separat juridisk bedömning och verifierad leverantörs- eller CMP-konfiguration.'
+            : lang === 'it'
+              ? 'Nel codice e nelle pagine esaminate non abbiamo trovato un nostro banner di consenso, una CMP o una funzione per accettare o rifiutare gli annunci. Questo non significa che manchi un obbligo giuridico né che il sito rispetti una determinata norma; la questione richiede una valutazione legale separata e una configurazione verificata del fornitore o della CMP.'
+              : 'En el código y las páginas revisadas no encontramos un aviso de consentimiento propio, una CMP ni una función para aceptar o rechazar los anuncios. Esto no significa que no exista una obligación legal ni que el sitio cumpla una norma concreta: esa cuestión requiere una evaluación legal separada y una configuración verificada del proveedor o de una CMP.'}
         </p>
       </section>
     </div>

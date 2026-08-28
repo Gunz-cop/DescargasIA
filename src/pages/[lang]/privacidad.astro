@@ -19,9 +19,9 @@ const titles = {
 };
 
 const descs = {
-  es: 'Política de privacidad de FuenteAI: qué datos recopilamos, cómo los protegemos y por qué no usamos cookies de rastreo invasivas para publicidad.',
-  sv: 'Integritetspolicy för FuenteAI: vilka uppgifter vi samlar in, hur vi skyddar din integritet och varför vi inte använder spårningscookies för reklam.',
-  it: 'Informativa sulla privacy di FuenteAI: quali dati raccogliamo, come li proteggiamo e perché non usiamo cookie di tracciamento invasivi per la pubblicità.'
+  es: 'Política de privacidad de FuenteAI: información sobre los servicios de terceros, la publicidad y las interacciones que pueden implicar datos técnicos.',
+  sv: 'Integritetspolicy för FuenteAI: information om tredjepartstjänster, annonser och interaktioner som kan innebära tekniska uppgifter.',
+  it: 'Informativa sulla privacy di FuenteAI: informazioni sui servizi di terze parti, sulla pubblicità e sulle interazioni che possono comportare dati tecnici.'
 };
 // Autorreferencial: incluye el idioma actual, requisito de Google.
 const alternates = buildAlternates(Astro.url.origin, (l) => pageUrl(l, 'privacidad'));
@@ -31,44 +31,51 @@ const alternates = buildAlternates(Astro.url.origin, (l) => pageUrl(l, 'privacid
   <article class="max-w-3xl mx-auto py-12" aria-labelledby="page-title">
     <header class="mb-10 border-b border-brand-card-border pb-8">
       <span class="mb-3 inline-flex items-center gap-2 rounded border border-brand-success-border bg-brand-success-bg px-3 py-1 eyebrow text-brand-success font-mono">
-        {lang === 'sv' ? 'Reviderad: Juni 2026' : lang === 'it' ? 'Revisionato: Giugno 2026' : 'Revisado: Junio 2026'}
+        {lang === 'sv' ? 'Granskad: 28 augusti 2026' : lang === 'it' ? 'Revisionato: 28 agosto 2026' : 'Revisado: 28 de agosto de 2026'}
       </span>
       <h1 id="page-title" class="text-[30px] sm:text-[38px] text-brand-text display mb-4">
         {lang === 'sv' ? 'Integritetspolicy' : lang === 'it' ? 'Informativa sulla Privacy' : 'Política de Privacidad'}
       </h1>
       <p class="text-sm text-brand-text-muted leading-relaxed">
         {lang === 'sv'
-          ? 'Vi bryr oss om din integritet. Den här policyn förklarar hur vi hanterar dina uppgifter på FuenteAI.'
+          ? 'Den här sidan skiljer det vi kan kontrollera i webbplatsen från det som bara den enskilda leverantören kan bekräfta.'
           : lang === 'it'
-            ? 'La tua privacy è fondamentale. Di seguito spieghiamo come gestiamo le tue informazioni su FuenteAI.'
-            : 'Tu privacidad es fundamental. En este documento detallamos cómo tratamos y protegemos tus datos al navegar por FuenteAI.'}
+            ? 'Questa pagina distingue ciò che possiamo verificare nel sito da ciò che può confermare solo il singolo fornitore.'
+            : 'Esta página separa lo que podemos comprobar en el sitio de lo que sólo puede confirmar cada proveedor.'}
       </p>
     </header>
 
     <div class="space-y-8 text-sm sm:text-base leading-relaxed text-brand-text-muted">
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
-          <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> {lang === 'sv' ? 'Insamling av uppgifter' : lang === 'it' ? 'Raccolta dei Dati' : 'Recopilación de Datos'}
+          <span class="font-mono text-brand-primary text-xs">&gt; [01]</span> {lang === 'sv' ? 'Vad händer när du surfar?' : lang === 'it' ? 'Cosa succede durante la navigazione?' : '¿Qué ocurre al navegar?'}
         </h2>
         <p>
           {lang === 'sv'
-            ? 'FuenteAI samlar inte in några personliga identifierbara uppgifter från sina besökare. Du kan bläddra i hela vår katalog anonymt.'
+            ? 'Du kan läsa FuenteAI:s katalog utan att skapa ett FuenteAI-konto. Vissa sidor innehåller ändå resurser från tredje part. När en annons laddas begär webbläsaren ett skript från det konfigurerade annonsnätverket. Vi kan verifiera den begäran och dess domän, men inte självständigt kontrollera vilken information leverantören behandlar, sparar eller använder. Därför beskriver vi inte surfningen som anonym och påstår inte att spårning saknas helt.'
             : lang === 'it'
-              ? 'FuenteAI non raccoglie dati personali identificabili. Puoi esplorare liberamente il nostro catalogo in modo anonimo.'
-              : 'FuenteAI no recopila datos personales de identificación de sus visitantes. La navegación por nuestro catálogo es 100% anónima.'}
+              ? 'Puoi consultare il catalogo di FuenteAI senza creare un account FuenteAI. Alcune pagine includono comunque risorse di terze parti. Quando viene caricato un annuncio, il browser richiede uno script alla rete pubblicitaria configurata. Possiamo verificare questa richiesta e il suo dominio, ma non quali informazioni il fornitore tratti, conservi o utilizzi. Per questo non descriviamo la navigazione come anonima e non affermiamo che il tracciamento sia del tutto assente.'
+              : 'Puedes consultar el catálogo de FuenteAI sin crear una cuenta de FuenteAI. Aun así, algunas páginas incluyen recursos de terceros. Cuando se carga un anuncio, el navegador solicita un script a la red publicitaria configurada. Podemos verificar esa solicitud y su dominio, pero no qué información procesa, conserva o utiliza el proveedor. Por eso no presentamos la navegación como anónima ni afirmamos que el rastreo esté completamente ausente.'}
         </p>
       </section>
 
       <section class="space-y-3">
         <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
-          <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> {lang === 'sv' ? 'Externa länkar' : lang === 'it' ? 'Collegamenti Esterni' : 'Enlaces de Terceros'}
+          <span class="font-mono text-brand-primary text-xs">&gt; [02]</span> {lang === 'sv' ? 'Annonser och externa tjänster' : lang === 'it' ? 'Pubblicità e servizi esterni' : 'Publicidad y servicios externos'}
         </h2>
         <p>
           {lang === 'sv'
-            ? 'Vår portal innehåller länkar till externa webbplatser (t.ex. Google Play, App Store och officiella webbplatser för AI-verktyg). När du lämnar vår sajt gäller den externa sajtens integritetspolicy.'
+            ? 'Annonserna är kvar som en del av FuenteAI:s finansiering och levereras genom tredjepartsintegrationer. I den publicerade koden kan vi identifiera www.highperformanceformat.com för bannerformat på 320×50 och 300×250 samt pl30788864.effectivecpmnetwork.com för Native Banner på /r. I produktion observerade vi dessutom skriptet static.cloudflareinsights.com/beacon.min.js; den laddningen definieras inte i detta repository och kan bero på konfigurationen av distributionen.'
             : lang === 'it'
-              ? 'Questo portale contiene link a siti esterni. Una volta lasciato FuenteAI, si applicano le politiche sulla privacy dei relativi siti esterni.'
-              : 'Nuestro portal incluye enlaces a sitios web de terceros. Una vez que abandonas FuenteAI para ir a la descarga oficial, tu navegación queda sujeta a la política de privacidad de ese sitio externo.'}
+              ? 'Gli annunci restano parte del finanziamento di FuenteAI e vengono caricati tramite integrazioni di terze parti. Nel codice pubblicato possiamo identificare www.highperformanceformat.com per i banner 320×50 e 300×250 e pl30788864.effectivecpmnetwork.com per il Native Banner su /r. In produzione abbiamo osservato anche lo script static.cloudflareinsights.com/beacon.min.js; questo caricamento non è definito in questo repository e può dipendere dalla configurazione della distribuzione.'
+              : 'Los anuncios forman parte de la financiación de FuenteAI y se cargan mediante integraciones de terceros. En el código publicado podemos identificar www.highperformanceformat.com para banners de 320×50 y 300×250, y pl30788864.effectivecpmnetwork.com para el Native Banner de /r. En producción observamos además el script static.cloudflareinsights.com/beacon.min.js; esa carga no está definida en este repositorio y puede depender de la configuración del despliegue.'}
+        </p>
+        <p>
+          {lang === 'sv'
+            ? 'Annonsskript kan skapa ytterligare förfrågningar eller låta annonsinnehåll länka till andra domäner. Vi kan se vilka skript och domäner som exponeras vid en viss laddning, men inte fastställa vad en leverantör tar emot, lagrar, delar eller använder. Se därför respektive leverantörs integritetspolicy för den informationen.'
+            : lang === 'it'
+              ? 'Gli script pubblicitari possono creare ulteriori richieste o fare in modo che il contenuto dell\'annuncio rimandi ad altri domini. Possiamo osservare gli script e i domini esposti in un determinato caricamento, ma non stabilire cosa un fornitore riceva, conservi, condivida o utilizzi. Per queste informazioni consulta la policy sulla privacy del relativo fornitore.'
+              : 'Los scripts publicitarios pueden generar solicitudes adicionales o hacer que el contenido del anuncio enlace a otros dominios. Podemos observar los scripts y dominios expuestos en una carga concreta, pero no determinar qué recibe, conserva, comparte o utiliza un proveedor. Para esa información debes consultar la política de privacidad del proveedor correspondiente.'}
         </p>
       </section>
 
@@ -88,14 +95,27 @@ const alternates = buildAlternates(Astro.url.origin, (l) => pageUrl(l, 'privacid
             ? 'När du använder hjälpen med AI skickas till vår server: (1) den text du skriver om din hårdvara, för att extrahera specs; (2) namnet på en GPU som inte finns i vår databas, för att uppskatta dess VRAM; (3) det redan beräknade veredicto, dina specs och språket, för att formuleras i text. Inget av detta lagras som logg med din text: vi sparar bara mätvärden aggregerade (t.ex. hur ofta en GPU saknas i databasen), utan innehåll personligt.'
             : lang === 'it'
               ? 'Quando usi l\'aiuto con l\'IA vengono inviati al nostro server: (1) il testo che scrivi sulla tua hardware, per estrarne le specifiche; (2) il nome di una GPU assente dal nostro database, per stimarne la VRAM; (3) il verdetto già calcolato, le tue specifiche e la lingua, per essere formulati in prosa. Nulla di tutto questo finisce in un log con il tuo testo: conserviamo solo metriche aggregate (es. quante volte manca una GPU dal database), senza dati personali.'
-              : 'Cuando usas la ayuda con IA se envían a nuestro servidor: (1) el texto que escribes sobre tu hardware, para extraer las especificaciones; (2) el nombre de una GPU que no está en nuestra base, para estimar su VRAM; (3) el veredicto ya calculado, tus especificaciones y el idioma, para redactarlo en prosa. Nada de eso entra en un log con tu texto: solo guardamos métricas agregadas (p. ej. cuántas veces falta una GPU en la base), sin datos personales.'}
+              : 'Cuando usas la ayuda con IA se envían a nuestro servidor: (1) el texto que escribes sobre tu hardware, para extraer las especificaciones; (2) el nombre de una GPU que no está en nuestra base, para estimar su VRAM; (3) el veredicto ya calculado, tus especificaciones y el idioma, para redactarlo en prosa. Nada de eso entra en un log con tu texto: solo guardamos métricas agregadas (p. ej. cuántas veces falta una GPU en la base), sin contenido personal.'}
         </p>
         <p>
           {lang === 'sv'
             ? 'Upptäckten av hårdvara i webbläsaren (knappen "Detectera min dator") sker helt lokalt och skickas aldrig. De uppskattningar som AI:n gör cache:lagras i vår KV-uppdelning i 30 dagar (GPU) respektive 7 dagar (förklaring); den fria texten raderas efter svaret. Gränsen för antal förfrågningar per IP lagrar bara ett hash-värde av din IP-adress, aldrig adressen i klartext. Du kan stänga av hjälpen med AI när som helst: utan den fungerar verktyget lika bra, bara utan prosan.'
             : lang === 'it'
               ? 'Il rilevamento hardware nel browser (pulsante "Rileva il mio computer") avviene interamente in locale e non viene mai inviato. Le stime dell\'IA vengono cached (in KV) per 30 giorni (GPU) e 7 giorni (spiegazione); il testo libero viene scartato dopo la risposta. Il limite di richieste per IP memorizza solo un hash del tuo indirizzo IP, mai l\'indirizzo in chiaro. Puoi disattivare l\'aiuto con l\'IA in qualsiasi momento: senza di esso lo strumento funziona ugualmente, solo senza la prosa.'
-              : 'La detección de hardware en el navegador (botón "Detectar mi equipo") ocurre toda en local y nunca se envía. Las estimaciones de la IA se cachean en nuestra KV 30 días (GPU) y 7 días (explicación); el texto libre se descarta tras la respuesta. El límite de peticiones por IP almacena únicamente un hash de tu dirección IP, nunca la dirección en claro. Puedes apagar la ayuda con IA en cualquier momento: sin ella la herramienta funciona igual, solo sin la prosa.'}
+              : 'La detección de hardware en el navegador (botón "Detectar mi equipo") ocurre toda en local y nunca se envía. Las estimaciones de la IA se cachean en nuestra KV 30 días (GPU) y 7 días (explicación); el texto libre se descarta tras la respuesta. El límite de peticiones por IP almacena únicamente un hash de tu IP, nunca la dirección en claro. Puedes apagar la ayuda con IA en cualquier momento: sin ella la herramienta funciona igual, solo sin la prosa.'}
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-lg font-bold text-brand-text display flex items-center gap-2">
+          <span class="font-mono text-brand-primary text-xs">&gt; [04]</span> {lang === 'sv' ? 'Externa länkar' : lang === 'it' ? 'Collegamenti esterni' : 'Enlaces de terceros'}
+        </h2>
+        <p>
+          {lang === 'sv'
+            ? 'FuenteAI innehåller länkar till externa webbplatser, till exempel officiella webbplatser och appbutiker. När du lämnar FuenteAI gäller den externa webbplatsens egen integritetspolicy.'
+            : lang === 'it'
+              ? 'FuenteAI contiene link a siti esterni, come siti ufficiali e store di applicazioni. Quando lasci FuenteAI si applica la policy sulla privacy del sito esterno.'
+              : 'FuenteAI contiene enlaces a sitios web externos, como webs oficiales y tiendas de aplicaciones. Cuando abandonas FuenteAI se aplica la política de privacidad del sitio externo.'}
         </p>
       </section>
     </div>
