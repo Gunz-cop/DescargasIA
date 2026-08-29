@@ -143,21 +143,25 @@ test('/r con l inválido sanea a es sin romper la resolución', () => {
 
 test('los call sites importan funnel-events y /r usa resolveRedirect con window.location.search', () => {
   const rSource = fs.readFileSync('src/pages/r/index.astro', 'utf8');
-  assert.match(rSource, /import\s*{[^}]*resolveRedirect[^}]*}\s*from\s*['"]\.\.\/\.\.\/utils\/funnel-events['"]/);
-  assert.match(rSource, /import\s*{[^}]*dispatchFunnelEvent[^}]*}\s*from\s*['"]\.\.\/\.\.\/utils\/funnel-events['"]/);
-  assert.match(rSource, /window\.location\.search/);
-  assert.match(rSource, /document\.documentElement\.lang\s*=\s*lang/);
-  assert.doesNotMatch(rSource, /Astro\.url\.searchParams/);
+  const redirectScript = fs.readFileSync('src/scripts/redirect.ts', 'utf8');
+  assert.match(rSource, /src="\.\.\/\.\.\/scripts\/redirect\.ts"/);
+  assert.match(redirectScript, /import\s*{[^}]*resolveRedirect[^}]*}\s*from\s*['"]\.\.\/utils\/funnel-events['"]/);
+  assert.match(redirectScript, /import\s*{[^}]*dispatchFunnelEvent[^}]*}\s*from\s*['"]\.\.\/utils\/funnel-events['"]/);
+  assert.match(redirectScript, /window\.location\.search/);
+  assert.match(redirectScript, /document\.documentElement\.lang\s*=\s*lang/);
+  assert.doesNotMatch(redirectScript, /Astro\.url\.searchParams/);
   // Sin dispatcher duplicado ni esquema duplicado fuera del módulo
-  assert.doesNotMatch(rSource, /new CustomEvent\(/);
-  assert.doesNotMatch(rSource, /ALLOWED_FIELDS/);
+  assert.doesNotMatch(redirectScript, /new CustomEvent\(/);
+  assert.doesNotMatch(redirectScript, /ALLOWED_FIELDS/);
   // El destino se decide en runtime con la función del módulo
-  assert.match(rSource, /resolveRedirect\(/);
+  assert.match(redirectScript, /resolveRedirect\(/);
 
   const fichaSource = fs.readFileSync('src/pages/[lang]/[slug].astro', 'utf8');
-  assert.match(fichaSource, /from\s*['"]\.\.\/\.\.\/utils\/funnel-events['"]/);
-  assert.doesNotMatch(fichaSource, /new CustomEvent\(/);
-  assert.doesNotMatch(fichaSource, /ALLOWED_FIELDS/);
+  const fichaScript = fs.readFileSync('src/scripts/ficha-funnel.ts', 'utf8');
+  assert.match(fichaSource, /src="\.\.\/\.\.\/scripts\/ficha-funnel\.ts"/);
+  assert.match(fichaScript, /from\s*['"]\.\.\/utils\/funnel-events['"]/);
+  assert.doesNotMatch(fichaScript, /new CustomEvent\(/);
+  assert.doesNotMatch(fichaScript, /ALLOWED_FIELDS/);
   // No se oculta la dependencia con is:inline + define:vars
   assert.doesNotMatch(fichaSource, /<script[^>]*is:inline[^>]*define:vars/);
   assert.doesNotMatch(rSource, /<script[^>]*is:inline[^>]*define:vars[^>]*sanit/);

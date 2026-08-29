@@ -70,6 +70,12 @@ const adConfig = network
   id={slotId}
   data-ad-slot={format}
   data-ad-network={network}
+  data-ad-kind={adConfig?.kind}
+  data-ad-src={adConfig?.src}
+  data-ad-key={adConfig?.kind === 'banner' ? adConfig.atOptions.key : undefined}
+  data-ad-width={adConfig?.kind === 'banner' ? adConfig.atOptions.width : undefined}
+  data-ad-height={adConfig?.kind === 'banner' ? adConfig.atOptions.height : undefined}
+  data-ad-eager={adConfig && eager ? 'true' : undefined}
   class:list={[
     'flex flex-col items-center justify-center gap-1 rounded-[14px] border border-fai-line bg-fai-card/60 px-4 py-3 text-center',
     dims[format],
@@ -80,41 +86,5 @@ const adConfig = network
 
   {adConfig?.kind === 'native-banner' && <div id={adConfig.containerId}></div>}
 
-  {adConfig && eager && adConfig.kind === 'native-banner' && (
-    <script is:inline async data-cfasync="false" src={adConfig.src}></script>
-  )}
-  {adConfig && eager && adConfig.kind === 'banner' && (
-    <>
-      <script is:inline define:vars={{ opts: adConfig.atOptions }}>atOptions = opts;</script>
-      <script is:inline src={adConfig.src}></script>
-    </>
-  )}
-
-  {adConfig && !eager && (
-    <script is:inline define:vars={{ slotId, adConfig }}>
-      (() => {
-        const el = document.getElementById(slotId);
-        if (!el) return;
-        const load = () => {
-          if (adConfig.kind === 'banner') {
-            window.atOptions = adConfig.atOptions;
-          }
-          const s = document.createElement('script');
-          s.src = adConfig.src;
-          if (adConfig.kind === 'native-banner') {
-            s.async = true;
-            s.dataset.cfasync = 'false';
-          }
-          el.appendChild(s);
-        };
-        const io = new IntersectionObserver((entries) => {
-          if (entries.some((e) => e.isIntersecting)) {
-            io.disconnect();
-            load();
-          }
-        }, { rootMargin: '300px' });
-        io.observe(el);
-      })();
-    </script>
-  )}
+  {adConfig && <script src="../scripts/ads.ts"></script>}
 </div>

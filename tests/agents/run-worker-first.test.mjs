@@ -45,7 +45,7 @@ test('las rutas POST llegan al Worker pese a not_found_handling', () => {
   // Con not_found_handling "404-page" el router de assets responde el 404 el
   // mismo y el Worker no se ejecuta: hay que listarlas aunque no sean archivos.
   assert.equal(config.assets.not_found_handling, '404-page');
-  for (const ruta of ['/mcp', '/a2a', '/api/hw/parse']) {
+  for (const ruta of ['/mcp', '/a2a', '/api/hw/parse', '/api/csp-report']) {
     assert.ok(cubierta(ruta), `${ruta} no pasa por el Worker`);
   }
 });

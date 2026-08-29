@@ -33,12 +33,14 @@
     // sirven sin invocar el Worker.
     "run_worker_first": [
       "/api/hw/*",
+      "/api/csp-report",
       "/mcp",
       "/a2a",
       "/",
       "/sv",
       "/it",
       "/es/*",
+      "/r",
       "/sv/*",
       "/it/*"
     ]

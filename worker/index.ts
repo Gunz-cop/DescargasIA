@@ -30,6 +30,8 @@ import {
 import { checkRateLimit, TOO_MANY_REQUESTS } from './ratelimit.ts';
 import { validateRequest, withSecurityHeaders } from './security.ts';
 import { tryAgentRoutes, variesByAccept } from './agents/index.ts';
+import { handleCspReport } from './csp-report.ts';
+import { withCspReportOnly } from './csp.ts';
 import type { SystemSpecs } from '../src/lib/hardware/types.ts';
 
 // `Env` no se declara aqui: es el tipo global que genera `wrangler types` en
@@ -218,8 +220,12 @@ export default {
       }
     }
 
+    if (url.pathname === '/api/csp-report') {
+      return handleCspReport(env.HW_CACHE, request);
+    }
+
     // Todo lo demás se sirve como estaba: el sitio estático intacto.
-    const response = await env.ASSETS.fetch(request);
+    const response = withCspReportOnly(await env.ASSETS.fetch(request));
 
     // La misma URL puede devolver HTML o Markdown según `Accept`: sin este Vary
     // una caché intermedia podría servirle Markdown a un navegador.

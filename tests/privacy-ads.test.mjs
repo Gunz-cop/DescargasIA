@@ -39,8 +39,9 @@ test('las políticas no vuelven a afirmar que sólo hay cookies técnicas o que 
 });
 
 test('la integración publicitaria y sus dos momentos de carga siguen conectados', async () => {
-  const [adSlot, directory, toolPage, redirect] = await Promise.all([
+  const [adSlot, adsScript, directory, toolPage, redirect] = await Promise.all([
     readRepoFile('src/components/AdSlot.astro'),
+    readRepoFile('src/scripts/ads.ts'),
     readRepoFile('src/components/Directory.astro'),
     readRepoFile('src/pages/[lang]/[slug].astro'),
     readRepoFile('src/pages/r/index.astro')
@@ -48,8 +49,10 @@ test('la integración publicitaria y sus dos momentos de carga siguen conectados
 
   assert.match(adSlot, /highperformanceformat\.com/);
   assert.match(adSlot, /effectivecpmnetwork\.com/);
-  assert.match(adSlot, /IntersectionObserver/);
-  assert.match(adSlot, /rootMargin: '300px'/);
+  assert.match(adSlot, /src="\.\.\/scripts\/ads\.ts"/);
+  assert.match(adsScript, /IntersectionObserver/);
+  assert.match(adsScript, /rootMargin: '300px'/);
+  assert.match(adsScript, /dataset\.adEager/);
   assert.match(directory, /network="banner-320x50" eager/);
   assert.match(toolPage, /ad-tool-top-\$\{tool\.slug\}.*network="banner-320x50" eager/s);
   assert.match(toolPage, /ad-tool-mid-\$\{tool\.slug\}.*network="banner-300x250"/s);

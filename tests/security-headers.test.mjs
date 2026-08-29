@@ -55,24 +55,24 @@ test('la cabecera Link de descubrimiento para agentes sigue intacta', async () =
   assert.match(source, /rel="service-doc"/);
 });
 
-test('no se ha colado una CSP ni un endpoint de reportes inexistente', async () => {
+test('la CSP no se declara en public/_headers', async () => {
   const directives = await headerDirectives();
   const joined = directives.join('\n');
 
   assert.doesNotMatch(
     joined,
     /^content-security-policy/im,
-    'una CSP no se puede escribir desde este repositorio: los creativos de Adsterra encadenan orígenes que no están aquí. Ver docs/mejora/blockers/F6-security-headers-csp.md'
+    'la CSP report-only se emite desde el Worker para limitarla a HTML. Ver docs/mejora/blockers/F6-security-headers-csp.md'
   );
   assert.doesNotMatch(
     joined,
     /^content-security-policy-report-only/im,
-    'report-only sin sitio donde observar reportes no aporta evidencia. Ver el blocker de #88'
+    'la CSP report-only no pertenece al contrato global de assets. Ver el blocker de #88'
   );
   assert.doesNotMatch(
     joined,
     /report-to|report-uri|reporting-endpoints/i,
-    'no se declara un endpoint de reportes que no existe'
+    'el receptor CSP se implementa en el Worker, no en public/_headers'
   );
 });
 
