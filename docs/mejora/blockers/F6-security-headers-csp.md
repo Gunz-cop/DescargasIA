@@ -44,8 +44,9 @@ prerrequisitos descritos abajo.
 HSTS ya está activo exclusivamente en Cloudflare con el valor HTTP real
 `max-age=15552000; includeSubDomains`; `preload` permanece desactivado. CSP
 `report-only` está implementado en esta rama, pero aún no está publicado ni
-validado remotamente. El blocker continúa abierto por esa falta de preview
-versionada, observación de 30 días y validación remota.
+publicado en producción. La preview versionada y su alias ya fueron validados
+remotamente; el blocker continúa abierto por la observación de 30 días y la
+validación posterior en producción.
 
 ### Implementación posterior · 2026-08-29
 
@@ -58,10 +59,9 @@ versionada, observación de 30 días y validación remota.
   anterior usaba el literal `15768000`.
 - La implementación de CSP `report-only` y `/api/csp-report` está en el
   worktree y pasa las pruebas locales. El propietario confirmó que `wrangler
-  login` y `wrangler whoami` funcionan en su terminal. La sesión de Codex aún
-  no puede contactar la API: `wrangler whoami` devuelve `unable to verify the
-  first certificate`, así que no existe aún una URL versionada verificable para
-  esta rama.
+  login` y `wrangler whoami` funcionan en su terminal. El intento inicial desde
+  Codex falló con `unable to verify the first certificate`, pero el propietario
+  publicó después la preview desde su terminal autenticada.
 - La validación local confirmó cabecera report-only solo en HTML, `204` para
   un reporte válido, límites de 16 KiB y 30 solicitudes/minuto/IP, saneamiento
   y TTL de 30 días. No se almacenó una IP en claro ni se añadió CSP a
@@ -174,9 +174,9 @@ explícita de solo lectura. La evidencia fechada está en
 
 Cloudflare Insights permanece activo por decisión del propietario. El endpoint
 de reportes CSP será operado por el propietario humano. La superficie de
-preview está autorizada como URL versionada, pero la rama aún no pudo
-publicarse desde esta sesión por el error de certificado del proxy indicado
-arriba.
+preview está autorizada como URL versionada y ya fue publicada y validada.
+La URL versionada y el alias son los únicos destinos no productivos usados en
+esta etapa; ambos devolvieron `X-Robots-Tag: noindex`.
 
 No se observó ninguna Transform Rule ni Managed Transform de cabeceras de
 respuesta activa. La regla activa encontrada es una redirección de `www` al

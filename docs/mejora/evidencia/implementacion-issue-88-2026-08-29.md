@@ -1,6 +1,6 @@
 # Evidencia de implementación de #88 · 2026-08-29
 
-Fecha de corte: 2026-08-29 13:25:13 CST (`-06:00`). Worktree:
+Fecha de corte: 2026-08-29 13:44:15 CST (`-06:00`). Worktree:
 `codex/issue-88-security-audit`, basado en `origin/main`
 `d4aacb20bafc3448aca05f0a8e73d9eca60a0514`.
 
@@ -86,32 +86,57 @@ una transformación activa de cabeceras de solicitud o respuesta; los controles
 de eliminar `X-Powered-by` y agregar encabezados de seguridad estaban
 desactivados. Web Analytics/Insights permaneció activo.
 
-## Bloqueo de preview remoto
+## Preview remota · 2026-08-29
+
+El propietario publicó la rama desde su terminal autenticada y proporcionó
+estas dos URLs no productivas:
+
+- `https://fd25a9bb-fuenteai.g1721m.workers.dev`
+- `https://issue-88-csp-fuenteai.g1721m.workers.dev`
+
+La comprobación HTTP en ambas URLs devolvió `200` para `/`, `/es/ollama`,
+`/r`, `/llms.txt` y `/.well-known/agent-card.json`. Las respuestas HTML
+incluyeron `Content-Security-Policy-Report-Only` y
+`X-Robots-Tag: noindex`; las superficies de agentes no incluyeron CSP por no
+ser HTML, conservaron `Access-Control-Allow-Origin: *` y mantuvieron la
+cabecera `Link`. No se observó HSTS en `workers.dev`; HSTS se mantiene en la
+zona de producción de Cloudflare.
+
+El endpoint remoto respondió `204` a un informe CSP válido, con
+`Cache-Control: no-store`, `X-Content-Type-Options: nosniff` y sin CORS; un
+GET respondió `405 Allow: POST` y un `text/plain` respondió `415`.
+
+En navegador limpio, con viewport 1280×800 y 360×740, la portada mostró el
+banner con iframe; la ficha mostró su banner superior y, después de desplazar
+los slots lazy al viewport, los tres slots quedaron cargados con iframe; `/r`
+mostró el anuncio nativo, el destino `https://linkzip.uk/ii14g` y el contenido
+del redirect. El ancho del body no excedió el viewport y no hubo errores ni
+advertencias de consola. La sesión externa ocultaba los contenedores por un
+bloqueador de anuncios, por lo que no se usó para juzgar visibilidad.
+
+## Bloqueo de preview remoto (resuelto)
 
 `wrangler deploy --dry-run` terminó correctamente y mostró las bindings
-existentes, sin publicar. El propietario confirmó que `wrangler login` y
-`wrangler whoami` funcionan en su terminal interactiva. Desde el proceso de
-Codex, una nueva llamada a `wrangler whoami` sigue fallando al contactar la
-API por el proxy corporativo. Error exacto observado desde Codex:
+existentes, sin publicar. El intento inicial desde el proceso de Codex no
+pudo contactar la API por el proxy corporativo. Error exacto observado:
 
 `fetch failed`
 
 precedido por `A fetch request failed, likely due to a connectivity issue` y el
-aviso `unable to verify the first certificate`. Por ello no se creó una URL
-versionada desde esta sesión y no se puede afirmar evidencia remota de CSP,
-consola o anuncios de esta implementación.
+aviso `unable to verify the first certificate`. Durante ese intento inicial no
+se creó una URL versionada desde esta sesión; la evidencia remota quedó
+resuelta posteriormente mediante el upload realizado por el propietario.
 
-Para completar el upload, el propietario debe ejecutar en una terminal
-interactiva autenticada, dentro de este worktree:
+El propietario completó el upload en una terminal interactiva autenticada,
+dentro de este worktree, con:
 
 ```text
 npx wrangler@latest whoami
 npx wrangler@latest versions upload --preview-alias issue-88-csp
 ```
 
-No se solicita ni se versiona ningún token. El upload debe devolver la URL de
-preview versionada; después hay que comprobar que la preview lleva
-`X-Robots-Tag: noindex` antes de continuar con la validación remota y el PR.
+No se solicitó ni se versionó ningún token. El upload devolvió las dos URLs
+anteriores y ambas llevan `X-Robots-Tag: noindex`.
 
 ## Reversión
 
@@ -127,6 +152,5 @@ preview versionada; después hay que comprobar que la preview lleva
   max-age, por lo que cualquier reversión debe coordinarse con soporte HTTPS
   continuo.
 
-No se cierra #88 ni #45: faltan la URL versionada, la evidencia remota de
-`report-only`, el período de observación de 30 días y la validación de
-reversión ante fallos críticos.
+No se cierra #88 ni #45: faltan el período de observación de 30 días en
+producción y la validación de reversión ante fallos críticos.
