@@ -53,6 +53,11 @@ export default defineConfig({
   ],
 
   vite: {
+    // CSP #88: evita que Astro inlinee automáticamente módulos pequeños en
+    // cada HTML; los scripts propios deben salir como assets con src.
+    build: {
+      assetsInlineLimit: 0
+    },
     plugins: [tailwindcss()]
   }
 });

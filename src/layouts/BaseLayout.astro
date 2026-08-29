@@ -6,7 +6,7 @@ import Motion from '../components/Motion.astro';
 import WebMcp from '../components/WebMcp.astro';
 import { useTranslations } from '../i18n/ui';
 import { CATEGORIES, type Lang } from '../utils/brand';
-import { homeUrl, categoryUrl, pageUrl, directoryUrl, hardwareUrl, guideIndexUrl, defaultOgImageUrl } from '../utils/links';
+import { LANGS, homeUrl, categoryUrl, pageUrl, directoryUrl, hardwareUrl, guideIndexUrl, defaultOgImageUrl } from '../utils/links';
 import { getLangsWithGuides } from '../utils/guides';
 import { hasMarkdownMirror, markdownPathFor } from '../utils/agent-content';
 import { getTranslatedTools } from '../utils/tools';
@@ -158,11 +158,8 @@ const rightsLine = lang === 'sv'
       <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
     ))}
 
-    <script is:inline>
-      document.documentElement.classList.remove('no-js');
-    </script>
   </head>
-  <body class="no-js flex min-h-screen flex-col">
+  <body class="no-js flex min-h-screen flex-col" data-webmcp-lang={lang} data-webmcp-langs={LANGS.join(',')}>
     <a href="#contenido" class="skip-link">{t('a11y.skip')}</a>
 
     <!-- §3.1 Respiración de fondo: dos halos radiales, único gradiente del sistema -->
@@ -317,35 +314,7 @@ const rightsLine = lang === 'sv'
 
     <Motion />
 
-    <script is:inline>
-      // Cierra los menús <details> al hacer clic fuera o al pulsar Escape.
-      const menus = Array.from(document.querySelectorAll('header details'));
-
-      // Al tocar un enlace del menú móvil hay que cerrarlo: los enlaces de
-      // ancla (#directorio) no recargan la página y el panel se quedaba
-      // abierto tapando justo el contenido al que acababas de saltar.
-      menus.forEach((menu) => {
-        menu.querySelectorAll('a').forEach((link) => {
-          link.addEventListener('click', () => {
-            menu.open = false;
-          });
-        });
-      });
-      document.addEventListener('click', (event) => {
-        menus.forEach((menu) => {
-          if (menu.open && !menu.contains(event.target)) menu.open = false;
-        });
-      });
-      document.addEventListener('keydown', (event) => {
-        if (event.key !== 'Escape') return;
-        menus.forEach((menu) => {
-          if (menu.open) {
-            menu.open = false;
-            menu.querySelector('summary')?.focus();
-          }
-        });
-      });
-    </script>
+    <script src="../scripts/base-ui.ts"></script>
     <WebMcp lang={lang} />
   </body>
 </html>
