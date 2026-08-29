@@ -89,28 +89,29 @@ desactivados. Web Analytics/Insights permaneció activo.
 ## Bloqueo de preview remoto
 
 `wrangler deploy --dry-run` terminó correctamente y mostró las bindings
-existentes, sin publicar. `wrangler whoami` y `wrangler login` no pudieron
-completar autenticación. Error exacto del login:
+existentes, sin publicar. El propietario confirmó que `wrangler login` y
+`wrangler whoami` funcionan en su terminal interactiva. Desde el proceso de
+Codex, una nueva llamada a `wrangler whoami` sigue fallando al contactar la
+API por el proxy corporativo. Error exacto observado desde Codex:
 
 `fetch failed`
 
 precedido por `A fetch request failed, likely due to a connectivity issue` y el
 aviso `unable to verify the first certificate`. Por ello no se creó una URL
-versionada para esta rama y no se puede afirmar evidencia remota de CSP,
+versionada desde esta sesión y no se puede afirmar evidencia remota de CSP,
 consola o anuncios de esta implementación.
 
-Para desbloquearlo, el propietario debe ejecutar en una terminal interactiva
-del mismo equipo, con la CA raíz/proxy corporativa disponible:
+Para completar el upload, el propietario debe ejecutar en una terminal
+interactiva autenticada, dentro de este worktree:
 
 ```text
-npx wrangler@latest login
 npx wrangler@latest whoami
+npx wrangler@latest versions upload --preview-alias issue-88-csp
 ```
 
-No se solicita ni se versiona ningún token. Tras un login correcto se debe
-publicar una versión no productiva según el flujo disponible de Cloudflare,
-comprobar `X-Robots-Tag: noindex`, y solo entonces continuar con la validación
-remota y el PR.
+No se solicita ni se versiona ningún token. El upload debe devolver la URL de
+preview versionada; después hay que comprobar que la preview lleva
+`X-Robots-Tag: noindex` antes de continuar con la validación remota y el PR.
 
 ## Reversión
 

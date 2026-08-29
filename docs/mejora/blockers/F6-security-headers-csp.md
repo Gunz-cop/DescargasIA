@@ -57,10 +57,11 @@ versionada, observación de 30 días y validación remota.
   valor real como la opción de seis meses de Cloudflare, aunque el registro
   anterior usaba el literal `15768000`.
 - La implementación de CSP `report-only` y `/api/csp-report` está en el
-  worktree y pasa las pruebas locales. Todavía no se publica en producción:
-  `wrangler login` falló por el proxy con `unable to verify the first
-  certificate`, así que no existe aún una URL versionada verificable para esta
-  rama.
+  worktree y pasa las pruebas locales. El propietario confirmó que `wrangler
+  login` y `wrangler whoami` funcionan en su terminal. La sesión de Codex aún
+  no puede contactar la API: `wrangler whoami` devuelve `unable to verify the
+  first certificate`, así que no existe aún una URL versionada verificable para
+  esta rama.
 - La validación local confirmó cabecera report-only solo en HTML, `204` para
   un reporte válido, límites de 16 KiB y 30 solicitudes/minuto/IP, saneamiento
   y TTL de 30 días. No se almacenó una IP en claro ni se añadió CSP a
@@ -174,8 +175,8 @@ explícita de solo lectura. La evidencia fechada está en
 Cloudflare Insights permanece activo por decisión del propietario. El endpoint
 de reportes CSP será operado por el propietario humano. La superficie de
 preview está autorizada como URL versionada, pero la rama aún no pudo
-publicarse porque el login de Wrangler falló por el error de certificado del
-proxy indicado arriba.
+publicarse desde esta sesión por el error de certificado del proxy indicado
+arriba.
 
 No se observó ninguna Transform Rule ni Managed Transform de cabeceras de
 respuesta activa. La regla activa encontrada es una redirección de `www` al
