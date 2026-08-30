@@ -4,7 +4,7 @@
 **Documento afectado:** `docs/mejora/plan-seo-es-2026-08-29.md`
 **Blocker previo del que este deriva:** [#50](https://github.com/Gunz-cop/DescargasIA/issues/50) · `docs/mejora/blockers/F7-bloqueo-export-gsc-sin-segmentar.md` — **sigue abierto**
 **Rama base:** `main`
-**Rama de trabajo:** `claude/gunz-cop-seo-plan-es-fzf020`
+**Rama de trabajo:** `codex/issue-47-plan-seo-es`
 **Commit base comprobado:** `ae8eed5`
 **Fecha de comprobación:** 2026-08-29
 **Estado:** ABIERTO. El plan se puede escribir; **no se puede medir**
