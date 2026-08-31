@@ -34,3 +34,6 @@ harness-out/
 
 # Estado local de `wrangler dev`
 .wrangler/
+
+# Salida del grafo de conocimiento de graphify (se regenera con `graphify update .`)
+graphify-out/
