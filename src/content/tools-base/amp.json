@@ -1,0 +1,68 @@
+{
+  "name": "Amp",
+  "officialWebsite": "https://ampcode.com",
+  "categories": [
+    "programacion"
+  ],
+  "platforms": {
+    "web": {
+      "url": "https://ampcode.com",
+      "type": "web-app",
+      "isOfficial": true,
+      "lastChecked": "2026-09-02"
+    },
+    "mac": {
+      "url": "https://static.ampcode.com/mac/latest.dmg",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-09-02"
+    },
+    "linux": {
+      "url": "https://ampcode.com/install.sh",
+      "type": "official-installer",
+      "isOfficial": true,
+      "lastChecked": "2026-09-02"
+    },
+    "windows": {
+      "url": "https://ampcode.com/docs/cli",
+      "type": "documentation",
+      "isOfficial": true,
+      "lastChecked": "2026-09-02"
+    },
+    "ios": {
+      "url": "https://testflight.apple.com/join/Skjdm6qe",
+      "type": "official-site",
+      "isOfficial": true,
+      "lastChecked": "2026-09-02"
+    }
+  },
+  "pricingModel": "paid",
+  "requiresAccount": true,
+  "tags": [
+    "amp",
+    "agente-codigo",
+    "orbs",
+    "programacion",
+    "terminal",
+    "cloud"
+  ],
+  "alternatives": [
+    "cursor",
+    "claude-code",
+    "github-copilot",
+    "devin-desktop",
+    "qwen-code",
+    "opencode"
+  ],
+  "screenshotUrl": null,
+  "initials": "AM",
+  "trustLevel": "official",
+  "lastReviewed": "2026-09-02",
+  "officialSources": [
+    "https://ampcode.com",
+    "https://ampcode.com/app",
+    "https://ampcode.com/docs/cli",
+    "https://ampcode.com/pricing",
+    "https://ampcode.com/what-are-orbs"
+  ]
+}
