@@ -147,6 +147,17 @@ const HOY = new Date();
 const out = [];
 const p = (s = '') => out.push(s);
 
+// Corta en el último espacio antes de `max`, no a mitad de palabra: un corte
+// crudo puede partir una URL citada (p.ej. "ampcode.com/docs/cli" en
+// "ampcode.com/doc") y un auditor que no vuelve a abrir el archivo original
+// termina reportando como defecto real algo que sólo rompió el propio recorte.
+function truncar(frase, max = 110) {
+  if (frase.length <= max) return frase;
+  const corte = frase.slice(0, max);
+  const ultimoEspacio = corte.lastIndexOf(' ');
+  return (ultimoEspacio > 0 ? corte.slice(0, ultimoEspacio) : corte) + '…';
+}
+
 // Hallazgos acumulados por ficha, para el bloque de veredicto final. Existe
 // porque esta skill se usa dentro de un lazo redacción→auditoría→redacción:
 // un agente necesita un corte binario, no sólo una tabla de números.
@@ -492,7 +503,7 @@ for (const slug of targets) {
       if (!destino) {
         coherencia++;
         p(`  [${campo}] referencia direccional sin destino claro — verificá a mano:`);
-        p(`    "${frase.trim().slice(0, 110)}"`);
+        p(`    "${truncar(frase.trim())}"`);
         continue;
       }
       const origen = POS_CAMPO[campo];
@@ -503,7 +514,7 @@ for (const slug of targets) {
         coherencia++;
         bloquea(slug, `referencia direccional invertida en ${campo}: dice "${dicho}" y ${destino.campo} está ${real}`);
         p(`  ERROR de dirección [${campo}]: dice "${dicho}" pero ${destino.campo} se renderiza ${real}.`);
-        p(`    "${frase.trim().slice(0, 110)}"`);
+        p(`    "${truncar(frase.trim())}"`);
       }
     }
   }
@@ -529,7 +540,7 @@ for (const slug of targets) {
       coherencia++;
       invocaciones++;
       p(`  [${campo}] invoca un documento como respaldo — confirmá que esté entre las fuentes enlazadas:`);
-      p(`    "${frase.trim().slice(0, 110)}"`);
+      p(`    "${truncar(frase.trim())}"`);
     }
   }
   if (invocaciones && urlsDeclaradas.length)
