@@ -59,9 +59,10 @@ concurrency:
 jobs:
   harness:
     runs-on: ubuntu-latest
-    # El arnés tiene límites propios por pasada; este margen evita que GitHub
-    # mate el proceso antes de que el trap publique resumen y artifact.
-    timeout-minutes: 60
+    # El arnés tiene límites propios por pasada (PASS_TIMEOUT); este margen
+    # evita que GitHub mate el proceso antes de que el trap publique resumen y
+    # artifact. Con hasta 4 pasadas de hasta 1200s cada una, 60 min no alcanza.
+    timeout-minutes: 100
     permissions:
       contents: write
       pull-requests: write
@@ -121,7 +122,11 @@ jobs:
           SKIP_CREATE: ${{ inputs.skip_create }}
           FINAL_AUDIT: ${{ inputs.final_audit }}
           OUT: harness-out
-          PASS_TIMEOUT: 600
+          # 600s se quedaba corto con los modelos grandes de Workers AI (GLM-5.3
+          # tardó más de 10 minutos en una pasada de creación real, todavía
+          # investigando activamente, no trabado). 1200s da margen sin arriesgar
+          # el timeout-minutes del job (que también subió, más abajo).
+          PASS_TIMEOUT: 1200
         run: bash scripts/harness/run.sh
 
       # El resumen se publica pase lo que pase: una corrida que agota las 2
