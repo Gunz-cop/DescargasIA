@@ -1,0 +1,71 @@
+{
+  "shortDescription": "Agente de programación con orbs en la nube, CLI propia y app beta para macOS e iOS. Requiere suscripción; en Windows el soporte oficial es vía WSL.",
+  "longDescription": "Amp es un entorno de desarrollo y agente de código que permite escribir, revisar y desplegar software desde la web, la terminal o una app en macOS e iOS. Su elemento central son los orbs: máquinas remotas efímeras donde el agente trabaja de forma independiente, con el repositorio clonado, las herramientas instaladas y los cambios disponibles para previsualizar. El canal principal es ampcode.com; desde ahí se accede a la interfaz web, al script de instalación de la CLI y a la descarga oficial de la app para Mac. El servicio funciona por suscripción, sin plan gratuito confirmado, y en Windows la experiencia pasa por WSL o una terminal compatible. Esta ficha solo enlaza a los canales oficiales de Amp para evitar instaladores de terceros o versiones \"desbloqueadas\".",
+  "bestFor": [
+    "Programar con agentes de código que trabajan en orbs remotos sin depender de tu máquina local",
+    "Delegar tareas largas, correcciones de CI, bugs o refactorizaciones que continúan después de cerrar el portátil",
+    "Controlar agentes desde el navegador, la terminal o el móvil dentro de la misma sesión",
+    "Revisar cambios, previsualizar aplicaciones y colaborar con el equipo dentro de un orb"
+  ],
+  "limitations": [
+    "No hay aplicación nativa para Windows: el soporte oficial es mediante WSL o una terminal compatible, no un instalador de escritorio.",
+    "Las apps de macOS e iOS están en beta pública (TestFlight en iOS) y requieren macOS 26 o iOS/iPadOS 26 o posterior.",
+    "El modelo de precios es de suscripción mensual desde 20 USD o facturación por uso; no se confirma un plan gratuito.",
+    "Requiere cuenta para usar cualquier canal y para gestionar orbs, agentes y facturación."
+  ],
+  "safetyNotes": [
+    "La web oficial es ampcode.com; el instalador de macOS se distribuye desde static.ampcode.com/mac/latest.dmg; la beta de iOS está en TestFlight; la CLI se instala desde el script oficial de ampcode.com. No descargues Amp desde repositorios de terceros.",
+    "No existe APK oficial de Amp para Android; evita cualquier instalador que prometa la app móvil completa fuera de los canales de Apple.",
+    "Los orbs ejecutan código en máquinas remotas con acceso a tu repositorio y a secretos configurados: revisa los permisos del workspace y la documentación oficial antes de conceder acceso."
+  ],
+  "editorialSummary": "Amp es un agente de programación que combina una interfaz web, una CLI multiplataforma y aplicaciones beta para macOS e iOS; el trabajo pesado ocurre en orbs, máquinas remotas que siguen ejecutándose cuando cierras el portátil. Es un producto de pago: requiere suscripción o facturación por uso, y en Windows el soporte oficial pasa por WSL. En FuenteAI enlazamos exclusivamente a ampcode.com y a sus canales de descarga verificados, para que no acabes con instaladores alterados o versiones móviles inexistentes.",
+  "editorialSections": [
+    {
+      "heading": "Por qué buscan descargar Amp",
+      "body": "Las búsquedas de \"descargar Amp\" o \"Amp para Windows\" vienen sobre todo de desarrolladores que vieron demos de orbs: agentes que reciben un prompt, trabajan en una máquina remota y siguen activos cuando tú cierras el portátil. Esa promesa resuelve un problema real del programador actual: tener que dejar encendido el equipo local o pelear con worktrees, dependencias y conflictos de puertos para que un agente termine una tarea.\n\nAmp no es un editor de escritorio como Cursor ni una extensión dentro de un IDE: es una combinación de interfaz web, terminal y apps en el ecosistema Apple. Antes de instalar nada conviene saber en qué sistema vas a usarlo, porque la disponibilidad real no es la misma en todas las plataformas."
+    },
+    {
+      "heading": "Web, CLI y apps: qué canal usar en cada sistema",
+      "body": "Si usas macOS, puedes descargar directamente el .dmg desde static.ampcode.com/mac/latest.dmg; si prefieres la versión móvil, la beta de iOS está en TestFlight. En Linux puedes instalar la CLI con el script oficial de ampcode.com. En Windows el camino documentado es WSL o una terminal como WezTerm o Alacritty: no hay instalador nativo de escritorio.\n\nPara empezar sin instalar nada, la interfaz web en ampcode.com es el canal más universal; desde ahí creas threads, lanzas orbs y configuras workspaces. Esa es una diferencia importante respecto a herramientas que solo funcionan dentro de un editor instalado: Amp puede usarse completamente desde el navegador, aunque su flujo más potente suele arrancar en la terminal o en la app de Mac."
+    },
+    {
+      "heading": "Qué son los orbs y por qué cambian el flujo",
+      "body": "Cada hilo de trabajo en Amp obtiene su propio orb: una máquina remota efímera donde el agente clona tu repositorio, instala lo que necesita y ejecuta tareas a tu nombre. Cuando el agente termina, solo el diff sale del orb; la máquina se descarta. Eso elimina la fricción de mantener entornos locales limpios y permite lanzar varios agentes en paralelo sin pelear por recursos.\n\nEl punto más llamativo es que el orb sigue corriendo aunque cierres el ordenador o lo revises desde el móvil. Esa continuidad cambia cómo se delega trabajo de varios pasos: puedes pedir una corrección, cerrar la sesión y volver más tarde a revisar evidencia, capturas de pantalla o videos que el agente dejó como prueba de la tarea."
+    },
+    {
+      "heading": "Precauciones de seguridad y facturación",
+      "body": "Amp es un servicio de pago con suscripción mensual o facturación por uso, sin plan gratuito confirmado al momento de esta revisión. Eso significa que necesitarás cuenta y un método de pago viable antes de usarlo con intensidad. Los orbs también tienen coste por hora según tamaño, aunque se pausan automáticamente tras cinco minutos de inactividad y no generan cargo mientras están pausados.\n\nPor otro lado, los orbs ejecutan código con acceso a tu repositorio y a los secretos que configures en el workspace. Ese nivel de acceso es útil, pero también exige revisar qué integraciones y permisos tienen activos. No instales Amp desde sitios que prometan créditos infinitos o versiones desbloqueadas: esos archivos no vienen del equipo de Amp y no hay manera de saber qué modificaron."
+    },
+    {
+      "heading": "Cuándo elegir Amp y cuándo mirar alternativas",
+      "body": "Amp tiene más sentido si tu prioridad es delegar trabajo de código a agentes que corran en la nube y puedas revisar desde cualquier dispositivo, en lugar de tener todo el procesamiento en tu máquina local. Si lo que buscas es un editor de escritorio con IA integrada, opciones como Cursor o Devin Desktop pueden encajar mejor porque están construidas sobre la base de VS Code y no dependen de una sesión remota.\n\nSi programas principalmente en Windows y no quieres configurar WSL, Amp no es todavía la experiencia más directa: para ese escenario conviene compararla con GitHub Copilot, Claude Code o Qwen Code, que funcionan dentro de la terminal o del editor que ya usas. La elección depende menos de cuál agente es \"mejor\" y más de dónde quieres que ocurra el trabajo: en tu equipo, en la terminal, o en una máquina remota gestionada por Amp."
+    }
+  ],
+  "communityInsights": [
+    {
+      "text": "Un desarrollador en Hacker News señaló que los orbs son, en el fondo, máquinas virtuales remotas con una nueva capa de abstracción, y que la propuesta pide al usuario confiar en esa infraestructura sin necesidad de ver qué ocurre dentro. Es un recordatorio útil: delegar el trabajo a un orb significa ceder el entorno de ejecución a la plataforma, así que conviene revisar qué repositorios y secretos le concedes.",
+      "source": "https://news.ycombinator.com/item?id=49497377",
+      "sourceLabel": "Comentario en Hacker News · hilo 'Orbs'",
+      "date": "2026-08-30"
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Amp tiene aplicación oficial para Windows?",
+      "answer": "No hay aplicación de escritorio nativa para Windows. El soporte oficial pasa por WSL o una terminal compatible, según la documentación de la CLI en ampcode.com/docs/cli."
+    },
+    {
+      "question": "¿Es seguro descargar Amp desde sitios de terceros?",
+      "answer": "No. Los canales oficiales son ampcode.com, static.ampcode.com/mac/latest.dmg, testflight.apple.com/join/Skjdm6qe y el script de instalación de la CLI. Cualquier otro origen no es oficial."
+    },
+    {
+      "question": "¿Necesito cuenta para usar Amp?",
+      "answer": "Sí. Se requiere cuenta para acceder a la web, la CLI y las apps. Además, el servicio funciona por suscripción o facturación por uso, sin plan gratuito confirmado."
+    },
+    {
+      "question": "¿Amp funciona en español?",
+      "answer": "La interfaz y la documentación están en inglés. Puedes interactuar con el agente en español gracias a los modelos subyacentes, pero no hay localización oficial al español."
+    }
+  ],
+  "spanishSupport": "partial"
+}
