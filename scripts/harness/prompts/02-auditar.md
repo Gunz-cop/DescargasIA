@@ -51,6 +51,8 @@ arnés decida qué bloquea.
 - **No corrijas nada.** Esta es una pasada de evaluación: no edites ni un archivo.
   Otra pasada del arnés se encarga de las correcciones.
 - No modifiques el script de métricas, el schema, los umbrales ni el workflow.
+- Resolvé todo vos, en esta misma pasada: no delegues en subagentes ni abras
+  trabajo en paralelo.
 
 ## Salida
 
@@ -63,8 +65,7 @@ arnés decida qué bloquea.
    el array sale vacío, el resumen del arnés lo publica como omisión. Las
    entradas con `confirmada: false` tienen que tener además su bloqueante
    correspondiente.
-3. Devolvé el resto de la salida estructurada. `veredicto` es la compuerta del
-   arnés:
+3. `veredicto` es la compuerta del arnés:
    - `APTO` — no quedan defectos mecánicos y ninguna fuente falló la verificación.
    - `APTO_CON_AVISOS` — sirve para publicar, quedan P2 cosméticos.
    - `NO_APTO` — hay al menos un P0 o P1.
@@ -73,3 +74,22 @@ arnés decida qué bloquea.
    texto es literalmente lo único que va a leer la pasada de corrección.
 4. Acordate del `PENDIENTE MANUAL`: si algo no lo pudiste verificar en este
    entorno, decilo en `resumen` en vez de darlo por bueno.
+5. Tu **último mensaje** tiene que terminar con un único bloque de código
+   \`\`\`json (nada de texto después) con exactamente esta forma:
+
+   \`\`\`json
+   {
+     "veredicto": "APTO|APTO_CON_AVISOS|NO_APTO",
+     "resumen": "...",
+     "fuentes_verificadas": [
+       {"url": "...", "afirmacion": "...", "confirmada": true, "observacion": "..."}
+     ],
+     "bloqueantes": [
+       {"prioridad": "P0|P1|P2", "ubicacion": "...", "problema": "...", "como_corregir": "..."}
+     ]
+   }
+   \`\`\`
+
+   `observacion` es opcional; si no aplica, omitila (no pongas `null`).
+   `fuentes_verificadas` y `bloqueantes` van igual como array vacío `[]` si no
+   corresponde ninguna entrada — nunca los omitas.

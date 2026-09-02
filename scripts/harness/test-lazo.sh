@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 #
-# Ejercita el lazo completo del arnés con un `claude` falso: cero cuota, cero red
-# hacia el modelo. Comprueba que el flujo nuevo —auditoría completa una vez,
-# después verificación diferencial— llegue a aprobar cuando debe y a NO aprobar
-# cuando no debe.
+# Ejercita el lazo completo del arnés con un `opencode` falso: cero cuota, cero
+# red hacia el modelo. Comprueba que el flujo nuevo —auditoría completa una
+# vez, después verificación diferencial— llegue a aprobar cuando debe y a NO
+# aprobar cuando no debe.
 #
 # Existe porque las dos primeras corridas reales fallaron por defectos de flujo
 # (crear sobre una ficha existente, y un criterio de terminación que no podía
 # converger), y cada una costó cuota y media hora para descubrirlo. Un lazo se
-# puede probar sin modelo; sólo hace falta un stub que devuelva salidas
-# estructuradas válidas.
+# puede probar sin modelo; sólo hace falta un stub que devuelva, en la forma que
+# `opencode run --format json` realmente usa, un bloque ```json de cierre con
+# una salida estructurada válida.
 #
 # Corre el build y las métricas de verdad, así que tarda ~1 minuto.
 
@@ -31,26 +32,33 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 mkdir -p "$TMP/bin"
 
-# El stub decide qué pasada le toca mirando el esquema JSON que recibe, que es lo
-# único que distingue una llamada de otra desde afuera.
+# El stub decide qué pasada le toca leyendo el prompt (segundo argumento
+# posicional: el primero es el subcomando "run"), que es lo único que
+# distingue una llamada de otra desde afuera ahora que no hay --json-schema.
+# Emite el mismo shape JSONL que
+# `opencode run --format json`: un evento de texto con el bloque ```json de
+# cierre, y un step_finish con costo.
 escribir_stub() {
   local cierra="$1" corregido="$2"
-  cat >"$TMP/bin/claude" <<STUB
+  cat >"$TMP/bin/opencode" <<STUB
 #!/usr/bin/env bash
-schema=""; next=false
-for a in "\$@"; do
-  if [ "\$next" = true ]; then schema="\$a"; next=false; fi
-  [ "\$a" = "--json-schema" ] && next=true
-done
-emitir() { printf '{"total_cost_usd":0.01,"result":"ok","structured_output":%s}\n' "\$1"; }
-case "\$schema" in
-  *bloqueantes*) emitir '{"veredicto":"NO_APTO","resumen":"r","fuentes_verificadas":[{"url":"https://ejemplo.test/a","afirmacion":"x","confirmada":true}],"bloqueantes":[{"prioridad":"P1","ubicacion":"tools/es/$SLUG_FIJO.json:limitations[0]","problema":"p","como_corregir":"c"}]}' ;;
-  *correcciones*) emitir '{"correcciones":["Corregido."],"no_corregidos":[],"notas":""}' ;;
-  *verificaciones*) emitir '{"verificaciones":[{"ubicacion":"tools/es/$SLUG_FIJO.json:limitations[0]","prioridad":"P1","corregido":$corregido,"evidencia":"e"}],"fuentes_nuevas":[],"entradas_nuevas":[],"regresiones":[],"cierra":$cierra,"resumen":"r"}' ;;
+# \$1 es el subcomando ("run"); el prompt es \$2.
+prompt="\$2"
+# jq arma el escapado del bloque \`\`\`json en vez de printf: con backslashes a
+# mano es fácil terminar emitiendo un salto de línea real en vez de "\\n"
+# literal, y eso rompe el JSONL (un objeto por línea).
+emitir() {
+  jq -n -c --arg cuerpo "\$1" '{type:"text",part:{type:"text",text:("\`\`\`json\n" + \$cuerpo + "\n\`\`\`")}}'
+  jq -n -c '{type:"step_finish",part:{type:"step-finish",cost:0.01}}'
+}
+case "\$prompt" in
+  *"Vas a auditar una ficha"*) emitir '{"veredicto":"NO_APTO","resumen":"r","fuentes_verificadas":[{"url":"https://ejemplo.test/a","afirmacion":"x","confirmada":true}],"bloqueantes":[{"prioridad":"P1","ubicacion":"tools/es/$SLUG_FIJO.json:limitations[0]","problema":"p","como_corregir":"c"}]}' ;;
+  *"Vas a corregir una ficha"*) emitir '{"correcciones":["Corregido."],"no_corregidos":[],"notas":""}' ;;
+  *"Vas a verificar una corrección"*) emitir '{"verificaciones":[{"ubicacion":"tools/es/$SLUG_FIJO.json:limitations[0]","prioridad":"P1","corregido":$corregido,"evidencia":"e"}],"fuentes_nuevas":[],"entradas_nuevas":[],"regresiones":[],"cierra":$cierra,"resumen":"r"}' ;;
   *) emitir '{"slug":"$SLUG_FIJO","nombre":"x","archivos":[],"notas":""}' ;;
 esac
 STUB
-  chmod +x "$TMP/bin/claude"
+  chmod +x "$TMP/bin/opencode"
 }
 
 correr() {

@@ -2,9 +2,11 @@
 
 Automatiza el ciclo completo de una ficha nueva: **crear → auditar → corregir →
 auditar**, hasta que la auditoría apruebe o se agoten las iteraciones (2 por
-defecto y máximo). Corre en un runner de GitHub, no en una sesión de Claude Code, que es
-justamente el punto: el ciclo consume mucha cuota y no tiene sentido gastarlo
-mientras trabajás en otra cosa.
+defecto y máximo). Corre en un runner de GitHub, no en una sesión interactiva,
+que es justamente el punto: el ciclo consume cuota y no tiene sentido gastarla
+mientras trabajás en otra cosa. Usa el CLI de [OpenCode](https://opencode.ai)
+contra un modelo de Cloudflare Workers AI, pagado con la cuenta de Cloudflare
+del usuario y sin tocar ninguna suscripción de Claude.
 
 Las tres pasadas usan las mismas skills que ya están versionadas en el repo
 (`.claude/skills/descargasia-tool-ficha` y `descargasia-ficha-auditoria`), así
@@ -12,21 +14,28 @@ que mejorar las skills mejora el arnés sin tocar nada de esto.
 
 ## Puesta en marcha (una sola vez)
 
-1. Generá un token de larga duración contra tu suscripción, desde una terminal
-   con `claude` logueado:
+1. En el dashboard de Cloudflare, andá a **Workers AI → Use REST API** y anotá
+   tu **Account ID**. Desde ahí mismo (o en *My Profile → API Tokens*) creá un
+   API token con permiso **Workers AI:Read**.
+
+2. Cargá los dos como secrets del repositorio:
 
    ```bash
-   claude setup-token
+   gh secret set CLOUDFLARE_ACCOUNT_ID --repo Gunz-cop/DescargasIA
+   gh secret set CLOUDFLARE_TOKEN_FINCHAS --repo Gunz-cop/DescargasIA
    ```
 
-2. Cargalo como secret del repositorio:
+   El workflow los mapea a `CLOUDFLARE_ACCOUNT_ID` / `CLOUDFLARE_API_KEY` en el
+   entorno del arnés (`.github/workflows/ficha-harness.yml`, paso "Correr el
+   arnés") — `CLOUDFLARE_API_KEY` es el nombre de variable que el proveedor
+   `cloudflare-workers-ai` de OpenCode espera; el secret se llama distinto
+   (`CLOUDFLARE_TOKEN_FINCHAS`) porque el repo ya tenía un
+   `CLOUDFLARE_API_TOKEN` para otra cosa (el deploy con `wrangler`) y no
+   convenía pisarlo ni confundirlos.
 
-   ```bash
-   gh secret set CLAUDE_CODE_OAUTH_TOKEN --repo Gunz-cop/DescargasIA
-   ```
-
-   El token queda atado a tu suscripción: la cuota que gaste el arnés es la
-   tuya, y si lo rotás localmente hay que volver a cargarlo acá.
+   El costo que gaste el arnés es el de tu cuenta de Cloudflare (pago por
+   neurona), no una suscripción de Claude. Si rotás el token, hay que volver a
+   cargarlo acá.
 
 3. Verificá que Actions tenga permiso de crear pull requests, en
    *Settings → Actions → General → Workflow permissions*.
@@ -41,21 +50,24 @@ Desde la pestaña Actions, workflow **Arnes de fichas**, botón *Run workflow*:
 | `slug` | Vacío = lo decide la pasada de creación a partir del nombre oficial. |
 | `lang` | `es`, `sv` o `it`. |
 | `max_loops` | Ciclos auditar/corregir. **2 por defecto y máximo** — cada ciclo son dos pasadas de modelo. |
-| `model` | `claude-sonnet-5` por defecto; elegí Opus sólo si una ficha especialmente compleja lo justifica. |
-| `effort` | `medium` por defecto. Ver más abajo por qué no es `high`. |
+| `model` | Modelo de Cloudflare Workers AI. `kimi-k2.7-code` por defecto; `glm-5.3` para fichas especialmente complejas, `gpt-oss-120b` para pasadas baratas. |
 | `skip_create` | Saltea la creación: audita y corrige un slug que ya existe. Sirve para pasarle el arnés a fichas viejas del catálogo. |
 
-### Por qué Sonnet 5 es el default
+### Por qué Kimi K2.7 Code es el default
 
 Cada pasada recarga el repositorio y las skills, y el lazo puede ejecutar varias
-pasadas. Por eso Sonnet `medium` es el punto de partida más predecible en coste y
-latencia. Opus sigue disponible como input explícito para casos complejos. El
-resumen imprime modelo, esfuerzo y costo estimado para comparar corridas reales.
+pasadas. Es el modelo de código de Cloudflare Workers AI con mejor relación
+entre calidad de tool-calling (Bash/Edit/Write, que el arnés usa en cada
+pasada) y costo. GLM-5.3 sigue disponible como input explícito para casos
+complejos. El resumen imprime modelo y costo estimado para comparar corridas
+reales.
 
-También se puede correr entero en local, con `claude` logueado:
+También se puede correr entero en local, con `CLOUDFLARE_ACCOUNT_ID` y
+`CLOUDFLARE_API_KEY` en el entorno:
 
 ```bash
-HERRAMIENTA="Kling AI" FICHA_LANG=es MAX_LOOPS=2 bash scripts/harness/run.sh
+CLOUDFLARE_ACCOUNT_ID=... CLOUDFLARE_API_KEY=... \
+  HERRAMIENTA="Kling AI" FICHA_LANG=es MAX_LOOPS=2 bash scripts/harness/run.sh
 ```
 
 ## Qué hace exactamente
@@ -97,7 +109,10 @@ fresco, casi siempre encuentra algo nuevo — está diseñado para eso. **"El au
 no tiene nada que decir" no es un estado alcanzable**, así que el lazo se agotaba
 siempre.
 
-Los números de la corrida que lo demostró (ficha nueva, 2 vueltas):
+Los números de la corrida que lo demostró (ficha nueva, 2 vueltas) son de
+cuando el arnés todavía corría contra Claude — quedan como referencia de las
+proporciones entre pasadas, no como costo esperado con Cloudflare Workers AI,
+que cobra por neurona y es sustancialmente más barato:
 
 | Pasada | Costo |
 |---|---|
@@ -187,7 +202,7 @@ de perderse entera.
 ## Cuándo NO usar el arnés
 
 **Para actualizar una ficha que ya existe, usá una sesión interactiva.** El arnés
-no compite ahí y no va a competir: cada pasada es un `claude -p` nuevo, sin
+no compite ahí y no va a competir: cada pasada es un `opencode run` nuevo, sin
 contexto compartido, así que recarga la skill, `AGENTS.md`, `content.config.ts` y
 las fichas de ejemplo **en cada pasada**. Una sesión de curación carga todo eso
 una vez y lo reutiliza cacheado. El aislamiento que hace confiable al arnés es lo
@@ -228,8 +243,14 @@ generan en el build de `deploy.yml`, después del merge.
 - Los prompts de las tres pasadas están en `scripts/harness/prompts/`, uno por
   etapa. Son texto plano con `{{PLACEHOLDERS}}`: si una corrida sale mal por cómo
   se le pidió algo, se arregla ahí.
-- El criterio de aprobación, los turnos máximos por pasada y la lista de archivos
-  protegidos están en `scripts/harness/run.sh`.
+- El criterio de aprobación y la lista de archivos protegidos están en
+  `scripts/harness/run.sh`. No hay techo de turnos por pasada — opencode no lo
+  soporta —, así que `PASS_TIMEOUT` es el único límite real.
+- La salida estructurada depende de que el modelo cierre con un bloque
+  ` ```json ` que valide contra el esquema de la pasada; ese contrato está
+  descripto en cada prompt y se valida con `scripts/harness/extraer-salida.mjs`.
+  Si una pasada empieza a fallar con "sin salida estructurada válida", mirá
+  `${OUT}/*/raw.json` (el stream crudo) antes de tocar el prompt.
 - **Si tocás una ruta protegida, stageá antes de correr nada que ejercite la
   guardia.** Cuando salta, la guardia hace `git checkout --` sobre esas rutas, y
   eso revierte tus cambios sin commitear a lo que haya en el índice. Pasó dos

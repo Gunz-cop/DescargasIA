@@ -4,18 +4,23 @@
 # MAX_LOOPS vueltas o hasta que la auditoría dé el visto bueno.
 #
 # Está pensado para correr en CI (.github/workflows/ficha-harness.yml), no en una
-# sesión interactiva de Claude Code: cada llamada al modelo es un `claude -p`
-# nuevo, sin contexto compartido, y toda la memoria entre pasadas viaja por
-# archivos en $OUT.
+# sesión interactiva. Cada llamada al modelo es un `opencode run` nuevo, sin
+# contexto compartido, y toda la memoria entre pasadas viaja por archivos en
+# $OUT. Corre contra un modelo de Cloudflare Workers AI (cuenta propia, sin
+# consumir la suscripción de Claude) — ver opencode_run() más abajo para el
+# porqué de la extracción de salida estructurada.
 #
 # Variables de entrada (las inyecta el workflow):
 #   HERRAMIENTA  qué herramienta fichar (nombre, o nombre + URL oficial)
 #   SLUG         opcional; si va vacío lo decide la pasada de creación
 #   FICHA_LANG   idioma editorial (es | sv | it)
 #   MAX_LOOPS    máximo de ciclos auditar/corregir
-#   MODEL        modelo para las tres pasadas
-#   EFFORT       nivel de esfuerzo (low | medium | high | xhigh | max)
+#   MODEL        modelo para las tres pasadas, formato `provider/model`
 #   SKIP_CREATE  "true" para auditar/corregir una ficha que ya existe
+#
+# Requiere en el entorno: CLOUDFLARE_ACCOUNT_ID y CLOUDFLARE_API_KEY (el token
+# de Workers AI; ver docs/ficha-harness.md). opencode los lee directo, no hace
+# falta ningún opencode.jsonc.
 #
 # Salidas: $OUT/resumen.md, $OUT/estado.json y un directorio por iteración.
 
@@ -28,10 +33,10 @@ MAX_LOOPS="${MAX_LOOPS:-2}"
 # cuota hasta que GitHub mata el job — y el arnés muere sin dejar resumen porque
 # el proceso no alcanza a correr su trap de salida.
 PASS_TIMEOUT="${PASS_TIMEOUT:-600}"
-# Cada pasada recarga el repo y la skill. Sonnet es un default más razonable para
-# este lazo: Opus sigue disponible como input explícito cuando la ficha lo exige.
-MODEL="${MODEL:-claude-sonnet-5}"
-EFFORT="${EFFORT:-medium}"
+# Cada pasada recarga el repo y la skill. Kimi K2.7 Code es un default más
+# razonable para este lazo: GLM-5.3 sigue disponible como input explícito
+# cuando la ficha lo exige, y GPT-OSS-120B para pasadas baratas.
+MODEL="${MODEL:-cloudflare-workers-ai/@cf/moonshotai/kimi-k2.7-code}"
 SKIP_CREATE="${SKIP_CREATE:-false}"
 # Para fichas de alto riesgo: exige una auditoría escéptica completa después de
 # que la verificación diferencial cierre, antes de aprobar. Necesita MAX_LOOPS=3.
@@ -70,9 +75,10 @@ render() {
 # Comprueba que la pasada que acaba de correr no haya tocado el examen.
 #
 # Corre después de CADA pasada del modelo, no una vez por vuelta: las tres
-# pasadas trabajan con Edit/Write/Bash bajo `--permission-mode acceptEdits`, y
-# una comprobación al final del cuerpo del lazo se saltea entera en el camino que
-# termina aprobando — que es justo el que produce un PR de aspecto limpio.
+# pasadas trabajan con Edit/Write/Bash bajo `--auto` (opencode aprueba todo lo
+# que no esté explícitamente denegado), y una comprobación al final del cuerpo
+# del lazo se saltea entera en el camino que termina aprobando — que es justo
+# el que produce un PR de aspecto limpio.
 #
 # Los archivos de infraestructura se revierten. Los de `src/content` NO se
 # revierten nunca: ahí vive el trabajo real de la corrida y un `git checkout` lo
@@ -103,27 +109,27 @@ guardia() {
   return 0
 }
 
-# Una pasada de modelo. $1=prompt, $2=turnos máximos, $3=esquema JSON,
-# $4=archivo donde dejar la respuesta cruda, $5=modo para la guardia.
-# Imprime el structured_output por stdout.
+# Una pasada de modelo. $1=prompt, $2=esquema JSON, $3=archivo donde dejar la
+# respuesta cruda, $4=modo para la guardia. Imprime el structured_output por
+# stdout.
 #
-# `claude -p` puede salir con código 0 aunque la corrida haya fallado por dentro,
-# así que el error también se detecta por la ausencia de structured_output.
-claude_run() {
-  local prompt="$1" turns="$2" schema="$3" raw="$4" modo="${5:-escritura}"
+# opencode no tiene equivalente a `--max-turns`, `--allowedTools` ni
+# `--json-schema`. El techo de vueltas queda sólo en PASS_TIMEOUT (el tiempo
+# ya era el límite real: una pasada que se traba abriendo fuentes no se
+# distingue de una con muchos turnos). Qué puede tocar el modelo ya no lo
+# restringe el CLI: con --auto la única defensa real es guardia() más abajo,
+# no una doble verificación como con --allowedTools. Y la salida estructurada
+# se pide en el prompt como un bloque ```json de cierre, y se extrae y valida
+# a mano en extraer-salida.mjs — ver ese archivo para el porqué.
+opencode_run() {
+  local prompt="$1" schema="$2" raw="$3" modo="${4:-escritura}"
   local code=0
   SNAPSHOT_CONTENIDO="$(git status --porcelain -- src/content)"
-  # Task/TodoWrite no aportan al contrato de una pasada y permitirían abrir
-  # trabajo paralelo que dispara el consumo y vuelve impredecible el tiempo.
   timeout --signal=TERM --kill-after=30 "$PASS_TIMEOUT" \
-  claude -p "$prompt" \
+  opencode run "$prompt" \
     --model "$MODEL" \
-    --effort "$EFFORT" \
-    --max-turns "$turns" \
-    --permission-mode acceptEdits \
-    --allowedTools "Bash,Read,Edit,Write,Glob,Grep,WebFetch,WebSearch" \
-    --output-format json \
-    --json-schema "$schema" \
+    --auto \
+    --format json \
     >"$raw" 2>"${raw%.json}.stderr" || code=$?
   if [ "$code" -eq 124 ] || [ "$code" -eq 137 ] || [ "$code" -eq 143 ]; then
     echo "::error::la pasada excedió PASS_TIMEOUT ($PASS_TIMEOUT s) y se cortó." >&2
@@ -132,24 +138,26 @@ claude_run() {
     return 1
   fi
   if [ "$code" -ne 0 ]; then
-    echo "::error::claude terminó con código $code. stderr:" >&2
+    echo "::error::opencode terminó con código $code. stderr:" >&2
     tail -n 30 "${raw%.json}.stderr" >&2
     RESULTADO="abortado-pasada-fallida"
     return 1
   fi
-  local cost
-  cost="$(jq -r '.total_cost_usd // 0' "$raw" 2>/dev/null || echo 0)"
-  echo "$cost" >>"$OUT/costos.txt"
-  if ! jq -e '.structured_output' "$raw" >/dev/null 2>&1; then
-    echo "::error::la pasada no devolvió salida estructurada. Resultado crudo:" >&2
-    jq -r '.result // .' "$raw" | tail -n 40 >&2
+  local parsed="${raw%.json}.parsed.json"
+  if ! node scripts/harness/extraer-salida.mjs "$raw" "$schema" \
+      >"$parsed" 2>"${raw%.json}.parse-stderr"; then
+    echo "::error::la pasada no devolvió salida estructurada válida. Detalle:" >&2
+    cat "${raw%.json}.parse-stderr" >&2
     RESULTADO="abortado-sin-salida-estructurada"
     return 1
   fi
+  local cost
+  cost="$(jq -r '.total_cost_usd // 0' "$parsed" 2>/dev/null || echo 0)"
+  echo "$cost" >>"$OUT/costos.txt"
   # La guardia va antes de entregar el resultado: si la pasada tocó el examen, el
   # llamador no llega a usar lo que devolvió.
   guardia "$modo" || return 1
-  jq '.structured_output' "$raw"
+  jq '.structured_output' "$parsed"
 }
 
 # Aborta si la herramienta pedida ya está en el catálogo.
@@ -304,7 +312,7 @@ escribir_resumen() {
     echo "| Resultado | **$RESULTADO** |"
     echo "| Veredicto final | $VEREDICTO_FINAL |"
     echo "| Iteraciones usadas | $ITER_FINAL de $MAX_LOOPS |"
-    echo "| Modelo | \`$MODEL\` (effort \`$EFFORT\`) |"
+    echo "| Modelo | \`$MODEL\` |"
     echo "| Costo estimado | US\$ $costo |"
     echo
     local d n
@@ -374,7 +382,7 @@ if [ "$SKIP_CREATE" != "true" ]; then
     '{{HERRAMIENTA}}' "$HERRAMIENTA" \
     '{{LANG}}' "$FICHA_LANG" \
     '{{SLUG}}' "${SLUG:-}")"
-  claude_run "$prompt" 45 "$SCHEMA_CREAR" "$OUT/crear/raw.json" >"$OUT/crear/salida.json"
+  opencode_run "$prompt" "$SCHEMA_CREAR" "$OUT/crear/raw.json" >"$OUT/crear/salida.json"
   SLUG="$(jq -r '.slug' "$OUT/crear/salida.json")"
   if grep -qxF "$SLUG" <<<"$SLUGS_PREVIOS"; then
     echo "::error::La pasada de creación aterrizó en '$SLUG', que ya existía antes de esta corrida." >&2
@@ -476,7 +484,7 @@ for ITER in $(seq 1 "$MAX_LOOPS"); do
       '{{CORRECCION_FILE}}' "$CORRECCION_ORIGEN" \
       '{{DIFF_FILE}}' "$DIFF_ORIGEN" \
       '{{ALCANCE_FILE}}' "$ALCANCE_ORIGEN")"
-    claude_run "$prompt" 25 "$SCHEMA_VERIFICAR" "$DIR/verificacion-raw.json" solo-lectura \
+    opencode_run "$prompt" "$SCHEMA_VERIFICAR" "$DIR/verificacion-raw.json" solo-lectura \
       >"$DIR/verificacion.json"
 
     PEND="$(jq '[.verificaciones[] | select(.prioridad != "P2") | select(.corregido == false)] | length' "$DIR/verificacion.json")"
@@ -576,7 +584,7 @@ $HISTORIAL}"
       '{{METRICAS_FILE}}' "$DIR/metricas.txt" \
       '{{INFORME_FILE}}' "$DIR/informe.md" \
       '{{HISTORIAL}}' "$HISTORIAL")"
-    claude_run "$prompt" 35 "$SCHEMA_AUDITAR" "$DIR/auditoria-raw.json" solo-lectura \
+    opencode_run "$prompt" "$SCHEMA_AUDITAR" "$DIR/auditoria-raw.json" solo-lectura \
       >"$DIR/veredicto.json"
 
     VEREDICTO="$(jq -r '.veredicto' "$DIR/veredicto.json")"
@@ -685,7 +693,7 @@ atribuye, y devolvé \`fuentes_verificadas\` con una entrada por cada una."
     '{{ITER}}' "$ITER" \
     '{{MAX_LOOPS}}' "$MAX_LOOPS" \
     '{{HALLAZGOS_FILE}}' "$DIR/hallazgos.md")"
-  claude_run "$prompt" 35 "$SCHEMA_CORREGIR" "$DIR/correccion-raw.json" >"$DIR/correccion.json"
+  opencode_run "$prompt" "$SCHEMA_CORREGIR" "$DIR/correccion-raw.json" >"$DIR/correccion.json"
 
   cp "$BASE_JSON" "$DIR/despues/base.json" 2>/dev/null || true
   cp "$EDIT_JSON" "$DIR/despues/editorial.json" 2>/dev/null || true

@@ -34,9 +34,19 @@ omitila — es preferible una plataforma de menos que un enlace falso.
   layouts, configuración, scripts, workflows ni las skills.
 - Si algo del encargo es imposible de verificar, escribí la ficha sin ese dato y
   dejalo anotado en el campo `notas` de tu salida estructurada. No rellenes.
+- Resolvé todo vos, en esta misma pasada: no delegues en subagentes ni abras
+  trabajo en paralelo.
 
 ## Salida
 
-Cuando termines, además de los archivos, devolvé la salida estructurada que te
-pide el esquema: el `slug` final, el nombre oficial, la categoría elegida, y en
-`notas` todo lo que no pudiste verificar o decidiste omitir.
+Cuando termines, además de los archivos, tu **último mensaje** tiene que
+terminar con un único bloque de código \`\`\`json (nada de texto después) con
+exactamente esta forma:
+
+\`\`\`json
+{"slug": "...", "nombre": "...", "categoria": "...", "archivos": ["..."], "notas": "..."}
+\`\`\`
+
+`slug` es el slug final, `nombre` el nombre oficial, `categoria` la elegida,
+`archivos` la lista de rutas que escribiste, y `notas` todo lo que no pudiste
+verificar o decidiste omitir. No agregues campos fuera de estos.

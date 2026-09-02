@@ -1,13 +1,14 @@
 name: Arnes de fichas (crear -> auditar -> corregir)
 
-# Automatiza el ciclo completo de una ficha nueva fuera de una sesión de Claude
-# Code: crear, auditar y corregir hasta que la auditoría apruebe o se agoten las
+# Automatiza el ciclo completo de una ficha nueva fuera de una sesión interactiva:
+# crear, auditar y corregir hasta que la auditoría apruebe o se agoten las
 # iteraciones. El resultado llega siempre como pull request, nunca como push a
 # main: deploy.yml deploya en cada push a main y este workflow no puede publicar
 # solo.
 #
-# Requiere el secret CLAUDE_CODE_OAUTH_TOKEN (generado con `claude setup-token`).
-# Ver docs/ficha-harness.md.
+# Corre contra un modelo de Cloudflare Workers AI (cuenta propia del usuario,
+# sin consumir ninguna suscripción de Claude), vía el CLI de OpenCode. Requiere
+# los secrets CLOUDFLARE_ACCOUNT_ID y CLOUDFLARE_API_KEY. Ver docs/ficha-harness.md.
 
 on:
   workflow_dispatch:
@@ -30,17 +31,14 @@ on:
         required: false
         default: "2"
       model:
-        description: "Modelo para las tres pasadas"
+        description: "Modelo de Cloudflare Workers AI para las tres pasadas"
         required: false
-        default: "claude-sonnet-5"
+        default: "cloudflare-workers-ai/@cf/moonshotai/kimi-k2.7-code"
         type: choice
-        options: ["claude-opus-5", "claude-sonnet-5", "claude-haiku-4-5-20251001"]
-      effort:
-        description: "Esfuerzo de cada pasada (medium recomendado)"
-        required: false
-        default: "medium"
-        type: choice
-        options: ["medium", "low", "high", "xhigh", "max"]
+        options:
+          - "cloudflare-workers-ai/@cf/moonshotai/kimi-k2.7-code"
+          - "cloudflare-workers-ai/@cf/zai-org/glm-5.3"
+          - "cloudflare-workers-ai/@cf/openai/gpt-oss-120b"
       skip_create:
         description: "Saltear la creación y sólo auditar/corregir un slug existente"
         required: false
@@ -83,10 +81,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Claude Code
+      - name: Install OpenCode
         run: |
-          npm install -g @anthropic-ai/claude-code
-          claude --version
+          npm install -g opencode-ai
+          opencode --version
 
       - name: Configurar git
         run: |
@@ -103,7 +101,7 @@ jobs:
       - name: Test de humo del resumen
         run: bash scripts/harness/test-resumen.sh
 
-      # Ejercita el lazo entero con un `claude` falso: cero cuota, ~1 minuto.
+      # Ejercita el lazo entero con un `opencode` falso: cero cuota, ~1 minuto.
       # Atrapa un defecto de flujo antes de que cueste una corrida real, que es
       # exactamente como se perdieron las dos primeras.
       - name: Test del lazo
@@ -113,13 +111,13 @@ jobs:
         id: harness
         continue-on-error: true
         env:
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_TOKEN_FINCHAS }}
           HERRAMIENTA: ${{ inputs.herramienta }}
           SLUG: ${{ inputs.slug }}
           FICHA_LANG: ${{ inputs.lang }}
           MAX_LOOPS: ${{ inputs.max_loops }}
           MODEL: ${{ inputs.model }}
-          EFFORT: ${{ inputs.effort }}
           SKIP_CREATE: ${{ inputs.skip_create }}
           FINAL_AUDIT: ${{ inputs.final_audit }}
           OUT: harness-out

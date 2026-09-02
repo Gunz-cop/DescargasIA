@@ -41,9 +41,20 @@ rigen la creación rigen la corrección.
 - No levantes el servidor de desarrollo. Para validar, `npm run build:no-shorten`.
 - No agregues contenido nuevo que nadie pidió sólo para subir el conteo de
   palabras.
+- Resolvé todo vos, en esta misma pasada: no delegues en subagentes ni abras
+  trabajo en paralelo.
 
 ## Salida
 
-Devolvé la salida estructurada: qué hallazgo corregiste y cómo (`correcciones`),
-y en `no_corregidos` los que decidiste no tocar, con el motivo. Ser honesto acá
-vale más que declarar todo resuelto: la próxima auditoría lo va a comprobar.
+Además de los archivos corregidos, tu **último mensaje** tiene que terminar con
+un único bloque de código \`\`\`json (nada de texto después) con exactamente
+esta forma:
+
+\`\`\`json
+{"correcciones": ["..."], "no_corregidos": ["..."], "notas": "..."}
+\`\`\`
+
+`correcciones` es qué hallazgo corregiste y cómo, y `no_corregidos` los que
+decidiste no tocar, con el motivo — pueden ir vacíos (`[]`) pero no omitidos.
+Ser honesto acá vale más que declarar todo resuelto: la próxima auditoría lo va
+a comprobar.

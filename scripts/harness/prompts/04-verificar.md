@@ -74,11 +74,34 @@ vaciado. No busques defectos preexistentes — sólo lo que **este diff** cambi�
 
 - **No edites nada.** Esta pasada no corrige; sólo verifica.
 - No toques scripts, workflows, schema ni skills.
+- Resolvé todo vos, en esta misma pasada: no delegues en subagentes ni abras
+  trabajo en paralelo.
 
 ## Salida
 
-Devolvé la salida estructurada. `cierra` es la compuerta del arnés: ponelo en
-`true` sólo si todos los P0/P1 quedaron corregidos, cada fuente nueva respalda su
-afirmación, cada entrada nueva responde a un hallazgo, y no encontraste
-regresiones. Ante la duda, `false` con el motivo en `resumen` — una vuelta más
-cuesta mucho menos que una ficha publicada con una afirmación falsa.
+Tu **último mensaje** tiene que terminar con un único bloque de código
+\`\`\`json (nada de texto después) con exactamente esta forma:
+
+\`\`\`json
+{
+  "verificaciones": [
+    {"ubicacion": "...", "prioridad": "P0|P1|P2", "corregido": true, "evidencia": "..."}
+  ],
+  "fuentes_nuevas": [
+    {"url": "...", "afirmacion": "...", "respalda": true}
+  ],
+  "entradas_nuevas": [
+    {"campo": "...", "responde_a_hallazgo": true, "detalle": "..."}
+  ],
+  "regresiones": ["..."],
+  "cierra": true,
+  "resumen": "..."
+}
+\`\`\`
+
+Los cuatro arrays van igual como `[]` si no corresponde ninguna entrada — nunca
+los omitas. `cierra` es la compuerta del arnés: ponelo en `true` sólo si todos
+los P0/P1 quedaron corregidos, cada fuente nueva respalda su afirmación, cada
+entrada nueva responde a un hallazgo, y no encontraste regresiones. Ante la
+duda, `false` con el motivo en `resumen` — una vuelta más cuesta mucho menos
+que una ficha publicada con una afirmación falsa.
