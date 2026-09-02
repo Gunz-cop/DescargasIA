@@ -9,6 +9,15 @@ name: Arnes de fichas (crear -> auditar -> corregir)
 # Corre contra un modelo de Cloudflare Workers AI (cuenta propia del usuario,
 # sin consumir ninguna suscripción de Claude), vía el CLI de OpenCode. Requiere
 # los secrets CLOUDFLARE_ACCOUNT_ID y CLOUDFLARE_API_KEY. Ver docs/ficha-harness.md.
+#
+# El `schedule` de más abajo es TEMPORAL: 6 corridas de prueba (2026-09-02 a
+# 2026-09-07, una por día) para observar el comportamiento del arnés migrado a
+# Cloudflare en corridas reales y consecutivas, re-auditando siempre la misma
+# ficha (`amp`, skip_create) para poder comparar entre días. El job `gate` hace
+# que las corridas por horario después del 2026-09-07 no hagan nada (se
+# saltean solas, sin gastar cuota) en vez de seguir indefinidamente — pero de
+# todos modos hay que sacar el bloque `schedule:` de acá una vez terminada la
+# ventana, porque un `schedule:` no se auto-elimina.
 
 on:
   workflow_dispatch:
@@ -49,6 +58,11 @@ on:
         required: false
         default: false
         type: boolean
+  schedule:
+    # 08:52 UTC, todos los días. Elegido como "ahora + 30 min" del 2026-09-02;
+    # el job `gate` es lo que acota esto a la ventana de prueba, no el cron en
+    # sí (cron no tiene "corré sólo N veces").
+    - cron: "52 8 * * *"
 
 # Una corrida por vez: dos arneses en paralelo se pisarían el catálogo y las
 # métricas de originalidad se medirían contra un estado a medio escribir.
@@ -57,7 +71,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Sólo existe por el `schedule` temporal de arriba: un disparo manual
+  # siempre pasa; uno por horario sólo pasa dentro de la ventana de prueba.
+  # Sacar este job (y el `needs`/`if` de `harness`) junto con el `schedule:`
+  # cuando termine la ventana.
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      en_ventana: ${{ steps.check.outputs.en_ventana }}
+    steps:
+      - id: check
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "en_ventana=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          HOY="$(date -u +%F)"
+          if [[ "$HOY" > "2026-09-07" ]]; then
+            echo "en_ventana=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Ventana de prueba (2026-09-02..2026-09-07) terminada. Sacá el bloque schedule: y el job gate de ficha-harness.yml."
+          else
+            echo "en_ventana=true" >> "$GITHUB_OUTPUT"
+          fi
+
   harness:
+    needs: gate
+    if: needs.gate.outputs.en_ventana == 'true'
     runs-on: ubuntu-latest
     # El arnés tiene límites propios por pasada (PASS_TIMEOUT); este margen
     # evita que GitHub mate el proceso antes de que el trap publique resumen y
@@ -114,13 +153,20 @@ jobs:
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_KEY: ${{ secrets.CLOUDFLARE_TOKEN_FINCHAS }}
-          HERRAMIENTA: ${{ inputs.herramienta }}
-          SLUG: ${{ inputs.slug }}
-          FICHA_LANG: ${{ inputs.lang }}
-          MAX_LOOPS: ${{ inputs.max_loops }}
-          MODEL: ${{ inputs.model }}
-          SKIP_CREATE: ${{ inputs.skip_create }}
-          FINAL_AUDIT: ${{ inputs.final_audit }}
+          # Una corrida por `schedule` no tiene `inputs` (eso sólo existe en
+          # workflow_dispatch): el `||` cae a los valores de la corrida de
+          # prueba — re-auditar `amp`, nunca crear una ficha nueva sola.
+          HERRAMIENTA: ${{ inputs.herramienta || 'Amp' }}
+          # Ojo acá: `inputs.slug || 'amp'` se rompería en un disparo manual
+          # normal, donde dejar `slug` vacío a propósito le dice a la pasada
+          # de creación que decida ella el slug — un `||` lo pisaría siempre
+          # que quedara vacío, también en manual. Por eso event_name explícito.
+          SLUG: ${{ github.event_name == 'schedule' && 'amp' || inputs.slug }}
+          FICHA_LANG: ${{ inputs.lang || 'es' }}
+          MAX_LOOPS: ${{ inputs.max_loops || '2' }}
+          MODEL: ${{ inputs.model || 'cloudflare-workers-ai/@cf/moonshotai/kimi-k2.7-code' }}
+          SKIP_CREATE: ${{ github.event_name == 'schedule' && 'true' || inputs.skip_create }}
+          FINAL_AUDIT: ${{ inputs.final_audit || false }}
           OUT: harness-out
           # 600s se quedaba corto con los modelos grandes de Workers AI (GLM-5.3
           # tardó más de 10 minutos en una pasada de creación real, todavía

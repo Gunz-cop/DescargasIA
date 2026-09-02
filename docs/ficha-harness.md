@@ -12,6 +12,15 @@ Las tres pasadas usan las mismas skills que ya están versionadas en el repo
 (`.claude/skills/descargasia-tool-ficha` y `descargasia-ficha-auditoria`), así
 que mejorar las skills mejora el arnés sin tocar nada de esto.
 
+> **Ventana de prueba temporal (sacar después del 2026-09-07):** el workflow
+> tiene un `schedule:` que lo dispara una vez por día a las 08:52 UTC, del
+> 2026-09-02 al 2026-09-07, re-auditando siempre la ficha `amp` con
+> `skip_create` para comparar el comportamiento del arnés migrado a Cloudflare
+> en corridas consecutivas. El job `gate` hace que las corridas por horario
+> después del 2026-09-07 no gasten cuota, pero **no borra el `schedule:` solo**
+> — sacá el bloque `schedule:` y el job `gate` de
+> `.github/workflows/ficha-harness.yml` una vez terminada la ventana.
+
 ## Puesta en marcha (una sola vez)
 
 1. En el dashboard de Cloudflare, andá a **Workers AI → Use REST API** y anotá
