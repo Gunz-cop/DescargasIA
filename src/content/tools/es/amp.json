@@ -9,7 +9,7 @@
   ],
   "limitations": [
     "No hay aplicación nativa para Windows: el soporte oficial es mediante WSL o una terminal compatible, no un instalador de escritorio.",
-    "Las apps de macOS e iOS están en beta pública (TestFlight en iOS) y requieren macOS 26 o iOS/iPadOS 26 o posterior.",
+    "Las apps de macOS e iOS están en beta pública y requieren macOS 26 o iOS/iPadOS 26 o posterior; la beta de iOS se distribuye por TestFlight, mientras que el requisito de sistema figura en ampcode.com/app.",
     "El modelo de precios es de suscripción mensual desde 20 USD o facturación por uso; no se confirma un plan gratuito.",
     "Requiere cuenta para usar cualquier canal y para gestionar orbs, agentes y facturación."
   ],
@@ -43,7 +43,7 @@
   ],
   "communityInsights": [
     {
-      "text": "Un desarrollador en Hacker News señaló que los orbs son, en el fondo, máquinas virtuales remotas con una nueva capa de abstracción, y que la propuesta pide al usuario confiar en esa infraestructura sin necesidad de ver qué ocurre dentro. Es un recordatorio útil: delegar el trabajo a un orb significa ceder el entorno de ejecución a la plataforma, así que conviene revisar qué repositorios y secretos le concedes.",
+      "text": "Un desarrollador en Hacker News ironizó: los orbs son, en el fondo, máquinas virtuales remotas con una nueva capa de abstracción, y la propuesta pide al usuario confiar en esa infraestructura sin necesidad de ver qué ocurre dentro. Es un recordatorio útil: delegar el trabajo a un orb significa ceder el entorno de ejecución a la plataforma, así que conviene revisar qué repositorios y secretos le concedes.",
       "source": "https://news.ycombinator.com/item?id=49497377",
       "sourceLabel": "Comentario en Hacker News · hilo 'Orbs'",
       "date": "2026-08-30"
