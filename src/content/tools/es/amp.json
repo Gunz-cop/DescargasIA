@@ -43,7 +43,7 @@
   ],
   "communityInsights": [
     {
-      "text": "Un desarrollador en Hacker News señaló que los orbs son, en el fondo, máquinas virtuales remotas con una nueva capa de abstracción, y que la propuesta pide al usuario confiar en esa infraestructura sin necesidad de ver qué ocurre dentro. Es un recordatorio útil: delegar el trabajo a un orb significa ceder el entorno de ejecución a la plataforma, así que conviene revisar qué repositorios y secretos le concedes.",
+      "text": "Un desarrollador en Hacker News expresó una reserva sobre los orbs: los considera, en esencia, máquinas virtuales remotas con una nueva capa de abstracción, y señala que la propuesta parece pedir al usuario que confíe en esa infraestructura sin necesidad de ver lo que ocurre dentro. Es una observación escéptica que subraya que delegar el trabajo a un orb implica ceder el entorno de ejecución a la plataforma, por lo que conviene revisar qué repositorios y secretos le concedes.",
       "source": "https://news.ycombinator.com/item?id=49497377",
       "sourceLabel": "Comentario en Hacker News · hilo 'Orbs'",
       "date": "2026-08-30"
